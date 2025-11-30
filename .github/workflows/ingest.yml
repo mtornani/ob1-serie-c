@@ -1,0 +1,38 @@
+name: OB1 Ingest Pipeline
+
+on:
+  schedule:
+    # Ogni 6 ore
+    - cron: '0 */6 * * *'
+  workflow_dispatch:  # Manual trigger
+
+permissions:
+  contents: read
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Run ingest pipeline
+      env:
+        SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: |
+        cd src
+        python ingest.py
+    
+    - name: Log completion
+      run: |
+        echo "✅ Ingest completed at $(date -u +'%Y-%m-%d %H:%M UTC')"
