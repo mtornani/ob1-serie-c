@@ -1,0 +1,97 @@
+# OB1 Serie C - Fonti e Query di Scraping
+# Modifica questo file per aggiungere/rimuovere fonti senza toccare il codice
+
+# Configurazione generale
+settings:
+  results_per_query: 10
+  time_range: "qdr:w"  # ultima settimana (qdr:d = giorno, qdr:m = mese)
+  country: "it"
+  language: "it"
+  max_opportunities: 50
+
+# Query per tipo di opportunità
+queries:
+  svincolato:
+    - '"Serie C" "parametro zero" giocatore 2025'
+    - '"Serie C" "svincolato" calciatore'
+    - '"Lega Pro" svincolato centrocampista OR difensore OR attaccante'
+    - '"Serie C" giocatore "senza contratto"'
+
+  rescissione:
+    - '"Serie C" "rescinde" contratto'
+    - '"Serie C" "risoluzione consensuale"'
+    - '"Lega Pro" rescissione giocatore'
+    - '"Serie C" "accordo per la risoluzione"'
+
+  prestito:
+    - '"Serie C" "prestito" disponibile'
+    - '"Serie C" "in prestito" gennaio'
+    - 'Juventus OR Milan OR Inter "prestito Serie C"'
+    - '"Serie B" esubero "Serie C"'
+    - '"Primavera" cerca spazio "Serie C"'
+
+  infortunio:
+    - '"Serie C" "infortunio" "lungo stop"'
+    - '"Serie C" "rottura crociato" OR "lesione"'
+    - '"Lega Pro" "stagione finita" infortunio'
+    - '"Serie C" "out per mesi"'
+
+  serie_d_talent:
+    - '"Serie D" talento "interesse Serie C"'
+    - '"Serie D" capocannoniere promozione'
+    - '"Eccellenza" giovane "piace a" Serie C'
+    - '"Serie D" bomber gol "osservato"'
+
+  performance:
+    - '"Serie C" "doppietta" ultima giornata'
+    - '"Serie C" "tripletta" OR "hat-trick"'
+    - '"Serie C" "migliore in campo"'
+    - '"Serie C" "protagonista" gol assist'
+
+# Keywords per validazione risultati
+validation:
+  # Se presenti, il risultato viene scartato (a meno che non ci siano player_keywords)
+  skip_keywords:
+    - allenatore
+    - mister
+    - tecnico
+    - direttore sportivo
+    - presidente
+    - patron
+    - dirigente
+    - preparatore
+    - massaggiatore
+
+  # Confermano che si parla di un giocatore
+  player_keywords:
+    - giocatore
+    - calciatore
+    - centrocampista
+    - difensore
+    - attaccante
+    - portiere
+    - esterno
+    - mediano
+    - terzino
+    - trequartista
+
+  # Confermano rilevanza Serie C
+  league_keywords:
+    - serie c
+    - lega pro
+    - terza serie
+
+# Fonti preferite (boost nel ranking)
+preferred_sources:
+  - tuttoc.com
+  - calciomercato.com
+  - transfermarkt
+  - tuttomercatoweb.com
+  - gazzetta.it
+  - corrieredellosport.it
+
+# Fonti da ignorare
+blocked_sources:
+  - wikipedia.org
+  - facebook.com
+  - twitter.com

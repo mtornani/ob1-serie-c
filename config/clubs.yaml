@@ -1,0 +1,198 @@
+# OB1 Serie C - Database Club
+# Stagione 2024/25
+
+serie_c:
+  girone_a:
+    - name: Albinoleffe
+      city: Zanica
+      region: Lombardia
+    - name: Alcione Milano
+      city: Milano
+      region: Lombardia
+    - name: Arzignano Valchiampo
+      city: Arzignano
+      region: Veneto
+    - name: FeralpiSalò
+      city: Salò
+      region: Lombardia
+    - name: Giana Erminio
+      city: Gorgonzola
+      region: Lombardia
+    - name: Lecco
+      city: Lecco
+      region: Lombardia
+    - name: Legnago Salus
+      city: Legnago
+      region: Veneto
+    - name: Lumezzane
+      city: Lumezzane
+      region: Lombardia
+    - name: Novara
+      city: Novara
+      region: Piemonte
+    - name: Padova
+      city: Padova
+      region: Veneto
+    - name: Pergolettese
+      city: Crema
+      region: Lombardia
+    - name: Pro Patria
+      city: Busto Arsizio
+      region: Lombardia
+    - name: Pro Vercelli
+      city: Vercelli
+      region: Piemonte
+    - name: Renate
+      city: Renate
+      region: Lombardia
+    - name: Trento
+      city: Trento
+      region: Trentino
+    - name: Triestina
+      city: Trieste
+      region: Friuli
+    - name: Union Clodiense
+      city: Chioggia
+      region: Veneto
+    - name: Vicenza
+      city: Vicenza
+      region: Veneto
+    - name: Virtus Verona
+      city: Verona
+      region: Veneto
+
+  girone_b:
+    - name: Arezzo
+      city: Arezzo
+      region: Toscana
+    - name: Ascoli
+      city: Ascoli Piceno
+      region: Marche
+    - name: Campobasso
+      city: Campobasso
+      region: Molise
+    - name: Carpi
+      city: Carpi
+      region: Emilia-Romagna
+    - name: Cesena
+      city: Cesena
+      region: Emilia-Romagna
+    - name: Virtus Entella
+      city: Chiavari
+      region: Liguria
+    - name: Gubbio
+      city: Gubbio
+      region: Umbria
+    - name: Lucchese
+      city: Lucca
+      region: Toscana
+    - name: Milan Futuro
+      city: Milano
+      region: Lombardia
+    - name: Perugia
+      city: Perugia
+      region: Umbria
+    - name: Pescara
+      city: Pescara
+      region: Abruzzo
+    - name: Pianese
+      city: Piancastagnaio
+      region: Toscana
+    - name: Pineto
+      city: Pineto
+      region: Abruzzo
+    - name: Pontedera
+      city: Pontedera
+      region: Toscana
+    - name: Rimini
+      city: Rimini
+      region: Emilia-Romagna
+    - name: SPAL
+      city: Ferrara
+      region: Emilia-Romagna
+    - name: Sestri Levante
+      city: Sestri Levante
+      region: Liguria
+    - name: Ternana
+      city: Terni
+      region: Umbria
+    - name: Torres
+      city: Sassari
+      region: Sardegna
+    - name: Vis Pesaro
+      city: Pesaro
+      region: Marche
+
+  girone_c:
+    - name: Audace Cerignola
+      city: Cerignola
+      region: Puglia
+    - name: Avellino
+      city: Avellino
+      region: Campania
+    - name: AZ Picerno
+      city: Picerno
+      region: Basilicata
+    - name: Benevento
+      city: Benevento
+      region: Campania
+    - name: Casertana
+      city: Caserta
+      region: Campania
+    - name: Catania
+      city: Catania
+      region: Sicilia
+    - name: Cavese
+      city: Cava de' Tirreni
+      region: Campania
+    - name: Crotone
+      city: Crotone
+      region: Calabria
+    - name: Foggia
+      city: Foggia
+      region: Puglia
+    - name: Giugliano
+      city: Giugliano
+      region: Campania
+    - name: Juventus Next Gen
+      city: Torino
+      region: Piemonte
+    - name: Latina
+      city: Latina
+      region: Lazio
+    - name: Messina
+      city: Messina
+      region: Sicilia
+    - name: Monopoli
+      city: Monopoli
+      region: Puglia
+    - name: Potenza
+      city: Potenza
+      region: Basilicata
+    - name: Sorrento
+      city: Sorrento
+      region: Campania
+    - name: Taranto
+      city: Taranto
+      region: Puglia
+    - name: Team Altamura
+      city: Altamura
+      region: Puglia
+    - name: Trapani
+      city: Trapani
+      region: Sicilia
+    - name: Turris
+      city: Torre del Greco
+      region: Campania
+
+# Alias comuni (per migliorare il parsing)
+aliases:
+  "Feralpi": "FeralpiSalò"
+  "Feralpi Salò": "FeralpiSalò"
+  "Giana": "Giana Erminio"
+  "Pro Patria Busto": "Pro Patria"
+  "Entella": "Virtus Entella"
+  "Juve Next Gen": "Juventus Next Gen"
+  "Juventus U23": "Juventus Next Gen"
+  "Cerignola": "Audace Cerignola"
+  "Picerno": "AZ Picerno"

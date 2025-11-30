@@ -1,0 +1,102 @@
+# OB1 Serie C - Configurazione Agent e Prompts
+# Personalizza il comportamento dell'agent per il tuo club
+
+# Configurazione modello
+model:
+  name: "gemini-2.5-flash"
+  temperature: 0.3  # Basso per risposte fattuali
+  max_output_tokens: 2048
+
+# Store Gemini File Search
+file_search:
+  store_name: "ob1-serie-c-knowledge"
+  cleanup_days: 7  # Rimuovi documenti più vecchi di N giorni
+
+# System prompt principale
+system_prompt: |
+  Sei OB1, un assistente di scouting specializzato in Serie C e Serie D italiana.
+
+  Il tuo ruolo è aiutare direttori sportivi e scout a:
+  - Trovare giocatori svincolati o in uscita
+  - Identificare opportunità di mercato
+  - Analizzare profili giocatori
+  - Suggerire target basati su criteri specifici
+
+  REGOLE:
+  1. Rispondi SEMPRE basandoti sui dati nel tuo database
+  2. Se non hai informazioni su un giocatore, dillo chiaramente
+  3. Cita sempre le fonti quando disponibili
+  4. Sii conciso e professionale
+  5. Quando suggerisci giocatori, spiega perché potrebbero essere interessanti
+
+  FORMATO RISPOSTA:
+  - Per liste di giocatori: nome, ruolo, età, situazione contrattuale
+  - Per analisi singole: profilo completo con pro/contro
+  - Per ricerche: risultati ordinati per rilevanza
+
+  Oggi è il {date}. Stagione 2024/25.
+
+# Prompt templates per query comuni
+templates:
+  find_svincolati: |
+    Quali giocatori svincolati sono disponibili{role_filter}{age_filter}?
+    Elencali con dettagli su: ruolo, età, ultimo club, statistiche recenti.
+    Ordina per rilevanza/qualità.
+
+  analyze_player: |
+    Dammi tutte le informazioni disponibili su {player_name}:
+    - Ruolo e caratteristiche tecniche
+    - Età e nazionalità
+    - Situazione contrattuale attuale
+    - Statistiche stagione in corso
+    - Storico carriera
+    - Valutazione complessiva e possibile interesse
+
+  market_summary: |
+    Fammi un riepilogo delle opportunità di mercato più interessanti:
+    
+    1. SVINCOLATI TOP: i migliori giocatori senza contratto
+    2. RESCISSIONI RECENTI: chi ha appena rescisso
+    3. PRESTITI DISPONIBILI: opportunità dai club maggiori
+    4. TALENTI SERIE D: giovani interessanti dalle categorie inferiori
+    
+    Per ogni categoria, elenca max 3-5 nomi con breve descrizione.
+
+  search_by_criteria: |
+    Cerca giocatori che soddisfano questi criteri: {criteria}
+    
+    Per ogni risultato indica:
+    - Nome e età
+    - Ruolo specifico
+    - Situazione contrattuale
+    - Perché corrisponde ai criteri
+    - Fonte dell'informazione
+
+# Risposte predefinite
+responses:
+  no_data: |
+    Non ho informazioni su questo giocatore nel mio database.
+    Potrebbe essere che:
+    - Non ci sono state notizie recenti su di lui
+    - Il nome potrebbe essere scritto diversamente
+    
+    Vuoi che provi a cercare con un nome alternativo?
+
+  store_not_found: |
+    ❌ Database non disponibile.
+    
+    Assicurati di aver eseguito la pipeline di ingest:
+    ```
+    cd src && python ingest.py
+    ```
+
+# Personalizzazione per club (opzionale)
+# Decommenta e modifica per adattare al tuo club
+# club_context:
+#   name: "FC Example"
+#   budget_range: "basso"  # basso, medio, alto
+#   priority_roles:
+#     - centrale difensivo
+#     - centrocampista centrale
+#   age_preference: "under 27"
+#   league_experience: "Serie C minimo"
