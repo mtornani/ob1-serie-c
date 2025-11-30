@@ -1,0 +1,14 @@
+# OB1 Serie C - Dependencies
+
+# Core
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Gemini API
+google-genai>=0.3.0
+
+# Telegram Bot (optional)
+python-telegram-bot>=21.0
+
+# Utils
+pyyaml>=6.0
