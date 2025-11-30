@@ -27,7 +27,13 @@ except ImportError:
 
 # Import agent
 import sys
-sys.path.insert(0, str(__file__).replace('/bot/telegram_bot.py', '/src'))
+from pathlib import Path
+
+# Aggiungi la cartella src al path
+bot_dir = Path(__file__).parent.resolve()
+src_dir = bot_dir.parent / "src"
+sys.path.insert(0, str(src_dir))
+
 from agent import OB1Agent
 
 # Logging
