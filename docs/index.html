@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OB1 Scout - Dashboard</title>
-    <meta name="description" content="OB1 Scout Radar - Scouting AI per Serie C e D">
     <meta name="theme-color" content="#0f172a">
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icon-192.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -18,103 +16,66 @@
             padding: 20px;
         }
         .container { max-width: 800px; margin: 0 auto; }
-        header {
-            text-align: center;
-            padding: 40px 0;
-        }
-        .logo { font-size: 4em; margin-bottom: 10px; }
-        h1 { font-size: 2em; margin: 10px 0; color: #fff; }
-        .subtitle { color: #94a3b8; font-size: 1.1em; }
+        header { text-align: center; padding: 30px 0; }
+        .logo { font-size: 3em; }
+        h1 { font-size: 1.8em; margin: 10px 0; }
         .badge {
             display: inline-block;
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            background: #22c55e;
             color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
+            padding: 5px 15px;
+            border-radius: 20px;
             font-size: 0.9em;
-            font-weight: 600;
-            margin-top: 15px;
         }
-        .setup-card {
-            background: rgba(30, 41, 59, 0.9);
-            border: 1px solid rgba(71, 85, 105, 0.5);
-            border-radius: 16px;
-            padding: 30px;
-            margin: 30px 0;
-            backdrop-filter: blur(10px);
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
         }
-        .setup-card h2 {
-            color: #fff;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .step {
-            background: rgba(15, 23, 42, 0.6);
+        .stat-card {
+            background: rgba(30, 41, 59, 0.8);
             padding: 20px;
             border-radius: 12px;
+            text-align: center;
+        }
+        .stat-number { font-size: 2em; font-weight: bold; color: #3b82f6; }
+        .stat-label { color: #94a3b8; font-size: 0.9em; margin-top: 5px; }
+        .card {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 12px;
+            padding: 20px;
             margin: 15px 0;
+        }
+        .card h2 { margin-bottom: 15px; font-size: 1.2em; }
+        .opportunity {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
             border-left: 4px solid #3b82f6;
         }
-        .step h3 {
-            color: #3b82f6;
-            font-size: 1em;
-            margin-bottom: 8px;
-        }
-        .step p {
-            color: #94a3b8;
-            font-size: 0.95em;
-            line-height: 1.6;
-        }
-        .step code {
-            background: rgba(59, 130, 246, 0.2);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-family: monospace;
-            color: #60a5fa;
-        }
-        .waiting {
-            text-align: center;
-            padding: 40px;
-        }
-        .waiting .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(59, 130, 246, 0.2);
-            border-top-color: #3b82f6;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
-        }
-        .feature {
-            background: rgba(15, 23, 42, 0.6);
-            padding: 20px;
+        .opportunity h3 { color: #fff; font-size: 1.1em; }
+        .opportunity .meta { color: #94a3b8; font-size: 0.85em; margin-top: 5px; }
+        .type-badge {
+            display: inline-block;
+            padding: 3px 10px;
             border-radius: 12px;
-            text-align: center;
+            font-size: 0.75em;
+            margin-top: 8px;
         }
-        .feature .icon { font-size: 2em; margin-bottom: 10px; }
-        .feature h4 { color: #fff; font-size: 1em; margin-bottom: 5px; }
-        .feature p { color: #64748b; font-size: 0.85em; }
+        .type-svincolato { background: #22c55e; }
+        .type-prestito { background: #3b82f6; }
+        .type-rescissione { background: #f59e0b; }
+        .type-scadenza { background: #ef4444; }
         footer {
             text-align: center;
-            padding: 40px 0;
+            padding: 30px 0;
             color: #64748b;
             font-size: 0.85em;
         }
-        footer a { color: #3b82f6; text-decoration: none; }
         @media (max-width: 500px) {
-            .logo { font-size: 3em; }
-            h1 { font-size: 1.5em; }
+            .stats-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -123,93 +84,34 @@
         <header>
             <div class="logo">⚽</div>
             <h1>OB1 Scout Radar</h1>
-            <p class="subtitle">Intelligence Before Headlines</p>
-            <span class="badge">Serie C & D Italia</span>
+            <span class="badge">Serie C & D</span>
         </header>
 
-        <div class="setup-card">
-            <h2>⏳ Dashboard in Attivazione</h2>
-
-            <div class="waiting">
-                <div class="spinner"></div>
-                <p>Il sistema sta raccogliendo i primi dati...</p>
-                <p style="color: #64748b; margin-top: 10px; font-size: 0.9em;">
-                    La dashboard si aggiorna automaticamente ogni 6 ore
-                </p>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Opportunita Totali</div>
             </div>
-
-            <div class="features">
-                <div class="feature">
-                    <div class="icon">📱</div>
-                    <h4>Mobile First</h4>
-                    <p>Ottimizzata per smartphone</p>
-                </div>
-                <div class="feature">
-                    <div class="icon">🔔</div>
-                    <h4>Notifiche Push</h4>
-                    <p>Alert Telegram istantanei</p>
-                </div>
-                <div class="feature">
-                    <div class="icon">🤖</div>
-                    <h4>AI-Powered</h4>
-                    <p>Analisi automatica mercato</p>
-                </div>
-                <div class="feature">
-                    <div class="icon">⚡</div>
-                    <h4>Sempre Attivo</h4>
-                    <p>Scraping 24/7 automatico</p>
-                </div>
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Ultime 6 Ore</div>
             </div>
         </div>
 
-        <div class="setup-card">
-            <h2>🔧 Setup Richiesto</h2>
-
-            <div class="step">
-                <h3>1. Configura i Secrets GitHub</h3>
-                <p>
-                    Vai su <strong>Settings → Secrets → Actions</strong> e aggiungi:
-                </p>
-                <p style="margin-top: 10px;">
-                    <code>SERPER_API_KEY</code> - API key da serper.dev<br>
-                    <code>GEMINI_API_KEY</code> - API key da aistudio.google.com<br>
-                    <code>TELEGRAM_BOT_TOKEN</code> - Token da @BotFather<br>
-                    <code>TELEGRAM_CHAT_IDS</code> - ID chat destinatari (separati da virgola)
-                </p>
-            </div>
-
-            <div class="step">
-                <h3>2. Abilita GitHub Pages</h3>
-                <p>
-                    Vai su <strong>Settings → Pages</strong> e seleziona:<br>
-                    Source: <code>GitHub Actions</code>
-                </p>
-            </div>
-
-            <div class="step">
-                <h3>3. Lancia il Primo Workflow</h3>
-                <p>
-                    Vai su <strong>Actions → OB1 Scout - Auto Ingest & Notify</strong><br>
-                    Clicca <code>Run workflow</code>
-                </p>
-            </div>
+        <div class="card">
+            <h2>🔥 Ultime Opportunita</h2>
+            <p style="color: #64748b;">Nessuna opportunita trovata ancora. Il sistema si aggiorna ogni 6 ore.</p>
         </div>
 
         <footer>
-            <p>OB1 Scout Radar v1.0.0-alpha</p>
-            <p style="margin-top: 10px;">
-                <a href="https://github.com">GitHub</a> ·
-                <a href="https://t.me">Telegram Bot</a>
-            </p>
+            <p>Ultimo aggiornamento: 30/01/2026 21:39</p>
+            <p>OB1 Scout Radar - Intelligence Before Headlines</p>
         </footer>
     </div>
 
     <script>
-        // PWA: Register service worker
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-                .then(() => console.log('SW registered'))
-                .catch(err => console.log('SW error:', err));
+            navigator.serviceWorker.register('sw.js');
         }
     </script>
 </body>
