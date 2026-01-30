@@ -18,22 +18,27 @@ load_dotenv()
 class TelegramNotifier:
     """Gestisce notifiche Telegram per nuove opportunita'"""
 
+    # Canale ufficiale OB1 Scout
+    DEFAULT_CHANNEL = "@Ob1LegaPro_bot"
+
     def __init__(self):
         self.bot_token = os.getenv('TELEGRAM_BOT_TOKEN')
         self.chat_ids = self._parse_chat_ids()
-        self.enabled = bool(self.bot_token and self.chat_ids)
+        self.enabled = bool(self.bot_token)
 
         if not self.enabled:
-            print("⚠️ Telegram notifier disabilitato (token o chat_id mancanti)")
+            print("⚠️ Telegram notifier disabilitato (token mancante)")
+        else:
+            print(f"✅ Telegram notifier attivo - destinatari: {self.chat_ids}")
 
     def _parse_chat_ids(self) -> List[str]:
-        """Parse TELEGRAM_CHAT_IDS (comma-separated)"""
+        """Parse TELEGRAM_CHAT_IDS o usa il canale di default"""
         raw = os.getenv('TELEGRAM_CHAT_IDS', '')
-        if not raw:
-            # Fallback to single TELEGRAM_CHAT_ID
-            single = os.getenv('TELEGRAM_CHAT_ID', '')
-            return [single] if single else []
-        return [cid.strip() for cid in raw.split(',') if cid.strip()]
+        if raw:
+            return [cid.strip() for cid in raw.split(',') if cid.strip()]
+
+        # Default: canale ufficiale OB1
+        return [self.DEFAULT_CHANNEL]
 
     def send_message(self, text: str, parse_mode: str = 'HTML') -> bool:
         """Invia messaggio a tutti i chat configurati"""
