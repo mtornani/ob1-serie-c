@@ -18,8 +18,9 @@ load_dotenv()
 class TelegramNotifier:
     """Gestisce notifiche Telegram per nuove opportunita'"""
 
-    # Canale ufficiale OB1 Scout
-    DEFAULT_CHANNEL = "@Ob1LegaPro_bot"
+    # Chat ID di default (Mirko Tornani)
+    # Per aggiungere altri utenti, impostare TELEGRAM_CHAT_IDS come lista separata da virgole
+    DEFAULT_CHAT_ID = "1465485090"
 
     def __init__(self):
         self.bot_token = os.getenv('TELEGRAM_BOT_TOKEN')
@@ -37,8 +38,8 @@ class TelegramNotifier:
         if raw:
             return [cid.strip() for cid in raw.split(',') if cid.strip()]
 
-        # Default: canale ufficiale OB1
-        return [self.DEFAULT_CHANNEL]
+        # Default: chat ID principale
+        return [self.DEFAULT_CHAT_ID]
 
     def send_message(self, text: str, parse_mode: str = 'HTML') -> bool:
         """Invia messaggio a tutti i chat configurati"""
