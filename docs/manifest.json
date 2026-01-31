@@ -1,41 +1,20 @@
 {
-  "name": "OB1 Radar - Serie C Scout",
-  "short_name": "OB1 Radar",
-  "description": "Scout AI per Serie C e Serie D italiana. Trova opportunita di mercato prima degli altri.",
-  "start_url": "/ob1-serie-c/",
-  "scope": "/ob1-serie-c/",
+  "name": "OB1 Scout Radar",
+  "short_name": "OB1 Scout",
+  "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
-  "categories": ["sports", "business"],
-  "lang": "it",
   "icons": [
     {
-      "src": "icons/icon-192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "HOT Opportunities",
-      "short_name": "HOT",
-      "description": "Vedi opportunita ad alta priorita",
-      "url": "/?filter=hot"
-    },
-    {
-      "name": "Salvati",
-      "short_name": "Salvati",
-      "description": "Vedi giocatori salvati",
-      "url": "/?view=saved"
+      "type": "image/png"
     }
   ]
 }
