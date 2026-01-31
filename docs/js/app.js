@@ -157,6 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initEventListeners();
   loadSavedOpportunities();
   loadData();
+
+  // Initialize onboarding tutorial
+  onboarding.init();
+  addHelpButton();
 });
 
 function initTheme() {
@@ -685,6 +689,165 @@ function debounce(func, wait) {
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
   };
+}
+
+// =============================================================================
+// Onboarding Tutorial
+// =============================================================================
+
+const onboarding = {
+  overlay: null,
+  currentStep: 1,
+  totalSteps: 5,
+
+  init() {
+    this.overlay = document.getElementById('onboardingOverlay');
+    if (!this.overlay) return;
+
+    // Check if user has seen the tutorial
+    const hasSeenTutorial = localStorage.getItem('ob1-tutorial-completed');
+
+    if (!hasSeenTutorial) {
+      this.show();
+    }
+
+    this.bindEvents();
+  },
+
+  bindEvents() {
+    // Skip button
+    const skipBtn = document.getElementById('skipTutorial');
+    if (skipBtn) {
+      skipBtn.addEventListener('click', () => this.complete());
+    }
+
+    // Next button
+    const nextBtn = document.getElementById('nextStep');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => this.nextStep());
+    }
+
+    // Prev button
+    const prevBtn = document.getElementById('prevStep');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => this.prevStep());
+    }
+
+    // Finish button
+    const finishBtn = document.getElementById('finishTutorial');
+    if (finishBtn) {
+      finishBtn.addEventListener('click', () => this.complete());
+    }
+
+    // Progress dots (click to navigate)
+    document.querySelectorAll('.progress-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        const step = parseInt(dot.dataset.step);
+        if (step) this.goToStep(step);
+      });
+    });
+
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.overlay.classList.contains('active')) {
+        this.complete();
+      }
+    });
+  },
+
+  show() {
+    if (this.overlay) {
+      this.overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      this.goToStep(1);
+    }
+  },
+
+  hide() {
+    if (this.overlay) {
+      this.overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  },
+
+  goToStep(step) {
+    if (step < 1 || step > this.totalSteps) return;
+
+    this.currentStep = step;
+
+    // Update step visibility
+    document.querySelectorAll('.onboarding-step').forEach(s => {
+      s.classList.remove('active');
+    });
+    const currentStepEl = document.querySelector(`.onboarding-step[data-step="${step}"]`);
+    if (currentStepEl) {
+      currentStepEl.classList.add('active');
+    }
+
+    // Update progress dots
+    document.querySelectorAll('.progress-dot').forEach(dot => {
+      const dotStep = parseInt(dot.dataset.step);
+      dot.classList.toggle('active', dotStep === step);
+      dot.classList.toggle('completed', dotStep < step);
+    });
+
+    // Update navigation buttons
+    const prevBtn = document.getElementById('prevStep');
+    const nextBtn = document.getElementById('nextStep');
+    const finishBtn = document.getElementById('finishTutorial');
+
+    if (prevBtn) {
+      prevBtn.style.display = step > 1 ? 'inline-flex' : 'none';
+    }
+
+    if (nextBtn && finishBtn) {
+      if (step === this.totalSteps) {
+        nextBtn.style.display = 'none';
+        finishBtn.style.display = 'inline-flex';
+      } else {
+        nextBtn.style.display = 'inline-flex';
+        finishBtn.style.display = 'none';
+      }
+    }
+  },
+
+  nextStep() {
+    if (this.currentStep < this.totalSteps) {
+      this.goToStep(this.currentStep + 1);
+    }
+  },
+
+  prevStep() {
+    if (this.currentStep > 1) {
+      this.goToStep(this.currentStep - 1);
+    }
+  },
+
+  complete() {
+    localStorage.setItem('ob1-tutorial-completed', 'true');
+    this.hide();
+    showToast('Benvenuto in OB1 Radar! 🎯', 'success');
+  },
+
+  // Method to reset and show tutorial again (for help button)
+  reset() {
+    localStorage.removeItem('ob1-tutorial-completed');
+    this.show();
+  }
+};
+
+// Add help button to reopen tutorial
+function addHelpButton() {
+  const headerActions = document.querySelector('.header-actions');
+  if (headerActions) {
+    const helpBtn = document.createElement('button');
+    helpBtn.className = 'btn-icon';
+    helpBtn.id = 'helpBtn';
+    helpBtn.setAttribute('aria-label', 'Aiuto');
+    helpBtn.innerHTML = '❓';
+    helpBtn.addEventListener('click', () => onboarding.reset());
+    headerActions.insertBefore(helpBtn, headerActions.firstChild);
+  }
 }
 
 // =============================================================================

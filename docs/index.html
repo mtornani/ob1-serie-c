@@ -187,6 +187,102 @@
     <!-- Toast Notifications -->
     <div class="toast-container" id="toastContainer"></div>
 
+    <!-- Onboarding Tutorial -->
+    <div class="onboarding-overlay" id="onboardingOverlay">
+        <div class="onboarding-container">
+            <!-- Step indicators -->
+            <div class="onboarding-progress">
+                <span class="progress-dot active" data-step="1"></span>
+                <span class="progress-dot" data-step="2"></span>
+                <span class="progress-dot" data-step="3"></span>
+                <span class="progress-dot" data-step="4"></span>
+                <span class="progress-dot" data-step="5"></span>
+            </div>
+
+            <!-- Steps -->
+            <div class="onboarding-steps">
+                <!-- Step 1: Welcome -->
+                <div class="onboarding-step active" data-step="1">
+                    <div class="step-icon">🎯</div>
+                    <h2>Benvenuto in OB1 Radar</h2>
+                    <p>Il tuo assistente AI per lo scouting in <strong>Serie C e Serie D</strong>.</p>
+                    <p class="step-subtitle">Scopri opportunita di mercato prima degli altri.</p>
+                </div>
+
+                <!-- Step 2: Score System -->
+                <div class="onboarding-step" data-step="2">
+                    <div class="step-icon">📊</div>
+                    <h2>Sistema di Scoring</h2>
+                    <p>Ogni giocatore ha un <strong>OB1 Score</strong> da 1 a 100:</p>
+                    <div class="score-legend">
+                        <div class="legend-item">
+                            <span class="score-badge hot">🔥 80+</span>
+                            <span>HOT - Alta priorita</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="score-badge warm">⚡ 60-79</span>
+                            <span>WARM - Da valutare</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="score-badge cold">❄️ &lt;60</span>
+                            <span>COLD - Bassa priorita</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Filters -->
+                <div class="onboarding-step" data-step="3">
+                    <div class="step-icon">🔍</div>
+                    <h2>Filtra e Cerca</h2>
+                    <p>Usa i <strong>filtri</strong> per trovare esattamente quello che cerchi:</p>
+                    <ul class="feature-list">
+                        <li>🔥 Filtra per priorita (HOT/WARM/COLD)</li>
+                        <li>📍 Filtra per ruolo (DC, CC, AT...)</li>
+                        <li>💼 Filtra per tipo (Svincolato, Prestito...)</li>
+                        <li>🔎 Cerca per nome o club</li>
+                    </ul>
+                </div>
+
+                <!-- Step 4: Save & Actions -->
+                <div class="onboarding-step" data-step="4">
+                    <div class="step-icon">💾</div>
+                    <h2>Salva i Preferiti</h2>
+                    <p>Hai trovato un giocatore interessante?</p>
+                    <ul class="feature-list">
+                        <li>📋 Clicca <strong>"Salva"</strong> per aggiungerlo ai preferiti</li>
+                        <li>📊 Clicca <strong>"Dettagli"</strong> per info complete</li>
+                        <li>💾 Accedi ai salvati dalla barra in basso</li>
+                    </ul>
+                </div>
+
+                <!-- Step 5: Notifications -->
+                <div class="onboarding-step" data-step="5">
+                    <div class="step-icon">🔔</div>
+                    <h2>Notifiche Telegram</h2>
+                    <p>Ricevi <strong>alert automatici</strong> quando troviamo opportunita HOT!</p>
+                    <div class="telegram-cta">
+                        <span class="telegram-icon">📱</span>
+                        <div>
+                            <strong>Collegati al Bot:</strong>
+                            <a href="https://t.me/Ob1LegaPro_bot" target="_blank" class="telegram-link">@Ob1LegaPro_bot</a>
+                        </div>
+                    </div>
+                    <p class="step-subtitle">Il sistema si aggiorna ogni 6 ore automaticamente.</p>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="onboarding-nav">
+                <button class="btn-skip" id="skipTutorial">Salta</button>
+                <div class="nav-buttons">
+                    <button class="btn-prev" id="prevStep" style="display: none;">← Indietro</button>
+                    <button class="btn-next" id="nextStep">Avanti →</button>
+                    <button class="btn-finish" id="finishTutorial" style="display: none;">Inizia! 🚀</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/app.js"></script>
 </body>
 </html>
