@@ -296,6 +296,22 @@ def test_notification_filtering():
 
 ---
 
-**Status:** BLOCKED (requires SCORE-001)
-**Assigned:** TBD
+**Status:** ✅ COMPLETED
+**Assigned:** Claude
 **Created:** 2026-01-30
+**Completed:** 2026-01-31
+
+## Implementation Notes
+
+Files modified:
+- `src/notifier.py` - Enhanced TelegramNotifier with HOT/WARM/COLD formatting
+- `scripts/send_notification.py` - Updated to use scored opportunities
+- `workers/telegram-bot/src/*` - Added callback query handling for inline buttons
+
+Features delivered:
+- ✅ HOT alerts con tutti i dettagli + inline keyboard
+- ✅ WARM digest compatto
+- ✅ COLD summary (solo conteggio)
+- ✅ Inline buttons: Salva, Ignora, Dettagli, Dashboard
+- ✅ Score breakdown nei dettagli
+- ✅ Callback handlers nel bot Cloudflare
