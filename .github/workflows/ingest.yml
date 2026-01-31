@@ -58,11 +58,12 @@ jobs:
         path: data/
         retention-days: 30
 
-    - name: Commit and push dashboard
+    - name: Commit and push data
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "OB1 Scout Bot"
-        git add docs/ data/ || true
+        # Only commit data.json, NOT the static dashboard files
+        git add docs/data.json data/ || true
         git diff --staged --quiet || git commit -m "🤖 Auto-update: $(date -u +'%Y-%m-%d %H:%M UTC')"
         git push || echo "Nothing to push"
 
