@@ -2,117 +2,191 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OB1 Scout - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>OB1 Radar - Serie C Scout</title>
+    <meta name="description" content="Scout AI per Serie C e Serie D italiana">
     <meta name="theme-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="manifest" href="manifest.json">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #e2e8f0;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container { max-width: 800px; margin: 0 auto; }
-        header { text-align: center; padding: 30px 0; }
-        .logo { font-size: 3em; }
-        h1 { font-size: 1.8em; margin: 10px 0; }
-        .badge {
-            display: inline-block;
-            background: #22c55e;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-        }
-        .stat-card {
-            background: rgba(30, 41, 59, 0.8);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        .stat-number { font-size: 2em; font-weight: bold; color: #3b82f6; }
-        .stat-label { color: #94a3b8; font-size: 0.9em; margin-top: 5px; }
-        .card {
-            background: rgba(30, 41, 59, 0.8);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 15px 0;
-        }
-        .card h2 { margin-bottom: 15px; font-size: 1.2em; }
-        .opportunity {
-            background: rgba(15, 23, 42, 0.6);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border-left: 4px solid #3b82f6;
-        }
-        .opportunity h3 { color: #fff; font-size: 1.1em; }
-        .opportunity .meta { color: #94a3b8; font-size: 0.85em; margin-top: 5px; }
-        .type-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.75em;
-            margin-top: 8px;
-        }
-        .type-svincolato { background: #22c55e; }
-        .type-prestito { background: #3b82f6; }
-        .type-rescissione { background: #f59e0b; }
-        .type-scadenza { background: #ef4444; }
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            color: #64748b;
-            font-size: 0.85em;
-        }
-        @media (max-width: 500px) {
-            .stats-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">⚽</div>
-            <h1>OB1 Scout Radar</h1>
-            <span class="badge">Serie C & D</span>
-        </header>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">0</div>
-                <div class="stat-label">Opportunita Totali</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">0</div>
-                <div class="stat-label">Ultime 6 Ore</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>🔥 Ultime Opportunita</h2>
-            <p style="color: #64748b;">Nessuna opportunita trovata ancora. Il sistema si aggiorna ogni 6 ore.</p>
-        </div>
-
-        <footer>
-            <p>Ultimo aggiornamento: 31/01/2026 12:37</p>
-            <p>OB1 Scout Radar - Intelligence Before Headlines</p>
-        </footer>
+    <!-- Pull to Refresh Indicator -->
+    <div class="pull-indicator" id="pullIndicator">
+        <span class="pull-icon">↻</span>
+        <span class="pull-text">Rilascia per aggiornare</span>
     </div>
 
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
-        }
-    </script>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🎯</span>
+                <div class="logo-text">
+                    <h1>OB1 Radar</h1>
+                    <span class="logo-subtitle">Serie C & D Scout</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn-icon" id="themeToggle" aria-label="Cambia tema">
+                    <span class="icon-light">☀️</span>
+                    <span class="icon-dark">🌙</span>
+                </button>
+                <button class="btn-icon" id="refreshBtn" aria-label="Aggiorna">
+                    🔄
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="search"
+                   class="search-input"
+                   id="searchInput"
+                   placeholder="Cerca giocatore, ruolo, club..."
+                   autocomplete="off">
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <!-- Filter Chips -->
+        <div class="filter-section">
+            <div class="filter-chips" id="filterChips">
+                <button class="filter-chip active" data-filter="all">
+                    Tutti
+                </button>
+                <button class="filter-chip" data-filter="hot">
+                    🔥 HOT
+                </button>
+                <button class="filter-chip" data-filter="warm">
+                    ⚡ WARM
+                </button>
+                <button class="filter-chip" data-filter="cold">
+                    ❄️ COLD
+                </button>
+            </div>
+            <div class="filter-dropdowns">
+                <select class="filter-select" id="roleFilter">
+                    <option value="">📍 Ruolo</option>
+                    <option value="PO">Portiere</option>
+                    <option value="DC">Difensore Centrale</option>
+                    <option value="TD">Terzino Destro</option>
+                    <option value="TS">Terzino Sinistro</option>
+                    <option value="CC">Centrocampista</option>
+                    <option value="ED">Esterno Destro</option>
+                    <option value="ES">Esterno Sinistro</option>
+                    <option value="TQ">Trequartista</option>
+                    <option value="AT">Attaccante</option>
+                </select>
+                <select class="filter-select" id="typeFilter">
+                    <option value="">💼 Tipo</option>
+                    <option value="svincolato">Svincolato</option>
+                    <option value="rescissione">Rescissione</option>
+                    <option value="prestito">Prestito</option>
+                    <option value="scadenza">Scadenza</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Stats Summary -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-value" id="totalCount">0</span>
+                <span class="stat-label">Totali</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item hot">
+                <span class="stat-value" id="hotCount">0</span>
+                <span class="stat-label">🔥 HOT</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item warm">
+                <span class="stat-value" id="warmCount">0</span>
+                <span class="stat-label">⚡ WARM</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-value" id="recentCount">0</span>
+                <span class="stat-label">Oggi</span>
+            </div>
+        </div>
+
+        <!-- Opportunities Grid -->
+        <div class="opportunities-grid" id="opportunitiesGrid">
+            <!-- Skeleton Loading -->
+            <div class="opportunity-card skeleton">
+                <div class="skeleton-line title"></div>
+                <div class="skeleton-line meta"></div>
+                <div class="skeleton-line status"></div>
+            </div>
+            <div class="opportunity-card skeleton">
+                <div class="skeleton-line title"></div>
+                <div class="skeleton-line meta"></div>
+                <div class="skeleton-line status"></div>
+            </div>
+            <div class="opportunity-card skeleton">
+                <div class="skeleton-line title"></div>
+                <div class="skeleton-line meta"></div>
+                <div class="skeleton-line status"></div>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">🔍</div>
+            <h3>Nessuna opportunita trovata</h3>
+            <p>Il sistema si aggiorna ogni 6 ore.<br>Le prossime opportunita appariranno qui.</p>
+        </div>
+
+        <!-- Last Update -->
+        <div class="last-update" id="lastUpdate">
+            Ultimo aggiornamento: --
+        </div>
+    </main>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active" data-view="home">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="#" class="nav-item" data-view="search">
+            <span class="nav-icon">🔍</span>
+            <span class="nav-label">Cerca</span>
+        </a>
+        <a href="#" class="nav-item" data-view="saved">
+            <span class="nav-icon">💾</span>
+            <span class="nav-label">Salvati</span>
+        </a>
+        <a href="#" class="nav-item" data-view="stats">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Stats</span>
+        </a>
+    </nav>
+
+    <!-- Detail Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="detailModal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Dettagli Giocatore</h2>
+                <button class="modal-close" id="modalClose">✕</button>
+            </div>
+            <div class="modal-content" id="modalContent">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/app.js"></script>
 </body>
 </html>
