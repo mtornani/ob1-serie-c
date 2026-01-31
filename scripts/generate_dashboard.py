@@ -1,16 +1,22 @@
 #!/usr/bin/env python3
 """
 OB1 Scout - Generate Dashboard Data
-Genera solo data.json, la dashboard è statica in docs/
+Genera data.json con scoring avanzato SCORE-001
 """
 
 import json
+import sys
 from pathlib import Path
 from datetime import datetime
 
+# Add src to path for scoring module
+sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
+
+from scoring import OB1Scorer
+
 
 def main():
-    print("📊 Generating dashboard data...")
+    print("Generating dashboard data with advanced scoring...")
 
     base_dir = Path(__file__).parent.parent
     data_dir = base_dir / 'data'
@@ -26,19 +32,21 @@ def main():
 
     if opps_file.exists():
         opportunities = json.loads(opps_file.read_text())
-        print(f"📂 Loaded {len(opportunities)} opportunities")
+        print(f"Loaded {len(opportunities)} opportunities")
     else:
-        print("⚠️ No opportunities file found")
+        print("No opportunities file found")
 
     if stats_file.exists():
         stats = json.loads(stats_file.read_text())
 
-    # Transform opportunities for dashboard format
+    # Initialize scorer
+    scorer = OB1Scorer()
+
+    # Transform opportunities for dashboard format with advanced scoring
     dashboard_opportunities = []
     for opp in opportunities:
-        # Calculate a basic score (will be replaced by SCORE-001)
-        score = calculate_basic_score(opp)
-        classification = 'hot' if score >= 80 else 'warm' if score >= 60 else 'cold'
+        # Apply SCORE-001 advanced scoring
+        score_result = scorer.score(opp)
 
         dashboard_opp = {
             'id': opp.get('id', f"opp_{hash(opp.get('player_name', '')) % 10000:04d}"),
@@ -55,8 +63,10 @@ def main():
             'appearances': opp.get('appearances', 0),
             'goals': opp.get('goals', 0),
             'summary': opp.get('summary', ''),
-            'ob1_score': score,
-            'classification': classification
+            # SCORE-001 results
+            'ob1_score': score_result['ob1_score'],
+            'classification': score_result['classification'],
+            'score_breakdown': score_result['score_breakdown'],
         }
         dashboard_opportunities.append(dashboard_opp)
 
@@ -66,6 +76,7 @@ def main():
     # Calculate stats
     hot_count = sum(1 for o in dashboard_opportunities if o['classification'] == 'hot')
     warm_count = sum(1 for o in dashboard_opportunities if o['classification'] == 'warm')
+    cold_count = sum(1 for o in dashboard_opportunities if o['classification'] == 'cold')
     today = datetime.now().strftime('%Y-%m-%d')
     today_count = sum(1 for o in dashboard_opportunities if o['reported_date'] == today)
 
@@ -76,56 +87,25 @@ def main():
             'total': len(dashboard_opportunities),
             'hot': hot_count,
             'warm': warm_count,
+            'cold': cold_count,
             'today': today_count
         },
-        'last_update': datetime.now().isoformat()
+        'last_update': datetime.now().isoformat(),
+        'scoring_version': 'SCORE-001'
     }
 
     # Write data.json to docs folder
     data_json_path = docs_dir / 'data.json'
     data_json_path.write_text(json.dumps(dashboard_data, indent=2, ensure_ascii=False))
-    print(f"✅ Dashboard data generated: {data_json_path}")
-    print(f"   📊 Total: {len(dashboard_opportunities)}, HOT: {hot_count}, WARM: {warm_count}")
+    print(f"Dashboard data generated: {data_json_path}")
+    print(f"   Total: {len(dashboard_opportunities)}, HOT: {hot_count}, WARM: {warm_count}, COLD: {cold_count}")
 
-
-def calculate_basic_score(opp: dict) -> int:
-    """
-    Basic scoring algorithm (placeholder for SCORE-001)
-    Returns a score 1-100
-    """
-    score = 50  # Base score
-
-    # Opportunity type bonus
-    opp_type = opp.get('opportunity_type', '').lower()
-    type_scores = {
-        'svincolato': 25,
-        'rescissione': 20,
-        'prestito': 10,
-        'scadenza': 15,
-        'mercato': 5
-    }
-    score += type_scores.get(opp_type, 0)
-
-    # Age bonus (22-28 is ideal)
-    age = opp.get('age') or calculate_age(opp.get('birth_year'))
-    if age:
-        if 22 <= age <= 28:
-            score += 15
-        elif 20 <= age < 22 or 28 < age <= 30:
-            score += 10
-        elif age < 20 or age > 30:
-            score += 5
-
-    # Experience bonus
-    appearances = opp.get('appearances', 0)
-    if appearances >= 100:
-        score += 10
-    elif appearances >= 50:
-        score += 7
-    elif appearances >= 20:
-        score += 5
-
-    return min(100, max(1, score))
+    # Print top 5 for verification
+    if dashboard_opportunities:
+        print("\nTop 5 opportunities:")
+        for i, opp in enumerate(dashboard_opportunities[:5], 1):
+            emoji = '🔥' if opp['classification'] == 'hot' else '⚡' if opp['classification'] == 'warm' else '❄️'
+            print(f"  {i}. {emoji} {opp['player_name']} - {opp['ob1_score']}/100 ({opp['opportunity_type']})")
 
 
 def calculate_age(birth_year):
