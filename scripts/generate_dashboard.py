@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-OB1 Scout - Generate Dashboard HTML
+OB1 Scout - Generate Dashboard Data
+Genera solo data.json, la dashboard è statica in docs/
 """
 
 import json
@@ -9,14 +10,14 @@ from datetime import datetime
 
 
 def main():
-    print("🌐 Generating dashboard...")
+    print("📊 Generating dashboard data...")
 
     base_dir = Path(__file__).parent.parent
     data_dir = base_dir / 'data'
     docs_dir = base_dir / 'docs'
     docs_dir.mkdir(exist_ok=True)
 
-    # Load data
+    # Load opportunities from data folder
     opps_file = data_dir / 'opportunities.json'
     stats_file = data_dir / 'stats.json'
 
@@ -25,173 +26,113 @@ def main():
 
     if opps_file.exists():
         opportunities = json.loads(opps_file.read_text())
+        print(f"📂 Loaded {len(opportunities)} opportunities")
+    else:
+        print("⚠️ No opportunities file found")
+
     if stats_file.exists():
         stats = json.loads(stats_file.read_text())
 
-    # Generate opportunities HTML
-    opps_html = ""
-    for opp in opportunities[:10]:
-        player = opp.get('player_name', 'N/D')
-        club = opp.get('current_club', 'N/D')
-        opp_type = opp.get('opportunity_type', 'mercato')
-        summary = (opp.get('summary', '') or '')[:100]
-        type_class = f'type-{opp_type.lower()}' if opp_type else ''
+    # Transform opportunities for dashboard format
+    dashboard_opportunities = []
+    for opp in opportunities:
+        # Calculate a basic score (will be replaced by SCORE-001)
+        score = calculate_basic_score(opp)
+        classification = 'hot' if score >= 80 else 'warm' if score >= 60 else 'cold'
 
-        opps_html += f'''
-            <div class="opportunity">
-                <h3>{player}</h3>
-                <div class="meta">📍 {club}</div>
-                <div class="meta">{summary}...</div>
-                <span class="type-badge {type_class}">{opp_type}</span>
-            </div>
-'''
+        dashboard_opp = {
+            'id': opp.get('id', f"opp_{hash(opp.get('player_name', '')) % 10000:04d}"),
+            'player_name': opp.get('player_name', 'N/D'),
+            'age': opp.get('age') or calculate_age(opp.get('birth_year')),
+            'role': opp.get('role', ''),
+            'role_name': opp.get('role_name', opp.get('role', '')),
+            'opportunity_type': opp.get('opportunity_type', 'mercato').lower(),
+            'reported_date': opp.get('discovered_at', datetime.now().isoformat())[:10],
+            'source_name': opp.get('source_name', 'N/D'),
+            'source_url': opp.get('source_url', ''),
+            'previous_clubs': opp.get('previous_clubs', []),
+            'current_club': opp.get('current_club', ''),
+            'appearances': opp.get('appearances', 0),
+            'goals': opp.get('goals', 0),
+            'summary': opp.get('summary', ''),
+            'ob1_score': score,
+            'classification': classification
+        }
+        dashboard_opportunities.append(dashboard_opp)
 
-    # Generate HTML
-    html = f'''<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OB1 Scout - Dashboard</title>
-    <meta name="theme-color" content="#0f172a">
-    <link rel="manifest" href="manifest.json">
-    <style>
-        * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-        body {{
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #e2e8f0;
-            min-height: 100vh;
-            padding: 20px;
-        }}
-        .container {{ max-width: 800px; margin: 0 auto; }}
-        header {{ text-align: center; padding: 30px 0; }}
-        .logo {{ font-size: 3em; }}
-        h1 {{ font-size: 1.8em; margin: 10px 0; }}
-        .badge {{
-            display: inline-block;
-            background: #22c55e;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }}
-        .stats-grid {{
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-        }}
-        .stat-card {{
-            background: rgba(30, 41, 59, 0.8);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-        }}
-        .stat-number {{ font-size: 2em; font-weight: bold; color: #3b82f6; }}
-        .stat-label {{ color: #94a3b8; font-size: 0.9em; margin-top: 5px; }}
-        .card {{
-            background: rgba(30, 41, 59, 0.8);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 15px 0;
-        }}
-        .card h2 {{ margin-bottom: 15px; font-size: 1.2em; }}
-        .opportunity {{
-            background: rgba(15, 23, 42, 0.6);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border-left: 4px solid #3b82f6;
-        }}
-        .opportunity h3 {{ color: #fff; font-size: 1.1em; }}
-        .opportunity .meta {{ color: #94a3b8; font-size: 0.85em; margin-top: 5px; }}
-        .type-badge {{
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.75em;
-            margin-top: 8px;
-        }}
-        .type-svincolato {{ background: #22c55e; }}
-        .type-prestito {{ background: #3b82f6; }}
-        .type-rescissione {{ background: #f59e0b; }}
-        .type-scadenza {{ background: #ef4444; }}
-        footer {{
-            text-align: center;
-            padding: 30px 0;
-            color: #64748b;
-            font-size: 0.85em;
-        }}
-        @media (max-width: 500px) {{
-            .stats-grid {{ grid-template-columns: 1fr; }}
-        }}
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <div class="logo">⚽</div>
-            <h1>OB1 Scout Radar</h1>
-            <span class="badge">Serie C & D</span>
-        </header>
+    # Sort by score (highest first)
+    dashboard_opportunities.sort(key=lambda x: x['ob1_score'], reverse=True)
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">{len(opportunities)}</div>
-                <div class="stat-label">Opportunita Totali</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">{stats.get('new_opportunities', 0)}</div>
-                <div class="stat-label">Ultime 6 Ore</div>
-            </div>
-        </div>
+    # Calculate stats
+    hot_count = sum(1 for o in dashboard_opportunities if o['classification'] == 'hot')
+    warm_count = sum(1 for o in dashboard_opportunities if o['classification'] == 'warm')
+    today = datetime.now().strftime('%Y-%m-%d')
+    today_count = sum(1 for o in dashboard_opportunities if o['reported_date'] == today)
 
-        <div class="card">
-            <h2>🔥 Ultime Opportunita</h2>
-            {opps_html if opps_html else '<p style="color: #64748b;">Nessuna opportunita trovata ancora. Il sistema si aggiorna ogni 6 ore.</p>'}
-        </div>
-
-        <footer>
-            <p>Ultimo aggiornamento: {datetime.now().strftime('%d/%m/%Y %H:%M')}</p>
-            <p>OB1 Scout Radar - Intelligence Before Headlines</p>
-        </footer>
-    </div>
-
-    <script>
-        if ('serviceWorker' in navigator) {{
-            navigator.serviceWorker.register('sw.js');
-        }}
-    </script>
-</body>
-</html>'''
-
-    (docs_dir / 'index.html').write_text(html)
-
-    # Create manifest
-    manifest = {
-        'name': 'OB1 Scout Radar',
-        'short_name': 'OB1 Scout',
-        'start_url': '/',
-        'display': 'standalone',
-        'background_color': '#0f172a',
-        'theme_color': '#0f172a',
-        'icons': [
-            {'src': 'icon-192.png', 'sizes': '192x192', 'type': 'image/png'},
-            {'src': 'icon-512.png', 'sizes': '512x512', 'type': 'image/png'}
-        ]
+    # Create data.json for the dashboard
+    dashboard_data = {
+        'opportunities': dashboard_opportunities,
+        'stats': {
+            'total': len(dashboard_opportunities),
+            'hot': hot_count,
+            'warm': warm_count,
+            'today': today_count
+        },
+        'last_update': datetime.now().isoformat()
     }
-    (docs_dir / 'manifest.json').write_text(json.dumps(manifest, indent=2))
 
-    # Create service worker
-    sw = '''const CACHE_NAME = 'ob1-scout-v1';
-self.addEventListener('install', e => self.skipWaiting());
-self.addEventListener('fetch', e => {
-    e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
-});'''
-    (docs_dir / 'sw.js').write_text(sw)
+    # Write data.json to docs folder
+    data_json_path = docs_dir / 'data.json'
+    data_json_path.write_text(json.dumps(dashboard_data, indent=2, ensure_ascii=False))
+    print(f"✅ Dashboard data generated: {data_json_path}")
+    print(f"   📊 Total: {len(dashboard_opportunities)}, HOT: {hot_count}, WARM: {warm_count}")
 
-    print("✅ Dashboard generated!")
+
+def calculate_basic_score(opp: dict) -> int:
+    """
+    Basic scoring algorithm (placeholder for SCORE-001)
+    Returns a score 1-100
+    """
+    score = 50  # Base score
+
+    # Opportunity type bonus
+    opp_type = opp.get('opportunity_type', '').lower()
+    type_scores = {
+        'svincolato': 25,
+        'rescissione': 20,
+        'prestito': 10,
+        'scadenza': 15,
+        'mercato': 5
+    }
+    score += type_scores.get(opp_type, 0)
+
+    # Age bonus (22-28 is ideal)
+    age = opp.get('age') or calculate_age(opp.get('birth_year'))
+    if age:
+        if 22 <= age <= 28:
+            score += 15
+        elif 20 <= age < 22 or 28 < age <= 30:
+            score += 10
+        elif age < 20 or age > 30:
+            score += 5
+
+    # Experience bonus
+    appearances = opp.get('appearances', 0)
+    if appearances >= 100:
+        score += 10
+    elif appearances >= 50:
+        score += 7
+    elif appearances >= 20:
+        score += 5
+
+    return min(100, max(1, score))
+
+
+def calculate_age(birth_year):
+    """Calculate age from birth year"""
+    if birth_year:
+        return datetime.now().year - birth_year
+    return None
 
 
 if __name__ == "__main__":
