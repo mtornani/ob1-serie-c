@@ -6,18 +6,22 @@
 
 ---
 
-## Stato Attuale (2026-01-30)
+## Stato Attuale (2026-01-31)
 
 ```
-v2.0 MVP ONLINE
+v2.1 DASHBOARD + BOT INTERATTIVO
 
-Funzionante:
-  - Scraper automatico ogni 6h
-  - RAG su Gemini File Search
-  - Agent conversazionale
-  - Telegram Bot basic
-  - Dashboard PWA
-  - GitHub Actions pipeline
+Completato:
+  [x] Scraper automatico ogni 6h
+  [x] RAG su Gemini File Search
+  [x] Agent conversazionale
+  [x] Dashboard PWA responsive (UX-001)
+  [x] Onboarding tutorial
+  [x] Telegram Bot interattivo (BOT-001)
+  [x] GitHub Actions pipeline
+
+In Progress:
+  [ ] Deploy bot su Cloudflare Workers
 
 Mancante per uso professionale:
   - Scoring intelligente
@@ -30,21 +34,39 @@ Mancante per uso professionale:
 
 ---
 
-## PHASE 0: UX Foundation (3-4 giorni)
+## PHASE 0: UX Foundation (3-4 giorni) ✅ COMPLETATO
 
-### UX-001: Dashboard Responsive Design
-**Priority:** CRITICAL | **Estimate:** 3-4 giorni
+### UX-001: Dashboard Responsive Design ✅
+**Priority:** CRITICAL | **Status:** DONE
 **Spec:** `.dev/UX-001_spec.md`
 
 Redesign completo mobile-first:
-- Layout responsive (mobile/tablet/desktop)
-- Score badges visuali (HOT/WARM/COLD)
-- Filter chips interattivi
-- Bottom navigation mobile
-- PWA enhancements (pull-to-refresh, offline)
-- Dark/light mode auto
+- [x] Layout responsive (mobile/tablet/desktop)
+- [x] Score badges visuali (HOT/WARM/COLD)
+- [x] Filter chips interattivi
+- [x] Bottom navigation mobile
+- [x] PWA enhancements (pull-to-refresh, offline)
+- [x] Dark/light mode auto
+- [x] Onboarding tutorial per nuovi utenti
 
-**Deliverable:** Dashboard professionale su GitHub Pages
+**Deliverable:** https://mtornani.github.io/ob1-serie-c/
+
+---
+
+## PHASE 0.5: Bot Interattivo ✅ COMPLETATO
+
+### BOT-001: Telegram Bot su Cloudflare Workers
+**Priority:** HIGH | **Status:** READY TO DEPLOY
+**Spec:** `.dev/BOT-001_spec.md`
+
+Bot interattivo serverless:
+- [x] Architettura Cloudflare Workers
+- [x] Comandi: /start, /hot, /warm, /all, /search, /stats, /help
+- [x] Fetch dati da GitHub Pages data.json
+- [x] Formattazione messaggi HTML
+- [x] Webhook setup automatico
+
+**Deploy:** `workers/telegram-bot/`
 
 ---
 
