@@ -2,6 +2,15 @@
 export interface TelegramUpdate {
   update_id: number;
   message?: TelegramMessage;
+  callback_query?: TelegramCallbackQuery;
+}
+
+export interface TelegramCallbackQuery {
+  id: string;
+  from: TelegramUser;
+  message?: TelegramMessage;
+  chat_instance: string;
+  data?: string;
 }
 
 export interface TelegramMessage {
@@ -40,11 +49,14 @@ export interface Opportunity {
   reported_date: string;
   source_name: string;
   source_url?: string;
+  current_club?: string;
   previous_clubs?: string[];
   appearances?: number;
   goals?: number;
+  summary?: string;
   ob1_score: number;
   classification: 'hot' | 'warm' | 'cold';
+  score_breakdown?: ScoreBreakdown;
 }
 
 export interface DashboardData {
@@ -53,8 +65,18 @@ export interface DashboardData {
     total: number;
     hot: number;
     warm: number;
+    cold: number;
   };
   last_update: string;
+}
+
+export interface ScoreBreakdown {
+  freshness: number;
+  opportunity_type: number;
+  experience: number;
+  age: number;
+  source: number;
+  completeness: number;
 }
 
 // Environment

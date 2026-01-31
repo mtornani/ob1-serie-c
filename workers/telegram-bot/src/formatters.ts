@@ -98,6 +98,84 @@ Prova con:
 • Club precedente`;
 }
 
+/**
+ * NOTIF-001: Detailed opportunity view with score breakdown
+ */
+export function formatOpportunityDetails(opp: Opportunity): string {
+  const scoreEmoji = opp.classification === 'hot' ? '🔥' : opp.classification === 'warm' ? '⚡' : '❄️';
+
+  let message = `${scoreEmoji} <b>DETTAGLI GIOCATORE</b>\n\n`;
+
+  // Player info
+  message += `🎯 <b>${escapeHtml(opp.player_name)}</b>`;
+  if (opp.age) {
+    message += ` (${opp.age} anni)`;
+  }
+  message += '\n';
+
+  if (opp.role_name || opp.role) {
+    message += `📍 ${escapeHtml(opp.role_name || opp.role)}\n`;
+  }
+
+  if (opp.current_club) {
+    message += `🏟️ Attuale: ${escapeHtml(opp.current_club)}\n`;
+  }
+
+  if (opp.previous_clubs && opp.previous_clubs.length > 0) {
+    message += `📋 Ex: ${opp.previous_clubs.map(escapeHtml).join(', ')}\n`;
+  }
+
+  message += '\n';
+
+  // Opportunity details
+  message += `💼 <b>${opp.opportunity_type.toUpperCase()}</b>\n`;
+  message += `📅 ${formatDate(opp.reported_date)}\n`;
+  message += `📊 OB1 Score: <b>${opp.ob1_score}/100</b>\n`;
+
+  // Stats
+  if (opp.appearances || opp.goals) {
+    message += '\n📈 <b>Statistiche:</b>\n';
+    if (opp.appearances) {
+      message += `   • Presenze: ${opp.appearances}\n`;
+    }
+    if (opp.goals) {
+      message += `   • Gol: ${opp.goals}\n`;
+    }
+  }
+
+  // Summary
+  if (opp.summary && opp.summary.length > 10) {
+    message += '\n💬 <i>' + escapeHtml(opp.summary.slice(0, 200));
+    if (opp.summary.length > 200) {
+      message += '...';
+    }
+    message += '</i>\n';
+  }
+
+  // Score breakdown
+  if (opp.score_breakdown) {
+    message += '\n━━━━━━━━━━━━━━\n';
+    message += '<b>📊 Score Breakdown:</b>\n';
+
+    const breakdown = opp.score_breakdown;
+    message += `   ⏰ Freshness: ${breakdown.freshness}\n`;
+    message += `   💼 Tipo: ${breakdown.opportunity_type}\n`;
+    message += `   ⭐ Esperienza: ${breakdown.experience}\n`;
+    message += `   🎂 Eta: ${breakdown.age}\n`;
+    message += `   📰 Fonte: ${breakdown.source}\n`;
+    message += `   ✅ Completezza: ${breakdown.completeness}\n`;
+  }
+
+  // Source
+  message += '\n';
+  message += `📰 ${escapeHtml(opp.source_name)}\n`;
+  if (opp.source_url) {
+    message += `🔗 <a href="${opp.source_url}">Leggi articolo</a>`;
+  }
+
+  return message;
+}
+
 // Helper functions
 function getTypeEmoji(type: string): string {
   const emojis: Record<string, string> = {

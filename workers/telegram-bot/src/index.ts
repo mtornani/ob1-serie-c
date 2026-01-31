@@ -8,7 +8,7 @@
  */
 
 import { Env, TelegramUpdate } from './types';
-import { handleMessage } from './handlers';
+import { handleMessage, handleCallbackQuery } from './handlers';
 import { setWebhook, getWebhookInfo } from './telegram';
 
 export default {
@@ -20,7 +20,8 @@ export default {
       return new Response(JSON.stringify({
         status: 'ok',
         service: 'OB1 Radar Telegram Bot',
-        version: '1.0.0',
+        version: '1.1.0',
+        features: ['NOTIF-001: Enhanced alerts with inline keyboards'],
       }), {
         headers: { 'Content-Type': 'application/json' },
       });
@@ -75,6 +76,16 @@ export default {
             ctx.waitUntil(handleMessage(update.message, env));
           } else {
             await handleMessage(update.message, env);
+          }
+        }
+
+        // Handle callback queries (NOTIF-001: inline keyboard buttons)
+        if (update.callback_query) {
+          const ctx = (globalThis as any).ctx;
+          if (ctx && ctx.waitUntil) {
+            ctx.waitUntil(handleCallbackQuery(update.callback_query, env));
+          } else {
+            await handleCallbackQuery(update.callback_query, env);
           }
         }
 

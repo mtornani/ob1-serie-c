@@ -1,6 +1,6 @@
-import { Env, TelegramMessage } from './types';
-import { sendMessage } from './telegram';
-import { fetchData, filterHot, filterWarm, searchOpportunities, getStats } from './data';
+import { Env, TelegramMessage, TelegramCallbackQuery, Opportunity } from './types';
+import { sendMessage, answerCallbackQuery, editMessageText } from './telegram';
+import { fetchData, filterHot, filterWarm, searchOpportunities, getStats, findOpportunityById } from './data';
 import {
   formatOpportunityList,
   formatStats,
@@ -9,6 +9,7 @@ import {
   formatError,
   formatUnknownCommand,
   formatNoResults,
+  formatOpportunityDetails,
 } from './formatters';
 
 export async function handleMessage(message: TelegramMessage, env: Env): Promise<void> {
@@ -150,5 +151,71 @@ async function handleStats(chatId: number, env: Env): Promise<void> {
   const stats = getStats(data.opportunities);
   const message = formatStats(stats, data.last_update);
 
+  await sendMessage(env, chatId, message);
+}
+
+// ============================================================================
+// CALLBACK QUERY HANDLER (NOTIF-001)
+// ============================================================================
+
+export async function handleCallbackQuery(callback: TelegramCallbackQuery, env: Env): Promise<void> {
+  const callbackId = callback.id;
+  const data = callback.data || '';
+  const chatId = callback.message?.chat.id;
+  const messageId = callback.message?.message_id;
+
+  console.log(`Callback query: ${data} from chat ${chatId}`);
+
+  // Parse callback data
+  const [action, ...params] = data.split('_');
+  const oppId = params.join('_');
+
+  try {
+    switch (action) {
+      case 'save':
+        // For now, just acknowledge - watchlist feature coming soon
+        await answerCallbackQuery(env, callbackId, '✅ Salvato! (Watchlist in arrivo)');
+        break;
+
+      case 'ignore':
+        // For now, just acknowledge - ignore list feature coming soon
+        await answerCallbackQuery(env, callbackId, '❌ Ignorato! (Non vedrai piu questo alert)');
+        break;
+
+      case 'details':
+        // Show full score breakdown
+        await handleDetailsCallback(env, callbackId, chatId!, oppId);
+        break;
+
+      default:
+        await answerCallbackQuery(env, callbackId, '❓ Azione non riconosciuta');
+    }
+  } catch (error) {
+    console.error('Callback error:', error);
+    await answerCallbackQuery(env, callbackId, '⚠️ Errore, riprova');
+  }
+}
+
+async function handleDetailsCallback(env: Env, callbackId: string, chatId: number, oppId: string): Promise<void> {
+  // Acknowledge callback
+  await answerCallbackQuery(env, callbackId, '📊 Caricamento dettagli...');
+
+  // Fetch data and find opportunity
+  const dashboardData = await fetchData(env);
+
+  if (!dashboardData || !dashboardData.opportunities) {
+    await sendMessage(env, chatId, formatError());
+    return;
+  }
+
+  const opp = findOpportunityById(dashboardData.opportunities, oppId);
+
+  if (!opp) {
+    await sendMessage(env, chatId, '❌ Opportunita non trovata');
+    return;
+  }
+
+  // Send detailed message
+  const message = formatOpportunityDetails(opp);
   await sendMessage(env, chatId, message);
 }

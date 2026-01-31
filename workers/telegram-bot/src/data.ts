@@ -79,3 +79,7 @@ export function getStats(opportunities: Opportunity[]): { total: number; hot: nu
     cold: opportunities.filter(o => o.ob1_score < 60).length,
   };
 }
+
+export function findOpportunityById(opportunities: Opportunity[], id: string): Opportunity | undefined {
+  return opportunities.find(o => o.id === id);
+}
