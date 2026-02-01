@@ -14,6 +14,7 @@ import {
 import { parseNaturalQuery, getInterpretationMessage, ParsedIntent } from './nlp';
 import { fetchDNAData, getMatchesForClub, getTopMatches, formatDNAMatchList, formatDNAStats, getAvailableClubs } from './dna';
 import { isTalentSearchQuery, parseTalentQuery, searchTalents, formatTalentSearchResults } from './talent-search';
+import { classifyWithLLM, convertToParseIntent } from './llm-classifier';
 
 export async function handleMessage(message: TelegramMessage, env: Env): Promise<void> {
   const chatId = message.chat.id;
@@ -193,11 +194,39 @@ async function handleNaturalQuery(chatId: number, text: string, env: Env): Promi
     return;
   }
 
-  const parsed = parseNaturalQuery(text);
+  let parsed = parseNaturalQuery(text);
 
   console.log(`NLP parsed: intent=${parsed.intent}, confidence=${parsed.confidence}, filters=`, parsed.filters);
 
-  // If confidence is too low, ask for clarification
+  // NLP-002: If regex-based NLP is unsure, try LLM fallback
+  if (parsed.confidence < 0.5 && parsed.intent === 'unknown' && env.AI) {
+    console.log('Low confidence, trying LLM fallback...');
+
+    const llmResult = await classifyWithLLM(env.AI, text);
+
+    if (llmResult && llmResult.confidence > 0.6) {
+      console.log(`LLM classified: intent=${llmResult.intent}, confidence=${llmResult.confidence}`);
+
+      const converted = convertToParseIntent(llmResult);
+
+      // Handle LLM-specific intents
+      if (converted.intent === 'talent_search') {
+        // LLM detected talent search - use talent-search module
+        await handleTalentSearch(chatId, text, env);
+        return;
+      }
+
+      // Update parsed with LLM result
+      parsed = {
+        intent: converted.intent as any,
+        filters: { ...parsed.filters, ...converted.filters },
+        confidence: converted.confidence,
+        interpretation: llmResult.explanation,
+      };
+    }
+  }
+
+  // If still low confidence after LLM, show help
   if (parsed.confidence < 0.3 && parsed.intent === 'unknown') {
     await sendMessage(env, chatId, formatNLPHelp());
     return;

@@ -84,4 +84,5 @@ export interface Env {
   TELEGRAM_BOT_TOKEN: string;
   DATA_URL: string;
   DASHBOARD_URL: string;
+  AI?: any; // Cloudflare AI binding (optional)
 }
