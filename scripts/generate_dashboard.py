@@ -48,6 +48,9 @@ def main():
         # Apply SCORE-001 advanced scoring
         score_result = scorer.score(opp)
 
+        # Helper to get data from root or player_profile
+        profile = opp.get('player_profile', {}) or {}
+        
         dashboard_opp = {
             'id': opp.get('id', f"opp_{hash(opp.get('player_name', '')) % 10000:04d}"),
             'player_name': opp.get('player_name', 'N/D'),
@@ -63,6 +66,14 @@ def main():
             'appearances': opp.get('appearances', 0),
             'goals': opp.get('goals', 0),
             'summary': opp.get('summary', ''),
+            
+            # DATA-001: New enriched fields
+            'nationality': opp.get('nationality') or profile.get('nationality'),
+            'second_nationality': opp.get('second_nationality') or profile.get('second_nationality'),
+            'foot': opp.get('foot') or profile.get('foot'),
+            'market_value': opp.get('market_value') or profile.get('market_value'),
+            'market_value_formatted': opp.get('market_value_formatted') or profile.get('market_value_formatted'),
+
             # SCORE-001 results
             'ob1_score': score_result['ob1_score'],
             'classification': score_result['classification'],
