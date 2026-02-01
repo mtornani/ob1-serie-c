@@ -9,7 +9,7 @@
 ## Stato Attuale (2026-02-01)
 
 ```
-v2.6 - DNA MATCHING + INTELLIGENT SCOUTING
+v3.0 - ALPHA READY 🚀
 
 ✅ Completato:
   [x] Scraper automatico ogni 6h (Serper + Tavily)
@@ -19,16 +19,15 @@ v2.6 - DNA MATCHING + INTELLIGENT SCOUTING
   [x] Onboarding tutorial
   [x] Telegram Bot su Cloudflare Workers (BOT-001)
   [x] NLP: Linguaggio naturale per il bot (NLP-001)
+  [x] NLP-002: LLM Fallback (Cloudflare AI)
   [x] OB1 Score Algorithm (SCORE-001)
   [x] Enhanced Telegram Alerts (NOTIF-001)
   [x] GitHub Actions pipeline
-  [x] DNA-001: Player-Club DNA Matching 🧬 ← NEW!
+  [x] DNA-001: Player-Club DNA Matching 🧬
+  [x] SCORE-002: Watch Criteria System 🔔
+  [x] NOTIF-002: Smart Notifications 📬
 
-🔄 In Progress:
-  [ ] SCORE-002: Watch Criteria System
-  [ ] NOTIF-002: Priority Filtering
-
-📋 Prossimi:
+📋 Prossimi (post-Alpha):
   - DATA-001: Transfermarkt Integration
   - DATA-002: Player History Tracking
   - REPORT-001: Weekly PDF Report
@@ -130,24 +129,17 @@ OB1_SCORE = (
 
 ---
 
-### SCORE-002: Watch Criteria System
-**Priority:** HIGH | **Estimate:** 2 giorni
-**Status:** TODO
+### SCORE-002: Watch Criteria System ✅
+**Status:** DONE | **Completed:** 2026-02-01
 
-Filtri personalizzabili per utente/club:
-```python
-WATCH_CRITERIA = {
-    "max_age": 28,
-    "min_appearances": 10,
-    "preferred_roles": ["CC", "DC", "ES"],
-    "categories": ["Serie C", "Serie B"],
-    "alert_types": ["svincolato", "rescissione"]
-}
-```
+- [x] Watch Profile con filtri personalizzabili
+- [x] Wizard interattivo con inline keyboard
+- [x] Storage KV per persistenza
+- [x] Comandi: /watch, /watch add, /watch remove, /watch test
 
 ---
 
-## PHASE 2: Rich Notifications ✅ PARZIALMENTE COMPLETATO
+## PHASE 2: Rich Notifications ✅ COMPLETATO
 
 ### NOTIF-001: Enhanced Telegram Alerts ✅
 **Status:** DONE | **Completed:** 2026-01-31
@@ -160,14 +152,14 @@ WATCH_CRITERIA = {
 
 ---
 
-### NOTIF-002: Priority Filtering
-**Priority:** HIGH | **Estimate:** 1-2 giorni
-**Status:** TODO
+### NOTIF-002: Priority Filtering ✅
+**Status:** DONE | **Completed:** 2026-02-01
 
-- [ ] Notifica PUSH solo per score > 80
-- [ ] Daily digest per score 60-79
-- [ ] Weekly summary per il resto
-- [ ] Quiet hours (23:00-07:00)
+- [x] Notifica PUSH per HOT + watch match
+- [x] Daily digest per WARM + watch match (07:00 UTC)
+- [x] Quiet hours (23:00-07:00)
+- [x] Rate limiting (5/ora, 20/giorno)
+- [x] Comando /digest per anteprima
 
 ---
 
@@ -218,17 +210,18 @@ Comparazione side-by-side tra giocatori
 | UX-001 Dashboard | ✅ DONE | 2026-01-30 |
 | BOT-001 Telegram | ✅ DONE | 2026-01-31 |
 | NLP-001 Natural Language | ✅ DONE | 2026-02-01 |
+| NLP-002 LLM Fallback | ✅ DONE | 2026-02-01 |
 | SCORE-001 Algorithm | ✅ DONE | 2026-01-31 |
 | NOTIF-001 Enhanced Alerts | ✅ DONE | 2026-01-31 |
 | SCRAPER-002 Tavily | ✅ DONE | 2026-01-31 |
-| **DNA-001 DNA Matching** | ✅ DONE | 2026-02-01 |
-| SCORE-002 Watch Criteria | 📋 TODO | - |
-| NOTIF-002 Priority Filter | 📋 TODO | - |
+| DNA-001 DNA Matching | ✅ DONE | 2026-02-01 |
+| **SCORE-002 Watch Criteria** | ✅ DONE | 2026-02-01 |
+| **NOTIF-002 Smart Notifications** | ✅ DONE | 2026-02-01 |
 | DATA-001 Transfermarkt | 📋 TODO | - |
 | DATA-002 History | 📋 TODO | - |
 | REPORT-001 PDF | 📋 TODO | - |
 
-**Completion:** 7/12 features (58%)
+**Completion:** 10/13 features (77%) 🎉 ALPHA READY
 
 ---
 
