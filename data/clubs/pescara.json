@@ -1,0 +1,38 @@
+{
+  "id": "pescara",
+  "name": "Pescara",
+  "category": "Serie C",
+  "group": "B",
+  "city": "Pescara",
+  "primary_formation": "3-5-2",
+  "playing_styles": ["pressing_alto", "transizioni", "gioco_sulle_fasce"],
+  "needs": [
+    {
+      "position": "CC",
+      "player_type": "box_to_box",
+      "age_min": 19,
+      "age_max": 25,
+      "priority": "alta"
+    },
+    {
+      "position": "ES",
+      "player_type": "tutta_fascia",
+      "age_min": 20,
+      "age_max": 26,
+      "priority": "media"
+    },
+    {
+      "position": "DC",
+      "player_type": "impostatore",
+      "age_min": 20,
+      "age_max": 27,
+      "priority": "bassa"
+    }
+  ],
+  "budget_type": "solo_prestiti",
+  "max_loan_cost": 50,
+  "youth_minutes_pct": 42.5,
+  "youth_development_score": 4,
+  "ds_name": "",
+  "last_updated": "2026-02-01"
+}

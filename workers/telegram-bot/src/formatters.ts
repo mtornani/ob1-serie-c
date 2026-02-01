@@ -79,13 +79,14 @@ Il tuo assistente scouting Serie C/D sempre in tasca.
 • "occasioni di oggi"
 • "centrocampisti svincolati"
 • "attaccanti under 25"
-• "chi è disponibile?"
+• "talenti dalle squadre B"
 
 📋 <b>Comandi rapidi:</b>
 /hot - I migliori (score 80+)
 /warm - Interessanti (60-79)
 /all - Lista completa
-/stats - Statistiche
+/talenti - 🧬 Top talenti squadre B
+/dna &lt;club&gt; - Match DNA per club
 
 ━━━━━━━━━━━━━━━━━━━━
 🌐 <a href="${DASHBOARD_URL}">Apri Dashboard</a>
@@ -102,7 +103,7 @@ Scrivimi come parleresti a un collega:
 • "mostrami i migliori"
 • "centrocampisti svincolati under 28"
 • "difensori in prestito"
-• "novità di oggi"
+• "talenti dalle squadre B"
 
 🔍 <b>Filtri supportati:</b>
 • <b>Ruolo:</b> centrocampista, difensore, attaccante, portiere
@@ -115,6 +116,10 @@ Scrivimi come parleresti a un collega:
 /all - Lista completa
 /search &lt;nome&gt; - Cerca per nome
 /stats - Statistiche
+
+🧬 <b>DNA Matching:</b>
+/talenti - Top talenti dalle squadre B
+/dna &lt;club&gt; - Match per club specifico
 
 ━━━━━━━━━━━━━━━━━━━━
 🌐 <a href="${DASHBOARD_URL}">Dashboard completa</a>

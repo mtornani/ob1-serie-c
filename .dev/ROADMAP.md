@@ -9,7 +9,7 @@
 ## Stato Attuale (2026-02-01)
 
 ```
-v2.5 - INTELLIGENT SCOUTING ASSISTANT
+v2.6 - DNA MATCHING + INTELLIGENT SCOUTING
 
 ✅ Completato:
   [x] Scraper automatico ogni 6h (Serper + Tavily)
@@ -22,6 +22,7 @@ v2.5 - INTELLIGENT SCOUTING ASSISTANT
   [x] OB1 Score Algorithm (SCORE-001)
   [x] Enhanced Telegram Alerts (NOTIF-001)
   [x] GitHub Actions pipeline
+  [x] DNA-001: Player-Club DNA Matching 🧬 ← NEW!
 
 🔄 In Progress:
   [ ] SCORE-002: Watch Criteria System
@@ -71,6 +72,37 @@ v2.5 - INTELLIGENT SCOUTING ASSISTANT
 - [x] Filtri per ruolo, tipo, età
 - [x] Query composite
 - [x] Fallback permissivo (mostra dati nel dubbio)
+
+---
+
+## PHASE 0.7: DNA Matching ✅ COMPLETATO
+
+### DNA-001: Player-Club DNA Matching 🧬 ✅
+**Status:** DONE | **Completed:** 2026-02-01
+
+Sistema innovativo di matching giocatori-club basato su "DNA":
+
+**Features:**
+- [x] Monitoraggio squadre B (Juventus NG, Milan Futuro, Atalanta U23)
+- [x] Profili club Serie C con esigenze specifiche
+- [x] Algoritmo di matching multi-fattore:
+  ```python
+  DNA_SCORE = (
+      position_fit  × 30% +   # Ruolo richiesto dal club
+      age_fit       × 20% +   # Fascia età target
+      style_fit     × 25% +   # Stile di gioco compatibile
+      availability  × 15% +   # Underused = più disponibile
+      budget_fit    × 10%     # Costo prestito vs budget
+  )
+  ```
+- [x] Bot commands: /talenti, /dna <club>
+- [x] NLP support: "talenti squadre B", "match per Pescara"
+- [x] Dashboard integration (dna_matches.json)
+
+**Database:**
+- 10 talenti monitorati (Juve NG, Milan Futuro, Atalanta U23)
+- 3 club con profilo DNA (Pescara, Cesena, Perugia)
+- Detection automatica underused players
 
 ---
 
@@ -189,13 +221,14 @@ Comparazione side-by-side tra giocatori
 | SCORE-001 Algorithm | ✅ DONE | 2026-01-31 |
 | NOTIF-001 Enhanced Alerts | ✅ DONE | 2026-01-31 |
 | SCRAPER-002 Tavily | ✅ DONE | 2026-01-31 |
+| **DNA-001 DNA Matching** | ✅ DONE | 2026-02-01 |
 | SCORE-002 Watch Criteria | 📋 TODO | - |
 | NOTIF-002 Priority Filter | 📋 TODO | - |
 | DATA-001 Transfermarkt | 📋 TODO | - |
 | DATA-002 History | 📋 TODO | - |
 | REPORT-001 PDF | 📋 TODO | - |
 
-**Completion:** 6/11 features (55%)
+**Completion:** 7/12 features (58%)
 
 ---
 

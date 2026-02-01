@@ -12,6 +12,7 @@ import {
   formatOpportunityDetails,
 } from './formatters';
 import { parseNaturalQuery, getInterpretationMessage, ParsedIntent } from './nlp';
+import { fetchDNAData, getMatchesForClub, getTopMatches, formatDNAMatchList, formatDNAStats, getAvailableClubs } from './dna';
 
 export async function handleMessage(message: TelegramMessage, env: Env): Promise<void> {
   const chatId = message.chat.id;
@@ -72,6 +73,17 @@ async function handleCommand(chatId: number, text: string, env: Env): Promise<vo
 
     case '/stats':
       await handleStats(chatId, env);
+      break;
+
+    // DNA-001: DNA Matching commands
+    case '/dna':
+    case '/match':
+      await handleDNAMatch(chatId, args.join(' '), env);
+      break;
+
+    case '/talenti':
+    case '/talents':
+      await handleDNATopMatches(chatId, env);
       break;
 
     default:
@@ -217,6 +229,15 @@ async function handleNaturalQuery(chatId: number, text: string, env: Env): Promi
       await handleFilteredQuery(chatId, data.opportunities, parsed, null, parsed.filters, limit, env);
       break;
 
+    // DNA-001: Natural language DNA queries
+    case 'dna_top':
+      await handleDNATopMatches(chatId, env);
+      break;
+
+    case 'dna_club':
+      await handleDNAMatch(chatId, parsed.filters.query || '', env);
+      break;
+
     default:
       await sendMessage(env, chatId, formatNLPHelp());
       break;
@@ -274,12 +295,17 @@ Puoi chiedermi cose come:
 • "difensori in prestito"
 • "cerca Rossi"
 
+🧬 <b>DNA Matching:</b>
+• "talenti dalle squadre B"
+• "top talenti"
+• "match per Pescara"
+
 📊 <b>Info:</b>
 • "quante opportunità ci sono?"
 • "come funziona?"
 
 Oppure usa i comandi:
-/hot /warm /all /search /stats /help`;
+/hot /warm /all /search /stats /talenti /dna /help`;
 }
 
 // ============================================================================
@@ -346,4 +372,94 @@ async function handleDetailsCallback(env: Env, callbackId: string, chatId: numbe
   // Send detailed message
   const message = formatOpportunityDetails(opp);
   await sendMessage(env, chatId, message);
+}
+
+// ============================================================================
+// DNA-001: DNA MATCHING HANDLERS
+// ============================================================================
+
+async function handleDNAMatch(chatId: number, clubQuery: string, env: Env): Promise<void> {
+  const dnaData = await fetchDNAData();
+
+  if (!dnaData) {
+    await sendMessage(env, chatId, '❌ Dati DNA non disponibili. Riprova più tardi.');
+    return;
+  }
+
+  // If no club specified, show available clubs
+  if (!clubQuery || clubQuery.trim().length === 0) {
+    const clubs = getAvailableClubs(dnaData);
+    const clubList = clubs.map(c => `• <code>${c}</code>`).join('\n');
+
+    await sendMessage(env, chatId, `🧬 <b>DNA Matching</b>
+
+Uso: /dna &lt;club&gt;
+
+<b>Club disponibili:</b>
+${clubList}
+
+Esempio: <code>/dna pescara</code>`);
+    return;
+  }
+
+  // Find club (case insensitive partial match)
+  const searchTerm = clubQuery.toLowerCase().trim();
+  const clubs = getAvailableClubs(dnaData);
+  const matchedClub = clubs.find(c => c.toLowerCase().includes(searchTerm));
+
+  if (!matchedClub) {
+    await sendMessage(env, chatId, `❌ Club "${clubQuery}" non trovato.
+
+<b>Club disponibili:</b>
+${clubs.map(c => `• <code>${c}</code>`).join('\n')}`);
+    return;
+  }
+
+  // Get matches for this club
+  const matches = getMatchesForClub(dnaData, matchedClub, 5);
+
+  // Find club name from first match
+  const clubName = matches.length > 0 ? matches[0].club_name : matchedClub;
+
+  const message = formatDNAMatchList(
+    matches,
+    `🧬 <b>DNA Matches</b>`,
+    clubName
+  );
+
+  await sendMessage(env, chatId, message);
+}
+
+async function handleDNATopMatches(chatId: number, env: Env): Promise<void> {
+  const dnaData = await fetchDNAData();
+
+  if (!dnaData) {
+    await sendMessage(env, chatId, '❌ Dati DNA non disponibili. Riprova più tardi.');
+    return;
+  }
+
+  // Get top matches globally (min 75% score)
+  const topMatches = getTopMatches(dnaData, 75, 8);
+
+  if (topMatches.length === 0) {
+    await sendMessage(env, chatId, `🏆 <b>Top Talenti</b>
+
+Nessun match con score > 75% al momento.
+
+Prova /dna &lt;club&gt; per vedere tutti i match.`);
+    return;
+  }
+
+  const message = formatDNAMatchList(
+    topMatches,
+    `🏆 <b>TOP TALENTI - Best Matches</b>
+
+Giocatori delle squadre B con il miglior fit per i club di Serie C:`
+  );
+
+  await sendMessage(env, chatId, message);
+
+  // Also show stats
+  const statsMessage = formatDNAStats(dnaData);
+  await sendMessage(env, chatId, statsMessage);
 }

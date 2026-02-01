@@ -1,0 +1,38 @@
+{
+  "id": "perugia",
+  "name": "Perugia",
+  "category": "Serie C",
+  "group": "B",
+  "city": "Perugia",
+  "primary_formation": "4-2-3-1",
+  "playing_styles": ["transizioni", "gioco_diretto"],
+  "needs": [
+    {
+      "position": "PC",
+      "player_type": "finalizzatore",
+      "age_min": 20,
+      "age_max": 26,
+      "priority": "alta"
+    },
+    {
+      "position": "ED",
+      "player_type": "dribblatore",
+      "age_min": 19,
+      "age_max": 24,
+      "priority": "alta"
+    },
+    {
+      "position": "CC",
+      "player_type": "interdittore",
+      "age_min": 21,
+      "age_max": 27,
+      "priority": "media"
+    }
+  ],
+  "budget_type": "prestiti_obbligo",
+  "max_loan_cost": 75,
+  "youth_minutes_pct": 35.0,
+  "youth_development_score": 3,
+  "ds_name": "",
+  "last_updated": "2026-02-01"
+}

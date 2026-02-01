@@ -7,7 +7,7 @@
  */
 
 export interface ParsedIntent {
-  intent: 'search' | 'list_hot' | 'list_warm' | 'list_all' | 'stats' | 'help' | 'unknown';
+  intent: 'search' | 'list_hot' | 'list_warm' | 'list_all' | 'stats' | 'help' | 'dna_top' | 'dna_club' | 'unknown';
   filters: {
     role?: string;
     type?: string;
@@ -61,6 +61,10 @@ const INTENT_PATTERNS = {
 
   // Time-related patterns (oggi, recenti, ultimi, nuovi)
   time_query: /\b(oggi|ieri|recent\w*|ultim\w*|nuov\w*|ultimo|fresc\w*|appena)\b/i,
+
+  // DNA-001: DNA matching patterns
+  dna_top: /\b(talenti|prodigy|giovani.?promesse|migliori.?talenti|top.?talenti|squadre?.?b|under\s?23|next\s?gen|futuro|primavera)\b/i,
+  dna_club: /\b(match\w*|fit|adatti?\s*(a|per)?|compatibil\w*|profilo|dna)\b/i,
 };
 
 // Age patterns
@@ -256,7 +260,23 @@ export function parseNaturalQuery(text: string): ParsedIntent {
     }
   }
 
-  // 10. FALLBACK: If we still don't know what to do but the message
+  // 10. DNA-001: Check for DNA matching intents
+  if (INTENT_PATTERNS.dna_top.test(lower)) {
+    intent = 'dna_top';
+    confidence = Math.max(confidence, 0.85);
+    interpretationParts.unshift('talenti squadre B');
+  } else if (INTENT_PATTERNS.dna_club.test(lower)) {
+    // Try to extract club name for DNA match
+    const clubMatch = lower.match(/(?:per|a|adatti?\s*(?:a|per)?)\s+(\w+)/i);
+    if (clubMatch) {
+      filters.query = clubMatch[1];
+      intent = 'dna_club';
+      confidence = Math.max(confidence, 0.8);
+      interpretationParts.push(`DNA match per ${clubMatch[1]}`);
+    }
+  }
+
+  // 11. FALLBACK: If we still don't know what to do but the message
   // looks like a question about football/market, show all opportunities
   if (intent === 'unknown') {
     const looksLikeQuestion = /[?]|\b(ci sono|c'è|cosa|quali|che)\b/i.test(lower);
