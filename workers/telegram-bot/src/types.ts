@@ -54,6 +54,11 @@ export interface Opportunity {
   appearances?: number;
   goals?: number;
   summary?: string;
+  nationality?: string;
+  second_nationality?: string;
+  foot?: string;
+  market_value?: number;
+  market_value_formatted?: string;
   ob1_score: number;
   classification: 'hot' | 'warm' | 'cold';
   score_breakdown?: ScoreBreakdown;

@@ -17,6 +17,7 @@ import { isTalentSearchQuery, parseTalentQuery, searchTalents, formatTalentSearc
 import { classifyWithLLM, convertToParseIntent } from './llm-classifier';
 import { handleWatchCommand, handleWatchCallback } from './watch';
 import { generateScoutResponse, generateDNAResponse } from './response-generator';
+import { startScoutWizard, handleWizardCallback, shouldTriggerWizard, getIncompatibleClubs } from './scout-wizard';
 
 export async function handleMessage(message: TelegramMessage, env: Env): Promise<void> {
   const chatId = message.chat.id;
@@ -99,6 +100,13 @@ async function handleCommand(chatId: number, text: string, env: Env): Promise<vo
     // NOTIF-002: Notification settings
     case '/digest':
       await handleDigestPreview(chatId, env);
+      break;
+
+    // SCOUT-001: Interactive Scout Wizard
+    case '/scout':
+    case '/wizard':
+    case '/aiutami':
+      await startScoutWizard(chatId, env);
       break;
 
     default:
@@ -200,6 +208,12 @@ async function handleStats(chatId: number, env: Env): Promise<void> {
 // ============================================================================
 
 async function handleNaturalQuery(chatId: number, text: string, env: Env): Promise<void> {
+  // SCOUT-001: Check if user wants guided help (Akinator-style wizard)
+  if (shouldTriggerWizard(text)) {
+    await startScoutWizard(chatId, env);
+    return;
+  }
+
   // DNA-001: Check FIRST if this is a "field search" query
   // e.g., "mi serve un terzino che spinga", "centrocampista box-to-box"
   if (isTalentSearchQuery(text)) {
@@ -322,15 +336,39 @@ async function handleFilteredQuery(
     title = '🔍 <b>Risultati ricerca</b>';
   }
 
+  // Add warning if present (e.g., nationality data limited)
+  let warningMsg = '';
+  if (parsed.warning) {
+    warningMsg = `\n⚠️ <i>${parsed.warning}</i>\n`;
+  }
+
   if (results.length === 0) {
-    const noResultMsg = parsed.interpretation
+    let noResultMsg = parsed.interpretation
       ? formatNoResults(parsed.interpretation)
       : '😔 Nessun risultato trovato.\n\nProva con criteri diversi!';
+
+    // If we have filters for nationality but no results, explain why
+    if (parsed.filters.nationality || parsed.filters.requiresEUPassport) {
+      noResultMsg = `😔 <b>Nessun risultato trovato</b>
+
+Ho capito che cerchi: <i>${parsed.interpretation || 'giocatori con specifiche nazionalità'}</i>
+
+⚠️ <b>Nota:</b> Al momento il database non ha ancora i dati di nazionalità per tutti i giocatori. Stiamo lavorando per arricchire i profili con dati da Transfermarkt.
+
+Nel frattempo, posso mostrarti:
+• /hot - migliori opportunità
+• /all - lista completa
+• /dna pescara - match per un club specifico`;
+    }
+
     await sendMessage(env, chatId, noResultMsg);
     return;
   }
 
-  const message = formatOpportunityList(results, title, limit);
+  let message = formatOpportunityList(results, title, limit);
+  if (warningMsg) {
+    message = warningMsg + message;
+  }
 
   // NLP-003: Inject AI Scout Persona commentary if available and coming from NLP
   if (parsed.interpretation && env.AI) {
@@ -374,7 +412,9 @@ Puoi chiedermi cose come:
 • "come funziona?"
 
 Oppure usa i comandi:
-/hot /warm /all /search /stats /talenti /dna /help`;
+/hot /warm /all /search /stats /talenti /dna /help
+
+🎯 <b>Nuovo!</b> Scrivi /scout per un aiuto guidato stile Akinator!`;
 }
 
 // ============================================================================
@@ -394,6 +434,14 @@ export async function handleCallbackQuery(callback: TelegramCallbackQuery, env: 
     if (data.startsWith('watch:')) {
       if (chatId && messageId) {
         await handleWatchCallback(chatId, messageId, callbackId, data, env);
+      }
+      return;
+    }
+
+    // SCOUT-001: Handle scout wizard callbacks
+    if (data.startsWith('scout:')) {
+      if (chatId && messageId) {
+        await handleWizardCallback(chatId, messageId, callbackId, data, env);
       }
       return;
     }
@@ -485,10 +533,18 @@ Esempio: <code>/dna pescara</code>`);
   const matchedClub = clubs.find(c => c.toLowerCase().includes(searchTerm));
 
   if (!matchedClub) {
-    await sendMessage(env, chatId, `❌ Club "${clubQuery}" non trovato.
+    await sendMessage(env, chatId, `🧬 <b>DNA Matching</b>
 
-<b>Club disponibili:</b>
-${clubs.map(c => `• <code>${c}</code>`).join('\n')}`);
+Ho capito che cerchi giocatori adatti per <b>${clubQuery}</b>, ma al momento non ho un profilo DNA per questa squadra.
+
+<b>Club con profilo DNA disponibile:</b>
+${clubs.map(c => `• <code>${c}</code>`).join('\n')}
+
+💡 <i>Vuoi che aggiunga il profilo di ${clubQuery}? Contattaci!</i>
+
+Nel frattempo, prova:
+• /talenti - migliori talenti dalle squadre B
+• /hot - occasioni più interessanti sul mercato`);
     return;
   }
 

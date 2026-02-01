@@ -64,11 +64,35 @@ export function searchOpportunities(opportunities: Opportunity[], query: string)
       o.player_name,
       o.role_name || o.role,
       o.opportunity_type,
+      o.nationality || '',
+      o.second_nationality || '',
       ...(o.previous_clubs || []),
     ].join(' ').toLowerCase();
 
+    // Special handling for "comunitario" or "ue" keywords
+    if (lowerQuery.includes('comunitario') || lowerQuery.includes('passaporto eu')) {
+      const isEU = isEuropean(o.nationality) || isEuropean(o.second_nationality);
+      if (!isEU) return false;
+      // If query was ONLY "comunitario", return true. If it had more, continue filtering.
+      if (lowerQuery.trim() === 'comunitario') return true;
+    }
+
     return searchable.includes(lowerQuery);
   }).sort((a, b) => b.ob1_score - a.ob1_score);
+}
+
+/**
+ * Basic list of EU/EEA countries for passport check
+ */
+function isEuropean(country?: string): boolean {
+  if (!country) return false;
+  const euCountries = [
+    'italia', 'spagna', 'francia', 'germania', 'portogallo', 'belgio', 'olanda', 
+    'austria', 'grecia', 'polonia', 'romania', 'bulgaria', 'croazia', 'danimarca',
+    'finlandia', 'irlanda', 'lussemburgo', 'malta', 'svezia', 'repubblica ceca',
+    'slovacchia', 'slovenia', 'ungheria', 'estonia', 'lettonia', 'lituania', 'cipro'
+  ];
+  return euCountries.includes(country.toLowerCase().trim());
 }
 
 export function getStats(opportunities: Opportunity[]): { total: number; hot: number; warm: number; cold: number } {

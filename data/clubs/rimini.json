@@ -1,0 +1,38 @@
+{
+  "id": "rimini",
+  "name": "Rimini",
+  "category": "Serie C",
+  "group": "B",
+  "city": "Rimini",
+  "primary_formation": "4-3-3",
+  "playing_styles": ["possesso", "pressing_alto", "tecnica"],
+  "needs": [
+    {
+      "position": "AT",
+      "player_type": "ala_rapida",
+      "age_min": 18,
+      "age_max": 23,
+      "priority": "alta"
+    },
+    {
+      "position": "CC",
+      "player_type": "regista",
+      "age_min": 21,
+      "age_max": 28,
+      "priority": "alta"
+    },
+    {
+      "position": "DC",
+      "player_type": "fisico",
+      "age_min": 22,
+      "age_max": 30,
+      "priority": "media"
+    }
+  ],
+  "budget_type": "prestiti_obbligo",
+  "max_loan_cost": 80,
+  "youth_minutes_pct": 35.0,
+  "youth_development_score": 3,
+  "ds_name": "Antonio Di Battista",
+  "last_updated": "2026-02-01"
+}

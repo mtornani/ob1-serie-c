@@ -18,9 +18,12 @@ export interface ParsedIntent {
     minScore?: number;
     query?: string;
     limit?: number;
+    nationality?: string;        // e.g., 'sudamericano', 'europeo'
+    requiresEUPassport?: boolean; // "con passaporto comunitario"
   };
   confidence: number;
   interpretation?: string;
+  warning?: string;  // Warning message for unavailable features
 }
 
 // Role mappings (Italian variants → normalized)
@@ -29,6 +32,13 @@ const ROLE_PATTERNS: Record<string, RegExp> = {
   'difensore': /\b(difensor\w*|dc|terzin\w*|central\w*|stopper|libero)\b/i,
   'attaccante': /\b(attaccant\w*|punt\w*|bomber|ala|esterno.?offensiv\w*|prima.?punta|seconda.?punta|goleador)\b/i,
   'portiere': /\b(portier\w*|gk|goalkeeper|numero.?1)\b/i,
+};
+
+// Nationality/region patterns for future use
+const NATIONALITY_PATTERNS: Record<string, RegExp> = {
+  'sudamericano': /\b(sudamerican\w*|sud.?american\w*|argentino|brasiliano|uruguaiano|colombiano|cileno|peruviano|paraguaiano|venezuelano|ecuadoriano|boliviano)\b/i,
+  'europeo': /\b(europe\w*|comunitari\w*|passaporto.?(?:eu|ue|comunitari\w*|europe\w*))\b/i,
+  'africano': /\b(african\w*|senegalese|nigeriano|camerunese|ivoriano|ghanese|marocchino|egiziano|algerino|tunisino)\b/i,
 };
 
 // Opportunity type mappings
@@ -244,6 +254,28 @@ export function parseNaturalQuery(text: string): ParsedIntent {
     }
   }
 
+  // 6b. Check for nationality filters (DATA-001)
+  let warnings: string[] = [];
+  for (const [nationality, pattern] of Object.entries(NATIONALITY_PATTERNS)) {
+    if (pattern.test(lower)) {
+      filters.nationality = nationality;
+      confidence += 0.15;
+      interpretationParts.push(nationality);
+
+      // Check for EU passport requirement
+      if (NATIONALITY_PATTERNS['europeo'].test(lower) && nationality !== 'europeo') {
+        filters.requiresEUPassport = true;
+        interpretationParts.push('con passaporto UE');
+      }
+
+      // Add warning that nationality data is limited
+      warnings.push('I dati di nazionalità sono ancora limitati nel database.');
+
+      if (intent === 'unknown') intent = 'list_all';
+      break;
+    }
+  }
+
   // 7. Check for quality intents (hot/warm)
   if (INTENT_PATTERNS.list_hot.test(lower)) {
     intent = 'list_hot';
@@ -316,13 +348,33 @@ export function parseNaturalQuery(text: string): ParsedIntent {
     confidence = Math.max(confidence, 0.85);
     interpretationParts.unshift('talenti squadre B');
   } else if (intent === 'unknown' && INTENT_PATTERNS.dna_club.test(lower)) {
-    // Try to extract club name for DNA match
-    const clubMatch = lower.match(/(?:per|a|adatti?\s*(?:a|per)?)\s+(\w+)/i);
-    if (clubMatch) {
-      filters.query = clubMatch[1];
+    // Try to extract club name for DNA match, skipping common verbs
+    // Handles: "adatti a rifondare il rimini fc", "per il pescara", "match pescara"
+    const clubPatterns = [
+      /(?:rifondare|ricostruire|rinforzare|aiutare|sistemare)\s+(?:il\s+)?(\w+)(?:\s+fc)?/i,
+      /(?:per|a)\s+(?:il\s+)?(\w+)(?:\s+fc)?/i,
+      /(?:adatti?\s*(?:a|per)?)\s+(?:il\s+)?(\w+)(?:\s+fc)?/i,
+      /(?:match|dna|profilo)\s+(?:per\s+)?(?:il\s+)?(\w+)/i,
+    ];
+
+    let clubName: string | null = null;
+    for (const pattern of clubPatterns) {
+      const match = lower.match(pattern);
+      if (match && match[1]) {
+        // Skip common verbs that might get matched
+        const skipWords = ['rifondare', 'ricostruire', 'rinforzare', 'aiutare', 'sistemare', 'dei', 'giocatori', 'adatti'];
+        if (!skipWords.includes(match[1].toLowerCase())) {
+          clubName = match[1];
+          break;
+        }
+      }
+    }
+
+    if (clubName) {
+      filters.query = clubName;
       intent = 'dna_club';
       confidence = Math.max(confidence, 0.8);
-      interpretationParts.push(`DNA match per ${clubMatch[1]}`);
+      interpretationParts.push(`DNA match per ${clubName}`);
     }
   }
 
@@ -345,11 +397,15 @@ export function parseNaturalQuery(text: string): ParsedIntent {
     interpretation = interpretationParts.join(' ');
   }
 
+  // Build warning if any
+  const warning = warnings.length > 0 ? warnings.join(' ') : undefined;
+
   return {
     intent,
     filters,
     confidence: Math.min(confidence, 1),
     interpretation,
+    warning,
   };
 }
 

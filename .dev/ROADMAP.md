@@ -28,9 +28,13 @@ v3.0 - ALPHA READY 🚀
   [x] NOTIF-002: Smart Notifications 📬
 
 📋 Prossimi (post-Alpha):
-  - DATA-001: Transfermarkt Integration
+  - DATA-001: Transfermarkt Integration (script pronto)
   - DATA-002: Player History Tracking
   - REPORT-001: Weekly PDF Report
+
+🚧 In sviluppo:
+  - SCOUT-001: Scout Wizard (Akinator-style) 🎯
+  - Rivalità calcistiche italiane (campanilismi)
 ```
 
 **Dashboard:** https://mtornani.github.io/ob1-serie-c/

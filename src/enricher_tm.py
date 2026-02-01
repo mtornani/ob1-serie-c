@@ -78,6 +78,8 @@ DATI RICHIESTI (rispondi in JSON):
   "full_name": "Nome completo",
   "birth_date": "YYYY-MM-DD" o null,
   "birth_place": "Città, Nazione" o null,
+  "nationality": "Nazionalità principale (es. Argentina)",
+  "second_nationality": "Seconda nazionalità (es. Italia) o null",
   "height_cm": numero intero o null,
   "foot": "destro" | "sinistro" | "ambidestro" | null,
   "current_club": "Nome Club" o "Svincolato",
@@ -90,7 +92,7 @@ DATI RICHIESTI (rispondi in JSON):
 
 Se un dato non è presente, metti null.
 Per il valore di mercato, cerca "Valore attuale:" o simili.
-Per la scadenza contratto, cerca "Scadenza:" o "Contract expires:".
+Per la cittadinanza, cerca "Nazionalità:" o "Citizenship:". Spesso sono presenti due bandiere se ha il doppio passaporto.
 
 CONTENUTO PAGINA:
 {content}
