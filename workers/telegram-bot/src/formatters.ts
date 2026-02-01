@@ -1,21 +1,28 @@
 import { Opportunity, Env } from './types';
 
+// Dashboard URL constant for companion app experience
+const DASHBOARD_URL = 'https://mtornani.github.io/ob1-serie-c/';
+
 export function formatOpportunity(opp: Opportunity): string {
   const scoreEmoji = opp.classification === 'hot' ? '🔥' : opp.classification === 'warm' ? '⚡' : '❄️';
   const typeEmoji = getTypeEmoji(opp.opportunity_type);
 
   let message = `${scoreEmoji} <b>${escapeHtml(opp.player_name)}</b> (${opp.ob1_score}/100)\n`;
-  message += `📍 ${escapeHtml(opp.role_name || opp.role)} | ${opp.age} anni\n`;
+  message += `📍 ${escapeHtml(opp.role_name || opp.role)} | ${opp.age || '?'} anni\n`;
   message += `${typeEmoji} ${opp.opportunity_type.toUpperCase()}\n`;
 
+  if (opp.current_club) {
+    message += `🏟️ ${escapeHtml(opp.current_club)}\n`;
+  }
+
   if (opp.previous_clubs && opp.previous_clubs.length > 0) {
-    message += `🏟️ Ex: ${opp.previous_clubs.slice(0, 3).map(escapeHtml).join(', ')}\n`;
+    message += `📋 Ex: ${opp.previous_clubs.slice(0, 2).map(escapeHtml).join(', ')}\n`;
   }
 
   message += `📅 ${formatDate(opp.reported_date)}`;
 
   if (opp.source_url) {
-    message += `\n🔗 <a href="${opp.source_url}">Fonte</a>`;
+    message += ` | <a href="${opp.source_url}">Fonte</a>`;
   }
 
   return message;
@@ -23,7 +30,7 @@ export function formatOpportunity(opp: Opportunity): string {
 
 export function formatOpportunityList(opportunities: Opportunity[], title: string, maxItems: number = 5): string {
   if (opportunities.length === 0) {
-    return `${title}\n\n😔 Nessuna opportunita trovata.`;
+    return `${title}\n\n😔 Nessuna opportunità trovata.\n\n🌐 <a href="${DASHBOARD_URL}">Vedi Dashboard completa</a>`;
   }
 
   const items = opportunities.slice(0, maxItems);
@@ -36,84 +43,100 @@ export function formatOpportunityList(opportunities: Opportunity[], title: strin
     }
   });
 
+  // Always show dashboard link as companion app
+  message += '\n\n━━━━━━━━━━━━━━━━━━━━';
+
   if (opportunities.length > maxItems) {
-    message += `\n\n📊 Mostrati ${maxItems} di ${opportunities.length} risultati.`;
-    message += `\n🔗 Vedi tutti sulla dashboard`;
+    message += `\n📊 Mostrati ${maxItems} di ${opportunities.length}`;
   }
+
+  message += `\n🌐 <a href="${DASHBOARD_URL}">Dashboard completa</a>`;
 
   return message;
 }
 
 export function formatStats(stats: { total: number; hot: number; warm: number; cold: number }, lastUpdate: string): string {
-  return `📊 <b>OB1 Radar Stats</b>
+  return `📊 <b>OB1 Radar - Statistiche</b>
 
-📋 Totali: <b>${stats.total}</b> opportunita
+📋 Totali: <b>${stats.total}</b> opportunità
 
-🔥 HOT: <b>${stats.hot}</b>
-⚡ WARM: <b>${stats.warm}</b>
-❄️ COLD: <b>${stats.cold}</b>
+🔥 HOT: <b>${stats.hot}</b> (score 80+)
+⚡ WARM: <b>${stats.warm}</b> (score 60-79)
+❄️ COLD: <b>${stats.cold}</b> (score &lt;60)
 
-🕐 Ultimo aggiornamento: ${formatDateTime(lastUpdate)}`;
+🕐 Aggiornamento: ${formatDateTime(lastUpdate)}
+
+━━━━━━━━━━━━━━━━━━━━
+🌐 <a href="${DASHBOARD_URL}">Apri Dashboard</a>`;
 }
 
 export function formatWelcome(env: Env): string {
-  return `🎯 <b>Benvenuto in OB1 Radar Bot!</b>
+  return `🎯 <b>OB1 Radar - Companion Bot</b>
 
-Sono il tuo assistente per lo scouting Serie C/D.
+Il tuo assistente scouting Serie C/D sempre in tasca.
 
-💬 <b>Parlami in modo naturale!</b>
-Puoi scrivermi cose come:
-• "chi sono i migliori disponibili?"
+💬 <b>Chiedimi quello che vuoi:</b>
+• "occasioni di oggi"
 • "centrocampisti svincolati"
 • "attaccanti under 25"
-• "cerca Rossi"
+• "chi è disponibile?"
 
-📋 <b>Oppure usa i comandi:</b>
-/hot - Giocatori HOT (score 80+)
-/warm - Giocatori WARM (score 60-79)
-/all - Tutte le opportunita
-/search - Cerca giocatore
+📋 <b>Comandi rapidi:</b>
+/hot - I migliori (score 80+)
+/warm - Interessanti (60-79)
+/all - Lista completa
 /stats - Statistiche
 
-🔗 <a href="${env.DASHBOARD_URL}">Apri Dashboard</a>`;
+━━━━━━━━━━━━━━━━━━━━
+🌐 <a href="${DASHBOARD_URL}">Apri Dashboard</a>
+
+<i>Dashboard = vista completa con filtri avanzati
+Bot = accesso rapido ovunque tu sia</i>`;
 }
 
 export function formatHelp(env: Env): string {
-  return `❓ <b>Come posso aiutarti</b>
+  return `❓ <b>Come usare OB1 Radar Bot</b>
 
 💬 <b>Linguaggio naturale:</b>
 Scrivimi come parleresti a un collega:
 • "mostrami i migliori"
 • "centrocampisti svincolati under 28"
 • "difensori in prestito"
-• "quante opportunità ci sono?"
+• "novità di oggi"
 
 🔍 <b>Filtri supportati:</b>
-• Ruolo: centrocampista, difensore, attaccante, portiere
-• Tipo: svincolato, prestito, rescissione, scadenza
-• Età: under 25, over 30, giovani, esperti
+• <b>Ruolo:</b> centrocampista, difensore, attaccante, portiere
+• <b>Tipo:</b> svincolato, prestito, rescissione
+• <b>Età:</b> under 25, over 30, giovani, esperti
 
-📋 <b>Comandi rapidi:</b>
+📋 <b>Comandi:</b>
 /hot - I migliori (score 80+)
 /warm - Interessanti (score 60-79)
 /all - Lista completa
 /search &lt;nome&gt; - Cerca per nome
 /stats - Statistiche
 
-🔗 <a href="${env.DASHBOARD_URL}">Dashboard completa</a>`;
+━━━━━━━━━━━━━━━━━━━━
+🌐 <a href="${DASHBOARD_URL}">Dashboard completa</a>
+
+<i>Per filtri avanzati e vista dettagliata usa la Dashboard</i>`;
 }
 
 export function formatError(): string {
-  return `❌ Si e verificato un errore. Riprova tra qualche secondo.
+  return `❌ Si è verificato un errore.
 
-Se il problema persiste, visita la dashboard:
-🔗 https://mtornani.github.io/ob1-serie-c/`;
+Riprova tra qualche secondo, oppure:
+🌐 <a href="${DASHBOARD_URL}">Vai alla Dashboard</a>`;
 }
 
 export function formatUnknownCommand(): string {
   return `❓ Comando non riconosciuto.
 
-Usa /help per vedere i comandi disponibili.`;
+Prova a scrivermi in modo naturale, tipo:
+• "chi sono i migliori?"
+• "svincolati disponibili"
+
+Oppure /help per i comandi`;
 }
 
 export function formatNoResults(query: string): string {
@@ -122,7 +145,9 @@ export function formatNoResults(query: string): string {
 Prova con:
 • Nome del giocatore
 • Ruolo (es. "centrocampista")
-• Club precedente`;
+• Tipo (es. "svincolato")
+
+🌐 <a href="${DASHBOARD_URL}">Cerca sulla Dashboard</a>`;
 }
 
 /**
@@ -188,17 +213,18 @@ export function formatOpportunityDetails(opp: Opportunity): string {
     message += `   ⏰ Freshness: ${breakdown.freshness}\n`;
     message += `   💼 Tipo: ${breakdown.opportunity_type}\n`;
     message += `   ⭐ Esperienza: ${breakdown.experience}\n`;
-    message += `   🎂 Eta: ${breakdown.age}\n`;
+    message += `   🎂 Età: ${breakdown.age}\n`;
     message += `   📰 Fonte: ${breakdown.source}\n`;
     message += `   ✅ Completezza: ${breakdown.completeness}\n`;
   }
 
-  // Source
-  message += '\n';
-  message += `📰 ${escapeHtml(opp.source_name)}\n`;
+  // Source + Dashboard
+  message += '\n━━━━━━━━━━━━━━━━━━━━\n';
+  message += `📰 ${escapeHtml(opp.source_name)}`;
   if (opp.source_url) {
-    message += `🔗 <a href="${opp.source_url}">Leggi articolo</a>`;
+    message += ` | <a href="${opp.source_url}">Articolo</a>`;
   }
+  message += `\n🌐 <a href="${DASHBOARD_URL}">Dashboard</a>`;
 
   return message;
 }

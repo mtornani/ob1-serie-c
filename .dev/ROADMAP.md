@@ -6,272 +6,197 @@
 
 ---
 
-## Stato Attuale (2026-01-31)
+## Stato Attuale (2026-02-01)
 
 ```
-v2.1 DASHBOARD + BOT INTERATTIVO
+v2.5 - INTELLIGENT SCOUTING ASSISTANT
 
-Completato:
-  [x] Scraper automatico ogni 6h
-  [x] RAG su Gemini File Search
+✅ Completato:
+  [x] Scraper automatico ogni 6h (Serper + Tavily)
+  [x] RAG su Gemini File Search + Tavily full content
   [x] Agent conversazionale
   [x] Dashboard PWA responsive (UX-001)
   [x] Onboarding tutorial
-  [x] Telegram Bot interattivo (BOT-001)
+  [x] Telegram Bot su Cloudflare Workers (BOT-001)
+  [x] NLP: Linguaggio naturale per il bot (NLP-001)
+  [x] OB1 Score Algorithm (SCORE-001)
+  [x] Enhanced Telegram Alerts (NOTIF-001)
   [x] GitHub Actions pipeline
 
-In Progress:
-  [ ] Deploy bot su Cloudflare Workers
+🔄 In Progress:
+  [ ] SCORE-002: Watch Criteria System
+  [ ] NOTIF-002: Priority Filtering
 
-Mancante per uso professionale:
-  - Scoring intelligente
-  - Notifiche prioritizzate
-  - Filtri personalizzati
-  - Valutazioni Transfermarkt
-  - Report automatici
-  - Storico giocatori
+📋 Prossimi:
+  - DATA-001: Transfermarkt Integration
+  - DATA-002: Player History Tracking
+  - REPORT-001: Weekly PDF Report
 ```
+
+**Dashboard:** https://mtornani.github.io/ob1-serie-c/
+**Telegram Bot:** @Ob1LegaPro_bot
 
 ---
 
-## PHASE 0: UX Foundation (3-4 giorni) ✅ COMPLETATO
+## PHASE 0: UX Foundation ✅ COMPLETATO
 
 ### UX-001: Dashboard Responsive Design ✅
-**Priority:** CRITICAL | **Status:** DONE
-**Spec:** `.dev/UX-001_spec.md`
+**Status:** DONE | **Completed:** 2026-01-30
 
-Redesign completo mobile-first:
 - [x] Layout responsive (mobile/tablet/desktop)
 - [x] Score badges visuali (HOT/WARM/COLD)
 - [x] Filter chips interattivi
 - [x] Bottom navigation mobile
 - [x] PWA enhancements (pull-to-refresh, offline)
 - [x] Dark/light mode auto
-- [x] Onboarding tutorial per nuovi utenti
-
-**Deliverable:** https://mtornani.github.io/ob1-serie-c/
+- [x] Onboarding tutorial
 
 ---
 
 ## PHASE 0.5: Bot Interattivo ✅ COMPLETATO
 
-### BOT-001: Telegram Bot su Cloudflare Workers
-**Priority:** HIGH | **Status:** READY TO DEPLOY
-**Spec:** `.dev/BOT-001_spec.md`
+### BOT-001: Telegram Bot su Cloudflare Workers ✅
+**Status:** DONE | **Completed:** 2026-01-31
 
-Bot interattivo serverless:
 - [x] Architettura Cloudflare Workers
 - [x] Comandi: /start, /hot, /warm, /all, /search, /stats, /help
 - [x] Fetch dati da GitHub Pages data.json
 - [x] Formattazione messaggi HTML
 - [x] Webhook setup automatico
 
-**Deploy:** `workers/telegram-bot/`
+### NLP-001: Natural Language Processing ✅
+**Status:** DONE | **Completed:** 2026-02-01
+
+- [x] Riconoscimento intent in italiano
+- [x] Filtri per ruolo, tipo, età
+- [x] Query composite
+- [x] Fallback permissivo (mostra dati nel dubbio)
 
 ---
 
-## PHASE 1: Intelligent Scoring (1 settimana)
+## PHASE 1: Intelligent Scoring ✅ PARZIALMENTE COMPLETATO
 
-### SCORE-001: OB1 Score Algorithm
-**Priority:** CRITICAL | **Estimate:** 2-3 giorni
-**Spec:** `.dev/SCORE-001_spec.md`
+### SCORE-001: OB1 Score Algorithm ✅
+**Status:** DONE | **Completed:** 2026-01-31
 
-Sistema di scoring per prioritizzare opportunita:
-
+Sistema di scoring multi-fattore:
 ```python
 OB1_SCORE = (
-    role_fit      × 25% +   # Match con esigenze club
-    age_fit       × 20% +   # Fascia eta target
-    experience    × 25% +   # Presenze in categoria
-    timing        × 15% +   # Urgenza (rescissione vs rumors)
-    value_ratio   × 15%     # Rapporto qualita/costo
+    freshness        × 20% +   # Quanto recente
+    opportunity_type × 20% +   # Svincolato > prestito > rumors
+    experience       × 20% +   # Presenze in categoria
+    age              × 20% +   # Fascia età target (21-28)
+    source           × 10% +   # Affidabilità fonte
+    completeness     × 10%     # Dati disponibili
 )
 ```
 
 **Output:**
-- Score 1-100 per ogni opportunita
+- Score 1-100 per ogni opportunità
 - Classificazione: HOT (80+), WARM (60-79), COLD (<60)
-- Ordinamento automatico nelle notifiche
+- Score breakdown dettagliato
 
 ---
 
 ### SCORE-002: Watch Criteria System
 **Priority:** HIGH | **Estimate:** 2 giorni
-**Spec:** `.dev/SCORE-002_spec.md`
+**Status:** TODO
 
 Filtri personalizzabili per utente/club:
-
 ```python
 WATCH_CRITERIA = {
     "max_age": 28,
     "min_appearances": 10,
     "preferred_roles": ["CC", "DC", "ES"],
-    "max_estimated_salary": 150000,
     "categories": ["Serie C", "Serie B"],
-    "alert_types": ["svincolato", "rescissione", "prestito"]
+    "alert_types": ["svincolato", "rescissione"]
 }
 ```
 
-**Storage:** JSON file o GitHub Gist per persistenza
-
 ---
 
-## PHASE 2: Rich Notifications (1 settimana)
+## PHASE 2: Rich Notifications ✅ PARZIALMENTE COMPLETATO
 
-### NOTIF-001: Enhanced Telegram Alerts
-**Priority:** CRITICAL | **Estimate:** 2-3 giorni
-**Spec:** `.dev/NOTIF-001_spec.md`
+### NOTIF-001: Enhanced Telegram Alerts ✅
+**Status:** DONE | **Completed:** 2026-01-31
 
-Da notifica generica:
-```
-Trovate 3 nuove opportunita
-```
-
-A notifica actionable:
-```
-🔥 ALERT PRIORITA ALTA
-
-🎯 Nicolas Viola (28 anni)
-📍 Centrocampista - Ex Fiorentina/Cagliari
-💼 SVINCOLATO da oggi
-📊 OB1 Score: 87/100
-⭐ Match: 92% (cerca CC esperto)
-
-📰 Fonte: Calciomercato.com
-🔗 [Dettagli] [Salva] [Ignora]
-```
+- [x] HOT alerts con dettagli completi
+- [x] Inline keyboard (Salva, Ignora, Dettagli, Dashboard)
+- [x] WARM daily digest
+- [x] COLD summary
+- [x] Score breakdown nei dettagli
 
 ---
 
 ### NOTIF-002: Priority Filtering
 **Priority:** HIGH | **Estimate:** 1-2 giorni
-**Spec:** `.dev/NOTIF-002_spec.md`
+**Status:** TODO
 
-- Notifica PUSH solo per score > 70
-- Daily digest per score 50-69
-- Weekly summary per il resto
-- Configurable thresholds
+- [ ] Notifica PUSH solo per score > 80
+- [ ] Daily digest per score 60-79
+- [ ] Weekly summary per il resto
+- [ ] Quiet hours (23:00-07:00)
 
 ---
 
-## PHASE 3: Data Enrichment (1-2 settimane)
+## PHASE 3: Data Enrichment
 
 ### DATA-001: Transfermarkt Integration
 **Priority:** HIGH | **Estimate:** 3-4 giorni
-**Spec:** `.dev/DATA-001_spec.md`
+**Status:** TODO
 
-Scraping valutazioni di mercato:
-- Valore attuale
+- Valore attuale giocatore
 - Storico valutazioni
-- Statistiche carriera
+- Statistiche carriera complete
 - Scadenza contratto
-
-**Approccio:** Transfermarkt API non esiste, serve scraping HTML o fonte alternativa (Football-Data.org, API-Football).
-
----
 
 ### DATA-002: Player History Tracking
 **Priority:** MEDIUM | **Estimate:** 2-3 giorni
-**Spec:** `.dev/DATA-002_spec.md`
+**Status:** TODO
 
-Database storico:
 - Prima volta visto
 - Evoluzione score
 - Status changes (svincolato → firmato)
-- "Quel terzino era disponibile 3 mesi fa, cos'è successo?"
 
 ---
 
-## PHASE 4: Reporting (1 settimana)
+## PHASE 4: Reporting
 
 ### REPORT-001: Weekly PDF Report
 **Priority:** MEDIUM | **Estimate:** 2-3 giorni
-**Spec:** `.dev/REPORT-001_spec.md`
+**Status:** TODO
 
-Report automatico ogni lunedi:
-- Top 10 opportunita della settimana
+Report automatico ogni lunedì:
+- Top 10 opportunità della settimana
 - Movimenti completati
 - Giocatori in scadenza
-- Trend di mercato
-
-**Output:** PDF via email o Telegram
-
----
 
 ### REPORT-002: Comparison Tool
 **Priority:** LOW | **Estimate:** 2 giorni
-**Spec:** `.dev/REPORT-002_spec.md`
+**Status:** TODO
 
-"Meglio Rossi o Bianchi per il nostro modulo?"
-- Comparazione side-by-side
-- Radar chart statistiche
-- Pro/contro per contesto club
+Comparazione side-by-side tra giocatori
 
 ---
 
-## Timeline
+## Progress Summary
 
-```
-Week 0 (Jan 30 - Feb 2):
-└─ UX-001: Dashboard Responsive Design ⬅️ START HERE
+| Feature | Status | Completed |
+|---------|--------|-----------|
+| UX-001 Dashboard | ✅ DONE | 2026-01-30 |
+| BOT-001 Telegram | ✅ DONE | 2026-01-31 |
+| NLP-001 Natural Language | ✅ DONE | 2026-02-01 |
+| SCORE-001 Algorithm | ✅ DONE | 2026-01-31 |
+| NOTIF-001 Enhanced Alerts | ✅ DONE | 2026-01-31 |
+| SCRAPER-002 Tavily | ✅ DONE | 2026-01-31 |
+| SCORE-002 Watch Criteria | 📋 TODO | - |
+| NOTIF-002 Priority Filter | 📋 TODO | - |
+| DATA-001 Transfermarkt | 📋 TODO | - |
+| DATA-002 History | 📋 TODO | - |
+| REPORT-001 PDF | 📋 TODO | - |
 
-Week 1 (Feb 3-7):
-├─ SCORE-001: OB1 Score Algorithm
-└─ SCORE-002: Watch Criteria System
-
-Week 2 (Feb 8-14):
-├─ NOTIF-001: Enhanced Telegram Alerts
-└─ NOTIF-002: Priority Filtering
-
-Week 3-4 (Feb 15-28):
-├─ DATA-001: Transfermarkt Integration
-└─ DATA-002: Player History Tracking
-
-Week 5 (Mar 1-7):
-├─ REPORT-001: Weekly PDF Report
-└─ REPORT-002: Comparison Tool (if time)
-```
+**Completion:** 6/11 features (55%)
 
 ---
 
-## Priority Matrix
-
-| Feature | Impact per Lega Pro | Effort | Priority |
-|---------|---------------------|--------|----------|
-| UX-001 | 🔴 ALTO | 4d | P0 |
-| SCORE-001 | 🔴 ALTO | 3d | P0 |
-| NOTIF-001 | 🔴 ALTO | 3d | P0 |
-| SCORE-002 | 🟡 MEDIO | 2d | P1 |
-| NOTIF-002 | 🟡 MEDIO | 2d | P1 |
-| DATA-001 | 🟡 MEDIO | 4d | P2 |
-| DATA-002 | 🟢 BASSO | 3d | P2 |
-| REPORT-001 | 🟡 MEDIO | 3d | P2 |
-| REPORT-002 | 🟢 BASSO | 2d | P3 |
-
----
-
-## Success Metrics
-
-| Metric | Current | Target |
-|--------|---------|--------|
-| Opportunita trovate/settimana | ~20 | ~50+ |
-| % con score calcolato | 0% | 100% |
-| Notifiche actionable | 0% | 80%+ |
-| Tempo a prima notifica | N/A | <1h da news |
-| User engagement (Telegram) | TBD | Daily active |
-
----
-
-## Immediate Next Step
-
-**Inizia con UX-001** (Dashboard Responsive):
-- Mobile-first per DS in movimento
-- Visualizza gli score (base per tutto)
-- Professionalizza l'immagine
-- Quick win visibile
-
-Poi SCORE-001 → NOTIF-001 (scoring + notifiche arricchite)
-
----
-
-**Last Updated:** 2026-01-30
+**Last Updated:** 2026-02-01
