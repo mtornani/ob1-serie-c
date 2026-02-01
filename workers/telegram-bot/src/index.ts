@@ -10,6 +10,7 @@
 import { Env, TelegramUpdate } from './types';
 import { handleMessage, handleCallbackQuery } from './handlers';
 import { setWebhook, getWebhookInfo } from './telegram';
+import { processQueuedNotifications } from './notifications';
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -104,5 +105,19 @@ export default {
 
     // 404 for unknown routes
     return new Response('Not Found', { status: 404 });
+  },
+
+  /**
+   * NOTIF-002: Cron handler for daily digest (07:00 UTC)
+   */
+  async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
+    console.log(`Cron triggered at ${new Date().toISOString()}`);
+
+    try {
+      const result = await processQueuedNotifications(env);
+      console.log(`Cron completed: ${result.immediate} immediate, ${result.digests} digests sent`);
+    } catch (error) {
+      console.error('Cron error:', error);
+    }
   },
 };

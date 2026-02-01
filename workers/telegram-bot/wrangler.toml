@@ -10,5 +10,14 @@ DASHBOARD_URL = "https://mtornani.github.io/ob1-serie-c/"
 [ai]
 binding = "AI"
 
+# KV Namespace for user data (watch profiles, notifications)
+[[kv_namespaces]]
+binding = "USER_DATA"
+id = "to_be_configured"
+
+# Cron triggers for scheduled tasks
+[triggers]
+crons = ["0 7 * * *"]  # Daily digest at 07:00 UTC (08:00 Italy)
+
 # Secrets (set via `wrangler secret put`):
 # - TELEGRAM_BOT_TOKEN

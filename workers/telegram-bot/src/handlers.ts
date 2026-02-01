@@ -95,6 +95,11 @@ async function handleCommand(chatId: number, text: string, env: Env): Promise<vo
       await handleWatchCommand(chatId, args, env);
       break;
 
+    // NOTIF-002: Notification settings
+    case '/digest':
+      await handleDigestPreview(chatId, env);
+      break;
+
     default:
       await sendMessage(env, chatId, formatUnknownCommand());
       break;
@@ -514,6 +519,56 @@ Giocatori delle squadre B con il miglior fit per i club di Serie C:`
   // Also show stats
   const statsMessage = formatDNAStats(dnaData);
   await sendMessage(env, chatId, statsMessage);
+}
+
+// ============================================================================
+// NOTIF-002: DIGEST PREVIEW
+// ============================================================================
+
+async function handleDigestPreview(chatId: number, env: Env): Promise<void> {
+  const { createKVStorage, createMemoryStorage } = await import('./watch/storage');
+  const { filterByProfiles } = await import('./watch/matcher');
+  const { sendDailyDigest } = await import('./notifications/sender');
+
+  // Get user's profiles
+  const watchStorage = env.USER_DATA ? createKVStorage(env.USER_DATA) : createMemoryStorage();
+  const profiles = await watchStorage.listProfiles(chatId);
+
+  if (profiles.length === 0) {
+    await sendMessage(env, chatId, `📬 <b>Anteprima Digest</b>
+
+Non hai profili di monitoraggio attivi.
+
+Usa /watch add per crearne uno e ricevere il digest giornaliero con le opportunità che matchano i tuoi criteri.`);
+    return;
+  }
+
+  // Fetch current opportunities
+  const data = await fetchData(env);
+  if (!data?.opportunities) {
+    await sendMessage(env, chatId, '❌ Impossibile caricare le opportunità.');
+    return;
+  }
+
+  // Filter by profiles
+  const matches = filterByProfiles(data.opportunities, profiles.filter(p => p.active));
+
+  if (matches.length === 0) {
+    await sendMessage(env, chatId, `📬 <b>Anteprima Digest</b>
+
+Nessuna opportunità attuale matcha i tuoi ${profiles.length} profili.
+
+Verrai notificato quando ne troveremo!`);
+    return;
+  }
+
+  // Convert to digest format and send
+  const digestEntries = matches.map(m => ({
+    opportunity: m.opportunity,
+    matchedProfiles: m.matchedProfiles.map(p => p.name || p.id),
+  }));
+
+  await sendDailyDigest(chatId, digestEntries, env);
 }
 
 // ============================================================================
