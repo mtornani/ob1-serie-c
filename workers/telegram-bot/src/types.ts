@@ -85,4 +85,5 @@ export interface Env {
   DATA_URL: string;
   DASHBOARD_URL: string;
   AI?: any; // Cloudflare AI binding (optional)
+  USER_DATA?: KVNamespace; // KV for user preferences (optional)
 }

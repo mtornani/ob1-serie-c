@@ -79,15 +79,16 @@ Sei al campo? Dimmi cosa ti serve.
 • "mi serve un terzino che spinga"
 • "centrocampista box-to-box"
 • "ala veloce per il 4-3-3"
-• "difensore bravo in impostazione"
 
 📋 <b>O chiedi info mercato:</b>
 • "chi è svincolato?"
-• "centrocampisti disponibili"
 • "occasioni di oggi"
 
+🔔 <b>Notifiche personalizzate:</b>
+/watch add - Crea alert su misura
+
 🧬 <b>Squadre B:</b>
-/talenti - Top giovani Juve NG, Milan Futuro, Atalanta U23
+/talenti - Juve NG, Milan Futuro, Atalanta U23
 
 ━━━━━━━━━━━━━━━━━━━━
 🌐 <a href="${DASHBOARD_URL}">Dashboard completa</a>`;
@@ -111,8 +112,12 @@ che pressa, che imposta, box-to-box, tutta fascia
 • "attaccanti disponibili under 25"
 • "occasioni di oggi"
 
-🧬 <b>SQUADRE B (Juve NG, Milan Futuro, Atalanta U23):</b>
-/talenti - Top giovani disponibili
+🧬 <b>SQUADRE B:</b>
+/talenti - Juve NG, Milan Futuro, Atalanta U23
+
+🔔 <b>ALERT PERSONALIZZATI:</b>
+/watch add - Crea profilo monitoraggio
+/watch - Gestisci i tuoi alert
 
 📌 <b>Comandi rapidi:</b>
 /hot /warm /all /stats /search

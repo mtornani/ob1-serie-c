@@ -15,6 +15,7 @@ import { parseNaturalQuery, getInterpretationMessage, ParsedIntent } from './nlp
 import { fetchDNAData, getMatchesForClub, getTopMatches, formatDNAMatchList, formatDNAStats, getAvailableClubs } from './dna';
 import { isTalentSearchQuery, parseTalentQuery, searchTalents, formatTalentSearchResults } from './talent-search';
 import { classifyWithLLM, convertToParseIntent } from './llm-classifier';
+import { handleWatchCommand, handleWatchCallback } from './watch';
 
 export async function handleMessage(message: TelegramMessage, env: Env): Promise<void> {
   const chatId = message.chat.id;
@@ -86,6 +87,12 @@ async function handleCommand(chatId: number, text: string, env: Env): Promise<vo
     case '/talenti':
     case '/talents':
       await handleDNATopMatches(chatId, env);
+      break;
+
+    // SCORE-002: Watch Criteria commands
+    case '/watch':
+    case '/monitora':
+      await handleWatchCommand(chatId, args, env);
       break;
 
     default:
@@ -357,11 +364,19 @@ export async function handleCallbackQuery(callback: TelegramCallbackQuery, env: 
 
   console.log(`Callback query: ${data} from chat ${chatId}`);
 
-  // Parse callback data
-  const [action, ...params] = data.split('_');
-  const oppId = params.join('_');
-
   try {
+    // SCORE-002: Handle watch wizard callbacks
+    if (data.startsWith('watch:')) {
+      if (chatId && messageId) {
+        await handleWatchCallback(chatId, messageId, callbackId, data, env);
+      }
+      return;
+    }
+
+    // Parse callback data for other actions
+    const [action, ...params] = data.split('_');
+    const oppId = params.join('_');
+
     switch (action) {
       case 'save':
         // For now, just acknowledge - watchlist feature coming soon

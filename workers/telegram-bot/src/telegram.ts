@@ -37,6 +37,43 @@ export async function sendMessage(
   }
 }
 
+export async function sendMessageWithKeyboard(
+  env: Env,
+  chatId: number,
+  text: string,
+  keyboard: any,
+  parseMode: 'HTML' | 'Markdown' = 'HTML'
+): Promise<boolean> {
+  const url = `${TELEGRAM_API}${env.TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: text,
+        parse_mode: parseMode,
+        disable_web_page_preview: true,
+        reply_markup: keyboard,
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.text();
+      console.error('Telegram API error:', error);
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Failed to send message with keyboard:', error);
+    return false;
+  }
+}
+
 export async function answerCallbackQuery(
   env: Env,
   callbackQueryId: string,
