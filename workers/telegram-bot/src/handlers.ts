@@ -287,6 +287,11 @@ async function handleNaturalQuery(chatId: number, text: string, env: Env): Promi
       await handleDNAMatch(chatId, parsed.filters.query || '', env);
       break;
 
+    // SCORE-002: Create watch profile via natural language
+    case 'create_watch':
+      await handleNaturalWatchCreate(chatId, parsed, env);
+      break;
+
     default:
       await sendMessage(env, chatId, formatNLPHelp());
       break;
@@ -569,6 +574,75 @@ Verrai notificato quando ne troveremo!`);
   }));
 
   await sendDailyDigest(chatId, digestEntries, env);
+}
+
+// ============================================================================
+// NLP-003: NATURAL LANGUAGE WATCH PROFILE CREATION
+// ============================================================================
+
+async function handleNaturalWatchCreate(
+  chatId: number,
+  parsed: ParsedIntent,
+  env: Env
+): Promise<void> {
+  const { createKVStorage, createMemoryStorage } = await import('./watch/storage');
+  const { WatchProfile, generateProfileId, getProfileDisplayName } = await import('./watch/types');
+
+  const watchStorage = env.USER_DATA ? createKVStorage(env.USER_DATA) : createMemoryStorage();
+
+  // Check existing profiles
+  const existing = await watchStorage.listProfiles(chatId);
+  if (existing.length >= 5) {
+    await sendMessage(env, chatId, `⚠️ Hai già 5 profili attivi (limite massimo).
+
+Usa /watch per gestirli o rimuoverne uno.`);
+    return;
+  }
+
+  // Build profile from parsed filters
+  const profile: any = {
+    id: generateProfileId(),
+    name: '',
+    roles: parsed.filters.roles || undefined,
+    opportunity_types: parsed.filters.types || undefined,
+    age_max: parsed.filters.ageMax || undefined,
+    age_min: parsed.filters.ageMin || undefined,
+    min_ob1_score: parsed.filters.minScore || undefined,
+    alert_immediately: true,
+    include_in_digest: true,
+    active: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  };
+
+  // Generate name
+  const nameParts: string[] = [];
+  if (parsed.filters.role) nameParts.push(parsed.filters.role);
+  if (parsed.filters.type) nameParts.push(parsed.filters.type);
+  if (parsed.filters.ageMax) nameParts.push(`U${parsed.filters.ageMax}`);
+  profile.name = nameParts.length > 0 ? nameParts.join(' ') : 'Watch Profile';
+
+  // Save profile
+  await watchStorage.saveProfile(chatId, profile);
+
+  // Build confirmation message
+  const details: string[] = [];
+  if (profile.roles?.length) details.push(`📍 Ruolo: ${profile.roles.join(', ')}`);
+  if (profile.opportunity_types?.length) details.push(`📋 Tipo: ${profile.opportunity_types.join(', ')}`);
+  if (profile.age_max) details.push(`🎂 Età: Under ${profile.age_max}`);
+  if (profile.min_ob1_score) details.push(`⭐ Score minimo: ${profile.min_ob1_score}`);
+
+  const detailsText = details.length > 0 ? details.join('\n') : '(tutti i giocatori)';
+
+  await sendMessage(env, chatId, `✅ <b>Alert creato!</b>
+
+<b>${profile.name}</b>
+
+${detailsText}
+
+🔔 Ti avviserò quando troverò opportunità che matchano.
+
+📋 /watch per gestire i tuoi alert`);
 }
 
 // ============================================================================

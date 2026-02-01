@@ -7,12 +7,15 @@
  */
 
 export interface ParsedIntent {
-  intent: 'search' | 'list_hot' | 'list_warm' | 'list_all' | 'stats' | 'help' | 'dna_top' | 'dna_club' | 'unknown';
+  intent: 'search' | 'list_hot' | 'list_warm' | 'list_all' | 'stats' | 'help' | 'dna_top' | 'dna_club' | 'create_watch' | 'unknown';
   filters: {
     role?: string;
+    roles?: string[];      // For watch profiles: multiple roles
     type?: string;
+    types?: string[];      // For watch profiles: multiple types
     ageMin?: number;
     ageMax?: number;
+    minScore?: number;
     query?: string;
     limit?: number;
   };
@@ -68,6 +71,10 @@ const INTENT_PATTERNS = {
   // DNA-001: DNA matching patterns
   dna_top: /\b(talenti|prodigy|giovani.?promesse|migliori.?talenti|top.?talenti|squadre?.?b|under\s?23|next\s?gen|futuro|primavera)\b/i,
   dna_club: /\b(match\w*|fit|adatti?\s*(a|per)?|compatibil\w*|profilo|dna)\b/i,
+
+  // SCORE-002: Watch profile creation via natural language
+  create_watch: /\b(avvisami|notificami|alertami|segnalami|fammi sapere|tienimi aggiornato|monitora|segui|watch)\b.*\b(quando|se|trovi|esce|arriva|disponibile)\b/i,
+  create_watch_alt: /\b(voglio|vorrei)\b.*\b(essere avvisato|ricevere notifiche|sapere quando)\b/i,
 };
 
 // Age patterns
@@ -96,6 +103,19 @@ function extractOverAge(match: RegExpMatchArray): { min?: number; max?: number }
 function extractSpecificAge(match: RegExpMatchArray): { min?: number; max?: number } {
   const age = parseInt(match[1]);
   return { min: age, max: age };
+}
+
+// Map role name to position codes (for watch profiles)
+function mapRoleToPositions(role: string): string[] {
+  const mappings: Record<string, string[]> = {
+    'centrocampista': ['CC', 'MED', 'TRQ'],
+    'difensore': ['DC', 'TD', 'TS'],
+    'attaccante': ['ATT', 'PC'],
+    'portiere': ['POR'],
+    'esterno': ['ES', 'ED', 'AS', 'AD'],
+    'terzino': ['TD', 'TS'],
+  };
+  return mappings[role.toLowerCase()] || [];
 }
 
 // Detect if text contains a proper name (capitalized words not matching keywords)
@@ -269,12 +289,33 @@ export function parseNaturalQuery(text: string): ParsedIntent {
     }
   }
 
-  // 10. DNA-001: Check for DNA matching intents
-  if (INTENT_PATTERNS.dna_top.test(lower)) {
+  // 10. SCORE-002: Check for watch profile creation
+  const wantsWatch = INTENT_PATTERNS.create_watch.test(lower) ||
+    (INTENT_PATTERNS as any).create_watch_alt?.test(lower);
+
+  if (wantsWatch) {
+    intent = 'create_watch';
+    confidence = Math.max(confidence, 0.9);
+
+    // Extract role for watch
+    if (filters.role) {
+      filters.roles = mapRoleToPositions(filters.role);
+    }
+
+    // Extract type for watch
+    if (filters.type) {
+      filters.types = [filters.type];
+    }
+
+    interpretationParts.unshift('crea alert');
+  }
+
+  // 11. DNA-001: Check for DNA matching intents
+  if (intent === 'unknown' && INTENT_PATTERNS.dna_top.test(lower)) {
     intent = 'dna_top';
     confidence = Math.max(confidence, 0.85);
     interpretationParts.unshift('talenti squadre B');
-  } else if (INTENT_PATTERNS.dna_club.test(lower)) {
+  } else if (intent === 'unknown' && INTENT_PATTERNS.dna_club.test(lower)) {
     // Try to extract club name for DNA match
     const clubMatch = lower.match(/(?:per|a|adatti?\s*(?:a|per)?)\s+(\w+)/i);
     if (clubMatch) {
@@ -285,7 +326,7 @@ export function parseNaturalQuery(text: string): ParsedIntent {
     }
   }
 
-  // 11. FALLBACK: If we still don't know what to do but the message
+  // 12. FALLBACK: If we still don't know what to do but the message
   // looks like a question about football/market, show all opportunities
   if (intent === 'unknown') {
     const looksLikeQuestion = /[?]|\b(ci sono|c'è|cosa|quali|che)\b/i.test(lower);
