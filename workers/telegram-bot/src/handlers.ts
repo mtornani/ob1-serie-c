@@ -13,6 +13,7 @@ import {
 } from './formatters';
 import { parseNaturalQuery, getInterpretationMessage, ParsedIntent } from './nlp';
 import { fetchDNAData, getMatchesForClub, getTopMatches, formatDNAMatchList, formatDNAStats, getAvailableClubs } from './dna';
+import { isTalentSearchQuery, parseTalentQuery, searchTalents, formatTalentSearchResults } from './talent-search';
 
 export async function handleMessage(message: TelegramMessage, env: Env): Promise<void> {
   const chatId = message.chat.id;
@@ -185,6 +186,13 @@ async function handleStats(chatId: number, env: Env): Promise<void> {
 // ============================================================================
 
 async function handleNaturalQuery(chatId: number, text: string, env: Env): Promise<void> {
+  // DNA-001: Check FIRST if this is a "field search" query
+  // e.g., "mi serve un terzino che spinga", "centrocampista box-to-box"
+  if (isTalentSearchQuery(text)) {
+    await handleTalentSearch(chatId, text, env);
+    return;
+  }
+
   const parsed = parseNaturalQuery(text);
 
   console.log(`NLP parsed: intent=${parsed.intent}, confidence=${parsed.confidence}, filters=`, parsed.filters);
@@ -462,4 +470,57 @@ Giocatori delle squadre B con il miglior fit per i club di Serie C:`
   // Also show stats
   const statsMessage = formatDNAStats(dnaData);
   await sendMessage(env, chatId, statsMessage);
+}
+
+// ============================================================================
+// DNA-001: TALENT SEARCH ("Field Language" Queries)
+// ============================================================================
+
+async function handleTalentSearch(chatId: number, text: string, env: Env): Promise<void> {
+  console.log(`Talent search query: "${text}"`);
+
+  const query = parseTalentQuery(text);
+
+  if (!query) {
+    // Fallback: non siamo riusciti a parsare, prova con help
+    await sendMessage(env, chatId, formatTalentSearchHelp());
+    return;
+  }
+
+  console.log(`Parsed talent query:`, query);
+
+  const dnaData = await fetchDNAData();
+
+  if (!dnaData) {
+    await sendMessage(env, chatId, '❌ Dati talenti non disponibili. Riprova più tardi.');
+    return;
+  }
+
+  const results = searchTalents(dnaData, query, 5);
+  const message = formatTalentSearchResults(results, query);
+
+  await sendMessage(env, chatId, message);
+}
+
+function formatTalentSearchHelp(): string {
+  return `⚽ <b>Cerca Talenti</b>
+
+Dimmi che tipo di giocatore ti serve:
+
+🏃 <b>Per ruolo + caratteristica:</b>
+• "mi serve un terzino che spinga"
+• "centrocampista box-to-box"
+• "ala veloce"
+• "difensore bravo in impostazione"
+
+📊 <b>Caratteristiche:</b>
+• veloce, tecnico, fisico, forte
+• che pressa, aggressivo
+• che imposta, intelligente
+• box-to-box, tutta fascia
+
+🎂 <b>Età:</b>
+• giovane, under 21, under 23
+
+<i>Es: "mi serve un centrocampista giovane che sappia pressare"</i>`;
 }

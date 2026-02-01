@@ -71,60 +71,54 @@ export function formatStats(stats: { total: number; hot: number; warm: number; c
 }
 
 export function formatWelcome(env: Env): string {
-  return `🎯 <b>OB1 Radar - Companion Bot</b>
+  return `🎯 <b>OB1 Radar - Il tuo Scout Digitale</b>
 
-Il tuo assistente scouting Serie C/D sempre in tasca.
+Sei al campo? Dimmi cosa ti serve.
 
-💬 <b>Chiedimi quello che vuoi:</b>
+⚽ <b>Cerca talenti così:</b>
+• "mi serve un terzino che spinga"
+• "centrocampista box-to-box"
+• "ala veloce per il 4-3-3"
+• "difensore bravo in impostazione"
+
+📋 <b>O chiedi info mercato:</b>
+• "chi è svincolato?"
+• "centrocampisti disponibili"
 • "occasioni di oggi"
-• "centrocampisti svincolati"
-• "attaccanti under 25"
-• "talenti dalle squadre B"
 
-📋 <b>Comandi rapidi:</b>
-/hot - I migliori (score 80+)
-/warm - Interessanti (60-79)
-/all - Lista completa
-/talenti - 🧬 Top talenti squadre B
-/dna &lt;club&gt; - Match DNA per club
+🧬 <b>Squadre B:</b>
+/talenti - Top giovani Juve NG, Milan Futuro, Atalanta U23
 
 ━━━━━━━━━━━━━━━━━━━━
-🌐 <a href="${DASHBOARD_URL}">Apri Dashboard</a>
-
-<i>Dashboard = vista completa con filtri avanzati
-Bot = accesso rapido ovunque tu sia</i>`;
+🌐 <a href="${DASHBOARD_URL}">Dashboard completa</a>`;
 }
 
 export function formatHelp(env: Env): string {
-  return `❓ <b>Come usare OB1 Radar Bot</b>
+  return `❓ <b>Come usare OB1 Radar</b>
 
-💬 <b>Linguaggio naturale:</b>
-Scrivimi come parleresti a un collega:
-• "mostrami i migliori"
-• "centrocampisti svincolati under 28"
-• "difensori in prestito"
-• "talenti dalle squadre B"
+⚽ <b>SEI AL CAMPO? Dimmi cosa ti serve:</b>
+• "mi serve un terzino che spinga"
+• "centrocampista box-to-box giovane"
+• "ala veloce che dribbla"
+• "difensore bravo in impostazione"
 
-🔍 <b>Filtri supportati:</b>
-• <b>Ruolo:</b> centrocampista, difensore, attaccante, portiere
-• <b>Tipo:</b> svincolato, prestito, rescissione
-• <b>Età:</b> under 25, over 30, giovani, esperti
+📊 <b>Caratteristiche cercabili:</b>
+veloce, tecnico, fisico, forte, aggressivo
+che pressa, che imposta, box-to-box, tutta fascia
 
-📋 <b>Comandi:</b>
-/hot - I migliori (score 80+)
-/warm - Interessanti (score 60-79)
-/all - Lista completa
-/search &lt;nome&gt; - Cerca per nome
-/stats - Statistiche
+📋 <b>INFO MERCATO:</b>
+• "chi è svincolato?"
+• "attaccanti disponibili under 25"
+• "occasioni di oggi"
 
-🧬 <b>DNA Matching:</b>
-/talenti - Top talenti dalle squadre B
-/dna &lt;club&gt; - Match per club specifico
+🧬 <b>SQUADRE B (Juve NG, Milan Futuro, Atalanta U23):</b>
+/talenti - Top giovani disponibili
+
+📌 <b>Comandi rapidi:</b>
+/hot /warm /all /stats /search
 
 ━━━━━━━━━━━━━━━━━━━━
-🌐 <a href="${DASHBOARD_URL}">Dashboard completa</a>
-
-<i>Per filtri avanzati e vista dettagliata usa la Dashboard</i>`;
+🌐 <a href="${DASHBOARD_URL}">Dashboard completa</a>`;
 }
 
 export function formatError(): string {
