@@ -11,40 +11,43 @@
 import { PlayerMatch, DNAData } from './dna';
 
 // Mapping ruoli - linguaggio naturale → posizioni
+// IMPORTANTE: Ordinati dal più specifico al più generico!
 const ROLE_MAPPINGS: Record<string, string[]> = {
-  // Difensori
-  'terzino': ['TD', 'TS'],
+  // Difensori - specifici prima
   'terzino destro': ['TD'],
+  'terzino dx': ['TD'],
   'terzino sinistro': ['TS'],
+  'terzino sx': ['TS'],
   'difensore centrale': ['DC'],
   'centrale': ['DC'],
-  'difensore': ['DC', 'TD', 'TS'],
   'stopper': ['DC'],
+  'terzino': ['TD', 'TS'],
+  'difensore': ['DC', 'TD', 'TS'],
 
-  // Centrocampisti
-  'centrocampista': ['CC', 'MED', 'TRQ'],
+  // Centrocampisti - specifici prima
+  'centrocampista centrale': ['CC'],
   'mediano': ['MED', 'CC'],
   'regista': ['MED', 'CC'],
   'mezzala': ['CC'],
   'trequartista': ['TRQ'],
   'interno': ['CC'],
-  'centrocampista centrale': ['CC'],
+  'centrocampista': ['CC', 'MED', 'TRQ'],
 
-  // Esterni
-  'esterno': ['ES', 'ED', 'AS', 'AD'],
+  // Esterni - specifici prima
   'esterno destro': ['ED', 'AD'],
   'esterno sinistro': ['ES', 'AS'],
-  'ala': ['AS', 'AD'],
   'ala destra': ['AD'],
   'ala sinistra': ['AS'],
+  'esterno': ['ES', 'ED', 'AS', 'AD'],
+  'ala': ['AS', 'AD'],
   'fascia': ['ES', 'ED', 'TS', 'TD'],
 
   // Attaccanti
-  'attaccante': ['ATT', 'PC'],
-  'punta': ['PC', 'ATT'],
   'prima punta': ['PC'],
   'seconda punta': ['ATT', 'TRQ'],
   'centravanti': ['PC'],
+  'attaccante': ['ATT', 'PC'],
+  'punta': ['PC', 'ATT'],
 
   // Portiere
   'portiere': ['POR'],
@@ -82,10 +85,14 @@ const CHARACTERISTIC_MAPPINGS: Record<string, SkillRequirement[]> = {
   'potente': [{ skill: 'fisico', minValue: 75, description: 'potente' }],
 
   // Caratteristiche mentali/visione
-  'che imposta': [{ skill: 'visione', minValue: 70 }, { skill: 'tecnica', minValue: 70 }],
-  'impostazione': [{ skill: 'visione', minValue: 72 }, { skill: 'tecnica', minValue: 68 }],
+  'che imposta': [{ skill: 'visione', minValue: 70, description: 'bravo in impostazione' }, { skill: 'tecnica', minValue: 70 }],
+  'impostazione': [{ skill: 'visione', minValue: 72, description: 'bravo in impostazione' }, { skill: 'tecnica', minValue: 68 }],
+  'costruire il gioco': [{ skill: 'visione', minValue: 70, description: 'sa costruire il gioco' }, { skill: 'tecnica', minValue: 70 }],
+  'costruisce': [{ skill: 'visione', minValue: 68, description: 'sa costruire' }, { skill: 'tecnica', minValue: 68 }],
+  'sappia costruire': [{ skill: 'visione', minValue: 70, description: 'sa costruire il gioco' }, { skill: 'tecnica', minValue: 70 }],
   'che vede il gioco': [{ skill: 'visione', minValue: 75, description: 'ottima visione di gioco' }],
   'intelligente': [{ skill: 'visione', minValue: 72, description: 'intelligente tatticamente' }],
+  'piede buono': [{ skill: 'tecnica', minValue: 72, description: 'piede educato' }],
 
   // Tipi di giocatore specifici
   'box to box': [
@@ -328,9 +335,15 @@ export function isTalentSearchQuery(text: string): boolean {
 
   // Pattern che indicano una ricerca talenti da campo
   const searchPatterns = [
+    // "mi serve un terzino", "cerco un centrocampista"
     /\b(mi serve|cerco|voglio|ho bisogno|mi manca)\b.*\b(un|uno|una)\b/i,
-    /\b(terzino|difensore|centrocampista|ala|attaccante|punta|mediano|trequartista)\b.*\b(che|veloce|tecnico|forte|bravo)\b/i,
-    /\b(che spinge|box.?to.?box|tutta fascia|che imposta|che pressa)\b/i,
+    // "terzino che spinge", "difensore veloce"
+    /\b(terzino|difensore|centrocampista|ala|attaccante|punta|mediano|trequartista)\b.*\b(che|veloce|tecnico|forte|bravo|dx|sx|destro|sinistro)\b/i,
+    // "terzino dx", "esterno sx" - ruolo + lato
+    /\b(terzino|esterno)\s*(dx|sx|destro|sinistro)\b/i,
+    // caratteristiche specifiche
+    /\b(che spinge|box.?to.?box|tutta fascia|che imposta|che pressa|costruire il gioco|sappia costruire)\b/i,
+    // "giocatore veloce", "talento tecnico"
     /\b(giocatore|talento)\b.*\b(veloce|tecnico|fisico|giovane)\b/i,
   ];
 

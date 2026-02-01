@@ -57,10 +57,13 @@ const INTENT_PATTERNS = {
   search: /\b(cerca|trovami|chi.?[eè]|info.?su|dimmi.?di|parlami.?di|conosc\w*)\b/i,
 
   // GENERIC QUESTION PATTERNS - These indicate user wants to see opportunities
-  generic_list: /\b(occasioni|opportunit\w*|giocator\w*|calciat\w*|disponibil\w*|mercato|news|novit\w*|aggiornament\w*)\b/i,
+  generic_list: /\b(occasioni|opportunit\w*|giocator\w*|calciat\w*|disponibil\w*|mercato|news|novit\w*|aggiornament\w*|ricostruire|rifondare|rinforzare|acquist\w*|prendere)\b/i,
 
   // Time-related patterns (oggi, recenti, ultimi, nuovi)
   time_query: /\b(oggi|ieri|recent\w*|ultim\w*|nuov\w*|ultimo|fresc\w*|appena)\b/i,
+
+  // Situazioni di necessità ("devo ricostruire", "fallito", "serve rinforzare")
+  need_players: /\b(devo|dobbiamo|bisogna|serve|servono)\b.*\b(ricostruire|rinforzare|comprare|prendere|trovare|cercare|squadra|rosa)\b/i,
 
   // DNA-001: DNA matching patterns
   dna_top: /\b(talenti|prodigy|giovani.?promesse|migliori.?talenti|top.?talenti|squadre?.?b|under\s?23|next\s?gen|futuro|primavera)\b/i,
@@ -241,13 +244,19 @@ export function parseNaturalQuery(text: string): ParsedIntent {
   const hasGenericListWord = INTENT_PATTERNS.generic_list.test(lower);
   const hasTimeWord = INTENT_PATTERNS.time_query.test(lower);
   const hasListIntent = INTENT_PATTERNS.list_all.test(lower);
+  const hasNeedPlayers = INTENT_PATTERNS.need_players?.test(lower);
 
-  if ((hasGenericListWord || hasTimeWord || hasListIntent) && intent === 'unknown') {
+  if ((hasGenericListWord || hasTimeWord || hasListIntent || hasNeedPlayers) && intent === 'unknown') {
     intent = 'list_all';
     confidence = Math.max(confidence, 0.7);
 
     if (hasTimeWord) {
       interpretationParts.push('recenti');
+    }
+    if (hasNeedPlayers) {
+      interpretationParts.push('svincolati disponibili');
+      // Se cercano giocatori per ricostruire, filtra per svincolati
+      filters.type = 'svincolato';
     }
   }
 
