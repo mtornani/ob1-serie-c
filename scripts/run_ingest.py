@@ -58,6 +58,15 @@ def main():
 
     # Keep only last 100
     unique = sorted(unique, key=lambda x: x.get('discovered_at', ''), reverse=True)[:100]
+    
+    # HISTORY TRACKING (DATA-002)
+    try:
+        from history import HistoryTracker
+        tracker = HistoryTracker(str(output_dir))
+        tracker.track_changes(unique)
+    except Exception as e:
+        print(f"⚠️ History tracking error: {e}")
+
     output_file.write_text(json.dumps(unique, indent=2, ensure_ascii=False, default=str))
 
     # Stats

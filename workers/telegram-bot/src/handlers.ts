@@ -16,6 +16,7 @@ import { fetchDNAData, getMatchesForClub, getTopMatches, formatDNAMatchList, for
 import { isTalentSearchQuery, parseTalentQuery, searchTalents, formatTalentSearchResults } from './talent-search';
 import { classifyWithLLM, convertToParseIntent } from './llm-classifier';
 import { handleWatchCommand, handleWatchCallback } from './watch';
+import { generateScoutResponse, generateDNAResponse } from './response-generator';
 
 export async function handleMessage(message: TelegramMessage, env: Env): Promise<void> {
   const chatId = message.chat.id;
@@ -330,6 +331,20 @@ async function handleFilteredQuery(
   }
 
   const message = formatOpportunityList(results, title, limit);
+
+  // NLP-003: Inject AI Scout Persona commentary if available and coming from NLP
+  if (parsed.interpretation && env.AI) {
+    // Generate AI comment
+    const aiComment = await generateScoutResponse(env.AI, parsed.interpretation, results, 'market');
+    
+    if (aiComment) {
+      // Prepend AI comment to the message
+      const fullMessage = `🗣️ <b>OB1 Scout:</b>\n<i>"${aiComment}"</i>\n\n${message}`;
+      await sendMessage(env, chatId, fullMessage);
+      return;
+    }
+  }
+
   await sendMessage(env, chatId, message);
 }
 
@@ -488,6 +503,17 @@ ${clubs.map(c => `• <code>${c}</code>`).join('\n')}`);
     `🧬 <b>DNA Matches</b>`,
     clubName
   );
+
+  // NLP-003: Inject AI DNA analysis
+  if (env.AI) {
+    const aiComment = await generateDNAResponse(env.AI, clubName, matches);
+
+    if (aiComment) {
+      const fullMessage = `🗣️ <b>OB1 Scout:</b>\n<i>"${aiComment}"</i>\n\n${message}`;
+      await sendMessage(env, chatId, fullMessage);
+      return;
+    }
+  }
 
   await sendMessage(env, chatId, message);
 }
@@ -671,6 +697,22 @@ async function handleTalentSearch(chatId: number, text: string, env: Env): Promi
 
   const results = searchTalents(dnaData, query, 5);
   const message = formatTalentSearchResults(results, query);
+
+  // NLP-003: Inject AI Scout Persona commentary
+  if (env.AI) {
+    const aiComment = await generateScoutResponse(
+      env.AI, 
+      `${query.role} con caratteristiche: ${query.characteristics.join(', ')}`, 
+      results.map(r => r.opportunity), // Map DNA result to Opportunity format for the generator
+      'talent'
+    );
+
+    if (aiComment) {
+      const fullMessage = `🗣️ <b>OB1 Scout:</b>\n<i>"${aiComment}"</i>\n\n${message}`;
+      await sendMessage(env, chatId, fullMessage);
+      return;
+    }
+  }
 
   await sendMessage(env, chatId, message);
 }

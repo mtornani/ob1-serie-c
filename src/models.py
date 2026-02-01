@@ -47,6 +47,10 @@ class PlayerProfile:
     foot: Optional[str] = None  # destro, sinistro, ambidestro
     height_cm: Optional[int] = None
     
+    # Valore di mercato (Transfermarkt)
+    market_value: Optional[int] = None  # in euro
+    market_value_formatted: Optional[str] = None  # es. "€300k"
+    
     # Situazione contrattuale
     current_club: Optional[str] = None
     contract_status: Optional[str] = None  # sotto contratto, svincolato, in scadenza
@@ -78,6 +82,8 @@ class PlayerProfile:
         if self.birth_year:
             age = datetime.now().year - self.birth_year
             lines.append(f"Età: {age} anni (nato nel {self.birth_year})")
+        if self.market_value_formatted:
+            lines.append(f"Valore Mercato: {self.market_value_formatted}")
         if self.nationality:
             lines.append(f"Nazionalità: {self.nationality}")
         if self.role:

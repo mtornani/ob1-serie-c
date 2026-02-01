@@ -13,7 +13,7 @@ binding = "AI"
 # KV Namespace for user data (watch profiles, notifications)
 [[kv_namespaces]]
 binding = "USER_DATA"
-id = "to_be_configured"
+id = "8fa1cfab5c5542afa3d2a683411e283c"
 
 # Cron triggers for scheduled tasks
 [triggers]

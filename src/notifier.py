@@ -71,6 +71,38 @@ class TelegramNotifier:
 
         return success
 
+    def send_document(self, file_path: str, caption: str = None) -> bool:
+        """Invia un file (PDF, report)"""
+        if not self.enabled: return False
+        
+        url = f"https://api.telegram.org/bot{self.bot_token}/sendDocument"
+        success = True
+        
+        path = Path(file_path)
+        if not path.exists():
+            print(f"❌ File not found: {file_path}")
+            return False
+            
+        for chat_id in self.chat_ids:
+            try:
+                with open(path, 'rb') as f:
+                    files = {'document': f}
+                    data = {'chat_id': chat_id}
+                    if caption:
+                        data['caption'] = caption
+                        data['parse_mode'] = 'HTML'
+                        
+                    resp = requests.post(url, data=data, files=files, timeout=30)
+                    
+                    if resp.status_code != 200:
+                        print(f"❌ Telegram Document Error ({chat_id}): {resp.text}")
+                        success = False
+            except Exception as e:
+                print(f"❌ Telegram Document Exception ({chat_id}): {e}")
+                success = False
+                
+        return success
+
     # =========================================================================
     # NOTIF-001: Enhanced Notification Formats
     # =========================================================================

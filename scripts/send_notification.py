@@ -121,6 +121,21 @@ def main():
     else:
         print(f"⚠️ Some notifications failed")
 
+    # REPORT-001: Send PDF Report if available
+    report_file = base_dir / 'docs' / 'report_latest.pdf'
+    if report_file.exists():
+        print(f"📄 Found PDF report: {report_file}")
+        
+        # Only send if recent (modified in last hour)
+        mtime = datetime.fromtimestamp(report_file.stat().st_mtime)
+        if (datetime.now() - mtime).total_seconds() < 3600:
+            print("   Sending PDF report...")
+            notifier.send_document(
+                str(report_file), 
+                caption=f"📄 <b>OB1 Scouting Report</b> - {datetime.now().strftime('%d/%m/%Y')}"
+            )
+        else:
+            print("   Report too old, skipping send.")
 
 if __name__ == "__main__":
     main()

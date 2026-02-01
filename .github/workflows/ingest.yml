@@ -43,21 +43,25 @@ jobs:
         SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
       run: python scripts/run_ingest.py
 
+    - name: Enrich data with Transfermarkt
+      env:
+        TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: python scripts/run_enrichment.py
+
+    - name: Generate dashboard
+      run: python scripts/generate_dashboard.py
+
+    - name: Generate PDF Report
+      run: python scripts/generate_report.py
+
     - name: Send Telegram notification
       if: success()
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       run: python scripts/send_notification.py
 
-    - name: Generate dashboard
-      run: python scripts/generate_dashboard.py
-
     - name: Upload database artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: ob1-database
-        path: data/
-        retention-days: 30
 
     - name: Commit and push data
       run: |
