@@ -1,6 +1,9 @@
 /**
  * NLP-001: Natural Language Processing for Telegram Bot
  * Parses Italian natural language queries into structured intents
+ *
+ * PHILOSOPHY: Be permissive! Any reasonable query should return results.
+ * When in doubt, show the list rather than asking for clarification.
  */
 
 export interface ParsedIntent {
@@ -19,9 +22,9 @@ export interface ParsedIntent {
 
 // Role mappings (Italian variants → normalized)
 const ROLE_PATTERNS: Record<string, RegExp> = {
-  'centrocampista': /\b(centrocamp\w*|cc|mediano|mezzala|regista|trequartista)\b/i,
+  'centrocampista': /\b(centrocamp\w*|cc|mediano|mezzala|regista|trequartista|interno)\b/i,
   'difensore': /\b(difensor\w*|dc|terzin\w*|central\w*|stopper|libero)\b/i,
-  'attaccante': /\b(attaccant\w*|punt\w*|bomber|ala|esterno.?offensiv\w*|prima.?punta|seconda.?punta)\b/i,
+  'attaccante': /\b(attaccant\w*|punt\w*|bomber|ala|esterno.?offensiv\w*|prima.?punta|seconda.?punta|goleador)\b/i,
   'portiere': /\b(portier\w*|gk|goalkeeper|numero.?1)\b/i,
 };
 
@@ -33,14 +36,31 @@ const TYPE_PATTERNS: Record<string, RegExp> = {
   'scadenza': /\b(scadenz\w*|contratto.?in.?scadenza|fine.?contratto)\b/i,
 };
 
-// Intent patterns
+// Intent patterns - EXPANDED to be more permissive
 const INTENT_PATTERNS = {
-  list_hot: /\b(miglior\w*|top|hot|priorit\w*\s*alt\w*|urgent\w*|imperdibil\w*|da.?prendere|consiglia|raccomand)\b/i,
-  list_warm: /\b(interessant\w*|warm|tener\w*.?d.?occhio|monitorare|seguire|valutare)\b/i,
-  list_all: /\b(tutt\w*|lista|elenco|complet\w*|mostrar\w*\s*tutt)\b/i,
-  stats: /\b(statistic\w*|numer\w*|quant\w*|riepilog\w*|report|situazione)\b/i,
+  // Asking for the best / top opportunities
+  list_hot: /\b(miglior\w*|top|hot|priorit\w*|urgent\w*|imperdibil\w*|da.?prendere|consiglia|raccomand\w*|important\w*|principal\w*)\b/i,
+
+  // Asking for interesting opportunities
+  list_warm: /\b(interessant\w*|warm|tener\w*.?d.?occhio|monitorare|seguire|valutare|notevol\w*)\b/i,
+
+  // Asking for a list / all opportunities
+  list_all: /\b(tutt\w*|lista|elenco|complet\w*|mostrar?\w*|far.?vedere|veder\w*|elenca|dammi|dimmi)\b/i,
+
+  // Asking for stats / numbers
+  stats: /\b(statistic\w*|numer\w*|quant\w*|riepilog\w*|report|situazione|sommario)\b/i,
+
+  // Asking for help
   help: /\b(aiuto|help|come.?funzion\w*|cosa.?(puoi|sai)|comand\w*|istruzioni)\b/i,
+
+  // Explicit search
   search: /\b(cerca|trovami|chi.?[eè]|info.?su|dimmi.?di|parlami.?di|conosc\w*)\b/i,
+
+  // GENERIC QUESTION PATTERNS - These indicate user wants to see opportunities
+  generic_list: /\b(occasioni|opportunit\w*|giocator\w*|calciat\w*|disponibil\w*|mercato|news|novit\w*|aggiornament\w*)\b/i,
+
+  // Time-related patterns (oggi, recenti, ultimi, nuovi)
+  time_query: /\b(oggi|ieri|recent\w*|ultim\w*|nuov\w*|ultimo|fresc\w*|appena)\b/i,
 };
 
 // Age patterns
@@ -75,7 +95,7 @@ function extractSpecificAge(match: RegExpMatchArray): { min?: number; max?: numb
 function extractPlayerName(text: string): string | null {
   // Remove common words and see if we have capitalized names
   const cleanText = text
-    .replace(/\b(cerca|trovami|chi|è|info|su|dimmi|di|mostra|voglio|vedere)\b/gi, '')
+    .replace(/\b(cerca|trovami|chi|è|e|info|su|dimmi|di|mostra|voglio|vedere|le|i|gli|la|il|lo|un|una|dei|delle|del|della)\b/gi, '')
     .trim();
 
   // Look for capitalized word sequences (likely names)
@@ -84,23 +104,10 @@ function extractPlayerName(text: string): string | null {
 
   if (matches && matches.length > 0) {
     // Filter out known keywords
-    const keywords = ['Migliori', 'Top', 'Tutti', 'Hot', 'Warm', 'Cold'];
+    const keywords = ['Migliori', 'Top', 'Tutti', 'Hot', 'Warm', 'Cold', 'Lista', 'Occasioni'];
     const names = matches.filter(m => !keywords.includes(m));
     if (names.length > 0) {
       return names.join(' ');
-    }
-  }
-
-  // Also check for all-lowercase potential names (common in chat)
-  // If query is short and doesn't match any intent, treat as name search
-  const words = cleanText.split(/\s+/).filter(w => w.length > 2);
-  if (words.length <= 3 && words.length > 0) {
-    const noIntentMatch = !Object.values(INTENT_PATTERNS).some(p => p.test(cleanText));
-    const noRoleMatch = !Object.values(ROLE_PATTERNS).some(p => p.test(cleanText));
-    const noTypeMatch = !Object.values(TYPE_PATTERNS).some(p => p.test(cleanText));
-
-    if (noIntentMatch && noRoleMatch && noTypeMatch) {
-      return cleanText;
     }
   }
 
@@ -108,7 +115,19 @@ function extractPlayerName(text: string): string | null {
 }
 
 /**
+ * Check if the query is a greeting or small talk (not a data query)
+ */
+function isGreetingOrSmallTalk(text: string): boolean {
+  const greetings = /^(ciao|salve|buongiorno|buonasera|hey|hi|hello|ehi)[\s!?]*$/i;
+  const smallTalk = /^(come stai|tutto bene|ok|grazie|thanks)[\s!?]*$/i;
+  return greetings.test(text.trim()) || smallTalk.test(text.trim());
+}
+
+/**
  * Main NLP parser - converts natural language to structured intent
+ *
+ * PRINCIPLE: Be generous in interpretation. If user asks anything about
+ * players, opportunities, market - show them data!
  */
 export function parseNaturalQuery(text: string): ParsedIntent {
   const lower = text.toLowerCase().trim();
@@ -117,45 +136,73 @@ export function parseNaturalQuery(text: string): ParsedIntent {
   let intent: ParsedIntent['intent'] = 'unknown';
   const interpretationParts: string[] = [];
 
-  // 1. Check for player name first (highest priority if detected)
+  // Handle greetings separately
+  if (isGreetingOrSmallTalk(lower)) {
+    return {
+      intent: 'help',
+      filters: {},
+      confidence: 0.9,
+      interpretation: 'benvenuto',
+    };
+  }
+
+  // 1. Check for explicit help request
+  if (INTENT_PATTERNS.help.test(lower)) {
+    return {
+      intent: 'help',
+      filters: {},
+      confidence: 0.95,
+    };
+  }
+
+  // 2. Check for stats request
+  if (INTENT_PATTERNS.stats.test(lower) && !INTENT_PATTERNS.generic_list.test(lower)) {
+    return {
+      intent: 'stats',
+      filters: {},
+      confidence: 0.9,
+    };
+  }
+
+  // 3. Check for player name (high priority)
   const playerName = extractPlayerName(text);
   if (playerName && playerName.length > 2) {
     filters.query = playerName;
     intent = 'search';
     confidence += 0.7;
-    interpretationParts.push(`cercando "${playerName}"`);
+    interpretationParts.push(`"${playerName}"`);
   }
 
-  // 2. Check for role filters
+  // 4. Check for role filters
   for (const [role, pattern] of Object.entries(ROLE_PATTERNS)) {
     if (pattern.test(lower)) {
       filters.role = role;
-      confidence += 0.2;
+      confidence += 0.25;
       interpretationParts.push(role);
-      if (intent === 'unknown') intent = 'search';
+      if (intent === 'unknown') intent = 'list_all';
       break;
     }
   }
 
-  // 3. Check for opportunity type filters
+  // 5. Check for opportunity type filters
   for (const [type, pattern] of Object.entries(TYPE_PATTERNS)) {
     if (pattern.test(lower)) {
       filters.type = type;
-      confidence += 0.2;
+      confidence += 0.25;
       interpretationParts.push(type);
-      if (intent === 'unknown') intent = 'search';
+      if (intent === 'unknown') intent = 'list_all';
       break;
     }
   }
 
-  // 4. Check for age filters
+  // 6. Check for age filters
   for (const [ageType, { pattern, extractAge }] of Object.entries(AGE_PATTERNS)) {
     const match = lower.match(pattern);
     if (match) {
       const ageRange = extractAge(match);
       if (ageRange.min) filters.ageMin = ageRange.min;
       if (ageRange.max) filters.ageMax = ageRange.max;
-      confidence += 0.15;
+      confidence += 0.2;
 
       if (ageRange.min && ageRange.max && ageRange.min === ageRange.max) {
         interpretationParts.push(`${ageRange.min} anni`);
@@ -165,33 +212,43 @@ export function parseNaturalQuery(text: string): ParsedIntent {
         interpretationParts.push(`over ${ageRange.min}`);
       }
 
-      if (intent === 'unknown') intent = 'search';
+      if (intent === 'unknown') intent = 'list_all';
       break;
     }
   }
 
-  // 5. Check for explicit intents (can override 'search')
-  if (INTENT_PATTERNS.help.test(lower)) {
-    intent = 'help';
-    confidence = 0.9;
-  } else if (INTENT_PATTERNS.stats.test(lower)) {
-    intent = 'stats';
-    confidence = Math.max(confidence, 0.8);
-  } else if (INTENT_PATTERNS.list_hot.test(lower)) {
+  // 7. Check for quality intents (hot/warm)
+  if (INTENT_PATTERNS.list_hot.test(lower)) {
     intent = 'list_hot';
     confidence = Math.max(confidence, 0.8);
-    interpretationParts.unshift('migliori');
+    if (!interpretationParts.includes('migliori')) {
+      interpretationParts.unshift('migliori');
+    }
   } else if (INTENT_PATTERNS.list_warm.test(lower)) {
     intent = 'list_warm';
-    confidence = Math.max(confidence, 0.8);
-    interpretationParts.unshift('interessanti');
-  } else if (INTENT_PATTERNS.list_all.test(lower)) {
-    intent = 'list_all';
-    confidence = Math.max(confidence, 0.7);
+    confidence = Math.max(confidence, 0.75);
+    if (!interpretationParts.includes('interessanti')) {
+      interpretationParts.unshift('interessanti');
+    }
   }
 
-  // 6. Handle limit requests
-  const limitMatch = lower.match(/\b(primo|prima|top\s*)?(\d+)\b/);
+  // 8. Handle generic list requests and time queries
+  // "le occasioni di oggi", "opportunità recenti", "giocatori disponibili", etc.
+  const hasGenericListWord = INTENT_PATTERNS.generic_list.test(lower);
+  const hasTimeWord = INTENT_PATTERNS.time_query.test(lower);
+  const hasListIntent = INTENT_PATTERNS.list_all.test(lower);
+
+  if ((hasGenericListWord || hasTimeWord || hasListIntent) && intent === 'unknown') {
+    intent = 'list_all';
+    confidence = Math.max(confidence, 0.7);
+
+    if (hasTimeWord) {
+      interpretationParts.push('recenti');
+    }
+  }
+
+  // 9. Handle limit requests
+  const limitMatch = lower.match(/\b(prim[oiae]|top\s*)?(\d+)\b/);
   if (limitMatch && limitMatch[2]) {
     const num = parseInt(limitMatch[2]);
     if (num >= 1 && num <= 20) {
@@ -199,10 +256,17 @@ export function parseNaturalQuery(text: string): ParsedIntent {
     }
   }
 
-  // 7. Fallback: if we have filters but no clear intent, default to search
-  if (intent === 'unknown' && (filters.role || filters.type || filters.ageMin || filters.ageMax)) {
-    intent = 'search';
-    confidence = Math.max(confidence, 0.5);
+  // 10. FALLBACK: If we still don't know what to do but the message
+  // looks like a question about football/market, show all opportunities
+  if (intent === 'unknown') {
+    const looksLikeQuestion = /[?]|\b(ci sono|c'è|cosa|quali|che)\b/i.test(lower);
+    const footballRelated = /\b(gioc\w*|calc\w*|serie|mercato|trasfer\w*|acquist\w*)\b/i.test(lower);
+
+    if (looksLikeQuestion || footballRelated || lower.length < 30) {
+      // Short message or question? Just show the list!
+      intent = 'list_all';
+      confidence = 0.5;
+    }
   }
 
   // Build interpretation string
