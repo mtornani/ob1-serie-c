@@ -20,8 +20,11 @@ export default {
       return new Response(JSON.stringify({
         status: 'ok',
         service: 'OB1 Radar Telegram Bot',
-        version: '1.1.0',
-        features: ['NOTIF-001: Enhanced alerts with inline keyboards'],
+        version: '2.0.0',
+        features: [
+          'NOTIF-001: Enhanced alerts with inline keyboards',
+          'NLP-001: Natural language query processing',
+        ],
       }), {
         headers: { 'Content-Type': 'application/json' },
       });

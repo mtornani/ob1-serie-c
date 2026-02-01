@@ -83,3 +83,72 @@ export function getStats(opportunities: Opportunity[]): { total: number; hot: nu
 export function findOpportunityById(opportunities: Opportunity[], id: string): Opportunity | undefined {
   return opportunities.find(o => o.id === id);
 }
+
+// ============================================================================
+// NLP-001: Advanced filtering for natural language queries
+// ============================================================================
+
+export interface FilterOptions {
+  role?: string;
+  type?: string;
+  ageMin?: number;
+  ageMax?: number;
+  query?: string;
+  minScore?: number;
+  maxScore?: number;
+}
+
+/**
+ * Filter opportunities based on multiple criteria
+ */
+export function filterOpportunities(opportunities: Opportunity[], filters: FilterOptions): Opportunity[] {
+  return opportunities.filter(o => {
+    // Role filter
+    if (filters.role) {
+      const roleNormalized = (o.role_name || o.role || '').toLowerCase();
+      if (!roleNormalized.includes(filters.role.toLowerCase())) {
+        return false;
+      }
+    }
+
+    // Type filter
+    if (filters.type) {
+      if (o.opportunity_type.toLowerCase() !== filters.type.toLowerCase()) {
+        return false;
+      }
+    }
+
+    // Age filter
+    if (filters.ageMin && o.age < filters.ageMin) {
+      return false;
+    }
+    if (filters.ageMax && o.age > filters.ageMax) {
+      return false;
+    }
+
+    // Score filter
+    if (filters.minScore && o.ob1_score < filters.minScore) {
+      return false;
+    }
+    if (filters.maxScore && o.ob1_score > filters.maxScore) {
+      return false;
+    }
+
+    // Text query filter (name, clubs)
+    if (filters.query) {
+      const lowerQuery = filters.query.toLowerCase();
+      const searchable = [
+        o.player_name,
+        o.role_name || o.role,
+        o.current_club || '',
+        ...(o.previous_clubs || []),
+      ].join(' ').toLowerCase();
+
+      if (!searchable.includes(lowerQuery)) {
+        return false;
+      }
+    }
+
+    return true;
+  }).sort((a, b) => b.ob1_score - a.ob1_score);
+}

@@ -61,19 +61,46 @@ export function formatWelcome(env: Env): string {
 
 Sono il tuo assistente per lo scouting Serie C/D.
 
-📋 <b>Comandi disponibili:</b>
+💬 <b>Parlami in modo naturale!</b>
+Puoi scrivermi cose come:
+• "chi sono i migliori disponibili?"
+• "centrocampisti svincolati"
+• "attaccanti under 25"
+• "cerca Rossi"
+
+📋 <b>Oppure usa i comandi:</b>
 /hot - Giocatori HOT (score 80+)
 /warm - Giocatori WARM (score 60-79)
 /all - Tutte le opportunita
-/search &lt;nome&gt; - Cerca giocatore
-/stats - Statistiche attuali
-/help - Mostra questo messaggio
+/search - Cerca giocatore
+/stats - Statistiche
 
 🔗 <a href="${env.DASHBOARD_URL}">Apri Dashboard</a>`;
 }
 
 export function formatHelp(env: Env): string {
-  return formatWelcome(env);
+  return `❓ <b>Come posso aiutarti</b>
+
+💬 <b>Linguaggio naturale:</b>
+Scrivimi come parleresti a un collega:
+• "mostrami i migliori"
+• "centrocampisti svincolati under 28"
+• "difensori in prestito"
+• "quante opportunità ci sono?"
+
+🔍 <b>Filtri supportati:</b>
+• Ruolo: centrocampista, difensore, attaccante, portiere
+• Tipo: svincolato, prestito, rescissione, scadenza
+• Età: under 25, over 30, giovani, esperti
+
+📋 <b>Comandi rapidi:</b>
+/hot - I migliori (score 80+)
+/warm - Interessanti (score 60-79)
+/all - Lista completa
+/search &lt;nome&gt; - Cerca per nome
+/stats - Statistiche
+
+🔗 <a href="${env.DASHBOARD_URL}">Dashboard completa</a>`;
 }
 
 export function formatError(): string {
