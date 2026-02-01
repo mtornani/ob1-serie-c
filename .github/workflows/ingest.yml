@@ -62,6 +62,11 @@ jobs:
       run: python scripts/send_notification.py
 
     - name: Upload database artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ob1-database
+        path: data/
+        retention-days: 7
 
     - name: Commit and push data
       run: |
