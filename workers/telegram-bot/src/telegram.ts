@@ -166,3 +166,44 @@ export async function getWebhookInfo(env: Env): Promise<any> {
     return null;
   }
 }
+
+/**
+ * Set bot commands for the menu
+ */
+export async function setMyCommands(env: Env): Promise<boolean> {
+  const url = `${TELEGRAM_API}${env.TELEGRAM_BOT_TOKEN}/setMyCommands`;
+
+  const commands = [
+    { command: 'start', description: '🎯 Avvia il bot' },
+    { command: 'hot', description: '🔥 Migliori opportunità (score 80+)' },
+    { command: 'warm', description: '⚡ Opportunità interessanti (60-79)' },
+    { command: 'all', description: '📋 Tutte le opportunità' },
+    { command: 'scout', description: '🎯 Wizard guidato (ti aiuto a cercare)' },
+    { command: 'talenti', description: '🧬 Talenti dalle squadre B' },
+    { command: 'dna', description: '🧬 DNA match per un club' },
+    { command: 'watch', description: '🔔 Gestisci alert personalizzati' },
+    { command: 'stats', description: '📊 Statistiche mercato' },
+    { command: 'help', description: '❓ Come usare il bot' },
+  ];
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ commands }),
+    });
+
+    if (!response.ok) {
+      const error = await response.text();
+      console.error('Failed to set commands:', error);
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Failed to set commands:', error);
+    return false;
+  }
+}

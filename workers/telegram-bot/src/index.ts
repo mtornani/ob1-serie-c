@@ -9,7 +9,7 @@
 
 import { Env, TelegramUpdate } from './types';
 import { handleMessage, handleCallbackQuery } from './handlers';
-import { setWebhook, getWebhookInfo } from './telegram';
+import { setWebhook, getWebhookInfo, setMyCommands } from './telegram';
 import { processQueuedNotifications } from './notifications';
 
 export default {
@@ -65,6 +65,31 @@ export default {
           headers: { 'Content-Type': 'application/json' },
         });
       }
+    }
+
+    // Setup bot commands menu
+    if (url.pathname === '/setup-commands' && request.method === 'GET') {
+      const success = await setMyCommands(env);
+
+      return new Response(JSON.stringify({
+        success,
+        message: success ? 'Bot commands menu updated!' : 'Failed to set commands',
+        commands: [
+          '/start - Avvia il bot',
+          '/hot - Migliori opportunità',
+          '/warm - Opportunità interessanti',
+          '/all - Tutte le opportunità',
+          '/scout - Wizard guidato',
+          '/talenti - Talenti squadre B',
+          '/dna - DNA match per club',
+          '/watch - Alert personalizzati',
+          '/stats - Statistiche',
+          '/help - Aiuto',
+        ],
+      }), {
+        status: success ? 200 : 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     // Telegram webhook endpoint
