@@ -260,13 +260,13 @@ JSON:'''
         # Generate ID
         opp_id = f"opp_{hashlib.md5(f'{player_name}_{url}'.encode()).hexdigest()[:8]}"
 
-        # Map role
-        role_raw = player.get('role', '').lower()
+        # Map role (handle None explicitly)
+        role_raw = (player.get('role') or '').lower()
         role_code = self.ROLE_MAPPING.get(role_raw, 'CC')
         role_name = role_raw.title() if role_raw else 'N/D'
 
-        # Opportunity type
-        opp_type = player.get('opportunity_type', 'mercato').lower()
+        # Opportunity type (handle None explicitly)
+        opp_type = (player.get('opportunity_type') or 'mercato').lower()
         if opp_type not in ['svincolato', 'rescissione', 'prestito', 'scadenza', 'mercato']:
             opp_type = 'mercato'
 
