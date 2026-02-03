@@ -1,133 +1,106 @@
 /**
  * DNA-001: DNA Matching for Telegram Bot
- *
- * Handles DNA matching data fetching and formatting for the bot.
+ * REFACTORED: Now uses only data.json as the single source of truth.
  */
 
-import { Env } from './types';
-
-const DNA_DATA_URL = 'https://mtornani.github.io/ob1-serie-c/dna_matches.json';
-
-// Cache for DNA data
-let cachedDnaData: DNAData | null = null;
-let dnaCacheTime: number = 0;
-const DNA_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+import { Env, Opportunity } from './types';
+import { fetchData } from './data';
 
 export interface PlayerMatch {
-  player: {
-    id: string;
-    name: string;
-    age: number;
-    primary_position: string;
-    parent_club: string;
-    current_team: string;
-    minutes_percentage: number;
-    is_underused: boolean;
-    market_value: number;
-    transfermarkt_url: string;
-  };
+  player: Opportunity;
   club_id: string;
   club_name: string;
   score: number;
-  breakdown: {
-    position: number;
-    age: number;
-    style: number;
-    availability: number;
-    budget: number;
-  };
   recommendation: string;
 }
 
-export interface DNAData {
-  matches: PlayerMatch[];
-  stats: {
-    total_players: number;
-    total_clubs: number;
-    parent_clubs: string[];
-    underused_players: number;
-  };
-  generated_at: string;
+/**
+ * Simplified DNA Matching:
+ * Since we are using only data.json, we simulate "matching" by 
+ * filtering high-score opportunities that fit the club search.
+ */
+export async function fetchDNAData(env: Env): Promise<Opportunity[] | null> {
+  const data = await fetchData(env);
+  return data?.opportunities || null;
 }
 
-export async function fetchDNAData(): Promise<DNAData | null> {
-  const now = Date.now();
+export function getMatchesForClub(opportunities: Opportunity[], clubQuery: string, limit: number = 5): PlayerMatch[] {
+  const searchTerm = clubQuery.toLowerCase().trim();
+  
+  // Search for players that might fit the club
+  // 1. Mention the club in summary
+  // 2. Are currently in the club (to show "internal" opportunities/news)
+  // 3. Just high score players if no specific match found
+  
+  const clubMatches = opportunities.filter(o => {
+    const text = [
+      o.player_name,
+      o.current_club || '',
+      o.summary || '',
+      ...(o.previous_clubs || [])
+    ].join(' ').toLowerCase();
+    
+    return text.includes(searchTerm);
+  });
 
-  // Return cached if valid
-  if (cachedDnaData && (now - dnaCacheTime) < DNA_CACHE_TTL) {
-    return cachedDnaData;
+  // If we found specific mentions, prioritize them
+  if (clubMatches.length > 0) {
+    return clubMatches
+      .sort((a, b) => b.ob1_score - a.ob1_score)
+      .slice(0, limit)
+      .map(o => ({
+        player: o,
+        club_id: searchTerm,
+        club_name: clubQuery,
+        score: o.ob1_score,
+        recommendation: `Profilo interessante per il progetto ${clubQuery}.`
+      }));
   }
 
-  try {
-    const response = await fetch(DNA_DATA_URL, {
-      headers: { 'Cache-Control': 'no-cache' },
-    });
-
-    if (!response.ok) {
-      console.error('Failed to fetch DNA data:', response.status);
-      return cachedDnaData;
-    }
-
-    const data: DNAData = await response.json();
-    cachedDnaData = data;
-    dnaCacheTime = now;
-
-    return data;
-  } catch (error) {
-    console.error('Error fetching DNA data:', error);
-    return cachedDnaData;
-  }
+  // Otherwise, suggest top players that fit the "general" DNA of a C club (young/motivated)
+  return opportunities
+    .filter(o => o.age <= 25 && o.ob1_score >= 70)
+    .sort((a, b) => b.ob1_score - a.ob1_score)
+    .slice(0, limit)
+    .map(o => ({
+      player: o,
+      club_id: searchTerm,
+      club_name: clubQuery,
+      score: o.ob1_score,
+      recommendation: `Talento giovane (Under 25) con alto potenziale per la categoria.`
+    }));
 }
 
-export function getMatchesForClub(data: DNAData, clubId: string, limit: number = 5): PlayerMatch[] {
-  return data.matches
-    .filter(m => m.club_id === clubId)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, limit);
-}
-
-export function getTopMatches(data: DNAData, minScore: number = 80, limit: number = 10): PlayerMatch[] {
-  // Get unique matches (one per player-club combo)
-  const seen = new Set<string>();
-  const unique: PlayerMatch[] = [];
-
-  for (const m of data.matches) {
-    const key = `${m.player.id}_${m.club_id}`;
-    if (!seen.has(key) && m.score >= minScore) {
-      seen.add(key);
-      unique.push(m);
-    }
-  }
-
-  return unique
-    .sort((a, b) => b.score - a.score)
-    .slice(0, limit);
-}
-
-export function getAvailableClubs(data: DNAData): string[] {
-  const clubs = new Set<string>();
-  for (const m of data.matches) {
-    clubs.add(m.club_id);
-  }
-  return Array.from(clubs);
+export function getTopMatches(opportunities: Opportunity[], minScore: number = 75, limit: number = 10): PlayerMatch[] {
+  // Top "talenti" are young players (Under 23) with high OB1 score
+  return opportunities
+    .filter(o => o.age <= 23 && o.ob1_score >= minScore)
+    .sort((a, b) => b.ob1_score - a.ob1_score)
+    .slice(0, limit)
+    .map(o => ({
+      player: o,
+      club_id: 'general',
+      club_name: 'Serie C',
+      score: o.ob1_score,
+      recommendation: 'Top prospect monitorato dai nostri osservatori.'
+    }));
 }
 
 export function formatDNAMatch(match: PlayerMatch): string {
-  const scoreEmoji = match.score >= 85 ? '🔥' : match.score >= 70 ? '⚡' : '📊';
-  const player = match.player;
+  const o = match.player;
+  const scoreEmoji = o.ob1_score >= 85 ? '🔥' : o.ob1_score >= 70 ? '⚡' : '📊';
 
-  let msg = `${scoreEmoji} <b>${escapeHtml(player.name)}</b> (${match.score}%)\n`;
-  msg += `📍 ${player.primary_position} | ${player.age} anni\n`;
-  msg += `🏟️ ${escapeHtml(player.current_team)}\n`;
-
-  if (player.is_underused) {
-    msg += `⚠️ Solo ${player.minutes_percentage.toFixed(0)}% minuti giocati\n`;
+  let msg = `${scoreEmoji} <b>${escapeHtml(o.player_name)}</b> (${o.ob1_score}%)\n`;
+  msg += `📍 ${o.role_name || o.role} | ${o.age} anni\n`;
+  
+  if (o.current_club) {
+    msg += `🏟️ ${escapeHtml(o.current_club)}\n`;
   }
 
   msg += `\n💡 <i>${escapeHtml(match.recommendation)}</i>`;
 
-  if (player.transfermarkt_url) {
-    msg += `\n🔗 <a href="${player.transfermarkt_url}">Transfermarkt</a>`;
+  if (o.source_url) {
+    msg += `\n🔗 <a href="${o.source_url}">Fonte: ${o.source_name}</a>`;
   }
 
   return msg;
@@ -140,8 +113,8 @@ export function formatDNAMatchList(matches: PlayerMatch[], title: string, clubNa
 
   let message = `${title}\n`;
 
-  if (clubName) {
-    message += `🎯 Per: <b>${escapeHtml(clubName)}</b>\n`;
+  if (clubName && clubName !== 'Serie C') {
+    message += `🎯 Focus: <b>${escapeHtml(clubName)}</b>\n`;
   }
 
   message += '\n';
@@ -159,35 +132,12 @@ export function formatDNAMatchList(matches: PlayerMatch[], title: string, clubNa
   return message;
 }
 
-export function formatDNAStats(data: DNAData): string {
-  return `🧬 <b>DNA Matching - Stats</b>
-
-📊 Database:
-• ${data.stats.total_players} giocatori monitorati
-• ${data.stats.total_clubs} club con profilo
-• ${data.stats.underused_players} talenti underused
-
-🏟️ <b>Squadre B monitorate:</b>
-${data.stats.parent_clubs.map(c => `• ${c}`).join('\n')}
-
-🕐 Aggiornamento: ${formatDate(data.generated_at)}
-
-━━━━━━━━━━━━━━━━━━━━
-🌐 <a href="https://mtornani.github.io/ob1-serie-c/">Dashboard</a>`;
-}
-
-function formatDate(dateString: string): string {
-  try {
-    const date = new Date(dateString);
-    return date.toLocaleString('it-IT', {
-      day: '2-digit',
-      month: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-  } catch {
-    return dateString;
-  }
+export function formatDNAStats(opportunities: Opportunity[]): string {
+  const young = opportunities.filter(o => o.age <= 23).length;
+  const hot = opportunities.filter(o => o.ob1_score >= 80).length;
+  
+  return `🧬 <b>OB1 Radar - Stats</b>\n\n📊 Database:\n• ${opportunities.length} giocatori monitorati\n• ${young} giovani talenti (Under 23)\n• ${hot} opportunità prioritari (Score 80+)\n\n━━━━━━━━━━━━━━━━━━━━\n🌐 <a href="https://mtornani.github.io/ob1-serie-c/">Dashboard</a>
+`;
 }
 
 function escapeHtml(text: string): string {

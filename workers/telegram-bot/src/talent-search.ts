@@ -1,19 +1,13 @@
 /**
  * DNA-001: Talent Search - Natural Language Field Search
- *
- * Permette al DS di cercare talenti con linguaggio da campo:
- * - "mi serve un terzino che spinga"
- * - "centrocampista box-to-box"
- * - "difensore bravo in impostazione"
- * - "ala veloce"
+ * REFACTORED: Now uses only data.json via Opportunity interface.
  */
 
-import { PlayerMatch, DNAData } from './dna';
+import { PlayerMatch } from './dna';
+import { Opportunity } from './types';
 
 // Mapping ruoli - linguaggio naturale → posizioni
-// IMPORTANTE: Ordinati dal più specifico al più generico!
 const ROLE_MAPPINGS: Record<string, string[]> = {
-  // Difensori - specifici prima
   'terzino destro': ['TD'],
   'terzino dx': ['TD'],
   'terzino sinistro': ['TS'],
@@ -23,8 +17,6 @@ const ROLE_MAPPINGS: Record<string, string[]> = {
   'stopper': ['DC'],
   'terzino': ['TD', 'TS'],
   'difensore': ['DC', 'TD', 'TS'],
-
-  // Centrocampisti - specifici prima
   'centrocampista centrale': ['CC'],
   'mediano': ['MED', 'CC'],
   'regista': ['MED', 'CC'],
@@ -32,8 +24,6 @@ const ROLE_MAPPINGS: Record<string, string[]> = {
   'trequartista': ['TRQ'],
   'interno': ['CC'],
   'centrocampista': ['CC', 'MED', 'TRQ'],
-
-  // Esterni - specifici prima
   'esterno destro': ['ED', 'AD'],
   'esterno sinistro': ['ES', 'AS'],
   'ala destra': ['AD'],
@@ -41,103 +31,17 @@ const ROLE_MAPPINGS: Record<string, string[]> = {
   'esterno': ['ES', 'ED', 'AS', 'AD'],
   'ala': ['AS', 'AD'],
   'fascia': ['ES', 'ED', 'TS', 'TD'],
-
-  // Attaccanti
   'prima punta': ['PC'],
   'seconda punta': ['ATT', 'TRQ'],
   'centravanti': ['PC'],
   'attaccante': ['ATT', 'PC'],
   'punta': ['PC', 'ATT'],
-
-  // Portiere
-  'portiere': ['POR'],
-};
-
-// Mapping caratteristiche - linguaggio da campo → skill requirements
-interface SkillRequirement {
-  skill: string;
-  minValue: number;
-  description: string;
-}
-
-const CHARACTERISTIC_MAPPINGS: Record<string, SkillRequirement[]> = {
-  // Caratteristiche offensive
-  'veloce': [{ skill: 'velocita', minValue: 75, description: 'veloce' }],
-  'rapido': [{ skill: 'velocita', minValue: 75, description: 'rapido' }],
-  'tecnico': [{ skill: 'tecnica', minValue: 75, description: 'tecnico' }],
-  'dribblatore': [{ skill: 'dribbling', minValue: 75, description: 'bravo nel dribbling' }],
-  'che dribbla': [{ skill: 'dribbling', minValue: 70, description: 'bravo nel dribbling' }],
-  'goleador': [{ skill: 'tiro', minValue: 70, description: 'pericoloso sotto porta' }],
-  'bomber': [{ skill: 'tiro', minValue: 75, description: 'bomber' }],
-  'che segna': [{ skill: 'tiro', minValue: 68, description: 'pericoloso' }],
-
-  // Caratteristiche difensive
-  'che difende': [{ skill: 'difesa', minValue: 70, description: 'solido difensivamente' }],
-  'difensivo': [{ skill: 'difesa', minValue: 70, description: 'affidabile dietro' }],
-  'che pressa': [{ skill: 'pressing', minValue: 75, description: 'aggressivo nel pressing' }],
-  'aggressivo': [{ skill: 'pressing', minValue: 75, description: 'aggressivo' }],
-  'pressing alto': [{ skill: 'pressing', minValue: 78, description: 'ottimo nel pressing alto' }],
-
-  // Caratteristiche fisiche
-  'fisico': [{ skill: 'fisico', minValue: 75, description: 'fisicamente forte' }],
-  'forte': [{ skill: 'fisico', minValue: 75, description: 'forte fisicamente' }],
-  'robusto': [{ skill: 'fisico', minValue: 78, description: 'robusto' }],
-  'potente': [{ skill: 'fisico', minValue: 75, description: 'potente' }],
-
-  // Caratteristiche mentali/visione
-  'che imposta': [{ skill: 'visione', minValue: 70, description: 'bravo in impostazione' }, { skill: 'tecnica', minValue: 70 }],
-  'impostazione': [{ skill: 'visione', minValue: 72, description: 'bravo in impostazione' }, { skill: 'tecnica', minValue: 68 }],
-  'costruire il gioco': [{ skill: 'visione', minValue: 70, description: 'sa costruire il gioco' }, { skill: 'tecnica', minValue: 70 }],
-  'costruisce': [{ skill: 'visione', minValue: 68, description: 'sa costruire' }, { skill: 'tecnica', minValue: 68 }],
-  'sappia costruire': [{ skill: 'visione', minValue: 70, description: 'sa costruire il gioco' }, { skill: 'tecnica', minValue: 70 }],
-  'che vede il gioco': [{ skill: 'visione', minValue: 75, description: 'ottima visione di gioco' }],
-  'intelligente': [{ skill: 'visione', minValue: 72, description: 'intelligente tatticamente' }],
-  'piede buono': [{ skill: 'tecnica', minValue: 72, description: 'piede educato' }],
-
-  // Tipi di giocatore specifici
-  'box to box': [
-    { skill: 'pressing', minValue: 70, description: 'box-to-box' },
-    { skill: 'fisico', minValue: 68 },
-    { skill: 'tecnica', minValue: 65 }
-  ],
-  'box-to-box': [
-    { skill: 'pressing', minValue: 70, description: 'box-to-box' },
-    { skill: 'fisico', minValue: 68 },
-    { skill: 'tecnica', minValue: 65 }
-  ],
-  'che spinge': [
-    { skill: 'velocita', minValue: 72, description: 'propositivo in fase offensiva' },
-    { skill: 'fisico', minValue: 65 }
-  ],
-  'offensivo': [
-    { skill: 'velocita', minValue: 68 },
-    { skill: 'tecnica', minValue: 68, description: 'propositivo in avanti' }
-  ],
-  'tutta fascia': [
-    { skill: 'velocita', minValue: 75, description: 'tutta fascia' },
-    { skill: 'difesa', minValue: 60 },
-    { skill: 'fisico', minValue: 70 }
-  ],
-  'incursore': [
-    { skill: 'velocita', minValue: 70, description: 'incursore' },
-    { skill: 'dribbling', minValue: 68 }
-  ],
-};
-
-// Età target patterns
-const AGE_PATTERNS: Record<string, { min?: number; max?: number }> = {
-  'giovane': { max: 21 },
-  'giovanissimo': { max: 19 },
-  'under 21': { max: 21 },
-  'under 23': { max: 23 },
-  'under 25': { max: 25 },
-  'esperto': { min: 26 },
-  'maturo': { min: 25 },
+  'portiere': ['POR', 'PO'],
 };
 
 export interface TalentSearchQuery {
   positions: string[];
-  characteristics: SkillRequirement[];
+  keywords: string[];
   ageRange?: { min?: number; max?: number };
   description: string;
 }
@@ -148,7 +52,7 @@ export interface TalentSearchQuery {
 export function parseTalentQuery(text: string): TalentSearchQuery | null {
   const lower = text.toLowerCase().trim();
   const positions: string[] = [];
-  const characteristics: SkillRequirement[] = [];
+  const keywords: string[] = [];
   let ageRange: { min?: number; max?: number } | undefined;
   const descriptions: string[] = [];
 
@@ -157,116 +61,101 @@ export function parseTalentQuery(text: string): TalentSearchQuery | null {
     if (lower.includes(keyword)) {
       positions.push(...positionList);
       descriptions.push(keyword);
-      break; // Prendi solo il primo match di ruolo
-    }
-  }
-
-  // 2. Trova le caratteristiche
-  for (const [keyword, requirements] of Object.entries(CHARACTERISTIC_MAPPINGS)) {
-    if (lower.includes(keyword)) {
-      characteristics.push(...requirements);
-      // Aggiungi descrizione se presente
-      const withDesc = requirements.find(r => r.description);
-      if (withDesc?.description && !descriptions.includes(withDesc.description)) {
-        descriptions.push(withDesc.description);
-      }
-    }
-  }
-
-  // 3. Trova età
-  for (const [keyword, range] of Object.entries(AGE_PATTERNS)) {
-    if (lower.includes(keyword)) {
-      ageRange = range;
-      descriptions.push(keyword);
       break;
     }
   }
 
-  // Se non abbiamo trovato niente, ritorna null
-  if (positions.length === 0 && characteristics.length === 0) {
+  // 2. Trova parole chiave (caratteristiche)
+  const characteristicKeywords = [
+    'veloce', 'rapido', 'tecnico', 'dribbling', 'fisico', 'forte', 
+    'imposta', 'visione', 'pressa', 'aggressivo', 'box-to-box', 'spinge'
+  ];
+  
+  for (const kw of characteristicKeywords) {
+    if (lower.includes(kw)) {
+      keywords.push(kw);
+      descriptions.push(kw);
+    }
+  }
+
+  // 3. Trova età
+  if (lower.includes('giovane') || lower.includes('under 23') || lower.includes('u23')) {
+    ageRange = { max: 23 };
+    descriptions.push('giovane');
+  } else if (lower.includes('esperto') || lower.includes('over 30')) {
+    ageRange = { min: 30 };
+    descriptions.push('esperto');
+  }
+
+  if (positions.length === 0 && keywords.length === 0) {
     return null;
   }
 
   return {
-    positions: [...new Set(positions)], // Rimuovi duplicati
-    characteristics,
+    positions: [...new Set(positions)],
+    keywords,
     ageRange,
     description: descriptions.join(', '),
   };
 }
 
 /**
- * Cerca talenti che matchano la query
+ * Cerca talenti che matchano la query usando le opportunità di mercato
  */
 export function searchTalents(
-  data: DNAData,
+  opportunities: Opportunity[],
   query: TalentSearchQuery,
   limit: number = 5
 ): PlayerMatch[] {
-  const matches: Array<{ match: PlayerMatch; score: number }> = [];
+  const matches: Array<{ opportunity: Opportunity; score: number }> = [];
 
-  for (const match of data.matches) {
-    const player = match.player;
-    let score = match.score; // Partiamo dallo score DNA base
-    let positionMatch = false;
-    let skillsMatch = true;
-
+  for (const opp of opportunities) {
+    let score = opp.ob1_score;
+    
     // Check posizione
     if (query.positions.length > 0) {
-      positionMatch = query.positions.includes(player.primary_position);
-      if (!positionMatch) {
-        continue; // Skip se la posizione non matcha
-      }
-      score += 10; // Bonus per position match
-    } else {
-      positionMatch = true; // No position filter
+      const playerPos = (opp.role || '').toUpperCase();
+      const posMatch = query.positions.some(p => playerPos.includes(p));
+      if (!posMatch) continue;
+      score += 10;
     }
 
-    // Check skills
-    if (query.characteristics.length > 0) {
-      const playerSkills = match.breakdown; // Usiamo il breakdown come proxy
-
-      // Per ora usiamo un sistema semplificato basato sullo score
-      // In futuro integreremo i dati skills dal JSON completo
-      for (const req of query.characteristics) {
-        // Bonus se lo score è alto (proxy per buone skills)
-        if (match.score >= 80) {
+    // Check keywords in summary
+    if (query.keywords.length > 0) {
+      const summary = (opp.summary || '').toLowerCase();
+      let kwMatches = 0;
+      for (const kw of query.keywords) {
+        if (summary.includes(kw)) {
+          kwMatches++;
           score += 5;
         }
+      }
+      if (kwMatches === 0 && query.keywords.length > 1) {
+        // Se cerchiamo caratteristiche specifiche e non ne troviamo nessuna, penalizziamo
+        score -= 10;
       }
     }
 
     // Check età
     if (query.ageRange) {
-      const age = player.age;
-      if (query.ageRange.max && age > query.ageRange.max) {
-        continue;
-      }
-      if (query.ageRange.min && age < query.ageRange.min) {
-        continue;
-      }
-      score += 5; // Bonus per età target
+      if (query.ageRange.max && opp.age > query.ageRange.max) continue;
+      if (query.ageRange.min && opp.age < query.ageRange.min) continue;
+      score += 5;
     }
 
-    // Bonus per underused (più disponibili)
-    if (player.is_underused) {
-      score += 10;
-    }
-
-    matches.push({ match, score });
+    matches.push({ opportunity: opp, score });
   }
 
-  // Ordina per score e rimuovi duplicati (stesso giocatore per club diversi)
-  const seen = new Set<string>();
   return matches
     .sort((a, b) => b.score - a.score)
-    .filter(m => {
-      if (seen.has(m.match.player.id)) return false;
-      seen.add(m.match.player.id);
-      return true;
-    })
     .slice(0, limit)
-    .map(m => m.match);
+    .map(m => ({
+      player: m.opportunity,
+      club_id: 'talent-search',
+      club_name: 'Ricerca Talenti',
+      score: m.score,
+      recommendation: `Match basato su caratteristiche: ${query.description}`
+    }));
 }
 
 /**
@@ -281,31 +170,29 @@ export function formatTalentSearchResults(
 
 Cercavi: <i>${query.description || 'caratteristiche non specificate'}</i>
 
-Prova con query tipo:
-• "terzino che spinge"
-• "centrocampista box-to-box"
-• "ala veloce"
-• "difensore bravo in impostazione"`;
+Prova con query più generiche o cerca per ruolo.`;
   }
 
-  let message = `⚽ <b>Talenti per: ${query.description}</b>\n\n`;
+  let message = `⚽ <b>Talenti per: ${query.description}</b>
+
+`;
 
   matches.forEach((match, index) => {
-    const player = match.player;
-    const scoreEmoji = match.score >= 85 ? '🔥' : match.score >= 70 ? '⚡' : '📊';
+    const o = match.player;
+    const scoreEmoji = o.ob1_score >= 80 ? '🔥' : o.ob1_score >= 60 ? '⚡' : '📊';
 
-    message += `${scoreEmoji} <b>${escapeHtml(player.name)}</b>`;
-    message += ` (${player.age} anni)\n`;
-    message += `📍 ${player.primary_position} | ${escapeHtml(player.current_team)}\n`;
+    message += `${scoreEmoji} <b>${escapeHtml(o.player_name)}</b>`;
+    message += ` (${o.age} anni)
+`;
+    message += `📍 ${o.role_name || o.role} | ${escapeHtml(o.current_club || 'Svincolato')}
+`;
 
-    if (player.is_underused) {
-      message += `⚠️ Solo ${player.minutes_percentage.toFixed(0)}% minuti - cerca spazio!\n`;
-    }
+    message += `💡 <i>${escapeHtml(match.recommendation)}</i>
+`;
 
-    message += `💡 <i>${escapeHtml(match.recommendation)}</i>\n`;
-
-    if (player.transfermarkt_url) {
-      message += `🔗 <a href="${player.transfermarkt_url}">Scheda</a>\n`;
+    if (o.source_url) {
+      message += `🔗 <a href="${o.source_url}">Dettagli</a>
+`;
     }
 
     if (index < matches.length - 1) {
@@ -324,28 +211,4 @@ function escapeHtml(text: string): string {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-/**
- * Check se il testo sembra una ricerca talenti
- */
-export function isTalentSearchQuery(text: string): boolean {
-  const lower = text.toLowerCase();
-
-  // Pattern che indicano una ricerca talenti da campo
-  const searchPatterns = [
-    // "mi serve un terzino", "cerco un centrocampista"
-    /\b(mi serve|cerco|voglio|ho bisogno|mi manca)\b.*\b(un|uno|una)\b/i,
-    // "terzino che spinge", "difensore veloce"
-    /\b(terzino|difensore|centrocampista|ala|attaccante|punta|mediano|trequartista)\b.*\b(che|veloce|tecnico|forte|bravo|dx|sx|destro|sinistro)\b/i,
-    // "terzino dx", "esterno sx" - ruolo + lato
-    /\b(terzino|esterno)\s*(dx|sx|destro|sinistro)\b/i,
-    // caratteristiche specifiche
-    /\b(che spinge|box.?to.?box|tutta fascia|che imposta|che pressa|costruire il gioco|sappia costruire)\b/i,
-    // "giocatore veloce", "talento tecnico"
-    /\b(giocatore|talento)\b.*\b(veloce|tecnico|fisico|giovane)\b/i,
-  ];
-
-  return searchPatterns.some(pattern => pattern.test(lower));
-}
+    .replace(/

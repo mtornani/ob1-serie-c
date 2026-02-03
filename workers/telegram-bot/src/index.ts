@@ -67,6 +67,34 @@ export default {
       }
     }
 
+    // Manual trigger for cron/digest (for testing)
+    if (url.pathname === '/trigger-cron' && request.method === 'GET') {
+      try {
+        console.log('Manual cron trigger via HTTP');
+        const result = await processQueuedNotifications(env);
+        return new Response(JSON.stringify({
+          success: true,
+          message: 'Cron triggered manually',
+          result: {
+            immediate: result.immediate,
+            digests: result.digests,
+          },
+          timestamp: new Date().toISOString(),
+        }), {
+          headers: { 'Content-Type': 'application/json' },
+        });
+      } catch (error: any) {
+        console.error('Manual cron error:', error);
+        return new Response(JSON.stringify({
+          success: false,
+          error: error.message || 'Unknown error',
+        }), {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+    }
+
     // Setup bot commands menu
     if (url.pathname === '/setup-commands' && request.method === 'GET') {
       const success = await setMyCommands(env);
@@ -76,15 +104,14 @@ export default {
         message: success ? 'Bot commands menu updated!' : 'Failed to set commands',
         commands: [
           '/start - Avvia il bot',
+          '/report - Report mercato completo',
           '/hot - Migliori opportunità',
-          '/warm - Opportunità interessanti',
-          '/all - Tutte le opportunità',
-          '/scout - Wizard guidato',
-          '/talenti - Talenti squadre B',
-          '/dna - DNA match per club',
           '/watch - Alert personalizzati',
+          '/digest - Anteprima digest',
+          '/talenti - Squadre B',
+          '/scout - Wizard guidato',
           '/stats - Statistiche',
-          '/help - Aiuto',
+          '/help - Guida completa',
         ],
       }), {
         status: success ? 200 : 500,

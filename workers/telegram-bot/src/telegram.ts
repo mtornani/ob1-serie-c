@@ -170,20 +170,75 @@ export async function getWebhookInfo(env: Env): Promise<any> {
 /**
  * Set bot commands for the menu
  */
+/**
+ * Get file path from Telegram servers
+ */
+export async function getFile(env: Env, fileId: string): Promise<string | null> {
+  const url = `${TELEGRAM_API}${env.TELEGRAM_BOT_TOKEN}/getFile`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ file_id: fileId }),
+    });
+
+    if (!response.ok) {
+      console.error('Failed to get file:', await response.text());
+      return null;
+    }
+
+    const data = await response.json() as any;
+    if (data.ok && data.result?.file_path) {
+      return data.result.file_path;
+    }
+    return null;
+  } catch (error) {
+    console.error('Failed to get file:', error);
+    return null;
+  }
+}
+
+/**
+ * Download file from Telegram servers and return as base64
+ */
+export async function downloadFileAsBase64(env: Env, filePath: string): Promise<string | null> {
+  const url = `https://api.telegram.org/file/bot${env.TELEGRAM_BOT_TOKEN}/${filePath}`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      console.error('Failed to download file:', response.status);
+      return null;
+    }
+
+    const arrayBuffer = await response.arrayBuffer();
+    const base64 = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
+    return base64;
+  } catch (error) {
+    console.error('Failed to download file:', error);
+    return null;
+  }
+}
+
+/**
+ * Set bot commands for the menu
+ */
 export async function setMyCommands(env: Env): Promise<boolean> {
   const url = `${TELEGRAM_API}${env.TELEGRAM_BOT_TOKEN}/setMyCommands`;
 
   const commands = [
     { command: 'start', description: '🎯 Avvia il bot' },
+    { command: 'report', description: '📊 Report mercato completo' },
     { command: 'hot', description: '🔥 Migliori opportunità (score 80+)' },
-    { command: 'warm', description: '⚡ Opportunità interessanti (60-79)' },
-    { command: 'all', description: '📋 Tutte le opportunità' },
-    { command: 'scout', description: '🎯 Wizard guidato (ti aiuto a cercare)' },
-    { command: 'talenti', description: '🧬 Talenti dalle squadre B' },
-    { command: 'dna', description: '🧬 DNA match per un club' },
     { command: 'watch', description: '🔔 Gestisci alert personalizzati' },
-    { command: 'stats', description: '📊 Statistiche mercato' },
-    { command: 'help', description: '❓ Come usare il bot' },
+    { command: 'digest', description: '📬 Anteprima digest giornaliero' },
+    { command: 'talenti', description: '🧬 Talenti dalle squadre B' },
+    { command: 'scout', description: '🎯 Wizard guidato' },
+    { command: 'stats', description: '📊 Statistiche database' },
+    { command: 'help', description: '❓ Guida completa' },
   ];
 
   try {

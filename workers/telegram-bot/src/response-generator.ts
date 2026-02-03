@@ -1,6 +1,6 @@
 import { Ai } from '@cloudflare/ai';
 import { Opportunity } from './types';
-import { MatchResult, DNAStats } from './dna';
+import { PlayerMatch } from './dna';
 
 /**
  * SCOUT PERSONA SYSTEM PROMPT
@@ -41,7 +41,7 @@ export async function generateScoutResponse(
     // 1. Prepare data summary for the LLM (minimize tokens)
     const topOpps = opportunities.slice(0, 3).map(o => ({
       name: o.player_name,
-      role: o.role,
+      role: o.role_name || o.role,
       age: o.age,
       club: o.current_club,
       type: o.opportunity_type,
@@ -94,23 +94,23 @@ Conferma se i giocatori trovati rispecchiano le caratteristiche richieste (es. "
 export async function generateDNAResponse(
   ai: Ai,
   clubName: string,
-  matches: MatchResult[]
+  matches: PlayerMatch[]
 ): Promise<string | null> {
   try {
     const topMatches = matches.slice(0, 3).map(m => ({
-      name: m.player.name,
-      role: m.player.primary_position,
-      age: 2026 - m.player.birth_year,
-      club: m.player.current_team,
+      name: m.player.player_name,
+      role: m.player.role_name || m.player.role,
+      age: m.player.age,
+      club: m.player.current_club,
       match_score: m.score,
-      why: Object.entries(m.breakdown).filter(([k,v]) => (v as number) > 80).map(([k]) => k).join(', ')
+      recommendation: m.recommendation
     }));
 
     const userPrompt = `Analisi DNA per il club: ${clubName}
 Matches trovati: ${matches.length}. Top 3: ${JSON.stringify(topMatches)}
 
 Scrivi un commento tecnico (max 30-40 parole) per il DS del ${clubName}.
-Evidenzia perché questi giovani sono adatti al loro modulo/stile (basandoti sul match_score e breakdown).`;
+Evidenzia perché questi profili sono adatti al loro progetto basandoti sullo score e sulla raccomandazione.`;
 
     const response = await ai.run('@cf/meta/llama-3.1-8b-instruct', {
       messages: [

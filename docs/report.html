@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OB1 Scout Report - 03/02/2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        header h1 { font-size: 2em; margin-bottom: 5px; }
+        header .subtitle { opacity: 0.8; font-size: 0.9em; }
+        header .date { margin-top: 10px; font-size: 1.1em; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .stat-card .number { font-size: 2em; font-weight: bold; color: #1a1a2e; }
+        .stat-card .label { color: #666; font-size: 0.85em; }
+        .stat-card.hot .number { color: #e74c3c; }
+        .stat-card.warm .number { color: #f39c12; }
+
+        section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        section h2 {
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #555;
+        }
+        tr:hover { background: #f8f9fa; }
+
+        .score {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .score.hot { background: #fdecea; color: #e74c3c; }
+        .score.warm { background: #fef5e7; color: #f39c12; }
+        .score.cold { background: #eef2f7; color: #7f8c8d; }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        .badge.svincolato { background: #d4edda; color: #155724; }
+        .badge.prestito { background: #cce5ff; color: #004085; }
+        .badge.rescissione { background: #fff3cd; color: #856404; }
+        .badge.mercato { background: #e2e3e5; color: #383d41; }
+
+        .role-section {
+            margin-bottom: 15px;
+        }
+        .role-section h3 {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .role-players {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .role-player {
+            background: #f8f9fa;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 0.85em;
+        }
+        footer a { color: #1a1a2e; }
+
+        @media print {
+            body { background: white; }
+            .container { max-width: 100%; }
+            section { box-shadow: none; border: 1px solid #ddd; }
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            table { font-size: 0.85em; }
+            th, td { padding: 8px 5px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>OB1 SCOUT REPORT</h1>
+            <div class="subtitle">Serie C & D Market Intelligence</div>
+            <div class="date">03/02/2026</div>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">45</div>
+                <div class="label">Totale Opportunita</div>
+            </div>
+            <div class="stat-card hot">
+                <div class="number">5</div>
+                <div class="label">HOT (80+)</div>
+            </div>
+            <div class="stat-card warm">
+                <div class="number">40</div>
+                <div class="label">WARM (60-79)</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">19</div>
+                <div class="label">Svincolati</div>
+            </div>
+        </div>
+
+        <section>
+            <h2>TOP OPPORTUNITA</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Giocatore</th>
+                        <th>Eta</th>
+                        <th>Ruolo</th>
+                        <th>Status</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Francesco Campagna</strong><br><small style="color:#888">Cesena</small></td>
+                        <td>23</td>
+                        <td>Centrocampista</td>
+                        <td><span class="badge rescissione">rescissione</span></td>
+                        <td><span class="score hot">85</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Giacomo Sciacca</strong><br><small style="color:#888">AlbinoLeffe</small></td>
+                        <td>30</td>
+                        <td>Difensore</td>
+                        <td><span class="badge svincolato">svincolato</span></td>
+                        <td><span class="score hot">81</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Giacomo Sciacca</strong><br><small style="color:#888">AlbinoLeffe</small></td>
+                        <td>30</td>
+                        <td>Difensore</td>
+                        <td><span class="badge svincolato">svincolato</span></td>
+                        <td><span class="score hot">81</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Valerio Verre</strong><br><small style="color:#888">svincolato</small></td>
+                        <td>32</td>
+                        <td>Centrocampista</td>
+                        <td><span class="badge svincolato">svincolato</span></td>
+                        <td><span class="score hot">80</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Simone Franchini</strong><br><small style="color:#888">Padova</small></td>
+                        <td>25</td>
+                        <td>Centrocampista</td>
+                        <td><span class="badge prestito">prestito</span></td>
+                        <td><span class="score hot">80</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alessio Rosa</strong><br><small style="color:#888">Bra</small></td>
+                        <td>21</td>
+                        <td>Attaccante</td>
+                        <td><span class="badge rescissione">rescissione</span></td>
+                        <td><span class="score warm">79</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Facundo Lescano</strong><br><small style="color:#888">Avellino</small></td>
+                        <td>27</td>
+                        <td>Punta</td>
+                        <td><span class="badge mercato">mercato</span></td>
+                        <td><span class="score warm">78</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Noa Kljajic</strong><br><small style="color:#888">Reggiana</small></td>
+                        <td>None</td>
+                        <td>Attaccante</td>
+                        <td><span class="badge rescissione">rescissione</span></td>
+                        <td><span class="score warm">77</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nicola Falasco</strong><br><small style="color:#888">Livorno</small></td>
+                        <td>None</td>
+                        <td>Difensore</td>
+                        <td><span class="badge svincolato">svincolato</span></td>
+                        <td><span class="score warm">76</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gianmarco Ingrosso</strong><br><small style="color:#888">Virtus Verona</small></td>
+                        <td>None</td>
+                        <td>Difensore</td>
+                        <td><span class="badge svincolato">svincolato</span></td>
+                        <td><span class="score warm">76</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Iacopo Cernigoi</strong><br><small style="color:#888">Virtus Verona</small></td>
+                        <td>None</td>
+                        <td>Attaccante</td>
+                        <td><span class="badge svincolato">svincolato</span></td>
+                        <td><span class="score warm">76</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mattia Del Favero</strong><br><small style="color:#888">Pro Vercelli</small></td>
+                        <td>None</td>
+                        <td>Portiere</td>
+                        <td><span class="badge svincolato">svincolato</span></td>
+                        <td><span class="score warm">76</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Francesco Pio Petito</strong><br><small style="color:#888">Dolomiti Bellunesi</small></td>
+                        <td>None</td>
+                        <td>Attaccante</td>
+                        <td><span class="badge svincolato">svincolato</span></td>
+                        <td><span class="score warm">76</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vittorio Parigini</strong><br><small style="color:#888">Sambenedettese</small></td>
+                        <td>None</td>
+                        <td>Attaccante</td>
+                        <td><span class="badge svincolato">svincolato</span></td>
+                        <td><span class="score warm">76</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nicola Falasco</strong><br><small style="color:#888">Livorno</small></td>
+                        <td>None</td>
+                        <td>Difensore</td>
+                        <td><span class="badge svincolato">svincolato</span></td>
+                        <td><span class="score warm">76</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>PER RUOLO</h2>
+            <div class="role-section">
+                <h3>Centrocampisti (16)</h3>
+                <div class="role-players">
+                    <span class="role-player">Francesco Campagna (85)</span>
+                    <span class="role-player">Valerio Verre (80)</span>
+                    <span class="role-player">Simone Franchini (80)</span>
+                    <span class="role-player">Francesco Citarella (74)</span>
+                    <span class="role-player">Marco Bontempi (74)</span>
+                </div>
+            </div>
+            <div class="role-section">
+                <h3>Attaccanti (13)</h3>
+                <div class="role-players">
+                    <span class="role-player">Alessio Rosa (79)</span>
+                    <span class="role-player">Facundo Lescano (78)</span>
+                    <span class="role-player">Noa Kljajic (77)</span>
+                    <span class="role-player">Iacopo Cernigoi (76)</span>
+                    <span class="role-player">Francesco Pio Petito (76)</span>
+                </div>
+            </div>
+            <div class="role-section">
+                <h3>Difensori Centrali (11)</h3>
+                <div class="role-players">
+                    <span class="role-player">Giacomo Sciacca (81)</span>
+                    <span class="role-player">Giacomo Sciacca (81)</span>
+                    <span class="role-player">Nicola Falasco (76)</span>
+                    <span class="role-player">Gianmarco Ingrosso (76)</span>
+                    <span class="role-player">Nicola Falasco (76)</span>
+                </div>
+            </div>
+            <div class="role-section">
+                <h3>Portieri (4)</h3>
+                <div class="role-players">
+                    <span class="role-player">Mattia Del Favero (76)</span>
+                    <span class="role-player">Mattia Del Favero (76)</span>
+                    <span class="role-player">Rok Vadjunec (71)</span>
+                    <span class="role-player">Gianluca Saro (70)</span>
+                </div>
+            </div>
+            <div class="role-section">
+                <h3>Terzini Sinistri (1)</h3>
+                <div class="role-players">
+                    <span class="role-player">Stefano Codraro (74)</span>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Generato automaticamente da OB1 Scout</p>
+            <p><a href="https://mtornani.github.io/ob1-serie-c/">Dashboard</a> | <a href="https://t.me/Ob1LegaPro_bot">Telegram Bot</a></p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -19,6 +19,26 @@ export interface TelegramMessage {
   chat: TelegramChat;
   date: number;
   text?: string;
+  voice?: TelegramVoice;
+  audio?: TelegramAudio;
+}
+
+export interface TelegramVoice {
+  file_id: string;
+  file_unique_id: string;
+  duration: number;
+  mime_type?: string;
+  file_size?: number;
+}
+
+export interface TelegramAudio {
+  file_id: string;
+  file_unique_id: string;
+  duration: number;
+  performer?: string;
+  title?: string;
+  mime_type?: string;
+  file_size?: number;
 }
 
 export interface TelegramUser {
@@ -91,4 +111,5 @@ export interface Env {
   DASHBOARD_URL: string;
   AI?: any; // Cloudflare AI binding (optional)
   USER_DATA?: KVNamespace; // KV for user preferences (optional)
+  OPENROUTER_API_KEY?: string; // OpenRouter API for conversational bot (optional)
 }

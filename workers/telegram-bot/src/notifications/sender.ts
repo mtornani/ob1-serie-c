@@ -165,7 +165,7 @@ ${opp.summary ? `💬 ${escapeHtml(opp.summary.substring(0, 100))}...` : ''}`;
 }
 
 /**
- * Send daily digest
+ * Send daily digest - formato professionale per DS
  */
 export async function sendDailyDigest(
   chatId: number,
@@ -174,70 +174,158 @@ export async function sendDailyDigest(
 ): Promise<boolean> {
   if (entries.length === 0) return true;
 
-  let message = `📬 <b>Il tuo digest giornaliero</b>
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long' });
 
-Abbiamo trovato ${entries.length} opportunità che matchano i tuoi criteri:\n\n`;
+  // Raggruppa per ruolo
+  const byRole: Record<string, DigestEntry[]> = {};
+  entries.forEach(e => {
+    const role = e.opportunity.role || 'Altro';
+    if (!byRole[role]) byRole[role] = [];
+    byRole[role].push(e);
+  });
 
   // Sort by score
   const sorted = entries.sort((a, b) => b.opportunity.ob1_score - a.opportunity.ob1_score);
+  const hotCount = sorted.filter(e => e.opportunity.ob1_score >= 80).length;
 
-  // Show top 5
-  sorted.slice(0, 5).forEach((entry, i) => {
+  let message = `📊 <b>OB1 SCOUT REPORT</b>
+<i>${dateStr}</i>
+
+━━━━━━━━━━━━━━━━━━━━
+
+📈 <b>Riepilogo</b>
+• ${entries.length} nuove opportunità
+• ${hotCount} profili HOT (score 80+)
+• ${Object.keys(byRole).length} ruoli coperti
+
+`;
+
+  // Top 3 opportunità
+  message += `🏆 <b>TOP 3 DEL GIORNO</b>\n\n`;
+
+  sorted.slice(0, 3).forEach((entry, i) => {
     const opp = entry.opportunity;
-    const emoji = opp.ob1_score >= 80 ? '🔥' : opp.ob1_score >= 60 ? '⚡' : '📊';
+    const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : '🥉';
 
-    message += `${emoji} <b>${escapeHtml(opp.player_name)}</b> (${opp.age})
-   ${opp.role_name || opp.role} • ${opp.opportunity_type} • Score ${opp.ob1_score}
-   Match: <i>${entry.matchedProfiles.slice(0, 2).join(', ')}</i>\n\n`;
+    message += `${medal} <b>${escapeHtml(opp.player_name)}</b>
+   ${opp.role_name || opp.role} • ${opp.age || '?'} anni • Score <b>${opp.ob1_score}</b>
+   ${opp.current_club ? `📍 ${escapeHtml(opp.current_club)}` : ''}
+   🏷️ ${(opp.opportunity_type || 'n.d.').toUpperCase()}
+\n`;
   });
 
-  if (entries.length > 5) {
-    message += `<i>... e altre ${entries.length - 5} opportunità</i>\n\n`;
+  // Breakdown per ruolo
+  if (Object.keys(byRole).length > 1) {
+    message += `━━━━━━━━━━━━━━━━━━━━
+📋 <b>PER RUOLO</b>\n`;
+
+    const roleEmojis: Record<string, string> = {
+      'DC': '🛡️', 'TD': '🛡️', 'TS': '🛡️',
+      'CC': '🎯', 'MED': '🎯', 'TRQ': '🎯',
+      'AT': '⚽', 'ATT': '⚽', 'PC': '⚽',
+      'PO': '🧤'
+    };
+
+    Object.entries(byRole)
+      .sort((a, b) => b[1].length - a[1].length)
+      .slice(0, 4)
+      .forEach(([role, players]) => {
+        const emoji = roleEmojis[role] || '📊';
+        const topPlayer = players.sort((a, b) => b.opportunity.ob1_score - a.opportunity.ob1_score)[0];
+        message += `${emoji} ${role}: ${players.length} • Top: ${topPlayer.opportunity.player_name}\n`;
+      });
   }
 
-  message += `━━━━━━━━━━━━━━━━━━━━
-🌐 <a href="${DASHBOARD_URL}">Apri Dashboard per dettagli</a>`;
+  message += `
+━━━━━━━━━━━━━━━━━━━━
+💡 <i>Scrivi il nome di un giocatore per dettagli</i>
+🌐 <a href="${DASHBOARD_URL}">Dashboard completa</a>`;
 
   return await sendMessage(env, chatId, message);
 }
 
 /**
  * Process queued notifications (called by cron)
+ * Genera il digest giornaliero per tutti gli utenti registrati
  */
 export async function processQueuedNotifications(env: Env): Promise<{
   immediate: number;
   digests: number;
 }> {
   const notifQueue = getNotifQueue(env);
+  const watchStorage = getWatchStorage(env);
   const users = await notifQueue.getActiveUsers();
+
+  console.log(`Processing notifications for ${users.length} users`);
 
   let immediate = 0;
   let digests = 0;
 
+  // Fetch current opportunities once
+  const { fetchData } = await import('../data');
+  const data = await fetchData(env);
+  const opportunities = data?.opportunities || [];
+
+  console.log(`Loaded ${opportunities.length} opportunities`);
+
   for (const chatId of users) {
-    // Send queued immediate notifications
-    const queued = await notifQueue.getQueued(chatId);
-    for (const notif of queued.filter(n => n.priority === 'immediate')) {
-      const success = await sendImmediateAlert(chatId, notif.opportunity, [], env);
-      if (success) {
-        await notifQueue.dequeue(chatId, notif.id);
-        await notifQueue.incrementStats(chatId);
-        immediate++;
+    try {
+      // Send queued immediate notifications
+      const queued = await notifQueue.getQueued(chatId);
+      for (const notif of queued.filter(n => n.priority === 'immediate')) {
+        const success = await sendImmediateAlert(chatId, notif.opportunity, [], env);
+        if (success) {
+          await notifQueue.dequeue(chatId, notif.id);
+          await notifQueue.incrementStats(chatId);
+          immediate++;
+        }
       }
-    }
 
-    // Send digest
-    const digestEntries = await notifQueue.getDigest(chatId);
-    if (digestEntries.length > 0) {
-      const success = await sendDailyDigest(chatId, digestEntries, env);
-      if (success) {
-        await notifQueue.clearDigest(chatId);
-        digests++;
+      // Get user's watch profiles
+      const profiles = await watchStorage.listProfiles(chatId);
+      const activeProfiles = profiles.filter(p => p.active && p.include_in_digest);
+
+      console.log(`User ${chatId}: ${activeProfiles.length} active profiles`);
+
+      if (activeProfiles.length > 0 && opportunities.length > 0) {
+        // Filter opportunities that match user's profiles
+        const { filterByProfiles } = await import('../watch/matcher');
+        const matches = filterByProfiles(opportunities, activeProfiles);
+
+        console.log(`User ${chatId}: ${matches.length} matching opportunities`);
+
+        if (matches.length > 0) {
+          // Convert to digest entries
+          const digestEntries: DigestEntry[] = matches.map(m => ({
+            opportunity: m.opportunity,
+            matchedProfiles: m.matchedProfiles.map(p => p.name || p.id),
+          }));
+
+          const success = await sendDailyDigest(chatId, digestEntries, env);
+          if (success) {
+            digests++;
+            console.log(`Sent digest to user ${chatId} with ${digestEntries.length} entries`);
+          }
+        }
       }
-    }
 
-    // Reset hourly stats
-    await notifQueue.resetHourlyStats(chatId);
+      // Also check for pre-queued digest entries
+      const queuedDigest = await notifQueue.getDigest(chatId);
+      if (queuedDigest.length > 0) {
+        const success = await sendDailyDigest(chatId, queuedDigest, env);
+        if (success) {
+          await notifQueue.clearDigest(chatId);
+          if (digests === 0) digests++; // Don't double count
+        }
+      }
+
+      // Reset hourly stats
+      await notifQueue.resetHourlyStats(chatId);
+
+    } catch (error) {
+      console.error(`Error processing user ${chatId}:`, error);
+    }
   }
 
   return { immediate, digests };

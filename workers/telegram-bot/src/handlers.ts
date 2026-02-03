@@ -1,6 +1,6 @@
 import { Env, TelegramMessage, TelegramCallbackQuery, Opportunity } from './types';
-import { sendMessage, answerCallbackQuery, editMessageText } from './telegram';
-import { fetchData, filterHot, filterWarm, searchOpportunities, getStats, findOpportunityById, filterOpportunities } from './data';
+import { sendMessage, answerCallbackQuery, editMessageText, getFile, downloadFileAsBase64 } from './telegram';
+import { fetchData, filterHot, filterWarm, searchOpportunities as searchByName, getStats, findOpportunityById, filterOpportunities } from './data';
 import {
   formatOpportunityList,
   formatStats,
@@ -11,35 +11,82 @@ import {
   formatNoResults,
   formatOpportunityDetails,
 } from './formatters';
-import { parseNaturalQuery, getInterpretationMessage, ParsedIntent } from './nlp';
-import { fetchDNAData, getMatchesForClub, getTopMatches, formatDNAMatchList, formatDNAStats, getAvailableClubs } from './dna';
-import { isTalentSearchQuery, parseTalentQuery, searchTalents, formatTalentSearchResults } from './talent-search';
-import { classifyWithLLM, convertToParseIntent } from './llm-classifier';
 import { handleWatchCommand, handleWatchCallback } from './watch';
-import { generateScoutResponse, generateDNAResponse } from './response-generator';
-import { startScoutWizard, handleWizardCallback, shouldTriggerWizard, getIncompatibleClubs } from './scout-wizard';
+import { handleSmartSearch, handleSearchCallback } from './smart-search';
+import { handleVoiceMessage } from './conversational';
 
 export async function handleMessage(message: TelegramMessage, env: Env): Promise<void> {
   const chatId = message.chat.id;
-  const text = message.text?.trim() || '';
-
-  if (!text) return;
-
-  console.log(`Received message: "${text}" from chat ${chatId}`);
 
   try {
+    // Handle voice messages (audio from DS)
+    if (message.voice || message.audio) {
+      console.log(`Received voice/audio message from chat ${chatId}`);
+      await handleVoiceMessageWrapper(chatId, message, env);
+      return;
+    }
+
+    const text = message.text?.trim() || '';
+    if (!text) return;
+
+    console.log(`Received message: "${text}" from chat ${chatId}`);
+
     // Check for explicit commands first
     if (text.startsWith('/')) {
       await handleCommand(chatId, text, env);
       return;
     }
 
-    // NLP-001: Parse natural language query
-    await handleNaturalQuery(chatId, text, env);
+    // SMART SEARCH: Cerca nelle opportunità REALI
+    await handleSmartSearch(chatId, text, env);
 
   } catch (error) {
     console.error('Error handling message:', error);
     await sendMessage(env, chatId, formatError());
+  }
+}
+
+/**
+ * Handle voice/audio messages
+ */
+async function handleVoiceMessageWrapper(chatId: number, message: TelegramMessage, env: Env): Promise<void> {
+  const fileId = message.voice?.file_id || message.audio?.file_id;
+  if (!fileId) {
+    await sendMessage(env, chatId, '❌ Impossibile elaborare il messaggio vocale.');
+    return;
+  }
+
+  // Check if OpenRouter is configured
+  if (!env.OPENROUTER_API_KEY) {
+    await sendMessage(env, chatId, '🎤 Ho ricevuto il tuo messaggio vocale, ma la funzione audio non è ancora attiva.\n\nPer ora, scrivimi cosa ti serve!');
+    return;
+  }
+
+  // Send "processing" message
+  await sendMessage(env, chatId, '🎤 Sto ascoltando...');
+
+  // Get file path from Telegram
+  const filePath = await getFile(env, fileId);
+  if (!filePath) {
+    await sendMessage(env, chatId, '❌ Impossibile scaricare il file audio.');
+    return;
+  }
+
+  // Download file as base64
+  const audioBase64 = await downloadFileAsBase64(env, filePath);
+  if (!audioBase64) {
+    await sendMessage(env, chatId, '❌ Impossibile elaborare il file audio.');
+    return;
+  }
+
+  // Get mime type
+  const mimeType = message.voice?.mime_type || message.audio?.mime_type || 'audio/ogg';
+
+  // Process with OpenRouter/Gemma
+  const handled = await handleVoiceMessage(chatId, audioBase64, mimeType, env);
+
+  if (!handled) {
+    await sendMessage(env, chatId, '❌ Non sono riuscito a capire il messaggio vocale. Prova a scrivermi!');
   }
 }
 
@@ -100,6 +147,11 @@ async function handleCommand(chatId: number, text: string, env: Env): Promise<vo
     // NOTIF-002: Notification settings
     case '/digest':
       await handleDigestPreview(chatId, env);
+      break;
+
+    // Report on-demand
+    case '/report':
+      await handleReport(chatId, env);
       break;
 
     // SCOUT-001: Interactive Scout Wizard
@@ -253,8 +305,18 @@ async function handleNaturalQuery(chatId: number, text: string, env: Env): Promi
     }
   }
 
-  // If still low confidence after LLM, show help
+  // If still low confidence after Cloudflare AI, try OpenRouter conversational
   if (parsed.confidence < 0.3 && parsed.intent === 'unknown') {
+    // Try conversational handler (OpenRouter) - more powerful and can ask clarifying questions
+    if (env.OPENROUTER_API_KEY) {
+      console.log('Trying OpenRouter conversational handler...');
+      const handled = await handleConversationalMessage(chatId, text, env);
+      if (handled) {
+        return;
+      }
+    }
+
+    // Final fallback: show help
     await sendMessage(env, chatId, formatNLPHelp());
     return;
   }
@@ -446,6 +508,15 @@ export async function handleCallbackQuery(callback: TelegramCallbackQuery, env: 
       return;
     }
 
+    // Smart Search: Handle search suggestion callbacks
+    if (data.startsWith('search:')) {
+      if (chatId) {
+        await answerCallbackQuery(env, callbackId, '');
+        await handleSearchCallback(chatId, data, env);
+      }
+      return;
+    }
+
     // Parse callback data for other actions
     const [action, ...params] = data.split('_');
     const oppId = params.join('_');
@@ -504,65 +575,37 @@ async function handleDetailsCallback(env: Env, callbackId: string, chatId: numbe
 // ============================================================================
 
 async function handleDNAMatch(chatId: number, clubQuery: string, env: Env): Promise<void> {
-  const dnaData = await fetchDNAData();
+  const opportunities = await fetchDNAData(env);
 
-  if (!dnaData) {
-    await sendMessage(env, chatId, '❌ Dati DNA non disponibili. Riprova più tardi.');
+  if (!opportunities) {
+    await sendMessage(env, chatId, formatError());
     return;
   }
 
-  // If no club specified, show available clubs
+  // If no club specified, show examples
   if (!clubQuery || clubQuery.trim().length === 0) {
-    const clubs = getAvailableClubs(dnaData);
-    const clubList = clubs.map(c => `• <code>${c}</code>`).join('\n');
-
     await sendMessage(env, chatId, `🧬 <b>DNA Matching</b>
 
 Uso: /dna &lt;club&gt;
 
-<b>Club disponibili:</b>
-${clubList}
+Esempio: <code>/dna pescara</code>
 
-Esempio: <code>/dna pescara</code>`);
-    return;
-  }
-
-  // Find club (case insensitive partial match)
-  const searchTerm = clubQuery.toLowerCase().trim();
-  const clubs = getAvailableClubs(dnaData);
-  const matchedClub = clubs.find(c => c.toLowerCase().includes(searchTerm));
-
-  if (!matchedClub) {
-    await sendMessage(env, chatId, `🧬 <b>DNA Matching</b>
-
-Ho capito che cerchi giocatori adatti per <b>${clubQuery}</b>, ma al momento non ho un profilo DNA per questa squadra.
-
-<b>Club con profilo DNA disponibile:</b>
-${clubs.map(c => `• <code>${c}</code>`).join('\n')}
-
-💡 <i>Vuoi che aggiunga il profilo di ${clubQuery}? Contattaci!</i>
-
-Nel frattempo, prova:
-• /talenti - migliori talenti dalle squadre B
-• /hot - occasioni più interessanti sul mercato`);
+Ti mostrerò i giocatori più adatti per il club richiesto basandomi sulle opportunità di mercato attuali.`);
     return;
   }
 
   // Get matches for this club
-  const matches = getMatchesForClub(dnaData, matchedClub, 5);
-
-  // Find club name from first match
-  const clubName = matches.length > 0 ? matches[0].club_name : matchedClub;
+  const matches = getMatchesForClub(opportunities, clubQuery, 5);
 
   const message = formatDNAMatchList(
     matches,
     `🧬 <b>DNA Matches</b>`,
-    clubName
+    clubQuery
   );
 
-  // NLP-003: Inject AI DNA analysis
+  // NLP-003: Inject AI DNA analysis if available
   if (env.AI) {
-    const aiComment = await generateDNAResponse(env.AI, clubName, matches);
+    const aiComment = await generateDNAResponse(env.AI, clubQuery, matches);
 
     if (aiComment) {
       const fullMessage = `🗣️ <b>OB1 Scout:</b>\n<i>"${aiComment}"</i>\n\n${message}`;
@@ -575,36 +618,34 @@ Nel frattempo, prova:
 }
 
 async function handleDNATopMatches(chatId: number, env: Env): Promise<void> {
-  const dnaData = await fetchDNAData();
+  const opportunities = await fetchDNAData(env);
 
-  if (!dnaData) {
-    await sendMessage(env, chatId, '❌ Dati DNA non disponibili. Riprova più tardi.');
+  if (!opportunities) {
+    await sendMessage(env, chatId, formatError());
     return;
   }
 
-  // Get top matches globally (min 75% score)
-  const topMatches = getTopMatches(dnaData, 75, 8);
+  // Get top matches (young players with high score)
+  const topMatches = getTopMatches(opportunities, 75, 8);
 
   if (topMatches.length === 0) {
     await sendMessage(env, chatId, `🏆 <b>Top Talenti</b>
 
-Nessun match con score > 75% al momento.
-
-Prova /dna &lt;club&gt; per vedere tutti i match.`);
+Nessun talento Under 23 con score > 75% al momento.`);
     return;
   }
 
   const message = formatDNAMatchList(
     topMatches,
-    `🏆 <b>TOP TALENTI - Best Matches</b>
+    `🏆 <b>TOP TALENTI - Best Prospects</b>
 
-Giocatori delle squadre B con il miglior fit per i club di Serie C:`
+Giovani talenti (Under 23) più interessanti monitorati da OB1 Radar:`
   );
 
   await sendMessage(env, chatId, message);
 
   // Also show stats
-  const statsMessage = formatDNAStats(dnaData);
+  const statsMessage = formatDNAStats(opportunities);
   await sendMessage(env, chatId, statsMessage);
 }
 
@@ -658,6 +699,95 @@ Verrai notificato quando ne troveremo!`);
   await sendDailyDigest(chatId, digestEntries, env);
 }
 
+/**
+ * Genera report istantaneo del mercato
+ */
+async function handleReport(chatId: number, env: Env): Promise<void> {
+  const data = await fetchData(env);
+  if (!data?.opportunities?.length) {
+    await sendMessage(env, chatId, '❌ Dati non disponibili.');
+    return;
+  }
+
+  const opps = data.opportunities;
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long' });
+
+  // Statistiche
+  const hot = opps.filter(o => o.ob1_score >= 80);
+  const warm = opps.filter(o => o.ob1_score >= 60 && o.ob1_score < 80);
+  const svincolati = opps.filter(o => o.opportunity_type?.toLowerCase().includes('svincolato'));
+  const prestiti = opps.filter(o => o.opportunity_type?.toLowerCase().includes('prestito'));
+
+  // Raggruppa per ruolo
+  const byRole: Record<string, typeof opps> = {};
+  opps.forEach(o => {
+    const role = o.role || 'Altro';
+    if (!byRole[role]) byRole[role] = [];
+    byRole[role].push(o);
+  });
+
+  // Top 5
+  const top5 = [...opps].sort((a, b) => b.ob1_score - a.ob1_score).slice(0, 5);
+
+  let message = `📊 <b>OB1 SCOUT - REPORT MERCATO</b>
+<i>${dateStr}</i>
+
+━━━━━━━━━━━━━━━━━━━━
+
+📈 <b>PANORAMICA</b>
+• <b>${opps.length}</b> opportunità totali
+• 🔥 ${hot.length} HOT (80+)
+• ⚡ ${warm.length} WARM (60-79)
+• 📄 ${svincolati.length} svincolati
+• 🔄 ${prestiti.length} in prestito
+
+━━━━━━━━━━━━━━━━━━━━
+
+🏆 <b>TOP 5 OPPORTUNITÀ</b>
+
+`;
+
+  top5.forEach((opp, i) => {
+    const medal = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣'][i];
+    message += `${medal} <b>${opp.player_name}</b> (${opp.ob1_score})
+   ${opp.role_name || opp.role} • ${opp.age || '?'} anni
+   ${opp.opportunity_type?.toUpperCase()} ${opp.current_club ? `• ${opp.current_club}` : ''}
+\n`;
+  });
+
+  // Per ruolo
+  message += `━━━━━━━━━━━━━━━━━━━━
+📋 <b>PER REPARTO</b>\n`;
+
+  const roleEmojis: Record<string, string> = {
+    'DC': '🛡️', 'TD': '🛡️', 'TS': '🛡️', 'PO': '🧤',
+    'CC': '🎯', 'MED': '🎯', 'TRQ': '🎯',
+    'AT': '⚽', 'ATT': '⚽', 'PC': '⚽',
+    'AD': '🏃', 'AS': '🏃', 'ED': '🏃', 'ES': '🏃'
+  };
+
+  const reparti = {
+    'Difesa': ['DC', 'TD', 'TS', 'PO'],
+    'Centrocampo': ['CC', 'MED', 'TRQ'],
+    'Attacco': ['AT', 'ATT', 'PC', 'AD', 'AS', 'ED', 'ES']
+  };
+
+  Object.entries(reparti).forEach(([name, roles]) => {
+    const count = roles.reduce((sum, r) => sum + (byRole[r]?.length || 0), 0);
+    if (count > 0) {
+      message += `• ${name}: ${count} opportunità\n`;
+    }
+  });
+
+  message += `
+━━━━━━━━━━━━━━━━━━━━
+💬 <i>Chiedimi qualsiasi cosa sul mercato!</i>
+🌐 <a href="https://mtornani.github.io/ob1-serie-c/">Dashboard</a>`;
+
+  await sendMessage(env, chatId, message);
+}
+
 // ============================================================================
 // NLP-003: NATURAL LANGUAGE WATCH PROFILE CREATION
 // ============================================================================
@@ -707,6 +837,11 @@ Usa /watch per gestirli o rimuoverne uno.`);
   // Save profile
   await watchStorage.saveProfile(chatId, profile);
 
+  // Register user for notifications
+  const { createNotificationQueue, createMemoryQueue } = await import('./notifications/queue');
+  const notifQueue = env.USER_DATA ? createNotificationQueue(env.USER_DATA) : createMemoryQueue();
+  await notifQueue.registerUser(chatId);
+
   // Build confirmation message
   const details: string[] = [];
   if (profile.roles?.length) details.push(`📍 Ruolo: ${profile.roles.join(', ')}`);
@@ -744,22 +879,22 @@ async function handleTalentSearch(chatId: number, text: string, env: Env): Promi
 
   console.log(`Parsed talent query:`, query);
 
-  const dnaData = await fetchDNAData();
+  const opportunities = await fetchDNAData(env);
 
-  if (!dnaData) {
-    await sendMessage(env, chatId, '❌ Dati talenti non disponibili. Riprova più tardi.');
+  if (!opportunities) {
+    await sendMessage(env, chatId, formatError());
     return;
   }
 
-  const results = searchTalents(dnaData, query, 5);
+  const results = searchTalents(opportunities, query, 5);
   const message = formatTalentSearchResults(results, query);
 
   // NLP-003: Inject AI Scout Persona commentary
   if (env.AI) {
     const aiComment = await generateScoutResponse(
       env.AI, 
-      `${query.role} con caratteristiche: ${query.characteristics.join(', ')}`, 
-      results.map(r => r.opportunity), // Map DNA result to Opportunity format for the generator
+      `${query.description}`, 
+      results.map(r => r.player), 
       'talent'
     );
 

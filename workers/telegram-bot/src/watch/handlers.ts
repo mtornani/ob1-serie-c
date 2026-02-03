@@ -7,6 +7,7 @@ import { sendMessage, sendMessageWithKeyboard, editMessageText, answerCallbackQu
 import { fetchData } from '../data';
 import { WatchStorage, createKVStorage, createMemoryStorage } from './storage';
 import { WatchProfile } from './types';
+import { createNotificationQueue, createMemoryQueue } from '../notifications/queue';
 import {
   createInitialWizardState,
   getWizardStepContent,
@@ -272,6 +273,9 @@ export async function handleWatchCallback(
     await store.saveProfile(chatId, profile);
     await store.clearWizardState(chatId);
 
+    // Registra l'utente per ricevere notifiche
+    await registerUserForNotifications(chatId, env);
+
     await answerCallbackQuery(env, callbackId, '✅ Salvato!');
     await editMessageText(env, chatId, messageId, formatSaveSuccess(profile));
     return;
@@ -312,4 +316,15 @@ async function editMessageWithKeyboard(
       reply_markup: keyboard,
     }),
   });
+}
+
+/**
+ * Register user for notifications when they create a watch profile
+ */
+async function registerUserForNotifications(chatId: number, env: Env): Promise<void> {
+  const queue = env.USER_DATA
+    ? createNotificationQueue(env.USER_DATA)
+    : createMemoryQueue();
+  await queue.registerUser(chatId);
+  console.log(`Registered user ${chatId} for notifications`);
 }

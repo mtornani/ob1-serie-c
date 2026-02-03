@@ -21,3 +21,4 @@ crons = ["0 7 * * *"]  # Daily digest at 07:00 UTC (08:00 Italy)
 
 # Secrets (set via `wrangler secret put`):
 # - TELEGRAM_BOT_TOKEN
+# - OPENROUTER_API_KEY (optional, for conversational bot)

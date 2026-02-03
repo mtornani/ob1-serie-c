@@ -71,56 +71,67 @@ export function formatStats(stats: { total: number; hot: number; warm: number; c
 }
 
 export function formatWelcome(env: Env): string {
-  return `🎯 <b>OB1 Radar - Il tuo Scout Digitale</b>
+  return `🎯 <b>OB1 Scout - Il tuo DS Digitale</b>
 
-Sei al campo? Dimmi cosa ti serve.
+Ciao! Sono il tuo assistente per il mercato Serie C.
+Dimmi cosa cerchi, capisco il linguaggio del campo.
 
-⚽ <b>Cerca talenti così:</b>
+⚽ <b>Cerca così:</b>
 • "mi serve un terzino che spinga"
-• "centrocampista box-to-box"
-• "ala veloce per il 4-3-3"
+• "centrocampista box-to-box giovane"
+• "attaccante svincolato fisico"
 
-📋 <b>O chiedi info mercato:</b>
-• "chi è svincolato?"
-• "occasioni di oggi"
+📊 <b>Report e analisi:</b>
+/report - Report mercato istantaneo
+/hot - Migliori opportunità
+/stats - Panoramica database
 
-🔔 <b>Notifiche personalizzate:</b>
+🔔 <b>Alert personalizzati:</b>
 /watch add - Crea alert su misura
+/digest - Anteprima digest giornaliero
 
 🧬 <b>Squadre B:</b>
 /talenti - Juve NG, Milan Futuro, Atalanta U23
+
+🎤 <b>Novità:</b> Puoi anche inviarmi messaggi vocali!
 
 ━━━━━━━━━━━━━━━━━━━━
 🌐 <a href="${DASHBOARD_URL}">Dashboard completa</a>`;
 }
 
 export function formatHelp(env: Env): string {
-  return `❓ <b>Come usare OB1 Radar</b>
+  return `❓ <b>OB1 Scout - Guida Completa</b>
 
-⚽ <b>SEI AL CAMPO? Dimmi cosa ti serve:</b>
+⚽ <b>RICERCA NATURALE</b>
+Scrivimi come parleresti al tuo collaboratore:
 • "mi serve un terzino che spinga"
-• "centrocampista box-to-box giovane"
-• "ala veloce che dribbla"
+• "centrocampista box-to-box under 23"
+• "attaccante svincolato fisico"
 • "difensore bravo in impostazione"
 
-📊 <b>Caratteristiche cercabili:</b>
-veloce, tecnico, fisico, forte, aggressivo
-che pressa, che imposta, box-to-box, tutta fascia
+🎤 <b>MESSAGGI VOCALI</b>
+Registra un vocale e ti rispondo!
 
-📋 <b>INFO MERCATO:</b>
-• "chi è svincolato?"
-• "attaccanti disponibili under 25"
-• "occasioni di oggi"
+📊 <b>REPORT E LISTE</b>
+/report - Report mercato completo
+/hot - Opportunità top (score 80+)
+/warm - Buone opportunità (60-79)
+/all - Lista completa
+/stats - Statistiche database
 
-🧬 <b>SQUADRE B:</b>
+🧬 <b>SQUADRE B</b>
 /talenti - Juve NG, Milan Futuro, Atalanta U23
+/dna &lt;club&gt; - Match DNA per un club
 
-🔔 <b>ALERT PERSONALIZZATI:</b>
-/watch add - Crea profilo monitoraggio
-/watch - Gestisci i tuoi alert
+🔔 <b>ALERT PERSONALIZZATI</b>
+/watch add - Crea nuovo alert
+/watch - Gestisci alert attivi
+/digest - Anteprima digest giornaliero
+<i>Ricevi notifiche ogni mattina alle 8:00!</i>
 
-📌 <b>Comandi rapidi:</b>
-/hot /warm /all /stats /search
+🔍 <b>RICERCA AVANZATA</b>
+/search &lt;nome&gt; - Cerca per nome
+/scout - Wizard guidato stile Akinator
 
 ━━━━━━━━━━━━━━━━━━━━
 🌐 <a href="${DASHBOARD_URL}">Dashboard completa</a>`;

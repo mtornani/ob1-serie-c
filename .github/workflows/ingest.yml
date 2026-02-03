@@ -52,7 +52,7 @@ jobs:
     - name: Generate dashboard
       run: python scripts/generate_dashboard.py
 
-    - name: Generate PDF Report
+    - name: Generate HTML Report
       run: python scripts/generate_report.py
 
     - name: Send Telegram notification
