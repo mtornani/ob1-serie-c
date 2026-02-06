@@ -1,6 +1,6 @@
 import { Env, TelegramMessage, TelegramCallbackQuery, Opportunity } from './types';
 import { sendMessage, answerCallbackQuery, editMessageText, getFile, downloadFileAsBase64 } from './telegram';
-import { fetchData, filterHot, filterWarm, searchOpportunities as searchByName, getStats, findOpportunityById, filterOpportunities } from './data';
+import { fetchData, filterHot, filterWarm, searchOpportunities, getStats, findOpportunityById, filterOpportunities } from './data';
 import {
   formatOpportunityList,
   formatStats,
@@ -14,6 +14,12 @@ import {
 import { handleWatchCommand, handleWatchCallback } from './watch';
 import { handleSmartSearch, handleSearchCallback } from './smart-search';
 import { handleVoiceMessage } from './conversational';
+import { fetchDNAData, getMatchesForClub, getTopMatches, formatDNAMatchList, formatDNAStats } from './dna';
+import { generateScoutResponse, generateDNAResponse } from './response-generator';
+import { parseNaturalQuery, ParsedIntent } from './nlp';
+import { classifyWithLLM, convertToParseIntent } from './llm-classifier';
+import { shouldTriggerWizard, startScoutWizard, handleWizardCallback } from './scout-wizard';
+import { parseTalentQuery, searchTalents, formatTalentSearchResults } from './talent-search';
 
 export async function handleMessage(message: TelegramMessage, env: Env): Promise<void> {
   const chatId = message.chat.id;
@@ -268,7 +274,7 @@ async function handleNaturalQuery(chatId: number, text: string, env: Env): Promi
 
   // DNA-001: Check FIRST if this is a "field search" query
   // e.g., "mi serve un terzino che spinga", "centrocampista box-to-box"
-  if (isTalentSearchQuery(text)) {
+  if (parseTalentQuery(text) !== null) {
     await handleTalentSearch(chatId, text, env);
     return;
   }
@@ -305,17 +311,8 @@ async function handleNaturalQuery(chatId: number, text: string, env: Env): Promi
     }
   }
 
-  // If still low confidence after Cloudflare AI, try OpenRouter conversational
+  // If still low confidence after Cloudflare AI, fallback to help
   if (parsed.confidence < 0.3 && parsed.intent === 'unknown') {
-    // Try conversational handler (OpenRouter) - more powerful and can ask clarifying questions
-    if (env.OPENROUTER_API_KEY) {
-      console.log('Trying OpenRouter conversational handler...');
-      const handled = await handleConversationalMessage(chatId, text, env);
-      if (handled) {
-        return;
-      }
-    }
-
     // Final fallback: show help
     await sendMessage(env, chatId, formatNLPHelp());
     return;
@@ -500,9 +497,15 @@ export async function handleCallbackQuery(callback: TelegramCallbackQuery, env: 
       return;
     }
 
-    // SCOUT-001: Handle scout wizard callbacks
-    if (data.startsWith('scout:')) {
+    // SCOUT-001: Handle scout wizard callbacks (stateless, prefix "sw:")
+    if (data.startsWith('sw:')) {
       if (chatId && messageId) {
+        // Handle "restart" — just start a new wizard
+        if (data === 'sw:restart') {
+          await answerCallbackQuery(env, callbackId, '🔄');
+          await startScoutWizard(chatId, env);
+          return;
+        }
         await handleWizardCallback(chatId, messageId, callbackId, data, env);
       }
       return;
@@ -798,7 +801,7 @@ async function handleNaturalWatchCreate(
   env: Env
 ): Promise<void> {
   const { createKVStorage, createMemoryStorage } = await import('./watch/storage');
-  const { WatchProfile, generateProfileId, getProfileDisplayName } = await import('./watch/types');
+  const { generateProfileId, getProfileDisplayName } = await import('./watch/types');
 
   const watchStorage = env.USER_DATA ? createKVStorage(env.USER_DATA) : createMemoryStorage();
 

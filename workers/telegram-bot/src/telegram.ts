@@ -107,23 +107,28 @@ export async function editMessageText(
   chatId: number,
   messageId: number,
   text: string,
+  replyMarkup?: any,
   parseMode: 'HTML' | 'Markdown' = 'HTML'
 ): Promise<boolean> {
   const url = `${TELEGRAM_API}${env.TELEGRAM_BOT_TOKEN}/editMessageText`;
 
   try {
+    const payload: any = {
+      chat_id: chatId,
+      message_id: messageId,
+      text: text,
+      parse_mode: parseMode,
+      disable_web_page_preview: true,
+    };
+    if (replyMarkup) {
+      payload.reply_markup = replyMarkup;
+    }
     const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        chat_id: chatId,
-        message_id: messageId,
-        text: text,
-        parse_mode: parseMode,
-        disable_web_page_preview: true,
-      }),
+      body: JSON.stringify(payload),
     });
 
     return response.ok;

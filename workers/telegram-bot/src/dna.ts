@@ -59,7 +59,7 @@ export function getMatchesForClub(opportunities: Opportunity[], clubQuery: strin
 
   // Otherwise, suggest top players that fit the "general" DNA of a C club (young/motivated)
   return opportunities
-    .filter(o => o.age <= 25 && o.ob1_score >= 70)
+    .filter(o => o.age != null && o.age <= 25 && o.ob1_score >= 70)
     .sort((a, b) => b.ob1_score - a.ob1_score)
     .slice(0, limit)
     .map(o => ({
@@ -74,7 +74,7 @@ export function getMatchesForClub(opportunities: Opportunity[], clubQuery: strin
 export function getTopMatches(opportunities: Opportunity[], minScore: number = 75, limit: number = 10): PlayerMatch[] {
   // Top "talenti" are young players (Under 23) with high OB1 score
   return opportunities
-    .filter(o => o.age <= 23 && o.ob1_score >= minScore)
+    .filter(o => o.age != null && o.age <= 23 && o.ob1_score >= minScore)
     .sort((a, b) => b.ob1_score - a.ob1_score)
     .slice(0, limit)
     .map(o => ({
@@ -133,7 +133,7 @@ export function formatDNAMatchList(matches: PlayerMatch[], title: string, clubNa
 }
 
 export function formatDNAStats(opportunities: Opportunity[]): string {
-  const young = opportunities.filter(o => o.age <= 23).length;
+  const young = opportunities.filter(o => o.age != null && o.age <= 23).length;
   const hot = opportunities.filter(o => o.ob1_score >= 80).length;
   
   return `🧬 <b>OB1 Radar - Stats</b>\n\n📊 Database:\n• ${opportunities.length} giocatori monitorati\n• ${young} giovani talenti (Under 23)\n• ${hot} opportunità prioritari (Score 80+)\n\n━━━━━━━━━━━━━━━━━━━━\n🌐 <a href="https://mtornani.github.io/ob1-serie-c/">Dashboard</a>

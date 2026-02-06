@@ -211,4 +211,5 @@ function escapeHtml(text: string): string {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/
+    .replace(/"/g, '&quot;');
+}

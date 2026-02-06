@@ -1,15 +1,21 @@
 /**
- * SCOUT-001: Scout Wizard ("Akinator" style)
+ * SCOUT-001: Scout Wizard ("Akinator" style) — STATELESS VERSION
  *
  * Sistema conversazionale a domande per aiutare i DS a trovare il giocatore giusto.
- * Il DS non sa sempre cosa vuole, ma sa rispondere a domande mirate.
  *
- * Flow:
- * 1. DS scrive qualcosa di vago: "mi serve qualcuno per il centrocampo"
- * 2. Bot inizia wizard: "Preferisci un giovane da far crescere o uno già pronto?"
- * 3. DS risponde cliccando un bottone
- * 4. Bot affina: "Budget importante o parametro zero?"
- * 5. Etc. fino a trovare i match migliori
+ * ARCHITETTURA: Zero sessioni. Tutto lo stato è codificato nel callback_data
+ * di ogni bottone. Ogni click porta con sé tutte le risposte precedenti.
+ *
+ * Formato callback_data: "sw:<step>:<answer1>-<answer2>-..."
+ * Esempio flow:
+ *   Step 1 bottoni: sw:1:dif  sw:1:cen  sw:1:att  sw:1:por  sw:1:any
+ *   User clicca "Centrocampista" → callback = "sw:1:cen"
+ *   Step 2 bottoni: sw:2:cen-gio  sw:2:cen-pro  sw:2:cen-esp  sw:2:cen-any
+ *   User clicca "Giovane" → callback = "sw:2:cen-gio"
+ *   Step 3 bottoni: sw:3:cen-gio-zer  sw:3:cen-gio-pre  sw:3:cen-gio-any
+ *   ...e così via fino a step 4, poi mostra risultati.
+ *
+ * Max callback_data = 64 bytes. Con "sw:4:xxx-xxx-xxx-xxx" = ~25 bytes. OK.
  */
 
 import { Env, Opportunity } from './types';
@@ -20,242 +26,165 @@ import { fetchData, filterOpportunities } from './data';
 // TYPES
 // ============================================================================
 
-export interface WizardSession {
-  chatId: number;
-  messageId?: number;
-  step: number;
-  answers: WizardAnswers;
-  startedAt: string;
-}
-
-export interface WizardAnswers {
-  // Step 1: Ruolo
-  role?: 'difensore' | 'centrocampista' | 'attaccante' | 'portiere' | 'qualsiasi';
-
-  // Step 2: Età/Esperienza
-  experience?: 'giovane' | 'pronto' | 'esperto' | 'qualsiasi';
-
-  // Step 3: Budget/Tipo
-  budget?: 'zero' | 'prestito' | 'qualsiasi';
-
-  // Step 4: Carattere/Piazza
-  character?: 'leader' | 'gregario' | 'talento' | 'qualsiasi';
-
-  // Step 5: Contesto geografico (rivalità)
-  excludeClubs?: string[];  // Club da cui NON prendere (rivalità)
-}
-
-// ============================================================================
-// WIZARD QUESTIONS
-// ============================================================================
-
-interface WizardQuestion {
-  step: number;
+interface WizardStep {
+  key: string;
   question: string;
   options: Array<{
     label: string;
-    value: string;
+    code: string;   // 3-char code for callback_data
     emoji: string;
   }>;
 }
 
-const WIZARD_QUESTIONS: WizardQuestion[] = [
+interface DecodedAnswers {
+  role?: string;
+  experience?: string;
+  budget?: string;
+  character?: string;
+}
+
+// ============================================================================
+// WIZARD STEPS DEFINITION
+// ============================================================================
+
+const STEPS: WizardStep[] = [
   {
-    step: 1,
-    question: "Che ruolo ti serve?",
+    key: 'role',
+    question: 'Che ruolo ti serve?',
     options: [
-      { label: "Difensore", value: "difensore", emoji: "🛡️" },
-      { label: "Centrocampista", value: "centrocampista", emoji: "⚙️" },
-      { label: "Attaccante", value: "attaccante", emoji: "⚽" },
-      { label: "Portiere", value: "portiere", emoji: "🧤" },
-      { label: "Vediamo tutto", value: "qualsiasi", emoji: "🔍" },
+      { label: 'Difensore', code: 'dif', emoji: '🛡️' },
+      { label: 'Centrocampista', code: 'cen', emoji: '⚙️' },
+      { label: 'Attaccante', code: 'att', emoji: '⚽' },
+      { label: 'Portiere', code: 'por', emoji: '🧤' },
+      { label: 'Vediamo tutto', code: 'any', emoji: '🔍' },
     ],
   },
   {
-    step: 2,
-    question: "Che tipo di giocatore cerchi?",
+    key: 'experience',
+    question: 'Che tipo di giocatore cerchi?',
     options: [
-      { label: "Giovane da far crescere", value: "giovane", emoji: "🌱" },
-      { label: "Già pronto per la C", value: "pronto", emoji: "💪" },
-      { label: "Esperto/Leader", value: "esperto", emoji: "👴" },
-      { label: "Non importa", value: "qualsiasi", emoji: "🤷" },
+      { label: 'Giovane da far crescere', code: 'gio', emoji: '🌱' },
+      { label: 'Già pronto per la C', code: 'pro', emoji: '💪' },
+      { label: 'Esperto/Leader', code: 'esp', emoji: '👴' },
+      { label: 'Non importa', code: 'any', emoji: '🤷' },
     ],
   },
   {
-    step: 3,
-    question: "Che budget hai?",
+    key: 'budget',
+    question: 'Che budget hai?',
     options: [
-      { label: "Solo parametri zero", value: "zero", emoji: "🆓" },
-      { label: "Anche prestiti", value: "prestito", emoji: "🔄" },
-      { label: "Vediamo tutto", value: "qualsiasi", emoji: "💰" },
+      { label: 'Solo parametri zero', code: 'zer', emoji: '🆓' },
+      { label: 'Anche prestiti', code: 'pre', emoji: '🔄' },
+      { label: 'Vediamo tutto', code: 'any', emoji: '💰' },
     ],
   },
   {
-    step: 4,
-    question: "Che caratteristiche umane cerchi?",
+    key: 'character',
+    question: 'Che caratteristiche umane cerchi?',
     options: [
-      { label: "Un leader/capitano", value: "leader", emoji: "🎖️" },
-      { label: "Un gregario affidabile", value: "gregario", emoji: "🤝" },
-      { label: "Un talento da scoprire", value: "talento", emoji: "💎" },
-      { label: "Non importa", value: "qualsiasi", emoji: "🤷" },
+      { label: 'Un leader/capitano', code: 'lea', emoji: '🎖️' },
+      { label: 'Un gregario affidabile', code: 'gre', emoji: '🤝' },
+      { label: 'Un talento da scoprire', code: 'tal', emoji: '💎' },
+      { label: 'Non importa', code: 'any', emoji: '🤷' },
     ],
   },
 ];
 
+const TOTAL_STEPS = STEPS.length;
+
 // ============================================================================
-// ITALIAN FOOTBALL RIVALRIES (campanilismi)
+// CALLBACK DATA ENCODING/DECODING
 // ============================================================================
 
 /**
- * Mappa delle rivalità storiche del calcio italiano.
- * Un giocatore con passato in una di queste squadre difficilmente
- * andrà a giocare nella rivale.
+ * Build callback_data for a button.
+ * Format: "sw:<stepNum>:<prev1>-<prev2>-...-<thisAnswer>"
+ *
+ * For cancel: "sw:x"
  */
-const RIVALRIES: Record<string, string[]> = {
-  // Emilia-Romagna
-  'cesena': ['rimini'],
-  'rimini': ['cesena'],
-  'reggiana': ['modena', 'parma'],
-  'modena': ['reggiana', 'parma'],
-  'parma': ['reggiana', 'modena'],
-  'spal': ['bologna'],
-
-  // Toscana
-  'pisa': ['livorno', 'fiorentina'],
-  'livorno': ['pisa'],
-  'empoli': ['fiorentina'],
-  'siena': ['fiorentina'],
-
-  // Lazio
-  'frosinone': ['latina'],
-  'latina': ['frosinone'],
-
-  // Campania
-  'avellino': ['salernitana', 'benevento'],
-  'salernitana': ['avellino', 'napoli'],
-  'benevento': ['avellino'],
-
-  // Sicilia
-  'catania': ['palermo', 'messina'],
-  'palermo': ['catania'],
-  'messina': ['catania', 'reggina'],
-
-  // Calabria
-  'reggina': ['cosenza', 'catanzaro'],
-  'cosenza': ['reggina', 'catanzaro'],
-  'catanzaro': ['reggina', 'cosenza'],
-
-  // Puglia
-  'bari': ['lecce', 'foggia'],
-  'lecce': ['bari', 'taranto'],
-  'foggia': ['bari'],
-  'taranto': ['lecce'],
-
-  // Veneto
-  'padova': ['venezia', 'vicenza', 'verona'],
-  'venezia': ['padova', 'treviso'],
-  'vicenza': ['padova', 'verona'],
-
-  // Lombardia
-  'brescia': ['atalanta', 'cremonese'],
-  'cremonese': ['brescia'],
-  'como': ['varese'],
-
-  // Piemonte
-  'novara': ['alessandria', 'pro vercelli'],
-  'alessandria': ['novara'],
-  'pro vercelli': ['novara'],
-};
+function buildCallbackData(stepNum: number, previousCodes: string[], thisCode: string): string {
+  const allCodes = [...previousCodes, thisCode];
+  return `sw:${stepNum}:${allCodes.join('-')}`;
+}
 
 /**
- * Data le squadre precedenti di un giocatore, ritorna i club
- * dove probabilmente NON andrebbe per rivalità storiche.
+ * Parse callback_data back into step number and answer codes.
+ * "sw:2:cen-gio" → { step: 2, codes: ['cen', 'gio'] }
  */
-export function getIncompatibleClubs(previousClubs: string[]): string[] {
-  const incompatible = new Set<string>();
+function parseCallbackData(data: string): { step: number; codes: string[] } | null {
+  // Format: sw:<step>:<codes>
+  const match = data.match(/^sw:(\d+):(.+)$/);
+  if (!match) return null;
+  return {
+    step: parseInt(match[1]),
+    codes: match[2].split('-'),
+  };
+}
 
-  for (const club of previousClubs) {
-    const normalized = club.toLowerCase().trim();
-    const rivals = RIVALRIES[normalized];
-    if (rivals) {
-      rivals.forEach(r => incompatible.add(r));
-    }
+/**
+ * Decode answer codes into human-readable filters
+ */
+function decodeAnswers(codes: string[]): DecodedAnswers {
+  const answers: DecodedAnswers = {};
+
+  // codes[0] = role answer (from step 1)
+  if (codes[0]) {
+    const roleMap: Record<string, string> = {
+      dif: 'difensore', cen: 'centrocampista', att: 'attaccante',
+      por: 'portiere', any: 'qualsiasi',
+    };
+    answers.role = roleMap[codes[0]] || codes[0];
   }
 
-  return Array.from(incompatible);
+  // codes[1] = experience answer (from step 2)
+  if (codes[1]) {
+    const expMap: Record<string, string> = {
+      gio: 'giovane', pro: 'pronto', esp: 'esperto', any: 'qualsiasi',
+    };
+    answers.experience = expMap[codes[1]] || codes[1];
+  }
+
+  // codes[2] = budget answer (from step 3)
+  if (codes[2]) {
+    const budMap: Record<string, string> = {
+      zer: 'zero', pre: 'prestito', any: 'qualsiasi',
+    };
+    answers.budget = budMap[codes[2]] || codes[2];
+  }
+
+  // codes[3] = character answer (from step 4)
+  if (codes[3]) {
+    const charMap: Record<string, string> = {
+      lea: 'leader', gre: 'gregario', tal: 'talento', any: 'qualsiasi',
+    };
+    answers.character = charMap[codes[3]] || codes[3];
+  }
+
+  return answers;
 }
 
 // ============================================================================
-// SESSION MANAGEMENT (in-memory for now, could use KV)
-// ============================================================================
-
-const wizardSessions = new Map<number, WizardSession>();
-
-export function getWizardSession(chatId: number): WizardSession | undefined {
-  return wizardSessions.get(chatId);
-}
-
-export function createWizardSession(chatId: number): WizardSession {
-  const session: WizardSession = {
-    chatId,
-    step: 1,
-    answers: {},
-    startedAt: new Date().toISOString(),
-  };
-  wizardSessions.set(chatId, session);
-  return session;
-}
-
-export function clearWizardSession(chatId: number): void {
-  wizardSessions.delete(chatId);
-}
-
-// ============================================================================
-// WIZARD FLOW
+// WIZARD FLOW — PUBLIC API
 // ============================================================================
 
 /**
- * Avvia il wizard scout
+ * Start the wizard: sends the first question with inline buttons.
+ * No session created. Each button carries its own state.
  */
 export async function startScoutWizard(chatId: number, env: Env): Promise<void> {
-  const session = createWizardSession(chatId);
-  await sendWizardQuestion(chatId, session, env);
-}
+  const step = STEPS[0];
+  const keyboard = buildStepKeyboard(0, []);
 
-/**
- * Manda la domanda corrente del wizard
- */
-async function sendWizardQuestion(chatId: number, session: WizardSession, env: Env): Promise<void> {
-  const question = WIZARD_QUESTIONS[session.step - 1];
+  const message = `🎯 <b>Scout Wizard</b> (1/${TOTAL_STEPS})
 
-  if (!question) {
-    // Wizard completato, mostra risultati
-    await showWizardResults(chatId, session, env);
-    return;
-  }
-
-  const keyboard = {
-    inline_keyboard: question.options.map(opt => [{
-      text: `${opt.emoji} ${opt.label}`,
-      callback_data: `scout:${session.step}:${opt.value}`,
-    }]),
-  };
-
-  // Add cancel button
-  keyboard.inline_keyboard.push([{
-    text: "❌ Annulla",
-    callback_data: "scout:cancel",
-  }]);
-
-  const message = `🎯 <b>Scout Wizard</b> (${session.step}/${WIZARD_QUESTIONS.length})
-
-${question.question}`;
+${step.question}`;
 
   await sendMessageWithKeyboard(env, chatId, message, keyboard);
 }
 
 /**
- * Gestisce la risposta a una domanda del wizard
+ * Handle a wizard callback button press.
+ * Completely stateless — all info comes from callback_data.
  */
 export async function handleWizardCallback(
   chatId: number,
@@ -264,100 +193,164 @@ export async function handleWizardCallback(
   data: string,
   env: Env
 ): Promise<void> {
-  // Parse callback data: "scout:step:value" or "scout:cancel"
-  const parts = data.split(':');
+  console.log(`[Wizard] Stateless callback: data="${data}" chat=${chatId}`);
 
-  if (parts[1] === 'cancel') {
-    clearWizardSession(chatId);
+  // Handle cancel
+  if (data === 'sw:x') {
     await answerCallbackQuery(env, callbackId, '❌ Wizard annullato');
-    await editMessageText(env, chatId, messageId, '❌ Scout Wizard annullato.\n\nUsa /scout per ricominciare.');
+    await editMessageText(
+      env, chatId, messageId,
+      '❌ Scout Wizard annullato.\n\nUsa /scout per ricominciare.'
+    );
     return;
   }
 
-  const step = parseInt(parts[1]);
-  const value = parts[2];
-
-  const session = getWizardSession(chatId);
-  if (!session || session.step !== step) {
-    await answerCallbackQuery(env, callbackId, '⚠️ Sessione scaduta');
+  // Parse callback data
+  const parsed = parseCallbackData(data);
+  if (!parsed) {
+    console.error(`[Wizard] Invalid callback data: "${data}"`);
+    await answerCallbackQuery(env, callbackId, '⚠️ Errore, usa /scout');
     return;
   }
 
-  // Save answer based on step
-  switch (step) {
-    case 1:
-      session.answers.role = value as any;
-      break;
-    case 2:
-      session.answers.experience = value as any;
-      break;
-    case 3:
-      session.answers.budget = value as any;
-      break;
-    case 4:
-      session.answers.character = value as any;
-      break;
-  }
-
-  // Move to next step
-  session.step++;
-  wizardSessions.set(chatId, session);
+  const { step, codes } = parsed;
+  console.log(`[Wizard] Step ${step} completed, codes=[${codes.join(',')}]`);
 
   await answerCallbackQuery(env, callbackId, '✓');
 
-  // Update message with next question or results
-  if (session.step > WIZARD_QUESTIONS.length) {
-    await showWizardResults(chatId, session, env, messageId);
-  } else {
-    const nextQuestion = WIZARD_QUESTIONS[session.step - 1];
-    const keyboard = {
-      inline_keyboard: nextQuestion.options.map(opt => [{
-        text: `${opt.emoji} ${opt.label}`,
-        callback_data: `scout:${session.step}:${opt.value}`,
-      }]),
-    };
-    keyboard.inline_keyboard.push([{
-      text: "❌ Annulla",
-      callback_data: "scout:cancel",
-    }]);
-
-    const message = `🎯 <b>Scout Wizard</b> (${session.step}/${WIZARD_QUESTIONS.length})
-
-${nextQuestion.question}`;
-
-    await editMessageText(env, chatId, messageId, message, keyboard);
-  }
-}
-
-/**
- * Mostra i risultati finali del wizard
- */
-async function showWizardResults(
-  chatId: number,
-  session: WizardSession,
-  env: Env,
-  messageId?: number
-): Promise<void> {
-  const data = await fetchData(env);
-
-  if (!data?.opportunities) {
-    const errorMsg = '❌ Errore nel caricamento dati. Riprova più tardi.';
-    if (messageId) {
-      await editMessageText(env, chatId, messageId, errorMsg);
-    }
-    clearWizardSession(chatId);
+  // Check if wizard is complete (all 4 steps answered)
+  if (codes.length >= TOTAL_STEPS) {
+    // All answers collected — show results
+    await showWizardResults(chatId, messageId, codes, env);
     return;
   }
 
-  // Build filters from answers
-  const filters: any = {};
-
-  if (session.answers.role && session.answers.role !== 'qualsiasi') {
-    filters.role = session.answers.role;
+  // Show next step
+  const nextStepIdx = codes.length; // 0-indexed
+  const nextStep = STEPS[nextStepIdx];
+  if (!nextStep) {
+    // Shouldn't happen, but safety net
+    await showWizardResults(chatId, messageId, codes, env);
+    return;
   }
 
-  if (session.answers.experience && session.answers.experience !== 'qualsiasi') {
-    switch (session.answers.experience) {
+  const keyboard = buildStepKeyboard(nextStepIdx, codes);
+
+  // Build progress summary
+  const progress = buildProgressSummary(codes);
+
+  const message = `🎯 <b>Scout Wizard</b> (${nextStepIdx + 1}/${TOTAL_STEPS})
+
+${progress}
+${nextStep.question}`;
+
+  await editMessageText(env, chatId, messageId, message, keyboard);
+}
+
+/**
+ * Check if a message text should trigger the wizard
+ */
+export function shouldTriggerWizard(text: string): boolean {
+  const lower = text.toLowerCase();
+
+  // Explicit triggers
+  if (/\/(scout|wizard|aiutami|cercami)\b/.test(lower)) {
+    return true;
+  }
+
+  // Vague requests
+  const vaguePatterns = [
+    /mi serve (qualcuno|qualcosa|un giocatore)/i,
+    /sto cercando (ma non so|qualcosa)/i,
+    /aiutami a (trovare|cercare)/i,
+    /non so (cosa|chi) cercare/i,
+    /cosa mi (consigli|suggerisci)/i,
+    /che (giocatori|opportunità) ci sono/i,
+  ];
+
+  return vaguePatterns.some(p => p.test(lower));
+}
+
+// ============================================================================
+// INTERNAL HELPERS
+// ============================================================================
+
+/**
+ * Build the inline keyboard for a given step index.
+ * Each button's callback_data contains all previous answers + this answer.
+ */
+function buildStepKeyboard(stepIdx: number, previousCodes: string[]): any {
+  const step = STEPS[stepIdx];
+  const stepNum = stepIdx + 1;
+
+  const keyboard = {
+    inline_keyboard: step.options.map(opt => [{
+      text: `${opt.emoji} ${opt.label}`,
+      callback_data: buildCallbackData(stepNum, previousCodes, opt.code),
+    }]),
+  };
+
+  // Add cancel button
+  keyboard.inline_keyboard.push([{
+    text: '❌ Annulla',
+    callback_data: 'sw:x',
+  }]);
+
+  return keyboard;
+}
+
+/**
+ * Build a visual summary of answers given so far
+ */
+function buildProgressSummary(codes: string[]): string {
+  const parts: string[] = [];
+
+  const labels: Array<{ key: string; map: Record<string, string> }> = [
+    { key: '📌 Ruolo', map: { dif: 'Difensore', cen: 'Centrocampista', att: 'Attaccante', por: 'Portiere', any: 'Tutti' } },
+    { key: '🎯 Tipo', map: { gio: 'Giovane', pro: 'Pronto', esp: 'Esperto', any: 'Tutti' } },
+    { key: '💰 Budget', map: { zer: 'Param. zero', pre: 'Anche prestiti', any: 'Tutti' } },
+    { key: '👤 Carattere', map: { lea: 'Leader', gre: 'Gregario', tal: 'Talento', any: 'Tutti' } },
+  ];
+
+  for (let i = 0; i < codes.length && i < labels.length; i++) {
+    const label = labels[i];
+    const value = label.map[codes[i]] || codes[i];
+    parts.push(`${label.key}: <b>${value}</b>`);
+  }
+
+  if (parts.length === 0) return '';
+  return parts.join(' • ') + '\n\n';
+}
+
+/**
+ * Show wizard results — final step
+ */
+async function showWizardResults(
+  chatId: number,
+  messageId: number,
+  codes: string[],
+  env: Env
+): Promise<void> {
+  const answers = decodeAnswers(codes);
+  const data = await fetchData(env);
+
+  if (!data?.opportunities) {
+    await editMessageText(
+      env, chatId, messageId,
+      '❌ Errore nel caricamento dati. Riprova con /scout.'
+    );
+    return;
+  }
+
+  // Build filters from decoded answers
+  const filters: any = {};
+
+  if (answers.role && answers.role !== 'qualsiasi') {
+    filters.role = answers.role;
+  }
+
+  if (answers.experience && answers.experience !== 'qualsiasi') {
+    switch (answers.experience) {
       case 'giovane':
         filters.ageMax = 23;
         break;
@@ -371,8 +364,8 @@ async function showWizardResults(
     }
   }
 
-  if (session.answers.budget && session.answers.budget !== 'qualsiasi') {
-    switch (session.answers.budget) {
+  if (answers.budget && answers.budget !== 'qualsiasi') {
+    switch (answers.budget) {
       case 'zero':
         filters.type = 'svincolato';
         break;
@@ -382,43 +375,21 @@ async function showWizardResults(
     }
   }
 
-  // Filter opportunities
+  // Filter and sort
   let results = filterOpportunities(data.opportunities, filters);
-
-  // Sort by score
   results = results.sort((a, b) => b.ob1_score - a.ob1_score).slice(0, 5);
 
-  // Build summary
-  const summaryParts: string[] = [];
-  if (session.answers.role !== 'qualsiasi') summaryParts.push(session.answers.role || '');
-  if (session.answers.experience !== 'qualsiasi') {
-    const expLabels: Record<string, string> = {
-      'giovane': 'giovane',
-      'pronto': 'pronto',
-      'esperto': 'esperto',
-    };
-    summaryParts.push(expLabels[session.answers.experience || ''] || '');
-  }
-  if (session.answers.budget !== 'qualsiasi') {
-    const budgetLabels: Record<string, string> = {
-      'zero': 'a zero',
-      'prestito': 'in prestito',
-    };
-    summaryParts.push(budgetLabels[session.answers.budget || ''] || '');
-  }
-
-  const summary = summaryParts.filter(Boolean).join(', ') || 'senza filtri';
+  // Build summary text
+  const progressSummary = buildProgressSummary(codes);
 
   let message = `🎯 <b>Risultati Scout Wizard</b>
 
-📋 Hai cercato: <i>${summary}</i>
-
-`;
+${progressSummary}`;
 
   if (results.length === 0) {
     message += `😔 Nessun giocatore trovato con questi criteri.
 
-Prova a rilassare i filtri o usa /hot per vedere le migliori opportunità.`;
+Prova a rilassare i filtri o usa /hot per le migliori opportunità.`;
   } else {
     message += `🏆 <b>Top ${results.length} match:</b>\n\n`;
 
@@ -431,40 +402,55 @@ Prova a rilassare i filtri o usa /hot per vedere le migliori opportunità.`;
       message += '\n\n';
     });
 
-    message += `\n💡 Usa /search <nome> per dettagli su un giocatore specifico.`;
+    message += `💡 Usa /search &lt;nome&gt; per dettagli su un giocatore.`;
   }
 
-  // Clear session
-  clearWizardSession(chatId);
+  // Restart button
+  const keyboard = {
+    inline_keyboard: [[{
+      text: '🔄 Cerca di nuovo',
+      callback_data: 'sw:restart',
+    }]],
+  };
 
-  if (messageId) {
-    await editMessageText(env, chatId, messageId, message);
-  } else {
-    const { sendMessage } = await import('./telegram');
-    await sendMessage(env, chatId, message);
-  }
+  await editMessageText(env, chatId, messageId, message, keyboard);
 }
 
-/**
- * Check if a query should trigger the wizard
- */
-export function shouldTriggerWizard(text: string): boolean {
-  const lower = text.toLowerCase();
+// ============================================================================
+// RIVALRIES (kept for future use)
+// ============================================================================
 
-  // Explicit triggers
-  if (/\/(scout|wizard|aiutami|cercami)\b/.test(lower)) {
-    return true;
+const RIVALRIES: Record<string, string[]> = {
+  'cesena': ['rimini'], 'rimini': ['cesena'],
+  'reggiana': ['modena', 'parma'], 'modena': ['reggiana', 'parma'],
+  'parma': ['reggiana', 'modena'], 'spal': ['bologna'],
+  'pisa': ['livorno', 'fiorentina'], 'livorno': ['pisa'],
+  'empoli': ['fiorentina'], 'siena': ['fiorentina'],
+  'frosinone': ['latina'], 'latina': ['frosinone'],
+  'avellino': ['salernitana', 'benevento'], 'salernitana': ['avellino', 'napoli'],
+  'benevento': ['avellino'],
+  'catania': ['palermo', 'messina'], 'palermo': ['catania'],
+  'messina': ['catania', 'reggina'],
+  'reggina': ['cosenza', 'catanzaro'], 'cosenza': ['reggina', 'catanzaro'],
+  'catanzaro': ['reggina', 'cosenza'],
+  'bari': ['lecce', 'foggia'], 'lecce': ['bari', 'taranto'],
+  'foggia': ['bari'], 'taranto': ['lecce'],
+  'padova': ['venezia', 'vicenza', 'verona'], 'venezia': ['padova', 'treviso'],
+  'vicenza': ['padova', 'verona'],
+  'brescia': ['atalanta', 'cremonese'], 'cremonese': ['brescia'],
+  'como': ['varese'],
+  'novara': ['alessandria', 'pro vercelli'], 'alessandria': ['novara'],
+  'pro vercelli': ['novara'],
+};
+
+export function getIncompatibleClubs(previousClubs: string[]): string[] {
+  const incompatible = new Set<string>();
+  for (const club of previousClubs) {
+    const normalized = club.toLowerCase().trim();
+    const rivals = RIVALRIES[normalized];
+    if (rivals) {
+      rivals.forEach(r => incompatible.add(r));
+    }
   }
-
-  // Vague requests that suggest the DS doesn't know exactly what they want
-  const vaguePatterns = [
-    /mi serve (qualcuno|qualcosa|un giocatore)/i,
-    /sto cercando (ma non so|qualcosa)/i,
-    /aiutami a (trovare|cercare)/i,
-    /non so (cosa|chi) cercare/i,
-    /cosa mi (consigli|suggerisci)/i,
-    /che (giocatori|opportunità) ci sono/i,
-  ];
-
-  return vaguePatterns.some(p => p.test(lower));
+  return Array.from(incompatible);
 }
