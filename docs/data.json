@@ -1,6 +1,76 @@
 {
   "opportunities": [
     {
+      "id": "opp_5dd5f6aa",
+      "player_name": "Gianluca Longobardi",
+      "age": 23,
+      "role": "DC",
+      "role_name": "Difensore",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-02-06",
+      "source_name": "TuttoC",
+      "source_url": "https://www.tuttoc.com/il-punto/al-via-il-calciomercato-invernale-in-serie-c-primi-colpi-e-nuovi-equilibri-l-addio-di-bruzzaniti-non-ferma-il-pineto-il-primo-gol-di-stauciuc-fa-spera-427631",
+      "previous_clubs": [
+        "Rimini"
+      ],
+      "current_club": null,
+      "appearances": 0,
+      "goals": 0,
+      "summary": "Difensore svincolato dopo l'esclusione del Rimini. Ingaggiato dalla Salernitana per rinforzare la difesa.",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 400000,
+      "market_value_formatted": "€400k",
+      "ob1_score": 92,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 100,
+        "experience": 60,
+        "age": 100,
+        "source": 95,
+        "completeness": 100
+      }
+    },
+    {
+      "id": "opp_8d555d96",
+      "player_name": "Diego Stramaccioni",
+      "age": 23,
+      "role": "DC",
+      "role_name": "Difensore",
+      "opportunity_type": "rescissione",
+      "reported_date": "2026-02-06",
+      "source_name": "TMW",
+      "source_url": "https://www.tuttomercatoweb.com/serie-c/perugia-arriva-stramaccioni-in-difesa-contratto-semestrale-con-opzione-2190866",
+      "previous_clubs": [
+        "Juventus Next Gen",
+        "Vis Pesaro",
+        "Reggiana",
+        "Gubbio",
+        "Trapani"
+      ],
+      "current_club": "Perugia",
+      "appearances": 0,
+      "goals": 0,
+      "summary": "Difensore classe 2001, ha rescisso con il Trapani e ha firmato un contratto semestrale con il Perugia, club in cui è cresciuto, con opzione di rinnovo al raggiungimento di determinati obiettivi.",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "ob1_score": 90,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 95,
+        "experience": 65,
+        "age": 100,
+        "source": 80,
+        "completeness": 100
+      }
+    },
+    {
       "id": "opp_2317f6a6",
       "player_name": "Luan Capanni",
       "age": 25,
@@ -944,6 +1014,39 @@
       }
     },
     {
+      "id": "opp_ae2d45cc",
+      "player_name": "Bogdan Stauciuc",
+      "age": 24,
+      "role": "AT",
+      "role_name": "Attaccante",
+      "opportunity_type": "mercato",
+      "reported_date": "2026-02-06",
+      "source_name": "TuttoC",
+      "source_url": "https://www.tuttoc.com/il-punto/al-via-il-calciomercato-invernale-in-serie-c-primi-colpi-e-nuovi-equilibri-l-addio-di-bruzzaniti-non-ferma-il-pineto-il-primo-gol-di-stauciuc-fa-spera-427631",
+      "previous_clubs": [
+        "Fasano"
+      ],
+      "current_club": "Trapani",
+      "appearances": 0,
+      "goals": 0,
+      "summary": "Attaccante romeno arrivato dal Fasano. Ha segnato il gol decisivo per il Trapani contro il Casarano.",
+      "nationality": "Romania",
+      "second_nationality": "Italia",
+      "foot": "destro",
+      "market_value": 100000,
+      "market_value_formatted": "€100k",
+      "ob1_score": 82,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 50,
+        "experience": 60,
+        "age": 100,
+        "source": 95,
+        "completeness": 100
+      }
+    },
+    {
       "id": "opp_c99f06ec",
       "player_name": "Di Maggio",
       "age": 26,
@@ -1297,37 +1400,6 @@
       }
     },
     {
-      "id": "opp_fbbd5b4f",
-      "player_name": "Sergej Levak",
-      "age": 20,
-      "role": "CC",
-      "role_name": "Centrocampista Centrale",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-02-03",
-      "source_name": "Transfermarkt",
-      "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574/post_id/9999",
-      "previous_clubs": [],
-      "current_club": "ex primavera Roma",
-      "appearances": 0,
-      "goals": 0,
-      "summary": "Attualmente svincolato, ex primavera Roma. Centrocampista centrale ben strutturato fisicamente e con buoni numeri nell'ultimo campionato di Primavera. Sembra un bel giocatorino.",
-      "nationality": "Croazia",
-      "second_nationality": null,
-      "foot": null,
-      "market_value": null,
-      "market_value_formatted": null,
-      "ob1_score": 80,
-      "classification": "hot",
-      "score_breakdown": {
-        "freshness": 75,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 85,
-        "source": 85,
-        "completeness": 100
-      }
-    },
-    {
       "id": "opp_372967a1",
       "player_name": "ROSSETTI EDOARDO",
       "age": 19,
@@ -1448,6 +1520,39 @@
         "experience": 50,
         "age": 65,
         "source": 80,
+        "completeness": 100
+      }
+    },
+    {
+      "id": "opp_acce84fa",
+      "player_name": "Louis Buffon",
+      "age": 18,
+      "role": "CC",
+      "role_name": "Esterno Offensivo",
+      "opportunity_type": "prestito",
+      "reported_date": "2026-02-06",
+      "source_name": "TuttoC",
+      "source_url": "https://www.tuttoc.com/il-punto/la-serie-a-fa-shopping-in-serie-c-un-figlio-d-arte-sceglie-la-lega-pro-per-crescere-la-finale-di-coppa-italia-dal-sapore-di-avellino-429723",
+      "previous_clubs": [
+        "Juventus (giovanili)"
+      ],
+      "current_club": "Pisa",
+      "appearances": 0,
+      "goals": 0,
+      "summary": "Esterno offensivo classe 2007, figlio di Gianluigi Buffon. Dopo la trafila nella Juventus e 4 presenze nel Pisa, si aggrega in prestito al Pontedera.",
+      "nationality": "Italia",
+      "second_nationality": "Repubblica Ceca",
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "ob1_score": 78,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 70,
+        "experience": 60,
+        "age": 65,
+        "source": 95,
         "completeness": 100
       }
     },
@@ -1673,37 +1778,6 @@
         "age": 55,
         "source": 85,
         "completeness": 100
-      }
-    },
-    {
-      "id": "opp_d5d89ee1",
-      "player_name": "Patrick Nuamah",
-      "age": null,
-      "role": "CC",
-      "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-02-03",
-      "source_name": "Transfermarkt",
-      "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574/post_id/9999",
-      "previous_clubs": [],
-      "current_club": "Brescia",
-      "appearances": 0,
-      "goals": 0,
-      "summary": "Rimasto svincolato dal Brescia. Cercato anche da squadre di Serie B. Potrebbe essere un acquisto fuori categoria per la Serie C.",
-      "nationality": null,
-      "second_nationality": null,
-      "foot": null,
-      "market_value": null,
-      "market_value_formatted": null,
-      "ob1_score": 76,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 75,
-        "opportunity_type": 100,
-        "experience": 65,
-        "age": 60,
-        "source": 85,
-        "completeness": 80
       }
     },
     {
@@ -2141,6 +2215,37 @@
       }
     },
     {
+      "id": "opp_6ead68c1",
+      "player_name": "Francesco Gallea",
+      "age": 19,
+      "role": "DC",
+      "role_name": "Difensore Centrale",
+      "opportunity_type": "mercato",
+      "reported_date": "2026-02-06",
+      "source_name": "TuttoC",
+      "source_url": "https://www.tuttoc.com/il-punto/la-serie-a-fa-shopping-in-serie-c-un-figlio-d-arte-sceglie-la-lega-pro-per-crescere-la-finale-di-coppa-italia-dal-sapore-di-avellino-429723",
+      "previous_clubs": [],
+      "current_club": "Lumezzane",
+      "appearances": 0,
+      "goals": 0,
+      "summary": "Talento emergente in Serie C, si è imposto come uno dei migliori difensori. Acquistato dal Cagliari, ma rimane in prestito al Lumezzane fino a giugno.",
+      "nationality": "Italia",
+      "second_nationality": "Mali",
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "ob1_score": 72,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 65,
+        "source": 95,
+        "completeness": 100
+      }
+    },
+    {
       "id": "opp_be2008a5",
       "player_name": "Pietro Saio",
       "age": null,
@@ -2328,6 +2433,37 @@
         "age": 35,
         "source": 90,
         "completeness": 100
+      }
+    },
+    {
+      "id": "opp_2eb1fc3d",
+      "player_name": "Francesco Di Paolo",
+      "age": null,
+      "role": "AT",
+      "role_name": "Attaccante",
+      "opportunity_type": "mercato",
+      "reported_date": "2026-02-06",
+      "source_name": "TuttoC",
+      "source_url": "https://www.tuttoc.com/il-punto/la-serie-a-fa-shopping-in-serie-c-un-figlio-d-arte-sceglie-la-lega-pro-per-crescere-la-finale-di-coppa-italia-dal-sapore-di-avellino-429723",
+      "previous_clubs": [],
+      "current_club": "Siracusa",
+      "appearances": 0,
+      "goals": 0,
+      "summary": "Attaccante del Siracusa, verrà acquistato dal Cagliari che lo lascerà in prestito.",
+      "nationality": null,
+      "second_nationality": null,
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "ob1_score": 70,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 60,
+        "source": 95,
+        "completeness": 80
       }
     },
     {
@@ -2645,37 +2781,6 @@
       }
     },
     {
-      "id": "opp_50cdfcc7",
-      "player_name": "Di Maggio",
-      "age": null,
-      "role": "CC",
-      "role_name": "Mediano/Mezzala/Trequartista",
-      "opportunity_type": "prestito",
-      "reported_date": "2026-02-03",
-      "source_name": "Transfermarkt",
-      "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574/post_id/9999",
-      "previous_clubs": [],
-      "current_club": "Perugia",
-      "appearances": 0,
-      "goals": 0,
-      "summary": "Ritorno di prestito da Perugia (Serie C). Cercato dal Padova (Serie B), ma l'Inter potrebbe volerlo tenere per l'U23. Potrebbe essere un'opportunità per club di Serie C se l'Inter decidesse di cederlo.",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": null,
-      "market_value": null,
-      "market_value_formatted": null,
-      "ob1_score": 70,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 75,
-        "opportunity_type": 70,
-        "experience": 65,
-        "age": 60,
-        "source": 85,
-        "completeness": 80
-      }
-    },
-    {
       "id": "opp_25498215",
       "player_name": "Antonio Arena",
       "age": 17,
@@ -2840,68 +2945,6 @@
       "reported_date": "2026-02-04",
       "source_name": "Transfermarkt",
       "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574",
-      "previous_clubs": [],
-      "current_club": "Pergolettese",
-      "appearances": 0,
-      "goals": 0,
-      "summary": "Ritorno di prestito da Pergolettese (Serie C). Potrebbe essere un'opportunità per club di Serie C che cercano un difensore.",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": null,
-      "market_value": null,
-      "market_value_formatted": null,
-      "ob1_score": 68,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 75,
-        "opportunity_type": 70,
-        "experience": 50,
-        "age": 60,
-        "source": 85,
-        "completeness": 80
-      }
-    },
-    {
-      "id": "opp_eeebd6e6",
-      "player_name": "Sarr",
-      "age": null,
-      "role": "CC",
-      "role_name": "Punta/Seconda Punta",
-      "opportunity_type": "prestito",
-      "reported_date": "2026-02-03",
-      "source_name": "Transfermarkt",
-      "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574/post_id/9999",
-      "previous_clubs": [],
-      "current_club": "Foggia",
-      "appearances": 0,
-      "goals": 0,
-      "summary": "Ritorno di prestito da Foggia (Serie C). Potrebbe essere un'opportunità per club di Serie C che cercano un attaccante.",
-      "nationality": "Senegal",
-      "second_nationality": "Belgio",
-      "foot": null,
-      "market_value": null,
-      "market_value_formatted": null,
-      "ob1_score": 68,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 75,
-        "opportunity_type": 70,
-        "experience": 50,
-        "age": 60,
-        "source": 85,
-        "completeness": 80
-      }
-    },
-    {
-      "id": "opp_9ba11b96",
-      "player_name": "Stante",
-      "age": null,
-      "role": "DC",
-      "role_name": "Difensore",
-      "opportunity_type": "prestito",
-      "reported_date": "2026-02-03",
-      "source_name": "Transfermarkt",
-      "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574/post_id/9999",
       "previous_clubs": [],
       "current_club": "Pergolettese",
       "appearances": 0,
@@ -3144,46 +3187,15 @@
         "source": 85,
         "completeness": 80
       }
-    },
-    {
-      "id": "opp_e55b6dc0",
-      "player_name": "Zuberek",
-      "age": 53,
-      "role": "CC",
-      "role_name": "Punta/Seconda Punta",
-      "opportunity_type": "prestito",
-      "reported_date": "2026-02-03",
-      "source_name": "Transfermarkt",
-      "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574/post_id/9999",
-      "previous_clubs": [],
-      "current_club": "Avellino",
-      "appearances": 0,
-      "goals": 0,
-      "summary": "Ritorno di prestito da Avellino (Serie C). Cedibile. Potrebbe essere un'opportunità per club di Serie C che cercano un attaccante.",
-      "nationality": "Polonia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": null,
-      "market_value_formatted": null,
-      "ob1_score": 64,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 75,
-        "opportunity_type": 70,
-        "experience": 50,
-        "age": 35,
-        "source": 85,
-        "completeness": 100
-      }
     }
   ],
   "stats": {
     "total": 100,
-    "hot": 41,
-    "warm": 59,
+    "hot": 43,
+    "warm": 57,
     "cold": 0,
-    "today": 25
+    "today": 31
   },
-  "last_update": "2026-02-06T13:13:39.182845",
+  "last_update": "2026-02-06T19:01:04.375411",
   "scoring_version": "SCORE-001"
 }
