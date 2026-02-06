@@ -58,6 +58,34 @@ SCORE_WEIGHTS = {
 }
 
 
+def is_generic_tm_link(url: str) -> bool:
+    """Check if URL is a generic Transfermarkt page (not a player profile or real news)."""
+    if not url:
+        return False
+    url_lower = url.lower()
+    # Links to TM pages that are NOT player profiles
+    generic_patterns = [
+        '/transfers/',      # Squad transfers page
+        '/thread/',         # Forum thread
+        '/forum/',          # Forum
+        '/serie-c-girone',  # League page
+        '/serie-d-girone',  # League page
+        '/squadra-under',   # U23 squad page
+        '/letzte-transfers', # Recent transfers
+        '/startseite/',     # Homepage
+    ]
+    if 'transfermarkt' in url_lower:
+        for pattern in generic_patterns:
+            if pattern in url_lower:
+                return True
+        # If it's TM but has /profil/ or /spieler/ it's a player profile (OK)
+        if '/profil/' in url_lower or '/spieler/' in url_lower:
+            return False
+        # Other TM links without player profile path are probably generic
+        return True
+    return False
+
+
 def get_role_label(opp):
     """Role label from role_name or role code."""
     return opp.get('role_name') or ROLE_LABELS.get(opp.get('role', ''), opp.get('role', 'N/D'))
@@ -645,7 +673,8 @@ def generate_html_report(opportunities: list, dna_matches: list = None) -> str:
                 {score_bars}
             </div>
 '''
-        if source_url:
+        # Solo mostra fonte se è un articolo di notizie, non una pagina TM generica
+        if source_url and not is_generic_tm_link(source_url):
             html += f'            <div style="margin-top:10px"><a class="source-link" href="{source_url}" target="_blank">↗ Fonte originale</a></div>\n'
 
         html += '        </div>\n'
