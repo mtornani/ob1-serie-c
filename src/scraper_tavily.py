@@ -14,6 +14,7 @@ from pathlib import Path
 
 import requests
 from dotenv import load_dotenv
+from date_filter import is_article_fresh
 
 load_dotenv()
 
@@ -218,6 +219,12 @@ JSON:'''
                 if url in seen_urls:
                     continue
                 seen_urls.add(url)
+
+                # Filter stale articles (old news)
+                is_fresh, stale_reason = is_article_fresh(url)
+                if not is_fresh:
+                    print(f"  [SKIP] Stale: {stale_reason}")
+                    continue
 
                 title = result.get('title', '')
                 content = result.get('raw_content') or result.get('content', '')

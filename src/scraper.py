@@ -16,6 +16,7 @@ from models import (
     PlayerProfile, MarketOpportunity, OpportunityType, PlayerRole,
     ALL_SERIE_C_CLUBS
 )
+from date_filter import is_article_fresh
 
 load_dotenv()
 
@@ -119,7 +120,13 @@ class OB1Scraper:
                     # Validate
                     if not self._is_valid_result(item):
                         continue
-                    
+
+                    # Check article freshness (filter old news)
+                    is_fresh, stale_reason = is_article_fresh(url)
+                    if not is_fresh:
+                        print(f"      [SKIP] Stale article: {stale_reason}")
+                        continue
+
                     # Parse
                     opportunity = self._parse_result(item, opp_type)
                     if opportunity:
