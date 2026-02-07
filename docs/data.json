@@ -244,6 +244,39 @@
       }
     },
     {
+      "id": "opp_03193a9a",
+      "player_name": "Noa Kljajic",
+      "age": 20,
+      "role": "AT",
+      "role_name": "Attaccante",
+      "opportunity_type": "rescissione",
+      "reported_date": "2026-02-07",
+      "source_name": "TMW",
+      "source_url": "https://www.tuttomercatoweb.com/serie-b/reggiana-arriva-saro-fra-i-pali-risoluzione-per-l-attaccante-kljajic-2141605",
+      "previous_clubs": [
+        "Mainz"
+      ],
+      "current_club": "Reggiana",
+      "appearances": 0,
+      "goals": 0,
+      "summary": "Giovane attaccante che ha risolto il contratto con la Reggiana. Era arrivato dal Mainz un anno fa e ha giocato solo con la Primavera.",
+      "nationality": "Croazia",
+      "second_nationality": null,
+      "foot": "ambidestro",
+      "market_value": 75000,
+      "market_value_formatted": "€75k",
+      "ob1_score": 86,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 95,
+        "experience": 60,
+        "age": 85,
+        "source": 80,
+        "completeness": 100
+      }
+    },
+    {
       "id": "opp_e19e5a05",
       "player_name": "Patrick Nuamah",
       "age": 21,
@@ -564,68 +597,6 @@
         "experience": 50,
         "age": 85,
         "source": 85,
-        "completeness": 100
-      }
-    },
-    {
-      "id": "opp_9480ced8",
-      "player_name": "Mattia Del Favero",
-      "age": 28,
-      "role": "PO",
-      "role_name": "Portiere",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-02-05",
-      "source_name": "TMW",
-      "source_url": "https://www.tuttomercatoweb.com/serie-c/serie-c-tutte-le-operazioni-di-calciomercato-acquisti-e-cessioni-squadra-per-squadra-2191226",
-      "previous_clubs": [],
-      "current_club": "Pro Vercelli",
-      "appearances": 0,
-      "goals": 0,
-      "summary": "Portiere svincolato, acquistato dalla Pro Vercelli.",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 75000,
-      "market_value_formatted": "€75k",
-      "ob1_score": 83,
-      "classification": "hot",
-      "score_breakdown": {
-        "freshness": 75,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 100,
-        "source": 80,
-        "completeness": 100
-      }
-    },
-    {
-      "id": "opp_6aaa859d",
-      "player_name": "Francesco Pio Petito",
-      "age": 24,
-      "role": "AT",
-      "role_name": "Attaccante",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-02-05",
-      "source_name": "TMW",
-      "source_url": "https://www.tuttomercatoweb.com/serie-c/serie-c-tutte-le-operazioni-di-calciomercato-acquisti-e-cessioni-squadra-per-squadra-2191226",
-      "previous_clubs": [],
-      "current_club": "Dolomiti Bellunesi",
-      "appearances": 0,
-      "goals": 0,
-      "summary": "Attaccante svincolato, acquistato dal Dolomiti Bellunesi.",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 200000,
-      "market_value_formatted": "€200k",
-      "ob1_score": 83,
-      "classification": "hot",
-      "score_breakdown": {
-        "freshness": 75,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 100,
-        "source": 80,
         "completeness": 100
       }
     },
@@ -1364,6 +1335,37 @@
       }
     },
     {
+      "id": "opp_1a85993a",
+      "player_name": "Lazzarini",
+      "age": null,
+      "role": "CC",
+      "role_name": "N/D",
+      "opportunity_type": "rescissione",
+      "reported_date": "2026-02-07",
+      "source_name": "TuttoC",
+      "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-un-colpo-per-v-verona-e-livorno-430626",
+      "previous_clubs": [],
+      "current_club": "Arezzo",
+      "appearances": 0,
+      "goals": 0,
+      "summary": "Ha rescisso il contratto con l'Arezzo.",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "ob1_score": 78,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 95,
+        "experience": 50,
+        "age": 60,
+        "source": 95,
+        "completeness": 80
+      }
+    },
+    {
       "id": "opp_31238e51",
       "player_name": "Dele Alli",
       "age": null,
@@ -1644,6 +1646,39 @@
         "age": 65,
         "source": 80,
         "completeness": 100
+      }
+    },
+    {
+      "id": "opp_72af1b96",
+      "player_name": "Doumbia",
+      "age": null,
+      "role": "CC",
+      "role_name": "N/D",
+      "opportunity_type": "prestito",
+      "reported_date": "2026-02-07",
+      "source_name": "TuttoC",
+      "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-un-colpo-per-v-verona-e-livorno-430626",
+      "previous_clubs": [
+        "Genoa"
+      ],
+      "current_club": "Team Altamura",
+      "appearances": 0,
+      "goals": 0,
+      "summary": "Arriva in prestito dal Genoa al Team Altamura.",
+      "nationality": "Costa d'Avorio",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "ob1_score": 76,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 70,
+        "experience": 60,
+        "age": 60,
+        "source": 95,
+        "completeness": 80
       }
     },
     {
@@ -3117,37 +3152,6 @@
       }
     },
     {
-      "id": "opp_94ec74d9",
-      "player_name": "Biagetti",
-      "age": null,
-      "role": "DC",
-      "role_name": "Difensore",
-      "opportunity_type": "mercato",
-      "reported_date": "2026-02-05",
-      "source_name": "TuttoC",
-      "source_url": "https://www.tuttoc.com/calciomercato/picerno-a-gennaio-pronti-nuovi-colpi-diversi-i-movimenti-in-entrata-426235",
-      "previous_clubs": [],
-      "current_club": "Torres",
-      "appearances": 0,
-      "goals": 0,
-      "summary": "Difensore che lascia la Torres (Serie C) per passare al Follonica Gavorrano (Serie D).",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": null,
-      "market_value": null,
-      "market_value_formatted": null,
-      "ob1_score": 64,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 75,
-        "opportunity_type": 50,
-        "experience": 50,
-        "age": 60,
-        "source": 95,
-        "completeness": 80
-      }
-    },
-    {
       "id": "opp_75bc2668",
       "player_name": "Manuel Marras",
       "age": 33,
@@ -3181,11 +3185,11 @@
   ],
   "stats": {
     "total": 100,
-    "hot": 42,
-    "warm": 58,
+    "hot": 41,
+    "warm": 59,
     "cold": 0,
-    "today": 31
+    "today": 34
   },
-  "last_update": "2026-02-07T13:01:43.981244",
+  "last_update": "2026-02-07T18:43:41.667256",
   "scoring_version": "SCORE-001"
 }
