@@ -606,6 +606,37 @@
       }
     },
     {
+      "id": "opp_21171b6b",
+      "player_name": "Tommaso Corazza",
+      "age": 22,
+      "role": "DC",
+      "role_name": "Difensore",
+      "opportunity_type": "prestito",
+      "reported_date": "2026-02-08",
+      "source_name": "TMW",
+      "source_url": "https://www.tuttomercatoweb.com/i-fatti-del-giorno/guida-calciomercato-di-gennaio-2026-acquisti-e-cessioni-tutti-i-trasferimenti-ufficiali-2198579",
+      "previous_clubs": [],
+      "current_club": "Bologna",
+      "appearances": 0,
+      "goals": 0,
+      "summary": "Mandato in prestito dal Bologna al Cesena.",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 1500000,
+      "market_value_formatted": "€1.50m",
+      "ob1_score": 82,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 70,
+        "experience": 50,
+        "age": 100,
+        "source": 80,
+        "completeness": 100
+      }
+    },
+    {
       "id": "opp_e76e229b",
       "player_name": "Gennaro Anatriello",
       "age": 22,
@@ -2145,37 +2176,6 @@
       }
     },
     {
-      "id": "opp_21171b6b",
-      "player_name": "Tommaso Corazza",
-      "age": null,
-      "role": "DC",
-      "role_name": "Difensore",
-      "opportunity_type": "prestito",
-      "reported_date": "2026-02-08",
-      "source_name": "TMW",
-      "source_url": "https://www.tuttomercatoweb.com/i-fatti-del-giorno/guida-calciomercato-di-gennaio-2026-acquisti-e-cessioni-tutti-i-trasferimenti-ufficiali-2198579",
-      "previous_clubs": [],
-      "current_club": "Bologna",
-      "appearances": 0,
-      "goals": 0,
-      "summary": "Mandato in prestito dal Bologna al Cesena.",
-      "nationality": null,
-      "second_nationality": null,
-      "foot": null,
-      "market_value": null,
-      "market_value_formatted": null,
-      "ob1_score": 72,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 100,
-        "opportunity_type": 70,
-        "experience": 50,
-        "age": 60,
-        "source": 80,
-        "completeness": 80
-      }
-    },
-    {
       "id": "opp_dfe45cdf",
       "player_name": "Jonathan Italeng",
       "age": null,
@@ -3146,11 +3146,11 @@
   ],
   "stats": {
     "total": 100,
-    "hot": 27,
-    "warm": 73,
+    "hot": 28,
+    "warm": 72,
     "cold": 0,
     "today": 71
   },
-  "last_update": "2026-02-08T13:06:19.913953",
+  "last_update": "2026-02-08T18:43:09.380280",
   "scoring_version": "SCORE-001"
 }
