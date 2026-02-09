@@ -340,12 +340,12 @@ function createOpportunityCard(opp) {
      oppTypeInfo = '📅 Scadenza';
    }
    
-   let marketValueInfo = '';
-   if (opp.market_value && opp.market_value > 0) {
-     marketValueInfo = opp.market_value >= 1000 
-       ? `${(opp.market_value / 1000).toFixed(1)}M€`
-       : `${opp.market_value}k€`;
-   }
+    let marketValueInfo = '';
+    if (opp.market_value && opp.market_value > 0) {
+      marketValueInfo = opp.market_value >= 1000000 
+        ? `${(opp.market_value / 1000000).toFixed(1)}M€`
+        : `${opp.market_value}k€`;
+    }
 
    return `
      <article class="opportunity-card ${opp.classification} slide-up" data-id="${opp.id}">
@@ -548,12 +548,12 @@ function showDetail(opp) {
      oppTypeColor = 'scadenza';
    }
    
-   let marketValueInfo = '';
-   if (marketValue && marketValue > 0) {
-     marketValueInfo = marketValue >= 1000 
-       ? `${(marketValue / 1000).toFixed(1)}M€`
-       : `${marketValue}k€`;
-   }
+    let marketValueInfo = '';
+    if (marketValue && marketValue > 0) {
+      marketValueInfo = marketValue >= 1000000 
+        ? `${(marketValue / 1000000).toFixed(1)}M€`
+        : `${marketValue}k€`;
+    }
    
    const scoreEmoji = opp.classification === 'hot' ? '🔥' : opp.classification === 'warm' ? '⚡' : '❄️';
 
