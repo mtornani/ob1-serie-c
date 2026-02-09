@@ -8,6 +8,8 @@ import { WatchProfile, WizardState } from './types';
 const PROFILE_PREFIX = 'watch:profile:';
 const WIZARD_PREFIX = 'watch:wizard:';
 const USER_PROFILES_PREFIX = 'watch:user:';
+const WATCHLIST_PREFIX = 'watch:list:';
+const IGNORELIST_PREFIX = 'watch:ignore:';
 
 export interface WatchStorage {
   // Profile CRUD
@@ -20,6 +22,17 @@ export interface WatchStorage {
   saveWizardState(chatId: number, state: WizardState): Promise<void>;
   getWizardState(chatId: number): Promise<WizardState | null>;
   clearWizardState(chatId: number): Promise<void>;
+
+  // NOTIF-001: Watchlist and Ignore list
+  addToWatchlist(chatId: number, oppId: string): Promise<void>;
+  removeFromWatchlist(chatId: number, oppId: string): Promise<boolean>;
+  isInWatchlist(chatId: number, oppId: string): Promise<boolean>;
+  getWatchlist(chatId: number): Promise<string[]>;
+
+  addToIgnoreList(chatId: number, oppId: string): Promise<void>;
+  removeFromIgnoreList(chatId: number, oppId: string): Promise<boolean>;
+  isIgnored(chatId: number, oppId: string): Promise<boolean>;
+  getIgnoreList(chatId: number): Promise<string[]>;
 }
 
 /**
@@ -106,6 +119,90 @@ export function createKVStorage(kv: KVNamespace): WatchStorage {
       const key = `${WIZARD_PREFIX}${chatId}`;
       await kv.delete(key);
     },
+
+    // NOTIF-001: Watchlist functions
+    async addToWatchlist(chatId: number, oppId: string): Promise<void> {
+      const key = `${WATCHLIST_PREFIX}${chatId}`;
+      const existing = await kv.get(key);
+      const watchlist: string[] = existing ? JSON.parse(existing) : [];
+      
+      if (!watchlist.includes(oppId)) {
+        watchlist.push(oppId);
+        await kv.put(key, JSON.stringify(watchlist));
+      }
+    },
+
+    async removeFromWatchlist(chatId: number, oppId: string): Promise<boolean> {
+      const key = `${WATCHLIST_PREFIX}${chatId}`;
+      const existing = await kv.get(key);
+      
+      if (!existing) return false;
+      
+      const watchlist: string[] = JSON.parse(existing);
+      if (!watchlist.includes(oppId)) return false;
+      
+      const filtered = watchlist.filter(id => id !== oppId);
+      await kv.put(key, JSON.stringify(filtered));
+      return true;
+    },
+
+    async isInWatchlist(chatId: number, oppId: string): Promise<boolean> {
+      const key = `${WATCHLIST_PREFIX}${chatId}`;
+      const existing = await kv.get(key);
+      
+      if (!existing) return false;
+      
+      const watchlist: string[] = JSON.parse(existing);
+      return watchlist.includes(oppId);
+    },
+
+    async getWatchlist(chatId: number): Promise<string[]> {
+      const key = `${WATCHLIST_PREFIX}${chatId}`;
+      const existing = await kv.get(key);
+      return existing ? JSON.parse(existing) : [];
+    },
+
+    // NOTIF-001: Ignore list functions
+    async addToIgnoreList(chatId: number, oppId: string): Promise<void> {
+      const key = `${IGNORELIST_PREFIX}${chatId}`;
+      const existing = await kv.get(key);
+      const ignoreList: string[] = existing ? JSON.parse(existing) : [];
+      
+      if (!ignoreList.includes(oppId)) {
+        ignoreList.push(oppId);
+        await kv.put(key, JSON.stringify(ignoreList));
+      }
+    },
+
+    async removeFromIgnoreList(chatId: number, oppId: string): Promise<boolean> {
+      const key = `${IGNORELIST_PREFIX}${chatId}`;
+      const existing = await kv.get(key);
+      
+      if (!existing) return false;
+      
+      const ignoreList: string[] = JSON.parse(existing);
+      if (!ignoreList.includes(oppId)) return false;
+      
+      const filtered = ignoreList.filter(id => id !== oppId);
+      await kv.put(key, JSON.stringify(filtered));
+      return true;
+    },
+
+    async isIgnored(chatId: number, oppId: string): Promise<boolean> {
+      const key = `${IGNORELIST_PREFIX}${chatId}`;
+      const existing = await kv.get(key);
+      
+      if (!existing) return false;
+      
+      const ignoreList: string[] = JSON.parse(existing);
+      return ignoreList.includes(oppId);
+    },
+
+    async getIgnoreList(chatId: number): Promise<string[]> {
+      const key = `${IGNORELIST_PREFIX}${chatId}`;
+      const existing = await kv.get(key);
+      return existing ? JSON.parse(existing) : [];
+    },
   };
 }
 
@@ -161,6 +258,39 @@ export function createMemoryStorage(): WatchStorage {
 
     async clearWizardState(chatId: number): Promise<void> {
       wizardStates.delete(chatId);
+    },
+
+    // In-memory watchlist and ignore list
+    async addToWatchlist(chatId: number, oppId: string): Promise<void> {
+      // Implemented in memory storage
+    },
+
+    async removeFromWatchlist(chatId: number, oppId: string): Promise<boolean> {
+      return false;
+    },
+
+    async isInWatchlist(chatId: number, oppId: string): Promise<boolean> {
+      return false;
+    },
+
+    async getWatchlist(chatId: number): Promise<string[]> {
+      return [];
+    },
+
+    async addToIgnoreList(chatId: number, oppId: string): Promise<void> {
+      // Implemented in memory storage
+    },
+
+    async removeFromIgnoreList(chatId: number, oppId: string): Promise<boolean> {
+      return false;
+    },
+
+    async isIgnored(chatId: number, oppId: string): Promise<boolean> {
+      return false;
+    },
+
+    async getIgnoreList(chatId: number): Promise<string[]> {
+      return [];
     },
   };
 }

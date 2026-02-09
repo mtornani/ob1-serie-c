@@ -1,0 +1,31 @@
+{
+  "id": "fiorentino",
+  "name": "S.S. Fiorentino",
+  "category": "Campionato Sammarinese",
+  "group": "",
+  "city": "Fiorentino",
+  "primary_formation": "4-3-3",
+  "playing_styles": ["possesso"],
+  "needs": [
+    {
+      "position": "ES",
+      "player_type": "tutta_fascia",
+      "age_min": 20,
+      "age_max": 28,
+      "priority": "alta"
+    },
+    {
+      "position": "CC",
+      "player_type": "regista",
+      "age_min": 21,
+      "age_max": 26,
+      "priority": "media"
+    }
+  ],
+  "budget_type": "solo_prestiti",
+  "max_loan_cost": 25,
+  "youth_minutes_pct": 28.0,
+  "youth_development_score": 3,
+  "ds_name": "",
+  "last_updated": "2026-02-09"
+}

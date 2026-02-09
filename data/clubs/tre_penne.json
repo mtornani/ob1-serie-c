@@ -1,0 +1,31 @@
+{
+  "id": "tre_penne",
+  "name": "S.P. Tre Penne",
+  "category": "Campionato Sammarinese",
+  "group": "",
+  "city": "San Marino",
+  "primary_formation": "4-3-3",
+  "playing_styles": ["possesso"],
+  "needs": [
+    {
+      "position": "CC",
+      "player_type": "box_to_box",
+      "age_min": 20,
+      "age_max": 26,
+      "priority": "alta"
+    },
+    {
+      "position": "ATT",
+      "player_type": "finalizzatore",
+      "age_min": 19,
+      "age_max": 28,
+      "priority": "media"
+    }
+  ],
+  "budget_type": "solo_prestiti",
+  "max_loan_cost": 25,
+  "youth_minutes_pct": 50.0,
+  "youth_development_score": 3,
+  "ds_name": "",
+  "last_updated": "2026-02-09"
+}

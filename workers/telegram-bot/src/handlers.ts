@@ -525,15 +525,31 @@ export async function handleCallbackQuery(callback: TelegramCallbackQuery, env: 
     const oppId = params.join('_');
 
     switch (action) {
-      case 'save':
-        // For now, just acknowledge - watchlist feature coming soon
-        await answerCallbackQuery(env, callbackId, '✅ Salvato! (Watchlist in arrivo)');
+      case 'save': {
+        // NOTIF-001: Save to watchlist with KV persistence
+        if (env.USER_DATA && chatId) {
+          const { createKVStorage } = await import('./watch/storage');
+          const storage = createKVStorage(env.USER_DATA);
+          await storage.addToWatchlist(chatId, oppId);
+          await answerCallbackQuery(env, callbackId, '✅ Salvato nella tua watchlist!\n\nUsa /watch per vedere tutti i giocatori salvati.');
+        } else {
+          await answerCallbackQuery(env, callbackId, '✅ Salvato! (Watchlist temporanea)');
+        }
         break;
+      }
 
-      case 'ignore':
-        // For now, just acknowledge - ignore list feature coming soon
-        await answerCallbackQuery(env, callbackId, '❌ Ignorato! (Non vedrai piu questo alert)');
+      case 'ignore': {
+        // NOTIF-001: Add to ignore list with KV persistence
+        if (env.USER_DATA && chatId) {
+          const { createKVStorage } = await import('./watch/storage');
+          const storage = createKVStorage(env.USER_DATA);
+          await storage.addToIgnoreList(chatId, oppId);
+          await answerCallbackQuery(env, callbackId, '❌ Giocatore ignorato.\n\nNon riceverai più alert per questo giocatore.');
+        } else {
+          await answerCallbackQuery(env, callbackId, '❌ Ignorato! (Senza persistenza)');
+        }
         break;
+      }
 
       case 'details':
         // Show full score breakdown
@@ -597,8 +613,8 @@ Ti mostrerò i giocatori più adatti per il club richiesto basandomi sulle oppor
     return;
   }
 
-  // Get matches for this club
-  const matches = getMatchesForClub(opportunities, clubQuery, 5);
+  // Get matches for this club using complete DNA algorithm
+  const matches = await getMatchesForClub(env, opportunities, clubQuery, 5);
 
   const message = formatDNAMatchList(
     matches,
@@ -628,8 +644,8 @@ async function handleDNATopMatches(chatId: number, env: Env): Promise<void> {
     return;
   }
 
-  // Get top matches (young players with high score)
-  const topMatches = getTopMatches(opportunities, 75, 8);
+  // Get top matches (young players with high DNA score)
+  const topMatches = await getTopMatches(env, opportunities, 75, 8);
 
   if (topMatches.length === 0) {
     await sendMessage(env, chatId, `🏆 <b>Top Talenti</b>

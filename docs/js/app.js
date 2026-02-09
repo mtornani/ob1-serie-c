@@ -14,6 +14,7 @@ const state = {
   currentFilter: 'all',
   currentRoleFilter: '',
   currentTypeFilter: '',
+  currentPeriodFilter: '',
   searchQuery: '',
   isLoading: true,
   theme: 'dark'
@@ -35,6 +36,7 @@ const elements = {
   filterChips: document.getElementById('filterChips'),
   roleFilter: document.getElementById('roleFilter'),
   typeFilter: document.getElementById('typeFilter'),
+  periodFilter: document.getElementById('periodFilter'),
   totalCount: document.getElementById('totalCount'),
   hotCount: document.getElementById('hotCount'),
   warmCount: document.getElementById('warmCount'),
@@ -130,6 +132,12 @@ function initEventListeners() {
   // Type filter
   elements.typeFilter.addEventListener('change', (e) => {
     state.currentTypeFilter = e.target.value;
+    filterOpportunities();
+  });
+
+  // Period filter
+  elements.periodFilter.addEventListener('change', (e) => {
+    state.currentPeriodFilter = e.target.value;
     filterOpportunities();
   });
 
@@ -232,6 +240,19 @@ function filterOpportunities() {
   // Type filter
   if (state.currentTypeFilter) {
     filtered = filtered.filter(opp => opp.opportunity_type === state.currentTypeFilter);
+  }
+
+  // Period filter
+  if (state.currentPeriodFilter && state.currentPeriodFilter !== 'all') {
+    const days = parseInt(state.currentPeriodFilter);
+    const cutoffDate = new Date();
+    cutoffDate.setDate(cutoffDate.getDate() - days);
+    
+    filtered = filtered.filter(opp => {
+      if (!opp.reported_date) return false;
+      const oppDate = new Date(opp.reported_date);
+      return oppDate >= cutoffDate;
+    });
   }
 
   // Search query
@@ -437,6 +458,15 @@ function showDetail(opp) {
       <p>${opp.source_name}</p>
       ${opp.source_url ? `<a href="${opp.source_url}" target="_blank" rel="noopener" style="color: var(--color-primary);">🔗 Leggi articolo</a>` : ''}
     </div>
+
+    ${opp.tm_url ? `
+    <div class="card" style="background: var(--color-bg-secondary); padding: var(--space-md); border-radius: var(--radius-md); margin-top: var(--space-md);">
+      <h4 style="margin-bottom: var(--space-sm); color: var(--color-text-secondary);">Transfermarkt</h4>
+      <a href="${opp.tm_url}" target="_blank" rel="noopener" style="color: var(--color-primary); display: flex; align-items: center; gap: var(--space-sm);">
+        <span>⚽</span> Vedi profilo su Transfermarkt
+      </a>
+    </div>
+    ` : ''}
   `;
 
   elements.modalOverlay.classList.add('active');
@@ -473,8 +503,124 @@ function toggleSave(oppId) {
 // =============================================================================
 // Navigation
 // =============================================================================
+// Stats View
+// =============================================================================
 
-function handleNavigation(view) {
+function renderStatsView() {
+  const opportunities = state.opportunities;
+  
+  // Calculate statistics
+  const total = opportunities.length;
+  const hot = opportunities.filter(o => o.ob1_score >= 80).length;
+  const warm = opportunities.filter(o => o.ob1_score >= 60 && o.ob1_score < 80).length;
+  const cold = opportunities.filter(o => o.ob1_score < 60).length;
+  
+  // Role distribution
+  const roleCounts = {};
+  opportunities.forEach(o => {
+    const role = o.role_name || o.role || 'Sconosciuto';
+    roleCounts[role] = (roleCounts[role] || 0) + 1;
+  });
+  
+  // Type distribution
+  const typeCounts = {};
+  opportunities.forEach(o => {
+    const type = o.opportunity_type || 'Altro';
+    typeCounts[type] = (typeCounts[type] || 0) + 1;
+  });
+  
+  // Recent opportunities (last 7 days)
+  const oneWeekAgo = new Date();
+  oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+  const recentCount = opportunities.filter(o => {
+    if (!o.reported_date) return false;
+    return new Date(o.reported_date) >= oneWeekAgo;
+  }).length;
+  
+  // Build stats HTML
+  let statsHTML = `
+    <div class="stats-view">
+      <div class="stats-header">
+        <h2>📊 Statistiche Mercato</h2>
+        <p>Panoramica delle opportunità monitorate</p>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat-card total">
+          <div class="stat-number">${total}</div>
+          <div class="stat-label">Totale Giocatori</div>
+        </div>
+        <div class="stat-card hot">
+          <div class="stat-number">${hot}</div>
+          <div class="stat-label">🔥 HOT (80+)</div>
+        </div>
+        <div class="stat-card warm">
+          <div class="stat-number">${warm}</div>
+          <div class="stat-label">⚡ WARM (60-79)</div>
+        </div>
+        <div class="stat-card cold">
+          <div class="stat-number">${cold}</div>
+          <div class="stat-label">❄️ COLD (&lt;60)</div>
+        </div>
+      </div>
+      
+      <div class="stats-section">
+        <h3>📈 Distribuzione per Ruolo</h3>
+        <div class="stats-bars">
+          ${Object.entries(roleCounts)
+            .sort(([,a], [,b]) => b - a)
+            .slice(0, 5)
+            .map(([role, count]) => {
+              const percentage = ((count / total) * 100).toFixed(1);
+              return `
+                <div class="stat-bar-item">
+                  <span class="bar-label">${role}</span>
+                  <div class="bar-track">
+                    <div class="bar-fill" style="width: ${percentage}%"></div>
+                  </div>
+                  <span class="bar-value">${count} (${percentage}%)</span>
+                </div>
+              `;
+            }).join('')}
+        </div>
+      </div>
+      
+      <div class="stats-section">
+        <h3>💼 Distribuzione per Tipo</h3>
+        <div class="stats-bars">
+          ${Object.entries(typeCounts)
+            .sort(([,a], [,b]) => b - a)
+            .map(([type, count]) => {
+              const percentage = ((count / total) * 100).toFixed(1);
+              return `
+                <div class="stat-bar-item">
+                  <span class="bar-label">${type}</span>
+                  <div class="bar-track">
+                    <div class="bar-fill" style="width: ${percentage}%"></div>
+                  </div>
+                  <span class="bar-value">${count} (${percentage}%)</span>
+                </div>
+              `;
+            }).join('')}
+        </div>
+      </div>
+      
+      <div class="stats-summary">
+        <div class="summary-item">
+          <span class="summary-icon">📅</span>
+          <span class="summary-text">${recentCount} nuovi negli ultimi 7 giorni</span>
+        </div>
+      </div>
+      
+      <button class="btn-primary" onclick="handleNavigation('home')">
+        ← Torna alle Opportunità
+      </button>
+    </div>
+  `;
+  
+  elements.opportunitiesGrid.innerHTML = statsHTML;
+  elements.emptyState.style.display = 'none';
+}
   switch (view) {
     case 'home':
       state.currentFilter = 'all';
@@ -497,7 +643,7 @@ function handleNavigation(view) {
       }
       break;
     case 'stats':
-      showToast('Stats view coming soon!', 'info');
+      renderStatsView();
       break;
   }
 }

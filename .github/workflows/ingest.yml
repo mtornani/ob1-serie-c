@@ -49,6 +49,14 @@ jobs:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       run: python scripts/run_enrichment.py
 
+    - name: Generate DNA Matches
+      run: python scripts/generate_matches.py
+
+    - name: Copy DNA matches to docs
+      run: |
+        cp data/dna_matches.json docs/dna_matches.json
+        echo "✅ DNA matches copied to docs"
+
     - name: Generate dashboard
       run: python scripts/generate_dashboard.py
 

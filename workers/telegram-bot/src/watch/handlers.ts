@@ -58,6 +58,10 @@ export async function handleWatchCommand(
       await handleWatchTest(chatId, args.slice(1), env, store);
       break;
 
+    case 'edit':
+      await handleWatchEdit(chatId, args.slice(1), env, store);
+      break;
+
     default:
       await handleWatchList(chatId, env, store);
       break;
@@ -143,6 +147,67 @@ Usa /watch per vedere i tuoi profili.`);
   } else {
     await sendMessage(env, chatId, `❌ Errore nella rimozione del profilo.`);
   }
+}
+
+/**
+ * Edit an existing watch profile
+ */
+async function handleWatchEdit(
+  chatId: number,
+  args: string[],
+  env: Env,
+  store: WatchStorage
+): Promise<void> {
+  if (args.length === 0) {
+    await sendMessage(env, chatId, `❌ Specifica l'ID del profilo da modificare.
+
+Uso: /watch edit <id>
+
+Esempio: /watch edit abc123`);
+    return;
+  }
+
+  const profileIdPartial = args[0];
+  const profiles = await store.listProfiles(chatId);
+
+  // Find profile by partial ID match
+  const profile = profiles.find(p =>
+    p.id.startsWith(profileIdPartial) || p.id.includes(profileIdPartial)
+  );
+
+  if (!profile) {
+    await sendMessage(env, chatId, `❌ Profilo non trovato: ${profileIdPartial}
+
+Usa /watch per vedere i tuoi profili.`);
+    return;
+  }
+
+  // Delete old profile and start wizard with existing data
+  await store.deleteProfile(chatId, profile.id);
+
+  // Create wizard state with existing profile data
+  const state = createInitialWizardState();
+  state.profile = {
+    id: profile.id,
+    name: profile.name,
+    roles: profile.roles || [],
+    opportunity_types: profile.opportunity_types || [],
+    age_min: profile.age_min,
+    age_max: profile.age_max,
+    min_ob1_score: profile.min_ob1_score,
+    alert_immediately: profile.alert_immediately ?? true,
+    include_in_digest: profile.include_in_digest ?? true,
+    active: true,
+    created_at: profile.created_at,
+    updated_at: new Date().toISOString(),
+  };
+
+  await store.saveWizardState(chatId, state);
+
+  // Send first step
+  const { message, keyboard } = getWizardStepContent(state);
+  const editMessage = `✏️ <b>Modifica Profilo: ${profile.name}</b>\n\n${message}`;
+  await sendMessageWithKeyboard(env, chatId, editMessage, keyboard);
 }
 
 /**

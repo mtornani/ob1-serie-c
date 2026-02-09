@@ -1,0 +1,31 @@
+{
+  "id": "domagnano",
+  "name": "F.C. Domagnano",
+  "category": "Campionato Sammarinese",
+  "group": "",
+  "city": "Domagnano",
+  "primary_formation": "4-3-3",
+  "playing_styles": ["transizioni"],
+  "needs": [
+    {
+      "position": "CC",
+      "player_type": "box_to_box",
+      "age_min": 20,
+      "age_max": 26,
+      "priority": "alta"
+    },
+    {
+      "position": "ATT",
+      "player_type": "finalizzatore",
+      "age_min": 18,
+      "age_max": 28,
+      "priority": "media"
+    }
+  ],
+  "budget_type": "solo_prestiti",
+  "max_loan_cost": 25,
+  "youth_minutes_pct": 28.0,
+  "youth_development_score": 3,
+  "ds_name": "",
+  "last_updated": "2026-02-09"
+}

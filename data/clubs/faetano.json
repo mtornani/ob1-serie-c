@@ -1,0 +1,31 @@
+{
+  "id": "faetano",
+  "name": "S.C. Faetano",
+  "category": "Campionato Sammarinese",
+  "group": "",
+  "city": "Faetano",
+  "primary_formation": "4-3-3",
+  "playing_styles": ["difesa_bassa"],
+  "needs": [
+    {
+      "position": "DC",
+      "player_type": "difensore",
+      "age_min": 21,
+      "age_max": 28,
+      "priority": "alta"
+    },
+    {
+      "position": "ATT",
+      "player_type": "finalizzatore",
+      "age_min": 20,
+      "age_max": 28,
+      "priority": "media"
+    }
+  ],
+  "budget_type": "solo_prestiti",
+  "max_loan_cost": 25,
+  "youth_minutes_pct": 18.0,
+  "youth_development_score": 3,
+  "ds_name": "",
+  "last_updated": "2026-02-09"
+}
