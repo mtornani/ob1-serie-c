@@ -546,13 +546,17 @@ export function formatDNAMatch(match: PlayerMatch): string {
   msg += `  • Budget: ${match.breakdown.budget}%\n`;
   msg += `  • Livello: ${match.breakdown.level}%\n`;
 
-  msg += `\n💡 <i>${escapeHtml(match.recommendation)}</i>`;
+   msg += `\n💡 <i>${escapeHtml(match.recommendation)}</i>`;
 
-  if (o.source_url) {
-    msg += `\n🔗 <a href="${o.source_url}">Fonte: ${o.source_name}</a>`;
-  }
+   // Try to show Transfermarkt link if available
+   const tmUrl = (o as any).transfermarkt_url;
+   if (tmUrl) {
+     msg += `\n⚽ <a href="${tmUrl}">👤 Profilo Transfermarkt</a>`;
+   } else if (o.source_url) {
+     msg += `\n🔗 <a href="${o.source_url}">📊 ${o.source_name}</a>`;
+   }
 
-  return msg;
+   return msg;
 }
 
 export function formatDNAMatchList(matches: PlayerMatch[], title: string, clubName?: string): string {
