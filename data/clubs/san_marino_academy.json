@@ -1,0 +1,31 @@
+{
+  "id": "san_marino_academy",
+  "name": "San Marino Academy U22",
+  "category": "Campionato Sammarinese",
+  "group": "",
+  "city": "San Marino",
+  "primary_formation": "4-3-3",
+  "playing_styles": ["possesso", "sviluppo_giovani"],
+  "needs": [
+    {
+      "position": "CC",
+      "player_type": "regista",
+      "age_min": 18,
+      "age_max": 22,
+      "priority": "alta"
+    },
+    {
+      "position": "ATT",
+      "player_type": "finalizzatore",
+      "age_min": 18,
+      "age_max": 22,
+      "priority": "alta"
+    }
+  ],
+  "budget_type": "solo_prestiti",
+  "max_loan_cost": 15,
+  "youth_minutes_pct": 85.0,
+  "youth_development_score": 5,
+  "ds_name": "",
+  "last_updated": "2026-02-09"
+}

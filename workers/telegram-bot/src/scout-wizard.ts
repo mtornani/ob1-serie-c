@@ -88,6 +88,20 @@ const STEPS: WizardStep[] = [
       { label: 'Non importa', code: 'any', emoji: '🤷' },
     ],
   },
+  {
+    key: 'club',
+    question: 'Per quale piazza? (Escluderò giocatori con rivalità storiche)',
+    options: [
+      { label: 'Cesena', code: 'ces', emoji: '🏟️' },
+      { label: 'Pescara', code: 'pes', emoji: '🏟️' },
+      { label: 'Perugia', code: 'per', emoji: '🏟️' },
+      { label: 'Rimini', code: 'rim', emoji: '🏟️' },
+      { label: 'Tre Penne', code: 'tre', emoji: '🇸🇲' },
+      { label: 'La Fiorita', code: 'fio', emoji: '🇸🇲' },
+      { label: 'Virtus', code: 'vir', emoji: '🇸🇲' },
+      { label: 'Non specificare', code: 'any', emoji: '🔍' },
+    ],
+  },
 ];
 
 const TOTAL_STEPS = STEPS.length;
@@ -158,6 +172,15 @@ function decodeAnswers(codes: string[]): DecodedAnswers {
       lea: 'leader', gre: 'gregario', tal: 'talento', any: 'qualsiasi',
     };
     answers.character = charMap[codes[3]] || codes[3];
+  }
+
+  // codes[4] = club answer (from step 5)
+  if (codes[4]) {
+    const clubMap: Record<string, string> = {
+      ces: 'cesena', pes: 'pescara', per: 'perugia', rim: 'rimini',
+      tre: 'tre_penne', fio: 'la_fiorita', vir: 'virtus', any: 'qualsiasi',
+    };
+    answers.club = clubMap[codes[4]] || codes[4];
   }
 
   return answers;
@@ -310,6 +333,7 @@ function buildProgressSummary(codes: string[]): string {
     { key: '🎯 Tipo', map: { gio: 'Giovane', pro: 'Pronto', esp: 'Esperto', any: 'Tutti' } },
     { key: '💰 Budget', map: { zer: 'Param. zero', pre: 'Anche prestiti', any: 'Tutti' } },
     { key: '👤 Carattere', map: { lea: 'Leader', gre: 'Gregario', tal: 'Talento', any: 'Tutti' } },
+    { key: '🏟️ Piazza', map: { ces: 'Cesena', pes: 'Pescara', per: 'Perugia', rim: 'Rimini', tre: 'Tre Penne', fio: 'La Fiorita', vir: 'Virtus', any: 'Tutte' } },
   ];
 
   for (let i = 0; i < codes.length && i < labels.length; i++) {
@@ -377,6 +401,23 @@ async function showWizardResults(
 
   // Filter and sort
   let results = filterOpportunities(data.opportunities, filters);
+  
+  // Apply rivalries filter if club is specified
+  if (answers.club && answers.club !== 'qualsiasi') {
+    const incompatibleClubs = RIVALRIES[answers.club] || [];
+    results = results.filter(opp => {
+      // Check if player has played in incompatible clubs
+      if (opp.previous_clubs && opp.previous_clubs.length > 0) {
+        const hasRivalry = opp.previous_clubs.some(prevClub => {
+          const normalized = prevClub.toLowerCase().trim();
+          return incompatibleClubs.includes(normalized);
+        });
+        return !hasRivalry;
+      }
+      return true;
+    });
+  }
+  
   results = results.sort((a, b) => b.ob1_score - a.ob1_score).slice(0, 5);
 
   // Build summary text
@@ -441,6 +482,12 @@ const RIVALRIES: Record<string, string[]> = {
   'como': ['varese'],
   'novara': ['alessandria', 'pro vercelli'], 'alessandria': ['novara'],
   'pro vercelli': ['novara'],
+  // Rivalità Sammarinesi
+  'tre_penne': ['tre_fiori', 'virtus'], 'tre_fiori': ['tre_penne', 'virtus'],
+  'virtus': ['tre_penne', 'tre_fiori', 'la_fiorita'],
+  'la_fiorita': ['virtus', 'folgore_falciano'],
+  'folgore_falciano': ['la_fiorita'],
+  'cosmos': ['juvenes_dogana'], 'juvenes_dogana': ['cosmos'],
 };
 
 export function getIncompatibleClubs(previousClubs: string[]): string[] {

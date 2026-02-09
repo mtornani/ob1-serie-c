@@ -1,0 +1,31 @@
+{
+  "id": "libertas",
+  "name": "A.C. Libertas",
+  "category": "Campionato Sammarinese",
+  "group": "",
+  "city": "Borgo Maggiore",
+  "primary_formation": "4-4-2",
+  "playing_styles": ["transizioni", "gioco_aereo"],
+  "needs": [
+    {
+      "position": "DC",
+      "player_type": "difensore",
+      "age_min": 22,
+      "age_max": 28,
+      "priority": "alta"
+    },
+    {
+      "position": "CC",
+      "player_type": "mediano",
+      "age_min": 20,
+      "age_max": 27,
+      "priority": "media"
+    }
+  ],
+  "budget_type": "solo_prestiti",
+  "max_loan_cost": 20,
+  "youth_minutes_pct": 25.0,
+  "youth_development_score": 2,
+  "ds_name": "",
+  "last_updated": "2026-02-09"
+}

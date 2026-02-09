@@ -1,0 +1,31 @@
+{
+  "id": "murata",
+  "name": "S.S. Murata",
+  "category": "Campionato Sammarinese",
+  "group": "",
+  "city": "Murata",
+  "primary_formation": "4-4-2",
+  "playing_styles": ["difesa_bassa", "contropiede"],
+  "needs": [
+    {
+      "position": "DC",
+      "player_type": "stopper",
+      "age_min": 23,
+      "age_max": 30,
+      "priority": "alta"
+    },
+    {
+      "position": "ATT",
+      "player_type": "prima_punta",
+      "age_min": 22,
+      "age_max": 29,
+      "priority": "alta"
+    }
+  ],
+  "budget_type": "solo_prestiti",
+  "max_loan_cost": 18,
+  "youth_minutes_pct": 15.0,
+  "youth_development_score": 2,
+  "ds_name": "",
+  "last_updated": "2026-02-09"
+}

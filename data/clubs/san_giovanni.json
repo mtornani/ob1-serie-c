@@ -1,0 +1,31 @@
+{
+  "id": "san_giovanni",
+  "name": "S.S. San Giovanni",
+  "category": "Campionato Sammarinese",
+  "group": "",
+  "city": "San Giovanni sotto le Penne",
+  "primary_formation": "4-3-3",
+  "playing_styles": ["possesso"],
+  "needs": [
+    {
+      "position": "ES",
+      "player_type": "tutta_fascia",
+      "age_min": 20,
+      "age_max": 26,
+      "priority": "alta"
+    },
+    {
+      "position": "ATT",
+      "player_type": "seconda_punta",
+      "age_min": 20,
+      "age_max": 27,
+      "priority": "media"
+    }
+  ],
+  "budget_type": "solo_prestiti",
+  "max_loan_cost": 20,
+  "youth_minutes_pct": 20.0,
+  "youth_development_score": 2,
+  "ds_name": "",
+  "last_updated": "2026-02-09"
+}
