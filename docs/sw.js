@@ -3,7 +3,7 @@
  * Caching strategy: Network First, falling back to cache
  */
 
-const CACHE_NAME = 'ob1-radar-v2';
+const CACHE_NAME = 'ob1-radar-v3';
 const STATIC_ASSETS = [
   './',
   './index.html',
