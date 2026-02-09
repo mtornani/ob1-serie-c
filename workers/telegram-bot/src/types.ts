@@ -60,28 +60,31 @@ export interface TelegramChat {
 
 // OB1 Data Types
 export interface Opportunity {
-  id: string;
-  player_name: string;
-  age: number;
-  role: string;
-  role_name?: string;
-  opportunity_type: string;
-  reported_date: string;
-  source_name: string;
-  source_url?: string;
-  current_club?: string;
-  previous_clubs?: string[];
-  appearances?: number;
-  goals?: number;
-  summary?: string;
-  nationality?: string;
-  second_nationality?: string;
-  foot?: string;
-  market_value?: number;
-  market_value_formatted?: string;
-  ob1_score: number;
-  classification: 'hot' | 'warm' | 'cold';
-  score_breakdown?: ScoreBreakdown;
+   id: string;
+   player_name: string;
+   age: number;
+   role: string;
+   role_name?: string;
+   opportunity_type: string;
+   reported_date: string;
+   source_name: string;
+   source_url?: string;
+   current_club?: string;
+   previous_clubs?: string[];
+   appearances?: number;
+   goals?: number;
+   summary?: string;
+   nationality?: string;
+   second_nationality?: string;
+   foot?: string;
+   market_value?: number;
+   market_value_formatted?: string;
+   estimated_loan_cost?: number;
+   ob1_score: number;
+   classification: 'hot' | 'warm' | 'cold';
+   ob1_breakdown?: ScoreBreakdown;
+   score_breakdown?: ScoreBreakdown;
+   recommendation?: string;
 }
 
 export interface DashboardData {
