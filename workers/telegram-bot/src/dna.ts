@@ -145,8 +145,24 @@ async function fetchClubData(env: Env): Promise<Map<string, ClubDNA>> {
   }
 }
 
-function calculatePositionFit(player: Opportunity, club: ClubDNA): { score: number; matchedNeed?: ClubNeed } {
-  const best = { score: 0, matchedNeed: undefined as ClubNeed | undefined };
+ function calculatePositionFit(player: Opportunity, club: ClubDNA): { score: number; matchedNeed?: ClubNeed } {
+   // If no needs defined, assign neutral score based on role name
+   if (!club.needs || club.needs.length === 0) {
+     const role = (player.role || player.role_name || '').toUpperCase();
+     // Default scores for common positions
+     const defaultScores: Record<string, number> = {
+       'CC': 70, 'CCM': 70, 'CCO': 70, 'CCV': 70,
+       'DC': 70, 'DCM': 70, 'DCL': 70,
+       'TS': 65, 'TD': 65,
+       'ES': 65, 'ED': 65,
+       'AS': 60, 'AD': 60,
+       'ATT': 60, 'PC': 60,
+       'PO': 90,
+     };
+     return { score: defaultScores[role] || 50, matchedNeed: undefined };
+   }
+
+   const best = { score: 0, matchedNeed: undefined as ClubNeed | undefined };
 
   for (const need of club.needs) {
     let score = 0;
