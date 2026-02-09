@@ -43,8 +43,9 @@ export async function handleMessage(message: TelegramMessage, env: Env): Promise
       return;
     }
 
-    // SMART SEARCH: Cerca nelle opportunità REALI
-    await handleSmartSearch(chatId, text, env);
+    // NLP-001: Prima prova il parser locale (gratuito, veloce)
+    // Se non riesce a classificare, fallback a Smart Search (LLM)
+    await handleNaturalQuery(chatId, text, env);
 
   } catch (error) {
     console.error('Error handling message:', error);
@@ -311,10 +312,10 @@ async function handleNaturalQuery(chatId: number, text: string, env: Env): Promi
     }
   }
 
-  // If still low confidence after Cloudflare AI, fallback to help
+  // If still low confidence after Cloudflare AI, fallback to Smart Search (LLM)
   if (parsed.confidence < 0.3 && parsed.intent === 'unknown') {
-    // Final fallback: show help
-    await sendMessage(env, chatId, formatNLPHelp());
+    console.log('NLP + LLM fallback failed, trying Smart Search...');
+    await handleSmartSearch(chatId, text, env);
     return;
   }
 
@@ -367,7 +368,8 @@ async function handleNaturalQuery(chatId: number, text: string, env: Env): Promi
       break;
 
     default:
-      await sendMessage(env, chatId, formatNLPHelp());
+      // Intent riconosciuto ma non gestito: prova Smart Search
+      await handleSmartSearch(chatId, text, env);
       break;
   }
 }

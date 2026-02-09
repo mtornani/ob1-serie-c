@@ -81,7 +81,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "OB1 Scout Bot"
         # Commit data.json, report.html, and data folder
-        git add docs/data.json docs/report.html data/ || true
+        git add docs/data.json docs/report.html docs/dna_matches.json data/ || true
         git diff --staged --quiet || git commit -m "🤖 Auto-update: $(date -u +'%Y-%m-%d %H:%M UTC')"
         git push || echo "Nothing to push"
 

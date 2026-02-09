@@ -1,31 +1,45 @@
 {
   "id": "cosmos",
-  "name": "S.S. Cosmos",
+  "name": "SP Cosmos",
   "category": "Campionato Sammarinese",
   "group": "",
   "city": "Serravalle",
   "primary_formation": "4-3-3",
-  "playing_styles": ["transizioni", "pressing_alto"],
+  "playing_styles": ["possesso", "transizioni", "mix_sammarinese"],
   "needs": [
+    {
+      "position": "TS",
+      "player_type": "tutta_fascia",
+      "age_min": 19,
+      "age_max": 28,
+      "priority": "alta"
+    },
+    {
+      "position": "DC",
+      "player_type": "impostatore",
+      "age_min": 20,
+      "age_max": 27,
+      "priority": "media"
+    },
     {
       "position": "CC",
       "player_type": "box_to_box",
       "age_min": 20,
       "age_max": 26,
-      "priority": "alta"
+      "priority": "media"
     },
     {
-      "position": "ATT",
-      "player_type": "finalizzatore",
-      "age_min": 19,
-      "age_max": 28,
-      "priority": "media"
+      "position": "AS",
+      "player_type": "ala",
+      "age_min": 18,
+      "age_max": 25,
+      "priority": "bassa"
     }
   ],
   "budget_type": "solo_prestiti",
-  "max_loan_cost": 25,
-  "youth_minutes_pct": 28.0,
+  "max_loan_cost": 20,
+  "youth_minutes_pct": 35.0,
   "youth_development_score": 3,
-  "ds_name": "",
+  "ds_name": "Fabrizio Castellazzi",
   "last_updated": "2026-02-09"
 }

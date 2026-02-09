@@ -4,7 +4,7 @@
  * data.json is NEVER cached (always fresh from network)
  */
 
-const CACHE_NAME = 'ob1-radar-v5';
+const CACHE_NAME = 'ob1-radar-v6';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -112,8 +112,8 @@ self.addEventListener('push', event => {
   event.waitUntil(
     self.registration.showNotification(data.title || 'OB1 Radar', {
       body: data.body || 'Nuova opportunita disponibile!',
-      icon: './icons/icon-192.png',
-      badge: './icons/icon-72.png',
+      icon: './icons/icon-192.svg',
+      badge: './icons/icon-192.svg',
       tag: data.tag || 'ob1-notification',
       data: data.url || './'
     })

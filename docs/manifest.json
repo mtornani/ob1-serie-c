@@ -12,16 +12,16 @@
   "lang": "it",
   "icons": [
     {
-      "src": "icons/icon-192.png",
+      "src": "icons/icon-192.svg",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "icons/icon-192.svg",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ],
   "shortcuts": [
@@ -29,13 +29,13 @@
       "name": "HOT Opportunities",
       "short_name": "HOT",
       "description": "Vedi opportunita ad alta priorita",
-      "url": "/?filter=hot"
+      "url": "/ob1-serie-c/?filter=hot"
     },
     {
       "name": "Salvati",
       "short_name": "Salvati",
       "description": "Vedi giocatori salvati",
-      "url": "/?view=saved"
+      "url": "/ob1-serie-c/?view=saved"
     }
   ]
 }
