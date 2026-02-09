@@ -30,11 +30,11 @@ class DNAMatcher:
             data_dir: Directory contenente players/ e clubs/
         """
         if data_dir is None:
-            data_dir = Path(__file__).parent.parent.parent / 'data'
+            data_dir = Path(__file__).parent.parent.parent / "data"
 
         self.data_dir = data_dir
-        self.players_dir = data_dir / 'players'
-        self.clubs_dir = data_dir / 'clubs'
+        self.players_dir = data_dir / "players"
+        self.clubs_dir = data_dir / "clubs"
 
         self.players: Dict[str, PlayerDNA] = {}
         self.clubs: Dict[str, ClubDNA] = {}
@@ -45,9 +45,9 @@ class DNAMatcher:
         """Carica tutti i dati da file JSON"""
         # Carica giocatori
         if self.players_dir.exists():
-            for file in self.players_dir.glob('*.json'):
+            for file in self.players_dir.glob("*.json"):
                 try:
-                    data = json.loads(file.read_text(encoding='utf-8'))
+                    data = json.loads(file.read_text(encoding="utf-8"))
                     if isinstance(data, list):
                         for p in data:
                             player = PlayerDNA.from_dict(p)
@@ -60,15 +60,15 @@ class DNAMatcher:
 
         # Carica club
         if self.clubs_dir.exists():
-            for file in self.clubs_dir.glob('*.json'):
+            for file in self.clubs_dir.glob("*.json"):
                 try:
-                    data = json.loads(file.read_text(encoding='utf-8'))
+                    data = json.loads(file.read_text(encoding="utf-8"))
                     club = ClubDNA.from_dict(data)
                     self.clubs[club.id] = club
                 except Exception as e:
                     print(f"Error loading {file}: {e}")
 
-        print(f"📊 DNAMatcher loaded: {len(self.players)} players, {len(self.clubs)} clubs")
+        print(f"[MATCHER] Loaded: {len(self.players)} players, {len(self.clubs)} clubs")
 
     def reload(self):
         """Ricarica tutti i dati"""
@@ -105,8 +105,10 @@ class DNAMatcher:
         for player in self.players.values():
             # Filtro posizione se specificato
             if position_filter:
-                if player.primary_position != position_filter and \
-                   position_filter not in player.secondary_positions:
+                if (
+                    player.primary_position != position_filter
+                    and position_filter not in player.secondary_positions
+                ):
                     continue
 
             # Calcola match
@@ -173,7 +175,7 @@ class DNAMatcher:
             club_matches = self.get_matches_for_club(
                 club.id,
                 min_score=min_score,
-                limit=5  # Top 5 per club
+                limit=5,  # Top 5 per club
             )
             all_matches.extend(club_matches)
 
@@ -227,9 +229,10 @@ class DNAMatcher:
     def get_players_by_team(self, team_name: str) -> List[PlayerDNA]:
         """Ottieni tutti i giocatori di una squadra"""
         return [
-            p for p in self.players.values()
-            if p.current_team.lower() == team_name.lower() or
-               p.parent_club.lower() == team_name.lower()
+            p
+            for p in self.players.values()
+            if p.current_team.lower() == team_name.lower()
+            or p.parent_club.lower() == team_name.lower()
         ]
 
     def get_club(self, club_id: str) -> Optional[ClubDNA]:
@@ -246,7 +249,9 @@ class DNAMatcher:
         results = []
 
         for player in self.players.values():
-            searchable = f"{player.name} {player.current_team} {player.parent_club}".lower()
+            searchable = (
+                f"{player.name} {player.current_team} {player.parent_club}".lower()
+            )
             if query_lower in searchable:
                 results.append(player)
 
@@ -254,15 +259,17 @@ class DNAMatcher:
 
     def get_stats(self) -> dict:
         """Statistiche del database"""
-        parent_clubs = set(p.parent_club for p in self.players.values() if p.parent_club)
+        parent_clubs = set(
+            p.parent_club for p in self.players.values() if p.parent_club
+        )
         underused = sum(1 for p in self.players.values() if p.is_underused)
 
         return {
-            'total_players': len(self.players),
-            'total_clubs': len(self.clubs),
-            'parent_clubs': list(parent_clubs),
-            'underused_players': underused,
-            'last_updated': datetime.now().isoformat(),
+            "total_players": len(self.players),
+            "total_clubs": len(self.clubs),
+            "parent_clubs": list(parent_clubs),
+            "underused_players": underused,
+            "last_updated": datetime.now().isoformat(),
         }
 
 
