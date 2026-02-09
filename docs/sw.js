@@ -1,9 +1,10 @@
 /**
  * OB1 Radar - Service Worker
  * Caching strategy: Network First, falling back to cache
+ * data.json is NEVER cached (always fresh from network)
  */
 
-const CACHE_NAME = 'ob1-radar-v3';
+const CACHE_NAME = 'ob1-radar-v4';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -11,6 +12,9 @@ const STATIC_ASSETS = [
   './js/app.js',
   './manifest.json'
 ];
+
+// Files that should NEVER be served from cache
+const NEVER_CACHE = ['data.json', 'dna_matches.json'];
 
 // Install: Cache static assets
 self.addEventListener('install', event => {
@@ -24,7 +28,7 @@ self.addEventListener('install', event => {
   );
 });
 
-// Activate: Clean old caches
+// Activate: Clean ALL old caches immediately
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
@@ -49,6 +53,13 @@ self.addEventListener('fetch', event => {
 
   // Skip cross-origin requests
   if (!event.request.url.startsWith(self.location.origin)) return;
+
+  // NEVER cache data files - always go to network
+  const isDataFile = NEVER_CACHE.some(f => event.request.url.includes(f));
+  if (isDataFile) {
+    event.respondWith(fetch(event.request));
+    return;
+  }
 
   event.respondWith(
     fetch(event.request)
