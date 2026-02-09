@@ -13,8 +13,6 @@ tavily-python>=0.3.0
 # Telegram Bot (optional)
 python-telegram-bot>=21.0
 
-# PDF Generation
-fpdf2>=2.7.0
-
 # Utils
 pyyaml>=6.0
+

@@ -1,0 +1,60 @@
+name: OB1 Weekly Report
+
+on:
+  schedule:
+    # Every Monday at 08:00 UTC (09:00 Italia)
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  weekly-report:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        ref: main
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Download latest data artifact
+      continue-on-error: true
+      uses: actions/download-artifact@v4
+      with:
+        name: ob1-database
+        path: data/
+
+    - name: Update data.json from latest artifact
+      run: |
+        if [ -f data/opportunities.json ]; then
+          python scripts/generate_dashboard.py
+        else
+          echo "No data artifact found, skipping dashboard update"
+        fi
+
+    - name: Generate weekly report
+      run: python scripts/generate_weekly_report.py
+
+    - name: Commit report files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "OB1 Scout Bot"
+        git add docs/reports/ docs/data.json || true
+        git diff --staged --quiet || git commit -m "📝 Weekly report: $(date -u +'%Y-%m-%d')"
+        git push || echo "Nothing to push"
+
+    - name: Log completion
+      run: echo "✅ Weekly report generated at $(date -u +'%Y-%m-%d %H:%M UTC')"
