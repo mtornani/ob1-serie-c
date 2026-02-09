@@ -621,6 +621,8 @@ function renderStatsView() {
   elements.opportunitiesGrid.innerHTML = statsHTML;
   elements.emptyState.style.display = 'none';
 }
+
+function handleNavigation(view) {
   switch (view) {
     case 'home':
       state.currentFilter = 'all';
