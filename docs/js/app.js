@@ -291,16 +291,25 @@ function renderOpportunities() {
     .map(opp => createOpportunityCard(opp))
     .join('');
 
-  // Add click listeners
-  document.querySelectorAll('.opportunity-card').forEach(card => {
-    card.addEventListener('click', (e) => {
-      if (!e.target.closest('.btn-card')) {
-        const oppId = card.dataset.id;
-        const opp = state.opportunities.find(o => o.id === oppId);
-        if (opp) showDetail(opp);
-      }
-    });
-  });
+   // Add click listeners
+   document.querySelectorAll('.opportunity-card').forEach(card => {
+     card.addEventListener('click', (e) => {
+       if (!e.target.closest('.btn-card') && !e.target.closest('.toggle-breakdown')) {
+         const oppId = card.dataset.id;
+         const opp = state.opportunities.find(o => o.id === oppId);
+         if (opp) showDetail(opp);
+       }
+     });
+   });
+
+   // Add score breakdown toggle listeners
+   document.querySelectorAll('.toggle-breakdown').forEach(btn => {
+     btn.addEventListener('click', (e) => {
+       e.stopPropagation();
+       const content = btn.nextElementSibling;
+       content.classList.toggle('show');
+     });
+   });
 
   // Add button listeners
   document.querySelectorAll('.btn-save').forEach(btn => {
@@ -313,40 +322,132 @@ function renderOpportunities() {
 }
 
 function createOpportunityCard(opp) {
-  const isSaved = state.savedOpportunities.includes(opp.id);
-  const scoreEmoji = opp.classification === 'hot' ? '🔥' : opp.classification === 'warm' ? '⚡' : '❄️';
+   const isSaved = state.savedOpportunities.includes(opp.id);
+   const scoreEmoji = opp.classification === 'hot' ? '🔥' : opp.classification === 'warm' ? '⚡' : '❄️';
+   const breakdown = opp.ob1_breakdown || {};
+   const estimatedLoanCost = opp.estimated_loan_cost || (opp.market_value ? Math.round(opp.market_value * 0.12) : 0);
+   const currentClub = opp.current_club || 'Libero/Young';
+   const oppType = opp.opportunity_type || 'Mercato';
+   
+   let oppTypeInfo = '';
+   if (oppType.toLowerCase().includes('svincol')) {
+     oppTypeInfo = '🆓 Svincolato';
+   } else if (oppType.toLowerCase().includes('rescis')) {
+     oppTypeInfo = '📄 Rescissione';
+   } else if (oppType.toLowerCase().includes('prestit')) {
+     oppTypeInfo = `📈 Prestito${estimatedLoanCost ? ` (${estimatedLoanCost}k€)` : ''}`;
+   } else if (oppType.toLowerCase().includes('scaden')) {
+     oppTypeInfo = '📅 Scadenza';
+   }
+   
+   let marketValueInfo = '';
+   if (opp.market_value && opp.market_value > 0) {
+     marketValueInfo = opp.market_value >= 1000 
+       ? `${(opp.market_value / 1000).toFixed(1)}M€`
+       : `${opp.market_value}k€`;
+   }
 
-  return `
-    <article class="opportunity-card ${opp.classification} slide-up" data-id="${opp.id}">
-      <div class="card-header">
-        <span class="player-name">${opp.player_name}</span>
-        <span class="score-badge ${opp.classification}">${scoreEmoji} ${opp.ob1_score}</span>
-      </div>
+   return `
+     <article class="opportunity-card ${opp.classification} slide-up" data-id="${opp.id}">
+       <div class="card-header">
+         <div class="player-info">
+           <span class="player-name">${opp.player_name}</span>
+           <span class="player-role">${opp.role_name || opp.role}</span>
+           <span class="player-club">${currentClub}</span>
+         </div>
+         <span class="score-badge ${opp.classification}">${scoreEmoji} ${opp.ob1_score}</span>
+       </div>
 
-      <div class="card-meta">
-        <span>📍 ${opp.role_name || opp.role}</span>
-        <span>🎂 ${opp.age} anni</span>
-      </div>
+       <div class="card-meta">
+         <span class="meta-item">🎂 ${opp.age} anni</span>
+         <span class="meta-item">${marketValueInfo ? '💰 ' + marketValueInfo : ''}</span>
+         <span class="meta-item">${oppTypeInfo}</span>
+       </div>
 
-      <div class="card-status">
-        <span class="type-badge ${opp.opportunity_type}">${opp.opportunity_type.toUpperCase()}</span>
-        <span class="card-date">📅 ${formatDate(opp.reported_date)}</span>
-      </div>
+       <div class="score-breakdown-section">
+         <button class="toggle-breakdown" aria-label="Vedi score breakdown">
+           <span class="breakdown-icon">📉</span>
+           <span class="breakdown-text">Score breakdown</span>
+         </button>
+         <div class="score-breakdown-content">
+           ${createScoreBreakdown(breakdown)}
+         </div>
+       </div>
 
-      ${opp.previous_clubs && opp.previous_clubs.length > 0 ? `
-        <div class="card-clubs">
-          🏟️ Ex: ${opp.previous_clubs.slice(0, 3).join(', ')}
-        </div>
-      ` : ''}
+       <div class="card-status">
+         <span class="type-badge ${oppType}">${oppType.toUpperCase()}</span>
+         <span class="card-date">📅 ${formatDate(opp.reported_date)}</span>
+       </div>
 
-      <div class="card-actions">
-        <button class="btn-card primary">📊 Dettagli</button>
-        <button class="btn-card secondary btn-save" data-saved="${isSaved}">
-          ${isSaved ? '💾 Salvato' : '📋 Salva'}
-        </button>
-      </div>
-    </article>
-  `;
+       <div class="card-recommendation">
+         <span class="recommendation-icon">💡</span>
+         <span class="recommendation-text">${opp.recommendation || 'Giocatore.matcha con esigenze'}</span>
+       </div>
+
+       ${opp.previous_clubs && opp.previous_clubs.length > 0 ? `
+         <div class="card-clubs">
+           <span class="clubs-icon">🏆</span>
+           <span class="clubs-text">Ex: ${opp.previous_clubs.slice(0, 3).join(', ')}</span>
+         </div>
+       ` : ''}
+
+       <div class="card-actions">
+         <button class="btn-card primary">📊 Dettagli</button>
+         <button class="btn-card secondary btn-save" data-saved="${isSaved}">
+           ${isSaved ? '💾 Salvato' : '📋 Salva'}
+         </button>
+       </div>
+     </article>
+   `;
+}
+
+function createScoreBreakdown(breakdown) {
+   const sections = [
+     { key: 'position', label: 'Posizione', icon: '📍', weight: '25%' },
+     { key: 'age', label: 'Età', icon: '🎂', weight: '15%' },
+     { key: 'style', label: 'Stile', icon: '⚽', weight: '15%' },
+     { key: 'availability', label: 'Disponibilità', icon: '📅', weight: '20%' },
+     { key: 'budget', label: 'Budget', icon: '💰', weight: '20%' },
+     { key: 'level', label: 'Livello', icon: '📊', weight: '5%', optional: true },
+   ];
+
+   const maxScore = breakdown.position + breakdown.age + breakdown.style + 
+                   breakdown.availability + breakdown.budget + 
+                   (breakdown.level !== undefined ? breakdown.level : 0);
+
+   return `
+     <div class="breakdown-list">
+       ${sections.map(section => {
+         const score = breakdown[section.key];
+         if (score === undefined && section.optional) return '';
+         
+         const formattedScore = score !== undefined ? score : 0;
+         let colorClass = 'score-good';
+         if (formattedScore < 50) colorClass = 'score-bad';
+         else if (formattedScore < 75) colorClass = 'score-medium';
+
+         return `
+           <div class="breakdown-item ${colorClass}">
+             <div class="breakdown-header">
+               <span class="breakdown-icon">${section.icon}</span>
+               <span class="breakdown-label">${section.label}</span>
+               <span class="breakdown-weight">${section.weight}</span>
+             </div>
+             <div class="breakdown-content">
+               <div class="progress-bar">
+                 <div class="progress-fill ${colorClass}" style="width: ${formattedScore}%"></div>
+               </div>
+               <span class="breakdown-score">${formattedScore}</span>
+             </div>
+           </div>
+         `;
+       }).join('')}
+     </div>
+     <div class="breakdown-total">
+       <span class="total-label">Totale:</span>
+       <span class="total-score">${maxScore}%</span>
+     </div>
+   `;
 }
 
 function showSkeletons() {
@@ -421,47 +522,159 @@ function updateLastUpdate(timestamp) {
 // =============================================================================
 
 function showDetail(opp) {
-  elements.modalTitle.textContent = opp.player_name;
+   elements.modalTitle.textContent = opp.player_name;
+   
+   const estimatedLoanCost = opp.estimated_loan_cost || (opp.market_value ? Math.round(opp.market_value * 0.12) : 0);
+   const marketValue = opp.market_value;
+   const currentClub = opp.current_club || 'Libero/Young';
+   const oppType = opp.opportunity_type || 'Mercato';
+   const breakdown = opp.ob1_breakdown || {};
+   
+   let oppTypeInfo = '';
+   let oppTypeColor = '';
+   if (oppType.toLowerCase().includes('svincol')) {
+     oppTypeInfo = 'Svincolato';
+     oppTypeColor = 'svincolato';
+   } else if (oppType.toLowerCase().includes('rescis')) {
+     oppTypeInfo = 'Rescissione';
+     oppTypeColor = 'rescissione';
+   } else if (oppType.toLowerCase().includes('prestit')) {
+     oppTypeInfo = estimatedLoanCost 
+       ? `Prestito (${estimatedLoanCost}k€)`
+       : 'Prestito';
+     oppTypeColor = 'prestito';
+   } else if (oppType.toLowerCase().includes('scaden')) {
+     oppTypeInfo = 'Scadenza';
+     oppTypeColor = 'scadenza';
+   }
+   
+   let marketValueInfo = '';
+   if (marketValue && marketValue > 0) {
+     marketValueInfo = marketValue >= 1000 
+       ? `${(marketValue / 1000).toFixed(1)}M€`
+       : `${marketValue}k€`;
+   }
+   
+   const scoreEmoji = opp.classification === 'hot' ? '🔥' : opp.classification === 'warm' ? '⚡' : '❄️';
 
-  const scoreEmoji = opp.classification === 'hot' ? '🔥' : opp.classification === 'warm' ? '⚡' : '❄️';
+   elements.modalContent.innerHTML = `
+     <div class="modal-score-section">
+       <div class="score-header">
+         <span class="score-badge ${opp.classification}" style="font-size: 1.5rem; padding: var(--space-sm) var(--space-lg);">
+           ${scoreEmoji} ${opp.ob1_score} OB1 Score
+         </span>
+         <span class="type-badge ${oppTypeColor}">${oppTypeInfo}</span>
+       </div>
+       
+       <div class="player-info-grid">
+         <div class="player-info-item">
+           <span class="info-label">Ruolo</span>
+           <span class="info-value">${opp.role_name || opp.role}</span>
+         </div>
+         <div class="player-info-item">
+           <span class="info-label">Età</span>
+           <span class="info-value">${opp.age} anni</span>
+         </div>
+         <div class="player-info-item">
+           <span class="info-label">Valore</span>
+           <span class="info-value">${marketValueInfo || 'N/A'}</span>
+         </div>
+         <div class="player-info-item">
+           <span class="info-label">Costo stima</span>
+           <span class="info-value">${estimatedLoanCost ? estimatedLoanCost + 'k€' : 'N/A'}</span>
+         </div>
+         <div class="player-info-item">
+           <span class="info-label">Club attuale</span>
+           <span class="info-value">${currentClub}</span>
+         </div>
+       </div>
+     </div>
 
-  elements.modalContent.innerHTML = `
-    <div style="margin-bottom: var(--space-md);">
-      <span class="score-badge ${opp.classification}" style="font-size: 1.2rem; padding: var(--space-sm) var(--space-md);">
-        ${scoreEmoji} OB1 Score: ${opp.ob1_score}/100
-      </span>
-    </div>
+     <div class="modal-section">
+       <h4>📊 Score Breakdown</h4>
+       <div class="score-breakdown-list">
+         ${Object.entries(breakdown).map(([key, value]) => {
+           const labels = {
+             'position': 'Posizione (25%)',
+             'age': 'Età (15%)',
+             'style': 'Stile (15%)',
+             'availability': 'Disponibilità (20%)',
+             'budget': 'Budget (20%)',
+             'level': 'Livello (5%)',
+           };
+           const label = labels[key] || key;
+           
+           let colorClass = 'score-good';
+           if (value < 50) colorClass = 'score-bad';
+           else if (value < 75) colorClass = 'score-medium';
+           
+           return `
+             <div class="breakdown-item ${colorClass}">
+               <div class="breakdown-header">
+                 <span class="breakdown-label">${label}</span>
+                 <span class="breakdown-score">${value}%</span>
+               </div>
+               <div class="progress-bar">
+                 <div class="progress-fill ${colorClass}" style="width: ${value}%"></div>
+               </div>
+             </div>
+           `;
+         }).join('')}
+       </div>
+     </div>
 
-    <div class="card" style="background: var(--color-bg-secondary); padding: var(--space-md); border-radius: var(--radius-md); margin-bottom: var(--space-md);">
-      <h4 style="margin-bottom: var(--space-sm); color: var(--color-text-secondary);">Informazioni</h4>
-      <p><strong>Ruolo:</strong> ${opp.role_name || opp.role}</p>
-      <p><strong>Eta:</strong> ${opp.age} anni</p>
-      <p><strong>Status:</strong> <span class="type-badge ${opp.opportunity_type}">${opp.opportunity_type.toUpperCase()}</span></p>
-      <p><strong>Data:</strong> ${formatDate(opp.reported_date)}</p>
-    </div>
+     <div class="modal-section">
+       <h4>💡 Raccomandazione</h4>
+       <div class="recommendation-card">
+         <span class="recommendation-icon">💡</span>
+         <p class="recommendation-text">${opp.recommendation || 'Analisi in corso...'}</p>
+       </div>
+     </div>
 
-    ${opp.previous_clubs && opp.previous_clubs.length > 0 ? `
-      <div class="card" style="background: var(--color-bg-secondary); padding: var(--space-md); border-radius: var(--radius-md); margin-bottom: var(--space-md);">
-        <h4 style="margin-bottom: var(--space-sm); color: var(--color-text-secondary);">Club Precedenti</h4>
-        <p>${opp.previous_clubs.join(' → ')}</p>
-      </div>
-    ` : ''}
+     ${opp.previous_clubs && opp.previous_clubs.length > 0 ? `
+       <div class="modal-section">
+         <h4>🏆 Carriera</h4>
+         <div class="career-path">
+           ${opp.previous_clubs.join(' → ')}
+         </div>
+       </div>
+     ` : ''}
 
-    <div class="card" style="background: var(--color-bg-secondary); padding: var(--space-md); border-radius: var(--radius-md); margin-bottom: var(--space-md);">
-      <h4 style="margin-bottom: var(--space-sm); color: var(--color-text-secondary);">Statistiche Carriera</h4>
-      <p><strong>Presenze:</strong> ${opp.appearances || 'N/A'}</p>
-      <p><strong>Gol:</strong> ${opp.goals || 0}</p>
-    </div>
+     <div class="modal-section">
+       <h4>📈 Statistiche</h4>
+       <div class="stats-grid">
+         <div class="stat-item">
+           <span class="stat-label">Presenze</span>
+           <span class="stat-value">${opp.appearances || 'N/A'}</span>
+         </div>
+         <div class="stat-item">
+           <span class="stat-label">Gol</span>
+           <span class="stat-value">${opp.goals || 0}</span>
+         </div>
+         <div class="stat-item">
+           <span class="stat-label">Assist</span>
+           <span class="stat-value">${opp.assist || 0}</span>
+         </div>
+       </div>
+     </div>
 
-    <div class="card" style="background: var(--color-bg-secondary); padding: var(--space-md); border-radius: var(--radius-md);">
-      <h4 style="margin-bottom: var(--space-sm); color: var(--color-text-secondary);">Fonte</h4>
-      <p>${opp.source_name}</p>
-      ${opp.tm_url ? `<a href="${opp.tm_url}" target="_blank" rel="noopener" style="color: var(--color-primary);">⚽ Profilo Transfermarkt</a>` : opp.source_url ? `<a href="${opp.source_url}" target="_blank" rel="noopener" style="color: var(--color-primary);">🔗 Leggi articolo</a>` : ''}
-    </div>
-  `;
+     <div class="modal-section">
+       <h4>🔗 Fonte</h4>
+       <div class="source-info">
+         <span class="source-name">${opp.source_name || 'OB1 Radar'}</span>
+         <div class="source-links">
+           ${opp.tm_url 
+             ? `<a href="${opp.tm_url}" target="_blank" rel="noopener" class="btn-card primary" style="width: auto;">⚽ Profilo Transfermarkt</a>` 
+             : opp.source_url 
+               ? `<a href="${opp.source_url}" target="_blank" rel="noopener" class="btn-card primary" style="width: auto;">🔗 Leggi articolo</a>` 
+               : ''}
+         </div>
+       </div>
+     </div>
+   `;
 
-  elements.modalOverlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
+   elements.modalOverlay.classList.add('active');
+   document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {

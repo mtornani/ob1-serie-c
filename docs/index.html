@@ -12,7 +12,7 @@
     <link rel="apple-touch-icon" href="icons/icon-192.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -126,25 +126,55 @@
             </div>
         </div>
 
-        <!-- Opportunities Grid -->
-        <div class="opportunities-grid" id="opportunitiesGrid">
-            <!-- Skeleton Loading -->
-            <div class="opportunity-card skeleton">
-                <div class="skeleton-line title"></div>
-                <div class="skeleton-line meta"></div>
-                <div class="skeleton-line status"></div>
-            </div>
-            <div class="opportunity-card skeleton">
-                <div class="skeleton-line title"></div>
-                <div class="skeleton-line meta"></div>
-                <div class="skeleton-line status"></div>
-            </div>
-            <div class="opportunity-card skeleton">
-                <div class="skeleton-line title"></div>
-                <div class="skeleton-line meta"></div>
-                <div class="skeleton-line status"></div>
-            </div>
-        </div>
+         <!-- Opportunities Grid -->
+         <div class="opportunities-grid" id="opportunitiesGrid">
+             <!-- Skeleton Loading -->
+             <div class="opportunity-card skeleton">
+                 <div class="skeleton-header">
+                     <div class="skeleton-line title"></div>
+                     <div class="skeleton-line badge"></div>
+                 </div>
+                 <div class="skeleton-body">
+                     <div class="skeleton-line meta"></div>
+                     <div class="skeleton-line meta"></div>
+                     <div class="skeleton-line breakdown"></div>
+                 </div>
+                 <div class="skeleton-actions">
+                     <div class="skeleton-line action"></div>
+                     <div class="skeleton-line action"></div>
+                 </div>
+             </div>
+             <div class="opportunity-card skeleton">
+                 <div class="skeleton-header">
+                     <div class="skeleton-line title"></div>
+                     <div class="skeleton-line badge"></div>
+                 </div>
+                 <div class="skeleton-body">
+                     <div class="skeleton-line meta"></div>
+                     <div class="skeleton-line meta"></div>
+                     <div class="skeleton-line breakdown"></div>
+                 </div>
+                 <div class="skeleton-actions">
+                     <div class="skeleton-line action"></div>
+                     <div class="skeleton-line action"></div>
+                 </div>
+             </div>
+             <div class="opportunity-card skeleton">
+                 <div class="skeleton-header">
+                     <div class="skeleton-line title"></div>
+                     <div class="skeleton-line badge"></div>
+                 </div>
+                 <div class="skeleton-body">
+                     <div class="skeleton-line meta"></div>
+                     <div class="skeleton-line meta"></div>
+                     <div class="skeleton-line breakdown"></div>
+                 </div>
+                 <div class="skeleton-actions">
+                     <div class="skeleton-line action"></div>
+                     <div class="skeleton-line action"></div>
+                 </div>
+             </div>
+         </div>
 
         <!-- Empty State -->
         <div class="empty-state" id="emptyState" style="display: none;">
@@ -183,8 +213,11 @@
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" id="detailModal">
             <div class="modal-header">
-                <h2 id="modalTitle">Dettagli Giocatore</h2>
-                <button class="modal-close" id="modalClose">✕</button>
+                <div>
+                    <h2 id="modalTitle">Dettagli Giocatore</h2>
+                    <p class="modal-player-info" id="modalPlayerInfo"></p>
+                </div>
+                <button class="modal-close" id="modalClose" aria-label="Chiudi modale">✕</button>
             </div>
             <div class="modal-content" id="modalContent">
                 <!-- Dynamic content -->
@@ -198,7 +231,6 @@
     <!-- Onboarding Tutorial -->
     <div class="onboarding-overlay" id="onboardingOverlay">
         <div class="onboarding-container">
-            <!-- Step indicators -->
             <div class="onboarding-progress">
                 <span class="progress-dot active" data-step="1"></span>
                 <span class="progress-dot" data-step="2"></span>
@@ -207,9 +239,7 @@
                 <span class="progress-dot" data-step="5"></span>
             </div>
 
-            <!-- Steps -->
             <div class="onboarding-steps">
-                <!-- Step 1: Welcome -->
                 <div class="onboarding-step active" data-step="1">
                     <div class="step-icon">🎯</div>
                     <h2>Benvenuto in OB1 Radar</h2>
@@ -217,28 +247,49 @@
                     <p class="step-subtitle">Scopri opportunita di mercato prima degli altri.</p>
                 </div>
 
-                <!-- Step 2: Score System -->
                 <div class="onboarding-step" data-step="2">
                     <div class="step-icon">📊</div>
-                    <h2>Sistema di Scoring</h2>
-                    <p>Ogni giocatore ha un <strong>OB1 Score</strong> da 1 a 100:</p>
-                    <div class="score-legend">
-                        <div class="legend-item">
-                            <span class="score-badge hot">🔥 80+</span>
-                            <span>HOT - Alta priorita</span>
+                    <h2>Sistema di Scoring OB1</h2>
+                    <p>Ogni giocatore ha un <strong>OB1 Score</strong> da 1 a 100 basato su 5 criteri:</p>
+                    <div class="score-breakdown">
+                        <div class="breakdown-item">
+                            <span class="breakdown-icon">📍</span>
+                            <div>
+                                <strong>Posizione</strong> (25%)
+                                <span class="breakdown-score" data-breakdown="position">85</span>
+                            </div>
                         </div>
-                        <div class="legend-item">
-                            <span class="score-badge warm">⚡ 60-79</span>
-                            <span>WARM - Da valutare</span>
+                        <div class="breakdown-item">
+                            <span class="breakdown-icon">🎂</span>
+                            <div>
+                                <strong>Età</strong> (15%)
+                                <span class="breakdown-score" data-breakdown="age">90</span>
+                            </div>
                         </div>
-                        <div class="legend-item">
-                            <span class="score-badge cold">❄️ &lt;60</span>
-                            <span>COLD - Bassa priorita</span>
+                        <div class="breakdown-item">
+                            <span class="breakdown-icon">⚽</span>
+                            <div>
+                                <strong>Stile</strong> (15%)
+                                <span class="breakdown-score" data-breakdown="style">70</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-icon">📅</span>
+                            <div>
+                                <strong>Disponibilità</strong> (20%)
+                                <span class="breakdown-score" data-breakdown="availability">80</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-item">
+                            <span class="breakdown-icon">💰</span>
+                            <div>
+                                <strong>Budget</strong> (20%)
+                                <span class="breakdown-score" data-breakdown="budget">85</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 3: Filters -->
                 <div class="onboarding-step" data-step="3">
                     <div class="step-icon">🔍</div>
                     <h2>Filtra e Cerca</h2>
@@ -251,19 +302,18 @@
                     </ul>
                 </div>
 
-                <!-- Step 4: Save & Actions -->
                 <div class="onboarding-step" data-step="4">
-                    <div class="step-icon">💾</div>
-                    <h2>Salva i Preferiti</h2>
-                    <p>Hai trovato un giocatore interessante?</p>
+                    <div class="step-icon">💡</div>
+                    <h2>Spiegazioniscore</h2>
+                    <p>Ogni giocatore mostra <strong>perché</strong> ha quel punteggio:</p>
                     <ul class="feature-list">
-                        <li>📋 Clicca <strong>"Salva"</strong> per aggiungerlo ai preferiti</li>
-                        <li>📊 Clicca <strong>"Dettagli"</strong> per info complete</li>
-                        <li>💾 Accedi ai salvati dalla barra in basso</li>
+                        <li>Analisi posizione e adattamento</li>
+                        <li>Valutazione età e contesto</li>
+                        <li>Matching stile di gioco</li>
+                        <li>Costi e disponibilità</li>
                     </ul>
                 </div>
 
-                <!-- Step 5: Notifications -->
                 <div class="onboarding-step" data-step="5">
                     <div class="step-icon">🔔</div>
                     <h2>Notifiche Telegram</h2>
@@ -279,7 +329,6 @@
                 </div>
             </div>
 
-            <!-- Navigation -->
             <div class="onboarding-nav">
                 <button class="btn-skip" id="skipTutorial">Salta</button>
                 <div class="nav-buttons">
@@ -294,4 +343,3 @@
     <script src="js/app.js"></script>
 </body>
 </html>
-<!-- cache bust 1769867945 -->

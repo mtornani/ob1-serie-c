@@ -1,17 +1,52 @@
 /**
  * DNA-001: DNA Matching for Telegram Bot
- * Implements complete DNA scoring algorithm with 5 components:
- * - position_fit × 30%
- * - age_fit × 20%
- * - style_fit × 25%
- * - availability × 15%
- * - budget_fit × 10%
+ * Implements realistic scoring algorithm from scorer.py v2.0:
+ * - position_fit × 25% (ruolo)
+ * - age_fit × 15% (età)
+ * - style_fit × 15% (tattico)
+ * - availability × 20% (disponibilità)
+ * - budget_fit × 20% (costo)
+ * - level_fit × 5% (livello categoria)
  */
 
 import { Env, Opportunity } from './types';
 import { fetchData } from './data';
 
-// Club data interface
+// Position compatibility mapping (from scorer.py POSITION_COMPATIBILITY)
+const POSITION_COMPATIBILITY: Record<string, string[]> = {
+  'DC': ['MED'],
+  'TS': ['ES'],
+  'TD': ['ED'],
+  'MED': ['CC'],
+  'CC': ['MED', 'TRQ'],
+  'TRQ': ['CC'],
+  'ES': ['TS', 'AS'],
+  'ED': ['TD', 'AD'],
+  'AS': ['ES'],
+  'AD': ['ED'],
+  'ATT': ['PC', 'AS', 'AD'],
+  'PC': ['ATT'],
+  'POR': [],
+};
+
+// Category value caps (in thousands €) - from scorer.py CATEGORY_VALUE_CAPS
+const CATEGORY_VALUE_CAPS: Record<string, number> = {
+  'Campionato Sammarinese': 300,
+  'Serie D': 500,
+  'Serie C': 2000,
+  'Serie B': 10000,
+};
+
+// Weight values for scoring
+const WEIGHTS = {
+  position: 0.25,
+  age: 0.15,
+  style: 0.15,
+  availability: 0.20,
+  budget: 0.20,
+  level: 0.05,
+};
+
 interface ClubNeed {
   position: string;
   player_type?: string;
@@ -38,25 +73,30 @@ interface MatchBreakdown {
   style: number;
   availability: number;
   budget: number;
+  level: number;
 }
 
-export interface PlayerMatch {
+interface MatchWithNeed {
+  score: number;
+  breakdown: MatchBreakdown;
+  matchedNeed?: ClubNeed;
+}
+
+interface PlayerMatch {
   player: Opportunity;
   club_id: string;
   club_name: string;
   score: number;
   breakdown: MatchBreakdown;
   recommendation: string;
+  matched_need?: ClubNeed;
 }
 
 // Cache for club data
 let clubsCache: Map<string, ClubDNA> | null = null;
 let clubsCacheTime: number = 0;
-const CLUBS_CACHE_TTL = 60 * 60 * 1000; // 1 hour
+const CLUBS_CACHE_TTL = 60 * 60 * 1000;
 
-/**
- * Fetch club data from GitHub Pages
- */
 async function fetchClubData(env: Env): Promise<Map<string, ClubDNA>> {
   const now = Date.now();
   
@@ -65,7 +105,6 @@ async function fetchClubData(env: Env): Promise<Map<string, ClubDNA>> {
   }
   
   try {
-    // Try to fetch from the DNA matches endpoint
     const dnaUrl = env.DATA_URL.replace('data.json', 'dna_matches.json');
     const response = await fetch(dnaUrl, {
       headers: { 'Cache-Control': 'no-cache' },
@@ -78,7 +117,6 @@ async function fetchClubData(env: Env): Promise<Map<string, ClubDNA>> {
     
     const dnaData = await response.json();
     
-    // Extract unique clubs from matches
     const clubs = new Map<string, ClubDNA>();
     if (dnaData.matches) {
       dnaData.matches.forEach((match: any) => {
@@ -86,13 +124,13 @@ async function fetchClubData(env: Env): Promise<Map<string, ClubDNA>> {
           clubs.set(match.club_id, {
             id: match.club_id,
             name: match.club_name,
-            category: 'Serie C',
-            city: '',
-            primary_formation: '4-3-3',
-            playing_styles: ['possesso'],
-            needs: [],
-            budget_type: 'solo_prestiti',
-            max_loan_cost: 50,
+            category: match.category || 'Serie C',
+            city: match.city || '',
+            primary_formation: match.primary_formation || '4-3-3',
+            playing_styles: match.playing_styles || ['possesso'],
+            needs: match.needs || [],
+            budget_type: match.budget_type || 'solo_prestiti',
+            max_loan_cost: match.max_loan_cost || 50,
           });
         }
       });
@@ -107,189 +145,287 @@ async function fetchClubData(env: Env): Promise<Map<string, ClubDNA>> {
   }
 }
 
-/**
- * Calculate position fit score (30%)
- */
-function calculatePositionFit(player: Opportunity, club: ClubDNA): number {
-  if (!club.needs || club.needs.length === 0) {
-    // Default: neutral score if no specific needs
-    return 70;
-  }
-  
-  let bestScore = 0;
-  const playerRole = (player.role || player.role_name || '').toLowerCase();
-  
+function calculatePositionFit(player: Opportunity, club: ClubDNA): { score: number; matchedNeed?: ClubNeed } {
+  const best = { score: 0, matchedNeed: undefined as ClubNeed | undefined };
+
   for (const need of club.needs) {
-    const needPosition = need.position.toLowerCase();
-    
-    // Exact match
-    if (playerRole.includes(needPosition) || needPosition.includes(playerRole)) {
-      let score = 100;
-      // Bonus for high priority needs
-      if (need.priority === 'alta') {
-        score = Math.min(100, score + 10);
-      }
-      bestScore = Math.max(bestScore, score);
+    let score = 0;
+    const needPosition = need.position.toUpperCase();
+    const playerPrimary = (player.role || player.role_name || '').toUpperCase();
+
+    if (playerPrimary === needPosition) {
+      score = 100;
+    } else if (POSITION_COMPATIBILITY[playerPrimary]?.includes(needPosition)) {
+      score = 40;
+    } else if (POSITION_COMPATIBILITY[needPosition]?.includes(playerPrimary)) {
+      score = 35;
     }
-    // Partial match (e.g., "centrocampista" matches "cc")
-    else if (
-      (playerRole.includes('centrocamp') && needPosition.includes('cc')) ||
-      (playerRole.includes('attacc') && needPosition.includes('att')) ||
-      (playerRole.includes('difens') && needPosition.includes('dc')) ||
-      (playerRole.includes('portier') && needPosition.includes('por'))
-    ) {
-      bestScore = Math.max(bestScore, 75);
+
+    if (need.priority === 'alta' && score >= 70) {
+      score = Math.min(100, score + 5);
+    }
+
+    if (score > best.score) {
+      best.score = score;
+      best.matchedNeed = need;
     }
   }
-  
-  return bestScore > 0 ? bestScore : 40; // Minimum score if no match
+
+  return best;
 }
 
-/**
- * Calculate age fit score (20%)
- */
-function calculateAgeFit(player: Opportunity, club: ClubDNA): number {
+function calculateAgeFit(player: Opportunity, matchedNeed?: ClubNeed): number {
   const age = player.age;
-  if (age == null) return 50; // Neutral if unknown
   
-  // Check club needs first
-  if (club.needs && club.needs.length > 0) {
-    for (const need of club.needs) {
-      if (age >= need.age_min && age <= need.age_max) {
-        return 100; // Perfect fit
-      }
-      // Partial fit
-      const minDiff = Math.abs(age - need.age_min);
-      const maxDiff = Math.abs(age - need.age_max);
-      const diff = Math.min(minDiff, maxDiff);
-      
-      if (diff <= 2) return 80;
-      if (diff <= 4) return 60;
+  if (age == null) {
+    return 50;
+  }
+
+  if (matchedNeed) {
+    const { age_min, age_max } = matchedNeed;
+    
+    if (age >= age_min && age <= age_max) {
+      return 100;
+    } else if (age < age_min) {
+      return Math.max(0, 100 - (age_min - age) * 25);
+    } else {
+      return Math.max(0, 100 - (age - age_max) * 25);
     }
   }
-  
-  // Default age scoring (optimal 22-28)
-  if (age >= 22 && age <= 28) return 100;
-  if (age >= 20 && age < 22) return 85;
-  if (age > 28 && age <= 30) return 75;
-  if (age >= 18 && age < 20) return 60;
-  if (age > 30 && age <= 32) return 50;
-  return Math.max(0, 100 - Math.abs(age - 25) * 10);
+
+  if (age >= 20 && age <= 25) return 100;
+  else if (age < 20) return 80;
+  else if (age > 25 && age <= 28) return 60;
+  else return Math.max(0, 100 - Math.abs(age - 23) * 15);
 }
 
-/**
- * Calculate style fit score (25%)
- */
 function calculateStyleFit(player: Opportunity, club: ClubDNA): number {
   if (!club.playing_styles || club.playing_styles.length === 0) {
-    return 70; // Neutral
+    return 50;
   }
-  
-  // Map opportunity types to playing styles
-  const styleScores: Record<string, number> = {
-    'svincolato': 90, // Available immediately
-    'prestito': 80,
-    'rescissione': 85,
-    'mercato': 70,
+
+  const styleSkills: Record<string, string[]> = {
+    'pressing_alto': ['pressing', 'fisico', 'velocita'],
+    'possesso': ['tecnica', 'visione'],
+    'transizioni': ['velocita', 'dribbling', 'tecnica'],
+    'difesa_bassa': ['difesa', 'fisico'],
+    'gioco_diretto': ['fisico', 'tiro'],
+    'gioco_aereo': ['fisico'],
+    'gioco_sulle_fasce': ['velocita', 'dribbling', 'tecnica'],
+    'mix_sammarinese': ['tecnica', 'visione', 'velocita', 'dribbling'],
   };
-  
-  const oppType = (player.opportunity_type || '').toLowerCase();
-  let baseScore = styleScores[oppType] || 70;
-  
-  // Bonus for youth (matches "possesso" and development style)
-  if (player.age && player.age <= 23) {
-    baseScore = Math.min(100, baseScore + 10);
+
+  let totalScore = 0;
+  let count = 0;
+
+  for (const style of club.playing_styles) {
+    const requiredSkills = styleSkills[style] || [];
+    
+    if (requiredSkills.length > 0) {
+      totalScore += 40;
+      count++;
+    }
   }
-  
-  return baseScore;
+
+  if (count === 0) {
+    return 50;
+  }
+
+  return Math.round(totalScore / count);
 }
 
-/**
- * Calculate availability score (15%)
- */
 function calculateAvailability(player: Opportunity): number {
   const oppType = (player.opportunity_type || '').toLowerCase();
   
   if (oppType.includes('svincol')) return 100;
-  if (oppType.includes('rescis')) return 95;
-  if (oppType.includes('prestit')) return 70;
-  if (oppType.includes('scaden')) return 60;
-  return 40;
+  else if (oppType.includes('rescis')) return 95;
+  else if (oppType.includes('prestit')) return 70;
+  else if (oppType.includes('scaden')) return 60;
+  else return 30;
 }
 
-/**
- * Calculate budget fit score (10%)
- */
 function calculateBudgetFit(player: Opportunity, club: ClubDNA): number {
-  // Assume all players in our DB are affordable for these clubs
-  // In real implementation, would check player market value vs club.max_loan_cost
-  if (club.budget_type === 'solo_prestiti') {
-    // Lower budget clubs get boost for loan players
-    if (player.opportunity_type?.toLowerCase().includes('prestit')) {
-      return 90;
-    }
-    if (player.opportunity_type?.toLowerCase().includes('svincol')) {
-      return 100; // Free is best
-    }
+   const estimatedLoanCost = player.estimated_loan_cost || (player.market_value ? Math.round(player.market_value * 0.12) : 0);
+   const effectiveCost = estimatedLoanCost || 0;
+
+  if (effectiveCost === 0 && (!player.market_value || player.market_value === 0)) {
+    return 50;
   }
-  return 80;
+
+  const maxBudget = club.max_loan_cost;
+
+  if (maxBudget <= 0) return 30;
+  else if (effectiveCost <= maxBudget) return 100;
+  else if (effectiveCost <= maxBudget * 1.3) return 70;
+  else if (effectiveCost <= maxBudget * 2) return 35;
+  else if (effectiveCost <= maxBudget * 3) return 15;
+  else return 5;
 }
 
-/**
- * Calculate complete DNA match score
- */
-function calculateDNAMatch(player: Opportunity, club: ClubDNA): { score: number; breakdown: MatchBreakdown } {
+function calculateLevelFit(player: Opportunity, club: ClubDNA): number {
+  const category = club.category;
+  const mv = player.market_value || 0;
+
+  if (category === 'Campionato Sammarinese') {
+    if (mv === 0) return 60;
+    else if (mv <= 100) return 100;
+    else if (mv <= 300) return 70;
+    else if (mv <= 500) return 40;
+    else if (mv <= 1000) return 20;
+    else return 5;
+  } else if (category === 'Serie D') {
+    if (mv === 0) return 60;
+    else if (mv <= 300) return 100;
+    else if (mv <= 800) return 70;
+    else if (mv <= 1500) return 40;
+    else return 15;
+  } else if (category === 'Serie C') {
+    if (mv === 0) return 60;
+    else if (mv <= 500) return 90;
+    else if (mv <= 1500) return 100;
+    else if (mv <= 3000) return 60;
+    else if (mv <= 5000) return 30;
+    else return 10;
+  } else {
+    return 50;
+  }
+}
+
+function checkBlockingFilters(player: Opportunity, club: ClubDNA): { blocked: boolean; reason: string } {
+  const oppType = (player.opportunity_type || '').toLowerCase();
+  
+  if (oppType.includes('incedibile')) {
+    return { blocked: true, reason: 'Giocatore non disponibile (incedibile)' };
+  }
+
+  const valueCap = CATEGORY_VALUE_CAPS[club.category] || 5000;
+  if (player.market_value && player.market_value > valueCap) {
+    return { 
+      blocked: true, 
+      reason: `Valore di mercato (${player.market_value}k€) troppo alto per ${club.category}` 
+    };
+  }
+
+  const positionResult = calculatePositionFit(player, club);
+  if (positionResult.score === 0) {
+    return { blocked: true, reason: 'Nessun ruolo compatibile con le esigenze del club' };
+  }
+
+  return { blocked: false, reason: '' };
+}
+
+function calculateDNAMatch(player: Opportunity, club: ClubDNA): MatchWithNeed {
+  const blocking = checkBlockingFilters(player, club);
+  
+  if (blocking.blocked) {
+    return {
+      score: 0,
+      breakdown: { position: 0, age: 0, style: 0, availability: 0, budget: 0, level: 0 },
+      matchedNeed: undefined,
+    };
+  }
+
+  const positionResult = calculatePositionFit(player, club);
+  const ageFit = calculateAgeFit(player, positionResult.matchedNeed);
+  const styleFit = calculateStyleFit(player, club);
+  const availability = calculateAvailability(player);
+  const budgetFit = calculateBudgetFit(player, club);
+  const levelFit = calculateLevelFit(player, club);
+
   const breakdown: MatchBreakdown = {
-    position: calculatePositionFit(player, club),
-    age: calculateAgeFit(player, club),
-    style: calculateStyleFit(player, club),
-    availability: calculateAvailability(player),
-    budget: calculateBudgetFit(player, club),
+    position: positionResult.score,
+    age: ageFit,
+    style: styleFit,
+    availability: availability,
+    budget: budgetFit,
+    level: levelFit,
   };
-  
-  // Weighted sum according to DNA-001 spec
+
   const score = Math.round(
-    breakdown.position * 0.30 +
-    breakdown.age * 0.20 +
-    breakdown.style * 0.25 +
-    breakdown.availability * 0.15 +
-    breakdown.budget * 0.10
+    breakdown.position * WEIGHTS.position +
+    breakdown.age * WEIGHTS.age +
+    breakdown.style * WEIGHTS.style +
+    breakdown.availability * WEIGHTS.availability +
+    breakdown.budget * WEIGHTS.budget +
+    breakdown.level * WEIGHTS.level
   );
-  
-  return { score, breakdown };
+
+  return { score, breakdown, matchedNeed: positionResult.matchedNeed };
 }
 
-/**
- * Generate recommendation text based on match
- */
-function generateRecommendation(player: Opportunity, breakdown: MatchBreakdown): string {
-  const parts: string[] = [];
-  
-  // Role description
-  const roleDesc = player.role_name || player.role || 'Giocatore';
-  parts.push(`${roleDesc}`);
-  
-  // Strongest attribute
-  const attrs = [
-    { name: 'disponibilità immediata', score: breakdown.availability },
-    { name: 'adattamento tattico', score: breakdown.style },
-    { name: 'esperienza nella categoria', score: breakdown.position },
-    { name: 'età ideale', score: breakdown.age },
-  ];
-  
-  const topAttr = attrs.sort((a, b) => b.score - a.score)[0];
-  if (topAttr.score >= 80) {
-    parts.push(`con ${topAttr.name}`);
-  }
-  
-  // Opportunity type
-  if (player.opportunity_type?.toLowerCase().includes('svincol')) {
-    parts.push('disponibile a parametro zero');
-  } else if (player.opportunity_type?.toLowerCase().includes('prestit')) {
-    parts.push('disponibile in prestito');
-  }
-  
-  return parts.join(', ');
+function generateRecommendation(player: Opportunity, breakdown: MatchBreakdown, matchedNeed?: ClubNeed): string {
+   const parts: string[] = [];
+   
+   const roleDesc = player.role_name || player.role || 'Giocatore';
+   const oppType = player.opportunity_type || 'Mercato';
+   const currentClub = player.current_club || 'Libero';
+   const estimatedLoanCost = player.estimated_loan_cost || (player.market_value ? Math.round(player.market_value * 0.12) : 0);
+   
+   if (player.ob1_score >= 80) {
+     parts.push(`${roleDesc} di qualità **HOT**`);
+   } else if (player.ob1_score >= 60) {
+     parts.push(`${roleDesc} **WARM** da valutare`);
+   } else {
+     parts.push(`${roleDesc} opportunità standard`);
+   }
+   
+   if (breakdown.position >= 85) {
+     parts.push(`ruolo esatto cercato (${matchedNeed?.position.toUpperCase() || 'comune'})`);
+   } else if (breakdown.position >= 60) {
+     parts.push(`ruolo compatibile con flessibilità`);
+   }
+   
+   if (breakdown.age >= 80) {
+     if (player.age && player.age >= 20 && player.age <= 25) {
+       parts.push(`età perfetta per Serie C (${player.age} anni)`);
+     } else if (player.age && player.age < 23) {
+       parts.push(`giovane talento in crescita (${player.age} anni)`);
+     }
+   } else if (player.age && player.age > 28) {
+     parts.push(`esperienza matura per squadra di vertice`);
+   }
+   
+   if (breakdown.style >= 70) {
+     parts.push(`adeguato allo stile possesso/transizioni`);
+   } else if (breakdown.style < 50) {
+     parts.push(`stile differente richiede adattamento`);
+   }
+   
+   if (breakdown.availability >= 80) {
+     if (oppType.toLowerCase().includes('svincol')) {
+       parts.push(`disponibile immediatamente (svincolato)`);
+     } else if (oppType.toLowerCase().includes('prestit')) {
+       parts.push(`disponibile in prestito`);
+     }
+   } else if (breakdown.availability >= 60) {
+     parts.push(`disponibilità parziale da verificare`);
+   }
+   
+   if (breakdown.budget >= 80) {
+     if (estimatedLoanCost > 0 && estimatedLoanCost <= 50) {
+       parts.push(`costo sostenibile (${estimatedLoanCost}k€/anno)`);
+     } else if (estimatedLoanCost > 0 && estimatedLoanCost <= 100) {
+       parts.push(`budget medio da valutare`);
+     } else if (estimatedLoanCost > 100) {
+       parts.push(`investimento significativo richiesto`);
+     } else {
+       parts.push(`free transfer o costo minimo`);
+     }
+   } else if (breakdown.budget <= 35) {
+     parts.push(`costo elevato per budget club`);
+   }
+   
+   if (breakdown.level >= 80) {
+     parts.push(`calibrato per categoria (Serie C/Serie D)`);
+   } else if (breakdown.level < 40) {
+     parts.push(`valore di mercato alto per categoria`);
+   }
+   
+   if (parts.length <= 2) {
+     parts.push(`operazione fattibile su base tecnica`);
+   }
+   
+   return parts.join(', ');
 }
 
 export async function fetchDNAData(env: Env): Promise<Opportunity[] | null> {
@@ -299,13 +435,12 @@ export async function fetchDNAData(env: Env): Promise<Opportunity[] | null> {
 
 export async function getMatchesForClub(
   env: Env,
-  opportunities: Opportunity[], 
-  clubQuery: string, 
+  opportunities: Opportunity[],
+  clubQuery: string,
   limit: number = 5
 ): Promise<PlayerMatch[]> {
   const clubs = await fetchClubData(env);
   
-  // Try to find exact club match
   let club: ClubDNA | undefined;
   const query = clubQuery.toLowerCase().trim();
   
@@ -316,7 +451,6 @@ export async function getMatchesForClub(
     }
   }
   
-  // If no club found, create a generic one
   if (!club) {
     club = {
       id: query,
@@ -331,20 +465,19 @@ export async function getMatchesForClub(
     };
   }
   
-  // Calculate DNA match for all opportunities
   const matches: PlayerMatch[] = opportunities.map(o => {
-    const { score, breakdown } = calculateDNAMatch(o, club!);
+    const { score, breakdown, matchedNeed } = calculateDNAMatch(o, club!);
     return {
       player: o,
       club_id: club!.id,
       club_name: club!.name,
       score,
       breakdown,
-      recommendation: generateRecommendation(o, breakdown),
+      recommendation: generateRecommendation(o, breakdown, matchedNeed),
+      matched_need: matchedNeed,
     };
   });
   
-  // Sort by DNA score and return top matches
   return matches
     .sort((a, b) => b.score - a.score)
     .slice(0, limit);
@@ -352,11 +485,10 @@ export async function getMatchesForClub(
 
 export async function getTopMatches(
   env: Env,
-  opportunities: Opportunity[], 
-  minScore: number = 75, 
+  opportunities: Opportunity[],
+  minScore: number = 75,
   limit: number = 10
 ): Promise<PlayerMatch[]> {
-  // Create a generic "Serie C" club profile
   const genericClub: ClubDNA = {
     id: 'serie_c',
     name: 'Serie C',
@@ -373,22 +505,21 @@ export async function getTopMatches(
     max_loan_cost: 50,
   };
   
-  // Calculate DNA match for all opportunities
   const matches: PlayerMatch[] = opportunities
-    .filter(o => o.age != null && o.age <= 23) // Focus on young players
+    .filter(o => o.age != null && o.age <= 23)
     .map(o => {
-      const { score, breakdown } = calculateDNAMatch(o, genericClub);
+      const { score, breakdown, matchedNeed } = calculateDNAMatch(o, genericClub);
       return {
         player: o,
         club_id: 'serie_c',
         club_name: 'Serie C',
         score,
         breakdown,
-        recommendation: generateRecommendation(o, breakdown),
+        recommendation: generateRecommendation(o, breakdown, matchedNeed),
+        matched_need: matchedNeed,
       };
     });
   
-  // Filter by min DNA score and return top matches
   return matches
     .filter(m => m.score >= minScore)
     .sort((a, b) => b.score - a.score)
@@ -406,16 +537,14 @@ export function formatDNAMatch(match: PlayerMatch): string {
   if (o.current_club) {
     msg += `🏟️ ${escapeHtml(o.current_club)}\n`;
   }
-  
-  // Show score breakdown
-  if (match.breakdown) {
-    msg += `\n📊 Score Breakdown:\n`;
-    msg += `  • Posizione: ${match.breakdown.position}%\n`;
-    msg += `  • Età: ${match.breakdown.age}%\n`;
-    msg += `  • Stile: ${match.breakdown.style}%\n`;
-    msg += `  • Disponibilità: ${match.breakdown.availability}%\n`;
-    msg += `  • Budget: ${match.breakdown.budget}%\n`;
-  }
+
+  msg += `\n📊 Score Breakdown:\n`;
+  msg += `  • Posizione: ${match.breakdown.position}%\n`;
+  msg += `  • Età: ${match.breakdown.age}%\n`;
+  msg += `  • Stile: ${match.breakdown.style}%\n`;
+  msg += `  • Disponibilità: ${match.breakdown.availability}%\n`;
+  msg += `  • Budget: ${match.breakdown.budget}%\n`;
+  msg += `  • Livello: ${match.breakdown.level}%\n`;
 
   msg += `\n💡 <i>${escapeHtml(match.recommendation)}</i>`;
 
@@ -456,14 +585,14 @@ export function formatDNAStats(opportunities: Opportunity[]): string {
   const young = opportunities.filter(o => o.age != null && o.age <= 23).length;
   const hot = opportunities.filter(o => o.ob1_score >= 80).length;
   
-  return `🧬 <b>OB1 Radar - Stats</b>\n\n📊 Database:\n• ${opportunities.length} giocatori monitorati\n• ${young} giovani talenti (Under 23)\n• ${hot} opportunità prioritari (Score 80+)\n\n━━━━━━━━━━━━━━━━━━━━\n🌐 <a href="https://mtornani.github.io/ob1-serie-c/">Dashboard</a>
-`;
+  return `🧬 <b>OB1 Radar - Stats</b>\n\n📊 Database:\n• ${opportunities.length} giocatori monitorati\n• ${young} giovani talenti (Under 23)\n• ${hot} opportunità prioritari (Score 80+)\n\n━━━━━━━━━━━━━━━━━━━━\n🌐 <a href="https://mtornani.github.io/ob1-serie-c/">Dashboard</a>\n`;
 }
 
 function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+   return text
+     .replace(/&/g, '&amp;')
+     .replace(/</g, '&lt;')
+     .replace(/>/g, '&gt;')
+     .replace(/"/g, '&quot;')
+     .replace(/'/g, '&#039;');
 }
