@@ -456,17 +456,8 @@ function showDetail(opp) {
     <div class="card" style="background: var(--color-bg-secondary); padding: var(--space-md); border-radius: var(--radius-md);">
       <h4 style="margin-bottom: var(--space-sm); color: var(--color-text-secondary);">Fonte</h4>
       <p>${opp.source_name}</p>
-      ${opp.source_url ? `<a href="${opp.source_url}" target="_blank" rel="noopener" style="color: var(--color-primary);">🔗 Leggi articolo</a>` : ''}
+      ${opp.tm_url ? `<a href="${opp.tm_url}" target="_blank" rel="noopener" style="color: var(--color-primary);">⚽ Profilo Transfermarkt</a>` : opp.source_url ? `<a href="${opp.source_url}" target="_blank" rel="noopener" style="color: var(--color-primary);">🔗 Leggi articolo</a>` : ''}
     </div>
-
-    ${opp.tm_url ? `
-    <div class="card" style="background: var(--color-bg-secondary); padding: var(--space-md); border-radius: var(--radius-md); margin-top: var(--space-md);">
-      <h4 style="margin-bottom: var(--space-sm); color: var(--color-text-secondary);">Transfermarkt</h4>
-      <a href="${opp.tm_url}" target="_blank" rel="noopener" style="color: var(--color-primary); display: flex; align-items: center; gap: var(--space-sm);">
-        <span>⚽</span> Vedi profilo su Transfermarkt
-      </a>
-    </div>
-    ` : ''}
   `;
 
   elements.modalOverlay.classList.add('active');
