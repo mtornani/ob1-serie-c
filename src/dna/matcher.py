@@ -79,7 +79,7 @@ class DNAMatcher:
     def get_matches_for_club(
         self,
         club_id: str,
-        min_score: int = 50,
+        min_score: int = 55,
         limit: int = 10,
         position_filter: Optional[str] = None,
     ) -> List[MatchResult]:
@@ -88,7 +88,7 @@ class DNAMatcher:
 
         Args:
             club_id: ID del club
-            min_score: Score minimo per includere (default 50)
+            min_score: Score minimo per includere (default 55, era 50)
             limit: Numero massimo risultati
             position_filter: Filtra solo per questa posizione
 
@@ -111,6 +111,10 @@ class DNAMatcher:
                 ):
                     continue
 
+            # Skip rapido: giocatori incedibili non passano neanche al calcolo
+            if player.transfer_status == 'incedibile':
+                continue
+
             # Calcola match
             result = calculate_match_score(player, club)
 
@@ -125,7 +129,7 @@ class DNAMatcher:
     def get_matches_for_player(
         self,
         player_id: str,
-        min_score: int = 50,
+        min_score: int = 55,
         limit: int = 10,
     ) -> List[MatchResult]:
         """
