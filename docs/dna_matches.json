@@ -2,6 +2,63 @@
   "matches": [
     {
       "player": {
+        "id": "juve_ng_001",
+        "name": "Luis Hasa",
+        "birth_year": 2004,
+        "age": 22,
+        "nationality": "Albania",
+        "primary_position": "CC",
+        "secondary_positions": [
+          "TRQ"
+        ],
+        "preferred_foot": "destro",
+        "parent_club": "Juventus",
+        "current_team": "Juventus Next Gen",
+        "contract_until": "2027-06-30",
+        "appearances": 14,
+        "minutes_played": 890,
+        "minutes_percentage": 33.0,
+        "is_underused": true,
+        "goals": 2,
+        "assists": 3,
+        "skills": {
+          "tecnica": 78,
+          "velocita": 68,
+          "fisico": 65,
+          "visione": 75,
+          "difesa": 55,
+          "pressing": 72,
+          "dribbling": 70,
+          "tiro": 68
+        },
+        "transfer_status": "disponibile_prestito",
+        "estimated_loan_cost": 0,
+        "market_value": 500,
+        "transfermarkt_url": "https://www.transfermarkt.it/luis-hasa/profil/spieler/896138",
+        "last_updated": "2026-02-01"
+      },
+      "club_id": "pescara",
+      "club_name": "Pescara",
+      "score": 89,
+      "breakdown": {
+        "position": 100,
+        "age": 100,
+        "style": 71,
+        "availability": 100,
+        "budget": 70,
+        "level": 90
+      },
+      "recommendation": "Centrocampista, con ottima tecnica, adattabile al 3-5-2, cerca minutaggio (33% giocato)",
+      "matched_need": {
+        "position": "CC",
+        "player_type": "box_to_box",
+        "age_min": 19,
+        "age_max": 25,
+        "priority": "alta"
+      }
+    },
+    {
+      "player": {
         "id": "juve_ng_002",
         "name": "Samuel Mbangula",
         "birth_year": 2004,
@@ -38,139 +95,24 @@
         "transfermarkt_url": "https://www.transfermarkt.it/samuel-mbangula/profil/spieler/802983",
         "last_updated": "2026-02-01"
       },
-      "club_id": "cesena",
-      "club_name": "Cesena",
-      "score": 90,
+      "club_id": "pescara",
+      "club_name": "Pescara",
+      "score": 86,
       "breakdown": {
-        "position": 100,
+        "position": 40,
         "age": 100,
-        "style": 72,
+        "style": 77,
         "availability": 100,
-        "budget": 70,
+        "budget": 100,
         "level": 100
       },
-      "recommendation": "Ala sinistra, con grande velocit‡, adattabile al 4-3-3",
+      "recommendation": "Ala sinistra, con grande velocit√†, adattabile al 3-5-2, operazione fattibile",
       "matched_need": {
-        "position": "AS",
-        "player_type": "veloce",
-        "age_min": 18,
-        "age_max": 23,
-        "priority": "alta"
-      }
-    },
-    {
-      "player": {
-        "id": "juve_ng_001",
-        "name": "Luis Hasa",
-        "birth_year": 2004,
-        "age": 22,
-        "nationality": "Albania",
-        "primary_position": "CC",
-        "secondary_positions": [
-          "TRQ"
-        ],
-        "preferred_foot": "destro",
-        "parent_club": "Juventus",
-        "current_team": "Juventus Next Gen",
-        "contract_until": "2027-06-30",
-        "appearances": 14,
-        "minutes_played": 890,
-        "minutes_percentage": 33.0,
-        "is_underused": true,
-        "goals": 2,
-        "assists": 3,
-        "skills": {
-          "tecnica": 78,
-          "velocita": 68,
-          "fisico": 65,
-          "visione": 75,
-          "difesa": 55,
-          "pressing": 72,
-          "dribbling": 70,
-          "tiro": 68
-        },
-        "transfer_status": "disponibile_prestito",
-        "estimated_loan_cost": 0,
-        "market_value": 500,
-        "transfermarkt_url": "https://www.transfermarkt.it/luis-hasa/profil/spieler/896138",
-        "last_updated": "2026-02-01"
-      },
-      "club_id": "cesena",
-      "club_name": "Cesena",
-      "score": 76,
-      "breakdown": {
-        "position": 75,
-        "age": 100,
-        "style": 72,
-        "availability": 100,
-        "budget": 35,
-        "level": 90
-      },
-      "recommendation": "Centrocampista, con ottima tecnica, adattabile al 4-3-3, cerca minutaggio (33% giocato), costo elevato per il club",
-      "matched_need": {
-        "position": "TRQ",
-        "player_type": "fantasista",
-        "age_min": 19,
-        "age_max": 24,
-        "priority": "alta"
-      }
-    },
-    {
-      "player": {
-        "id": "atalanta_u23_002",
-        "name": "Federico Cassa",
-        "birth_year": 2004,
-        "age": 22,
-        "nationality": "Italia",
-        "primary_position": "AD",
-        "secondary_positions": [
-          "AS",
-          "ATT"
-        ],
-        "preferred_foot": "sinistro",
-        "parent_club": "Atalanta",
-        "current_team": "Atalanta U23",
-        "contract_until": "2026-06-30",
-        "appearances": 14,
-        "minutes_played": 780,
-        "minutes_percentage": 28.9,
-        "is_underused": true,
-        "goals": 4,
-        "assists": 2,
-        "skills": {
-          "tecnica": 74,
-          "velocita": 80,
-          "fisico": 65,
-          "visione": 68,
-          "difesa": 30,
-          "pressing": 68,
-          "dribbling": 78,
-          "tiro": 72
-        },
-        "transfer_status": "disponibile_prestito",
-        "estimated_loan_cost": 0,
-        "market_value": 500,
-        "transfermarkt_url": "",
-        "last_updated": "2026-02-01"
-      },
-      "club_id": "cesena",
-      "club_name": "Cesena",
-      "score": 76,
-      "breakdown": {
-        "position": 75,
-        "age": 100,
-        "style": 71,
-        "availability": 100,
-        "budget": 35,
-        "level": 90
-      },
-      "recommendation": "Ala destra, con grande velocit‡, adattabile al 4-3-3, cerca minutaggio (29% giocato), costo elevato per il club",
-      "matched_need": {
-        "position": "AS",
-        "player_type": "veloce",
-        "age_min": 18,
-        "age_max": 23,
-        "priority": "alta"
+        "position": "ES",
+        "player_type": "tutta_fascia",
+        "age_min": 20,
+        "age_max": 26,
+        "priority": "media"
       }
     },
     {
@@ -210,23 +152,81 @@
         "transfermarkt_url": "https://www.transfermarkt.it/marco-palestra/profil/spieler/740621",
         "last_updated": "2026-02-01"
       },
-      "club_id": "cesena",
-      "club_name": "Cesena",
-      "score": 75,
+      "club_id": "pescara",
+      "club_name": "Pescara",
+      "score": 83,
       "breakdown": {
-        "position": 70,
+        "position": 100,
         "age": 100,
-        "style": 73,
+        "style": 71,
         "availability": 100,
         "budget": 35,
         "level": 100
       },
-      "recommendation": "Centrocampista, con pressing intenso, adattabile al 4-3-3, cerca minutaggio (35% giocato), costo elevato per il club",
+      "recommendation": "Centrocampista, con pressing intenso, adattabile al 3-5-2, cerca minutaggio (35% giocato), costo elevato per il club",
       "matched_need": {
-        "position": "MED",
-        "player_type": "regista",
-        "age_min": 21,
-        "age_max": 28,
+        "position": "CC",
+        "player_type": "box_to_box",
+        "age_min": 19,
+        "age_max": 25,
+        "priority": "alta"
+      }
+    },
+    {
+      "player": {
+        "id": "milan_f_003",
+        "name": "Davide Bartesaghi",
+        "birth_year": 2005,
+        "age": 21,
+        "nationality": "Italia",
+        "primary_position": "TS",
+        "secondary_positions": [
+          "ES",
+          "DC"
+        ],
+        "preferred_foot": "sinistro",
+        "parent_club": "Milan",
+        "current_team": "Milan Futuro",
+        "contract_until": "2028-06-30",
+        "appearances": 18,
+        "minutes_played": 1400,
+        "minutes_percentage": 51.9,
+        "is_underused": false,
+        "goals": 0,
+        "assists": 3,
+        "skills": {
+          "tecnica": 70,
+          "velocita": 78,
+          "fisico": 72,
+          "visione": 65,
+          "difesa": 72,
+          "pressing": 75,
+          "dribbling": 65,
+          "tiro": 55
+        },
+        "transfer_status": "disponibile_prestito",
+        "estimated_loan_cost": 0,
+        "market_value": 800,
+        "transfermarkt_url": "https://www.transfermarkt.it/davide-bartesaghi/profil/spieler/802959",
+        "last_updated": "2026-02-01"
+      },
+      "club_id": "pescara",
+      "club_name": "Pescara",
+      "score": 75,
+      "breakdown": {
+        "position": 70,
+        "age": 100,
+        "style": 72,
+        "availability": 100,
+        "budget": 35,
+        "level": 100
+      },
+      "recommendation": "Terzino sinistro, con grande velocit√†, adattabile al 3-5-2, costo elevato per il club",
+      "matched_need": {
+        "position": "ES",
+        "player_type": "tutta_fascia",
+        "age_min": 20,
+        "age_max": 26,
         "priority": "media"
       }
     },
@@ -268,23 +268,23 @@
         "transfermarkt_url": "https://www.transfermarkt.it/mattia-liberali/profil/spieler/951589",
         "last_updated": "2026-02-01"
       },
-      "club_id": "cesena",
-      "club_name": "Cesena",
-      "score": 70,
+      "club_id": "pescara",
+      "club_name": "Pescara",
+      "score": 71,
       "breakdown": {
-        "position": 100,
+        "position": 75,
         "age": 100,
-        "style": 72,
+        "style": 73,
         "availability": 40,
-        "budget": 35,
+        "budget": 70,
         "level": 90
       },
-      "recommendation": "Trequartista, con ottima tecnica, adattabile al 4-3-3, cerca minutaggio (14% giocato), costo elevato per il club",
+      "recommendation": "Trequartista, con ottima tecnica, adattabile al 3-5-2, cerca minutaggio (14% giocato)",
       "matched_need": {
-        "position": "TRQ",
-        "player_type": "fantasista",
+        "position": "CC",
+        "player_type": "box_to_box",
         "age_min": 19,
-        "age_max": 24,
+        "age_max": 25,
         "priority": "alta"
       }
     },
@@ -451,7 +451,7 @@
         "budget": 100,
         "level": 90
       },
-      "recommendation": "Ala destra, con grande velocit‡, adattabile al 4-2-3-1, cerca minutaggio (29% giocato), operazione fattibile",
+      "recommendation": "Ala destra, con grande velocit√†, adattabile al 4-2-3-1, cerca minutaggio (29% giocato), operazione fattibile",
       "matched_need": {
         "position": "ED",
         "player_type": "dribblatore",
@@ -463,7 +463,7 @@
     {
       "player": {
         "id": "juve_ng_004",
-        "name": "NicolÚ Savona",
+        "name": "Nicol√≤ Savona",
         "birth_year": 2003,
         "age": 23,
         "nationality": "Italia",
@@ -509,7 +509,7 @@
         "budget": 35,
         "level": 100
       },
-      "recommendation": "Terzino destro, con grande velocit‡, adattabile al 4-2-3-1, cerca minutaggio (17% giocato), costo elevato per il club",
+      "recommendation": "Terzino destro, con grande velocit√†, adattabile al 4-2-3-1, cerca minutaggio (17% giocato), costo elevato per il club",
       "matched_need": {
         "position": "ED",
         "player_type": "dribblatore",
@@ -578,63 +578,6 @@
     },
     {
       "player": {
-        "id": "juve_ng_001",
-        "name": "Luis Hasa",
-        "birth_year": 2004,
-        "age": 22,
-        "nationality": "Albania",
-        "primary_position": "CC",
-        "secondary_positions": [
-          "TRQ"
-        ],
-        "preferred_foot": "destro",
-        "parent_club": "Juventus",
-        "current_team": "Juventus Next Gen",
-        "contract_until": "2027-06-30",
-        "appearances": 14,
-        "minutes_played": 890,
-        "minutes_percentage": 33.0,
-        "is_underused": true,
-        "goals": 2,
-        "assists": 3,
-        "skills": {
-          "tecnica": 78,
-          "velocita": 68,
-          "fisico": 65,
-          "visione": 75,
-          "difesa": 55,
-          "pressing": 72,
-          "dribbling": 70,
-          "tiro": 68
-        },
-        "transfer_status": "disponibile_prestito",
-        "estimated_loan_cost": 0,
-        "market_value": 500,
-        "transfermarkt_url": "https://www.transfermarkt.it/luis-hasa/profil/spieler/896138",
-        "last_updated": "2026-02-01"
-      },
-      "club_id": "pescara",
-      "club_name": "Pescara",
-      "score": 89,
-      "breakdown": {
-        "position": 100,
-        "age": 100,
-        "style": 71,
-        "availability": 100,
-        "budget": 70,
-        "level": 90
-      },
-      "recommendation": "Centrocampista, con ottima tecnica, adattabile al 3-5-2, cerca minutaggio (33% giocato)",
-      "matched_need": {
-        "position": "CC",
-        "player_type": "box_to_box",
-        "age_min": 19,
-        "age_max": 25,
-        "priority": "alta"
-      }
-    },
-    {
-      "player": {
         "id": "juve_ng_002",
         "name": "Samuel Mbangula",
         "birth_year": 2004,
@@ -671,24 +614,139 @@
         "transfermarkt_url": "https://www.transfermarkt.it/samuel-mbangula/profil/spieler/802983",
         "last_updated": "2026-02-01"
       },
-      "club_id": "pescara",
-      "club_name": "Pescara",
-      "score": 86,
+      "club_id": "cesena",
+      "club_name": "Cesena",
+      "score": 90,
       "breakdown": {
-        "position": 40,
+        "position": 100,
         "age": 100,
-        "style": 77,
+        "style": 72,
         "availability": 100,
-        "budget": 100,
+        "budget": 70,
         "level": 100
       },
-      "recommendation": "Ala sinistra, con grande velocit‡, adattabile al 3-5-2, operazione fattibile",
+      "recommendation": "Ala sinistra, con grande velocit√†, adattabile al 4-3-3",
       "matched_need": {
-        "position": "ES",
-        "player_type": "tutta_fascia",
-        "age_min": 20,
-        "age_max": 26,
-        "priority": "media"
+        "position": "AS",
+        "player_type": "veloce",
+        "age_min": 18,
+        "age_max": 23,
+        "priority": "alta"
+      }
+    },
+    {
+      "player": {
+        "id": "juve_ng_001",
+        "name": "Luis Hasa",
+        "birth_year": 2004,
+        "age": 22,
+        "nationality": "Albania",
+        "primary_position": "CC",
+        "secondary_positions": [
+          "TRQ"
+        ],
+        "preferred_foot": "destro",
+        "parent_club": "Juventus",
+        "current_team": "Juventus Next Gen",
+        "contract_until": "2027-06-30",
+        "appearances": 14,
+        "minutes_played": 890,
+        "minutes_percentage": 33.0,
+        "is_underused": true,
+        "goals": 2,
+        "assists": 3,
+        "skills": {
+          "tecnica": 78,
+          "velocita": 68,
+          "fisico": 65,
+          "visione": 75,
+          "difesa": 55,
+          "pressing": 72,
+          "dribbling": 70,
+          "tiro": 68
+        },
+        "transfer_status": "disponibile_prestito",
+        "estimated_loan_cost": 0,
+        "market_value": 500,
+        "transfermarkt_url": "https://www.transfermarkt.it/luis-hasa/profil/spieler/896138",
+        "last_updated": "2026-02-01"
+      },
+      "club_id": "cesena",
+      "club_name": "Cesena",
+      "score": 76,
+      "breakdown": {
+        "position": 75,
+        "age": 100,
+        "style": 72,
+        "availability": 100,
+        "budget": 35,
+        "level": 90
+      },
+      "recommendation": "Centrocampista, con ottima tecnica, adattabile al 4-3-3, cerca minutaggio (33% giocato), costo elevato per il club",
+      "matched_need": {
+        "position": "TRQ",
+        "player_type": "fantasista",
+        "age_min": 19,
+        "age_max": 24,
+        "priority": "alta"
+      }
+    },
+    {
+      "player": {
+        "id": "atalanta_u23_002",
+        "name": "Federico Cassa",
+        "birth_year": 2004,
+        "age": 22,
+        "nationality": "Italia",
+        "primary_position": "AD",
+        "secondary_positions": [
+          "AS",
+          "ATT"
+        ],
+        "preferred_foot": "sinistro",
+        "parent_club": "Atalanta",
+        "current_team": "Atalanta U23",
+        "contract_until": "2026-06-30",
+        "appearances": 14,
+        "minutes_played": 780,
+        "minutes_percentage": 28.9,
+        "is_underused": true,
+        "goals": 4,
+        "assists": 2,
+        "skills": {
+          "tecnica": 74,
+          "velocita": 80,
+          "fisico": 65,
+          "visione": 68,
+          "difesa": 30,
+          "pressing": 68,
+          "dribbling": 78,
+          "tiro": 72
+        },
+        "transfer_status": "disponibile_prestito",
+        "estimated_loan_cost": 0,
+        "market_value": 500,
+        "transfermarkt_url": "",
+        "last_updated": "2026-02-01"
+      },
+      "club_id": "cesena",
+      "club_name": "Cesena",
+      "score": 76,
+      "breakdown": {
+        "position": 75,
+        "age": 100,
+        "style": 71,
+        "availability": 100,
+        "budget": 35,
+        "level": 90
+      },
+      "recommendation": "Ala destra, con grande velocit√†, adattabile al 4-3-3, cerca minutaggio (29% giocato), costo elevato per il club",
+      "matched_need": {
+        "position": "AS",
+        "player_type": "veloce",
+        "age_min": 18,
+        "age_max": 23,
+        "priority": "alta"
       }
     },
     {
@@ -728,81 +786,23 @@
         "transfermarkt_url": "https://www.transfermarkt.it/marco-palestra/profil/spieler/740621",
         "last_updated": "2026-02-01"
       },
-      "club_id": "pescara",
-      "club_name": "Pescara",
-      "score": 83,
-      "breakdown": {
-        "position": 100,
-        "age": 100,
-        "style": 71,
-        "availability": 100,
-        "budget": 35,
-        "level": 100
-      },
-      "recommendation": "Centrocampista, con pressing intenso, adattabile al 3-5-2, cerca minutaggio (35% giocato), costo elevato per il club",
-      "matched_need": {
-        "position": "CC",
-        "player_type": "box_to_box",
-        "age_min": 19,
-        "age_max": 25,
-        "priority": "alta"
-      }
-    },
-    {
-      "player": {
-        "id": "milan_f_003",
-        "name": "Davide Bartesaghi",
-        "birth_year": 2005,
-        "age": 21,
-        "nationality": "Italia",
-        "primary_position": "TS",
-        "secondary_positions": [
-          "ES",
-          "DC"
-        ],
-        "preferred_foot": "sinistro",
-        "parent_club": "Milan",
-        "current_team": "Milan Futuro",
-        "contract_until": "2028-06-30",
-        "appearances": 18,
-        "minutes_played": 1400,
-        "minutes_percentage": 51.9,
-        "is_underused": false,
-        "goals": 0,
-        "assists": 3,
-        "skills": {
-          "tecnica": 70,
-          "velocita": 78,
-          "fisico": 72,
-          "visione": 65,
-          "difesa": 72,
-          "pressing": 75,
-          "dribbling": 65,
-          "tiro": 55
-        },
-        "transfer_status": "disponibile_prestito",
-        "estimated_loan_cost": 0,
-        "market_value": 800,
-        "transfermarkt_url": "https://www.transfermarkt.it/davide-bartesaghi/profil/spieler/802959",
-        "last_updated": "2026-02-01"
-      },
-      "club_id": "pescara",
-      "club_name": "Pescara",
+      "club_id": "cesena",
+      "club_name": "Cesena",
       "score": 75,
       "breakdown": {
         "position": 70,
         "age": 100,
-        "style": 72,
+        "style": 73,
         "availability": 100,
         "budget": 35,
         "level": 100
       },
-      "recommendation": "Terzino sinistro, con grande velocit‡, adattabile al 3-5-2, costo elevato per il club",
+      "recommendation": "Centrocampista, con pressing intenso, adattabile al 4-3-3, cerca minutaggio (35% giocato), costo elevato per il club",
       "matched_need": {
-        "position": "ES",
-        "player_type": "tutta_fascia",
-        "age_min": 20,
-        "age_max": 26,
+        "position": "MED",
+        "player_type": "regista",
+        "age_min": 21,
+        "age_max": 28,
         "priority": "media"
       }
     },
@@ -844,23 +844,23 @@
         "transfermarkt_url": "https://www.transfermarkt.it/mattia-liberali/profil/spieler/951589",
         "last_updated": "2026-02-01"
       },
-      "club_id": "pescara",
-      "club_name": "Pescara",
-      "score": 71,
+      "club_id": "cesena",
+      "club_name": "Cesena",
+      "score": 70,
       "breakdown": {
-        "position": 75,
+        "position": 100,
         "age": 100,
-        "style": 73,
+        "style": 72,
         "availability": 40,
-        "budget": 70,
+        "budget": 35,
         "level": 90
       },
-      "recommendation": "Trequartista, con ottima tecnica, adattabile al 3-5-2, cerca minutaggio (14% giocato)",
+      "recommendation": "Trequartista, con ottima tecnica, adattabile al 4-3-3, cerca minutaggio (14% giocato), costo elevato per il club",
       "matched_need": {
-        "position": "CC",
-        "player_type": "box_to_box",
+        "position": "TRQ",
+        "player_type": "fantasista",
         "age_min": 19,
-        "age_max": 25,
+        "age_max": 24,
         "priority": "alta"
       }
     },
@@ -1027,7 +1027,7 @@
         "budget": 70,
         "level": 100
       },
-      "recommendation": "Terzino sinistro, con grande velocit‡, adattabile al 4-3-3",
+      "recommendation": "Terzino sinistro, con grande velocit√†, adattabile al 4-3-3",
       "matched_need": {
         "position": "DC",
         "player_type": "fisico",
@@ -1039,7 +1039,7 @@
     {
       "player": {
         "id": "juve_ng_004",
-        "name": "NicolÚ Savona",
+        "name": "Nicol√≤ Savona",
         "birth_year": 2003,
         "age": 23,
         "nationality": "Italia",
@@ -1085,7 +1085,7 @@
         "budget": 35,
         "level": 100
       },
-      "recommendation": "Terzino destro, con grande velocit‡, adattabile al 4-3-3, cerca minutaggio (17% giocato), costo elevato per il club",
+      "recommendation": "Terzino destro, con grande velocit√†, adattabile al 4-3-3, cerca minutaggio (17% giocato), costo elevato per il club",
       "matched_need": {
         "position": "DC",
         "player_type": "fisico",
@@ -1157,13 +1157,13 @@
     "total_players": 10,
     "total_clubs": 20,
     "parent_clubs": [
-      "Milan",
       "Juventus",
-      "Atalanta"
+      "Atalanta",
+      "Milan"
     ],
     "underused_players": 7,
-    "last_updated": "2026-02-10T14:28:39.744549"
+    "last_updated": "2026-02-10T19:17:25.609291"
   },
-  "generated_at": "2026-02-10T14:28:39.760179",
+  "generated_at": "2026-02-10T19:17:25.610161",
   "version": "2.0"
 }
