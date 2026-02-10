@@ -1,9 +1,13 @@
 /**
  * SCORE-002: Watch Criteria System - Matching Engine
+ * Enhanced with DNA scoring for personalized matching
  */
 
 import { WatchProfile } from './types';
 import { Opportunity } from '../types';
+import { calculateDNAMatch } from '../dna';
+import { buildClubDNAFromWatch } from '../dna-adapter';
+import type { ClubDNA, MatchBreakdown } from '../dna';
 
 /**
  * Check if an opportunity matches a watch profile
@@ -93,4 +97,92 @@ export function getDigestOpportunities(
   return opportunities.filter(opp =>
     digestProfiles.some(p => matchesProfile(opp, p))
   );
+}
+
+// ============================================================================
+// DNA-ENHANCED MATCHING
+// ============================================================================
+
+export interface DNAScoredMatch {
+  opportunity: Opportunity;
+  dnaScore: number;
+  breakdown: MatchBreakdown;
+  matchedProfile: WatchProfile;
+}
+
+/**
+ * Filter and score opportunities using DNA engine.
+ * First filters with boolean matchesProfile, then scores with DNA.
+ * Returns results sorted by DNA score.
+ */
+export function filterByProfilesDNA(
+  opportunities: Opportunity[],
+  profiles: WatchProfile[]
+): DNAScoredMatch[] {
+  const results: DNAScoredMatch[] = [];
+
+  for (const profile of profiles) {
+    if (!profile.active) continue;
+
+    // Convert WatchProfile → ClubDNA
+    const clubDNA = buildClubDNAFromWatch(profile);
+
+    for (const opp of opportunities) {
+      // Quick boolean pre-filter
+      if (!matchesProfile(opp, profile)) continue;
+
+      // DNA score
+      const match = calculateDNAMatch(opp, clubDNA);
+      if (match.score > 0) {
+        results.push({
+          opportunity: opp,
+          dnaScore: match.score,
+          breakdown: match.breakdown,
+          matchedProfile: profile,
+        });
+      }
+    }
+  }
+
+  // Deduplicate (same opp matched by multiple profiles → keep highest score)
+  const dedupMap = new Map<string, DNAScoredMatch>();
+  for (const r of results) {
+    const existing = dedupMap.get(r.opportunity.id);
+    if (!existing || r.dnaScore > existing.dnaScore) {
+      dedupMap.set(r.opportunity.id, r);
+    }
+  }
+
+  // Sort by DNA score descending
+  return Array.from(dedupMap.values()).sort((a, b) => b.dnaScore - a.dnaScore);
+}
+
+/**
+ * Get immediate alerts with DNA scoring
+ */
+export function getImmediateAlertsDNA(
+  opportunities: Opportunity[],
+  profiles: WatchProfile[],
+  minDnaScore: number = 60
+): DNAScoredMatch[] {
+  const immediateProfiles = profiles.filter(p => p.alert_immediately && p.active);
+  if (immediateProfiles.length === 0) return [];
+
+  return filterByProfilesDNA(opportunities, immediateProfiles)
+    .filter(r => r.dnaScore >= minDnaScore);
+}
+
+/**
+ * Get digest opportunities with DNA scoring
+ */
+export function getDigestOpportunitiesDNA(
+  opportunities: Opportunity[],
+  profiles: WatchProfile[],
+  minDnaScore: number = 40
+): DNAScoredMatch[] {
+  const digestProfiles = profiles.filter(p => p.include_in_digest && p.active);
+  if (digestProfiles.length === 0) return [];
+
+  return filterByProfilesDNA(opportunities, digestProfiles)
+    .filter(r => r.dnaScore >= minDnaScore);
 }

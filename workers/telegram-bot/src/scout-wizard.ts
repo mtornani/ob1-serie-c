@@ -21,6 +21,9 @@
 import { Env, Opportunity } from './types';
 import { sendMessageWithKeyboard, editMessageText, answerCallbackQuery } from './telegram';
 import { fetchData, filterOpportunities } from './data';
+import { calculateDNAMatch, generateRecommendation, fetchClubData } from './dna';
+import { buildClubDNAFromWizard } from './dna-adapter';
+import type { ClubDNA } from './dna';
 
 // ============================================================================
 // TYPES
@@ -41,6 +44,7 @@ interface DecodedAnswers {
   experience?: string;
   budget?: string;
   character?: string;
+  club?: string;
 }
 
 // ============================================================================
@@ -348,6 +352,7 @@ function buildProgressSummary(codes: string[]): string {
 
 /**
  * Show wizard results — final step
+ * Uses DNA scoring engine for personalized matching
  */
 async function showWizardResults(
   chatId: number,
@@ -366,64 +371,66 @@ async function showWizardResults(
     return;
   }
 
-  // Build filters from decoded answers
-  const filters: any = {};
+  // Fetch real club profiles for DNA adapter
+  const realClubs = await fetchClubData(env);
 
+  // Build virtual ClubDNA from wizard answers
+  const wizardDNA = buildClubDNAFromWizard(codes, realClubs);
+
+  // Pre-filter: basic filters (role, age, budget type) for speed
+  const filters: any = {};
   if (answers.role && answers.role !== 'qualsiasi') {
     filters.role = answers.role;
   }
-
   if (answers.experience && answers.experience !== 'qualsiasi') {
     switch (answers.experience) {
-      case 'giovane':
-        filters.ageMax = 23;
-        break;
-      case 'pronto':
-        filters.ageMin = 23;
-        filters.ageMax = 28;
-        break;
-      case 'esperto':
-        filters.ageMin = 28;
-        break;
+      case 'giovane': filters.ageMax = 23; break;
+      case 'pronto': filters.ageMin = 23; filters.ageMax = 28; break;
+      case 'esperto': filters.ageMin = 28; break;
     }
   }
-
   if (answers.budget && answers.budget !== 'qualsiasi') {
-    switch (answers.budget) {
-      case 'zero':
-        filters.type = 'svincolato';
-        break;
-      case 'prestito':
-        // Include both svincolato and prestito
-        break;
-    }
+    if (answers.budget === 'zero') filters.type = 'svincolato';
   }
 
-  // Filter and sort
-  let results = filterOpportunities(data.opportunities, filters);
-  
+  let candidates = filterOpportunities(data.opportunities, filters);
+
   // Apply rivalries filter if club is specified
   if (answers.club && answers.club !== 'qualsiasi') {
     const incompatibleClubs = RIVALRIES[answers.club] || [];
-    results = results.filter(opp => {
-      // Check if player has played in incompatible clubs
+    candidates = candidates.filter(opp => {
       if (opp.previous_clubs && opp.previous_clubs.length > 0) {
-        const hasRivalry = opp.previous_clubs.some(prevClub => {
+        return !opp.previous_clubs.some(prevClub => {
           const normalized = prevClub.toLowerCase().trim();
           return incompatibleClubs.includes(normalized);
         });
-        return !hasRivalry;
       }
       return true;
     });
   }
-  
-  results = results.sort((a, b) => b.ob1_score - a.ob1_score).slice(0, 5);
+
+  // DNA score each candidate against the wizard's virtual ClubDNA
+  const scoredResults = candidates.map(opp => {
+    const match = calculateDNAMatch(opp, wizardDNA);
+    return {
+      opp,
+      dnaScore: match.score,
+      breakdown: match.breakdown,
+      matchedNeed: match.matchedNeed,
+    };
+  });
+
+  // Sort by DNA score (not ob1_score) and take top 5
+  const results = scoredResults
+    .filter(r => r.dnaScore > 0)
+    .sort((a, b) => b.dnaScore - a.dnaScore)
+    .slice(0, 5);
 
   // Build summary text
   const progressSummary = buildProgressSummary(codes);
+  const clubLabel = wizardDNA.name !== 'Ricerca Wizard' ? ` per <b>${escapeHtml(wizardDNA.name)}</b>` : '';
 
-  let message = `🎯 <b>Risultati Scout Wizard</b>
+  let message = `🎯 <b>Risultati Scout Wizard</b>${clubLabel}
 
 ${progressSummary}`;
 
@@ -432,14 +439,16 @@ ${progressSummary}`;
 
 Prova a rilassare i filtri o usa /hot per le migliori opportunità.`;
   } else {
-    message += `🏆 <b>Top ${results.length} match:</b>\n\n`;
+    message += `🧬 <b>Top ${results.length} DNA Match:</b>\n\n`;
 
-    results.forEach((opp, i) => {
-      const emoji = opp.ob1_score >= 80 ? '🔥' : opp.ob1_score >= 60 ? '⚡' : '📊';
-      message += `${i + 1}. ${emoji} <b>${opp.player_name}</b>`;
-      if (opp.age) message += ` (${opp.age})`;
-      message += `\n   ${opp.role_name || opp.role} • ${opp.opportunity_type} • Score ${opp.ob1_score}`;
-      if (opp.current_club) message += `\n   📍 ${opp.current_club}`;
+    results.forEach((r, i) => {
+      const emoji = r.dnaScore >= 80 ? '🔥' : r.dnaScore >= 60 ? '⚡' : '📊';
+      message += `${i + 1}. ${emoji} <b>${escapeHtml(r.opp.player_name)}</b>`;
+      if (r.opp.age) message += ` (${r.opp.age})`;
+      message += ` — DNA <b>${r.dnaScore}%</b>\n`;
+      message += `   ${r.opp.role_name || r.opp.role} • ${r.opp.opportunity_type}`;
+      if (r.opp.current_club) message += `\n   📍 ${escapeHtml(r.opp.current_club)}`;
+      message += `\n   📊 Pos:${r.breakdown.position} Età:${r.breakdown.age} Stile:${r.breakdown.style} Disp:${r.breakdown.availability} Bud:${r.breakdown.budget}`;
       message += '\n\n';
     });
 
@@ -455,6 +464,13 @@ Prova a rilassare i filtri o usa /hot per le migliori opportunità.`;
   };
 
   await editMessageText(env, chatId, messageId, message, keyboard);
+}
+
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 // ============================================================================

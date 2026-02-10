@@ -53,7 +53,7 @@ function convertSquadraBToOpportunity(player: SquadraBPlayer): Opportunity {
     current_club: player.current_team,
     summary: `Giovane talento del ${player.parent_club}, gioca in ${player.current_team}. ${player.transfer_status === 'disponibile_prestito' ? 'Disponibile in prestito.' : ''}`,
     nationality: player.nationality,
-    second_nationality: null,
+    second_nationality: undefined,
     ob1_score: Math.min(95, avgSkill + 5), // Bonus per talenti squadre B
     classification: avgSkill >= 75 ? 'hot' : 'warm',
   };

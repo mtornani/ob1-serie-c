@@ -11,6 +11,9 @@ const state = {
   opportunities: [],
   filteredOpportunities: [],
   savedOpportunities: [],
+  clubs: [],
+  selectedClub: null,
+  currentView: 'landing', // 'landing', 'club', 'explore'
   currentFilter: 'all',
   currentRoleFilter: '',
   currentTypeFilter: '',
@@ -65,6 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize onboarding tutorial
   onboarding.init();
   addHelpButton();
+
+  // Start on landing view
+  showView('landing');
 });
 
 function initTheme() {
@@ -170,9 +176,32 @@ function initEventListeners() {
     }
     if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
       e.preventDefault();
-      elements.searchInput.focus();
+      if (elements.searchInput) elements.searchInput.focus();
     }
   });
+
+  // View navigation buttons
+  const btnExploreAll = document.getElementById('btnExploreAll');
+  if (btnExploreAll) {
+    btnExploreAll.addEventListener('click', function() {
+      showView('explore');
+      filterOpportunities();
+    });
+  }
+
+  const btnBackToLanding = document.getElementById('btnBackToLanding');
+  if (btnBackToLanding) {
+    btnBackToLanding.addEventListener('click', function() {
+      showView('landing');
+    });
+  }
+
+  const btnBackFromExplore = document.getElementById('btnBackFromExplore');
+  if (btnBackFromExplore) {
+    btnBackFromExplore.addEventListener('click', function() {
+      showView('landing');
+    });
+  }
 }
 
 // =============================================================================
@@ -181,22 +210,19 @@ function initEventListeners() {
 
 async function loadData(forceRefresh = false) {
   state.isLoading = true;
-  showSkeletons();
 
   try {
-    // Try to fetch from data.json first
+    // Fetch data.json and dna_matches.json in parallel
+    const [dataResponse, dnaResponse] = await Promise.allSettled([
+      fetch('data.json?t=' + Date.now()),
+      fetch('dna_matches.json?t=' + Date.now()),
+    ]);
+
+    // Parse opportunities
     let data = null;
-
-    try {
-      const response = await fetch('data.json?t=' + Date.now());
-      if (response.ok) {
-        data = await response.json();
-      }
-    } catch (e) {
-      console.log('No data.json found, using demo data');
+    if (dataResponse.status === 'fulfilled' && dataResponse.value.ok) {
+      data = await dataResponse.value.json();
     }
-
-    // No demo data - show empty state if no real data
     if (!data || !data.opportunities) {
       data = { opportunities: [], last_update: new Date().toISOString() };
     }
@@ -204,8 +230,16 @@ async function loadData(forceRefresh = false) {
     state.opportunities = data.opportunities;
     state.filteredOpportunities = [...state.opportunities];
 
+    // Parse club DNA profiles
+    if (dnaResponse.status === 'fulfilled' && dnaResponse.value.ok) {
+      const dnaData = await dnaResponse.value.json();
+      state.clubs = dnaData.clubs || [];
+      console.log('[OB1] Loaded ' + state.clubs.length + ' club DNA profiles');
+    }
+
+    // Render landing view with clubs
+    renderLandingView();
     updateStats();
-    filterOpportunities();
     updateLastUpdate(data.last_update);
 
     if (forceRefresh) {
@@ -218,6 +252,235 @@ async function loadData(forceRefresh = false) {
   } finally {
     state.isLoading = false;
   }
+}
+
+// =============================================================================
+// View Management
+// =============================================================================
+
+function showView(viewName) {
+  state.currentView = viewName;
+  const landing = document.getElementById('landingView');
+  const club = document.getElementById('clubView');
+  const explore = document.getElementById('exploreView');
+
+  if (landing) landing.style.display = viewName === 'landing' ? 'block' : 'none';
+  if (club) club.style.display = viewName === 'club' ? 'block' : 'none';
+  if (explore) explore.style.display = viewName === 'explore' ? 'block' : 'none';
+
+  // Scroll to top
+  window.scrollTo(0, 0);
+}
+
+// =============================================================================
+// Landing View
+// =============================================================================
+
+function renderLandingView() {
+  const grid = document.getElementById('clubGrid');
+  if (!grid) return;
+
+  if (state.clubs.length === 0) {
+    grid.innerHTML = '<p style="color: var(--color-text-muted); text-align: center; grid-column: 1/-1;">Caricamento club...</p>';
+    return;
+  }
+
+  // Sort: Serie C first, then by name
+  const sorted = [...state.clubs].sort((a, b) => {
+    const catOrder = { 'Serie C': 0, 'Serie D': 1, 'Campionato Sammarinese': 2 };
+    const ca = catOrder[a.category] !== undefined ? catOrder[a.category] : 3;
+    const cb = catOrder[b.category] !== undefined ? catOrder[b.category] : 3;
+    if (ca !== cb) return ca - cb;
+    return a.name.localeCompare(b.name);
+  });
+
+  grid.innerHTML = sorted.map(function(club) {
+    const categoryShort = club.category === 'Campionato Sammarinese' ? 'San Marino'
+                        : club.category === 'Serie C' ? 'Serie C'
+                        : club.category === 'Serie D' ? 'Serie D'
+                        : club.category;
+    const categoryClass = club.category === 'Serie C' ? 'cat-serie-c'
+                        : club.category === 'Campionato Sammarinese' ? 'cat-san-marino'
+                        : 'cat-other';
+    const needsCount = (club.needs || []).length;
+    const needsHigh = (club.needs || []).filter(function(n) { return n.priority === 'alta'; }).length;
+
+    return '<div class="club-card ' + categoryClass + '" data-club-id="' + club.id + '">' +
+      '<div class="club-card-top">' +
+        '<span class="club-card-name">' + club.name + '</span>' +
+        '<span class="club-card-cat">' + categoryShort + '</span>' +
+      '</div>' +
+      '<div class="club-card-info">' +
+        '<span class="club-card-formation">' + (club.primary_formation || '4-3-3') + '</span>' +
+        '<span class="club-card-budget">' + (club.max_loan_cost || 0) + 'k€</span>' +
+      '</div>' +
+      '<div class="club-card-needs">' +
+        (needsHigh > 0 ? '<span class="needs-urgent">' + needsHigh + ' urgenti</span>' : '') +
+        '<span class="needs-total">' + needsCount + ' esigenze</span>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  // Add click listeners
+  grid.querySelectorAll('.club-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var clubId = card.dataset.clubId;
+      selectClub(clubId);
+    });
+  });
+}
+
+// =============================================================================
+// Club View
+// =============================================================================
+
+function selectClub(clubId) {
+  var club = state.clubs.find(function(c) { return c.id === clubId; });
+  if (!club) return;
+
+  state.selectedClub = club;
+  renderClubDnaHeader(club);
+  renderClubMatches(club);
+  showView('club');
+}
+
+function renderClubDnaHeader(club) {
+  var header = document.getElementById('clubDnaHeader');
+  if (!header) return;
+
+  var needsHtml = (club.needs || []).map(function(need) {
+    var prioClass = need.priority === 'alta' ? 'need-alta' : need.priority === 'media' ? 'need-media' : 'need-bassa';
+    return '<div class="dna-need-item">' +
+      '<span class="dna-need-pos">' + need.position + '</span>' +
+      '<span class="dna-need-type">' + (need.player_type || '').replace(/_/g, ' ') + '</span>' +
+      '<span class="dna-need-age">' + need.age_min + '-' + need.age_max + ' anni</span>' +
+      '<span class="dna-need-prio ' + prioClass + '">' + need.priority + '</span>' +
+    '</div>';
+  }).join('');
+
+  var stylesHtml = (club.playing_styles || []).map(function(s) {
+    return '<span class="dna-style-tag">' + s.replace(/_/g, ' ') + '</span>';
+  }).join('');
+
+  header.innerHTML =
+    '<div class="dna-header-top">' +
+      '<div class="dna-club-info">' +
+        '<h2 class="dna-club-name">' + club.name + '</h2>' +
+        '<span class="dna-club-cat">' + club.category + (club.city ? ' • ' + club.city : '') + '</span>' +
+      '</div>' +
+    '</div>' +
+    '<div class="dna-stats-row">' +
+      '<div class="dna-stat"><span class="dna-stat-val">' + (club.primary_formation || '4-3-3') + '</span><span class="dna-stat-lbl">Modulo</span></div>' +
+      '<div class="dna-stat"><span class="dna-stat-val">' + (club.max_loan_cost || 0) + 'k€</span><span class="dna-stat-lbl">Budget max</span></div>' +
+      '<div class="dna-stat"><span class="dna-stat-val">' + (club.youth_minutes_pct || 0) + '%</span><span class="dna-stat-lbl">Min. giovani</span></div>' +
+      '<div class="dna-stat"><span class="dna-stat-val">' + (club.budget_type || '').replace(/_/g, ' ') + '</span><span class="dna-stat-lbl">Acquisti</span></div>' +
+    '</div>' +
+    '<div class="dna-styles">' + stylesHtml + '</div>' +
+    (needsHtml ? '<div class="dna-needs-section"><h4>Esigenze di mercato</h4><div class="dna-needs-list">' + needsHtml + '</div></div>' : '');
+}
+
+function renderClubMatches(club) {
+  var grid = document.getElementById('clubOpportunitiesGrid');
+  var emptyState = document.getElementById('clubEmptyState');
+  var countEl = document.getElementById('clubMatchCount');
+  var titleEl = document.getElementById('clubMatchTitle');
+
+  if (!grid || !window.DNAEngine) return;
+
+  if (titleEl) titleEl.textContent = 'Opportunità per ' + club.name;
+
+  // Score all opportunities against this club
+  var results = window.DNAEngine.scoreOpportunitiesForClub(state.opportunities, club, 30);
+
+  if (countEl) countEl.textContent = results.length + ' risultati';
+
+  if (results.length === 0) {
+    grid.innerHTML = '';
+    if (emptyState) emptyState.style.display = 'block';
+    return;
+  }
+
+  if (emptyState) emptyState.style.display = 'none';
+
+  grid.innerHTML = results.map(function(match) {
+    return createDNAMatchCard(match.opportunity, match.score, match.breakdown, match.matchedNeed);
+  }).join('');
+
+  // Add click listeners
+  grid.querySelectorAll('.opportunity-card').forEach(function(card) {
+    card.addEventListener('click', function(e) {
+      if (!e.target.closest('.btn-card')) {
+        var oppId = card.dataset.id;
+        var opp = state.opportunities.find(function(o) { return o.id === oppId; });
+        if (opp) showDetail(opp);
+      }
+    });
+  });
+}
+
+function createDNAMatchCard(opp, dnaScore, breakdown, matchedNeed) {
+  var classification = window.DNAEngine.getDNAClassification(dnaScore);
+  var scoreEmoji = classification === 'hot' ? '🔥' : classification === 'warm' ? '⚡' : '❄️';
+  var currentClub = opp.current_club || 'Libero';
+  var oppType = opp.opportunity_type || 'Mercato';
+
+  var oppTypeInfo = '';
+  if (oppType.toLowerCase().includes('svincol')) oppTypeInfo = '🆓 Svincolato';
+  else if (oppType.toLowerCase().includes('rescis')) oppTypeInfo = '📄 Rescissione';
+  else if (oppType.toLowerCase().includes('prestit')) oppTypeInfo = '📈 Prestito';
+  else if (oppType.toLowerCase().includes('scaden')) oppTypeInfo = '📅 Scadenza';
+
+  var mvNorm = window.DNAEngine.normalizeMarketValue(opp.market_value);
+  var marketValueInfo = mvNorm > 0 ? mvNorm + 'k€' : '';
+
+  var needInfo = matchedNeed ? '<span class="match-need-tag">Cerca: ' + matchedNeed.position + ' (' + matchedNeed.priority + ')</span>' : '';
+
+  return '<article class="opportunity-card ' + classification + ' slide-up" data-id="' + opp.id + '">' +
+    '<div class="card-header">' +
+      '<div class="player-info">' +
+        '<span class="player-name">' + opp.player_name + '</span>' +
+        '<span class="player-role">' + (opp.role_name || opp.role) + '</span>' +
+        '<span class="player-club">' + currentClub + '</span>' +
+      '</div>' +
+      '<div class="score-column">' +
+        '<span class="score-badge ' + classification + '">' + scoreEmoji + ' ' + dnaScore + '</span>' +
+        '<span class="score-label">DNA Match</span>' +
+      '</div>' +
+    '</div>' +
+    '<div class="card-meta">' +
+      '<span class="meta-item">🎂 ' + opp.age + ' anni</span>' +
+      (marketValueInfo ? '<span class="meta-item">💰 ' + marketValueInfo + '</span>' : '') +
+      '<span class="meta-item">' + oppTypeInfo + '</span>' +
+    '</div>' +
+    needInfo +
+    '<div class="dna-breakdown-always">' +
+      createDNABreakdownBars(breakdown) +
+    '</div>' +
+    '<div class="card-actions">' +
+      '<button class="btn-card primary" onclick="event.stopPropagation(); showDetail(state.opportunities.find(function(o){return o.id===\'' + opp.id + '\'}))">📊 Dettagli</button>' +
+    '</div>' +
+  '</article>';
+}
+
+function createDNABreakdownBars(breakdown) {
+  var dims = [
+    { key: 'position', label: 'Pos', weight: '25%' },
+    { key: 'budget', label: 'Bud', weight: '20%' },
+    { key: 'availability', label: 'Disp', weight: '20%' },
+    { key: 'age', label: 'Età', weight: '15%' },
+    { key: 'style', label: 'Stile', weight: '15%' },
+    { key: 'level', label: 'Liv', weight: '5%' },
+  ];
+
+  return '<div class="dna-bars">' + dims.map(function(d) {
+    var val = breakdown[d.key] || 0;
+    var colorClass = val >= 75 ? 'bar-good' : val >= 50 ? 'bar-mid' : 'bar-low';
+    return '<div class="dna-bar-row">' +
+      '<span class="dna-bar-label">' + d.label + '</span>' +
+      '<div class="dna-bar-track"><div class="dna-bar-fill ' + colorClass + '" style="width:' + val + '%"></div></div>' +
+      '<span class="dna-bar-val">' + val + '</span>' +
+    '</div>';
+  }).join('') + '</div>';
 }
 
 // =============================================================================
@@ -829,11 +1092,11 @@ function renderStatsView() {
 function handleNavigation(view) {
   switch (view) {
     case 'home':
+      showView('landing');
       state.currentFilter = 'all';
       document.querySelectorAll('.filter-chip').forEach(c => {
         c.classList.toggle('active', c.dataset.filter === 'all');
       });
-      filterOpportunities();
       break;
     case 'search':
       elements.searchInput.focus();

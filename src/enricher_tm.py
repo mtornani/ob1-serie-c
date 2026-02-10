@@ -87,7 +87,8 @@ DATI RICHIESTI (rispondi in JSON):
   "market_value_eur": numero intero (es. 150000) o null,
   "market_value_text": "stringa formattata" (es. "€150k") o null,
   "main_position": "Ruolo principale",
-  "agent": "Nome Agenzia" o null
+  "agent": "Nome Agenzia" o null,
+  "player_image_url": "URL immagine profilo giocatore da Transfermarkt (cerca tag img con classe 'data-src' o 'bilderrahmen-fixed')" o null
 }}
 
 Se un dato non è presente, metti null.

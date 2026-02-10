@@ -47,7 +47,7 @@ const WEIGHTS = {
   level: 0.05,
 };
 
-interface ClubNeed {
+export interface ClubNeed {
   position: string;
   player_type?: string;
   age_min: number;
@@ -55,7 +55,7 @@ interface ClubNeed {
   priority: string;
 }
 
-interface ClubDNA {
+export interface ClubDNA {
   id: string;
   name: string;
   category: string;
@@ -67,7 +67,7 @@ interface ClubDNA {
   max_loan_cost: number;
 }
 
-interface MatchBreakdown {
+export interface MatchBreakdown {
   position: number;
   age: number;
   style: number;
@@ -82,7 +82,7 @@ interface MatchWithNeed {
   matchedNeed?: ClubNeed;
 }
 
-interface PlayerMatch {
+export interface PlayerMatch {
   player: Opportunity;
   club_id: string;
   club_name: string;
@@ -97,7 +97,7 @@ let clubsCache: Map<string, ClubDNA> | null = null;
 let clubsCacheTime: number = 0;
 const CLUBS_CACHE_TTL = 60 * 60 * 1000;
 
-async function fetchClubData(env: Env): Promise<Map<string, ClubDNA>> {
+export async function fetchClubData(env: Env): Promise<Map<string, ClubDNA>> {
   const now = Date.now();
   
   if (clubsCache && (now - clubsCacheTime) < CLUBS_CACHE_TTL) {
@@ -115,10 +115,28 @@ async function fetchClubData(env: Env): Promise<Map<string, ClubDNA>> {
       return new Map();
     }
     
-    const dnaData = await response.json();
-    
+    const dnaData = await response.json() as { matches?: any[]; clubs?: any[] };
+
     const clubs = new Map<string, ClubDNA>();
-    if (dnaData.matches) {
+
+    // Prefer clubs[] array (v2.1+), fall back to extracting from matches[]
+    if (dnaData.clubs && Array.isArray(dnaData.clubs)) {
+      for (const club of dnaData.clubs) {
+        if (club.id) {
+          clubs.set(club.id, {
+            id: club.id,
+            name: club.name || club.id,
+            category: club.category || 'Serie C',
+            city: club.city || '',
+            primary_formation: club.primary_formation || '4-3-3',
+            playing_styles: club.playing_styles || ['possesso'],
+            needs: club.needs || [],
+            budget_type: club.budget_type || 'solo_prestiti',
+            max_loan_cost: club.max_loan_cost || 50,
+          });
+        }
+      }
+    } else if (dnaData.matches) {
       dnaData.matches.forEach((match: any) => {
         if (match.club_id && !clubs.has(match.club_id)) {
           clubs.set(match.club_id, {
@@ -330,7 +348,7 @@ function checkBlockingFilters(player: Opportunity, club: ClubDNA): { blocked: bo
   return { blocked: false, reason: '' };
 }
 
-function calculateDNAMatch(player: Opportunity, club: ClubDNA): MatchWithNeed {
+export function calculateDNAMatch(player: Opportunity, club: ClubDNA): MatchWithNeed {
   const blocking = checkBlockingFilters(player, club);
   
   if (blocking.blocked) {
@@ -369,7 +387,7 @@ function calculateDNAMatch(player: Opportunity, club: ClubDNA): MatchWithNeed {
   return { score, breakdown, matchedNeed: positionResult.matchedNeed };
 }
 
-function generateRecommendation(player: Opportunity, breakdown: MatchBreakdown, matchedNeed?: ClubNeed): string {
+export function generateRecommendation(player: Opportunity, breakdown: MatchBreakdown, matchedNeed?: ClubNeed): string {
    const parts: string[] = [];
    
    const roleDesc = player.role_name || player.role || 'Giocatore';

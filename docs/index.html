@@ -46,6 +46,51 @@
 
     <!-- Main Content -->
     <main class="main-content">
+
+        <!-- ═══ LANDING VIEW: Club Selection ═══ -->
+        <div id="landingView" class="view-section">
+            <div class="landing-header">
+                <h2 class="landing-title">🏟️ Per quale club cerchi?</h2>
+                <p class="landing-subtitle">Seleziona il tuo club per vedere opportunità personalizzate con DNA Match</p>
+            </div>
+            <div class="club-grid" id="clubGrid">
+                <!-- Populated by JS -->
+                <div class="club-card-skeleton"></div>
+                <div class="club-card-skeleton"></div>
+                <div class="club-card-skeleton"></div>
+                <div class="club-card-skeleton"></div>
+            </div>
+            <div class="landing-explore">
+                <button class="btn-explore" id="btnExploreAll">
+                    🔍 Esplora tutte le opportunità
+                </button>
+            </div>
+        </div>
+
+        <!-- ═══ CLUB VIEW: Club DNA + Scored Opportunities ═══ -->
+        <div id="clubView" class="view-section" style="display: none;">
+            <button class="btn-back" id="btnBackToLanding">← Torna ai club</button>
+            <div class="club-dna-header" id="clubDnaHeader">
+                <!-- Populated by JS -->
+            </div>
+            <div class="club-matches-info">
+                <h3 id="clubMatchTitle">Opportunità per il tuo club</h3>
+                <span class="match-count" id="clubMatchCount">0 risultati</span>
+            </div>
+            <div class="opportunities-grid" id="clubOpportunitiesGrid">
+                <!-- Populated by JS -->
+            </div>
+            <div class="empty-state" id="clubEmptyState" style="display: none;">
+                <div class="empty-icon">🔍</div>
+                <h3>Nessuna opportunità compatibile</h3>
+                <p>Non ci sono giocatori che matchano con il profilo DNA di questo club al momento.<br>Il sistema si aggiorna ogni 6 ore.</p>
+            </div>
+        </div>
+
+        <!-- ═══ EXPLORE VIEW: Original generic view ═══ -->
+        <div id="exploreView" class="view-section" style="display: none;">
+        <button class="btn-back" id="btnBackFromExplore">← Torna ai club</button>
+
         <!-- Search Bar -->
         <div class="search-container">
             <input type="search"
@@ -187,6 +232,8 @@
         <div class="last-update" id="lastUpdate">
             Ultimo aggiornamento: --
         </div>
+
+        </div><!-- end #exploreView -->
     </main>
 
     <!-- Bottom Navigation (Mobile) -->
@@ -340,6 +387,7 @@
         </div>
     </div>
 
+    <script src="js/dna-engine.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

@@ -68,12 +68,17 @@ def main():
 
         all_matches.extend([m.to_dict() for m in matches])
 
+    # Prepara profili club per la dashboard client-side
+    clubs_data = [club.to_dict() for club in matcher.clubs.values()]
+    print(f"\n🏟️ Inclusi {len(clubs_data)} profili club nell'output")
+
     # Salva risultati
     output = {
         'matches': all_matches,
+        'clubs': clubs_data,
         'stats': stats,
         'generated_at': datetime.now().isoformat(),
-        'version': '2.0',
+        'version': '2.1',
     }
 
     output_file = data_dir / 'dna_matches.json'

@@ -154,6 +154,7 @@ export function searchTalents(
       club_id: 'talent-search',
       club_name: 'Ricerca Talenti',
       score: m.score,
+      breakdown: { position: 50, age: 50, style: 50, availability: 50, budget: 50, level: 50 },
       recommendation: `Match basato su caratteristiche: ${query.description}`
     }));
 }

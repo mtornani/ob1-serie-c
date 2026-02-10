@@ -14,7 +14,19 @@
       "Bash(find:*)",
       "Bash(npx tsc:*)",
       "WebFetch(domain:www.transfermarkt.us)",
-      "Bash(set PYTHONIOENCODING=utf-8:*)"
+      "Bash(set PYTHONIOENCODING=utf-8:*)",
+      "WebFetch(domain:lnkd.in)",
+      "WebFetch(domain:github.com)",
+      "Bash(wc:*)",
+      "Bash(ls:*)",
+      "Bash(chcp:*)",
+      "Bash(cmd /c:*)",
+      "Bash(PYTHONIOENCODING=utf-8 /mnt/c/Users/Mirko/AppData/Local/Programs/Python/Python312/python.exe:*)",
+      "Bash(PYTHONIOENCODING=utf-8 python3:*)",
+      "Bash(PYTHONIOENCODING=utf-8 /c/Users/Mirko/AppData/Local/Programs/Python/Python312/python.exe:*)",
+      "Bash(git checkout:*)",
+      "Bash(git rebase:*)",
+      "Bash(GIT_EDITOR=true git rebase:*)"
     ]
   }
 }

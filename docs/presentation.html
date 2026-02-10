@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OB1 Ouroboros - Presentazione per SP Cosmos</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 0 40px 0;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 40px 24px 32px;
+            text-align: center;
+            border-bottom: 3px solid #e94560;
+        }
+
+        .hero-logo { font-size: 56px; margin-bottom: 8px; }
+        .hero h1 { font-size: 32px; font-weight: 800; color: #fff; letter-spacing: 2px; }
+        .hero-sub { font-size: 13px; color: #e94560; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; }
+        .hero-tagline { font-size: 16px; color: #a0aec0; margin-top: 16px; font-style: italic; }
+        .hero-for { font-size: 12px; color: #3b82f6; margin-top: 12px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+
+        /* Sections */
+        .section { padding: 28px 24px; border-bottom: 1px solid #1a1a2e; }
+        .section-title { font-size: 13px; font-weight: 700; color: #e94560; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+        .section h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .section p { font-size: 15px; color: #b0b8c8; margin-bottom: 12px; }
+
+        /* What box */
+        .what-box { background: #111827; border-radius: 16px; padding: 20px; border-left: 4px solid #e94560; margin: 16px 0; }
+        .what-box p { font-size: 16px; color: #e0e0e0; margin: 0; }
+        .what-box strong { color: #fff; }
+
+        /* Feature cards */
+        .feature-card { background: #111827; border-radius: 16px; padding: 20px; margin-bottom: 12px; }
+        .feature-icon { font-size: 32px; margin-bottom: 8px; }
+        .feature-card h3 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+        .feature-card p { font-size: 14px; color: #94a3b8; margin: 0; }
+
+        /* Example flow */
+        .example-flow { background: #111827; border-radius: 16px; padding: 20px; margin: 16px 0; }
+        .flow-step { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; }
+        .flow-step:last-child { margin-bottom: 0; }
+        .flow-num { background: #e94560; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+        .flow-text { font-size: 14px; color: #cbd5e1; padding-top: 3px; }
+        .flow-text strong { color: #fff; }
+        .arrow-down { text-align: center; color: #374151; font-size: 18px; margin: -8px 0; padding-left: 4px; }
+
+        /* Scoring visual */
+        .score-example { display: flex; align-items: center; gap: 12px; background: #111827; border-radius: 12px; padding: 16px; margin-bottom: 8px; }
+        .score-badge { font-size: 14px; font-weight: 700; padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
+        .score-hot { background: #dc262620; color: #ef4444; border: 1px solid #ef444440; }
+        .score-warm { background: #f9731620; color: #f97316; border: 1px solid #f9731640; }
+        .score-cold { background: #64748b20; color: #94a3b8; border: 1px solid #64748b40; }
+        .score-info { font-size: 13px; color: #94a3b8; }
+        .score-info strong { color: #e0e0e0; display: block; font-size: 14px; }
+
+        /* Comparison cards */
+        .compare-wrapper { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+        .compare-card { background: #111827; border-radius: 16px; padding: 20px; border-top: 3px solid; }
+        .compare-card.hot { border-color: #ef4444; }
+        .compare-card.warm { border-color: #f97316; }
+        .compare-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .compare-player { font-size: 16px; font-weight: 700; color: #fff; }
+        .compare-player span { font-size: 13px; font-weight: 400; color: #94a3b8; }
+        .compare-total { font-size: 28px; font-weight: 800; }
+        .compare-card.hot .compare-total { color: #ef4444; }
+        .compare-card.warm .compare-total { color: #f97316; }
+
+        .bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+        .bar-label { font-size: 12px; color: #94a3b8; width: 80px; flex-shrink: 0; text-align: right; }
+        .bar-track { flex: 1; height: 10px; background: #1e293b; border-radius: 5px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 5px; }
+        .bar-fill.high { background: linear-gradient(90deg, #22c55e, #4ade80); }
+        .bar-fill.mid { background: linear-gradient(90deg, #f97316, #fb923c); }
+        .bar-fill.low { background: linear-gradient(90deg, #64748b, #94a3b8); }
+        .bar-value { font-size: 12px; font-weight: 600; color: #cbd5e1; width: 24px; flex-shrink: 0; }
+        .compare-verdict { margin-top: 12px; padding-top: 12px; border-top: 1px solid #1e293b; font-size: 13px; color: #94a3b8; font-style: italic; }
+        .compare-vs { text-align: center; font-size: 13px; font-weight: 700; color: #475569; letter-spacing: 2px; }
+
+        /* Ingredient */
+        .ingredient { display: flex; gap: 12px; background: #111827; border-radius: 12px; padding: 14px 16px; margin-bottom: 8px; align-items: flex-start; }
+        .ingredient-pct { font-size: 20px; font-weight: 800; color: #e94560; width: 48px; flex-shrink: 0; text-align: center; }
+        .ingredient-info h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .ingredient-info p { font-size: 13px; color: #94a3b8; margin: 0; }
+
+        /* NOT section */
+        .not-box { background: #1a0a0a; border: 1px solid #dc262640; border-radius: 16px; padding: 20px; margin: 16px 0; }
+        .not-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 14px; color: #94a3b8; align-items: flex-start; }
+        .not-item:last-child { margin-bottom: 0; }
+        .not-x { color: #ef4444; font-weight: 700; flex-shrink: 0; }
+
+        /* YES section */
+        .yes-box { background: #0a1a0a; border: 1px solid #22c55e40; border-radius: 16px; padding: 20px; margin: 16px 0; }
+        .yes-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 14px; color: #94a3b8; align-items: flex-start; }
+        .yes-item:last-child { margin-bottom: 0; }
+        .yes-check { color: #22c55e; font-weight: 700; flex-shrink: 0; }
+
+        /* DNA section */
+        .dna-visual { background: linear-gradient(135deg, #111827, #1a1a2e); border-radius: 16px; padding: 20px; margin: 16px 0; text-align: center; border: 1px solid #3b82f620; }
+        .dna-match { display: flex; justify-content: center; align-items: center; gap: 16px; margin: 16px 0; }
+        .dna-side { text-align: center; }
+        .dna-side .emoji { font-size: 36px; }
+        .dna-side .label { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+        .dna-connector { font-size: 24px; color: #3b82f6; }
+        .dna-result { font-size: 28px; font-weight: 800; color: #3b82f6; }
+        .dna-result span { font-size: 14px; color: #64748b; font-weight: 400; }
+
+        /* Club DNA Profile */
+        .club-profile { background: linear-gradient(135deg, #0f172a, #1e293b); border-radius: 16px; padding: 24px; margin: 16px 0; border: 1px solid #3b82f630; }
+        .club-profile-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+        .club-logo { font-size: 40px; width: 56px; height: 56px; background: #111827; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .club-name { font-size: 20px; font-weight: 800; color: #fff; }
+        .club-category { font-size: 12px; color: #3b82f6; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .club-dna-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+        .dna-stat { background: #111827; border-radius: 10px; padding: 12px; text-align: center; }
+        .dna-stat-value { font-size: 16px; font-weight: 700; color: #fff; }
+        .dna-stat-label { font-size: 11px; color: #64748b; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .club-needs { margin-top: 16px; }
+        .club-needs h4 { font-size: 13px; font-weight: 700; color: #e94560; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .need-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .need-pos { background: #1e293b; color: #3b82f6; font-weight: 700; font-size: 13px; padding: 4px 10px; border-radius: 6px; min-width: 36px; text-align: center; }
+        .need-desc { font-size: 13px; color: #94a3b8; flex: 1; }
+        .need-priority { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+        .need-alta { background: #ef444420; color: #ef4444; }
+        .need-media { background: #f9731620; color: #f97316; }
+        .need-bassa { background: #64748b20; color: #94a3b8; }
+
+        /* Dashboard flow */
+        .dashboard-flow { background: #111827; border-radius: 16px; padding: 20px; margin: 16px 0; }
+        .dash-step { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+        .dash-step:last-child { margin-bottom: 0; }
+        .dash-icon { font-size: 28px; width: 44px; height: 44px; background: #1e293b; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .dash-info h4 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+        .dash-info p { font-size: 13px; color: #94a3b8; margin: 0; }
+
+        /* Status badges */
+        .status-grid { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+        .status-item { display: flex; align-items: center; gap: 12px; background: #111827; border-radius: 12px; padding: 14px 16px; }
+        .status-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .status-dot.active { background: #22c55e; box-shadow: 0 0 8px #22c55e60; }
+        .status-dot.building { background: #f97316; box-shadow: 0 0 8px #f9731660; }
+        .status-dot.planned { background: #3b82f6; box-shadow: 0 0 8px #3b82f660; }
+        .status-text { font-size: 14px; color: #94a3b8; flex: 1; }
+        .status-text strong { color: #fff; }
+        .status-label { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .status-label.active { background: #22c55e20; color: #22c55e; }
+        .status-label.building { background: #f9731620; color: #f97316; }
+        .status-label.planned { background: #3b82f620; color: #3b82f6; }
+
+        /* Who uses it */
+        .user-card { display: flex; gap: 12px; align-items: center; background: #111827; border-radius: 12px; padding: 16px; margin-bottom: 8px; }
+        .user-emoji { font-size: 28px; flex-shrink: 0; }
+        .user-info { font-size: 13px; color: #94a3b8; }
+        .user-info strong { color: #fff; font-size: 14px; display: block; }
+
+        /* CTA */
+        .cta { text-align: center; padding: 32px 24px; }
+        .cta p { font-size: 15px; color: #94a3b8; margin-bottom: 20px; }
+        .cta-btn { display: inline-block; background: #e94560; color: #fff; font-size: 16px; font-weight: 700; padding: 14px 32px; border-radius: 12px; text-decoration: none; letter-spacing: 0.5px; margin-bottom: 12px; }
+        .cta-btn.secondary { background: #1e293b; color: #3b82f6; border: 1px solid #3b82f640; font-size: 14px; padding: 12px 24px; }
+        .cta-small { font-size: 12px; color: #475569; margin-top: 16px; }
+
+        /* Divider */
+        .divider { height: 1px; background: linear-gradient(90deg, transparent, #1e293b, transparent); margin: 0; }
+
+        /* Highlight */
+        .highlight { color: #3b82f6; }
+        .highlight-red { color: #e94560; }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-logo">&#x1F40D;</div>
+        <h1>OB1</h1>
+        <div class="hero-sub">Ouroboros</div>
+        <p class="hero-tagline">Il tuo assistente di mercato intelligente</p>
+        <p class="hero-for">Presentazione per SP Cosmos</p>
+    </div>
+
+    <!-- COS'E' -->
+    <div class="section">
+        <div class="section-title">In parole semplici</div>
+        <h2>Cosa fa OB1?</h2>
+
+        <div class="what-box">
+            <p>OB1 <strong>legge centinaia di notizie</strong> di calciomercato ogni giorno, conosce il <strong>DNA del tuo club</strong> e ti avvisa solo quando trova un'opportunit&agrave; che fa al caso tuo.</p>
+        </div>
+
+        <p>Pensa a un collaboratore instancabile che legge TuttoC, Gazzetta, Transfermarkt... conosce le esigenze del Cosmos (ruoli, budget, stile di gioco) e ti manda un messaggio su Telegram solo quando trova qualcosa di concreto.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- COME FUNZIONA -->
+    <div class="section">
+        <div class="section-title">Come funziona</div>
+        <h2>3 passi, tutto automatico</h2>
+
+        <div class="example-flow">
+            <div class="flow-step">
+                <div class="flow-num">1</div>
+                <div class="flow-text"><strong>Cerca</strong> &mdash; Ogni 6 ore scansiona le fonti di calciomercato italiane (notizie, rumors, comunicati ufficiali)</div>
+            </div>
+            <div class="arrow-down">&darr;</div>
+            <div class="flow-step">
+                <div class="flow-num">2</div>
+                <div class="flow-text"><strong>Valuta</strong> &mdash; Ogni notizia riceve un punteggio da 1 a 100 e viene incrociata con il <strong>profilo DNA</strong> del tuo club</div>
+            </div>
+            <div class="arrow-down">&darr;</div>
+            <div class="flow-step">
+                <div class="flow-num">3</div>
+                <div class="flow-text"><strong>Avvisa</strong> &mdash; Ti manda su Telegram solo le opportunit&agrave; compatibili con le tue esigenze reali</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- IL PROFILO DEL TUO CLUB -->
+    <div class="section">
+        <div class="section-title">Il tuo club</div>
+        <h2>Il DNA del Cosmos &#x1F9EC;</h2>
+        <p>OB1 conosce le caratteristiche e le esigenze della tua squadra. Ecco come vede il Cosmos:</p>
+
+        <div class="club-profile">
+            <div class="club-profile-header">
+                <div class="club-logo">&#x1F3DF;&#xFE0F;</div>
+                <div>
+                    <div class="club-name">SP Cosmos</div>
+                    <div class="club-category">Campionato Sammarinese</div>
+                </div>
+            </div>
+
+            <div class="club-dna-grid">
+                <div class="dna-stat">
+                    <div class="dna-stat-value">4-3-3</div>
+                    <div class="dna-stat-label">Modulo</div>
+                </div>
+                <div class="dna-stat">
+                    <div class="dna-stat-value">20k&euro;</div>
+                    <div class="dna-stat-label">Budget max</div>
+                </div>
+                <div class="dna-stat">
+                    <div class="dna-stat-value">35%</div>
+                    <div class="dna-stat-label">Min. giovani</div>
+                </div>
+                <div class="dna-stat">
+                    <div class="dna-stat-value">Solo prestiti</div>
+                    <div class="dna-stat-label">Tipo acquisti</div>
+                </div>
+            </div>
+
+            <p style="font-size: 13px; color: #64748b; margin: 12px 0 0;">
+                <strong style="color: #94a3b8;">Stili:</strong> Possesso &bull; Transizioni &bull; Mix sammarinese
+            </p>
+
+            <div class="club-needs">
+                <h4>Esigenze attuali</h4>
+                <div class="need-row">
+                    <span class="need-pos">TS</span>
+                    <span class="need-desc">Tutta fascia, 19-28 anni</span>
+                    <span class="need-priority need-alta">ALTA</span>
+                </div>
+                <div class="need-row">
+                    <span class="need-pos">DC</span>
+                    <span class="need-desc">Impostatore, 20-27 anni</span>
+                    <span class="need-priority need-media">MEDIA</span>
+                </div>
+                <div class="need-row">
+                    <span class="need-pos">CC</span>
+                    <span class="need-desc">Box-to-box, 20-26 anni</span>
+                    <span class="need-priority need-media">MEDIA</span>
+                </div>
+                <div class="need-row">
+                    <span class="need-pos">AS</span>
+                    <span class="need-desc">Ala, 18-25 anni</span>
+                    <span class="need-priority need-bassa">BASSA</span>
+                </div>
+            </div>
+        </div>
+
+        <p style="font-size: 14px; color: #64748b;">Questo profilo si pu&ograve; aggiornare in qualsiasi momento tramite il bot Telegram. Cambi le esigenze? OB1 si adatta automaticamente.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- DNA MATCHING -->
+    <div class="section">
+        <div class="section-title">La funzione chiave</div>
+        <h2>DNA Match: cerca per te &#x1F9EC;</h2>
+        <p>OB1 non ti mostra <em>tutti</em> i giocatori disponibili. Ti mostra solo quelli <strong>compatibili con il Cosmos</strong>.</p>
+
+        <div class="dna-visual">
+            <p style="font-size: 14px; color: #94a3b8; margin-bottom: 12px;">Esempio concreto:</p>
+            <div class="dna-match">
+                <div class="dna-side">
+                    <div class="emoji">&#x1F3DF;&#xFE0F;</div>
+                    <div class="label">Cosmos</div>
+                </div>
+                <div class="dna-connector">&#x1F9EC;</div>
+                <div class="dna-side">
+                    <div class="emoji">&#x26BD;</div>
+                    <div class="label">CC svincolato</div>
+                </div>
+            </div>
+            <div class="dna-result">85% <span>compatibilit&agrave;</span></div>
+            <p style="font-size: 12px; color: #64748b; margin-top: 8px;">CC box-to-box, 23 anni, svincolato dalla Serie D, market value compatibile</p>
+        </div>
+
+        <p>Il sistema valuta <strong>6 dimensioni</strong> per ogni giocatore rispetto al tuo club:</p>
+
+        <div class="ingredient">
+            <div class="ingredient-pct">25%</div>
+            <div class="ingredient-info">
+                <h4>&#x1F4CD; Posizione</h4>
+                <p>Il giocatore copre un ruolo che ti serve? Terzino sinistro cercato = punteggio pieno.</p>
+            </div>
+        </div>
+
+        <div class="ingredient">
+            <div class="ingredient-pct">20%</div>
+            <div class="ingredient-info">
+                <h4>&#x1F4B0; Budget</h4>
+                <p>Il costo &egrave; sostenibile per il Cosmos? Svincolato = perfetto. Prestito da 500k&euro; = troppo.</p>
+            </div>
+        </div>
+
+        <div class="ingredient">
+            <div class="ingredient-pct">20%</div>
+            <div class="ingredient-info">
+                <h4>&#x1F4C5; Disponibilit&agrave;</h4>
+                <p>Svincolato oggi = massimo. In prestito con opzione = medio. Incedibile = bloccato.</p>
+            </div>
+        </div>
+
+        <div class="ingredient">
+            <div class="ingredient-pct">15%</div>
+            <div class="ingredient-info">
+                <h4>&#x1F382; Et&agrave;</h4>
+                <p>Rientra nella fascia che cerchi? Per il CC del Cosmos: 20-26 anni ideali.</p>
+            </div>
+        </div>
+
+        <div class="ingredient">
+            <div class="ingredient-pct">15%</div>
+            <div class="ingredient-info">
+                <h4>&#x26BD; Stile di gioco</h4>
+                <p>Box-to-box per il possesso? Ala veloce per le transizioni? Match col tuo stile.</p>
+            </div>
+        </div>
+
+        <div class="ingredient">
+            <div class="ingredient-pct">5%</div>
+            <div class="ingredient-info">
+                <h4>&#x1F3C6; Livello</h4>
+                <p>Un giocatore di Serie D pu&ograve; adattarsi al campionato sammarinese. Uno di Serie B probabilmente no (troppo caro).</p>
+            </div>
+        </div>
+
+        <div class="what-box" style="border-left-color: #3b82f6; margin-top: 20px;">
+            <p style="font-size: 14px;"><strong>Filtri bloccanti:</strong> Giocatori segnati come "incedibili" o con valore di mercato troppo alto per la tua categoria vengono automaticamente esclusi. Niente rumore, solo opportunit&agrave; reali.</p>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ESEMPIO DNA MATCH COSMOS -->
+    <div class="section">
+        <div class="section-title">Esempio per il Cosmos</div>
+        <h2>Come OB1 trova il tuo terzino</h2>
+        <p>Il Cosmos cerca un <strong>terzino sinistro</strong> tutta fascia (priorit&agrave; alta). Ecco come OB1 valuta due giocatori disponibili:</p>
+
+        <div class="compare-wrapper">
+            <!-- Player A: MATCH -->
+            <div class="compare-card hot">
+                <div class="compare-header">
+                    <div class="compare-player">Andrea Galli<br><span>TS, 22 anni, svincolato</span></div>
+                    <div class="compare-total">87</div>
+                </div>
+
+                <div class="bar-row">
+                    <span class="bar-label">Posizione</span>
+                    <div class="bar-track"><div class="bar-fill high" style="width: 100%"></div></div>
+                    <span class="bar-value">100</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Budget</span>
+                    <div class="bar-track"><div class="bar-fill high" style="width: 95%"></div></div>
+                    <span class="bar-value">95</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Disponibilit&agrave;</span>
+                    <div class="bar-track"><div class="bar-fill high" style="width: 100%"></div></div>
+                    <span class="bar-value">100</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Et&agrave;</span>
+                    <div class="bar-track"><div class="bar-fill high" style="width: 90%"></div></div>
+                    <span class="bar-value">90</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Stile</span>
+                    <div class="bar-track"><div class="bar-fill mid" style="width: 65%"></div></div>
+                    <span class="bar-value">65</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Livello</span>
+                    <div class="bar-track"><div class="bar-fill high" style="width: 80%"></div></div>
+                    <span class="bar-value">80</span>
+                </div>
+
+                <div class="compare-verdict">TS svincolato, 22 anni, ex Serie D, costo zero. &rarr; <strong style="color: #ef4444;">MATCH PERFETTO: da contattare subito!</strong></div>
+            </div>
+
+            <div class="compare-vs">VS</div>
+
+            <!-- Player B: BLOCCATO -->
+            <div class="compare-card warm">
+                <div class="compare-header">
+                    <div class="compare-player">Federico Neri<br><span>TS, 20 anni, Juve NG</span></div>
+                    <div class="compare-total">0</div>
+                </div>
+
+                <div class="bar-row">
+                    <span class="bar-label">Posizione</span>
+                    <div class="bar-track"><div class="bar-fill high" style="width: 100%"></div></div>
+                    <span class="bar-value">100</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Budget</span>
+                    <div class="bar-track"><div class="bar-fill low" style="width: 0%"></div></div>
+                    <span class="bar-value">0</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Disponibilit&agrave;</span>
+                    <div class="bar-track"><div class="bar-fill low" style="width: 40%"></div></div>
+                    <span class="bar-value">40</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Et&agrave;</span>
+                    <div class="bar-track"><div class="bar-fill high" style="width: 85%"></div></div>
+                    <span class="bar-value">85</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Stile</span>
+                    <div class="bar-track"><div class="bar-fill mid" style="width: 60%"></div></div>
+                    <span class="bar-value">60</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">Livello</span>
+                    <div class="bar-track"><div class="bar-fill low" style="width: 20%"></div></div>
+                    <span class="bar-value">20</span>
+                </div>
+
+                <div class="compare-verdict">Bravo, ma market value 1.5M&euro; &mdash; fuori dal cap per il campionato sammarinese. &rarr; <strong style="color: #f97316;">BLOCCATO: non realistico per il Cosmos.</strong></div>
+            </div>
+        </div>
+
+        <p style="font-size: 14px; color: #64748b;">Galli prende 87 perch&eacute; &egrave; svincolato, gioca nel ruolo giusto, ha l'et&agrave; giusta e il costo &egrave; zero. Neri &egrave; un buon giocatore, ma il suo valore di mercato supera il tetto per la categoria sammarinese. OB1 lo blocca automaticamente, senza farti perdere tempo.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- DASHBOARD PERSONALIZZATA -->
+    <div class="section">
+        <div class="section-title">Dashboard</div>
+        <h2>La tua dashboard personalizzata</h2>
+        <p>Non una lista generica di giocatori. Una vista costruita intorno alle esigenze del <strong>tuo club</strong>.</p>
+
+        <div class="dashboard-flow">
+            <div class="dash-step">
+                <div class="dash-icon">&#x1F3DF;&#xFE0F;</div>
+                <div class="dash-info">
+                    <h4>Scegli il tuo club</h4>
+                    <p>Seleziona "SP Cosmos" dalla griglia dei club</p>
+                </div>
+            </div>
+            <div class="dash-step">
+                <div class="dash-icon">&#x1F9EC;</div>
+                <div class="dash-info">
+                    <h4>Vedi il tuo profilo DNA</h4>
+                    <p>Modulo, stili di gioco, esigenze, budget &mdash; tutto in un colpo d'occhio</p>
+                </div>
+            </div>
+            <div class="dash-step">
+                <div class="dash-icon">&#x1F4CA;</div>
+                <div class="dash-info">
+                    <h4>Opportunit&agrave; scored per te</h4>
+                    <p>Ogni giocatore disponibile viene valutato in tempo reale contro il DNA del Cosmos</p>
+                </div>
+            </div>
+            <div class="dash-step">
+                <div class="dash-icon">&#x1F50D;</div>
+                <div class="dash-info">
+                    <h4>Dettaglio con breakdown</h4>
+                    <p>Per ogni giocatore vedi perch&eacute; ha quel punteggio: posizione, budget, et&agrave;...</p>
+                </div>
+            </div>
+        </div>
+
+        <p style="font-size: 14px; color: #64748b;">La dashboard &egrave; accessibile da browser (anche mobile) su GitHub Pages. Nessuna app da installare, nessun login.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- IL BOT TELEGRAM -->
+    <div class="section">
+        <div class="section-title">Il Bot Telegram</div>
+        <h2>Scout Wizard: chiedi e trova</h2>
+        <p>Su Telegram puoi usare lo <strong>Scout Wizard</strong> per cercare giocatori in modo guidato:</p>
+
+        <div class="example-flow">
+            <div class="flow-step">
+                <div class="flow-num" style="background: #3b82f6;">&#x1F4AC;</div>
+                <div class="flow-text"><em>"Cerco un centrocampista box-to-box, giovane, a parametro zero"</em></div>
+            </div>
+            <div class="arrow-down">&darr;</div>
+            <div class="flow-step">
+                <div class="flow-num" style="background: #22c55e;">&#x1F916;</div>
+                <div class="flow-text">OB1 usa il <strong>DNA del Cosmos</strong> per valutare ogni risultato e ti mostra i migliori match con breakdown dettagliato</div>
+            </div>
+        </div>
+
+        <p>Oppure il wizard ti guida passo passo: 4 domande (ruolo, et&agrave;, budget, tipo) e trovi i giocatori adatti. Come l'Akinator, ma per il mercato.</p>
+
+        <div class="feature-card" style="margin-top: 16px;">
+            <div class="feature-icon">&#x1F514;</div>
+            <h3>Watch Profile: sorveglianza automatica</h3>
+            <p>Imposta un profilo di sorveglianza (es. "TS Under 25 svincolato") e OB1 ti avvisa automaticamente quando trova un match. Push immediato per i HOT, riassunto giornaliero per i WARM.</p>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- I 3 LIVELLI -->
+    <div class="section">
+        <div class="section-title">I 3 livelli</div>
+        <h2>Cosa succede in base al punteggio</h2>
+
+        <div class="score-example">
+            <span class="score-badge score-hot">&#128293; HOT</span>
+            <div class="score-info">
+                <strong>80 &ndash; 100 punti</strong>
+                Notifica push immediata su Telegram
+            </div>
+        </div>
+
+        <div class="score-example">
+            <span class="score-badge score-warm">&#9889; WARM</span>
+            <div class="score-info">
+                <strong>60 &ndash; 79 punti</strong>
+                Nel riassunto giornaliero della mattina
+            </div>
+        </div>
+
+        <div class="score-example">
+            <span class="score-badge score-cold">&#10052;&#65039; COLD</span>
+            <div class="score-info">
+                <strong>Sotto 60 punti</strong>
+                Nell'archivio, consultabile quando vuoi
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- COSA NON E' -->
+    <div class="section">
+        <div class="section-title">Importante</div>
+        <h2>Cosa il punteggio NON &egrave;</h2>
+
+        <p>Il punteggio <strong>NON</strong> dice quanto &egrave; bravo un giocatore. Dice quanto quell'opportunit&agrave; &egrave; <strong>compatibile con il tuo club</strong>.</p>
+
+        <div class="not-box">
+            <div class="not-item"><span class="not-x">&#10007;</span> Non d&agrave; voti tecnici (dribbling, tiro, ecc.)</div>
+            <div class="not-item"><span class="not-x">&#10007;</span> Non analizza video di partite</div>
+            <div class="not-item"><span class="not-x">&#10007;</span> Non sostituisce l'occhio del DS</div>
+        </div>
+
+        <div class="yes-box">
+            <div class="yes-item"><span class="yes-check">&#10003;</span> Ti fa risparmiare ore di ricerca</div>
+            <div class="yes-item"><span class="yes-check">&#10003;</span> Filtra il rumore e ti mostra solo il rilevante</div>
+            <div class="yes-item"><span class="yes-check">&#10003;</span> Ti avvisa prima degli altri sulle opportunit&agrave;</div>
+            <div class="yes-item"><span class="yes-check">&#10003;</span> Si adatta alle esigenze specifiche del tuo club</div>
+        </div>
+
+        <p style="font-size: 14px; color: #64748b;"><em>La valutazione tecnica la fa il DS con i suoi occhi. OB1 gli fa risparmiare tempo trovando i nomi giusti da guardare.</em></p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- DATI E FONTI -->
+    <div class="section">
+        <div class="section-title">Dati</div>
+        <h2>Da dove arrivano le informazioni</h2>
+
+        <div class="feature-card">
+            <div class="feature-icon">&#x1F4F0;</div>
+            <h3>Fonti calciomercato</h3>
+            <p>TuttoC, Gazzetta dello Sport, CalcioMercato.com, comunicati ufficiali dei club, portali di categoria</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">&#x1F4CA;</div>
+            <h3>Transfermarkt</h3>
+            <p>Valore di mercato, contratto, statistiche, presenze, storico trasferimenti &mdash; integrato automaticamente</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">&#x1F916;</div>
+            <h3>AI Processing</h3>
+            <p>Gemini AI analizza ogni notizia, estrae dati strutturati (nome, ruolo, et&agrave;, situazione) e calcola punteggi</p>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- STATO ATTUALE -->
+    <div class="section">
+        <div class="section-title">Stato del progetto</div>
+        <h2>Cosa c'&egrave; e cosa arriva</h2>
+
+        <div class="status-grid">
+            <div class="status-item">
+                <span class="status-dot active"></span>
+                <span class="status-text"><strong>Scraping automatico</strong> &mdash; ogni 6 ore, fonti multiple</span>
+                <span class="status-label active">Attivo</span>
+            </div>
+            <div class="status-item">
+                <span class="status-dot active"></span>
+                <span class="status-text"><strong>Bot Telegram</strong> &mdash; wizard, notifiche, watch profile</span>
+                <span class="status-label active">Attivo</span>
+            </div>
+            <div class="status-item">
+                <span class="status-dot active"></span>
+                <span class="status-text"><strong>OB1 Score</strong> &mdash; scoring 6 ingredienti per opportunit&agrave;</span>
+                <span class="status-label active">Attivo</span>
+            </div>
+            <div class="status-item">
+                <span class="status-dot active"></span>
+                <span class="status-text"><strong>Dati Transfermarkt</strong> &mdash; valore, contratto, statistiche</span>
+                <span class="status-label active">Attivo</span>
+            </div>
+            <div class="status-item">
+                <span class="status-dot active"></span>
+                <span class="status-text"><strong>DNA Match</strong> &mdash; scoring giocatore-club 6 dimensioni</span>
+                <span class="status-label active">Attivo</span>
+            </div>
+            <div class="status-item">
+                <span class="status-dot building"></span>
+                <span class="status-text"><strong>Dashboard club-centrica</strong> &mdash; vista personalizzata per club</span>
+                <span class="status-label building">In sviluppo</span>
+            </div>
+            <div class="status-item">
+                <span class="status-dot planned"></span>
+                <span class="status-text"><strong>Report PDF settimanale</strong> &mdash; riepilogo automatico</span>
+                <span class="status-label planned">Pianificato</span>
+            </div>
+            <div class="status-item">
+                <span class="status-dot planned"></span>
+                <span class="status-text"><strong>Statistiche avanzate</strong> &mdash; FBref, dati performance</span>
+                <span class="status-label planned">Pianificato</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- A CHI SERVE -->
+    <div class="section">
+        <div class="section-title">A chi serve</div>
+        <h2>Pensato per chi lavora nel calcio</h2>
+
+        <div class="user-card">
+            <span class="user-emoji">&#x1F50D;</span>
+            <div class="user-info">
+                <strong>Direttore Sportivo</strong>
+                Alert personalizzati sulle esigenze del suo club, DNA match automatico
+            </div>
+        </div>
+
+        <div class="user-card">
+            <span class="user-emoji">&#x1F454;</span>
+            <div class="user-info">
+                <strong>Dirigente di club</strong>
+                Dashboard con panoramica mercato personalizzata, report settimanali
+            </div>
+        </div>
+
+        <div class="user-card">
+            <span class="user-emoji">&#x1F4CA;</span>
+            <div class="user-info">
+                <strong>Procuratore / Consulente</strong>
+                Trova il club giusto per i suoi assistiti con il DNA matching inverso
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CTA -->
+    <div class="cta">
+        <p>Vuoi provarlo? Il bot Telegram &egrave; gi&agrave; attivo e la dashboard online.</p>
+        <a href="https://t.me/Ob1LegaPro_bot" class="cta-btn">&#x1F4F1; Apri il Bot Telegram</a>
+        <br>
+        <a href="index.html" class="cta-btn secondary" style="margin-top: 12px;">&#x1F4CA; Vedi la Dashboard</a>
+        <p class="cta-small">OB1 &bull; Ouroboros<br>Scout AI per il calcio di categoria<br><br>
+        <em>Contatto: Mirko &mdash; Progetto OB1</em></p>
+    </div>
+
+</body>
+</html>
