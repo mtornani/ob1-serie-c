@@ -290,294 +290,6 @@
     },
     {
       "player": {
-        "id": "juve_ng_001",
-        "name": "Luis Hasa",
-        "birth_year": 2004,
-        "age": 22,
-        "nationality": "Albania",
-        "primary_position": "CC",
-        "secondary_positions": [
-          "TRQ"
-        ],
-        "preferred_foot": "destro",
-        "parent_club": "Juventus",
-        "current_team": "Juventus Next Gen",
-        "contract_until": "2027-06-30",
-        "appearances": 14,
-        "minutes_played": 890,
-        "minutes_percentage": 33.0,
-        "is_underused": true,
-        "goals": 2,
-        "assists": 3,
-        "skills": {
-          "tecnica": 78,
-          "velocita": 68,
-          "fisico": 65,
-          "visione": 75,
-          "difesa": 55,
-          "pressing": 72,
-          "dribbling": 70,
-          "tiro": 68
-        },
-        "transfer_status": "disponibile_prestito",
-        "estimated_loan_cost": 0,
-        "market_value": 500,
-        "transfermarkt_url": "https://www.transfermarkt.it/luis-hasa/profil/spieler/896138",
-        "last_updated": "2026-02-01"
-      },
-      "club_id": "perugia",
-      "club_name": "Perugia",
-      "score": 100,
-      "breakdown": {
-        "position": 100,
-        "age": 100,
-        "style": 69,
-        "availability": 100,
-        "budget": 100,
-        "level": 90
-      },
-      "recommendation": "Centrocampista, con ottima tecnica, adattabile al 4-2-3-1, cerca minutaggio (33% giocato), operazione fattibile",
-      "matched_need": {
-        "position": "CC",
-        "player_type": "interdittore",
-        "age_min": 21,
-        "age_max": 27,
-        "priority": "media"
-      }
-    },
-    {
-      "player": {
-        "id": "atalanta_u23_001",
-        "name": "Marco Palestra",
-        "birth_year": 2004,
-        "age": 22,
-        "nationality": "Italia",
-        "primary_position": "CC",
-        "secondary_positions": [
-          "MED"
-        ],
-        "preferred_foot": "destro",
-        "parent_club": "Atalanta",
-        "current_team": "Atalanta U23",
-        "contract_until": "2027-06-30",
-        "appearances": 15,
-        "minutes_played": 950,
-        "minutes_percentage": 35.2,
-        "is_underused": true,
-        "goals": 1,
-        "assists": 2,
-        "skills": {
-          "tecnica": 72,
-          "velocita": 70,
-          "fisico": 75,
-          "visione": 70,
-          "difesa": 68,
-          "pressing": 80,
-          "dribbling": 65,
-          "tiro": 62
-        },
-        "transfer_status": "disponibile_prestito",
-        "estimated_loan_cost": 0,
-        "market_value": 600,
-        "transfermarkt_url": "https://www.transfermarkt.it/marco-palestra/profil/spieler/740621",
-        "last_updated": "2026-02-01"
-      },
-      "club_id": "perugia",
-      "club_name": "Perugia",
-      "score": 100,
-      "breakdown": {
-        "position": 100,
-        "age": 100,
-        "style": 69,
-        "availability": 100,
-        "budget": 100,
-        "level": 100
-      },
-      "recommendation": "Centrocampista, con pressing intenso, adattabile al 4-2-3-1, cerca minutaggio (35% giocato), operazione fattibile",
-      "matched_need": {
-        "position": "CC",
-        "player_type": "interdittore",
-        "age_min": 21,
-        "age_max": 27,
-        "priority": "media"
-      }
-    },
-    {
-      "player": {
-        "id": "atalanta_u23_002",
-        "name": "Federico Cassa",
-        "birth_year": 2004,
-        "age": 22,
-        "nationality": "Italia",
-        "primary_position": "AD",
-        "secondary_positions": [
-          "AS",
-          "ATT"
-        ],
-        "preferred_foot": "sinistro",
-        "parent_club": "Atalanta",
-        "current_team": "Atalanta U23",
-        "contract_until": "2026-06-30",
-        "appearances": 14,
-        "minutes_played": 780,
-        "minutes_percentage": 28.9,
-        "is_underused": true,
-        "goals": 4,
-        "assists": 2,
-        "skills": {
-          "tecnica": 74,
-          "velocita": 80,
-          "fisico": 65,
-          "visione": 68,
-          "difesa": 30,
-          "pressing": 68,
-          "dribbling": 78,
-          "tiro": 72
-        },
-        "transfer_status": "disponibile_prestito",
-        "estimated_loan_cost": 0,
-        "market_value": 500,
-        "transfermarkt_url": "",
-        "last_updated": "2026-02-01"
-      },
-      "club_id": "perugia",
-      "club_name": "Perugia",
-      "score": 84,
-      "breakdown": {
-        "position": 40,
-        "age": 100,
-        "style": 73,
-        "availability": 100,
-        "budget": 100,
-        "level": 90
-      },
-      "recommendation": "Ala destra, con grande velocità, adattabile al 4-2-3-1, cerca minutaggio (29% giocato), operazione fattibile",
-      "matched_need": {
-        "position": "ED",
-        "player_type": "dribblatore",
-        "age_min": 19,
-        "age_max": 24,
-        "priority": "alta"
-      }
-    },
-    {
-      "player": {
-        "id": "juve_ng_004",
-        "name": "Nicolò Savona",
-        "birth_year": 2003,
-        "age": 23,
-        "nationality": "Italia",
-        "primary_position": "TD",
-        "secondary_positions": [
-          "ED",
-          "DC"
-        ],
-        "preferred_foot": "destro",
-        "parent_club": "Juventus",
-        "current_team": "Juventus Next Gen",
-        "contract_until": "2029-06-30",
-        "appearances": 8,
-        "minutes_played": 450,
-        "minutes_percentage": 16.7,
-        "is_underused": true,
-        "goals": 0,
-        "assists": 1,
-        "skills": {
-          "tecnica": 68,
-          "velocita": 78,
-          "fisico": 75,
-          "visione": 62,
-          "difesa": 75,
-          "pressing": 78,
-          "dribbling": 62,
-          "tiro": 55
-        },
-        "transfer_status": "in_uscita",
-        "estimated_loan_cost": 0,
-        "market_value": 1000,
-        "transfermarkt_url": "https://www.transfermarkt.it/nicolo-savona/profil/spieler/664938",
-        "last_updated": "2026-02-01"
-      },
-      "club_id": "perugia",
-      "club_name": "Perugia",
-      "score": 73,
-      "breakdown": {
-        "position": 75,
-        "age": 100,
-        "style": 67,
-        "availability": 85,
-        "budget": 35,
-        "level": 100
-      },
-      "recommendation": "Terzino destro, con grande velocità, adattabile al 4-2-3-1, cerca minutaggio (17% giocato), costo elevato per il club",
-      "matched_need": {
-        "position": "ED",
-        "player_type": "dribblatore",
-        "age_min": 19,
-        "age_max": 24,
-        "priority": "alta"
-      }
-    },
-    {
-      "player": {
-        "id": "milan_f_004",
-        "name": "Mattia Liberali",
-        "birth_year": 2007,
-        "age": 19,
-        "nationality": "Italia",
-        "primary_position": "TRQ",
-        "secondary_positions": [
-          "CC",
-          "AS"
-        ],
-        "preferred_foot": "destro",
-        "parent_club": "Milan",
-        "current_team": "Milan Futuro",
-        "contract_until": "2027-06-30",
-        "appearances": 8,
-        "minutes_played": 380,
-        "minutes_percentage": 14.1,
-        "is_underused": true,
-        "goals": 1,
-        "assists": 2,
-        "skills": {
-          "tecnica": 82,
-          "velocita": 70,
-          "fisico": 58,
-          "visione": 78,
-          "difesa": 35,
-          "pressing": 62,
-          "dribbling": 80,
-          "tiro": 68
-        },
-        "transfer_status": "sconosciuto",
-        "estimated_loan_cost": 0,
-        "market_value": 500,
-        "transfermarkt_url": "https://www.transfermarkt.it/mattia-liberali/profil/spieler/951589",
-        "last_updated": "2026-02-01"
-      },
-      "club_id": "perugia",
-      "club_name": "Perugia",
-      "score": 68,
-      "breakdown": {
-        "position": 70,
-        "age": 50,
-        "style": 70,
-        "availability": 40,
-        "budget": 100,
-        "level": 90
-      },
-      "recommendation": "Trequartista, con ottima tecnica, adattabile al 4-2-3-1, cerca minutaggio (14% giocato)",
-      "matched_need": {
-        "position": "CC",
-        "player_type": "interdittore",
-        "age_min": 21,
-        "age_max": 27,
-        "priority": "media"
-      }
-    },
-    {
-      "player": {
         "id": "juve_ng_002",
         "name": "Samuel Mbangula",
         "birth_year": 2004,
@@ -1151,88 +863,300 @@
         "age_max": 28,
         "priority": "alta"
       }
+    },
+    {
+      "player": {
+        "id": "juve_ng_001",
+        "name": "Luis Hasa",
+        "birth_year": 2004,
+        "age": 22,
+        "nationality": "Albania",
+        "primary_position": "CC",
+        "secondary_positions": [
+          "TRQ"
+        ],
+        "preferred_foot": "destro",
+        "parent_club": "Juventus",
+        "current_team": "Juventus Next Gen",
+        "contract_until": "2027-06-30",
+        "appearances": 14,
+        "minutes_played": 890,
+        "minutes_percentage": 33.0,
+        "is_underused": true,
+        "goals": 2,
+        "assists": 3,
+        "skills": {
+          "tecnica": 78,
+          "velocita": 68,
+          "fisico": 65,
+          "visione": 75,
+          "difesa": 55,
+          "pressing": 72,
+          "dribbling": 70,
+          "tiro": 68
+        },
+        "transfer_status": "disponibile_prestito",
+        "estimated_loan_cost": 0,
+        "market_value": 500,
+        "transfermarkt_url": "https://www.transfermarkt.it/luis-hasa/profil/spieler/896138",
+        "last_updated": "2026-02-01"
+      },
+      "club_id": "perugia",
+      "club_name": "Perugia",
+      "score": 100,
+      "breakdown": {
+        "position": 100,
+        "age": 100,
+        "style": 69,
+        "availability": 100,
+        "budget": 100,
+        "level": 90
+      },
+      "recommendation": "Centrocampista, con ottima tecnica, adattabile al 4-2-3-1, cerca minutaggio (33% giocato), operazione fattibile",
+      "matched_need": {
+        "position": "CC",
+        "player_type": "interdittore",
+        "age_min": 21,
+        "age_max": 27,
+        "priority": "media"
+      }
+    },
+    {
+      "player": {
+        "id": "atalanta_u23_001",
+        "name": "Marco Palestra",
+        "birth_year": 2004,
+        "age": 22,
+        "nationality": "Italia",
+        "primary_position": "CC",
+        "secondary_positions": [
+          "MED"
+        ],
+        "preferred_foot": "destro",
+        "parent_club": "Atalanta",
+        "current_team": "Atalanta U23",
+        "contract_until": "2027-06-30",
+        "appearances": 15,
+        "minutes_played": 950,
+        "minutes_percentage": 35.2,
+        "is_underused": true,
+        "goals": 1,
+        "assists": 2,
+        "skills": {
+          "tecnica": 72,
+          "velocita": 70,
+          "fisico": 75,
+          "visione": 70,
+          "difesa": 68,
+          "pressing": 80,
+          "dribbling": 65,
+          "tiro": 62
+        },
+        "transfer_status": "disponibile_prestito",
+        "estimated_loan_cost": 0,
+        "market_value": 600,
+        "transfermarkt_url": "https://www.transfermarkt.it/marco-palestra/profil/spieler/740621",
+        "last_updated": "2026-02-01"
+      },
+      "club_id": "perugia",
+      "club_name": "Perugia",
+      "score": 100,
+      "breakdown": {
+        "position": 100,
+        "age": 100,
+        "style": 69,
+        "availability": 100,
+        "budget": 100,
+        "level": 100
+      },
+      "recommendation": "Centrocampista, con pressing intenso, adattabile al 4-2-3-1, cerca minutaggio (35% giocato), operazione fattibile",
+      "matched_need": {
+        "position": "CC",
+        "player_type": "interdittore",
+        "age_min": 21,
+        "age_max": 27,
+        "priority": "media"
+      }
+    },
+    {
+      "player": {
+        "id": "atalanta_u23_002",
+        "name": "Federico Cassa",
+        "birth_year": 2004,
+        "age": 22,
+        "nationality": "Italia",
+        "primary_position": "AD",
+        "secondary_positions": [
+          "AS",
+          "ATT"
+        ],
+        "preferred_foot": "sinistro",
+        "parent_club": "Atalanta",
+        "current_team": "Atalanta U23",
+        "contract_until": "2026-06-30",
+        "appearances": 14,
+        "minutes_played": 780,
+        "minutes_percentage": 28.9,
+        "is_underused": true,
+        "goals": 4,
+        "assists": 2,
+        "skills": {
+          "tecnica": 74,
+          "velocita": 80,
+          "fisico": 65,
+          "visione": 68,
+          "difesa": 30,
+          "pressing": 68,
+          "dribbling": 78,
+          "tiro": 72
+        },
+        "transfer_status": "disponibile_prestito",
+        "estimated_loan_cost": 0,
+        "market_value": 500,
+        "transfermarkt_url": "",
+        "last_updated": "2026-02-01"
+      },
+      "club_id": "perugia",
+      "club_name": "Perugia",
+      "score": 84,
+      "breakdown": {
+        "position": 40,
+        "age": 100,
+        "style": 73,
+        "availability": 100,
+        "budget": 100,
+        "level": 90
+      },
+      "recommendation": "Ala destra, con grande velocità, adattabile al 4-2-3-1, cerca minutaggio (29% giocato), operazione fattibile",
+      "matched_need": {
+        "position": "ED",
+        "player_type": "dribblatore",
+        "age_min": 19,
+        "age_max": 24,
+        "priority": "alta"
+      }
+    },
+    {
+      "player": {
+        "id": "juve_ng_004",
+        "name": "Nicolò Savona",
+        "birth_year": 2003,
+        "age": 23,
+        "nationality": "Italia",
+        "primary_position": "TD",
+        "secondary_positions": [
+          "ED",
+          "DC"
+        ],
+        "preferred_foot": "destro",
+        "parent_club": "Juventus",
+        "current_team": "Juventus Next Gen",
+        "contract_until": "2029-06-30",
+        "appearances": 8,
+        "minutes_played": 450,
+        "minutes_percentage": 16.7,
+        "is_underused": true,
+        "goals": 0,
+        "assists": 1,
+        "skills": {
+          "tecnica": 68,
+          "velocita": 78,
+          "fisico": 75,
+          "visione": 62,
+          "difesa": 75,
+          "pressing": 78,
+          "dribbling": 62,
+          "tiro": 55
+        },
+        "transfer_status": "in_uscita",
+        "estimated_loan_cost": 0,
+        "market_value": 1000,
+        "transfermarkt_url": "https://www.transfermarkt.it/nicolo-savona/profil/spieler/664938",
+        "last_updated": "2026-02-01"
+      },
+      "club_id": "perugia",
+      "club_name": "Perugia",
+      "score": 73,
+      "breakdown": {
+        "position": 75,
+        "age": 100,
+        "style": 67,
+        "availability": 85,
+        "budget": 35,
+        "level": 100
+      },
+      "recommendation": "Terzino destro, con grande velocità, adattabile al 4-2-3-1, cerca minutaggio (17% giocato), costo elevato per il club",
+      "matched_need": {
+        "position": "ED",
+        "player_type": "dribblatore",
+        "age_min": 19,
+        "age_max": 24,
+        "priority": "alta"
+      }
+    },
+    {
+      "player": {
+        "id": "milan_f_004",
+        "name": "Mattia Liberali",
+        "birth_year": 2007,
+        "age": 19,
+        "nationality": "Italia",
+        "primary_position": "TRQ",
+        "secondary_positions": [
+          "CC",
+          "AS"
+        ],
+        "preferred_foot": "destro",
+        "parent_club": "Milan",
+        "current_team": "Milan Futuro",
+        "contract_until": "2027-06-30",
+        "appearances": 8,
+        "minutes_played": 380,
+        "minutes_percentage": 14.1,
+        "is_underused": true,
+        "goals": 1,
+        "assists": 2,
+        "skills": {
+          "tecnica": 82,
+          "velocita": 70,
+          "fisico": 58,
+          "visione": 78,
+          "difesa": 35,
+          "pressing": 62,
+          "dribbling": 80,
+          "tiro": 68
+        },
+        "transfer_status": "sconosciuto",
+        "estimated_loan_cost": 0,
+        "market_value": 500,
+        "transfermarkt_url": "https://www.transfermarkt.it/mattia-liberali/profil/spieler/951589",
+        "last_updated": "2026-02-01"
+      },
+      "club_id": "perugia",
+      "club_name": "Perugia",
+      "score": 68,
+      "breakdown": {
+        "position": 70,
+        "age": 50,
+        "style": 70,
+        "availability": 40,
+        "budget": 100,
+        "level": 90
+      },
+      "recommendation": "Trequartista, con ottima tecnica, adattabile al 4-2-3-1, cerca minutaggio (14% giocato)",
+      "matched_need": {
+        "position": "CC",
+        "player_type": "interdittore",
+        "age_min": 21,
+        "age_max": 27,
+        "priority": "media"
+      }
     }
   ],
   "clubs": [
     {
-      "id": "la_fiorita",
-      "name": "S.S. La Fiorita",
-      "category": "Campionato Sammarinese",
-      "group": "",
-      "primary_formation": "4-3-3",
-      "playing_styles": [
-        "possesso",
-        "transizioni"
-      ],
-      "needs": [
-        {
-          "position": "AS",
-          "player_type": "veloce",
-          "age_min": 21,
-          "age_max": 28,
-          "priority": "alta"
-        },
-        {
-          "position": "CC",
-          "player_type": "box_to_box",
-          "age_min": 20,
-          "age_max": 26,
-          "priority": "media"
-        }
-      ],
-      "budget_type": "solo_prestiti",
-      "max_loan_cost": 25,
-      "youth_minutes_pct": 35.0,
-      "youth_development_score": 3,
-      "ds_name": "",
-      "city": "Montegiardino",
-      "last_updated": "2026-02-09"
-    },
-    {
-      "id": "pescara",
-      "name": "Pescara",
-      "category": "Serie C",
-      "group": "B",
-      "primary_formation": "3-5-2",
-      "playing_styles": [
-        "pressing_alto",
-        "transizioni",
-        "gioco_sulle_fasce"
-      ],
-      "needs": [
-        {
-          "position": "CC",
-          "player_type": "box_to_box",
-          "age_min": 19,
-          "age_max": 25,
-          "priority": "alta"
-        },
-        {
-          "position": "ES",
-          "player_type": "tutta_fascia",
-          "age_min": 20,
-          "age_max": 26,
-          "priority": "media"
-        },
-        {
-          "position": "DC",
-          "player_type": "impostatore",
-          "age_min": 20,
-          "age_max": 27,
-          "priority": "bassa"
-        }
-      ],
-      "budget_type": "solo_prestiti",
-      "max_loan_cost": 50,
-      "youth_minutes_pct": 42.5,
-      "youth_development_score": 4,
-      "ds_name": "",
-      "city": "Pescara",
-      "last_updated": "2026-02-01"
-    },
-    {
-      "id": "fiorentino",
-      "name": "S.S. Fiorentino",
+      "id": "san_giovanni",
+      "name": "S.S. San Giovanni",
       "category": "Campionato Sammarinese",
       "group": "",
       "primary_formation": "4-3-3",
@@ -1244,121 +1168,12 @@
           "position": "ES",
           "player_type": "tutta_fascia",
           "age_min": 20,
-          "age_max": 28,
-          "priority": "alta"
-        },
-        {
-          "position": "CC",
-          "player_type": "regista",
-          "age_min": 21,
-          "age_max": 26,
-          "priority": "media"
-        }
-      ],
-      "budget_type": "solo_prestiti",
-      "max_loan_cost": 25,
-      "youth_minutes_pct": 28.0,
-      "youth_development_score": 3,
-      "ds_name": "",
-      "city": "Fiorentino",
-      "last_updated": "2026-02-09"
-    },
-    {
-      "id": "folgore_falciano",
-      "name": "S.S. Folgore/Falciano",
-      "category": "Campionato Sammarinese",
-      "group": "",
-      "primary_formation": "4-3-3",
-      "playing_styles": [
-        "possesso",
-        "transizioni"
-      ],
-      "needs": [
-        {
-          "position": "CC",
-          "player_type": "box_to_box",
-          "age_min": 20,
           "age_max": 26,
           "priority": "alta"
         },
         {
-          "position": "ES",
-          "player_type": "tutta_fascia",
-          "age_min": 19,
-          "age_max": 28,
-          "priority": "media"
-        }
-      ],
-      "budget_type": "solo_prestiti",
-      "max_loan_cost": 25,
-      "youth_minutes_pct": 25.0,
-      "youth_development_score": 3,
-      "ds_name": "",
-      "city": "Serravalle / Falciano",
-      "last_updated": "2026-02-09"
-    },
-    {
-      "id": "perugia",
-      "name": "Perugia",
-      "category": "Serie C",
-      "group": "B",
-      "primary_formation": "4-2-3-1",
-      "playing_styles": [
-        "transizioni",
-        "gioco_diretto"
-      ],
-      "needs": [
-        {
-          "position": "PC",
-          "player_type": "finalizzatore",
-          "age_min": 20,
-          "age_max": 26,
-          "priority": "alta"
-        },
-        {
-          "position": "ED",
-          "player_type": "dribblatore",
-          "age_min": 19,
-          "age_max": 24,
-          "priority": "alta"
-        },
-        {
-          "position": "CC",
-          "player_type": "interdittore",
-          "age_min": 21,
-          "age_max": 27,
-          "priority": "media"
-        }
-      ],
-      "budget_type": "prestiti_obbligo",
-      "max_loan_cost": 75,
-      "youth_minutes_pct": 35.0,
-      "youth_development_score": 3,
-      "ds_name": "",
-      "city": "Perugia",
-      "last_updated": "2026-02-01"
-    },
-    {
-      "id": "libertas",
-      "name": "A.C. Libertas",
-      "category": "Campionato Sammarinese",
-      "group": "",
-      "primary_formation": "4-4-2",
-      "playing_styles": [
-        "transizioni",
-        "gioco_aereo"
-      ],
-      "needs": [
-        {
-          "position": "DC",
-          "player_type": "difensore",
-          "age_min": 22,
-          "age_max": 28,
-          "priority": "alta"
-        },
-        {
-          "position": "CC",
-          "player_type": "mediano",
+          "position": "ATT",
+          "player_type": "seconda_punta",
           "age_min": 20,
           "age_max": 27,
           "priority": "media"
@@ -1366,219 +1181,10 @@
       ],
       "budget_type": "solo_prestiti",
       "max_loan_cost": 20,
-      "youth_minutes_pct": 25.0,
+      "youth_minutes_pct": 20.0,
       "youth_development_score": 2,
       "ds_name": "",
-      "city": "Borgo Maggiore",
-      "last_updated": "2026-02-09"
-    },
-    {
-      "id": "san_marino_academy",
-      "name": "San Marino Academy U22",
-      "category": "Campionato Sammarinese",
-      "group": "",
-      "primary_formation": "4-3-3",
-      "playing_styles": [
-        "possesso",
-        "sviluppo_giovani"
-      ],
-      "needs": [
-        {
-          "position": "CC",
-          "player_type": "regista",
-          "age_min": 18,
-          "age_max": 22,
-          "priority": "alta"
-        },
-        {
-          "position": "ATT",
-          "player_type": "finalizzatore",
-          "age_min": 18,
-          "age_max": 22,
-          "priority": "alta"
-        }
-      ],
-      "budget_type": "solo_prestiti",
-      "max_loan_cost": 15,
-      "youth_minutes_pct": 85.0,
-      "youth_development_score": 5,
-      "ds_name": "",
-      "city": "San Marino",
-      "last_updated": "2026-02-09"
-    },
-    {
-      "id": "cesena",
-      "name": "Cesena",
-      "category": "Serie C",
-      "group": "B",
-      "primary_formation": "4-3-3",
-      "playing_styles": [
-        "possesso",
-        "pressing_alto"
-      ],
-      "needs": [
-        {
-          "position": "TRQ",
-          "player_type": "fantasista",
-          "age_min": 19,
-          "age_max": 24,
-          "priority": "alta"
-        },
-        {
-          "position": "AS",
-          "player_type": "veloce",
-          "age_min": 18,
-          "age_max": 23,
-          "priority": "alta"
-        },
-        {
-          "position": "MED",
-          "player_type": "regista",
-          "age_min": 21,
-          "age_max": 28,
-          "priority": "media"
-        }
-      ],
-      "budget_type": "solo_prestiti",
-      "max_loan_cost": 40,
-      "youth_minutes_pct": 38.0,
-      "youth_development_score": 4,
-      "ds_name": "",
-      "city": "Cesena",
-      "last_updated": "2026-02-01"
-    },
-    {
-      "id": "juvenes_dogana",
-      "name": "A.C. Juvenes/Dogana",
-      "category": "Campionato Sammarinese",
-      "group": "",
-      "primary_formation": "4-3-3",
-      "playing_styles": [
-        "pressing_alto",
-        "transizioni"
-      ],
-      "needs": [
-        {
-          "position": "DC",
-          "player_type": "difensore",
-          "age_min": 20,
-          "age_max": 26,
-          "priority": "alta"
-        },
-        {
-          "position": "AS",
-          "player_type": "veloce",
-          "age_min": 20,
-          "age_max": 28,
-          "priority": "media"
-        }
-      ],
-      "budget_type": "solo_prestiti",
-      "max_loan_cost": 25,
-      "youth_minutes_pct": 25.0,
-      "youth_development_score": 3,
-      "ds_name": "",
-      "city": "Dogana",
-      "last_updated": "2026-02-09"
-    },
-    {
-      "id": "virtus",
-      "name": "S.S. Virtus",
-      "category": "Campionato Sammarinese",
-      "group": "",
-      "primary_formation": "4-3-3",
-      "playing_styles": [
-        "pressing_alto"
-      ],
-      "needs": [
-        {
-          "position": "CC",
-          "player_type": "box_to_box",
-          "age_min": 20,
-          "age_max": 26,
-          "priority": "alta"
-        },
-        {
-          "position": "ATT",
-          "player_type": "finalizzatore",
-          "age_min": 18,
-          "age_max": 28,
-          "priority": "media"
-        }
-      ],
-      "budget_type": "solo_prestiti",
-      "max_loan_cost": 25,
-      "youth_minutes_pct": 36.0,
-      "youth_development_score": 3,
-      "ds_name": "",
-      "city": "Acquaviva",
-      "last_updated": "2026-02-09"
-    },
-    {
-      "id": "murata",
-      "name": "S.S. Murata",
-      "category": "Campionato Sammarinese",
-      "group": "",
-      "primary_formation": "4-4-2",
-      "playing_styles": [
-        "difesa_bassa",
-        "contropiede"
-      ],
-      "needs": [
-        {
-          "position": "DC",
-          "player_type": "stopper",
-          "age_min": 23,
-          "age_max": 30,
-          "priority": "alta"
-        },
-        {
-          "position": "ATT",
-          "player_type": "prima_punta",
-          "age_min": 22,
-          "age_max": 29,
-          "priority": "alta"
-        }
-      ],
-      "budget_type": "solo_prestiti",
-      "max_loan_cost": 18,
-      "youth_minutes_pct": 15.0,
-      "youth_development_score": 2,
-      "ds_name": "",
-      "city": "Murata",
-      "last_updated": "2026-02-09"
-    },
-    {
-      "id": "pennarossa",
-      "name": "S.S. Pennarossa",
-      "category": "Campionato Sammarinese",
-      "group": "",
-      "primary_formation": "4-3-3",
-      "playing_styles": [
-        "possesso"
-      ],
-      "needs": [
-        {
-          "position": "CC",
-          "player_type": "box_to_box",
-          "age_min": 21,
-          "age_max": 26,
-          "priority": "alta"
-        },
-        {
-          "position": "AS",
-          "player_type": "veloce",
-          "age_min": 19,
-          "age_max": 28,
-          "priority": "media"
-        }
-      ],
-      "budget_type": "solo_prestiti",
-      "max_loan_cost": 25,
-      "youth_minutes_pct": 32.0,
-      "youth_development_score": 3,
-      "ds_name": "",
-      "city": "Chiesanuova",
+      "city": "San Giovanni sotto le Penne",
       "last_updated": "2026-02-09"
     },
     {
@@ -1631,6 +1237,174 @@
       "last_updated": "2026-02-09"
     },
     {
+      "id": "cailungo",
+      "name": "S.P. Cailungo",
+      "category": "Campionato Sammarinese",
+      "group": "",
+      "primary_formation": "4-3-3",
+      "playing_styles": [
+        "possesso",
+        "transizioni"
+      ],
+      "needs": [
+        {
+          "position": "CC",
+          "player_type": "box_to_box",
+          "age_min": 20,
+          "age_max": 26,
+          "priority": "alta"
+        },
+        {
+          "position": "ATT",
+          "player_type": "finalizzatore",
+          "age_min": 18,
+          "age_max": 28,
+          "priority": "media"
+        }
+      ],
+      "budget_type": "solo_prestiti",
+      "max_loan_cost": 25,
+      "youth_minutes_pct": 40.0,
+      "youth_development_score": 3,
+      "ds_name": "",
+      "city": "Borgo Maggiore",
+      "last_updated": "2026-02-09"
+    },
+    {
+      "id": "san_marino_academy",
+      "name": "San Marino Academy U22",
+      "category": "Campionato Sammarinese",
+      "group": "",
+      "primary_formation": "4-3-3",
+      "playing_styles": [
+        "possesso",
+        "sviluppo_giovani"
+      ],
+      "needs": [
+        {
+          "position": "CC",
+          "player_type": "regista",
+          "age_min": 18,
+          "age_max": 22,
+          "priority": "alta"
+        },
+        {
+          "position": "ATT",
+          "player_type": "finalizzatore",
+          "age_min": 18,
+          "age_max": 22,
+          "priority": "alta"
+        }
+      ],
+      "budget_type": "solo_prestiti",
+      "max_loan_cost": 15,
+      "youth_minutes_pct": 85.0,
+      "youth_development_score": 5,
+      "ds_name": "",
+      "city": "San Marino",
+      "last_updated": "2026-02-09"
+    },
+    {
+      "id": "fiorentino",
+      "name": "S.S. Fiorentino",
+      "category": "Campionato Sammarinese",
+      "group": "",
+      "primary_formation": "4-3-3",
+      "playing_styles": [
+        "possesso"
+      ],
+      "needs": [
+        {
+          "position": "ES",
+          "player_type": "tutta_fascia",
+          "age_min": 20,
+          "age_max": 28,
+          "priority": "alta"
+        },
+        {
+          "position": "CC",
+          "player_type": "regista",
+          "age_min": 21,
+          "age_max": 26,
+          "priority": "media"
+        }
+      ],
+      "budget_type": "solo_prestiti",
+      "max_loan_cost": 25,
+      "youth_minutes_pct": 28.0,
+      "youth_development_score": 3,
+      "ds_name": "",
+      "city": "Fiorentino",
+      "last_updated": "2026-02-09"
+    },
+    {
+      "id": "murata",
+      "name": "S.S. Murata",
+      "category": "Campionato Sammarinese",
+      "group": "",
+      "primary_formation": "4-4-2",
+      "playing_styles": [
+        "difesa_bassa",
+        "contropiede"
+      ],
+      "needs": [
+        {
+          "position": "DC",
+          "player_type": "stopper",
+          "age_min": 23,
+          "age_max": 30,
+          "priority": "alta"
+        },
+        {
+          "position": "ATT",
+          "player_type": "prima_punta",
+          "age_min": 22,
+          "age_max": 29,
+          "priority": "alta"
+        }
+      ],
+      "budget_type": "solo_prestiti",
+      "max_loan_cost": 18,
+      "youth_minutes_pct": 15.0,
+      "youth_development_score": 2,
+      "ds_name": "",
+      "city": "Murata",
+      "last_updated": "2026-02-09"
+    },
+    {
+      "id": "tre_penne",
+      "name": "S.P. Tre Penne",
+      "category": "Campionato Sammarinese",
+      "group": "",
+      "primary_formation": "4-3-3",
+      "playing_styles": [
+        "possesso"
+      ],
+      "needs": [
+        {
+          "position": "CC",
+          "player_type": "box_to_box",
+          "age_min": 20,
+          "age_max": 26,
+          "priority": "alta"
+        },
+        {
+          "position": "ATT",
+          "player_type": "finalizzatore",
+          "age_min": 19,
+          "age_max": 28,
+          "priority": "media"
+        }
+      ],
+      "budget_type": "solo_prestiti",
+      "max_loan_cost": 25,
+      "youth_minutes_pct": 50.0,
+      "youth_development_score": 3,
+      "ds_name": "",
+      "city": "San Marino",
+      "last_updated": "2026-02-09"
+    },
+    {
       "id": "domagnano",
       "name": "F.C. Domagnano",
       "category": "Campionato Sammarinese",
@@ -1664,25 +1438,136 @@
       "last_updated": "2026-02-09"
     },
     {
-      "id": "san_giovanni",
-      "name": "S.S. San Giovanni",
-      "category": "Campionato Sammarinese",
-      "group": "",
-      "primary_formation": "4-3-3",
+      "id": "pescara",
+      "name": "Pescara",
+      "category": "Serie C",
+      "group": "B",
+      "primary_formation": "3-5-2",
       "playing_styles": [
-        "possesso"
+        "pressing_alto",
+        "transizioni",
+        "gioco_sulle_fasce"
       ],
       "needs": [
+        {
+          "position": "CC",
+          "player_type": "box_to_box",
+          "age_min": 19,
+          "age_max": 25,
+          "priority": "alta"
+        },
         {
           "position": "ES",
           "player_type": "tutta_fascia",
           "age_min": 20,
           "age_max": 26,
+          "priority": "media"
+        },
+        {
+          "position": "DC",
+          "player_type": "impostatore",
+          "age_min": 20,
+          "age_max": 27,
+          "priority": "bassa"
+        }
+      ],
+      "budget_type": "solo_prestiti",
+      "max_loan_cost": 50,
+      "youth_minutes_pct": 42.5,
+      "youth_development_score": 4,
+      "ds_name": "",
+      "city": "Pescara",
+      "last_updated": "2026-02-01"
+    },
+    {
+      "id": "juvenes_dogana",
+      "name": "A.C. Juvenes/Dogana",
+      "category": "Campionato Sammarinese",
+      "group": "",
+      "primary_formation": "4-3-3",
+      "playing_styles": [
+        "pressing_alto",
+        "transizioni"
+      ],
+      "needs": [
+        {
+          "position": "DC",
+          "player_type": "difensore",
+          "age_min": 20,
+          "age_max": 26,
           "priority": "alta"
         },
         {
-          "position": "ATT",
-          "player_type": "seconda_punta",
+          "position": "AS",
+          "player_type": "veloce",
+          "age_min": 20,
+          "age_max": 28,
+          "priority": "media"
+        }
+      ],
+      "budget_type": "solo_prestiti",
+      "max_loan_cost": 25,
+      "youth_minutes_pct": 25.0,
+      "youth_development_score": 3,
+      "ds_name": "",
+      "city": "Dogana",
+      "last_updated": "2026-02-09"
+    },
+    {
+      "id": "la_fiorita",
+      "name": "S.S. La Fiorita",
+      "category": "Campionato Sammarinese",
+      "group": "",
+      "primary_formation": "4-3-3",
+      "playing_styles": [
+        "possesso",
+        "transizioni"
+      ],
+      "needs": [
+        {
+          "position": "AS",
+          "player_type": "veloce",
+          "age_min": 21,
+          "age_max": 28,
+          "priority": "alta"
+        },
+        {
+          "position": "CC",
+          "player_type": "box_to_box",
+          "age_min": 20,
+          "age_max": 26,
+          "priority": "media"
+        }
+      ],
+      "budget_type": "solo_prestiti",
+      "max_loan_cost": 25,
+      "youth_minutes_pct": 35.0,
+      "youth_development_score": 3,
+      "ds_name": "",
+      "city": "Montegiardino",
+      "last_updated": "2026-02-09"
+    },
+    {
+      "id": "libertas",
+      "name": "A.C. Libertas",
+      "category": "Campionato Sammarinese",
+      "group": "",
+      "primary_formation": "4-4-2",
+      "playing_styles": [
+        "transizioni",
+        "gioco_aereo"
+      ],
+      "needs": [
+        {
+          "position": "DC",
+          "player_type": "difensore",
+          "age_min": 22,
+          "age_max": 28,
+          "priority": "alta"
+        },
+        {
+          "position": "CC",
+          "player_type": "mediano",
           "age_min": 20,
           "age_max": 27,
           "priority": "media"
@@ -1690,10 +1575,117 @@
       ],
       "budget_type": "solo_prestiti",
       "max_loan_cost": 20,
-      "youth_minutes_pct": 20.0,
+      "youth_minutes_pct": 25.0,
       "youth_development_score": 2,
       "ds_name": "",
-      "city": "San Giovanni sotto le Penne",
+      "city": "Borgo Maggiore",
+      "last_updated": "2026-02-09"
+    },
+    {
+      "id": "faetano",
+      "name": "S.C. Faetano",
+      "category": "Campionato Sammarinese",
+      "group": "",
+      "primary_formation": "4-3-3",
+      "playing_styles": [
+        "difesa_bassa"
+      ],
+      "needs": [
+        {
+          "position": "DC",
+          "player_type": "difensore",
+          "age_min": 21,
+          "age_max": 28,
+          "priority": "alta"
+        },
+        {
+          "position": "ATT",
+          "player_type": "finalizzatore",
+          "age_min": 20,
+          "age_max": 28,
+          "priority": "media"
+        }
+      ],
+      "budget_type": "solo_prestiti",
+      "max_loan_cost": 25,
+      "youth_minutes_pct": 18.0,
+      "youth_development_score": 3,
+      "ds_name": "",
+      "city": "Faetano",
+      "last_updated": "2026-02-09"
+    },
+    {
+      "id": "cesena",
+      "name": "Cesena",
+      "category": "Serie C",
+      "group": "B",
+      "primary_formation": "4-3-3",
+      "playing_styles": [
+        "possesso",
+        "pressing_alto"
+      ],
+      "needs": [
+        {
+          "position": "TRQ",
+          "player_type": "fantasista",
+          "age_min": 19,
+          "age_max": 24,
+          "priority": "alta"
+        },
+        {
+          "position": "AS",
+          "player_type": "veloce",
+          "age_min": 18,
+          "age_max": 23,
+          "priority": "alta"
+        },
+        {
+          "position": "MED",
+          "player_type": "regista",
+          "age_min": 21,
+          "age_max": 28,
+          "priority": "media"
+        }
+      ],
+      "budget_type": "solo_prestiti",
+      "max_loan_cost": 40,
+      "youth_minutes_pct": 38.0,
+      "youth_development_score": 4,
+      "ds_name": "",
+      "city": "Cesena",
+      "last_updated": "2026-02-01"
+    },
+    {
+      "id": "tre_fiori",
+      "name": "Tre Fiori F.C.",
+      "category": "Campionato Sammarinese",
+      "group": "",
+      "primary_formation": "4-3-3",
+      "playing_styles": [
+        "transizioni"
+      ],
+      "needs": [
+        {
+          "position": "CC",
+          "player_type": "box_to_box",
+          "age_min": 20,
+          "age_max": 26,
+          "priority": "alta"
+        },
+        {
+          "position": "ATT",
+          "player_type": "finalizzatore",
+          "age_min": 18,
+          "age_max": 28,
+          "priority": "media"
+        }
+      ],
+      "budget_type": "solo_prestiti",
+      "max_loan_cost": 25,
+      "youth_minutes_pct": 22.0,
+      "youth_development_score": 3,
+      "ds_name": "",
+      "city": "Fiorentino",
       "last_updated": "2026-02-09"
     },
     {
@@ -1739,8 +1731,115 @@
       "last_updated": "2026-02-01"
     },
     {
-      "id": "cailungo",
-      "name": "S.P. Cailungo",
+      "id": "pennarossa",
+      "name": "S.S. Pennarossa",
+      "category": "Campionato Sammarinese",
+      "group": "",
+      "primary_formation": "4-3-3",
+      "playing_styles": [
+        "possesso"
+      ],
+      "needs": [
+        {
+          "position": "CC",
+          "player_type": "box_to_box",
+          "age_min": 21,
+          "age_max": 26,
+          "priority": "alta"
+        },
+        {
+          "position": "AS",
+          "player_type": "veloce",
+          "age_min": 19,
+          "age_max": 28,
+          "priority": "media"
+        }
+      ],
+      "budget_type": "solo_prestiti",
+      "max_loan_cost": 25,
+      "youth_minutes_pct": 32.0,
+      "youth_development_score": 3,
+      "ds_name": "",
+      "city": "Chiesanuova",
+      "last_updated": "2026-02-09"
+    },
+    {
+      "id": "perugia",
+      "name": "Perugia",
+      "category": "Serie C",
+      "group": "B",
+      "primary_formation": "4-2-3-1",
+      "playing_styles": [
+        "transizioni",
+        "gioco_diretto"
+      ],
+      "needs": [
+        {
+          "position": "PC",
+          "player_type": "finalizzatore",
+          "age_min": 20,
+          "age_max": 26,
+          "priority": "alta"
+        },
+        {
+          "position": "ED",
+          "player_type": "dribblatore",
+          "age_min": 19,
+          "age_max": 24,
+          "priority": "alta"
+        },
+        {
+          "position": "CC",
+          "player_type": "interdittore",
+          "age_min": 21,
+          "age_max": 27,
+          "priority": "media"
+        }
+      ],
+      "budget_type": "prestiti_obbligo",
+      "max_loan_cost": 75,
+      "youth_minutes_pct": 35.0,
+      "youth_development_score": 3,
+      "ds_name": "",
+      "city": "Perugia",
+      "last_updated": "2026-02-01"
+    },
+    {
+      "id": "virtus",
+      "name": "S.S. Virtus",
+      "category": "Campionato Sammarinese",
+      "group": "",
+      "primary_formation": "4-3-3",
+      "playing_styles": [
+        "pressing_alto"
+      ],
+      "needs": [
+        {
+          "position": "CC",
+          "player_type": "box_to_box",
+          "age_min": 20,
+          "age_max": 26,
+          "priority": "alta"
+        },
+        {
+          "position": "ATT",
+          "player_type": "finalizzatore",
+          "age_min": 18,
+          "age_max": 28,
+          "priority": "media"
+        }
+      ],
+      "budget_type": "solo_prestiti",
+      "max_loan_cost": 25,
+      "youth_minutes_pct": 36.0,
+      "youth_development_score": 3,
+      "ds_name": "",
+      "city": "Acquaviva",
+      "last_updated": "2026-02-09"
+    },
+    {
+      "id": "folgore_falciano",
+      "name": "S.S. Folgore/Falciano",
       "category": "Campionato Sammarinese",
       "group": "",
       "primary_formation": "4-3-3",
@@ -1757,107 +1856,8 @@
           "priority": "alta"
         },
         {
-          "position": "ATT",
-          "player_type": "finalizzatore",
-          "age_min": 18,
-          "age_max": 28,
-          "priority": "media"
-        }
-      ],
-      "budget_type": "solo_prestiti",
-      "max_loan_cost": 25,
-      "youth_minutes_pct": 40.0,
-      "youth_development_score": 3,
-      "ds_name": "",
-      "city": "Borgo Maggiore",
-      "last_updated": "2026-02-09"
-    },
-    {
-      "id": "faetano",
-      "name": "S.C. Faetano",
-      "category": "Campionato Sammarinese",
-      "group": "",
-      "primary_formation": "4-3-3",
-      "playing_styles": [
-        "difesa_bassa"
-      ],
-      "needs": [
-        {
-          "position": "DC",
-          "player_type": "difensore",
-          "age_min": 21,
-          "age_max": 28,
-          "priority": "alta"
-        },
-        {
-          "position": "ATT",
-          "player_type": "finalizzatore",
-          "age_min": 20,
-          "age_max": 28,
-          "priority": "media"
-        }
-      ],
-      "budget_type": "solo_prestiti",
-      "max_loan_cost": 25,
-      "youth_minutes_pct": 18.0,
-      "youth_development_score": 3,
-      "ds_name": "",
-      "city": "Faetano",
-      "last_updated": "2026-02-09"
-    },
-    {
-      "id": "tre_fiori",
-      "name": "Tre Fiori F.C.",
-      "category": "Campionato Sammarinese",
-      "group": "",
-      "primary_formation": "4-3-3",
-      "playing_styles": [
-        "transizioni"
-      ],
-      "needs": [
-        {
-          "position": "CC",
-          "player_type": "box_to_box",
-          "age_min": 20,
-          "age_max": 26,
-          "priority": "alta"
-        },
-        {
-          "position": "ATT",
-          "player_type": "finalizzatore",
-          "age_min": 18,
-          "age_max": 28,
-          "priority": "media"
-        }
-      ],
-      "budget_type": "solo_prestiti",
-      "max_loan_cost": 25,
-      "youth_minutes_pct": 22.0,
-      "youth_development_score": 3,
-      "ds_name": "",
-      "city": "Fiorentino",
-      "last_updated": "2026-02-09"
-    },
-    {
-      "id": "tre_penne",
-      "name": "S.P. Tre Penne",
-      "category": "Campionato Sammarinese",
-      "group": "",
-      "primary_formation": "4-3-3",
-      "playing_styles": [
-        "possesso"
-      ],
-      "needs": [
-        {
-          "position": "CC",
-          "player_type": "box_to_box",
-          "age_min": 20,
-          "age_max": 26,
-          "priority": "alta"
-        },
-        {
-          "position": "ATT",
-          "player_type": "finalizzatore",
+          "position": "ES",
+          "player_type": "tutta_fascia",
           "age_min": 19,
           "age_max": 28,
           "priority": "media"
@@ -1865,10 +1865,10 @@
       ],
       "budget_type": "solo_prestiti",
       "max_loan_cost": 25,
-      "youth_minutes_pct": 50.0,
+      "youth_minutes_pct": 25.0,
       "youth_development_score": 3,
       "ds_name": "",
-      "city": "San Marino",
+      "city": "Serravalle / Falciano",
       "last_updated": "2026-02-09"
     }
   ],
@@ -1876,13 +1876,13 @@
     "total_players": 10,
     "total_clubs": 20,
     "parent_clubs": [
+      "Atalanta",
       "Juventus",
-      "Milan",
-      "Atalanta"
+      "Milan"
     ],
     "underused_players": 7,
-    "last_updated": "2026-02-12T13:19:09.807196"
+    "last_updated": "2026-02-12T19:14:03.635723"
   },
-  "generated_at": "2026-02-12T13:19:09.808387",
+  "generated_at": "2026-02-12T19:14:03.636682",
   "version": "2.1"
 }
