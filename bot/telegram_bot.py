@@ -124,7 +124,7 @@ Ciao {user.first_name}! Sono il tuo assistente per lo scouting in Serie C e Seri
 Oppure scrivimi direttamente cosa cerchi! 💬
         """
 
-        await update.message.reply_text(welcome, parse_mode="Markdown")
+        await update.message.reply_text(welcome)
 
     async def help_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Handler /help"""
@@ -154,7 +154,7 @@ Puoi chiedermi qualsiasi cosa, ad esempio:
 *Tip:* I dati includono ora agente, presenze, gol, assist e minuti giocati!
         """
 
-        await update.message.reply_text(help_text, parse_mode="Markdown")
+        await update.message.reply_text(help_text)
 
     async def svincolati(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Handler /svincolati"""
@@ -179,8 +179,7 @@ Puoi chiedermi qualsiasi cosa, ad esempio:
 
         if not context.args:
             await update.message.reply_text(
-                "❓ Specifica il nome del giocatore\nEs: `/player Nicolas Viola`",
-                parse_mode="Markdown",
+                "❓ Specifica il nome del giocatore\nEs: /player Nicolas Viola"
             )
             return
 
@@ -215,8 +214,7 @@ Puoi chiedermi qualsiasi cosa, ad esempio:
         if not context.args:
             await update.message.reply_text(
                 "❓ Specifica i criteri di ricerca\n"
-                "Es: `/cerca difensore centrale under 25`",
-                parse_mode="Markdown",
+                "Es: /cerca difensore centrale under 25"
             )
             return
 
@@ -237,8 +235,7 @@ Puoi chiedermi qualsiasi cosa, ad esempio:
 
         if not context.args:
             await update.message.reply_text(
-                "❓ Specifica il nome dell'agenzia\nEs: `/agent Esse Sports`",
-                parse_mode="Markdown",
+                "❓ Specifica il nome dell'agenzia\nEs: /agent Esse Sports"
             )
             return
 
@@ -264,8 +261,7 @@ Puoi chiedermi qualsiasi cosa, ad esempio:
         if not context.args:
             await update.message.reply_text(
                 "❓ Specifica il numero minimo di presenze\n"
-                "Es: `/stats 15` o `/stats 10 centrocampista`",
-                parse_mode="Markdown",
+                "Es: /stats 15 o /stats 10 centrocampista"
             )
             return
 
@@ -337,9 +333,7 @@ Puoi chiedermi qualsiasi cosa, ad esempio:
             parts.append(current)
 
         for i, part in enumerate(parts):
-            await update.message.reply_text(
-                f"{part}\n\n_({i + 1}/{len(parts)})_", parse_mode="Markdown"
-            )
+            await update.message.reply_text(f"{part}\n\n({i + 1}/{len(parts)})")
 
     # =========================================================================
     # RUN
@@ -348,7 +342,7 @@ Puoi chiedermi qualsiasi cosa, ad esempio:
     def run(self):
         """Avvia il bot"""
 
-        print("🤖 Avvio OB1 Telegram Bot...")
+        print("[START] Avvio OB1 Telegram Bot...")
 
         app = Application.builder().token(self.token).build()
 
@@ -384,7 +378,7 @@ Puoi chiedermi qualsiasi cosa, ad esempio:
 
         app.post_init = set_commands
 
-        print("✅ Bot pronto!")
+        print("[OK] Bot pronto!")
         app.run_polling(allowed_updates=Update.ALL_TYPES)
 
 
@@ -394,7 +388,7 @@ Puoi chiedermi qualsiasi cosa, ad esempio:
 
 if __name__ == "__main__":
     if not TELEGRAM_AVAILABLE:
-        print("❌ Installa python-telegram-bot:")
+        print("[ERROR] Installa python-telegram-bot:")
         print("   pip install python-telegram-bot")
         exit(1)
 
