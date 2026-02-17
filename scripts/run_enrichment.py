@@ -45,11 +45,15 @@ def main():
         try:
             tm_data = enrich_with_retry(enricher, player_name)
             if tm_data:
-                for key in ['nationality', 'second_nationality', 'foot', 'market_value', 'market_value_formatted', 'height_cm', 'birth_date', 'contract_expires', 'tm_url', 'agent']:
-                    opp[key] = tm_data.get(key)
+                for key in ['nationality', 'second_nationality', 'foot', 'market_value', 'market_value_formatted', 'height_cm', 'birth_date', 'contract_expires', 'tm_url', 'agent', 'appearances', 'goals', 'assists', 'minutes_played']:
+                    val = tm_data.get(key)
+                    if val is not None:
+                        opp[key] = val
                 p = opp.setdefault('player_profile', {})
-                for key in ['nationality', 'second_nationality', 'market_value', 'market_value_formatted', 'contract_expiry', 'foot', 'height_cm', 'tm_url', 'agent']:
-                    p[key] = tm_data.get(key)
+                for key in ['nationality', 'second_nationality', 'market_value', 'market_value_formatted', 'contract_expiry', 'foot', 'height_cm', 'tm_url', 'agent', 'appearances', 'goals', 'assists', 'minutes_played']:
+                    val = tm_data.get(key)
+                    if val is not None:
+                        p[key] = val
                 if not opp.get('age') and tm_data.get('birth_date'):
                     try:
                         opp['age'] = 2026 - int(tm_data['birth_date'][:4])

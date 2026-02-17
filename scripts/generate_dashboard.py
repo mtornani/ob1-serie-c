@@ -63,8 +63,10 @@ def main():
             'source_url': opp.get('source_url', ''),
             'previous_clubs': opp.get('previous_clubs', []),
             'current_club': opp.get('current_club', ''),
-            'appearances': opp.get('appearances', 0),
-            'goals': opp.get('goals', 0),
+            'appearances': opp.get('appearances') or profile.get('appearances') or 0,
+            'goals': opp.get('goals') or profile.get('goals') or 0,
+            'assists': opp.get('assists') or profile.get('assists') or 0,
+            'minutes_played': opp.get('minutes_played') or profile.get('minutes_played') or 0,
             'summary': opp.get('summary', ''),
             
             # DATA-001: New enriched fields
