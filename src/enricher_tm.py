@@ -13,28 +13,29 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 class TransfermarktEnricher:
     """
     Cerca e scarica dati strutturati da Transfermarkt usando Tavily per l'accesso
     e Gemini per il parsing.
     """
-    
+
     def __init__(self):
-        self.tavily_key = os.getenv('TAVILY_API_KEY')
-        self.gemini_key = os.getenv('GEMINI_API_KEY')
-        
+        self.tavily_key = os.getenv("TAVILY_API_KEY")
+        self.gemini_key = os.getenv("GEMINI_API_KEY")
+
         if not self.tavily_key:
             raise ValueError("TAVILY_API_KEY mancante")
         if not self.gemini_key:
             raise ValueError("GEMINI_API_KEY mancante")
-            
+
         self.session = requests.Session()
 
     def search_player_profile(self, player_name: str) -> Optional[Dict[str, Any]]:
         """Cerca il profilo Transfermarkt di un giocatore"""
-        
+
         query = f"site:transfermarkt.it {player_name} profilo giocatore"
-        
+
         url = "https://api.tavily.com/search"
         payload = {
             "api_key": self.tavily_key,
@@ -42,38 +43,46 @@ class TransfermarktEnricher:
             "search_depth": "basic",
             "max_results": 1,
             "include_domains": ["transfermarkt.it"],
-            "include_raw_content": True
+            "include_raw_content": True,
         }
-        
+
+        response = None
         try:
-            print(f"  🔍 Cercando {player_name} su Transfermarkt...")
+            print(f"  [SEARCH] Cercando {player_name} su Transfermarkt...")
             response = self.session.post(url, json=payload, timeout=30)
             response.raise_for_status()
             data = response.json()
-            
-            results = data.get('results', [])
+
+            results = data.get("results", [])
             if not results:
-                print(f"  ❌ Nessun profilo trovato per {player_name}")
+                print(f"  [WARN] Nessun profilo trovato per {player_name}")
                 return None
-                
+
             return results[0]
-            
+
         except Exception as e:
-            print(f"  ⚠️ Errore ricerca Tavily: {e}")
+            try:
+                if response is not None:
+                    error_text = response.text
+                    print(f"  [ERROR] Tavily API: {e} | Response: {error_text[:200]}")
+                else:
+                    print(f"  [ERROR] Tavily API: {e}")
+            except:
+                print(f"  [ERROR] Tavily API: {e}")
             return None
 
     def extract_data_with_gemini(self, content: str, url: str) -> Dict[str, Any]:
         """Usa Gemini per estrarre dati strutturati dal testo grezzo della pagina"""
-        
+
         # Truncate content to avoid token limits (TM pages can be long)
-        max_chars = 12000 
+        max_chars = 12000
         if len(content) > max_chars:
             content = content[:max_chars] + "..."
 
-        prompt = f'''Sei un data analyst sportivo. Estrai i dati esatti da questo contenuto di pagina Transfermarkt.
+        prompt = f"""Sei un data analyst sportivo. Estrai i dati esatti da questo contenuto di pagina Transfermarkt.
 URL: {url}
 
-DATI RICHIESTI (rispondi in JSON):
+DATI RICHIESTI (rispondi in JSON senz'altro testo):
 {{
   "full_name": "Nome completo",
   "birth_date": "YYYY-MM-DD" o null,
@@ -91,67 +100,98 @@ DATI RICHIESTI (rispondi in JSON):
   "player_image_url": "URL immagine profilo giocatore da Transfermarkt (cerca tag img con classe 'data-src' o 'bilderrahmen-fixed')" o null
 }}
 
+STATISTICHE STAGIONE 2025/26 (opzionali):
+{{
+  "appearances": numero intero di presenze o null,
+  "goals": numero intero di gol o null,
+  "assists": numero intero di assist o null,
+  "minutes_played": numero intero di minuti giocati o null
+}}
+
 Se un dato non è presente, metti null.
 Per il valore di mercato, cerca "Valore attuale:" o simili.
 Per la cittadinanza, cerca "Nazionalità:" o "Citizenship:". Spesso sono presenti due bandiere se ha il doppio passaporto.
+Per le statistiche, cerca "Presenze:", "Gol:", "Assist:", "Minuti giocati:" o tabelle con stats stagionali.
 
 CONTENUTO PAGINA:
 {content}
 
-JSON:'''
+JSON:"""
 
         gemini_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={self.gemini_key}"
-        
+
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {
-                "temperature": 0.0, # Deterministic
+                "temperature": 0.0,  # Deterministic
                 "maxOutputTokens": 1000,
-                "responseMimeType": "application/json"
-            }
+                "responseMimeType": "application/json",
+            },
         }
-        
+
         try:
             response = self.session.post(gemini_url, json=payload, timeout=30)
             response.raise_for_status()
             data = response.json()
-            
-            text = data['candidates'][0]['content']['parts'][0]['text']
-            return json.loads(text)
-            
+
+            candidates = data.get("candidates", [])
+            if not candidates:
+                print("  [WARN] Nessuna risposta da Gemini")
+                return {}
+
+            content_dict = candidates[0].get("content", {})
+            if not isinstance(content_dict, dict):
+                print("  [WARN] Contenuto non valido in risposta Gemini")
+                return {}
+
+            parts = content_dict.get("parts", [])
+            if not isinstance(parts, list) or not parts:
+                print("  [WARN] Nessun contenuto in risposta Gemini")
+                return {}
+
+            parts_list = list(parts)
+            text = parts_list[0].get("text", "")
+            if not text:
+                print("  [WARN] Testo vuoto in risposta Gemini")
+                return {}
+
+            parsed = json.loads(text)
+            return parsed
+
         except Exception as e:
-            print(f"  ⚠️ Errore parsing Gemini: {e}")
+            print(f"  [ERROR] Errore parsing Gemini: {e}")
             return {}
 
     def enrich_player(self, player_name: str) -> Dict[str, Any]:
         """Metodo principale: Cerca -> Scarica -> Estrae -> Ritorna"""
-        
+
         result = self.search_player_profile(player_name)
         if not result:
             return {}
-            
-        raw_content = result.get('raw_content', '')
-        url = result.get('url', '')
-        
+
+        raw_content = result.get("raw_content", "")
+        url = result.get("url", "")
+
         if not raw_content:
             print("  ⚠️ Contenuto vuoto da Tavily")
             return {}
-            
+
         print(f"  📝 Analizzando dati da: {url}")
         tm_data = self.extract_data_with_gemini(raw_content, url)
-        tm_data['tm_url'] = url
-        
+        tm_data["tm_url"] = url
+
         return tm_data
+
 
 # Test rapido se eseguito direttamente
 if __name__ == "__main__":
     import sys
-    
+
     if len(sys.argv) > 1:
         name = sys.argv[1]
     else:
         name = "Giuseppe Rossi"
-        
+
     enricher = TransfermarktEnricher()
     print(f"Enriching: {name}")
     data = enricher.enrich_player(name)
