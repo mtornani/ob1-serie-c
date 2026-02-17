@@ -5,10 +5,16 @@ Interfaccia mobile per direttori sportivi
 """
 
 import os
+import sys
 import asyncio
 import logging
 from datetime import datetime
 from dotenv import load_dotenv
+from io import TextIOWrapper
+
+# Force UTF-8 output
+sys.stdout = TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+sys.stderr = TextIOWrapper(sys.stderr.buffer, encoding="utf-8")
 
 load_dotenv()
 
