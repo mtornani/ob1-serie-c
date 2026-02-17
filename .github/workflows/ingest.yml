@@ -35,6 +35,16 @@ jobs:
         name: ob1-database
         path: data/
 
+    - name: Snapshot current data (DATA-003)
+      run: |
+        mkdir -p data/snapshots
+        if [ -f data/opportunities.json ]; then
+          cp data/opportunities.json "data/snapshots/opportunities_$(date -u +'%Y%m%d_%H%M').json"
+          echo "✅ Snapshot created: opportunities_$(date -u +'%Y%m%d_%H%M').json"
+        else
+          echo "⚠️ No existing data to snapshot"
+        fi
+
     - name: Run ingest pipeline
       id: ingest
       env:
