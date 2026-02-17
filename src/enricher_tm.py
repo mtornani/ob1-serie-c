@@ -97,7 +97,11 @@ DATI RICHIESTI (rispondi in JSON senz'altro testo):
   "market_value_text": "stringa formattata" (es. "€150k") o null,
   "main_position": "Ruolo principale",
   "agent": "Nome Agenzia" o null,
-  "player_image_url": "URL immagine profilo giocatore da Transfermarkt (cerca tag img con classe 'data-src' o 'bilderrahmen-fixed')" o null
+  "player_image_url": "URL immagine profilo giocatore da Transfermarkt (cerca tag img con classe 'data-src' o 'bilderrahmen-fixed')" o null,
+  "appearances": numero intero presenze stagione corrente 2025/26 (tutte le competizioni) o null,
+  "goals": numero intero gol segnati stagione corrente 2025/26 o null,
+  "assists": numero intero assist stagione corrente 2025/26 o null,
+  "minutes_played": numero intero minuti giocati stagione corrente 2025/26 o null
 }}
 
 STATISTICHE STAGIONE 2025/26 (opzionali):
@@ -111,7 +115,8 @@ STATISTICHE STAGIONE 2025/26 (opzionali):
 Se un dato non è presente, metti null.
 Per il valore di mercato, cerca "Valore attuale:" o simili.
 Per la cittadinanza, cerca "Nazionalità:" o "Citizenship:". Spesso sono presenti due bandiere se ha il doppio passaporto.
-Per le statistiche, cerca "Presenze:", "Gol:", "Assist:", "Minuti giocati:" o tabelle con stats stagionali.
+<<<<<<< HEAD
+Per le statistiche stagionali, cerca tabelle con "Presenze", "Gol", "Assist", "Minuti" relative alla stagione 25/26 o alla stagione piu' recente disponibile.
 
 CONTENUTO PAGINA:
 {content}
@@ -124,7 +129,7 @@ JSON:"""
             "contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {
                 "temperature": 0.0,  # Deterministic
-                "maxOutputTokens": 1000,
+                "maxOutputTokens": 1500,
                 "responseMimeType": "application/json",
             },
         }

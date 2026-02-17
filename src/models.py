@@ -62,10 +62,13 @@ class PlayerProfile:
     assists: Optional[int] = None
     minutes_played: Optional[int] = None
     
+    # Agente / Agenzia (DATA-003 QW-1)
+    agent: Optional[str] = None
+
     # Storico
     previous_clubs: List[str] = field(default_factory=list)
     career_highlights: List[str] = field(default_factory=list)
-    
+
     # Metadati
     last_updated: str = field(default_factory=lambda: datetime.now().isoformat())
     sources: List[str] = field(default_factory=list)

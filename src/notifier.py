@@ -123,6 +123,8 @@ class TelegramNotifier:
         previous_clubs = opp.get('previous_clubs', [])
         appearances = opp.get('appearances', 0)
         goals = opp.get('goals', 0)
+        assists = opp.get('assists', 0)
+        agent = opp.get('agent', '')
 
         source = opp.get('source_name', 'N/D')
         source_url = opp.get('source_url', '')
@@ -156,6 +158,10 @@ class TelegramNotifier:
                 clubs_str += '...'
             lines.append(f"📋 Ex: {clubs_str}")
 
+        # Agent (DATA-003 QW-1)
+        if agent:
+            lines.append(f"👔 Agente: {agent}")
+
         lines.append("")
 
         # Opportunity details
@@ -164,14 +170,16 @@ class TelegramNotifier:
             lines.append(f"📅 {reported_date}")
         lines.append(f"📊 OB1 Score: <b>{score}/100</b>")
 
-        # Stats
-        if appearances or goals:
+        # Stats (DATA-003 QW-2: enriched seasonal stats)
+        if appearances or goals or assists:
             stats_parts = []
             if appearances:
                 stats_parts.append(f"{appearances} presenze")
             if goals:
                 stats_parts.append(f"{goals} gol")
-            lines.append(f"📈 {' | '.join(stats_parts)}")
+            if assists:
+                stats_parts.append(f"{assists} assist")
+            lines.append(f"📈 Stagione 25/26: {' | '.join(stats_parts)}")
 
         lines.append("")
 
