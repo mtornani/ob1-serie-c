@@ -1,7 +1,7 @@
 # DATA-003: Snapshot Storico & Market Intelligence
 
 **Priority:** HIGH | **Estimate:** 4 Quick Wins (1-3 giorni totali)
-**Status:** IN PROGRESS
+**Status:** DONE
 **Created:** 2026-02-17
 **Objective:** Trasformare OB1 da tool di scouting informativo a macchina che produce prove pubbliche delle inefficienze del mercato Lega Pro.
 

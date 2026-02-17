@@ -80,11 +80,37 @@ def main():
             # DATA-003 QW-1: Agent field
             'agent': opp.get('agent') or profile.get('agent'),
 
+            # Discovered timestamp (for stale detection)
+            'discovered_at': opp.get('discovered_at', ''),
+
             # SCORE-001 results
             'ob1_score': score_result['ob1_score'],
             'classification': score_result['classification'],
             'score_breakdown': score_result['score_breakdown'],
         }
+
+        # DATA-003 QW-4: Calculate days_without_contract for svincolati/rescissioni
+        opp_type = dashboard_opp['opportunity_type']
+        if opp_type in ('svincolato', 'rescissione'):
+            discovered = opp.get('discovered_at', '')
+            if discovered:
+                try:
+                    discovered_date = datetime.fromisoformat(discovered.replace('Z', '+00:00')).date() if 'T' in discovered else datetime.strptime(discovered[:10], '%Y-%m-%d').date()
+                    days = (datetime.now().date() - discovered_date).days
+                    dashboard_opp['days_without_contract'] = max(0, days)
+                except (ValueError, TypeError):
+                    dashboard_opp['days_without_contract'] = 0
+            else:
+                dashboard_opp['days_without_contract'] = 0
+
+            # Flag stale free agent: >30 days without contract AND appearances >= 10
+            appearances = dashboard_opp.get('appearances', 0) or 0
+            days_wc = dashboard_opp.get('days_without_contract', 0)
+            dashboard_opp['stale_free_agent'] = (days_wc > 30 and appearances >= 10)
+        else:
+            dashboard_opp['days_without_contract'] = 0
+            dashboard_opp['stale_free_agent'] = False
+
         dashboard_opportunities.append(dashboard_opp)
 
     # Sort by score (highest first)
@@ -96,6 +122,8 @@ def main():
     cold_count = sum(1 for o in dashboard_opportunities if o['classification'] == 'cold')
     today = datetime.now().strftime('%Y-%m-%d')
     today_count = sum(1 for o in dashboard_opportunities if o['reported_date'] == today)
+    stale_count = sum(1 for o in dashboard_opportunities if o.get('stale_free_agent'))
+    svincolati_count = sum(1 for o in dashboard_opportunities if o['opportunity_type'] in ('svincolato', 'rescissione'))
 
     # Create data.json for the dashboard
     dashboard_data = {
@@ -105,7 +133,9 @@ def main():
             'hot': hot_count,
             'warm': warm_count,
             'cold': cold_count,
-            'today': today_count
+            'today': today_count,
+            'svincolati': svincolati_count,
+            'stale_free_agents': stale_count
         },
         'last_update': datetime.now().isoformat(),
         'scoring_version': 'SCORE-001'
@@ -116,6 +146,8 @@ def main():
     data_json_path.write_text(json.dumps(dashboard_data, indent=2, ensure_ascii=False))
     print(f"Dashboard data generated: {data_json_path}")
     print(f"   Total: {len(dashboard_opportunities)}, HOT: {hot_count}, WARM: {warm_count}, COLD: {cold_count}")
+    if stale_count:
+        print(f"   ⚠️ Stale free agents (>30gg senza contratto, >=10 presenze): {stale_count}")
 
     # Print top 5 for verification
     if dashboard_opportunities:
