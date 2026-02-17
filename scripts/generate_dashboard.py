@@ -75,6 +75,9 @@ def main():
             'market_value_formatted': opp.get('market_value_formatted') or profile.get('market_value_formatted'),
             'player_image_url': opp.get('player_image_url') or profile.get('player_image_url'),
 
+            # DATA-003 QW-1: Agent field
+            'agent': opp.get('agent') or profile.get('agent'),
+
             # SCORE-001 results
             'ob1_score': score_result['ob1_score'],
             'classification': score_result['classification'],

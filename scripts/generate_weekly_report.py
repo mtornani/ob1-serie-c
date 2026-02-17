@@ -38,9 +38,10 @@ def generate_report_html(opportunities, date_str):
     for opp in top_10:
         score = opp.get("ob1_score", 0)
         cls = "hot" if score >= 80 else "warm" if score >= 60 else "cold"
+        agent_html = f'<div style="font-size:0.75em;color:#555;">👔 {opp.get("agent")}</div>' if opp.get("agent") else ""
         html += f"""<div class="card {cls}">
 <div class="player-header"><div><div class="name">{opp.get("player_name", "N/D")}</div>
-<div style="font-size:0.85em;color:#666;">{rlabel(opp.get("role", ""))} • {opp.get("age", "-")} anni</div></div>
+<div style="font-size:0.85em;color:#666;">{rlabel(opp.get("role", ""))} • {opp.get("age", "-")} anni</div>{agent_html}</div>
 <span class="score {cls}">{score}</span></div>
 <div><span class="tag {tlabel(opp.get("opportunity_type", "") or "")}">{tlabel(opp.get("opportunity_type", "") or "")}</span></div>
 </div>"""
