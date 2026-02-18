@@ -56,5 +56,22 @@ jobs:
         git diff --staged --quiet || git commit -m "📝 Weekly report: $(date -u +'%Y-%m-%d')"
         git push || echo "Nothing to push"
 
+    - name: Generate social posts (DATA-003-MW3)
+      run: |
+        mkdir -p data/social
+        python scripts/generate_social_post.py
+
+    - name: Send public Telegram report (DATA-003-MW3)
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_PUBLIC_CHANNEL_ID: ${{ secrets.TELEGRAM_PUBLIC_CHANNEL_ID }}
+      run: python scripts/send_public_report.py
+
+    - name: Commit social posts
+      run: |
+        git add data/social/ || true
+        git diff --staged --quiet || git commit -m "📊 Weekly social post $(date -u +'%Y-%m-%d')"
+        git push || echo "Nothing to push"
+
     - name: Log completion
-      run: echo "✅ Weekly report generated at $(date -u +'%Y-%m-%d %H:%M UTC')"
+      run: echo "✅ Weekly report + social posts generated at $(date -u +'%Y-%m-%d %H:%M UTC')"
