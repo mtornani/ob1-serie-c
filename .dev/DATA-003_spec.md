@@ -1,7 +1,7 @@
 # DATA-003: Snapshot Storico & Market Intelligence
 
-**Priority:** HIGH | **Estimate:** 4 Quick Wins (1-3 giorni totali)
-**Status:** DONE
+**Priority:** HIGH | **Estimate:** 4 Quick Wins + MW-3 Social Output
+**Status:** DONE (incluso MW-3)
 **Created:** 2026-02-17
 **Objective:** Trasformare OB1 da tool di scouting informativo a macchina che produce prove pubbliche delle inefficienze del mercato Lega Pro.
 
@@ -151,4 +151,21 @@ Il report settimanale include una sezione **"CASO DELLA SETTIMANA"** che selezio
 
 ---
 
-**Last Updated:** 2026-02-17
+---
+
+## MW-3: Generatore Automatico di Post Pubblici
+
+**Status:** DONE — vedi spec completa: `.dev/DATA-003-MW3_social_output.md`
+
+| Componente | File |
+|-----------|------|
+| Generatore post | `scripts/generate_social_post.py` |
+| Invio canale pubblico | `scripts/send_public_report.py` |
+| Alert HOT pubblici | `src/notifier.py` (metodi `send_public_hot_alert`, `format_hot_alert_public`) |
+| Output X | `data/social/weekly_x_post.txt` |
+| Output Telegram | `data/social/weekly_telegram_post.txt` |
+| Workflow integrato | `.github/workflows/weekly-report.yml` |
+
+---
+
+**Last Updated:** 2026-02-18
