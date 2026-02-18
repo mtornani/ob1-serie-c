@@ -7,7 +7,7 @@ Notifiche actionable con scoring integrato
 import os
 import json
 import requests
-from datetime import datetime
+from datetime import datetime, date
 from pathlib import Path
 from typing import List, Optional, Dict, Any
 from dotenv import load_dotenv
@@ -317,7 +317,7 @@ class TelegramNotifier:
 
         success = True
 
-        # 1. Send HOT alerts (individual, with keyboard)
+        # 1. Send HOT alerts (individual, with keyboard) — private channel
         for opp in hot[:5]:  # Max 5 HOT alerts per run
             msg = self.format_hot_alert(opp)
             opp_id = opp.get('id', 'unknown')
@@ -325,6 +325,11 @@ class TelegramNotifier:
 
             if not self.send_message(msg, reply_markup=keyboard):
                 success = False
+
+        # 1b. DATA-003-MW3: Public HOT alert (max 1/giorno, score>=85, apps>=5)
+        for opp in hot:
+            if self.send_public_hot_alert(opp):
+                break  # Uno solo al giorno
 
         # 2. Send WARM digest (single message)
         if warm:
@@ -428,6 +433,130 @@ class TelegramNotifier:
         """Notifica errori critici"""
         msg = f"⚠️ <b>OB1 SCOUT - Errore</b>\n\n{error_msg}"
         return self.send_message(msg)
+
+    # =========================================================================
+    # DATA-003-MW3: Public Channel Alerts
+    # =========================================================================
+
+    # File per tracciare l'ultimo alert pubblico inviato (max 1/giorno)
+    _PUBLIC_ALERT_LOCK = Path(__file__).parent.parent / "data" / "social" / ".last_public_alert"
+
+    def _can_send_public_alert(self) -> bool:
+        """Max 1 alert pubblico al giorno."""
+        lock = self._PUBLIC_ALERT_LOCK
+        if not lock.exists():
+            return True
+        try:
+            last_date = lock.read_text().strip()
+            return last_date != date.today().isoformat()
+        except Exception:
+            return True
+
+    def _mark_public_alert_sent(self):
+        """Registra che l'alert pubblico e' stato inviato oggi."""
+        lock = self._PUBLIC_ALERT_LOCK
+        lock.parent.mkdir(parents=True, exist_ok=True)
+        lock.write_text(date.today().isoformat())
+
+    def format_hot_alert_public(self, opp: Dict[str, Any]) -> str:
+        """
+        Formato alert pubblico per canale @ob1scout (DATA-003-MW3).
+        Pulito, nessun score breakdown, nessun agente, firma fissa.
+        """
+        name = opp.get('player_name', 'N/D')
+        age = opp.get('age', '')
+        role = opp.get('role_name', opp.get('role', ''))
+        opp_type = (opp.get('opportunity_type', 'mercato') or 'mercato').capitalize()
+        score = opp.get('ob1_score', 0)
+        appearances = opp.get('appearances') or 0
+        goals = opp.get('goals')
+        assists = opp.get('assists')
+        club = opp.get('current_club', '')
+        market_value = opp.get('market_value_formatted', '')
+
+        lines = ["🔴 <b>NUOVA SEGNALAZIONE</b>", ""]
+
+        age_str = f", {age} anni" if age else ""
+        lines.append(f"<b>{name}{age_str}</b>")
+        if role:
+            lines.append(f"— {role}")
+
+        lines.append("")
+
+        stats_parts = []
+        if appearances:
+            stats_parts.append(f"{appearances} presenze")
+        if goals is not None:
+            stats_parts.append(f"{goals} gol")
+        if assists is not None:
+            stats_parts.append(f"{assists} assist")
+        if stats_parts:
+            lines.append(" | ".join(stats_parts))
+
+        detail_parts = [opp_type]
+        if club:
+            detail_parts.append(f"ex {club}")
+        lines.append(" — ".join(detail_parts))
+
+        if market_value:
+            lines.append(f"💰 {market_value}")
+
+        lines.append("")
+        lines.append(f"OB1 Score: {score}/100")
+        lines.append("")
+        lines.append("Il sistema lo ha trovato. Vediamo quanto ci mette il mercato.")
+
+        return "\n".join(lines)
+
+    def send_public_hot_alert(self, opp: Dict[str, Any]) -> bool:
+        """
+        Invia alert HOT al canale pubblico Telegram (DATA-003-MW3).
+        Regole:
+          - Score >= 85
+          - appearances >= 5
+          - Max 1 alert pubblico al giorno
+          - Nessun agente esposto
+        """
+        public_channel = os.getenv('TELEGRAM_PUBLIC_CHANNEL_ID')
+        if not public_channel:
+            return False
+
+        score = opp.get('ob1_score', 0)
+        appearances = opp.get('appearances') or 0
+
+        if score < 85:
+            print(f"   Alert pubblico skip: score {score} < 85")
+            return False
+
+        if appearances < 5:
+            print(f"   Alert pubblico skip: appearances {appearances} < 5")
+            return False
+
+        if not self._can_send_public_alert():
+            print("   Alert pubblico skip: gia' inviato oggi")
+            return False
+
+        msg = self.format_hot_alert_public(opp)
+
+        url = f"https://api.telegram.org/bot{self.bot_token}/sendMessage"
+        payload = {
+            "chat_id": public_channel,
+            "text": msg,
+            "parse_mode": "HTML",
+            "disable_web_page_preview": True,
+        }
+        try:
+            resp = requests.post(url, json=payload, timeout=10)
+            if resp.status_code == 200:
+                self._mark_public_alert_sent()
+                print(f"✅ Alert pubblico inviato al canale {public_channel}: {opp.get('player_name')}")
+                return True
+            else:
+                print(f"❌ Errore alert pubblico ({resp.status_code}): {resp.text}")
+                return False
+        except Exception as e:
+            print(f"❌ Eccezione alert pubblico: {e}")
+            return False
 
 
 # =============================================================================
