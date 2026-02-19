@@ -48,6 +48,9 @@ jobs:
     - name: Generate weekly report
       run: python scripts/generate_weekly_report.py
 
+    - name: Generate DS report (PDF)
+      run: python scripts/generate_ds_report.py
+
     - name: Commit report files
       run: |
         git config --local user.email "action@github.com"
