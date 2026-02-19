@@ -80,15 +80,33 @@ def _days_since_discovery(player: dict) -> int | None:
         return None
 
 
-def select_ds_players(opportunities: list, n: int = 5) -> list:
+def _is_enriched(player: dict) -> bool:
+    """Un profilo e' considerato completo se ha summary >= 100 char e ruolo specificato."""
+    role_name = (player.get("role_name") or "").strip().lower()
+    if not role_name or role_name == "non specificato":
+        return False
+    summary = player.get("summary", "") or ""
+    if len(summary) < 100:
+        return False
+    return True
+
+
+def select_ds_players(opportunities: list, n: int = 5) -> tuple[list, int]:
     """Seleziona i migliori giocatori per il report DS-Ready.
 
     Pipeline:
     1. Escludi score < 70 (COLD)
     2. Escludi discovered_at > 14 giorni
-    3. Penalizza 7-14 giorni (score effettivo -10)
-    4. Max 2 giocatori per club di destinazione
+    3. Escludi ruolo nullo / "Non Specificato"
+    4. Escludi profili incompleti (summary < 100 char)
+    5. Penalizza 7-14 giorni (score effettivo -10)
+    6. Max 2 giocatori per club di destinazione
+    7. Risultato variabile: 1-5 giocatori
+
+    Returns:
+        (selected_players, enrichment_pending_count)
     """
+    enrichment_pending = 0
     candidates = []
     for p in opportunities:
         score = p.get("ob1_score", 0)
@@ -97,6 +115,18 @@ def select_ds_players(opportunities: list, n: int = 5) -> list:
 
         days = _days_since_discovery(p)
         if days is not None and days > 14:
+            continue
+
+        # Escludi ruolo mancante o generico
+        role_name = (p.get("role_name") or "").strip().lower()
+        if not role_name or role_name == "non specificato":
+            enrichment_pending += 1
+            continue
+
+        # Escludi profili con summary troppo corta
+        summary = p.get("summary", "") or ""
+        if len(summary) < 100:
+            enrichment_pending += 1
             continue
 
         # Score effettivo: penalizza 7-14 giorni
@@ -122,7 +152,7 @@ def select_ds_players(opportunities: list, n: int = 5) -> list:
         if len(selected) >= n:
             break
 
-    return selected
+    return selected, enrichment_pending
 
 
 class DSReport(FPDF):
@@ -150,7 +180,7 @@ class DSReport(FPDF):
     # ================================================================
     # COVER PAGE
     # ================================================================
-    def cover_page(self, players: list, all_opps: list):
+    def cover_page(self, players: list, all_opps: list, enrichment_pending: int = 0):
         self.add_page()
 
         # Top bar
@@ -230,6 +260,16 @@ class DSReport(FPDF):
             "nella settimana corrente, ordinate per priorita'.",
             align="C",
         )
+
+        if enrichment_pending > 0:
+            self.set_y(self.get_y() + 4)
+            self.set_font("Helvetica", "", 9)
+            self.set_text_color(*MID_GRAY)
+            self.cell(
+                0, 5,
+                f"{enrichment_pending} profili aggiuntivi in fase di approfondimento",
+                align="C",
+            )
 
     # ================================================================
     # PLAYER PAGE
@@ -468,16 +508,18 @@ def main():
         print("⚠️ Nessuna opportunita' trovata — skip")
         sys.exit(0)
 
-    players = select_ds_players(opportunities, 5)
+    players, enrichment_pending = select_ds_players(opportunities, 5)
     print(f"   Totale opportunita': {len(opportunities)}")
     if not players:
-        print("⚠️ Nessun giocatore supera i filtri DS-Ready (score>=70, freshness<=14gg) — skip")
+        print("⚠️ Nessun giocatore supera i filtri DS-Ready (score>=70, freshness<=14gg, profilo completo) — skip")
         sys.exit(0)
     print(f"   Selezionati {len(players)} (score range: {players[-1].get('ob1_score', 0)}-{players[0].get('ob1_score', 0)})")
+    if enrichment_pending:
+        print(f"   {enrichment_pending} profili in attesa di approfondimento")
 
     pdf = DSReport()
     pdf.report_date = report_date
-    pdf.cover_page(players, opportunities)
+    pdf.cover_page(players, opportunities, enrichment_pending)
 
     for p in players:
         pdf.player_page(p)
