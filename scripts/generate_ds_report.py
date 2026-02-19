@@ -68,8 +68,61 @@ def load_opportunities() -> list:
     return data if isinstance(data, list) else []
 
 
-def top_n(opportunities: list, n: int = 5) -> list:
-    return sorted(opportunities, key=lambda x: x.get("ob1_score", 0), reverse=True)[:n]
+def _days_since_discovery(player: dict) -> int | None:
+    """Calcola giorni da discovered_at. None se non disponibile."""
+    discovered_at = player.get("discovered_at", "")
+    if not discovered_at:
+        return None
+    try:
+        disc_date = datetime.fromisoformat(discovered_at.replace("Z", "+00:00"))
+        return (datetime.now() - disc_date.replace(tzinfo=None)).days
+    except (ValueError, TypeError):
+        return None
+
+
+def select_ds_players(opportunities: list, n: int = 5) -> list:
+    """Seleziona i migliori giocatori per il report DS-Ready.
+
+    Pipeline:
+    1. Escludi score < 70 (COLD)
+    2. Escludi discovered_at > 14 giorni
+    3. Penalizza 7-14 giorni (score effettivo -10)
+    4. Max 2 giocatori per club di destinazione
+    """
+    candidates = []
+    for p in opportunities:
+        score = p.get("ob1_score", 0)
+        if score < 70:
+            continue
+
+        days = _days_since_discovery(p)
+        if days is not None and days > 14:
+            continue
+
+        # Score effettivo: penalizza 7-14 giorni
+        effective_score = score
+        if days is not None and days > 7:
+            effective_score = score - 10
+
+        candidates.append((effective_score, score, p))
+
+    # Sort per score effettivo desc, poi score reale desc come tiebreaker
+    candidates.sort(key=lambda x: (x[0], x[1]), reverse=True)
+
+    # Diversificazione: max 2 per club
+    selected = []
+    club_count: dict[str, int] = {}
+    for _eff, _score, player in candidates:
+        club = (player.get("current_club") or "").strip().lower()
+        if club and club_count.get(club, 0) >= 2:
+            continue
+        selected.append(player)
+        if club:
+            club_count[club] = club_count.get(club, 0) + 1
+        if len(selected) >= n:
+            break
+
+    return selected
 
 
 class DSReport(FPDF):
@@ -131,10 +184,10 @@ class DSReport(FPDF):
         self.set_text_color(*DARK_GRAY)
         self.cell(0, 8, "opportunita' segnalate", align="C", new_x="LMARGIN", new_y="NEXT")
 
-        # Classificazione HOT/WARM/COLD
-        hot = len([o for o in all_opps if o.get("ob1_score", 0) >= 80])
-        warm = len([o for o in all_opps if 60 <= o.get("ob1_score", 0) < 80])
-        cold = len([o for o in all_opps if o.get("ob1_score", 0) < 60])
+        # Classificazione HOT/WARM/COLD (soglie DS-Ready)
+        hot = len([o for o in all_opps if o.get("ob1_score", 0) >= 85])
+        warm = len([o for o in all_opps if 70 <= o.get("ob1_score", 0) < 85])
+        cold = len([o for o in all_opps if o.get("ob1_score", 0) < 70])
 
         self.set_y(135)
         self.set_font("Helvetica", "", 10)
@@ -221,13 +274,17 @@ class DSReport(FPDF):
             tw = self.get_string_width(badge_label) + 8
             self.cell(tw, 7, badge_label, fill=True)
 
-            # Score badge accanto
+            # Score label accanto
             self.set_x(15 + tw + 4)
-            score_color = RED if score >= 80 else ORANGE if score >= 60 else MID_GRAY
+            if score >= 85:
+                score_color = RED
+                score_text = "PRIORITA' ALTA - AZIONE IMMEDIATA"
+            else:
+                score_color = ORANGE
+                score_text = "OPPORTUNITA' ATTIVA - FINESTRA APERTA"
             self.set_fill_color(*BG_GRAY)
             self.set_text_color(*score_color)
             self.set_font("Helvetica", "B", 9)
-            score_text = f"SCORE: {score}/100 ({classification})"
             sw = self.get_string_width(score_text) + 8
             self.cell(sw, 7, score_text, fill=True)
 
@@ -345,12 +402,16 @@ class DSReport(FPDF):
         y = self._section_title(y, "ANALISI")
 
         summary = player.get("summary", "")
-        if summary:
-            self.set_xy(15, y)
+        self.set_xy(15, y)
+        if summary and len(summary) >= 100:
             self.set_font("Helvetica", "", 10)
             self.set_text_color(*DARK_GRAY)
             self.multi_cell(180, 5, self._safe(summary))
-            y = self.get_y() + 4
+        else:
+            self.set_font("Helvetica", "I", 10)
+            self.set_text_color(*MID_GRAY)
+            self.cell(0, 6, "Profilo in fase di approfondimento")
+        y = self.get_y() + 4
 
         # ---- FOOTER: Agente ----
         self.set_draw_color(*LIGHT_GRAY)
@@ -407,9 +468,12 @@ def main():
         print("⚠️ Nessuna opportunita' trovata — skip")
         sys.exit(0)
 
-    players = top_n(opportunities, 5)
+    players = select_ds_players(opportunities, 5)
     print(f"   Totale opportunita': {len(opportunities)}")
-    print(f"   Top 5 selezionati (score range: {players[-1].get('ob1_score', 0)}-{players[0].get('ob1_score', 0)})")
+    if not players:
+        print("⚠️ Nessun giocatore supera i filtri DS-Ready (score>=70, freshness<=14gg) — skip")
+        sys.exit(0)
+    print(f"   Selezionati {len(players)} (score range: {players[-1].get('ob1_score', 0)}-{players[0].get('ob1_score', 0)})")
 
     pdf = DSReport()
     pdf.report_date = report_date
