@@ -104,7 +104,7 @@ def main():
 
     # Initialize notifier
     notifier = TelegramNotifier()
-    dashboard_url = os.getenv('GITHUB_PAGES_URL', 'https://mirkotornani.github.io/ob1-serie-c-dev/')
+    dashboard_url = os.getenv('GITHUB_PAGES_URL', 'https://mtornani.github.io/ob1-serie-c/')
 
     if not notifier.enabled:
         print("⚠️ Notifier not configured (missing TELEGRAM_BOT_TOKEN)")

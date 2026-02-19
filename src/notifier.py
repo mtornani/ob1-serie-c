@@ -287,7 +287,7 @@ class TelegramNotifier:
                 ],
                 [
                     {"text": "📊 Dettagli", "callback_data": f"details_{opp_id}"},
-                    {"text": "🔍 Dashboard", "url": "https://mirkotornani.github.io/ob1-serie-c-dev/"}
+                    {"text": "🔍 Dashboard", "url": "https://mtornani.github.io/ob1-serie-c/"}
                 ]
             ]
         }

@@ -21,7 +21,7 @@ HISTORY_FILE = BASE_DIR / "data" / "history_log.json"
 SNAPSHOTS_DIR = BASE_DIR / "data" / "snapshots"
 SOCIAL_DIR = BASE_DIR / "data" / "social"
 
-DASHBOARD_URL = "https://mirkotornani.github.io/ob1-serie-c-dev/"
+DASHBOARD_URL = "https://mtornani.github.io/ob1-serie-c/"
 
 # Firme del murales (rotazione)
 FIRME = [
