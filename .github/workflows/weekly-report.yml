@@ -61,10 +61,11 @@ jobs:
         mkdir -p data/social
         python scripts/generate_social_post.py
 
-    - name: Send public Telegram report (DATA-003-MW3)
+    - name: Send public Telegram report + X post to private (DATA-003-MW3)
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_PUBLIC_CHANNEL_ID: ${{ secrets.TELEGRAM_PUBLIC_CHANNEL_ID }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       run: python scripts/send_public_report.py
 
     - name: Commit social posts
