@@ -246,7 +246,7 @@ def generate_x_post(stats: dict, case: Optional[dict]) -> str:
         case_parts = [f"{name}, {age} anni"]
         if apps:
             case_parts.append(f"{apps} presenze")
-        if goals is not None:
+        if apps and goals:
             case_parts.append(f"{goals} gol")
         if days:
             case_parts.append(f"svincolato da {days} giorni")
@@ -331,13 +331,13 @@ def generate_telegram_post(stats: dict, case: Optional[dict], agent_stats: list,
         if meta_parts:
             lines.append(f"📍 {' | '.join(meta_parts)}")
 
-        # Stats stagionali (omette campi null)
+        # Stats stagionali (omette campi null E zero — zero senza presenze e' dato mancante)
         stats_parts = []
         if apps:
             stats_parts.append(f"{apps} pres")
-        if goals is not None:
+        if apps and goals is not None:
             stats_parts.append(f"{goals} gol")
-        if assists is not None:
+        if apps and assists is not None:
             stats_parts.append(f"{assists} assist")
         if stats_parts:
             lines.append(f"📈 Stagione 25/26: {' | '.join(stats_parts)}")
@@ -370,8 +370,9 @@ def generate_telegram_post(stats: dict, case: Optional[dict], agent_stats: list,
             p_age = p.get("age", "?")
             p_goals = p.get("goals")
             p_days = p.get("days_without_contract")
+            p_apps = p.get("appearances") or 0
             parts = [f"{p_name} — {p_age} anni"]
-            if p_goals is not None:
+            if p_apps and p_goals is not None:
                 parts.append(f"{p_goals} gol")
             if p_days:
                 parts.append(f"{p_days}gg senza contratto")
