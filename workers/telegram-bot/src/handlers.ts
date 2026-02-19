@@ -1,5 +1,7 @@
 import { Env, TelegramMessage, TelegramCallbackQuery, Opportunity } from './types';
 import { sendMessage, answerCallbackQuery, editMessageText, getFile, downloadFileAsBase64 } from './telegram';
+
+const DASHBOARD_URL = 'https://mtornani.github.io/ob1-serie-c/';
 import { fetchData, filterHot, filterWarm, searchOpportunities, getStats, findOpportunityById, filterOpportunities } from './data';
 import {
   formatOpportunityList,
@@ -161,6 +163,12 @@ async function handleCommand(chatId: number, text: string, env: Env): Promise<vo
       await handleReport(chatId, env);
       break;
 
+    // DATA-003-MW3: Svincolati ignorati da 30+ giorni
+    case '/stale':
+    case '/ignorati':
+      await handleStale(chatId, env);
+      break;
+
     // SCOUT-001: Interactive Scout Wizard
     case '/scout':
     case '/wizard':
@@ -258,6 +266,92 @@ async function handleStats(chatId: number, env: Env): Promise<void> {
 
   const stats = getStats(data.opportunities);
   const message = formatStats(stats, data.last_update);
+
+  await sendMessage(env, chatId, message);
+}
+
+// ============================================================================
+// DATA-003-MW3: STALE FREE AGENTS
+// ============================================================================
+
+async function handleStale(chatId: number, env: Env): Promise<void> {
+  const data = await fetchData(env);
+
+  if (!data?.opportunities) {
+    await sendMessage(env, chatId, formatError());
+    return;
+  }
+
+  const stale = data.opportunities
+    .filter((o: any) => o.stale_free_agent)
+    .sort((a: any, b: any) => {
+      const scoreDiff = (b.ob1_score || 0) - (a.ob1_score || 0);
+      if (scoreDiff !== 0) return scoreDiff;
+      return (b.days_without_contract || 0) - (a.days_without_contract || 0);
+    });
+
+  if (stale.length === 0) {
+    await sendMessage(env, chatId, `⏳ <b>Svincolati Ignorati</b>
+
+Nessun giocatore con 30+ giorni senza contratto e 10+ presenze nel database attuale.
+
+<i>Il sistema controlla ogni 6 ore.</i>
+
+🌐 <a href="${DASHBOARD_URL}">Dashboard</a>`);
+    return;
+  }
+
+  // Aggrega statistiche
+  const totalFree = data.opportunities.filter((o: any) =>
+    ['svincolato', 'rescissione'].includes((o.opportunity_type || '').toLowerCase())
+  ).length;
+  const under28 = stale.filter((o: any) => (o.age || 99) < 28).length;
+  const maxDays = Math.max(...stale.map((o: any) => o.days_without_contract || 0));
+
+  let message = `⏳ <b>SVINCOLATI IGNORATI — ${stale.length} casi</b>\n`;
+  message += `<i>30+ giorni senza contratto, 10+ presenze stagione 25/26</i>\n\n`;
+  message += `📊 ${totalFree} svincolati totali nel sistema\n`;
+  message += `🔴 ${under28} sono under 28\n`;
+  message += `📅 Il caso più lungo: <b>${maxDays} giorni</b> senza contratto\n\n`;
+  message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+  const top = stale.slice(0, 7);
+  top.forEach((o: any, i: number) => {
+    const name = o.player_name || 'N/D';
+    const age = o.age ? `${o.age}a` : '';
+    const role = o.role || '';
+    const score = o.ob1_score || 0;
+    const days = o.days_without_contract || 0;
+    const apps = o.appearances;
+    const goals = o.goals;
+    const agent = o.agent;
+
+    const scoreEmoji = score >= 80 ? '🔥' : score >= 60 ? '⚡' : '❄️';
+
+    message += `${scoreEmoji} <b>${name}</b>`;
+    if (age || role) message += ` (${[age, role].filter(Boolean).join(', ')})`;
+    message += '\n';
+
+    const statParts = [];
+    if (apps) statParts.push(`${apps} pres`);
+    if (goals != null) statParts.push(`${goals} gol`);
+    if (statParts.length) message += `   📈 ${statParts.join(' | ')}\n`;
+
+    message += `   📅 <b>${days} giorni</b> senza contratto`;
+    message += ` • Score: ${score}\n`;
+
+    if (agent) message += `   👔 ${agent}\n`;
+
+    if (i < top.length - 1) message += '\n';
+  });
+
+  if (stale.length > 7) {
+    message += `\n<i>...e altri ${stale.length - 7} casi nella dashboard</i>`;
+  }
+
+  message += `\n\n━━━━━━━━━━━━━━━━━━━━\n`;
+  message += `I numeri parlano da soli.\n`;
+  message += `🌐 <a href="${DASHBOARD_URL}">Dashboard completa</a>`;
 
   await sendMessage(env, chatId, message);
 }

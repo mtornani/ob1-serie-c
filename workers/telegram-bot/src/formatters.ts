@@ -71,29 +71,24 @@ export function formatStats(stats: { total: number; hot: number; warm: number; c
 }
 
 export function formatWelcome(env: Env): string {
-  return `🎯 <b>OB1 Scout - Il tuo DS Digitale</b>
+  return `📊 <b>OB1 Scout</b>
 
-Ciao! Sono il tuo assistente per il mercato Serie C.
-Dimmi cosa cerchi, capisco il linguaggio del campo.
+Osservatorio sul mercato Lega Pro.
+Svincolati, rescissioni, anomalie — tutto quello che il mercato non vede.
 
-⚽ <b>Cerca così:</b>
-• "mi serve un terzino che spinga"
-• "centrocampista box-to-box giovane"
-• "attaccante svincolato fisico"
+⏳ <b>Cosa non vedi altrove:</b>
+/stale - Svincolati ignorati da 30+ giorni
+/hot - Opportunità a priorità alta (score 80+)
+/report - Snapshot completo del mercato
 
-📊 <b>Report e analisi:</b>
-/report - Report mercato istantaneo
-/hot - Migliori opportunità
-/stats - Panoramica database
+🔍 <b>Cerca in linguaggio naturale:</b>
+• "centrocampisti svincolati under 26"
+• "attaccante fisico in prestito"
+• "chi è svincolato da più tempo?"
 
-🔔 <b>Alert personalizzati:</b>
-/watch add - Crea alert su misura
+🔔 <b>Alert su misura:</b>
+/watch add - Crea profilo di monitoraggio
 /digest - Anteprima digest giornaliero
-
-🧬 <b>Squadre B:</b>
-/talenti - Juve NG, Milan Futuro, Atalanta U23
-
-🎤 <b>Novità:</b> Puoi anche inviarmi messaggi vocali!
 
 ━━━━━━━━━━━━━━━━━━━━
 🌐 <a href="${DASHBOARD_URL}">Dashboard completa</a>`;
@@ -102,38 +97,39 @@ Dimmi cosa cerchi, capisco il linguaggio del campo.
 export function formatHelp(env: Env): string {
   return `❓ <b>OB1 Scout - Guida Completa</b>
 
-⚽ <b>RICERCA NATURALE</b>
-Scrivimi come parleresti al tuo collaboratore:
-• "mi serve un terzino che spinga"
-• "centrocampista box-to-box under 23"
-• "attaccante svincolato fisico"
-• "difensore bravo in impostazione"
+⏳ <b>ANOMALIE DI MERCATO</b>
+/stale - Svincolati con 10+ presenze ignorati da 30+ giorni
+/hot - Opportunità a priorità alta (score 80+)
+/warm - Buone opportunità (score 60-79)
+
+📊 <b>REPORT E STATISTICHE</b>
+/report - Snapshot completo del mercato
+/stats - Numeri aggregati (svincolati, stale, trend)
+/all - Lista completa ordinata per score
+
+🔍 <b>RICERCA NATURALE</b>
+Scrivimi come parleresti:
+• "svincolati under 26"
+• "chi è svincolato da più tempo?"
+• "centrocampisti con più presenze"
+• "attaccante fisico in prestito"
 
 🎤 <b>MESSAGGI VOCALI</b>
 Registra un vocale e ti rispondo!
 
-📊 <b>REPORT E LISTE</b>
-/report - Report mercato completo
-/hot - Opportunità top (score 80+)
-/warm - Buone opportunità (60-79)
-/all - Lista completa
-/stats - Statistiche database
-
-🧬 <b>SQUADRE B</b>
+🧬 <b>SCOUTING AVANZATO</b>
 /talenti - Juve NG, Milan Futuro, Atalanta U23
-/dna &lt;club&gt; - Match DNA per un club
+/dna &lt;club&gt; - Match DNA per un club specifico
+/scout - Wizard guidato stile Akinator
+/search &lt;nome&gt; - Cerca per nome
 
 🔔 <b>ALERT PERSONALIZZATI</b>
-/watch add - Crea nuovo alert
+/watch add - Crea profilo di monitoraggio
 /watch - Gestisci alert attivi
-/digest - Anteprima digest giornaliero
-<i>Ricevi notifiche ogni mattina alle 8:00!</i>
-
-🔍 <b>RICERCA AVANZATA</b>
-/search &lt;nome&gt; - Cerca per nome
-/scout - Wizard guidato stile Akinator
+/digest - Anteprima digest (ogni mattina 08:00)
 
 ━━━━━━━━━━━━━━━━━━━━
+📡 <b>Canale pubblico:</b> @ob1scout
 🌐 <a href="${DASHBOARD_URL}">Dashboard completa</a>`;
 }
 
