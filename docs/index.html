@@ -37,9 +37,6 @@
                     <span class="icon-light">☀️</span>
                     <span class="icon-dark">🌙</span>
                 </button>
-                <button class="btn-icon" id="refreshBtn" aria-label="Aggiorna">
-                    🔄
-                </button>
             </div>
         </div>
     </header>
@@ -57,7 +54,7 @@
                 <div class="hero-stats">
                     <div class="hero-stat">
                         <span class="hero-stat-value">100+</span>
-                        <span class="hero-stat-label">Profili monitorati</span>
+                        <span class="hero-stat-label">Profili</span>
                     </div>
                     <div class="hero-stat">
                         <span class="hero-stat-value">6h</span>
@@ -65,13 +62,13 @@
                     </div>
                     <div class="hero-stat">
                         <span class="hero-stat-value">€0</span>
-                        <span class="hero-stat-label">Costo operativo</span>
+                        <span class="hero-stat-label">Costo</span>
                     </div>
                 </div>
 
                 <div class="hero-cta">
-                    <a href="https://t.me/Ob1LegaPro_bot" target="_blank" class="btn-primary">Prova il Bot Telegram →</a>
-                    <button class="btn-secondary" id="btnExploreAll">Esplora le opportunità</button>
+                    <button class="btn-primary" id="btnExploreAll">Esplora le opportunità →</button>
+                    <a href="https://t.me/Ob1LegaPro_bot" target="_blank" class="btn-secondary">Bot Telegram</a>
                 </div>
             </div>
 
@@ -80,221 +77,70 @@
                 <div class="hero-steps">
                     <div class="hero-step">
                         <span class="hero-step-icon">📡</span>
-                        <span class="hero-step-num">1</span>
-                        <p>Monitora Transfermarkt e fonti di mercato 24/7</p>
+                        <p>Monitora fonti h24</p>
                     </div>
                     <div class="hero-step">
                         <span class="hero-step-icon">🧠</span>
-                        <span class="hero-step-num">2</span>
-                        <p>Analizza e classifica con scoring proprietario OB1</p>
+                        <p>Analizza occasioni reali</p>
                     </div>
                     <div class="hero-step">
                         <span class="hero-step-icon">🔔</span>
-                        <span class="hero-step-num">3</span>
-                        <p>Ti avvisa su Telegram quando c'è un'opportunità</p>
+                        <p>Ti avvisa su Telegram</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ═══ CLUB VIEW: Club DNA + Scored Opportunities ═══ -->
-        <div id="clubView" class="view-section" style="display: none;">
-            <button class="btn-back" id="btnBackToLanding">← Torna ai club</button>
-            <div class="club-dna-header" id="clubDnaHeader">
-                <!-- Populated by JS -->
-            </div>
-            <div class="club-matches-info">
-                <h3 id="clubMatchTitle">Opportunità per il tuo club</h3>
-                <span class="match-count" id="clubMatchCount">0 risultati</span>
-            </div>
-            <div class="opportunities-grid" id="clubOpportunitiesGrid">
-                <!-- Populated by JS -->
-            </div>
-            <div class="empty-state" id="clubEmptyState" style="display: none;">
-                <div class="empty-icon">🔍</div>
-                <h3>Nessuna opportunità compatibile</h3>
-                <p>Non ci sono giocatori che matchano con il profilo DNA di questo club al momento.<br>Il sistema si aggiorna ogni 6 ore.</p>
-            </div>
-        </div>
-
-        <!-- ═══ EXPLORE VIEW: Original generic view ═══ -->
+        <!-- ═══ EXPLORE VIEW ═══ -->
         <div id="exploreView" class="view-section" style="display: none;">
-        <button class="btn-back" id="btnBackFromExplore">← Torna ai club</button>
+            <button class="btn-back" id="btnBackFromExplore">← Torna alla Home</button>
 
-        <!-- Search Bar -->
-        <div class="search-container">
-            <input type="search"
-                   class="search-input"
-                   id="searchInput"
-                   placeholder="Cerca giocatore, ruolo, club..."
-                   autocomplete="off">
-            <span class="search-icon">🔍</span>
-        </div>
-
-        <!-- Filter Chips -->
-        <div class="filter-section">
-            <div class="filter-chips" id="filterChips">
-                <button class="filter-chip active" data-filter="all">
-                    Tutti
-                </button>
-                <button class="filter-chip" data-filter="hot">
-                    🔥 HOT
-                </button>
-                <button class="filter-chip" data-filter="warm">
-                    ⚡ WARM
-                </button>
-                <button class="filter-chip" data-filter="cold">
-                    ❄️ COLD
-                </button>
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="search"
+                       class="search-input"
+                       id="searchInput"
+                       placeholder="Cerca giocatore o ruolo..."
+                       autocomplete="off">
+                <span class="search-icon">🔍</span>
             </div>
-            <div class="filter-dropdowns">
-                <select class="filter-select" id="roleFilter">
-                    <option value="">📍 Ruolo</option>
-                    <option value="PO">Portiere</option>
-                    <option value="DC">Difensore Centrale</option>
-                    <option value="TD">Terzino Destro</option>
-                    <option value="TS">Terzino Sinistro</option>
-                    <option value="CC">Centrocampista</option>
-                    <option value="ED">Esterno Destro</option>
-                    <option value="ES">Esterno Sinistro</option>
-                    <option value="TQ">Trequartista</option>
-                    <option value="AT">Attaccante</option>
-                </select>
-                <select class="filter-select" id="typeFilter">
-                    <option value="">💼 Tipo</option>
-                    <option value="svincolato">Svincolato</option>
-                    <option value="rescissione">Rescissione</option>
-                    <option value="prestito">Prestito</option>
-                    <option value="scadenza">Scadenza</option>
-                </select>
-                <select class="filter-select" id="periodFilter">
-                    <option value="">📅 Periodo</option>
-                    <option value="1">Oggi</option>
-                    <option value="3">Ultimi 3 giorni</option>
-                    <option value="7">Ultima settimana</option>
-                    <option value="30">Ultimo mese</option>
-                    <option value="all">Tutto</option>
-                </select>
+
+            <!-- Quick Filters -->
+            <div class="filter-section">
+                <div class="filter-chips" id="filterChips">
+                    <button class="filter-chip active" data-filter="all">Tutti</button>
+                    <button class="filter-chip" data-filter="hot">⭐ Top 10</button>
+                    <button class="filter-chip" data-filter="under">👶 Under</button>
+                    <button class="filter-chip" data-filter="free">🆓 Svincolati</button>
+                </div>
+                <!-- Hidden dropdowns, kept in state but removed from UI for simplicity -->
+                <div style="display: none;">
+                    <select id="roleFilter"></select>
+                    <select id="typeFilter"></select>
+                    <select id="periodFilter"></select>
+                </div>
+            </div>
+
+            <!-- Opportunities Grid -->
+            <div class="opportunities-grid" id="opportunitiesGrid">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Last Update -->
+            <div class="last-update" id="lastUpdate">
+                Ultimo aggiornamento: --
             </div>
         </div>
-
-        <!-- Stats Summary -->
-        <div class="stats-bar">
-            <div class="stat-item">
-                <span class="stat-value" id="totalCount">0</span>
-                <span class="stat-label">Totali</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item hot">
-                <span class="stat-value" id="hotCount">0</span>
-                <span class="stat-label">🔥 HOT</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item warm">
-                <span class="stat-value" id="warmCount">0</span>
-                <span class="stat-label">⚡ WARM</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-                <span class="stat-value" id="recentCount">0</span>
-                <span class="stat-label">Oggi</span>
-            </div>
-        </div>
-
-         <!-- Opportunities Grid -->
-         <div class="opportunities-grid" id="opportunitiesGrid">
-             <!-- Skeleton Loading -->
-             <div class="opportunity-card skeleton">
-                 <div class="skeleton-header">
-                     <div class="skeleton-line title"></div>
-                     <div class="skeleton-line badge"></div>
-                 </div>
-                 <div class="skeleton-body">
-                     <div class="skeleton-line meta"></div>
-                     <div class="skeleton-line meta"></div>
-                     <div class="skeleton-line breakdown"></div>
-                 </div>
-                 <div class="skeleton-actions">
-                     <div class="skeleton-line action"></div>
-                     <div class="skeleton-line action"></div>
-                 </div>
-             </div>
-             <div class="opportunity-card skeleton">
-                 <div class="skeleton-header">
-                     <div class="skeleton-line title"></div>
-                     <div class="skeleton-line badge"></div>
-                 </div>
-                 <div class="skeleton-body">
-                     <div class="skeleton-line meta"></div>
-                     <div class="skeleton-line meta"></div>
-                     <div class="skeleton-line breakdown"></div>
-                 </div>
-                 <div class="skeleton-actions">
-                     <div class="skeleton-line action"></div>
-                     <div class="skeleton-line action"></div>
-                 </div>
-             </div>
-             <div class="opportunity-card skeleton">
-                 <div class="skeleton-header">
-                     <div class="skeleton-line title"></div>
-                     <div class="skeleton-line badge"></div>
-                 </div>
-                 <div class="skeleton-body">
-                     <div class="skeleton-line meta"></div>
-                     <div class="skeleton-line meta"></div>
-                     <div class="skeleton-line breakdown"></div>
-                 </div>
-                 <div class="skeleton-actions">
-                     <div class="skeleton-line action"></div>
-                     <div class="skeleton-line action"></div>
-                 </div>
-             </div>
-         </div>
-
-        <!-- Empty State -->
-        <div class="empty-state" id="emptyState" style="display: none;">
-            <div class="empty-icon">🔍</div>
-            <h3>Nessuna opportunita trovata</h3>
-            <p>Il sistema si aggiorna ogni 6 ore.<br>Le prossime opportunita appariranno qui.</p>
-        </div>
-
-        <!-- Last Update -->
-        <div class="last-update" id="lastUpdate">
-            Ultimo aggiornamento: --
-        </div>
-
-        </div><!-- end #exploreView -->
     </main>
-
-    <!-- Bottom Navigation (Mobile) -->
-    <nav class="bottom-nav">
-        <a href="#" class="nav-item active" data-view="home">
-            <span class="nav-icon">🏠</span>
-            <span class="nav-label">Home</span>
-        </a>
-        <a href="#" class="nav-item" data-view="search">
-            <span class="nav-icon">🔍</span>
-            <span class="nav-label">Cerca</span>
-        </a>
-        <a href="#" class="nav-item" data-view="saved">
-            <span class="nav-icon">💾</span>
-            <span class="nav-label">Salvati</span>
-        </a>
-        <a href="#" class="nav-item" data-view="stats">
-            <span class="nav-icon">📊</span>
-            <span class="nav-label">Stats</span>
-        </a>
-    </nav>
 
     <!-- Detail Modal -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" id="detailModal">
             <div class="modal-header">
                 <div>
-                    <h2 id="modalTitle">Dettagli Giocatore</h2>
-                    <p class="modal-player-info" id="modalPlayerInfo"></p>
+                    <h2 id="modalTitle">Scouting Report</h2>
                 </div>
-                <button class="modal-close" id="modalClose" aria-label="Chiudi modale">✕</button>
+                <button class="modal-close" id="modalClose" aria-label="Chiudi">✕</button>
             </div>
             <div class="modal-content" id="modalContent">
                 <!-- Dynamic content -->
@@ -305,117 +151,11 @@
     <!-- Toast Notifications -->
     <div class="toast-container" id="toastContainer"></div>
 
-    <!-- Onboarding Tutorial -->
-    <div class="onboarding-overlay" id="onboardingOverlay">
-        <div class="onboarding-container">
-            <div class="onboarding-progress">
-                <span class="progress-dot active" data-step="1"></span>
-                <span class="progress-dot" data-step="2"></span>
-                <span class="progress-dot" data-step="3"></span>
-                <span class="progress-dot" data-step="4"></span>
-                <span class="progress-dot" data-step="5"></span>
-            </div>
+    <script src="js/dna-engine.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
 
-            <div class="onboarding-steps">
-                <div class="onboarding-step active" data-step="1">
-                    <div class="step-icon">🎯</div>
-                    <h2>Benvenuto in OB1 Radar</h2>
-                    <p>Il tuo assistente AI per lo scouting in <strong>Serie C e Serie D</strong>.</p>
-                    <p class="step-subtitle">Scopri opportunita di mercato prima degli altri.</p>
-                </div>
-
-                <div class="onboarding-step" data-step="2">
-                    <div class="step-icon">📊</div>
-                    <h2>Sistema di Scoring OB1</h2>
-                    <p>Ogni giocatore ha un <strong>OB1 Score</strong> da 1 a 100 basato su 5 criteri:</p>
-                    <div class="score-breakdown">
-                        <div class="breakdown-item">
-                            <span class="breakdown-icon">📍</span>
-                            <div>
-                                <strong>Posizione</strong> (25%)
-                                <span class="breakdown-score" data-breakdown="position">85</span>
-                            </div>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-icon">🎂</span>
-                            <div>
-                                <strong>Età</strong> (15%)
-                                <span class="breakdown-score" data-breakdown="age">90</span>
-                            </div>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-icon">⚽</span>
-                            <div>
-                                <strong>Stile</strong> (15%)
-                                <span class="breakdown-score" data-breakdown="style">70</span>
-                            </div>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-icon">📅</span>
-                            <div>
-                                <strong>Disponibilità</strong> (20%)
-                                <span class="breakdown-score" data-breakdown="availability">80</span>
-                            </div>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-icon">💰</span>
-                            <div>
-                                <strong>Budget</strong> (20%)
-                                <span class="breakdown-score" data-breakdown="budget">85</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="onboarding-step" data-step="3">
-                    <div class="step-icon">🔍</div>
-                    <h2>Filtra e Cerca</h2>
-                    <p>Usa i <strong>filtri</strong> per trovare esattamente quello che cerchi:</p>
-                    <ul class="feature-list">
-                        <li>🔥 Filtra per priorita (HOT/WARM/COLD)</li>
-                        <li>📍 Filtra per ruolo (DC, CC, AT...)</li>
-                        <li>💼 Filtra per tipo (Svincolato, Prestito...)</li>
-                        <li>🔎 Cerca per nome o club</li>
-                    </ul>
-                </div>
-
-                <div class="onboarding-step" data-step="4">
-                    <div class="step-icon">💡</div>
-                    <h2>Spiegazioniscore</h2>
-                    <p>Ogni giocatore mostra <strong>perché</strong> ha quel punteggio:</p>
-                    <ul class="feature-list">
-                        <li>Analisi posizione e adattamento</li>
-                        <li>Valutazione età e contesto</li>
-                        <li>Matching stile di gioco</li>
-                        <li>Costi e disponibilità</li>
-                    </ul>
-                </div>
-
-                <div class="onboarding-step" data-step="5">
-                    <div class="step-icon">🔔</div>
-                    <h2>Notifiche Telegram</h2>
-                    <p>Ricevi <strong>alert automatici</strong> quando troviamo opportunita HOT!</p>
-                    <div class="telegram-cta">
-                        <span class="telegram-icon">📱</span>
-                        <div>
-                            <strong>Collegati al Bot:</strong>
-                            <a href="https://t.me/Ob1LegaPro_bot" target="_blank" class="telegram-link">@Ob1LegaPro_bot</a>
-                        </div>
-                    </div>
-                    <p class="step-subtitle">Il sistema si aggiorna ogni 6 ore automaticamente.</p>
-                </div>
-            </div>
-
-            <div class="onboarding-nav">
-                <button class="btn-skip" id="skipTutorial">Salta</button>
-                <div class="nav-buttons">
-                    <button class="btn-prev" id="prevStep" style="display: none;">← Indietro</button>
-                    <button class="btn-next" id="nextStep">Avanti →</button>
-                    <button class="btn-finish" id="finishTutorial" style="display: none;">Inizia! 🚀</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="js/dna-engine.js"></script>
     <script src="js/app.js"></script>
