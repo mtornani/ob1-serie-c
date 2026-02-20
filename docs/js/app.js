@@ -553,6 +553,13 @@ function filterOpportunities() {
   // Sort by score (highest first)
   filtered.sort((a, b) => b.ob1_score - a.ob1_score);
 
+  // Default: show only top opportunities (score 65+) unless user is actively filtering
+  const isActivelyFiltering = state.currentFilter !== 'all' || state.currentRoleFilter ||
+    state.currentTypeFilter || state.currentPeriodFilter || state.searchQuery;
+  if (!isActivelyFiltering) {
+    filtered = filtered.filter(opp => opp.ob1_score >= 65);
+  }
+
   state.filteredOpportunities = filtered;
   renderOpportunities();
 }
@@ -624,36 +631,29 @@ function createOpportunityCard(opp) {
    
     let marketValueInfo = '';
     if (opp.market_value && opp.market_value > 0) {
-      marketValueInfo = opp.market_value >= 1000000 
+      marketValueInfo = opp.market_value >= 1000000
         ? `${(opp.market_value / 1000000).toFixed(1)}M€`
-        : `${opp.market_value}k€`;
+        : opp.market_value >= 1000
+          ? `${Math.round(opp.market_value / 1000)}k€`
+          : `${opp.market_value}€`;
     }
+
+   const nationalityFlag = opp.nationality ? `🌍 ${opp.nationality}` : '';
 
    return `
      <article class="opportunity-card ${opp.classification} slide-up" data-id="${opp.id}">
        <div class="card-header">
          <div class="player-info">
            <span class="player-name">${opp.player_name}</span>
-           <span class="player-role">${opp.role_name || opp.role}</span>
-           <span class="player-club">${currentClub}</span>
+           <span class="player-role">${opp.role_name || opp.role}${currentClub !== 'Libero/Young' ? ' — ' + currentClub : ''}</span>
          </div>
          <span class="score-badge ${opp.classification}">${scoreEmoji} ${opp.ob1_score}</span>
        </div>
 
        <div class="card-meta">
          <span class="meta-item">🎂 ${opp.age} anni</span>
-         <span class="meta-item">${marketValueInfo ? '💰 ' + marketValueInfo : ''}</span>
-         <span class="meta-item">${oppTypeInfo}</span>
-       </div>
-
-       <div class="score-breakdown-section">
-         <button class="toggle-breakdown" aria-label="Vedi score breakdown">
-           <span class="breakdown-icon">📉</span>
-           <span class="breakdown-text">Score breakdown</span>
-         </button>
-         <div class="score-breakdown-content">
-           ${createScoreBreakdown(breakdown)}
-         </div>
+         ${nationalityFlag ? `<span class="meta-item">${nationalityFlag}</span>` : ''}
+         ${marketValueInfo ? `<span class="meta-item">💰 ${marketValueInfo}</span>` : ''}
        </div>
 
        <div class="card-status">
@@ -661,16 +661,11 @@ function createOpportunityCard(opp) {
          <span class="card-date">📅 ${formatDate(opp.reported_date)}</span>
        </div>
 
+       ${opp.recommendation ? `
        <div class="card-recommendation">
          <span class="recommendation-icon">💡</span>
-         <span class="recommendation-text">${opp.recommendation || 'Giocatore.matcha con esigenze'}</span>
+         <span class="recommendation-text">${opp.recommendation}</span>
        </div>
-
-       ${opp.previous_clubs && opp.previous_clubs.length > 0 ? `
-         <div class="card-clubs">
-           <span class="clubs-icon">🏆</span>
-           <span class="clubs-text">Ex: ${opp.previous_clubs.slice(0, 3).join(', ')}</span>
-         </div>
        ` : ''}
 
        <div class="card-actions">
@@ -767,6 +762,20 @@ function updateStats() {
   animateNumber(elements.hotCount, hot);
   animateNumber(elements.warmCount, warm);
   animateNumber(elements.recentCount, recent);
+
+  // Hide stat items with zero values
+  const hotItem = elements.hotCount?.closest('.stat-item');
+  const recentItem = elements.recentCount?.closest('.stat-item');
+  if (hotItem) hotItem.style.display = hot > 0 ? '' : 'none';
+  if (recentItem) recentItem.style.display = recent > 0 ? '' : 'none';
+  // Also hide dividers next to hidden items
+  document.querySelectorAll('.stats-bar .stat-divider').forEach(d => {
+    const next = d.nextElementSibling;
+    const prev = d.previousElementSibling;
+    if ((next && next.style.display === 'none') || (prev && prev.style.display === 'none')) {
+      d.style.display = 'none';
+    }
+  });
 }
 
 function animateNumber(element, target) {
@@ -832,9 +841,11 @@ function showDetail(opp) {
    
     let marketValueInfo = '';
     if (marketValue && marketValue > 0) {
-      marketValueInfo = marketValue >= 1000000 
+      marketValueInfo = marketValue >= 1000000
         ? `${(marketValue / 1000000).toFixed(1)}M€`
-        : `${marketValue}k€`;
+        : marketValue >= 1000
+          ? `${Math.round(marketValue / 1000)}k€`
+          : `${marketValue}€`;
     }
    
    const scoreEmoji = opp.classification === 'hot' ? '🔥' : opp.classification === 'warm' ? '⚡' : '❄️';
