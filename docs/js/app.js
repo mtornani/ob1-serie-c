@@ -20,7 +20,8 @@ const state = {
   currentPeriodFilter: '',
   searchQuery: '',
   isLoading: true,
-  theme: 'dark'
+  theme: 'dark',
+  leagueFilter: 'Serie C'
 };
 
 // =============================================================================
@@ -202,6 +203,19 @@ function initEventListeners() {
       showView('landing');
     });
   }
+
+  // League tab filter
+  const leagueTabs = document.getElementById('leagueTabs');
+  if (leagueTabs) {
+    leagueTabs.addEventListener('click', function(e) {
+      var tab = e.target.closest('.league-tab');
+      if (!tab) return;
+      leagueTabs.querySelectorAll('.league-tab').forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      state.leagueFilter = tab.dataset.league;
+      renderLandingView();
+    });
+  }
 }
 
 // =============================================================================
@@ -285,8 +299,13 @@ function renderLandingView() {
     return;
   }
 
-  // Sort: Serie C first, then by name
-  const sorted = [...state.clubs].sort((a, b) => {
+  // Filter by league tab
+  const filtered = state.leagueFilter === 'all'
+    ? [...state.clubs]
+    : state.clubs.filter(function(c) { return c.category === state.leagueFilter; });
+
+  // Sort by name
+  const sorted = filtered.sort((a, b) => {
     const catOrder = { 'Serie C': 0, 'Serie D': 1, 'Campionato Sammarinese': 2 };
     const ca = catOrder[a.category] !== undefined ? catOrder[a.category] : 3;
     const cb = catOrder[b.category] !== undefined ? catOrder[b.category] : 3;
