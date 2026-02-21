@@ -97,7 +97,7 @@ async function loadData() {
     const data = await response.json();
     state.opportunities = data.opportunities || [];
     updateLastUpdate(data.last_update);
-    renderOpportunities();
+    filterOpportunities();
   } catch (error) {
     console.error('Error loading data:', error);
   }
@@ -138,18 +138,15 @@ function filterOpportunities() {
 
 function renderOpportunities() {
   const grid = elements.opportunitiesGrid;
-  if (state.filteredOpportunities.length === 0 && state.opportunities.length > 0) {
-      // If we are on "all" and nothing shows, it might be the default 65+ filter from previous logic
-      // But in this redesign, we show all in "Tutti" or the specific quick filters.
-  }
+  const empty = elements.emptyState;
 
   if (state.filteredOpportunities.length === 0) {
     grid.innerHTML = '';
-    elements.emptyState.style.display = 'block';
+    if (empty) empty.style.display = 'block';
     return;
   }
 
-  elements.emptyState.style.display = 'none';
+  if (empty) empty.style.display = 'none';
   grid.innerHTML = state.filteredOpportunities.map(opp => createOpportunityCard(opp)).join('');
 
   grid.querySelectorAll('.opportunity-card').forEach(card => {
