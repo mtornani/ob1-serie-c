@@ -196,7 +196,9 @@ input, select {
 }
 
 .logo-icon {
-  font-size: 2rem;
+  width: 36px;
+  height: 36px;
+  color: var(--color-primary);
 }
 
 .logo-text h1 {

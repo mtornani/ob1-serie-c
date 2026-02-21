@@ -1,5 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
   <rect width="192" height="192" rx="32" fill="#0f172a"/>
-  <circle cx="96" cy="80" r="40" fill="#3b82f6"/>
-  <text x="96" y="160" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#f1f5f9" text-anchor="middle">OB1</text>
+  <g transform="translate(96,96)" fill="none" stroke="#e2e8f0">
+    <!-- Ouroboros snake body -->
+    <path d="M 17 -34 A 34 34 0 1 1 31 -20" stroke-width="7" stroke-linecap="round"/>
+    <!-- Upper jaw -->
+    <path d="M 17 -34 C 23 -42, 35 -38, 34 -24" stroke-width="4" stroke-linecap="round"/>
+    <!-- Football -->
+    <circle cx="0" cy="0" r="15" stroke-width="2"/>
+    <polygon points="0,-11 5.5,-7 4,0 -4,0 -5.5,-7" fill="#e2e8f0" stroke="none"/>
+  </g>
+  <text x="96" y="158" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="#e2e8f0" text-anchor="middle" letter-spacing="2">OB1</text>
 </svg>

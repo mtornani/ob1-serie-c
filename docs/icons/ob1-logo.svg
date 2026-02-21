@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+  <!-- Ouroboros snake body (nearly complete circle) -->
+  <path d="M 67 16 A 34 34 0 1 1 81 30" stroke-width="7" stroke-linecap="round"/>
+  <!-- Upper jaw (curves from head toward tail, mouth bites) -->
+  <path d="M 67 16 C 73 8, 85 12, 84 26" stroke-width="4" stroke-linecap="round"/>
+  <!-- Football -->
+  <circle cx="50" cy="50" r="15" stroke-width="2"/>
+  <!-- Football pentagon pattern -->
+  <polygon points="50,39 55.5,43 54,50 46,50 44.5,43" fill="currentColor" stroke="none"/>
+</svg>
