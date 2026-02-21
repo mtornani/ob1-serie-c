@@ -15,8 +15,83 @@ sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
 from scoring import OB1Scorer
 
 
+def is_generic_tm_page(url: str) -> bool:
+    """Detect generic Transfermarkt league/transfer pages (not player profiles)"""
+    if not url:
+        return False
+    url_lower = url.lower()
+    generic_patterns = [
+        '/transfers/wettbewerb/',
+        '/serie-d-girone',
+        '/serie-c-girone',
+        '/startseite/wettbewerb/',
+        '/spieltagtabelle/',
+    ]
+    return any(p in url_lower for p in generic_patterns)
+
+
+def generate_recommendation(opp: dict) -> str:
+    """Auto-genera una nota scouting dalla data disponibile"""
+    parts = []
+    age = opp.get('age')
+    opp_type = (opp.get('opportunity_type', '') or '').lower()
+    market_value = opp.get('market_value', 0) or 0
+    appearances = opp.get('appearances', 0) or 0
+    goals = opp.get('goals', 0) or 0
+    assists = opp.get('assists', 0) or 0
+    previous_clubs = opp.get('previous_clubs', []) or []
+    summary = opp.get('summary', '') or ''
+    nationality = opp.get('nationality', '') or ''
+    foot = opp.get('foot', '') or ''
+
+    # Age profile
+    if age:
+        if age <= 21:
+            parts.append(f"Profilo giovane ({age} anni), potenziale di crescita")
+        elif age <= 25:
+            parts.append(f"Età ideale ({age} anni), nel pieno della maturazione")
+        elif age <= 28:
+            parts.append(f"Piena maturità ({age} anni), pronto per impatto immediato")
+        elif age <= 31:
+            parts.append(f"Esperienza ({age} anni), può portare leadership")
+        else:
+            parts.append(f"Giocatore esperto ({age} anni)")
+
+    # Contract situation
+    if opp_type == 'svincolato':
+        parts.append("Disponibile a parametro zero")
+    elif opp_type == 'rescissione':
+        parts.append("In uscita dal club, costo contenuto")
+    elif opp_type == 'prestito':
+        parts.append("Valutabile in prestito")
+
+    # Stats
+    if appearances > 50:
+        stat_str = f"{appearances} presenze"
+        if goals > 0:
+            stat_str += f", {goals} gol"
+        if assists > 0:
+            stat_str += f", {assists} assist"
+        parts.append(stat_str)
+
+    # Market value
+    if market_value >= 200000:
+        parts.append(f"Valore di mercato interessante ({market_value // 1000}k€)")
+
+    # Previous clubs
+    notable = [c for c in previous_clubs if c.lower() not in ('svincolato', '', 'n/d')]
+    if len(notable) >= 2:
+        parts.append(f"Passato da {', '.join(notable[:3])}")
+
+    # Use summary if nothing else
+    if not parts and summary:
+        return summary[:150]
+
+    return '. '.join(parts[:3]) + '.' if parts else ''
+
+
 def main():
-    print("Generating dashboard data with advanced scoring...")
+    print("Generating dashboard data with SCORE-002 scoring...")
 
     base_dir = Path(__file__).parent.parent
     data_dir = base_dir / 'data'
@@ -32,12 +107,38 @@ def main():
 
     if opps_file.exists():
         opportunities = json.loads(opps_file.read_text())
-        print(f"Loaded {len(opportunities)} opportunities")
+        print(f"Loaded {len(opportunities)} raw opportunities")
     else:
         print("No opportunities file found")
 
     if stats_file.exists():
         stats = json.loads(stats_file.read_text())
+
+    # === PRE-FILTER: remove generic TM pages and invalid entries ===
+    filtered = []
+    skipped_generic = 0
+    for opp in opportunities:
+        # Skip generic Transfermarkt league pages
+        if is_generic_tm_page(opp.get('source_url', '')):
+            skipped_generic += 1
+            continue
+        # Skip entries without player name
+        if not opp.get('player_name') or opp.get('player_name') in ('N/D', ''):
+            continue
+        filtered.append(opp)
+    print(f"Pre-filter: {len(filtered)} kept, {skipped_generic} generic TM pages removed")
+    opportunities = filtered
+
+    # === DEDUP: by normalized player_name (keep first = most recent) ===
+    seen_names = set()
+    deduped = []
+    for opp in opportunities:
+        name_key = opp.get('player_name', '').strip().lower()
+        if name_key and name_key not in seen_names:
+            seen_names.add(name_key)
+            deduped.append(opp)
+    print(f"Dedup: {len(deduped)} unique players (removed {len(opportunities) - len(deduped)} duplicates)")
+    opportunities = deduped
 
     # Initialize scorer
     scorer = OB1Scorer()
@@ -83,11 +184,29 @@ def main():
             # Discovered timestamp (for stale detection)
             'discovered_at': opp.get('discovered_at', ''),
 
-            # SCORE-001 results
+            # SCORE-002 results
             'ob1_score': score_result['ob1_score'],
             'classification': score_result['classification'],
             'score_breakdown': score_result['score_breakdown'],
+
+            # Auto-generated recommendation
+            'recommendation': generate_recommendation(opp),
         }
+
+        # Fix missing/bad role names - map codes to readable names
+        ROLE_MAP = {
+            'PO': 'Portiere', 'DC': 'Difensore Centrale', 'TD': 'Terzino Destro',
+            'TS': 'Terzino Sinistro', 'CC': 'Centrocampista', 'ED': 'Esterno Destro',
+            'ES': 'Esterno Sinistro', 'TQ': 'Trequartista', 'AT': 'Attaccante',
+            'AD': 'Ala Destra', 'AS': 'Ala Sinistra', 'MED': 'Mediano',
+            'REG': 'Regista', 'PC': 'Punta Centrale',
+        }
+        role_name = dashboard_opp['role_name']
+        if not role_name or role_name.lower() in ('non specificato', '', 'n/d'):
+            role_code = dashboard_opp.get('role', '')
+            dashboard_opp['role_name'] = ROLE_MAP.get(role_code.upper(), role_code or 'N/D')
+        elif role_name.upper() in ROLE_MAP:
+            dashboard_opp['role_name'] = ROLE_MAP[role_name.upper()]
 
         # DATA-003 QW-4: Calculate days_without_contract for svincolati/rescissioni
         opp_type = dashboard_opp['opportunity_type']
@@ -138,7 +257,7 @@ def main():
             'stale_free_agents': stale_count
         },
         'last_update': datetime.now().isoformat(),
-        'scoring_version': 'SCORE-001'
+        'scoring_version': 'SCORE-002'
     }
 
     # Write data.json to docs folder
@@ -153,8 +272,8 @@ def main():
     if dashboard_opportunities:
         print("\nTop 5 opportunities:")
         for i, opp in enumerate(dashboard_opportunities[:5], 1):
-            emoji = '🔥' if opp['classification'] == 'hot' else '⚡' if opp['classification'] == 'warm' else '❄️'
-            print(f"  {i}. {emoji} {opp['player_name']} - {opp['ob1_score']}/100 ({opp['opportunity_type']})")
+            tag = 'HOT' if opp['classification'] == 'hot' else 'WARM' if opp['classification'] == 'warm' else 'COLD'
+            print(f"  {i}. [{tag}] {opp['player_name']} - {opp['ob1_score']}/100 ({opp['opportunity_type']})")
 
 
 def calculate_age(birth_year):

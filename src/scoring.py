@@ -11,14 +11,32 @@ from typing import Dict, Any, Optional
 class OB1Scorer:
     """Sistema di scoring avanzato per opportunita di mercato"""
 
-    # Pesi per ogni componente
+    # Pesi per ogni componente (SCORE-002: rebalanced for differentiation)
     WEIGHTS = {
-        'freshness': 0.20,
-        'opportunity_type': 0.20,
+        'freshness': 0.15,
+        'opportunity_type': 0.10,
         'experience': 0.20,
-        'age': 0.20,
-        'source': 0.10,
-        'completeness': 0.10,
+        'age': 0.15,
+        'market_value': 0.15,
+        'league_fit': 0.15,
+        'source': 0.05,
+        'completeness': 0.05,
+    }
+
+    # Club noti Serie C 2025/26 (subset per matching)
+    SERIE_C_CLUBS = {
+        'pescara', 'reggiana', 'spal', 'cesena', 'rimini', 'perugia',
+        'ternana', 'arezzo', 'gubbio', 'torres', 'vis pesaro', 'pineto',
+        'carpi', 'pontedera', 'lucchese', 'pianese', 'entella', 'virtus entella',
+        'milan futuro', 'ascoli', 'campobasso', 'sestri levante', 'legnago',
+        'avellino', 'benevento', 'catania', 'cerignola', 'audace cerignola',
+        'crotone', 'foggia', 'giugliano', 'latina', 'messina', 'monopoli',
+        'potenza', 'sorrento', 'taranto', 'team altamura', 'turris',
+        'trapani', 'casertana', 'cavese', 'juventus next gen',
+        'alcione', 'arzignano', 'caldiero', 'feralpisalò', 'giana erminio',
+        'lecco', 'lumezzane', 'novara', 'padova', 'pro patria', 'pro vercelli',
+        'renate', 'trento', 'triestina', 'union clodiense', 'vicenza',
+        'atalanta u23', 'albinoleffe', 'l.r. vicenza',
     }
 
     # Score per tipo opportunita
@@ -57,6 +75,8 @@ class OB1Scorer:
             'opportunity_type': self._calc_type_score(opportunity.get('opportunity_type', 'altro')),
             'experience': self._calc_experience(opportunity),
             'age': self._calc_age(opportunity.get('age')),
+            'market_value': self._calc_market_value(opportunity.get('market_value')),
+            'league_fit': self._calc_league_fit(opportunity),
             'source': self._calc_source(opportunity.get('source_name', '')),
             'completeness': self._calc_completeness(opportunity),
         }
@@ -69,10 +89,10 @@ class OB1Scorer:
 
         ob1_score = int(round(total))
 
-        # Classification
-        if ob1_score >= 80:
+        # Classification (SCORE-002: calibrated for ~15% hot, ~50% warm, ~35% cold)
+        if ob1_score >= 70:
             classification = 'hot'
-        elif ob1_score >= 60:
+        elif ob1_score >= 57:
             classification = 'warm'
         else:
             classification = 'cold'
@@ -100,13 +120,15 @@ class OB1Scorer:
             if days_ago <= 0:
                 return 100  # Oggi
             elif days_ago == 1:
-                return 90   # Ieri
+                return 95   # Ieri
             elif days_ago <= 3:
-                return 75   # Ultimi 3 giorni
+                return 85   # Ultimi 3 giorni
             elif days_ago <= 7:
-                return 55   # Ultima settimana
+                return 70   # Ultima settimana
             elif days_ago <= 14:
-                return 40   # Ultime 2 settimane
+                return 60   # Ultime 2 settimane (ancora rilevante per mercato)
+            elif days_ago <= 30:
+                return 45   # Ultimo mese
             else:
                 return 25   # Piu vecchio
 
@@ -219,6 +241,57 @@ class OB1Scorer:
             score += 10
 
         return min(100, score)
+
+    def _calc_market_value(self, market_value: Optional[int]) -> int:
+        """Score basato sul valore di mercato (indicatore qualita giocatore)"""
+        if not market_value or market_value <= 0:
+            return 40  # Valore sconosciuto, penalita leggera
+
+        if market_value >= 500000:
+            return 100  # Qualita Serie B/alta Serie C
+        elif market_value >= 250000:
+            return 90   # Top Serie C
+        elif market_value >= 150000:
+            return 80   # Buon Serie C
+        elif market_value >= 100000:
+            return 70   # Serie C medio
+        elif market_value >= 50000:
+            return 55   # Basso Serie C / Serie D alto
+        else:
+            return 35   # Dilettanti
+
+    def _calc_league_fit(self, opportunity: Dict[str, Any]) -> int:
+        """Score basato sulla rilevanza per Serie C"""
+        source_url = (opportunity.get('source_url', '') or '').lower()
+        current_club = (opportunity.get('current_club', '') or '').lower()
+        previous_clubs = [c.lower() for c in (opportunity.get('previous_clubs', []) or [])]
+        summary = (opportunity.get('summary', '') or '').lower()
+        all_text = summary + ' ' + current_club + ' ' + ' '.join(previous_clubs)
+
+        score = 50  # Base
+
+        # Penalita pesante: fonte da pagina Serie D generica
+        if '/serie-d-' in source_url or '/wettbewerb/it4' in source_url:
+            score -= 25
+
+        # Penalita: club chiaramente dilettanti/amatoriali
+        amateur_keywords = ['maia alta', 'obermais', 'eccellenza', 'promozione', 'juniores']
+        if any(kw in all_text for kw in amateur_keywords):
+            score -= 15
+
+        # Bonus: club Serie C noto
+        for club in self.SERIE_C_CLUBS:
+            if club in current_club or any(club in pc for pc in previous_clubs):
+                score += 30
+                break
+
+        # Bonus: menzioni Serie B/C nel testo
+        if any(kw in all_text for kw in ['serie b', 'cadetti', 'serie a']):
+            score += 25
+        elif any(kw in all_text for kw in ['serie c', 'lega pro']):
+            score += 15
+
+        return max(0, min(100, score))
 
 
 def score_opportunities(opportunities: list) -> list:

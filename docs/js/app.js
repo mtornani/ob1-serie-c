@@ -115,7 +115,7 @@ function filterOpportunities() {
 
   // Quick Filters logic
   if (state.currentFilter === 'hot') {
-    filtered = filtered.filter(o => o.ob1_score >= 75).sort((a,b) => b.ob1_score - a.ob1_score).slice(0, 10);
+    filtered = filtered.filter(o => o.ob1_score >= 70).sort((a,b) => b.ob1_score - a.ob1_score).slice(0, 10);
   } else if (state.currentFilter === 'under') {
     filtered = filtered.filter(o => o.age <= 21);
   } else if (state.currentFilter === 'free') {
@@ -163,11 +163,11 @@ function createOpportunityCard(opp) {
   let verdictClass = 'cold';
   let stars = '⭐';
 
-  if (score >= 80) {
+  if (score >= 70) {
     verdict = 'TOP';
     verdictClass = 'hot';
     stars = '⭐⭐⭐';
-  } else if (score >= 65) {
+  } else if (score >= 57) {
     verdict = 'OCCASIONE';
     verdictClass = 'warm';
     stars = '⭐⭐';
@@ -234,7 +234,7 @@ function showDetail(opp) {
       </div>
       <div class="detail-box">
         <h4>Analisi Tecnica</h4>
-        <p>${opp.recommendation || 'Giocatore monitorato dal sistema radar.'}</p>
+        <p>${opp.recommendation || opp.summary || 'Profilo monitorato dal sistema OB1.'}</p>
       </div>
     </div>
     
