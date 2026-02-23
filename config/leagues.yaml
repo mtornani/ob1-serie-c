@@ -1,0 +1,37 @@
+# OB1 WORLD - LEAGUES CONFIGURATION
+leagues:
+  italy_serie_c_d:
+    name: "Serie C & D Italiana"
+    country: IT
+    language: it
+    serper_gl: it
+    serper_hl: it
+    queries:
+      - 'Serie C svincolato mercato oggi'
+      - 'Lega Pro calciomercato parametro zero'
+      - 'Serie D giovani talenti promesse'
+    trusted_sources: [tuttoc.com, calciomercato.com, lacasadic.com]
+
+  brazil_youth:
+    name: "Brazil Youth (Sub-20/Sub-23)"
+    country: BR
+    language: pt
+    serper_gl: br
+    serper_hl: pt
+    queries:
+      - 'Sub-20 destaque revelação empréstimo'
+      - 'Brasileirão promessa base futebol'
+      - 'Copa São Paulo melhores jogadores'
+    trusted_sources: [ge.globo.com, uol.com.br, terra.com.br]
+
+  argentina_superliga:
+    name: "Argentina Superliga & Youth"
+    country: AR
+    language: es
+    serper_gl: ar
+    serper_hl: es
+    queries:
+      - 'Superliga argentina joven promesa reserva'
+      - 'contrato libre mercado pases argentina'
+      - 'mejores jugadores juveniles argentina'
+    trusted_sources: [ole.com.ar, tycsports.com, infobae.com]

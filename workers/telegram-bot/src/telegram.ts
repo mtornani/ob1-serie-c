@@ -235,14 +235,11 @@ export async function setMyCommands(env: Env): Promise<boolean> {
   const url = `${TELEGRAM_API}${env.TELEGRAM_BOT_TOKEN}/setMyCommands`;
 
   const commands = [
-    { command: 'report', description: '📊 Report mercato istantaneo' },
-    { command: 'hot', description: '🔥 Opportunità top (score 80+)' },
-    { command: 'stale', description: '⏳ Svincolati ignorati da 30+ giorni' },
-    { command: 'stats', description: '📈 Numeri aggregati del mercato' },
-    { command: 'watch', description: '🔔 Alert personalizzati' },
-    { command: 'digest', description: '📬 Anteprima digest giornaliero' },
-    { command: 'scout', description: '🧭 Wizard guidato (Akinator)' },
-    { command: 'talenti', description: '🏟️ Talenti squadre B (Juve NG, Milan Futuro...)' },
+    { command: 'start', description: '🚀 Inizia e seleziona lega' },
+    { command: 'league', description: '🌍 Cambia focus globale' },
+    { command: 'summary', description: '📊 Riepilogo opportunità top' },
+    { command: 'hot', description: '🔥 Segnali High-Relevance (DNA 80+)' },
+    { command: 'search', description: '🔍 Analisi tecnica giocatore' },
     { command: 'help', description: '❓ Guida completa' },
   ];
 

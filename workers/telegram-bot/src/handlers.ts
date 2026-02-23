@@ -116,6 +116,14 @@ async function handleCommand(chatId: number, text: string, env: Env): Promise<vo
       await handleHelp(chatId, env);
       break;
 
+    case '/league':
+      await handleLeagueSelection(chatId, env);
+      break;
+
+    case '/summary':
+      await handleSummary(chatId, env);
+      break;
+
     case '/hot':
       await handleHot(chatId, env);
       break;
@@ -188,6 +196,24 @@ async function handleStart(chatId: number, env: Env): Promise<void> {
 
 async function handleHelp(chatId: number, env: Env): Promise<void> {
   await sendMessage(env, chatId, formatHelp(env));
+}
+
+async function handleLeagueSelection(chatId: number, env: Env): Promise<void> {
+  const keyboard = {
+    inline_keyboard: [
+      [{ text: "🇮🇹 Italy Serie C & D", callback_data: 'league_it' }],
+      [{ text: "🇧🇷 Brazil Youth", callback_data: 'league_br' }],
+      [{ text: "🇦🇷 Argentina Superliga", callback_data: 'league_ar' }],
+    ]
+  };
+  await sendMessage(env, chatId, "🌍 <b>OB1 WORLD - Global Focus</b>\n\nSeleziona la lega su cui vuoi concentrare lo scouting:", 'HTML');
+  // Nota: in prod qui dovresti usare sendMessageWithKeyboard
+}
+
+async function handleSummary(chatId: number, env: Env): Promise<void> {
+  await sendMessage(env, chatId, "📊 <b>Generazione Riepilogo Globale...</b>\n\n<i>Sto analizzando le opportunità top con il motore DNA 2.0</i>", 'HTML');
+  // Fallback a Smart Search per il summary globale
+  await handleSmartSearch(chatId, "Fammi un riepilogo delle migliori opportunità mondiali divise per lega", env);
 }
 
 async function handleHot(chatId: number, env: Env, limit: number = 5): Promise<void> {

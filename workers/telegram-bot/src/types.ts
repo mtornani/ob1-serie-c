@@ -61,6 +61,7 @@ export interface TelegramChat {
 // OB1 Data Types
 export interface Opportunity {
    id: string;
+   league_id?: string;
    player_name: string;
    age: number;
    role: string;
@@ -85,6 +86,7 @@ export interface Opportunity {
    ob1_breakdown?: ScoreBreakdown;
    score_breakdown?: ScoreBreakdown;
    recommendation?: string;
+   dna_matches?: Record<string, { score: number, verdict: string }>;
 }
 
 export interface DashboardData {

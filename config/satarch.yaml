@@ -1,0 +1,38 @@
+area:
+  bbox: [7.0, 44.0, 12.5, 46.5]
+  name: "Pianura Padana"
+sentinel:
+  product_type: S2
+  cloud_cover: 15
+  date_range: ["2020-01-01", "2024-12-31"]
+  resolution: 10
+detection:
+  hough_threshold: 100
+  hough_min_line_length: 50
+  hough_max_line_gap: 10
+  canny_low: 50
+  canny_high: 150
+  ndvi_threshold: 0.3
+  ndvi_lower_threshold: -0.1
+ai:
+  model: yolov8x
+  conf_threshold: 0.5
+  iou_threshold: 0.4
+output:
+  results_dir: "data/satarch"
+  tiles_dir: "data/satarch/tiles"
+  map_file: "map.html"
+  geojson_file: "results.geojson"
+patterns:
+  roman_roads:
+    min_length: 200
+    max_gap: 20
+    parallel_tolerance: 0.1
+  insulae:
+    min_area: 1000
+    max_area: 50000
+    aspect_ratio_tolerance: 0.3
+  enclosures:
+    min_area: 500
+    max_area: 100000
+    circularity_threshold: 0.7

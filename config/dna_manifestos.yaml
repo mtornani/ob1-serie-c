@@ -1,0 +1,27 @@
+# OB1 WORLD - DNA ARCHETYPES MANIFESTOS
+# These descriptions are used by the AI to perform semantic matching.
+
+archetypes:
+  the_asset_trader:
+    name: "Il Valorizzatore (Atalanta/Brighton Style)"
+    description: >
+      Focus: Giovani talenti (U23) da campionati minori con alto potenziale di rivendita.
+      Tactical: Giocatori fisici, dinamici, capaci di giocare ad alta intensità.
+      Economic: Costo basso (<500k), ingaggio contenuto, futuribilità totale.
+      Avoid: Over 26, giocatori statici, profili senza mercato internazionale.
+
+  the_win_now:
+    name: "L'Istantaneo (Catania/Benevento Style)"
+    description: >
+      Focus: Giocatori pronti subito per vincere il campionato (Serie C/B).
+      Tactical: Esperienza, carisma, conoscenza della categoria, solidità mentale.
+      Economic: Anche parametri zero "pesanti" o prestiti da Serie A di giocatori esperti.
+      Avoid: Scommesse troppo giovani, giocatori senza presenze recenti, profili fragili.
+
+  the_offensive_anarchist:
+    name: "Lo Zemaniano (Foggia/Zeman Style)"
+    description: >
+      Focus: Giocatori iper-offensivi, ali rapide, mezzali d'inserimento.
+      Tactical: 4-3-3 puro, pressing asfissiante, dribbling, verticalità estrema.
+      Economic: Qualsiasi categoria, purché abbiano doti atletiche superiori.
+      Avoid: Difensori lenti, centrocampisti di posizione (registi classici), giocatori che non corrono.
