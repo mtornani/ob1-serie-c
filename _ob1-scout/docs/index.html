@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OB1 World Scout — Global U20 Radar</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>OB1 World Scout <span>Global U20 Radar</span></h1>
+      <div class="header-actions">
+        <a href="https://t.me/Ob1WorldBot" target="_blank" class="btn-sm">Telegram Bot</a>
+      </div>
+    </header>
+
+    <div class="last-update" id="lastUpdate"></div>
+
+    <div class="breakdown" id="breakdown"></div>
+
+    <div class="search-wrap">
+      <input type="text" id="search" placeholder="Search signals...">
+    </div>
+
+    <div class="filters" id="filters">
+      <button class="chip active" data-filter="all">All</button>
+      <button class="chip" data-filter="hot">Top Signals</button>
+      <button class="chip" data-filter="PLAYER_BURST">Debuts</button>
+      <button class="chip" data-filter="TRANSFER_SIGNAL">Transfers</button>
+      <button class="chip" data-filter="africa">Africa</button>
+      <button class="chip" data-filter="asia">Asia</button>
+      <button class="chip" data-filter="south-america">S. America</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="footer">
+      OB1 World Scout &mdash; <a href="https://t.me/Ob1WorldBot">@Ob1WorldBot</a>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

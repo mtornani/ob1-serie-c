@@ -1,0 +1,8 @@
+*.pyc
+__pycache__/
+output/
+data/
+*.csv
+.env
+node_modules/
+.wrangler/

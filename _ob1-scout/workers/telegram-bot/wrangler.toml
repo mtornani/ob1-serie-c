@@ -1,0 +1,9 @@
+name = "ob1-world-bot"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[vars]
+DATA_URL = "https://mtornani.github.io/ob1-scout/data.json"
+DASHBOARD_URL = "https://mtornani.github.io/ob1-scout/"
+
+# Set secret via: wrangler secret put TELEGRAM_BOT_TOKEN
