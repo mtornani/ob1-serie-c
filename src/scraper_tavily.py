@@ -138,6 +138,9 @@ CRITERI DI ESCLUSIONE:
 - Giocatori gia trasferiti/firmati
 - Semplici rumors senza sostanza
 - Giocatori di Serie A/B che non interessano la Serie C
+- Giocatori stranieri che giocano in campionati esteri (Argentina, Brasile, Spagna, ecc.)
+- Articoli su mercato estero o nazionali straniere (Superliga argentina, Serie A brasiliana, ecc.)
+- Qualsiasi giocatore che non sia realisticamente disponibile per club di Serie C italiana
 
 Per ogni giocatore rilevante, estrai:
 {{
