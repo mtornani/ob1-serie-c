@@ -142,6 +142,8 @@ CRITERI DI ESCLUSIONE:
 - Articoli su mercato estero o nazionali straniere (Superliga argentina, Serie A brasiliana, ecc.)
 - Qualsiasi giocatore che non sia realisticamente disponibile per club di Serie C italiana
 
+IMPORTANTE: il campo "player_name" deve contenere solo il nome e cognome del giocatore (es. "Marco Rossi"). NON usare prefissi come [ITALY], [ARGENTINA] o simili. Se l'articolo non menziona giocatori specifici con nome e cognome, rispondi [].
+
 Per ogni giocatore rilevante, estrai:
 {{
   "player_name": "Nome Cognome",

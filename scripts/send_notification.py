@@ -70,15 +70,16 @@ def main():
         print("❌ No opportunities found")
         return
 
-    # Filter out non-Italian entries (leftover from old global scouting system)
-    non_italian_prefixes = ('[ARGENTINA]', '[BRAZIL]', '[BRASIL]', '[GLOBAL]')
+    # Filter out garbage entries from old global scouting system:
+    # entries with [TAG] prefix (e.g. [ARGENTINA], [ITALY], [GLOBAL]) are
+    # article titles or foreign-league data, not real players
     before_filter = len(opportunities)
     opportunities = [
         o for o in opportunities
-        if not any(o.get('player_name', '').startswith(p) for p in non_italian_prefixes)
+        if not o.get('player_name', '').startswith('[')
     ]
     if len(opportunities) < before_filter:
-        print(f"⚠️ Filtrate {before_filter - len(opportunities)} voci non-italiane ({len(opportunities)} rimaste)")
+        print(f"⚠️ Filtrate {before_filter - len(opportunities)} voci non valide ({len(opportunities)} rimaste)")
 
     # Filter for recent (last 6 hours for scheduled runs)
     cutoff = (datetime.now() - timedelta(hours=6)).strftime('%Y-%m-%d')
