@@ -106,7 +106,7 @@ def main():
     stats = {}
 
     if opps_file.exists():
-        opportunities = json.loads(opps_file.read_text())
+        opportunities = json.loads(opps_file.read_text(encoding='utf-8'))
         print(f"Loaded {len(opportunities)} raw opportunities")
     else:
         print("No opportunities file found")
@@ -114,9 +114,11 @@ def main():
     if stats_file.exists():
         stats = json.loads(stats_file.read_text())
 
-    # === PRE-FILTER: remove generic TM pages and invalid entries ===
+    # === PRE-FILTER: remove junk entries ===
     filtered = []
     skipped_generic = 0
+    skipped_foreign = 0
+    skipped_no_entity = 0
     for opp in opportunities:
         # Skip generic Transfermarkt league pages
         if is_generic_tm_page(opp.get('source_url', '')):
@@ -125,8 +127,38 @@ def main():
         # Skip entries without player name
         if not opp.get('player_name') or opp.get('player_name') in ('N/D', ''):
             continue
+
+        # --- FIX: Geographic filter ---
+        # Only allow Italian league entries or legacy entries (no league_id)
+        league_id = opp.get('league_id', '')
+        if league_id and not league_id.startswith('italy'):
+            skipped_foreign += 1
+            continue
+
+        # --- FIX: Entity validation ---
+        # Skip entries whose "name" is clearly a page title, not a player.
+        # Real players can lack age/role (un-enriched), so we only filter on name patterns.
+        player_name = opp.get('player_name', '')
+        name_lower = player_name.lower()
+
+        # Strip league prefix like "[ITALY] " for the check
+        clean_name = player_name
+        if clean_name.startswith('[') and '] ' in clean_name:
+            clean_name = clean_name.split('] ', 1)[1]
+
+        if '|' in clean_name or any(term in name_lower for term in [
+            'transfermarkt', 'calciomercato', 'svincolati', 'la casa di c',
+            'jugadores libres', 'ranking', 'classifica', 'tabella',
+            'sul mercato', 'quanti svincolati', 'notizie di',
+            'occasioni a zero', 'acquisti ufficiali', 'giocatori senza contratto',
+            'tuttocampo', 'tuttomercato',
+        ]):
+            skipped_no_entity += 1
+            continue
+
         filtered.append(opp)
-    print(f"Pre-filter: {len(filtered)} kept, {skipped_generic} generic TM pages removed")
+    print(f"Pre-filter: {len(filtered)} kept, {skipped_generic} generic TM, "
+          f"{skipped_foreign} foreign league, {skipped_no_entity} non-entity removed")
     opportunities = filtered
 
     # === DEDUP: by normalized player_name (keep first = most recent) ===
@@ -262,7 +294,7 @@ def main():
 
     # Write data.json to docs folder
     data_json_path = docs_dir / 'data.json'
-    data_json_path.write_text(json.dumps(dashboard_data, indent=2, ensure_ascii=False))
+    data_json_path.write_text(json.dumps(dashboard_data, indent=2, ensure_ascii=False), encoding='utf-8')
     print(f"Dashboard data generated: {data_json_path}")
     print(f"   Total: {len(dashboard_opportunities)}, HOT: {hot_count}, WARM: {warm_count}, COLD: {cold_count}")
     if stale_count:

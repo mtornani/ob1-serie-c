@@ -5,6 +5,7 @@ High-performance scouting engine using Scrapling (Anti-Bot) and Tavily (Discover
 """
 
 import os
+import re
 import yaml
 import json
 import requests
@@ -25,6 +26,27 @@ load_dotenv()
 
 class GlobalScraper:
     """Multi-league scouting with advanced anti-bot bypass."""
+
+    # URLs that are index/listing pages, not player articles
+    BLACKLIST_URL_PATTERNS = [
+        '/transfers/wettbewerb/',
+        '/startseite/wettbewerb/',
+        '/spieltagtabelle/',
+        '/serie-c-girone',
+        '/serie-d-girone',
+        '/marktwerte/',
+        '/statistik/',
+        '/forum/',
+        '/jugadores-libres/',
+        '/transferencias/',
+    ]
+
+    # Title fragments that indicate a listing page, not a player article
+    JUNK_TITLE_TERMS = [
+        'jugadores libres', 'ranking', 'classifica', 'tabella',
+        'gli svincolati', 'sul mercato', 'quanti svincolati',
+        'transferencias', 'calendario', 'risultati',
+    ]
 
     def __init__(self, config_path: str = "config/leagues.yaml"):
         self.serper_key = os.getenv('SERPER_API_KEY')
@@ -69,11 +91,21 @@ class GlobalScraper:
             print(f"  [SCRAPLING ERROR] {url}: {e}")
             return ""
 
+    def _is_junk_url(self, url: str) -> bool:
+        """Detect index/listing pages that are not player-specific articles."""
+        url_lower = url.lower()
+        return any(p in url_lower for p in self.BLACKLIST_URL_PATTERNS)
+
+    def _is_junk_title(self, title: str) -> bool:
+        """Detect generic listing titles that aren't about a specific player."""
+        title_lower = title.lower()
+        return any(term in title_lower for term in self.JUNK_TITLE_TERMS)
+
     def scrape_league(self, league_id: str) -> List[MarketOpportunity]:
         """Scrape all opportunities for a league with fresh filtering."""
         conf = self.leagues.get(league_id)
         if not conf: return []
-        
+
         print(f"🌐 Scraping: {conf['name']}...")
         opportunities = []
         seen_urls = set()
@@ -81,29 +113,46 @@ class GlobalScraper:
         for query in conf.get('queries', []):
             # Discovery using Tavily
             results = self.search_tavily(query, include_domains=conf.get('trusted_sources'))
-            
+
             for item in results:
                 url = item.get('url', '')
                 if url in seen_urls: continue
                 seen_urls.add(url)
-                
-                # 1. Date Filtering (Anti-Stale)
+
+                # 1. Skip index/listing pages
+                if self._is_junk_url(url):
+                    print(f"  [JUNK URL] Skipping: {url[:60]}...")
+                    continue
+
+                # 2. Skip generic page titles
+                title = item.get('title', '')
+                if self._is_junk_title(title):
+                    print(f"  [JUNK TITLE] Skipping: {title[:60]}...")
+                    continue
+
+                # 3. Date Filtering (Anti-Stale)
                 fresh, reason = is_article_fresh(url)
                 if not fresh:
                     print(f"  [STALE] Skipping {url}: {reason}")
                     continue
 
-                # 2. Basic Opportunity
+                # 4. Extract player name — skip if no real name found
+                player_name = self._extract_name(title)
+                if not player_name:
+                    print(f"  [NO NAME] Skipping: {title[:60]}...")
+                    continue
+
+                # 5. Build opportunity
                 opp = MarketOpportunity(
                     league_id=league_id,
-                    opportunity_type=self._detect_type(item.get('title', '') + item.get('content', '')),
-                    player_name=self._extract_name(item.get('title', '')),
+                    opportunity_type=self._detect_type(title + (item.get('content', '') or '')),
+                    player_name=player_name,
                     description=item.get('content', ''),
                     source_url=url,
                     source_name=url.split('/')[2]
                 )
                 opportunities.append(opp)
-                
+
         return opportunities
 
     def _detect_type(self, text: str) -> OpportunityType:
@@ -114,5 +163,52 @@ class GlobalScraper:
         return OpportunityType.TALENT
 
     def _extract_name(self, title: str) -> str:
-        # Placeholder for AI extraction in enrichment step
-        return title.split(':')[0].strip()[:50]
+        """Extract a plausible player name (Capitalized Firstname Lastname) from a title.
+
+        Returns empty string if no real name is found, which signals the caller to skip.
+        """
+        if not title:
+            return ''
+
+        # Strip common separators used by news sites
+        # "Club, ufficiale: Mario Rossi firma" → try after the separator
+        for sep in [':', '–', '-', '|', ',']:
+            if sep in title:
+                parts = title.split(sep)
+                # Try each part for a name
+                for part in parts:
+                    name = self._find_person_name(part.strip())
+                    if name:
+                        return name
+                # If no part had a name, fall through to whole-title search
+
+        return self._find_person_name(title)
+
+    def _find_person_name(self, text: str) -> str:
+        """Find a 'Firstname Lastname' pattern (two+ consecutive capitalized words) in text.
+
+        Filters out club names and common non-person capitalized words.
+        """
+        # Match sequences of 2-3 capitalized words (covers "De Rossi", "Van Basten", etc.)
+        matches = re.findall(
+            r'\b([A-ZÀÈÉÌÒÙÁÉÍÓÚ][a-zàèéìòùáéíóú]+(?:\s+(?:De|Di|Del|Della|Van|Von|Dos|Da|El|La|Le|Lo|Al)?[A-ZÀÈÉÌÒÙÁÉÍÓÚ][a-zàèéìòùáéíóú]+)+)\b',
+            text
+        )
+
+        # Filter out non-person names
+        skip_words = {
+            'Serie', 'Lega', 'Coppa', 'Girone', 'Transfermarkt', 'Calciomercato',
+            'Italia', 'Mercato', 'Juventus', 'Milan', 'Inter', 'Roma', 'Napoli',
+            'Champions', 'League', 'Europa', 'Conference', 'Copa', 'Brazil',
+            'Argentina', 'Premier', 'Bundesliga',
+        }
+
+        for match in matches:
+            first_word = match.split()[0]
+            if first_word in skip_words:
+                continue
+            # Must be at least 2 words to be a real name
+            if len(match.split()) >= 2:
+                return match[:50]
+
+        return ''
