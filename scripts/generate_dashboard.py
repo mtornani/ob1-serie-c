@@ -135,24 +135,13 @@ def main():
             skipped_foreign += 1
             continue
 
-        # --- FIX: Entity validation ---
-        # Skip entries whose "name" is clearly a page title, not a player.
-        # Real players can lack age/role (un-enriched), so we only filter on name patterns.
-        player_name = opp.get('player_name', '')
-        name_lower = player_name.lower()
-
-        # Strip league prefix like "[ITALY] " for the check
-        clean_name = player_name
-        if clean_name.startswith('[') and '] ' in clean_name:
-            clean_name = clean_name.split('] ', 1)[1]
-
-        if '|' in clean_name or any(term in name_lower for term in [
-            'transfermarkt', 'calciomercato', 'svincolati', 'la casa di c',
-            'jugadores libres', 'ranking', 'classifica', 'tabella',
-            'sul mercato', 'quanti svincolati', 'notizie di',
-            'occasioni a zero', 'acquisti ufficiali', 'giocatori senza contratto',
-            'tuttocampo', 'tuttomercato',
-        ]):
+        # --- FIX: Entity validation (structural) ---
+        # A real player MUST have at least age OR a real role.
+        # Entries with neither are page titles / generic articles, not players.
+        has_age = opp.get('age') is not None
+        role_raw = (opp.get('role_name') or opp.get('role') or '').strip()
+        has_role = role_raw not in ('', 'N/D', 'Non specificato')
+        if not has_age and not has_role:
             skipped_no_entity += 1
             continue
 
