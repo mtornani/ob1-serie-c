@@ -1,7 +1,12 @@
 {
-  "last_run": "2026-02-28T18:39:11.127699",
-  "new_opportunities": 0,
+  "last_run": "2026-03-01T02:46:32.398596",
+  "new_opportunities": 38,
   "total_opportunities": 100,
   "scraper": "tavily",
-  "by_type": {}
+  "by_type": {
+    "scadenza": 7,
+    "mercato": 22,
+    "prestito": 8,
+    "svincolato": 1
+  }
 }
