@@ -1,111 +1,5 @@
 [
   {
-    "id": "opp_587b6333",
-    "player_name": "Trabucchi",
-    "age": null,
-    "role": "CC",
-    "role_name": "N/D",
-    "opportunity_type": "prestito",
-    "current_club": "Parma",
-    "previous_clubs": [],
-    "summary": "Prestito di Trabucchi dal Parma alla Dolomiti Bellunesi Calcio.",
-    "source_url": "https://www.gazzetta.it/Calciomercato/23-01-2026/calciomercato-live-le-notizie-di-oggi-e-le-trattative.shtml",
-    "source_name": "Gazzetta",
-    "source_title": "Calciomercato LIVE: le notizie di oggi e le trattative | Gazzetta.it",
-    "discovered_at": "2026-03-02T13:11:02.125253",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/nicolas-trabucchi/profil/spieler/1119655",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/nicolas-trabucchi/profil/spieler/1119655"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_8db7ebb6",
-    "player_name": "Alessandro Russo",
-    "age": 23,
-    "role": "PO",
-    "role_name": "Portiere",
-    "opportunity_type": "prestito",
-    "current_club": "Sassuolo",
-    "previous_clubs": [],
-    "summary": "Portiere in prestito dal Sassuolo al Cerignola in Serie C.",
-    "source_url": "https://www.gazzetta.it/Calciomercato/23-01-2026/calciomercato-live-le-notizie-di-oggi-e-le-trattative.shtml",
-    "source_name": "Gazzetta",
-    "source_title": "Calciomercato LIVE: le notizie di oggi e le trattative | Gazzetta.it",
-    "discovered_at": "2026-03-02T13:11:02.125239",
-    "nationality": "Italia",
-    "foot": "destro",
-    "height_cm": 176,
-    "birth_date": "2003-09-06",
-    "tm_url": "https://www.transfermarkt.it/alessandro-russo/profil/spieler/708084",
-    "agent": "Senza procuratore",
-    "player_profile": {
-      "nationality": "Italia",
-      "foot": "destro",
-      "height_cm": 176,
-      "tm_url": "https://www.transfermarkt.it/alessandro-russo/profil/spieler/708084",
-      "agent": "Senza procuratore"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_1e66eb9f",
-    "player_name": "Emanuele Zanaboni",
-    "age": null,
-    "role": "CC",
-    "role_name": "Punta Centrale",
-    "opportunity_type": "mercato",
-    "current_club": "Casarano",
-    "previous_clubs": [],
-    "summary": "Punta centrale in arrivo dal Casarano all'Atalanta U23.",
-    "source_url": "https://www.gazzetta.it/Calciomercato/23-01-2026/calciomercato-live-le-notizie-di-oggi-e-le-trattative.shtml",
-    "source_name": "Gazzetta",
-    "source_title": "Calciomercato LIVE: le notizie di oggi e le trattative | Gazzetta.it",
-    "discovered_at": "2026-03-02T13:11:02.125211",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/emanuele-zanaboni/profil/spieler/1101344",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/emanuele-zanaboni/profil/spieler/1101344"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_d52f3044",
-    "player_name": "Ivan Varone",
-    "age": 31,
-    "role": "CC",
-    "role_name": "Centrocampista",
-    "opportunity_type": "prestito",
-    "current_club": "Salernitana",
-    "previous_clubs": [
-      "Castiglione",
-      "Savona",
-      "San Marino",
-      "Fondi",
-      "Carrarese",
-      "Reggiana",
-      "Novara",
-      "Cesena",
-      "Ascoli",
-      "Panetolikos"
-    ],
-    "summary": "Centrocampista di esperienza con oltre 60 gare in Serie B e più di 200 in Lega Pro. Acquisito in prestito dal Gubbio dalla Salernitana fino al 30 Giugno 2026.",
-    "source_url": "https://www.tuttomercatoweb.com/serie-c/gubbio-arriva-in-prestito-dalla-salernitana-il-centrocampista-ivan-varone-2197980",
-    "source_name": "TMW",
-    "source_title": "Gubbio, arriva in prestito dalla Salernitana il centrocampista Ivan Varone",
-    "discovered_at": "2026-03-02T13:10:55.069250",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/ivan-varone/profil/spieler/123258",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/ivan-varone/profil/spieler/123258"
-    },
-    "tm_enriched": true
-  },
-  {
     "id": "opp_f6082347",
     "player_name": "Andrea Pelamatti",
     "age": 20,
@@ -2379,6 +2273,99 @@
     "player_profile": {
       "nationality": "Italia",
       "tm_url": "https://www.transfermarkt.it/giovanni-bruzzaniti/profil/spieler/420460"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_bb6ab6ce",
+    "player_name": "Kees de Boer",
+    "age": 25,
+    "role": "CC",
+    "role_name": "Centrocampista",
+    "opportunity_type": "mercato",
+    "current_club": "Union Brescia",
+    "previous_clubs": [],
+    "summary": "Centrocampista dell'Union Brescia, squadra di Serie C - A. Sembra ci sia interesse da parte di altri club.",
+    "source_url": "https://www.transfermarkt.it/serie-c-girone-c/geruechte/wettbewerb/IT3C",
+    "source_name": "Transfermarkt",
+    "source_title": "Serie C - Girone C - Ultime novità mercato - Transfermarkt",
+    "discovered_at": "2026-03-01T02:46:03.939430",
+    "nationality": "Olanda",
+    "tm_url": "https://www.transfermarkt.it/kees-de-boer/profil/spieler/338532",
+    "player_profile": {
+      "nationality": "Olanda",
+      "tm_url": "https://www.transfermarkt.it/kees-de-boer/profil/spieler/338532"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_186b4287",
+    "player_name": "Lucio Bonofiglio",
+    "age": 18,
+    "role": "TD",
+    "role_name": "Terzino Destro",
+    "opportunity_type": "mercato",
+    "current_club": "ACR Messina",
+    "previous_clubs": [],
+    "summary": "Giovane terzino destro dell'ACR Messina, squadra di Serie D - I. Sembra ci sia interesse da parte di altri club.",
+    "source_url": "https://www.transfermarkt.it/serie-c-girone-c/geruechte/wettbewerb/IT3C",
+    "source_name": "Transfermarkt",
+    "source_title": "Serie C - Girone C - Ultime novità mercato - Transfermarkt",
+    "discovered_at": "2026-03-01T02:46:03.939419",
+    "tm_url": "https://www.transfermarkt.it/cosenza-calcio/startseite/verein/4031/sort/age",
+    "player_profile": {
+      "tm_url": "https://www.transfermarkt.it/cosenza-calcio/startseite/verein/4031/sort/age"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_197924e9",
+    "player_name": "Nicholas Fantoni",
+    "age": 23,
+    "role": "DC",
+    "role_name": "Difensore Centrale",
+    "opportunity_type": "mercato",
+    "current_club": "Team Altamura",
+    "previous_clubs": [],
+    "summary": "Difensore centrale del Team Altamura, squadra di Serie C - C. Sembra ci sia interesse da parte di altri club.",
+    "source_url": "https://www.transfermarkt.it/serie-c-girone-c/geruechte/wettbewerb/IT3C",
+    "source_name": "Transfermarkt",
+    "source_title": "Serie C - Girone C - Ultime novità mercato - Transfermarkt",
+    "discovered_at": "2026-03-01T02:46:03.939408",
+    "nationality": "Italia",
+    "foot": "destro",
+    "height_cm": 189,
+    "birth_date": "2002-10-04",
+    "tm_url": "https://www.transfermarkt.it/nicholas-fantoni/profil/spieler/814349",
+    "agent": "Paolo Tricoli",
+    "player_profile": {
+      "nationality": "Italia",
+      "foot": "destro",
+      "height_cm": 189,
+      "tm_url": "https://www.transfermarkt.it/nicholas-fantoni/profil/spieler/814349",
+      "agent": "Paolo Tricoli"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_6d3376a4",
+    "player_name": "Federico Bergonzi",
+    "age": 25,
+    "role": "TD",
+    "role_name": "Terzino Destro",
+    "opportunity_type": "mercato",
+    "current_club": "Calcio Foggia 1920",
+    "previous_clubs": [],
+    "summary": "Terzino destro del Foggia, squadra di Serie C - C. Sembra ci sia interesse da parte di altri club.",
+    "source_url": "https://www.transfermarkt.it/serie-c-girone-c/geruechte/wettbewerb/IT3C",
+    "source_name": "Transfermarkt",
+    "source_title": "Serie C - Girone C - Ultime novità mercato - Transfermarkt",
+    "discovered_at": "2026-03-01T02:46:03.939395",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/federico-bergonzi/profil/spieler/536837",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/federico-bergonzi/profil/spieler/536837"
     },
     "tm_enriched": true
   }
