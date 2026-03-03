@@ -11,8 +11,10 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-# Add project root to path so 'src' is importable as package
-sys.path.insert(0, str(Path(__file__).parent.parent))
+# Add project root (for 'from src.xxx') AND src/ (for internal 'from models' etc.)
+_root = str(Path(__file__).parent.parent)
+sys.path.insert(0, _root)
+sys.path.insert(0, os.path.join(_root, 'src'))
 
 from src.scraper_global import GlobalScraper
 from src.scoring_global import OB1Scorer
