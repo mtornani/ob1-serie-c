@@ -49,7 +49,7 @@
 
                 <div class="hero-stats">
                     <div class="hero-stat">
-                        <span class="hero-stat-value">100+</span>
+                        <span class="hero-stat-value" id="heroStatProfiles">—</span>
                         <span class="hero-stat-label">PROFILI</span>
                     </div>
                     <div class="hero-stat">
@@ -89,48 +89,40 @@
 
         <!-- EXPLORE VIEW -->
         <div id="exploreView" class="view-section" style="display: none;">
-            <button class="btn-back" id="btnBackFromExplore">&larr; Torna alla Home</button>
+            <div class="explore-toolbar">
+                <button class="btn-back" id="btnBackFromExplore">&larr; Home</button>
+                <div class="cycle-status" id="cycleStatus"></div>
+            </div>
 
             <!-- Search Bar -->
             <div class="search-container">
                 <input type="search"
                        class="search-input"
                        id="searchInput"
-                       placeholder="Cerca giocatore o ruolo..."
+                       placeholder="Cerca giocatore, ruolo, club..."
                        autocomplete="off">
                 <span class="search-icon">&gt;</span>
             </div>
 
             <!-- Quick Filters -->
-            <div class="filter-section">
+            <div class="filter-bar">
                 <div class="filter-chips" id="filterChips">
-                    <button class="filter-chip active" data-filter="all">Tutti</button>
+                    <button class="filter-chip active" data-filter="all">TUTTI</button>
                     <button class="filter-chip" data-filter="hot">TOP 10</button>
-                    <button class="filter-chip" data-filter="under">UNDER</button>
+                    <button class="filter-chip" data-filter="under">U21</button>
                     <button class="filter-chip" data-filter="free">SVINCOLATI</button>
                 </div>
-                <div style="display: none;">
-                    <select id="roleFilter"></select>
-                    <select id="typeFilter"></select>
-                    <select id="periodFilter"></select>
-                </div>
+                <span class="result-count"><span id="resultCount">0</span> risultati</span>
             </div>
 
             <!-- Opportunities Grid -->
-            <div class="opportunities-grid" id="opportunitiesGrid">
-                <!-- Populated by JS -->
-            </div>
+            <div class="opportunities-grid" id="opportunitiesGrid"></div>
 
             <!-- Empty State -->
             <div class="empty-state" id="emptyState" style="display: none;">
                 <div class="empty-icon">&gt;_</div>
                 <h3>Nessuna opportunita trovata</h3>
                 <p>Prova a cambiare filtro o torna piu tardi.</p>
-            </div>
-
-            <!-- Last Update -->
-            <div class="last-update" id="lastUpdate">
-                Ultimo aggiornamento: --
             </div>
         </div>
     </main>

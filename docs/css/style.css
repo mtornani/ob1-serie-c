@@ -2263,3 +2263,305 @@ input, select {
 .footer-links a:hover {
   color: var(--color-text);
 }
+
+/* =============================================================================
+   Explore Toolbar
+   ============================================================================= */
+
+.explore-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.cycle-status {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  text-align: right;
+  line-height: 1.4;
+}
+
+.cycle-label {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* =============================================================================
+   Filter Bar
+   ============================================================================= */
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.result-count {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* =============================================================================
+   Compact Opportunity Cards
+   ============================================================================= */
+
+.opp-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.opp-card:hover {
+  border-color: var(--color-primary);
+}
+
+.opp-card.hot {
+  border-left: 3px solid var(--color-hot);
+}
+
+.opp-card.warm {
+  border-left: 3px solid var(--color-warm);
+}
+
+.opp-card.cold {
+  border-left: 3px solid var(--color-border);
+}
+
+.opp-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: 4px;
+}
+
+.opp-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.opp-name {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.opp-meta {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.opp-score {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.opp-score.hot {
+  color: var(--color-primary);
+}
+
+.opp-score.warm {
+  color: var(--color-warm);
+}
+
+.opp-score.cold {
+  color: var(--color-text-muted);
+}
+
+.opp-tags {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.opp-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.opp-tag.type-svincolato {
+  background: rgba(0, 255, 65, 0.1);
+  color: var(--color-primary);
+}
+
+.opp-tag.type-rescissione {
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--color-warm);
+}
+
+.opp-tag.type-prestito {
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+}
+
+.opp-tag.type-scadenza {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--color-hot);
+}
+
+/* =============================================================================
+   Detail Modal Enhanced
+   ============================================================================= */
+
+.detail-table {
+  width: 100%;
+  margin-bottom: var(--space-md);
+  border-collapse: collapse;
+}
+
+.detail-table td {
+  padding: 6px 0;
+  font-size: var(--font-size-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.detail-table td:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  width: 100px;
+}
+
+.detail-table td:last-child {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.detail-stats {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  padding: var(--space-md) 0;
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.detail-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.ds-val {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.ds-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.detail-score {
+  font-family: var(--font-mono);
+}
+
+.detail-score.hot {
+  background: var(--color-primary);
+  color: #0a0a0a;
+}
+
+.detail-score.warm {
+  background: var(--color-warm);
+  color: #0a0a0a;
+}
+
+.detail-score.cold {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-muted);
+}
+
+.detail-breakdown {
+  margin: var(--space-md) 0;
+}
+
+.detail-breakdown h4 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.bd-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bd-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bd-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  width: 70px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.bd-track {
+  flex: 1;
+  height: 5px;
+  background: var(--color-bg-secondary);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bd-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.bd-fill.bar-good { background: var(--color-primary); }
+.bd-fill.bar-mid { background: var(--color-warm); }
+.bd-fill.bar-low { background: var(--color-hot); }
+
+.bd-val {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  width: 22px;
+  text-align: right;
+  flex-shrink: 0;
+}

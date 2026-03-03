@@ -6,10 +6,11 @@
 const state = {
   opportunities: [],
   filteredOpportunities: [],
+  stats: null,
+  lastUpdate: null,
   currentView: 'landing',
   currentFilter: 'all',
-  searchQuery: '',
-  isLoading: true
+  searchQuery: ''
 };
 
 const elements = {
@@ -17,12 +18,12 @@ const elements = {
   emptyState: document.getElementById('emptyState'),
   searchInput: document.getElementById('searchInput'),
   filterChips: document.getElementById('filterChips'),
-  lastUpdate: document.getElementById('lastUpdate'),
   modalOverlay: document.getElementById('modalOverlay'),
   modalTitle: document.getElementById('modalTitle'),
   modalContent: document.getElementById('modalContent'),
   modalClose: document.getElementById('modalClose'),
-  toastContainer: document.getElementById('toastContainer')
+  cycleStatus: document.getElementById('cycleStatus'),
+  resultCount: document.getElementById('resultCount')
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -52,6 +53,10 @@ function initEventListeners() {
     if (e.target === elements.modalOverlay) closeModal();
   });
 
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
   const btnExploreAll = document.getElementById('btnExploreAll');
   if (btnExploreAll) {
     btnExploreAll.addEventListener('click', () => {
@@ -71,7 +76,10 @@ async function loadData() {
     const response = await fetch('data.json?t=' + Date.now());
     const data = await response.json();
     state.opportunities = data.opportunities || [];
-    updateLastUpdate(data.last_update);
+    state.stats = data.stats || {};
+    state.lastUpdate = data.last_update;
+    updateCycleStatus(data.last_update);
+    updateHeroStats();
     filterOpportunities();
   } catch (error) {
     console.error('Error loading data:', error);
@@ -85,27 +93,57 @@ function showView(viewName) {
   window.scrollTo(0, 0);
 }
 
+function updateHeroStats() {
+  const el = document.getElementById('heroStatProfiles');
+  if (el) el.textContent = state.opportunities.length;
+}
+
+function updateCycleStatus(timestamp) {
+  if (!timestamp || !elements.cycleStatus) return;
+  const last = new Date(timestamp);
+  const now = new Date();
+  const diffMs = now - last;
+  const diffH = Math.floor(diffMs / 3600000);
+  const diffM = Math.floor((diffMs % 3600000) / 60000);
+
+  const CYCLE_HOURS = 6;
+  const nextMs = Math.max(0, (CYCLE_HOURS * 3600000) - diffMs);
+  const nextH = Math.floor(nextMs / 3600000);
+  const nextM = Math.floor((nextMs % 3600000) / 60000);
+
+  const lastStr = `${String(last.getHours()).padStart(2,'0')}:${String(last.getMinutes()).padStart(2,'0')}`;
+  const agoStr = diffH > 0 ? `${diffH}h ${diffM}m ago` : `${diffM}m ago`;
+  const nextStr = nextMs > 0 ? `next: ${nextH}h ${nextM}m` : 'cycling...';
+
+  elements.cycleStatus.innerHTML = `<span class="cycle-label">OUROBOROS</span> last cycle ${lastStr} (${agoStr}) // ${nextStr}`;
+}
+
 function filterOpportunities() {
   let filtered = [...state.opportunities];
 
   if (state.currentFilter === 'hot') {
     filtered = filtered.filter(o => o.ob1_score >= 70).sort((a,b) => b.ob1_score - a.ob1_score).slice(0, 10);
   } else if (state.currentFilter === 'under') {
-    filtered = filtered.filter(o => o.age <= 21);
+    filtered = filtered.filter(o => o.age != null && o.age <= 21);
   } else if (state.currentFilter === 'free') {
-    filtered = filtered.filter(o => o.opportunity_type.toLowerCase().includes('svincol'));
+    filtered = filtered.filter(o => (o.opportunity_type || '').toLowerCase().includes('svincol'));
   }
 
   if (state.searchQuery) {
     filtered = filtered.filter(o =>
       o.player_name.toLowerCase().includes(state.searchQuery) ||
-      (o.role_name || o.role).toLowerCase().includes(state.searchQuery)
+      (o.role_name || o.role || '').toLowerCase().includes(state.searchQuery) ||
+      (o.current_club || '').toLowerCase().includes(state.searchQuery)
     );
   }
 
   filtered.sort((a, b) => b.ob1_score - a.ob1_score);
-
   state.filteredOpportunities = filtered;
+
+  if (elements.resultCount) {
+    elements.resultCount.textContent = filtered.length;
+  }
+
   renderOpportunities();
 }
 
@@ -120,9 +158,9 @@ function renderOpportunities() {
   }
 
   if (empty) empty.style.display = 'none';
-  grid.innerHTML = state.filteredOpportunities.map(opp => createOpportunityCard(opp)).join('');
+  grid.innerHTML = state.filteredOpportunities.map(opp => createCard(opp)).join('');
 
-  grid.querySelectorAll('.opportunity-card').forEach(card => {
+  grid.querySelectorAll('.opp-card').forEach(card => {
     card.addEventListener('click', () => {
       const opp = state.opportunities.find(o => o.id === card.dataset.id);
       if (opp) showDetail(opp);
@@ -130,90 +168,107 @@ function renderOpportunities() {
   });
 }
 
-function createOpportunityCard(opp) {
+function safe(val, fallback) {
+  if (val === null || val === undefined || val === '' || val === 'null') return fallback;
+  return val;
+}
+
+function createCard(opp) {
   const score = opp.ob1_score;
-  let verdict = 'VALUTARE';
-  let verdictClass = 'cold';
-  let tier = 'C';
+  let tier = 'cold';
+  if (score >= 70) tier = 'hot';
+  else if (score >= 57) tier = 'warm';
 
-  if (score >= 70) {
-    verdict = 'TOP';
-    verdictClass = 'hot';
-    tier = 'A';
-  } else if (score >= 57) {
-    verdict = 'OCCASIONE';
-    verdictClass = 'warm';
-    tier = 'B';
-  }
+  const name = opp.player_name;
+  const role = safe(opp.role_name, opp.role || '—');
+  const club = safe(opp.current_club, 'Svincolato');
+  const type = safe(opp.opportunity_type, '—');
+  const age = safe(opp.age, null);
 
-  const currentClub = opp.current_club || 'Svincolato';
-  const role = opp.role_name || opp.role;
+  let tags = `<span class="opp-tag type-${type}">${type}</span>`;
+  if (age !== null) tags += `<span class="opp-tag">${age} anni</span>`;
 
-  let valueInfo = '';
-  if (opp.market_value > 0) {
-    valueInfo = opp.market_value >= 1000 ? `${Math.round(opp.market_value/1000)}k` : `${opp.market_value}`;
-  }
-
-  return `
-    <article class="opportunity-card ${verdictClass}" data-id="${opp.id}">
-      <div class="card-report-header">
-        <div class="player-main">
-          <span class="report-stars">${tier}</span>
-          <h3 class="player-name">${opp.player_name}</h3>
-          <span class="player-sub">${role} // ${currentClub}</span>
-        </div>
-        <div class="verdict-badge ${verdictClass}">${verdict}</div>
+  return `<article class="opp-card ${tier}" data-id="${opp.id}">
+    <div class="opp-top">
+      <div class="opp-info">
+        <h3 class="opp-name">${name}</h3>
+        <span class="opp-meta">${role} // ${club}</span>
       </div>
-      <div class="card-report-body">
-        <div class="report-item">
-          <span class="label">ETA</span>
-          <span class="value">${opp.age}</span>
-        </div>
-        <div class="report-item">
-          <span class="label">VALORE</span>
-          <span class="value">${valueInfo || '--'}</span>
-        </div>
-        <div class="report-item">
-          <span class="label">CONTRATTO</span>
-          <span class="value">${opp.opportunity_type}</span>
-        </div>
-      </div>
-      ${opp.recommendation ? `
-        <div class="report-note">
-          <strong>> OB1:</strong> ${opp.recommendation}
-        </div>
-      ` : ''}
-    </article>
-  `;
+      <span class="opp-score ${tier}">${score}</span>
+    </div>
+    <div class="opp-tags">${tags}</div>
+  </article>`;
 }
 
 function showDetail(opp) {
-  elements.modalTitle.textContent = "Scouting Report: " + opp.player_name;
+  const score = opp.ob1_score;
+  let tier = 'cold';
+  if (score >= 70) tier = 'hot';
+  else if (score >= 57) tier = 'warm';
 
+  const age = safe(opp.age, '—');
+  const club = safe(opp.current_club, 'Svincolato');
+  const role = safe(opp.role_name, opp.role || '—');
+  const type = safe(opp.opportunity_type, '—');
+  const nationality = safe(opp.nationality, null);
+  const foot = safe(opp.foot, null);
+  const apps = safe(opp.appearances, null);
+  const goals = safe(opp.goals, null);
+  const assists = safe(opp.assists, null);
+  const recommendation = safe(opp.recommendation, null);
+  const summary = safe(opp.summary, null);
+
+  let metaRows = '';
+  metaRows += `<tr><td>Ruolo</td><td>${role}</td></tr>`;
+  metaRows += `<tr><td>Eta</td><td>${age === '—' ? '—' : age + ' anni'}</td></tr>`;
+  metaRows += `<tr><td>Club</td><td>${club}</td></tr>`;
+  metaRows += `<tr><td>Contratto</td><td>${type}</td></tr>`;
+  if (nationality) metaRows += `<tr><td>Nazionalita</td><td>${nationality}</td></tr>`;
+  if (foot) metaRows += `<tr><td>Piede</td><td>${foot}</td></tr>`;
+
+  let statsRow = '';
+  if (apps !== null || goals !== null || assists !== null) {
+    statsRow = `<div class="detail-stats">`;
+    if (apps !== null) statsRow += `<div class="detail-stat"><span class="ds-val">${apps}</span><span class="ds-lbl">APP</span></div>`;
+    if (goals !== null) statsRow += `<div class="detail-stat"><span class="ds-val">${goals}</span><span class="ds-lbl">GOL</span></div>`;
+    if (assists !== null) statsRow += `<div class="detail-stat"><span class="ds-val">${assists}</span><span class="ds-lbl">ASS</span></div>`;
+    statsRow += `</div>`;
+  }
+
+  const breakdown = opp.score_breakdown;
+  let breakdownHtml = '';
+  if (breakdown) {
+    breakdownHtml = `<div class="detail-breakdown"><h4>> SCORE_BREAKDOWN</h4><div class="bd-bars">`;
+    const labels = {
+      freshness: 'FRESCHEZZA', opportunity_type: 'TIPO', experience: 'ESPERIENZA',
+      age: 'ETA', market_value: 'VALORE', league_fit: 'LEGA', source: 'FONTE', completeness: 'DATI'
+    };
+    for (const [key, val] of Object.entries(breakdown)) {
+      const label = labels[key] || key.toUpperCase();
+      const barClass = val >= 70 ? 'bar-good' : val >= 40 ? 'bar-mid' : 'bar-low';
+      breakdownHtml += `<div class="bd-row"><span class="bd-lbl">${label}</span><div class="bd-track"><div class="bd-fill ${barClass}" style="width:${val}%"></div></div><span class="bd-val">${val}</span></div>`;
+    }
+    breakdownHtml += `</div></div>`;
+  }
+
+  const analysisText = recommendation || summary || 'Profilo monitorato dal sistema OB1.';
+
+  elements.modalTitle.textContent = opp.player_name;
   elements.modalContent.innerHTML = `
     <div class="detail-header">
       <div class="detail-main">
         <h2>${opp.player_name}</h2>
-        <p>${opp.role_name || opp.role} // ${opp.age} anni</p>
       </div>
-      <div class="detail-score">${opp.ob1_score}</div>
+      <div class="detail-score ${tier}">${score}</div>
     </div>
-
-    <div class="detail-grid">
-      <div class="detail-box">
-        <h4>Situazione</h4>
-        <p>${opp.opportunity_type}</p>
-        <p>Club: ${opp.current_club || 'Svincolato'}</p>
-      </div>
-      <div class="detail-box">
-        <h4>Analisi Tecnica</h4>
-        <p>${opp.recommendation || opp.summary || 'Profilo monitorato dal sistema OB1.'}</p>
-      </div>
+    <table class="detail-table">${metaRows}</table>
+    ${statsRow}
+    <div class="detail-box">
+      <h4>> OB1_ANALISI</h4>
+      <p>${analysisText}</p>
     </div>
-
-    <div class="detail-actions">
-      ${opp.tm_url ? `<a href="${opp.tm_url}" target="_blank" class="btn-primary">Vedi su Transfermarkt</a>` : ''}
-    </div>
+    ${breakdownHtml}
+    ${opp.tm_url ? `<a href="${opp.tm_url}" target="_blank" class="btn-primary" onclick="event.stopPropagation()">Transfermarkt &#8599;</a>` : ''}
   `;
 
   elements.modalOverlay.classList.add('active');
@@ -225,21 +280,10 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-function updateLastUpdate(timestamp) {
-  if (timestamp) {
-    const date = new Date(timestamp);
-    elements.lastUpdate.textContent = `Aggiornato: ${date.toLocaleDateString()} ${date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
-  }
-}
-
 function debounce(func, wait) {
   let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
+  return function(...args) {
     clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
+    timeout = setTimeout(() => func(...args), wait);
   };
 }
