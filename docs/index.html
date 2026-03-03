@@ -6,6 +6,11 @@
     <title>OB1 Radar - Serie C Scout</title>
     <meta name="description" content="Ouroboros Protocol: scout AI per Serie C e Serie D italiana. Trova opportunita di mercato prima degli altri.">
     <meta name="theme-color" content="#0a0a0a">
+    <meta property="og:title" content="OB1 Radar - Serie C Scout">
+    <meta property="og:description" content="Scout AI automatico per la Lega Pro. Monitora giocatori, segnala opportunita, genera report. Ogni 6 ore.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mtornani.github.io/ob1-serie-c/">
+    <meta name="twitter:card" content="summary">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="manifest" href="manifest.json">
@@ -52,15 +57,22 @@
                         <span class="hero-stat-value" id="heroStatProfiles">—</span>
                         <span class="hero-stat-label">PROFILI</span>
                     </div>
+                    <div class="hero-stat hot">
+                        <span class="hero-stat-value" id="heroStatHot">—</span>
+                        <span class="hero-stat-label">HOT</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" id="heroStatFree">—</span>
+                        <span class="hero-stat-label">SVINCOLATI</span>
+                    </div>
                     <div class="hero-stat">
                         <span class="hero-stat-value">6h</span>
                         <span class="hero-stat-label">CICLO</span>
                     </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-value">$0</span>
-                        <span class="hero-stat-label">COSTO</span>
-                    </div>
                 </div>
+
+                <!-- Top 3 Preview -->
+                <div class="top-preview" id="topPreview"></div>
 
                 <div class="hero-cta">
                     <button class="btn-primary" id="btnExploreAll">Esplora le opportunita &#8594;</button>
@@ -113,6 +125,21 @@
                     <button class="filter-chip" data-filter="free">SVINCOLATI</button>
                 </div>
                 <span class="result-count"><span id="resultCount">0</span> risultati</span>
+            </div>
+            <div class="secondary-filters">
+                <select class="filter-select-mini" id="typeFilter">
+                    <option value="">Tipo: Tutti</option>
+                    <option value="svincolato">Svincolato</option>
+                    <option value="rescissione">Rescissione</option>
+                    <option value="prestito">Prestito</option>
+                    <option value="mercato">Mercato</option>
+                    <option value="scadenza">Scadenza</option>
+                </select>
+                <select class="filter-select-mini" id="sortBy">
+                    <option value="score">Score &darr;</option>
+                    <option value="name">Nome A-Z</option>
+                    <option value="date">Recenti</option>
+                </select>
             </div>
 
             <!-- Opportunities Grid -->
