@@ -1,5 +1,603 @@
 [
   {
+    "id": "opp_be2008a5",
+    "player_name": "Pietro Saio",
+    "age": null,
+    "role": "DC",
+    "role_name": "Difensore",
+    "opportunity_type": "mercato",
+    "current_club": "Benevento",
+    "previous_clubs": [],
+    "summary": "Giovane difensore del Benevento, classe non specificata, che ha attirato l'interesse di club di Serie B come Modena e Spezia. Viene descritto come bravo nel gioco aereo e insuperabile nell'uno contro uno.",
+    "source_url": "https://www.tuttoc.com/girone-c/serie-c-girone-c-la-top-11-del-girone-d-andata-426884",
+    "source_name": "TuttoC",
+    "source_title": "Serie C, Girone C: la Top 11 del girone d'andata - Tuttoc.com",
+    "discovered_at": "2026-03-03T13:10:05.234178",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/pietro-saio/profil/spieler/708070",
+    "agent": "TECASPORT & MANAGEMENT SRL",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/pietro-saio/profil/spieler/708070",
+      "agent": "TECASPORT & MANAGEMENT SRL"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_acce84fa",
+    "player_name": "Louis Buffon",
+    "age": 18,
+    "role": "CC",
+    "role_name": "Esterno Offensivo",
+    "opportunity_type": "prestito",
+    "current_club": "Pontedera",
+    "previous_clubs": [
+      "Juventus (giovanili)",
+      "Pisa"
+    ],
+    "summary": "Esterno offensivo classe 2007, dopo la trafila nella Juventus e 4 presenze nel Pisa, si aggrega in prestito al Pontedera.",
+    "source_url": "https://www.tuttoc.com/il-punto/la-serie-a-fa-shopping-in-serie-c-un-figlio-d-arte-sceglie-la-lega-pro-per-crescere-la-finale-di-coppa-italia-dal-sapore-di-avellino-429723",
+    "source_name": "TuttoC",
+    "source_title": "La Serie A fa shopping in Serie C. Un figlio d'arte sceglie la Lega ...",
+    "discovered_at": "2026-03-03T13:10:03.945519",
+    "nationality": "Italia",
+    "second_nationality": "Repubblica Ceca",
+    "tm_url": "https://www.transfermarkt.it/louis-buffon/profil/spieler/1191069",
+    "player_profile": {
+      "nationality": "Italia",
+      "second_nationality": "Repubblica Ceca",
+      "tm_url": "https://www.transfermarkt.it/louis-buffon/profil/spieler/1191069"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_2eb1fc3d",
+    "player_name": "Francesco Di Paolo",
+    "age": null,
+    "role": "AT",
+    "role_name": "Attaccante",
+    "opportunity_type": "mercato",
+    "current_club": "Siracusa",
+    "previous_clubs": [],
+    "summary": "Attaccante del Siracusa, acquistato dal Cagliari che lo lascerà in prestito fino a giugno.",
+    "source_url": "https://www.tuttoc.com/il-punto/la-serie-a-fa-shopping-in-serie-c-un-figlio-d-arte-sceglie-la-lega-pro-per-crescere-la-finale-di-coppa-italia-dal-sapore-di-avellino-429723",
+    "source_name": "TuttoC",
+    "source_title": "La Serie A fa shopping in Serie C. Un figlio d'arte sceglie la Lega ...",
+    "discovered_at": "2026-03-03T13:10:03.945507",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/francesco-di-paola/profil/spieler/409657",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/francesco-di-paola/profil/spieler/409657"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_6ead68c1",
+    "player_name": "Francesco Gallea",
+    "age": 19,
+    "role": "DC",
+    "role_name": "Difensore Centrale",
+    "opportunity_type": "mercato",
+    "current_club": "Lumezzane",
+    "previous_clubs": [],
+    "summary": "Talento emergente in Serie C, si è imposto come uno dei migliori difensori. Acquistato dal Cagliari, ma resterà in prestito al Lumezzane fino a giugno.",
+    "source_url": "https://www.tuttoc.com/il-punto/la-serie-a-fa-shopping-in-serie-c-un-figlio-d-arte-sceglie-la-lega-pro-per-crescere-la-finale-di-coppa-italia-dal-sapore-di-avellino-429723",
+    "source_name": "TuttoC",
+    "source_title": "La Serie A fa shopping in Serie C. Un figlio d'arte sceglie la Lega ...",
+    "discovered_at": "2026-03-03T13:10:03.945482",
+    "tm_url": "https://www.transfermarkt.it/fc-lumezzane/startseite/verein/4103",
+    "player_profile": {
+      "tm_url": "https://www.transfermarkt.it/fc-lumezzane/startseite/verein/4103"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_a99b4224",
+    "player_name": "Rizzo Pinna",
+    "age": null,
+    "role": "CC",
+    "role_name": "Tutto Campista",
+    "opportunity_type": "prestito",
+    "current_club": "Ascoli",
+    "previous_clubs": [
+      "Cosenza"
+    ],
+    "summary": "Giocatore di qualità in prestito all'Ascoli dal Cosenza. Le sue prestazioni sono di livello tale da poter essere utile anche a squadre di Serie B. L'Ascoli ha un diritto di riscatto.",
+    "source_url": "https://www.tuttomercatoweb.com/serie-c/la-top-11-del-girone-b-di-serie-c-rizzo-pinna-trascinatore-dell-ascoli-2208469",
+    "source_name": "TMW",
+    "source_title": "La Top 11 del Girone B di Serie C: Rizzo Pinna trascinatore dell'Ascoli",
+    "discovered_at": "2026-03-03T13:09:49.094290",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_9fcfd195",
+    "player_name": "Versienti",
+    "age": null,
+    "role": "CC",
+    "role_name": "Centrocampista",
+    "opportunity_type": "mercato",
+    "current_club": "Casarano",
+    "previous_clubs": [],
+    "summary": "Ha segnato un gol importante contro il Foggia. Potrebbe essere un'opportunità per club di Serie C che cercano un centrocampista con capacità di inserimento.",
+    "source_url": "https://www.tuttomercatoweb.com/serie-c/la-top-11-del-girone-c-di-serie-c-matino-alza-il-muro-della-salernitana-2208473",
+    "source_name": "TMW",
+    "source_title": "La Top 11 del Girone C di Serie C: Matino alza il muro della ...",
+    "discovered_at": "2026-03-03T13:09:47.664043",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/leandro-versienti/profil/spieler/312208",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/leandro-versienti/profil/spieler/312208"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_b4c8944d",
+    "player_name": "Limonelli",
+    "age": null,
+    "role": "CC",
+    "role_name": "Centrocampista",
+    "opportunity_type": "mercato",
+    "current_club": "Siracusa",
+    "previous_clubs": [],
+    "summary": "Autore di una doppietta, è un giocatore che si sta mettendo in mostra in un Siracusa con problemi societari. Potrebbe essere un'opportunità per club di Serie C che cercano un centrocampista offensivo.",
+    "source_url": "https://www.tuttomercatoweb.com/serie-c/la-top-11-del-girone-c-di-serie-c-matino-alza-il-muro-della-salernitana-2208473",
+    "source_name": "TMW",
+    "source_title": "La Top 11 del Girone C di Serie C: Matino alza il muro della ...",
+    "discovered_at": "2026-03-03T13:09:47.664033",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/carmelo-limonelli/profil/spieler/978815",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/carmelo-limonelli/profil/spieler/978815"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_4c57786e",
+    "player_name": "Matino",
+    "age": null,
+    "role": "DC",
+    "role_name": "Difensore Centrale",
+    "opportunity_type": "mercato",
+    "current_club": "Salernitana",
+    "previous_clubs": [],
+    "summary": "Dopo essere stato messo da parte, è stato rilanciato da Cosmi e ha offerto una prestazione super. Potrebbe essere un'opportunità per club di Serie C che cercano un difensore centrale solido.",
+    "source_url": "https://www.tuttomercatoweb.com/serie-c/la-top-11-del-girone-c-di-serie-c-matino-alza-il-muro-della-salernitana-2208473",
+    "source_name": "TMW",
+    "source_title": "La Top 11 del Girone C di Serie C: Matino alza il muro della ...",
+    "discovered_at": "2026-03-03T13:09:47.664021",
+    "tm_url": "https://www.transfermarkt.it/pol-virtus-matino/startseite/verein/65712",
+    "player_profile": {
+      "tm_url": "https://www.transfermarkt.it/pol-virtus-matino/startseite/verein/65712"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_4b9dd46d",
+    "player_name": "Donnarumma",
+    "age": null,
+    "role": "PO",
+    "role_name": "Portiere",
+    "opportunity_type": "mercato",
+    "current_club": "Salernitana",
+    "previous_clubs": [],
+    "summary": "Nonostante qualche critica, ha dimostrato forza e personalità, ottenendo il decimo clean sheet stagionale. Potrebbe essere un'opportunità per club di Serie C che cercano un portiere affidabile.",
+    "source_url": "https://www.tuttomercatoweb.com/serie-c/la-top-11-del-girone-c-di-serie-c-matino-alza-il-muro-della-salernitana-2208473",
+    "source_name": "TMW",
+    "source_title": "La Top 11 del Girone C di Serie C: Matino alza il muro della ...",
+    "discovered_at": "2026-03-03T13:09:47.663997",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/antonio-donnarumma/profil/spieler/430532",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/antonio-donnarumma/profil/spieler/430532"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_711fda76",
+    "player_name": "Rabbi",
+    "age": null,
+    "role": "AT",
+    "role_name": "Centravanti",
+    "opportunity_type": "mercato",
+    "current_club": "Cittadella",
+    "previous_clubs": [],
+    "summary": "Rabbi è un centravanti del Cittadella. L'articolo menziona l'interesse della Reggiana per lui, suggerendo una potenziale opportunità di mercato.",
+    "source_url": "https://www.tuttomercatoweb.com/serie-c/la-top-11-del-girone-a-di-serie-c-ospitaletto-rabbia-per-la-mancata-vittoria-2208468",
+    "source_name": "TMW",
+    "source_title": "La Top 11 del Girone A di Serie C: Ospitaletto, RABBIa per la ...",
+    "discovered_at": "2026-03-03T13:09:44.316299",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/riccardo-rabbi/profil/spieler/492412",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/riccardo-rabbi/profil/spieler/492412"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_a0419214",
+    "player_name": "Rizzo",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "mercato",
+    "current_club": "Cavese",
+    "previous_clubs": [],
+    "summary": "Ha rescisso il contratto con il Cavese. Disponibile a parametro zero.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755650",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/luigi-rizzo/profil/spieler/291523",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/luigi-rizzo/profil/spieler/291523"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_ec89dd36",
+    "player_name": "Visconti",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "svincolato",
+    "current_club": "Cavese",
+    "previous_clubs": [],
+    "summary": "Acquistato dal Cavese come svincolato. Potrebbe essere un'opportunità a basso costo per altre squadre di Serie C.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755642",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/pietro-visconti/profil/spieler/91917",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/pietro-visconti/profil/spieler/91917"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_e4f8c9e3",
+    "player_name": "Capasso",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "mercato",
+    "current_club": "Casertana",
+    "previous_clubs": [],
+    "summary": "Ha rescisso il contratto con la Casertana. Disponibile a parametro zero.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755634",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/ciro-capasso/profil/spieler/705122",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/ciro-capasso/profil/spieler/705122"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_7a8dc360",
+    "player_name": "Malcore",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "mercato",
+    "current_club": "Casarano",
+    "previous_clubs": [],
+    "summary": "Ha rescisso il contratto con il Casarano. Disponibile a parametro zero.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755626",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/giancarlo-malcore/profil/spieler/199717",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/giancarlo-malcore/profil/spieler/199717"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_98555d89",
+    "player_name": "Pretato",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "svincolato",
+    "current_club": "Bra",
+    "previous_clubs": [],
+    "summary": "Acquistato dal Bra come svincolato. Potrebbe essere un'opportunità a basso costo per altre squadre di Serie C.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755606",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/mattia-pretato/profil/spieler/736340",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/mattia-pretato/profil/spieler/736340"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_41001407",
+    "player_name": "Capac",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "svincolato",
+    "current_club": "Bra",
+    "previous_clubs": [],
+    "summary": "Acquistato dal Bra come svincolato. Potrebbe essere un'opportunità a basso costo per altre squadre di Serie C.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755598",
+    "tm_url": "https://www.transfermarkt.it/fc-turin-u18/startseite/verein/75900/saison_id/2022",
+    "player_profile": {
+      "tm_url": "https://www.transfermarkt.it/fc-turin-u18/startseite/verein/75900/saison_id/2022"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_b471c9a6",
+    "player_name": "Leoncini",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "svincolato",
+    "current_club": "Bra",
+    "previous_clubs": [],
+    "summary": "Acquistato dal Bra come svincolato. Potrebbe essere un'opportunità a basso costo per altre squadre di Serie C.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755588",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/marco-leoncini/profil/spieler/692287",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/marco-leoncini/profil/spieler/692287"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_53826405",
+    "player_name": "Tsingaras",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "mercato",
+    "current_club": "Benevento",
+    "previous_clubs": [],
+    "summary": "Ha rescisso il contratto con il Benevento. Disponibile a parametro zero.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755579",
+    "nationality": "Grecia",
+    "tm_url": "https://www.transfermarkt.it/angelos-tsingaras/profil/spieler/609647",
+    "player_profile": {
+      "nationality": "Grecia",
+      "tm_url": "https://www.transfermarkt.it/angelos-tsingaras/profil/spieler/609647"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_e49ae18f",
+    "player_name": "Santaniello",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "mercato",
+    "current_club": "AZ Picerno",
+    "previous_clubs": [],
+    "summary": "Ha rescisso il contratto con l'AZ Picerno. Disponibile a parametro zero.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755571",
+    "nationality": "Italia",
+    "contract_expires": "2026-01-30",
+    "tm_url": "https://www.transfermarkt.it/emanuele-santaniello/profil/spieler/164220",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/emanuele-santaniello/profil/spieler/164220"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_9303338f",
+    "player_name": "Petito",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "mercato",
+    "current_club": "AZ Picerno",
+    "previous_clubs": [],
+    "summary": "Ha rescisso il contratto con l'AZ Picerno. Disponibile a parametro zero.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755563",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/antonio-petito/profil/spieler/425458",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/antonio-petito/profil/spieler/425458"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_b1e47c0b",
+    "player_name": "Bellodi",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "svincolato",
+    "current_club": "AZ Picerno",
+    "previous_clubs": [],
+    "summary": "Acquistato dall'AZ Picerno come svincolato. Potrebbe essere un'opportunità a basso costo per altre squadre di Serie C.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755554",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/mirko-bellodi/profil/spieler/32071",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/mirko-bellodi/profil/spieler/32071"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_84b7fb5b",
+    "player_name": "Bassoli",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "svincolato",
+    "current_club": "AZ Picerno",
+    "previous_clubs": [],
+    "summary": "Acquistato dall'AZ Picerno come svincolato. Potrebbe essere un'opportunità a basso costo per altre squadre di Serie C.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755546",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/alessandro-bassoli/profil/spieler/112457",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/alessandro-bassoli/profil/spieler/112457"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_af2b9bf6",
+    "player_name": "Franco",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "mercato",
+    "current_club": "Team Altamura",
+    "previous_clubs": [],
+    "summary": "Ha rescisso il contratto con il Team Altamura. Disponibile a parametro zero.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755536",
+    "nationality": "Brasile",
+    "tm_url": "https://www.transfermarkt.it/franco/profil/spieler/85035",
+    "player_profile": {
+      "nationality": "Brasile",
+      "tm_url": "https://www.transfermarkt.it/franco/profil/spieler/85035"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_d9da5d2c",
+    "player_name": "Alastra",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "svincolato",
+    "current_club": "Team Altamura",
+    "previous_clubs": [],
+    "summary": "Acquistato dal Team Altamura come svincolato. Potrebbe essere un'opportunità a basso costo per altre squadre di Serie C.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755524",
+    "nationality": "Argentina",
+    "tm_url": "https://www.transfermarkt.it/agustin-alastra/profil/spieler/882078",
+    "player_profile": {
+      "nationality": "Argentina",
+      "tm_url": "https://www.transfermarkt.it/agustin-alastra/profil/spieler/882078"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_59697e71",
+    "player_name": "Sciacca",
+    "age": null,
+    "role": "CC",
+    "role_name": "Non Specificato",
+    "opportunity_type": "svincolato",
+    "current_club": "AlbinoLeffe",
+    "previous_clubs": [],
+    "summary": "Acquistato dall'AlbinoLeffe come svincolato. Potrebbe essere un'opportunità a basso costo per altre squadre di Serie C.",
+    "source_url": "https://www.tuttoc.com/calciomercato/calciomercato-h24-tutte-le-ufficialita-murilo-in-prestito-al-giugliano-430398",
+    "source_name": "TuttoC",
+    "source_title": "Calciomercato h24, tutte le ufficialità: Murilo in prestito al Giugliano",
+    "discovered_at": "2026-03-03T13:09:38.755500",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/giacomo-sciacca/profil/spieler/238992",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/giacomo-sciacca/profil/spieler/238992"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_b644b063",
+    "player_name": "Stefano Pellizzari",
+    "age": 26,
+    "role": "DC",
+    "role_name": "Difensore Centrale",
+    "opportunity_type": "rescissione",
+    "current_club": "Forlì",
+    "previous_clubs": [],
+    "summary": "Il Forlì ha risolto consensualmente il contratto con il difensore centrale classe '97 Stefano Pellizzari. Il giocatore è quindi libero sul mercato.",
+    "source_url": "https://www.tuttomercatoweb.com/serie-c/forli-e-addio-con-il-difensore-pellizzari-c-e-la-risoluzione-consensuale-del-contratto-2175826",
+    "source_name": "TMW",
+    "source_title": "Forlì, è addio con il difensore Pellizzari: c'è la risoluzione ...",
+    "discovered_at": "2026-03-03T13:09:06.544932",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/stefano-pellizzari/profil/spieler/312745",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/stefano-pellizzari/profil/spieler/312745"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "opp_cc074b88",
+    "player_name": "Alessio Rosa",
+    "age": 21,
+    "role": "AT",
+    "role_name": "Attaccante",
+    "opportunity_type": "rescissione",
+    "current_club": "Bra",
+    "previous_clubs": [],
+    "summary": "Alessio Rosa, attaccante classe 2003, ha rescisso consensualmente il contratto con il Bra. E' quindi disponibile sul mercato a parametro zero.",
+    "source_url": "https://www.tuttomercatoweb.com/serie-c/bra-risoluzione-consensuale-del-contratto-con-l-attaccante-alessio-rosa-2143414",
+    "source_name": "TMW",
+    "source_title": "Bra, risoluzione consensuale del contratto con l'attaccante Alessio ...",
+    "discovered_at": "2026-03-03T13:09:05.355988",
+    "nationality": "Italia",
+    "tm_url": "https://www.transfermarkt.it/alessio-rosa/profil/spieler/511164",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/alessio-rosa/profil/spieler/511164"
+    },
+    "tm_enriched": true
+  },
+  {
     "id": "opp_03193a9a",
     "player_name": "Noa Kljajic",
     "age": null,
@@ -1713,654 +2311,6 @@
     "player_profile": {
       "nationality": "Italia",
       "tm_url": "https://www.transfermarkt.it/pasquale-riccardi/profil/spieler/704505"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_a8083579",
-    "player_name": "Francesco Cerretelli",
-    "age": null,
-    "role": "CC",
-    "role_name": "Non Specificato",
-    "opportunity_type": "mercato",
-    "current_club": "Campobasso",
-    "previous_clubs": [],
-    "summary": "Trasferimento dal Campobasso al Novara. Il giocatore ha collezionato 9 presenze nella prima parte di stagione con il Campobasso.",
-    "source_url": "https://www.tuttoc.com/calciomercato/serie-c-le-trattative-dell-ultimo-giorno-segui-il-calciomercato-con-noi-430152",
-    "source_name": "TuttoC",
-    "source_title": "Serie C, le trattative dell'ultimo giorno: segui il calciomercato con noi",
-    "discovered_at": "2026-03-01T18:41:28.281874",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/francesco-cerretelli/profil/spieler/459231",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/francesco-cerretelli/profil/spieler/459231"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_75bc2668",
-    "player_name": "Manuel Marras",
-    "age": 33,
-    "role": "CC",
-    "role_name": "Esterno D'Attacco",
-    "opportunity_type": "mercato",
-    "current_club": "Reggiana",
-    "previous_clubs": [],
-    "summary": "Esterno d'attacco classe '93 della Reggiana, in procinto di trasferirsi all'Union Brescia in Serie C.",
-    "source_url": "https://www.tuttoc.com/calciomercato/union-brescia-doppio-colpo-in-arrivo-lunedi-e-il-giorno-di-lescano-e-marras-428118",
-    "source_name": "TuttoC",
-    "source_title": "Union Brescia, doppio colpo in arrivo: lunedì è il giorno di Lescano e ...",
-    "discovered_at": "2026-03-01T12:59:46.620195",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/manuel-marras/profil/spieler/198128",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/manuel-marras/profil/spieler/198128"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_bf004cc7",
-    "player_name": "Facundo Lescano",
-    "age": 30,
-    "role": "AT",
-    "role_name": "Punta",
-    "opportunity_type": "mercato",
-    "current_club": "Avellino",
-    "previous_clubs": [],
-    "summary": "Attaccante argentino classe '96 in forza all'Avellino, in procinto di trasferirsi all'Union Brescia in Serie C.",
-    "source_url": "https://www.tuttoc.com/calciomercato/union-brescia-doppio-colpo-in-arrivo-lunedi-e-il-giorno-di-lescano-e-marras-428118",
-    "source_name": "TuttoC",
-    "source_title": "Union Brescia, doppio colpo in arrivo: lunedì è il giorno di Lescano e ...",
-    "discovered_at": "2026-03-01T12:59:46.620167",
-    "nationality": "Argentina",
-    "second_nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/facundo-lescano/profil/spieler/256008",
-    "player_profile": {
-      "nationality": "Argentina",
-      "second_nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/facundo-lescano/profil/spieler/256008"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_ae2d45cc",
-    "player_name": "Bogdan Stauciuc",
-    "age": null,
-    "role": "AT",
-    "role_name": "Attaccante",
-    "opportunity_type": "mercato",
-    "current_club": "Trapani",
-    "previous_clubs": [
-      "Fasano"
-    ],
-    "summary": "Attaccante romeno arrivato dal Fasano. Ha segnato il gol decisivo per il Trapani. Potrebbe essere un'opportunità per altri club di Serie C.",
-    "source_url": "https://www.tuttoc.com/il-punto/al-via-il-calciomercato-invernale-in-serie-c-primi-colpi-e-nuovi-equilibri-l-addio-di-bruzzaniti-non-ferma-il-pineto-il-primo-gol-di-stauciuc-fa-spera-427631",
-    "source_name": "TuttoC",
-    "source_title": "Al via il calciomercato invernale in Serie C: primi colpi e nuovi ...",
-    "discovered_at": "2026-03-01T12:59:44.429650",
-    "nationality": "Romania",
-    "second_nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/bogdan-stauciuc/profil/spieler/710337",
-    "player_profile": {
-      "nationality": "Romania",
-      "second_nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/bogdan-stauciuc/profil/spieler/710337"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_5dd5f6aa",
-    "player_name": "Gianluca Longobardi",
-    "age": null,
-    "role": "DC",
-    "role_name": "Difensore",
-    "opportunity_type": "svincolato",
-    "current_club": null,
-    "previous_clubs": [
-      "Rimini"
-    ],
-    "summary": "Difensore svincolato dopo l'esclusione del Rimini. Occasione a costo zero per rinforzare la difesa.",
-    "source_url": "https://www.tuttoc.com/il-punto/al-via-il-calciomercato-invernale-in-serie-c-primi-colpi-e-nuovi-equilibri-l-addio-di-bruzzaniti-non-ferma-il-pineto-il-primo-gol-di-stauciuc-fa-spera-427631",
-    "source_name": "TuttoC",
-    "source_title": "Al via il calciomercato invernale in Serie C: primi colpi e nuovi ...",
-    "discovered_at": "2026-03-01T12:59:44.429628",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/gianluca-longobardi/profil/spieler/662555",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/gianluca-longobardi/profil/spieler/662555"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_31238e51",
-    "player_name": "Dele Alli",
-    "age": 30,
-    "role": "CC",
-    "role_name": "Centrocampista",
-    "opportunity_type": "rescissione",
-    "current_club": "Como",
-    "previous_clubs": [],
-    "summary": "Dele Alli ha risolto il suo contratto con il Como dopo una sola presenza. Il centrocampista è quindi svincolato.",
-    "source_url": "https://www.gazzetta.it/Calciomercato/01-09-2025/calciomercato-tutte-le-notizie-di-oggi-1-settembre-live-la-diretta.shtml",
-    "source_name": "Gazzetta",
-    "source_title": "Calciomercato: tutte le notizie di oggi, 1 settembre LIVE | La diretta",
-    "discovered_at": "2026-03-01T12:59:25.312638",
-    "nationality": "Inghilterra",
-    "second_nationality": "Nigeria",
-    "birth_date": "1996-04-11",
-    "contract_expires": "2025-09-01",
-    "tm_url": "https://www.transfermarkt.it/dele-alli/profil/spieler/207929/1000//sort/goals",
-    "player_profile": {
-      "nationality": "Inghilterra",
-      "second_nationality": "Nigeria",
-      "tm_url": "https://www.transfermarkt.it/dele-alli/profil/spieler/207929/1000//sort/goals"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_2b3a3756",
-    "player_name": "Gianluca Saro",
-    "age": 2000,
-    "role": "PO",
-    "role_name": "Portiere",
-    "opportunity_type": "prestito",
-    "current_club": "Cremonese",
-    "previous_clubs": [
-      "Pro Vercelli",
-      "Juventus",
-      "Cesena",
-      "Empoli",
-      "Crotone"
-    ],
-    "summary": "Portiere classe 2000, trasferito in prestito annuale dalla Cremonese alla Reggiana. Ha esperienza in Lega Pro con la Pro Vercelli.",
-    "source_url": "https://www.tuttomercatoweb.com/serie-b/reggiana-arriva-saro-fra-i-pali-risoluzione-per-l-attaccante-kljajic-2141605",
-    "source_name": "TMW",
-    "source_title": "Reggiana, arriva Saro fra i pali. Risoluzione per l'attaccante Kljajic",
-    "discovered_at": "2026-03-01T12:59:09.221702",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/gianluca-saro/profil/spieler/420179",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/gianluca-saro/profil/spieler/420179"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_4e7481bd",
-    "player_name": "Girelli",
-    "age": null,
-    "role": "CC",
-    "role_name": "Null",
-    "opportunity_type": "mercato",
-    "current_club": "Sampdoria",
-    "previous_clubs": [],
-    "summary": "Girelli è stato ceduto dalla Sampdoria alla Casertana.",
-    "source_url": "https://www.gazzetta.it/Calciomercato/02-02-2026/mercato-live-notizie-trattative-oggi-ultimo-giorno.shtml",
-    "source_name": "Gazzetta",
-    "source_title": "Mercato: tutti i colpi dell'ultima giornata | Gazzetta.it",
-    "discovered_at": "2026-03-01T12:58:36.590767",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/-girelli/profil/spieler/626303",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/-girelli/profil/spieler/626303"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_8a91f237",
-    "player_name": "Nicholas Pierini",
-    "age": null,
-    "role": "AT",
-    "role_name": "Attaccante",
-    "opportunity_type": "mercato",
-    "current_club": "Sassuolo",
-    "previous_clubs": [],
-    "summary": "Pierini è stato acquistato dalla Sampdoria dal Sassuolo.",
-    "source_url": "https://www.gazzetta.it/Calciomercato/02-02-2026/mercato-live-notizie-trattative-oggi-ultimo-giorno.shtml",
-    "source_name": "Gazzetta",
-    "source_title": "Mercato: tutti i colpi dell'ultima giornata | Gazzetta.it",
-    "discovered_at": "2026-03-01T12:58:36.590756",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/nicholas-pierini/profil/spieler/372720",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/nicholas-pierini/profil/spieler/372720"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_0ebea865",
-    "player_name": "José Antonio Morente Oliva",
-    "age": null,
-    "role": "CC",
-    "role_name": "Centrocampista",
-    "opportunity_type": "rescissione",
-    "current_club": "Lecce",
-    "previous_clubs": [],
-    "summary": "Il Lecce ha risolto consensualmente il contratto con Morente, in scadenza nel 2027.  È quindi svincolato e disponibile a parametro zero.",
-    "source_url": "https://www.gazzetta.it/Calciomercato/02-02-2026/mercato-live-notizie-trattative-oggi-ultimo-giorno.shtml",
-    "source_name": "Gazzetta",
-    "source_title": "Mercato: tutti i colpi dell'ultima giornata | Gazzetta.it",
-    "discovered_at": "2026-03-01T12:58:36.590729",
-    "nationality": "Spagna",
-    "tm_url": "https://www.transfermarkt.it/tete-morente/profil/spieler/339816",
-    "player_profile": {
-      "nationality": "Spagna",
-      "tm_url": "https://www.transfermarkt.it/tete-morente/profil/spieler/339816"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_01244833",
-    "player_name": "Jonathan Klinsmann",
-    "age": 29,
-    "role": "PO",
-    "role_name": "Portiere",
-    "opportunity_type": "mercato",
-    "current_club": "Cesena",
-    "previous_clubs": [],
-    "summary": "Il Palermo cerca un portiere per sostituire l'infortunato Gomis e Klinsmann è il primo nome sulla lista. Il Cesena chiede circa 2 milioni di euro.",
-    "source_url": "https://www.gazzetta.it/Calciomercato/17-08-2025/calciomercato-tutte-le-notizie-di-oggi-17-agosto-la-diretta.shtml",
-    "source_name": "Gazzetta",
-    "source_title": "Calciomercato: tutte le notizie di oggi, 17 agosto | La diretta",
-    "discovered_at": "2026-03-01T12:58:34.535951",
-    "nationality": "Stati Uniti",
-    "second_nationality": "Germania",
-    "foot": "destro",
-    "height_cm": 193,
-    "birth_date": "1997-04-08",
-    "contract_expires": "2026-06-30",
-    "tm_url": "https://www.transfermarkt.it/jonathan-klinsmann/profil/spieler/334992",
-    "agent": "ROOF",
-    "player_profile": {
-      "nationality": "Stati Uniti",
-      "second_nationality": "Germania",
-      "foot": "destro",
-      "height_cm": 193,
-      "tm_url": "https://www.transfermarkt.it/jonathan-klinsmann/profil/spieler/334992",
-      "agent": "ROOF"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_337ff9f7",
-    "player_name": "Sergej Levak",
-    "age": 20,
-    "role": "CC",
-    "role_name": "Centrocampista Centrale",
-    "opportunity_type": "svincolato",
-    "current_club": null,
-    "previous_clubs": [
-      "Roma Primavera"
-    ],
-    "summary": "Attualmente svincolato, ex primavera Roma. Centrocampista centrale ben strutturato fisicamente e con buoni numeri nell'ultimo campionato di Primavera.",
-    "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574",
-    "source_name": "Transfermarkt",
-    "source_title": "SQUADRA UNDER 23 SERIE C 2025/2026 - C'è solo l'Inter - Forum",
-    "discovered_at": "2026-03-01T06:55:36.699708",
-    "nationality": "Croazia",
-    "tm_url": "https://www.transfermarkt.it/sergej-levak/profil/spieler/892165",
-    "player_profile": {
-      "nationality": "Croazia",
-      "tm_url": "https://www.transfermarkt.it/sergej-levak/profil/spieler/892165"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_ccd43467",
-    "player_name": "Zuberek",
-    "age": null,
-    "role": "CC",
-    "role_name": "Punta/Seconda Punta",
-    "opportunity_type": "prestito",
-    "current_club": "Inter U23",
-    "previous_clubs": [
-      "Avellino, Serie C"
-    ],
-    "summary": "Rientro dal prestito dall'Avellino (Serie C). Cedibile.",
-    "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574",
-    "source_name": "Transfermarkt",
-    "source_title": "SQUADRA UNDER 23 SERIE C 2025/2026 - C'è solo l'Inter - Forum",
-    "discovered_at": "2026-03-01T06:55:36.699700",
-    "nationality": "Polonia",
-    "tm_url": "https://www.transfermarkt.it/dzidoslaw-zuberek/profil/spieler/33391",
-    "player_profile": {
-      "nationality": "Polonia",
-      "tm_url": "https://www.transfermarkt.it/dzidoslaw-zuberek/profil/spieler/33391"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_851246e8",
-    "player_name": "Sarr",
-    "age": null,
-    "role": "CC",
-    "role_name": "Punta/Seconda Punta",
-    "opportunity_type": "prestito",
-    "current_club": "Inter U23",
-    "previous_clubs": [
-      "Foggia, Serie C"
-    ],
-    "summary": "Rientro dal prestito dal Foggia (Serie C). Potrebbe essere un'opportunità per club di Serie C che cercano un attaccante.",
-    "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574",
-    "source_name": "Transfermarkt",
-    "source_title": "SQUADRA UNDER 23 SERIE C 2025/2026 - C'è solo l'Inter - Forum",
-    "discovered_at": "2026-03-01T06:55:36.699693",
-    "nationality": "Senegal",
-    "tm_url": "https://www.transfermarkt.it/souleye-sarr/profil/spieler/490427",
-    "player_profile": {
-      "nationality": "Senegal",
-      "tm_url": "https://www.transfermarkt.it/souleye-sarr/profil/spieler/490427"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_e15a4775",
-    "player_name": "Topalovic",
-    "age": null,
-    "role": "CC",
-    "role_name": "Mediano/Mezz'Ala/Trequartista",
-    "opportunity_type": "prestito",
-    "current_club": "Inter U23",
-    "previous_clubs": [],
-    "summary": "Potrebbe partire in prestito in Serie B.",
-    "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574",
-    "source_name": "Transfermarkt",
-    "source_title": "SQUADRA UNDER 23 SERIE C 2025/2026 - C'è solo l'Inter - Forum",
-    "discovered_at": "2026-03-01T06:55:36.699685",
-    "nationality": "Bosnia-Erzegovina",
-    "tm_url": "https://www.transfermarkt.it/milan-topalovic/profil/spieler/398413",
-    "player_profile": {
-      "nationality": "Bosnia-Erzegovina",
-      "tm_url": "https://www.transfermarkt.it/milan-topalovic/profil/spieler/398413"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_c99f06ec",
-    "player_name": "Di Maggio",
-    "age": null,
-    "role": "CC",
-    "role_name": "Mediano/Mezz'Ala/Trequartista",
-    "opportunity_type": "prestito",
-    "current_club": "Inter U23",
-    "previous_clubs": [
-      "Perugia, Serie C"
-    ],
-    "summary": "Rientro dal prestito dal Perugia (Serie C). Cercato dal Padova (neopromossa in B), ma l'Inter vorrebbe tenerlo per l'U23.",
-    "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574",
-    "source_name": "Transfermarkt",
-    "source_title": "SQUADRA UNDER 23 SERIE C 2025/2026 - C'è solo l'Inter - Forum",
-    "discovered_at": "2026-03-01T06:55:36.699677",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/vittorio-di-maggio/profil/spieler/1124783",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/vittorio-di-maggio/profil/spieler/1124783"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_5b82a332",
-    "player_name": "Kamate",
-    "age": null,
-    "role": "ES",
-    "role_name": "Esterno",
-    "opportunity_type": "prestito",
-    "current_club": "Inter U23",
-    "previous_clubs": [
-      "Modena, Serie B"
-    ],
-    "summary": "Rientro dal prestito dal Modena (Serie B). Potrebbe partire dato il contratto in scadenza nel 2026. Cercato dalla Juve Stabia (B).",
-    "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574",
-    "source_name": "Transfermarkt",
-    "source_title": "SQUADRA UNDER 23 SERIE C 2025/2026 - C'è solo l'Inter - Forum",
-    "discovered_at": "2026-03-01T06:55:36.699668",
-    "nationality": "Francia",
-    "second_nationality": "Costa d'Avorio",
-    "tm_url": "https://www.transfermarkt.it/issiaka-kamate/profil/spieler/885623",
-    "player_profile": {
-      "nationality": "Francia",
-      "second_nationality": "Costa d'Avorio",
-      "tm_url": "https://www.transfermarkt.it/issiaka-kamate/profil/spieler/885623"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_6e7fc225",
-    "player_name": "Stante",
-    "age": null,
-    "role": "DC",
-    "role_name": "Difensore",
-    "opportunity_type": "prestito",
-    "current_club": "Inter U23",
-    "previous_clubs": [
-      "Pergolettese, Serie C"
-    ],
-    "summary": "Rientro dal prestito dalla Pergolettese (Serie C). Potrebbe essere un'opportunità per club di Serie C che cercano un difensore.",
-    "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574",
-    "source_name": "Transfermarkt",
-    "source_title": "SQUADRA UNDER 23 SERIE C 2025/2026 - C'è solo l'Inter - Forum",
-    "discovered_at": "2026-03-01T06:55:36.699660",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/giuseppe-stante/profil/spieler/746271",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/giuseppe-stante/profil/spieler/746271"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_93a04525",
-    "player_name": "Stabile",
-    "age": null,
-    "role": "DC",
-    "role_name": "Difensore",
-    "opportunity_type": "prestito",
-    "current_club": "Inter U23",
-    "previous_clubs": [
-      "Alcione Milano, Serie C"
-    ],
-    "summary": "Rientro dal prestito dall'Alcione Milano (Serie C). Potrebbe essere un'opportunità per club di Serie C che cercano un difensore.",
-    "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574",
-    "source_name": "Transfermarkt",
-    "source_title": "SQUADRA UNDER 23 SERIE C 2025/2026 - C'è solo l'Inter - Forum",
-    "discovered_at": "2026-03-01T06:55:36.699649",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/angelo-stabile/profil/spieler/1120478",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/angelo-stabile/profil/spieler/1120478"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_7d968eba",
-    "player_name": "Raimondi",
-    "age": null,
-    "role": "PO",
-    "role_name": "Portiere",
-    "opportunity_type": "prestito",
-    "current_club": "Inter U23",
-    "previous_clubs": [
-      "Serie D"
-    ],
-    "summary": "Rientro dal prestito dalla Serie D. Potrebbe essere un'opportunità per club di Serie C che cercano un portiere giovane.",
-    "source_url": "https://www.transfermarkt.it/squadra-under-23-serie-c-2025-2026/thread/forum/454/thread_id/574",
-    "source_name": "Transfermarkt",
-    "source_title": "SQUADRA UNDER 23 SERIE C 2025/2026 - C'è solo l'Inter - Forum",
-    "discovered_at": "2026-03-01T06:55:36.699623",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/filippo-raimondi/profil/spieler/429265",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/filippo-raimondi/profil/spieler/429265"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_98670aa3",
-    "player_name": "Christian Corradi",
-    "age": 19,
-    "role": "DC",
-    "role_name": "Difensore Centrale",
-    "opportunity_type": "mercato",
-    "current_club": "Trento",
-    "previous_clubs": [
-      "Verona",
-      "Catanzaro"
-    ],
-    "summary": "Difensore centrale in prestito dal Verona al Trento. Reduce da un prestito al Catanzaro dove non ha giocato. Cerca un ruolo da protagonista in Serie C. Forte fisicamente, deve migliorare i tempi di risposta.",
-    "source_url": "https://www.transfermarkt.it/il-mini-bremer-il-motore-dellinter-e-il-baby-de-la-masia-15-giovani-da-scoprire-in-c/view/news/459099",
-    "source_name": "Transfermarkt",
-    "source_title": "Chi sono i migliori giovani della Serie C? Ecco 15 nomi da non ...",
-    "discovered_at": "2026-03-01T06:55:29.815791",
-    "tm_url": "https://www.transfermarkt.it/ac-trento/startseite/verein/4095",
-    "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/ac-trento/startseite/verein/4095"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_ef6ff1af",
-    "player_name": "Richi Agbonifo",
-    "age": 18,
-    "role": "CC",
-    "role_name": "Esterno Di Destra",
-    "opportunity_type": "mercato",
-    "current_club": "Inter U23",
-    "previous_clubs": [],
-    "summary": "Acquisto costoso per l'Inter U23 (1 milione di euro). Ha grandi potenzialità atletiche, ma deve ancora sviluppare il suo potenziale. Da valutare il suo ruolo tattico nel 3-5-2 di Vecchi.",
-    "source_url": "https://www.transfermarkt.it/il-mini-bremer-il-motore-dellinter-e-il-baby-de-la-masia-15-giovani-da-scoprire-in-c/view/news/459099",
-    "source_name": "Transfermarkt",
-    "source_title": "Chi sono i migliori giovani della Serie C? Ecco 15 nomi da non ...",
-    "discovered_at": "2026-03-01T06:55:29.815781",
-    "nationality": "Italia",
-    "second_nationality": "Nigeria",
-    "tm_url": "https://www.transfermarkt.it/richi-agbonifo/profil/spieler/980346",
-    "player_profile": {
-      "nationality": "Italia",
-      "second_nationality": "Nigeria",
-      "tm_url": "https://www.transfermarkt.it/richi-agbonifo/profil/spieler/980346"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_04d96f55",
-    "player_name": "Issiaka Kamate",
-    "age": 20,
-    "role": "CC",
-    "role_name": "Mezzala",
-    "opportunity_type": "mercato",
-    "current_club": "Inter U23",
-    "previous_clubs": [
-      "AVS Futebol",
-      "Modena"
-    ],
-    "summary": "Giovane mezzala di talento dell'Inter U23. Dopo esperienze non positive in Portogallo e a Modena, è tornato all'Inter per rilanciarsi. Possiede un ottimo sinistro, ma deve migliorare in continuità e gestione della gara.",
-    "source_url": "https://www.transfermarkt.it/il-mini-bremer-il-motore-dellinter-e-il-baby-de-la-masia-15-giovani-da-scoprire-in-c/view/news/459099",
-    "source_name": "Transfermarkt",
-    "source_title": "Chi sono i migliori giovani della Serie C? Ecco 15 nomi da non ...",
-    "discovered_at": "2026-03-01T06:55:29.815756",
-    "nationality": "Francia",
-    "second_nationality": "Costa d'Avorio",
-    "tm_url": "https://www.transfermarkt.it/issiaka-kamate/profil/spieler/885623",
-    "player_profile": {
-      "nationality": "Francia",
-      "second_nationality": "Costa d'Avorio",
-      "tm_url": "https://www.transfermarkt.it/issiaka-kamate/profil/spieler/885623"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_bbdf860d",
-    "player_name": "Dominic Vavassori",
-    "age": 19,
-    "role": "AT",
-    "role_name": "Attaccante",
-    "opportunity_type": "mercato",
-    "current_club": "Atalanta U23",
-    "previous_clubs": [],
-    "summary": "Attaccante classe 2005 dell’Atalanta U23. Seconda punta veloce e molto mobile. Convocato nella Nazionale Under 21 italiana. Uno dei prospetti più seguiti dagli addetti ai lavori.",
-    "source_url": "https://www.tuttoc.com/altre-news/serie-c-giovani-in-evidenza-il-percorso-di-topalovic-e-vavassori-426385",
-    "source_name": "TuttoC",
-    "source_title": "Serie C, giovani in evidenza: il percorso di Topalović e Vavassori",
-    "discovered_at": "2026-03-01T06:55:25.800281",
-    "nationality": "Italia",
-    "second_nationality": "Brasile",
-    "tm_url": "https://www.transfermarkt.it/dominic-vavassori/profil/spieler/936739",
-    "player_profile": {
-      "nationality": "Italia",
-      "second_nationality": "Brasile",
-      "tm_url": "https://www.transfermarkt.it/dominic-vavassori/profil/spieler/936739"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_c4a40f13",
-    "player_name": "Luka Topalović",
-    "age": 19,
-    "role": "CC",
-    "role_name": "Centrocampista",
-    "opportunity_type": "mercato",
-    "current_club": "Inter U23",
-    "previous_clubs": [],
-    "summary": "Centrocampista sloveno classe 2006 dell'Inter U23. Centrocampista moderno, dinamico e dotato di una buona struttura fisica. Considerato uno dei profili più interessanti della categoria.",
-    "source_url": "https://www.tuttoc.com/altre-news/serie-c-giovani-in-evidenza-il-percorso-di-topalovic-e-vavassori-426385",
-    "source_name": "TuttoC",
-    "source_title": "Serie C, giovani in evidenza: il percorso di Topalović e Vavassori",
-    "discovered_at": "2026-03-01T06:55:25.800256",
-    "tm_url": "https://www.transfermarkt.it/inter/startseite/verein/46/saison_id/2024",
-    "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/inter/startseite/verein/46/saison_id/2024"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_4399df4f",
-    "player_name": "Andrei Anton",
-    "age": null,
-    "role": "DC",
-    "role_name": "Difensore Centrale",
-    "opportunity_type": "svincolato",
-    "current_club": null,
-    "previous_clubs": [],
-    "summary": "Difensore centrale svincolato in arrivo alla Triestina.",
-    "source_url": "https://www.tuttoc.com/calciomercato/picerno-a-gennaio-pronti-nuovi-colpi-diversi-i-movimenti-in-entrata-426235",
-    "source_name": "TuttoC",
-    "source_title": "Picerno, a gennaio pronti nuovi colpi: diversi i movimenti in entrata",
-    "discovered_at": "2026-03-01T06:55:17.884746",
-    "nationality": "Romania",
-    "second_nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/andrei-anton/profil/spieler/704729",
-    "player_profile": {
-      "nationality": "Romania",
-      "second_nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/andrei-anton/profil/spieler/704729"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_25a2f46e",
-    "player_name": "Alessandro Campanile",
-    "age": 19,
-    "role": "AT",
-    "role_name": "Centravanti",
-    "opportunity_type": "mercato",
-    "current_club": "Avellino",
-    "previous_clubs": [],
-    "summary": "Giovane centravanti classe 2005, proveniente dal settore giovanile dell'Avellino. Nonostante l'interesse di club di Serie C e Under 20, l'Avellino lo considera incedibile e punta su di lui per il futuro.",
-    "source_url": "https://www.tuttoc.com/interviste-tc/campanile-parla-l-agente-bosco-per-l-avellino-e-incedibile-399377",
-    "source_name": "TuttoC",
-    "source_title": "Campanile, parla l'agente Bosco: \"Per l'Avellino è incedibile\" - Tutto C",
-    "discovered_at": "2026-03-01T06:55:16.443080",
-    "tm_url": "https://www.transfermarkt.it/us-avellino-1912/startseite/verein/2331/saison_id/2024",
-    "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/us-avellino-1912/startseite/verein/2331/saison_id/2024"
     },
     "tm_enriched": true
   }
