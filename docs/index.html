@@ -4,21 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>OB1 Radar - Serie C Scout</title>
-    <meta name="description" content="Scout AI per Serie C e Serie D italiana">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="Ouroboros Protocol: scout AI per Serie C e Serie D italiana. Trova opportunita di mercato prima degli altri.">
+    <meta name="theme-color" content="#0a0a0a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="icons/icon-192.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%2300ff41' stroke-width='4'/><circle cx='50' cy='15' r='5' fill='%2300ff41'/></svg>">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Pull to Refresh Indicator -->
     <div class="pull-indicator" id="pullIndicator">
-        <span class="pull-icon">↻</span>
+        <span class="pull-icon">&#8635;</span>
         <span class="pull-text">Rilascia per aggiornare</span>
     </div>
 
@@ -26,17 +24,15 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <img src="icons/ob1-logo.svg" alt="OB1" class="logo-icon" width="36" height="36">
+                <span class="logo-mark">&gt;</span>
                 <div class="logo-text">
-                    <h1>OB1 Radar</h1>
-                    <span class="logo-subtitle">Lega Pro Scout</span>
+                    <h1>OB1 SERIE C</h1>
+                    <span class="logo-subtitle">LEGA PRO SCOUT</span>
                 </div>
             </div>
             <div class="header-actions">
-                <button class="btn-icon" id="themeToggle" aria-label="Cambia tema">
-                    <span class="icon-light">☀️</span>
-                    <span class="icon-dark">🌙</span>
-                </button>
+                <a href="https://www.matchanalysispro.online/" class="header-link" target="_blank" rel="noopener">MAP</a>
+                <a href="https://mtornani.github.io/ob1-scout/" class="header-link" target="_blank" rel="noopener">GLOBAL</a>
             </div>
         </div>
     </header>
@@ -44,56 +40,56 @@
     <!-- Main Content -->
     <main class="main-content">
 
-        <!-- ═══ LANDING VIEW: Product Hero ═══ -->
+        <!-- LANDING VIEW -->
         <div id="landingView" class="view-section">
             <div class="hero">
-                <div class="hero-badge">Serie C NOW</div>
-                <h2 class="hero-title">Il tuo scout automatico<br>per la Lega Pro</h2>
-                <p class="hero-subtitle">Monitora giocatori, segnala opportunità, genera report. Tutto automatico, costo zero.</p>
+                <div class="hero-badge">SERIE C NOW</div>
+                <h2 class="hero-title">Scout automatico<br>per la Lega Pro</h2>
+                <p class="hero-subtitle">Monitora giocatori, segnala opportunita, genera report. Automatico. Costo zero.</p>
 
                 <div class="hero-stats">
                     <div class="hero-stat">
                         <span class="hero-stat-value">100+</span>
-                        <span class="hero-stat-label">Profili</span>
+                        <span class="hero-stat-label">PROFILI</span>
                     </div>
                     <div class="hero-stat">
                         <span class="hero-stat-value">6h</span>
-                        <span class="hero-stat-label">Aggiornamento</span>
+                        <span class="hero-stat-label">CICLO</span>
                     </div>
                     <div class="hero-stat">
-                        <span class="hero-stat-value">€0</span>
-                        <span class="hero-stat-label">Costo</span>
+                        <span class="hero-stat-value">$0</span>
+                        <span class="hero-stat-label">COSTO</span>
                     </div>
                 </div>
 
                 <div class="hero-cta">
-                    <button class="btn-primary" id="btnExploreAll">Esplora le opportunità →</button>
+                    <button class="btn-primary" id="btnExploreAll">Esplora le opportunita &#8594;</button>
                     <a href="https://t.me/Ob1LegaPro_bot" target="_blank" class="btn-secondary">Bot Telegram</a>
                 </div>
             </div>
 
             <div class="hero-how">
-                <h3 class="hero-how-title">Come funziona</h3>
+                <h3 class="hero-how-title">&gt; COME_FUNZIONA</h3>
                 <div class="hero-steps">
                     <div class="hero-step">
-                        <span class="hero-step-icon">📡</span>
+                        <span class="hero-step-icon">SCRAPE</span>
                         <p>Monitora fonti h24</p>
                     </div>
                     <div class="hero-step">
-                        <span class="hero-step-icon">🧠</span>
+                        <span class="hero-step-icon">ANALYZE</span>
                         <p>Analizza occasioni reali</p>
                     </div>
                     <div class="hero-step">
-                        <span class="hero-step-icon">🔔</span>
+                        <span class="hero-step-icon">ALERT</span>
                         <p>Ti avvisa su Telegram</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ═══ EXPLORE VIEW ═══ -->
+        <!-- EXPLORE VIEW -->
         <div id="exploreView" class="view-section" style="display: none;">
-            <button class="btn-back" id="btnBackFromExplore">← Torna alla Home</button>
+            <button class="btn-back" id="btnBackFromExplore">&larr; Torna alla Home</button>
 
             <!-- Search Bar -->
             <div class="search-container">
@@ -102,18 +98,17 @@
                        id="searchInput"
                        placeholder="Cerca giocatore o ruolo..."
                        autocomplete="off">
-                <span class="search-icon">🔍</span>
+                <span class="search-icon">&gt;</span>
             </div>
 
             <!-- Quick Filters -->
             <div class="filter-section">
                 <div class="filter-chips" id="filterChips">
                     <button class="filter-chip active" data-filter="all">Tutti</button>
-                    <button class="filter-chip" data-filter="hot">⭐ Top 10</button>
-                    <button class="filter-chip" data-filter="under">👶 Under</button>
-                    <button class="filter-chip" data-filter="free">🆓 Svincolati</button>
+                    <button class="filter-chip" data-filter="hot">TOP 10</button>
+                    <button class="filter-chip" data-filter="under">UNDER</button>
+                    <button class="filter-chip" data-filter="free">SVINCOLATI</button>
                 </div>
-                <!-- Hidden dropdowns, kept in state but removed from UI for simplicity -->
                 <div style="display: none;">
                     <select id="roleFilter"></select>
                     <select id="typeFilter"></select>
@@ -128,9 +123,9 @@
 
             <!-- Empty State -->
             <div class="empty-state" id="emptyState" style="display: none;">
-                <div class="empty-icon">🔍</div>
-                <h3>Nessuna opportunità trovata</h3>
-                <p>Prova a cambiare filtro o torna più tardi.</p>
+                <div class="empty-icon">&gt;_</div>
+                <h3>Nessuna opportunita trovata</h3>
+                <p>Prova a cambiare filtro o torna piu tardi.</p>
             </div>
 
             <!-- Last Update -->
@@ -147,7 +142,7 @@
                 <div>
                     <h2 id="modalTitle">Scouting Report</h2>
                 </div>
-                <button class="modal-close" id="modalClose" aria-label="Chiudi">✕</button>
+                <button class="modal-close" id="modalClose" aria-label="Chiudi">&times;</button>
             </div>
             <div class="modal-content" id="modalContent">
                 <!-- Dynamic content -->
@@ -157,6 +152,20 @@
 
     <!-- Toast Notifications -->
     <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <span class="footer-brand">&gt; OB1_SERIE_C</span>
+            <span class="footer-sep">|</span>
+            <span class="footer-text">Powered by Ouroboros Protocol</span>
+        </div>
+        <div class="footer-links">
+            <a href="https://www.matchanalysispro.online/" target="_blank" rel="noopener">matchanalysispro.online</a>
+            <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener">OB1 Global</a>
+            <a href="https://www.matchanalysispro.online/theseus/" target="_blank" rel="noopener">Theseus Protocol</a>
+        </div>
+    </footer>
 
     <script src="js/dna-engine.js"></script>
     <script src="js/app.js"></script>

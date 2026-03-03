@@ -1,16 +1,15 @@
 /**
- * OB1 Radar - Dashboard Application
- * DS-Proof Redesign - 2026
+ * OB1 Radar - Serie C Scout
+ * Ouroboros Protocol — 2026
  */
 
 const state = {
   opportunities: [],
   filteredOpportunities: [],
-  currentView: 'landing', 
+  currentView: 'landing',
   currentFilter: 'all',
   searchQuery: '',
-  isLoading: true,
-  theme: 'dark'
+  isLoading: true
 };
 
 const elements = {
@@ -19,7 +18,6 @@ const elements = {
   searchInput: document.getElementById('searchInput'),
   filterChips: document.getElementById('filterChips'),
   lastUpdate: document.getElementById('lastUpdate'),
-  themeToggle: document.getElementById('themeToggle'),
   modalOverlay: document.getElementById('modalOverlay'),
   modalTitle: document.getElementById('modalTitle'),
   modalContent: document.getElementById('modalContent'),
@@ -28,35 +26,12 @@ const elements = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
   initEventListeners();
   loadData();
   showView('landing');
 });
 
-function initTheme() {
-  const savedTheme = localStorage.getItem('ob1-theme') || 'dark';
-  state.theme = savedTheme;
-  applyTheme();
-}
-
-function applyTheme() {
-  if (state.theme === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-  } else {
-    document.documentElement.removeAttribute('data-theme');
-  }
-}
-
-function toggleTheme() {
-  state.theme = state.theme === 'dark' ? 'light' : 'dark';
-  localStorage.setItem('ob1-theme', state.theme);
-  applyTheme();
-}
-
 function initEventListeners() {
-  elements.themeToggle.addEventListener('click', toggleTheme);
-
   elements.searchInput.addEventListener('input', debounce((e) => {
     state.searchQuery = e.target.value.toLowerCase();
     filterOpportunities();
@@ -113,7 +88,6 @@ function showView(viewName) {
 function filterOpportunities() {
   let filtered = [...state.opportunities];
 
-  // Quick Filters logic
   if (state.currentFilter === 'hot') {
     filtered = filtered.filter(o => o.ob1_score >= 70).sort((a,b) => b.ob1_score - a.ob1_score).slice(0, 10);
   } else if (state.currentFilter === 'under') {
@@ -123,13 +97,12 @@ function filterOpportunities() {
   }
 
   if (state.searchQuery) {
-    filtered = filtered.filter(o => 
-      o.player_name.toLowerCase().includes(state.searchQuery) || 
+    filtered = filtered.filter(o =>
+      o.player_name.toLowerCase().includes(state.searchQuery) ||
       (o.role_name || o.role).toLowerCase().includes(state.searchQuery)
     );
   }
 
-  // Default sorting
   filtered.sort((a, b) => b.ob1_score - a.ob1_score);
 
   state.filteredOpportunities = filtered;
@@ -161,53 +134,53 @@ function createOpportunityCard(opp) {
   const score = opp.ob1_score;
   let verdict = 'VALUTARE';
   let verdictClass = 'cold';
-  let stars = '⭐';
+  let tier = 'C';
 
   if (score >= 70) {
     verdict = 'TOP';
     verdictClass = 'hot';
-    stars = '⭐⭐⭐';
+    tier = 'A';
   } else if (score >= 57) {
     verdict = 'OCCASIONE';
     verdictClass = 'warm';
-    stars = '⭐⭐';
+    tier = 'B';
   }
 
   const currentClub = opp.current_club || 'Svincolato';
   const role = opp.role_name || opp.role;
-  
+
   let valueInfo = '';
   if (opp.market_value > 0) {
-    valueInfo = opp.market_value >= 1000 ? `${Math.round(opp.market_value/1000)}k€` : `${opp.market_value}€`;
+    valueInfo = opp.market_value >= 1000 ? `${Math.round(opp.market_value/1000)}k` : `${opp.market_value}`;
   }
 
   return `
     <article class="opportunity-card ${verdictClass}" data-id="${opp.id}">
       <div class="card-report-header">
         <div class="player-main">
-          <span class="report-stars">${stars}</span>
+          <span class="report-stars">${tier}</span>
           <h3 class="player-name">${opp.player_name}</h3>
-          <span class="player-sub">${role} • ${currentClub}</span>
+          <span class="player-sub">${role} // ${currentClub}</span>
         </div>
         <div class="verdict-badge ${verdictClass}">${verdict}</div>
       </div>
       <div class="card-report-body">
         <div class="report-item">
-          <span class="label">Età</span>
+          <span class="label">ETA</span>
           <span class="value">${opp.age}</span>
         </div>
         <div class="report-item">
-          <span class="label">Valore</span>
+          <span class="label">VALORE</span>
           <span class="value">${valueInfo || '--'}</span>
         </div>
         <div class="report-item">
-          <span class="label">Contratto</span>
+          <span class="label">CONTRATTO</span>
           <span class="value">${opp.opportunity_type}</span>
         </div>
       </div>
       ${opp.recommendation ? `
         <div class="report-note">
-          <strong>Nota OB1:</strong> ${opp.recommendation}
+          <strong>> OB1:</strong> ${opp.recommendation}
         </div>
       ` : ''}
     </article>
@@ -216,16 +189,16 @@ function createOpportunityCard(opp) {
 
 function showDetail(opp) {
   elements.modalTitle.textContent = "Scouting Report: " + opp.player_name;
-  
+
   elements.modalContent.innerHTML = `
     <div class="detail-header">
       <div class="detail-main">
         <h2>${opp.player_name}</h2>
-        <p>${opp.role_name || opp.role} • ${opp.age} anni</p>
+        <p>${opp.role_name || opp.role} // ${opp.age} anni</p>
       </div>
       <div class="detail-score">${opp.ob1_score}</div>
     </div>
-    
+
     <div class="detail-grid">
       <div class="detail-box">
         <h4>Situazione</h4>
@@ -237,7 +210,7 @@ function showDetail(opp) {
         <p>${opp.recommendation || opp.summary || 'Profilo monitorato dal sistema OB1.'}</p>
       </div>
     </div>
-    
+
     <div class="detail-actions">
       ${opp.tm_url ? `<a href="${opp.tm_url}" target="_blank" class="btn-primary">Vedi su Transfermarkt</a>` : ''}
     </div>
@@ -269,10 +242,4 @@ function debounce(func, wait) {
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
   };
-}
-
-function formatDate(dateString) {
-  if (!dateString) return 'N/A';
-  const date = new Date(dateString);
-  return date.toLocaleDateString('it-IT');
 }

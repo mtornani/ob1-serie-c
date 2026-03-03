@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
-  <rect width="192" height="192" rx="32" fill="#0f172a"/>
+  <rect width="192" height="192" rx="32" fill="#0a0a0a"/>
   <g transform="translate(96,96)" fill="none" stroke="#e2e8f0">
     <!-- Ouroboros snake body -->
     <path d="M 17 -34 A 34 34 0 1 1 31 -20" stroke-width="7" stroke-linecap="round"/>
@@ -9,5 +9,5 @@
     <circle cx="0" cy="0" r="15" stroke-width="2"/>
     <polygon points="0,-11 5.5,-7 4,0 -4,0 -5.5,-7" fill="#e2e8f0" stroke="none"/>
   </g>
-  <text x="96" y="158" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="#e2e8f0" text-anchor="middle" letter-spacing="2">OB1</text>
+  <text x="96" y="158" font-family="monospace" font-size="28" font-weight="700" fill="#e2e8f0" text-anchor="middle" letter-spacing="2">OB1</text>
 </svg>
