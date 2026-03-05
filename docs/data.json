@@ -1475,6 +1475,47 @@
       "stale_free_agent": false
     },
     {
+      "id": "24255403a45c24be0073532372061c25",
+      "player_name": "[ITALY] Rappresentativa Serie",
+      "age": 25,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "prestito",
+      "reported_date": "2026-03-05",
+      "source_name": "www.lnd.it",
+      "source_url": "https://www.lnd.it/it/rappresentativa-seried",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": "Belgio",
+      "foot": "destro",
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-03-05T07:00:14.449577",
+      "ob1_score": 66,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 70,
+        "experience": 50,
+        "age": 100,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Valutabile in prestito.",
+      "days_without_contract": 0,
+      "stale_free_agent": false
+    },
+    {
       "id": "opp_e55b6dc0",
       "player_name": "Zuberek",
       "age": null,
@@ -3463,14 +3504,14 @@
     }
   ],
   "stats": {
-    "total": 83,
+    "total": 84,
     "hot": 17,
-    "warm": 66,
+    "warm": 67,
     "cold": 0,
-    "today": 0,
+    "today": 1,
     "svincolati": 28,
     "stale_free_agents": 0
   },
-  "last_update": "2026-03-05T02:35:37.451252",
+  "last_update": "2026-03-05T07:03:01.970010",
   "scoring_version": "SCORE-002"
 }
