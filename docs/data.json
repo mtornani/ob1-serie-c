@@ -2970,6 +2970,47 @@
       "stale_free_agent": false
     },
     {
+      "id": "eda23555c6b5921baa61000ac9d949a4",
+      "player_name": "[ITALY] Gazzetta Regionale",
+      "age": 17,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-03-07",
+      "source_name": "www.gazzettaregionale.it",
+      "source_url": "https://www.gazzettaregionale.it/tag/Svincolati/1",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "sinistro",
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": "Epic Sports Italy",
+      "discovered_at": "2026-03-07T06:49:50.799387",
+      "ob1_score": 58,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 50,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 95,
+        "completeness": 55
+      },
+      "recommendation": "Profilo giovane (17 anni), potenziale di crescita.",
+      "days_without_contract": 0,
+      "stale_free_agent": false
+    },
+    {
       "id": "opp_2eb1fc3d",
       "player_name": "Francesco Di Paolo",
       "age": null,
@@ -3504,14 +3545,14 @@
     }
   ],
   "stats": {
-    "total": 84,
+    "total": 85,
     "hot": 5,
-    "warm": 77,
+    "warm": 78,
     "cold": 2,
-    "today": 0,
+    "today": 1,
     "svincolati": 28,
     "stale_free_agents": 0
   },
-  "last_update": "2026-03-07T02:27:41.779841",
+  "last_update": "2026-03-07T06:53:00.609885",
   "scoring_version": "SCORE-002"
 }
