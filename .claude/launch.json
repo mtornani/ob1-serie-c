@@ -4,7 +4,7 @@
     {
       "name": "scouting-reports",
       "runtimeExecutable": "C:\\Users\\Mirko\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
-      "runtimeArgs": ["-m", "http.server", "8090", "--directory", "docs/reports/scouting"],
+      "runtimeArgs": ["-m", "http.server", "8090", "--directory", "reports/scouting"],
       "port": 8090
     }
   ]
