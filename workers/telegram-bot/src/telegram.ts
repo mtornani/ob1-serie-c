@@ -2,7 +2,70 @@ import { Env } from './types';
 
 const TELEGRAM_API = 'https://api.telegram.org/bot';
 
+// Footer fisso con social proof — appeso a ogni messaggio in uscita
+const OB1_FOOTER =
+  "\n──────────────────\n" +
+  "🔎 OB1 Scout v3.2\n" +
+  "📈 Villarreal: €1.8M → Clausola €51M\n" +
+  "🔗 t.me/ob1scout";
+
+const TELEGRAM_MAX_LENGTH = 4096;
+
+/**
+ * Invia messaggio Telegram con footer OB1.
+ * Se il testo + footer supera 4096 char, splitta e mette il footer solo sull'ultimo chunk.
+ */
 export async function sendMessage(
+  env: Env,
+  chatId: number,
+  text: string,
+  parseMode: 'HTML' | 'Markdown' = 'HTML'
+): Promise<boolean> {
+  const textWithFooter = text + OB1_FOOTER;
+
+  // Caso semplice: entra in un messaggio
+  if (textWithFooter.length <= TELEGRAM_MAX_LENGTH) {
+    return sendRawMessage(env, chatId, textWithFooter, parseMode);
+  }
+
+  // Split per paragrafi, footer solo sull'ultimo chunk
+  const maxChunkLen = TELEGRAM_MAX_LENGTH - 20; // margine per contatore (x/y)
+  const lines = text.split('\n');
+  const parts: string[] = [];
+  let current = '';
+
+  for (const line of lines) {
+    if (current.length + line.length + 1 > maxChunkLen) {
+      parts.push(current);
+      current = line;
+    } else {
+      current += (current ? '\n' : '') + line;
+    }
+  }
+  if (current) parts.push(current);
+
+  let success = true;
+  for (let i = 0; i < parts.length; i++) {
+    const isLast = i === parts.length - 1;
+    const suffix = isLast ? OB1_FOOTER : '';
+    let chunk = `${parts[i]}${suffix}\n\n(${i + 1}/${parts.length})`;
+
+    // Se l'ultimo chunk con footer sfora, manda separatamente
+    if (chunk.length > TELEGRAM_MAX_LENGTH && isLast) {
+      if (!await sendRawMessage(env, chatId, `${parts[i]}\n\n(${i + 1}/${parts.length})`, parseMode)) success = false;
+      if (!await sendRawMessage(env, chatId, OB1_FOOTER, parseMode)) success = false;
+    } else {
+      if (!await sendRawMessage(env, chatId, chunk, parseMode)) success = false;
+    }
+  }
+
+  return success;
+}
+
+/**
+ * Invio diretto senza footer (uso interno).
+ */
+async function sendRawMessage(
   env: Env,
   chatId: number,
   text: string,

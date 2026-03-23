@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OB1 Serie C — Top Segnalazioni Under 23</title>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        background: #fafafa;
+        color: #2c2c2c;
+        line-height: 1.7;
+        font-size: 15px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    header {
+        background: #1a1a2e;
+        color: white;
+        padding: 35px 30px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+        position: relative;
+        overflow: hidden;
+    }
+    header::after {
+        content: '';
+        position: absolute;
+        top: 0; right: 0;
+        width: 200px; height: 100%;
+        background: linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.03) 50%);
+    }
+    header h1 {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 1.3em;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 2px;
+    }
+    header .subtitle {
+        font-size: 1em;
+        opacity: 0.9;
+        margin-top: 6px;
+    }
+    header .confidential {
+        font-size: 0.72em;
+        opacity: 0.5;
+        margin-top: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 8px;
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        border-left: 4px solid #ddd;
+    }
+    .card.hot { border-left-color: #c0392b; }
+    .card.warm { border-left-color: #f39c12; }
+
+    .player-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+    }
+    .player-name {
+        font-family: -apple-system, sans-serif;
+        font-size: 1.3em;
+        font-weight: 700;
+        color: #1a1a2e;
+    }
+    .player-meta {
+        font-size: 0.85em;
+        color: #666;
+        margin-top: 2px;
+    }
+
+    .score-badge {
+        font-family: -apple-system, sans-serif;
+        font-weight: 700;
+        font-size: 1.3em;
+        padding: 6px 14px;
+        border-radius: 6px;
+        min-width: 50px;
+        text-align: center;
+    }
+    .score-badge.hot { background: #fdecea; color: #c0392b; }
+    .score-badge.warm { background: #fef5e7; color: #e67e22; }
+    .score-badge.cold { background: #eef2f7; color: #7f8c8d; }
+
+    .tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 14px;
+    }
+    .tag {
+        font-family: -apple-system, sans-serif;
+        font-size: 0.72em;
+        padding: 3px 10px;
+        border-radius: 3px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .tag.svincolato { background: #d5f5e3; color: #1e8449; }
+    .tag.rescissione { background: #fef9e7; color: #9a7d0a; }
+    .tag.prestito { background: #d6eaf8; color: #1a5276; }
+    .tag.mercato { background: #eaecee; color: #566573; }
+    .tag.scadenza { background: #fadbd8; color: #922b21; }
+    .tag.reparto { background: #e8e8e8; color: #555; }
+
+    .narrative {
+        color: #444;
+        margin-bottom: 14px;
+        text-align: justify;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 20px;
+        background: #f9f9f9;
+        border-radius: 6px;
+        padding: 14px 18px;
+        margin-bottom: 14px;
+    }
+    .info-item {
+        font-size: 0.88em;
+    }
+    .info-label {
+        font-family: -apple-system, sans-serif;
+        font-size: 0.72em;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #888;
+    }
+    .info-value {
+        color: #333;
+        font-weight: 500;
+    }
+
+    .score-detail {
+        background: #f9f9f9;
+        border-radius: 6px;
+        padding: 14px;
+        margin-top: 10px;
+    }
+    .score-detail-title {
+        font-family: -apple-system, sans-serif;
+        font-size: 0.75em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #888;
+        margin-bottom: 8px;
+    }
+    .factor-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+    }
+    .factor-label {
+        font-family: -apple-system, sans-serif;
+        font-size: 0.75em;
+        color: #666;
+        min-width: 160px;
+    }
+    .factor-bar-bg {
+        flex: 1;
+        height: 6px;
+        background: #e8e8e8;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+    .factor-bar {
+        height: 100%;
+        border-radius: 3px;
+    }
+    .factor-val {
+        font-family: -apple-system, sans-serif;
+        font-size: 0.75em;
+        font-weight: 600;
+        color: #444;
+        min-width: 25px;
+        text-align: right;
+    }
+
+    .source-link {
+        color: #2980b9;
+        text-decoration: none;
+        font-size: 0.8em;
+    }
+    .source-link:hover { text-decoration: underline; }
+
+    /* Summary table */
+    .summary-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    .summary-table th {
+        font-family: -apple-system, sans-serif;
+        font-size: 0.75em;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #888;
+        text-align: left;
+        padding: 10px 8px;
+        border-bottom: 2px solid #eee;
+    }
+    .summary-table td {
+        padding: 10px 8px;
+        border-bottom: 1px solid #f5f5f5;
+        font-size: 0.9em;
+    }
+    .summary-table tr:hover { background: #fafafa; }
+    .summary-table a { color: #1a1a2e; text-decoration: none; font-weight: 600; }
+    .summary-table a:hover { text-decoration: underline; }
+
+    footer {
+        text-align: center;
+        padding: 25px 20px;
+        color: #aaa;
+        font-size: 0.8em;
+        border-top: 1px solid #eee;
+        margin-top: 30px;
+    }
+    footer a { color: #666; }
+
+    @media print {
+        body { background: white; font-size: 12px; }
+        .container { max-width: 100%; padding: 0; }
+        .card, header { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; }
+        header { background: #333 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+    @media (max-width: 600px) {
+        .player-header { flex-direction: column; gap: 8px; }
+        .info-grid { grid-template-columns: 1fr; }
+        .factor-label { min-width: 100px; font-size: 0.65em; }
+    }
+
+    .stats-bar {
+        display: flex;
+        gap: 25px;
+        flex-wrap: wrap;
+        margin-top: 15px;
+    }
+    .stat-item {
+        text-align: center;
+    }
+    .stat-val {
+        font-family: -apple-system, sans-serif;
+        font-size: 1.8em;
+        font-weight: 700;
+        color: #1a1a2e;
+    }
+    .stat-val.hot { color: #c0392b; }
+    .stat-val.green { color: #27ae60; }
+    .stat-lbl {
+        font-family: -apple-system, sans-serif;
+        font-size: 0.72em;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>OB1 Scout</h1>
+            <div class="subtitle">Top Segnalazioni Under 23 — Serie C</div>
+            <div class="confidential">23 Marzo 2026 · Uso interno</div>
+        </header>
+
+        <div class="card" style="border-left-color:#1a1a2e;">
+            <div class="score-detail-title">Panoramica</div>
+            <p style="color:#444;margin-bottom:8px;">
+                14 profili Under 23 selezionati dal radar OB1 Serie C.
+                Distribuzione per reparto: 4 attacco, 5 centrocampo, 5 difesa.
+            </p>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-val hot">8</div>
+                    <div class="stat-lbl">Priorità alta</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-val">6</div>
+                    <div class="stat-lbl">Da monitorare</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-val green">14</div>
+                    <div class="stat-lbl">Totale U23</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card table-scroll" style="border-left-color:#1a1a2e;padding:15px 20px;">
+            <table class="summary-table" style="min-width:800px;">
+                <thead>
+                    <tr>
+                        <th>Giocatore</th>
+                        <th>Età</th>
+                        <th>Ruolo</th>
+                        <th>Club</th>
+                        <th>Naz.</th>
+                        <th>Status</th>
+                        <th>Valore</th>
+                        <th>Stats</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+            <td style="font-weight:600"><a href="sergej_levak.html">Sergej Levak</a></td>
+            <td>20</td>
+            <td>Centrocampista</td>
+            <td>Atalanta U23</td>
+            <td>Croazia</td>
+            <td><span class="tag svincolato" style="font-size:0.7em">Svincolato</span></td>
+            <td>800 mila €</td>
+            <td>30 pres., 6 gol</td>
+            <td><span class="score-badge hot" style="font-size:0.85em;padding:3px 8px">80</span></td>
+        </tr>
+<tr>
+            <td style="font-weight:600"><a href="cristian_shpendi.html">Cristian Shpendi</a></td>
+            <td>23</td>
+            <td>Punta centrale</td>
+            <td>Cesena FC</td>
+            <td>Albania</td>
+            <td><span class="tag mercato" style="font-size:0.7em">Sul mercato</span></td>
+            <td>5,50 mln €</td>
+            <td>31 pres., 10 gol</td>
+            <td><span class="score-badge hot" style="font-size:0.85em;padding:3px 8px">78</span></td>
+        </tr>
+<tr>
+            <td style="font-weight:600"><a href="louis_thomas_buffon.html">Louis Thomas Buffon</a></td>
+            <td>19</td>
+            <td>Punta centrale</td>
+            <td>US Città di Pontedera</td>
+            <td>Italia</td>
+            <td><span class="tag prestito" style="font-size:0.7em">Disponibile in prestito</span></td>
+            <td>1,00 mln €</td>
+            <td>9 pres.</td>
+            <td><span class="score-badge hot" style="font-size:0.85em;padding:3px 8px">72</span></td>
+        </tr>
+<tr>
+            <td style="font-weight:600"><a href="noa_kljajic.html">Noa Kljajic</a></td>
+            <td>20</td>
+            <td>Punta centrale</td>
+            <td>Triestina</td>
+            <td>Croazia</td>
+            <td><span class="tag rescissione" style="font-size:0.7em">Rescissione consensuale</span></td>
+            <td>75 mila €</td>
+            <td>21 pres., 2 gol</td>
+            <td><span class="score-badge hot" style="font-size:0.85em;padding:3px 8px">72</span></td>
+        </tr>
+<tr>
+            <td style="font-weight:600"><a href="leonardo_di_tommaso.html">Leonardo Di Tommaso</a></td>
+            <td>21</td>
+            <td>Centrocampista</td>
+            <td>Audace Cerignola</td>
+            <td>Italia</td>
+            <td><span class="tag prestito" style="font-size:0.7em">Disponibile in prestito</span></td>
+            <td>225 mila €</td>
+            <td>14 pres.</td>
+            <td><span class="score-badge hot" style="font-size:0.85em;padding:3px 8px">72</span></td>
+        </tr>
+<tr>
+            <td style="font-weight:600"><a href="carmelo_limonelli.html">Carmelo Limonelli</a></td>
+            <td>23</td>
+            <td>Trequartista</td>
+            <td>Siracusa Calcio</td>
+            <td>Italia</td>
+            <td><span class="tag mercato" style="font-size:0.7em">Sul mercato</span></td>
+            <td>150 mila €</td>
+            <td>30 pres., 2 gol</td>
+            <td><span class="score-badge hot" style="font-size:0.85em;padding:3px 8px">70</span></td>
+        </tr>
+<tr>
+            <td style="font-weight:600"><a href="alessio_rosa.html">Alessio Rosa</a></td>
+            <td>23</td>
+            <td>Punta centrale</td>
+            <td>Ligorna</td>
+            <td>Italia</td>
+            <td><span class="tag rescissione" style="font-size:0.7em">Rescissione consensuale</span></td>
+            <td>125 mila €</td>
+            <td>26 pres., 6 gol</td>
+            <td><span class="score-badge hot" style="font-size:0.85em;padding:3px 8px">70</span></td>
+        </tr>
+<tr>
+            <td style="font-weight:600"><a href="chec_benelli_doumbia.html">Chec Benelli Doumbia</a></td>
+            <td>19</td>
+            <td>Centrocampista</td>
+            <td>Team Altamura</td>
+            <td>Burkina Faso</td>
+            <td><span class="tag mercato" style="font-size:0.7em">Sul mercato</span></td>
+            <td>400 mila €</td>
+            <td>17 pres., 1 gol</td>
+            <td><span class="score-badge hot" style="font-size:0.85em;padding:3px 8px">70</span></td>
+        </tr>
+<tr>
+            <td style="font-weight:600"><a href="francesco_beidi_gallea.html">Francesco Beidi Gallea</a></td>
+            <td>21</td>
+            <td>Difensore centrale</td>
+            <td>FC Lumezzane</td>
+            <td>Mali</td>
+            <td><span class="tag mercato" style="font-size:0.7em">Sul mercato</span></td>
+            <td>125 mila €</td>
+            <td>17 pres.</td>
+            <td><span class="score-badge warm" style="font-size:0.85em;padding:3px 8px">69</span></td>
+        </tr>
+<tr>
+            <td style="font-weight:600"><a href="andrea_pelamatti.html">Andrea Pelamatti</a></td>
+            <td>22</td>
+            <td>Terzino sinistro</td>
+            <td>Pro Palazzolo</td>
+            <td>Italia</td>
+            <td><span class="tag prestito" style="font-size:0.7em">Disponibile in prestito</span></td>
+            <td>150 mila €</td>
+            <td>6 pres.</td>
+            <td><span class="score-badge warm" style="font-size:0.85em;padding:3px 8px">67</span></td>
+        </tr>
+<tr>
+            <td style="font-weight:600"><a href="gianfranco_leoncini.html">Gianfranco Leoncini</a></td>
+            <td>22</td>
+            <td>Mediano</td>
+            <td>Bra</td>
+            <td>Italia</td>
+            <td><span class="tag svincolato" style="font-size:0.7em">Svincolato</span></td>
+            <td>75 mila €</td>
+            <td>-</td>
+            <td><span class="score-badge warm" style="font-size:0.85em;padding:3px 8px">66</span></td>
+        </tr>
+<tr>
+            <td style="font-weight:600"><a href="christian_biagetti.html">Christian Biagetti</a></td>
+            <td>22</td>
+            <td>Difensore centrale</td>
+            <td>US Follonica Gavorrano</td>
+            <td>Italia</td>
+            <td><span class="tag mercato" style="font-size:0.7em">Sul mercato</span></td>
+            <td>100 mila €</td>
+            <td>5 pres.</td>
+            <td><span class="score-badge warm" style="font-size:0.85em;padding:3px 8px">64</span></td>
+        </tr>
+<tr>
+            <td style="font-weight:600"><a href="chukwuemeka_fortune_adiele.html">Chukwuemeka Fortune Adiele</a></td>
+            <td>19</td>
+            <td>Terzino sinistro</td>
+            <td>FC Utrecht</td>
+            <td>Inghilterra</td>
+            <td><span class="tag mercato" style="font-size:0.7em">Sul mercato</span></td>
+            <td>700 mila €</td>
+            <td>-</td>
+            <td><span class="score-badge warm" style="font-size:0.85em;padding:3px 8px">64</span></td>
+        </tr>
+<tr>
+            <td style="font-weight:600"><a href="destiny_eseosa_egharevba.html">Destiny Eseosa Egharevba</a></td>
+            <td>22</td>
+            <td>Difensore centrale</td>
+            <td>Mori Santo Stefano</td>
+            <td>Italia</td>
+            <td><span class="tag prestito" style="font-size:0.7em">Disponibile in prestito</span></td>
+            <td>-</td>
+            <td>-</td>
+            <td><span class="score-badge warm" style="font-size:0.85em;padding:3px 8px">62</span></td>
+        </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div style="background:white;border-radius:8px;padding:18px 22px;margin-top:15px;box-shadow:0 1px 4px rgba(0,0,0,0.06);font-size:0.85em;color:#666;">
+            <strong style="color:#1a1a2e;">Note metodologiche</strong><br>
+            Lo <strong>Score OB1</strong> (0-100) misura la qualità dell'opportunità di mercato: attualità della notizia,
+            tipo di disponibilità (svincolato/prestito/mercato), profilo anagrafico, esperienza, affidabilità della fonte, pertinenza Serie C.
+            <em>Non è un giudizio tecnico sul giocatore.</em><br><br>
+            I dati sono raccolti da fonti pubbliche (TuttoC, Calciomercato.com, Transfermarkt) e verificabili.
+            Clicca sul nome del giocatore per la scheda individuale completa.
+        </div>
+
+        <footer>
+            <p>OB1 Scout — Report generato il 23 Marzo 2026</p>
+        </footer>
+    </div>
+</body>
+</html>

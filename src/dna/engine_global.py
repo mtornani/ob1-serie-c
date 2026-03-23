@@ -41,7 +41,7 @@ class DNAEngine:
         for arch_id, manifesto in self.manifestos.items():
             print(f"  [DNA MATCHING] Evaluating: {manifesto['name']}...")
             import time
-            time.sleep(1) # Anti-429
+            time.sleep(2) # Anti-429 (Più conservativo)
             
             prompt = f"As a Senior Director of Football, evaluate this player for our club strategy:\nCLUB MANIFESTO:\n{manifesto['description']}\nPLAYER REPORT:\n{player_text}\nINSTRUCTION: Give a match score from 0-100 and a 1-sentence 'Scouting Verdict'. Respond only in JSON: {{\"score\": 85, \"verdict\": \"...\"}}"
 

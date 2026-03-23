@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>OB1 Scout — Backtested Signals 2022-2023</title>
+    <meta name="description" content="Simulazione retroattiva: cosa avrebbe segnalato OB1 Scout nella Serie C 2022-2023. Backtested Signals.">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta property="og:title" content="OB1 Scout — Backtested Signals">
+    <meta property="og:description" content="Se OB1 fosse stato attivo nel 2023, avrebbe generato questi segnali. Verifica retroattiva del modello.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%2300ff41' stroke-width='4'/><circle cx='50' cy='15' r='5' fill='%2300ff41'/></svg>">
+    <style>
+        /* ── Variabili — coerenti con docs/index.html ── */
+        :root {
+            --bg: #0a0a0a;
+            --bg-card: #111;
+            --bg-card-hover: #1a1a1a;
+            --text: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #333;
+            --accent: #00ff41;
+            --hot: #ef4444;
+            --hot-bg: rgba(239, 68, 68, 0.1);
+            --warm: #fbbf24;
+            --warm-bg: rgba(251, 191, 36, 0.1);
+            --cold: #64748b;
+            --cold-bg: rgba(100, 116, 139, 0.1);
+            --hit-bg: rgba(0, 255, 65, 0.08);
+            --hit-border: rgba(0, 255, 65, 0.3);
+            --miss-bg: rgba(100, 116, 139, 0.06);
+            --miss-border: rgba(100, 116, 139, 0.2);
+            --lateral-bg: rgba(251, 191, 36, 0.08);
+            --lateral-border: rgba(251, 191, 36, 0.3);
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* ── Header ── */
+        .header {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .logo-mark {
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .logo h1 {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        .logo-sub {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .header-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-left: 16px;
+        }
+        .header-links a:hover { color: var(--accent); }
+
+        /* ── Disclaimer ── */
+        .disclaimer {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 12px 16px;
+            margin: 24px 0;
+            font-size: 0.85rem;
+            color: var(--warm);
+            border-radius: 4px;
+        }
+        .disclaimer strong { color: var(--warm); }
+
+        /* ── Caso Reale (Villarreal) ── */
+        .real-case {
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.06), rgba(0, 255, 65, 0.02));
+            border: 2px solid var(--accent);
+            padding: 24px;
+            margin: 24px 0;
+            border-radius: 4px;
+            position: relative;
+        }
+        .real-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            padding: 4px 12px;
+            border-radius: 2px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .real-case h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+        .real-case .metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 16px;
+        }
+        .real-case .metric {
+            text-align: center;
+        }
+        .real-case .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: var(--font-mono);
+        }
+        .real-case .metric-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ── Stats aggregate ── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 24px 0;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 16px;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .stat-card .val {
+            font-size: 1.75rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+        }
+        .stat-card .lbl {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+        .stat-card.hit .val { color: var(--accent); }
+        .stat-card.miss .val { color: var(--cold); }
+        .stat-card.lateral .val { color: var(--warm); }
+        .stat-card.gain .val { color: var(--accent); }
+
+        /* ── Narrative ── */
+        .narrative {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 20px;
+            margin: 24px 0;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            border-radius: 4px;
+            font-style: italic;
+        }
+
+        /* ── Tabella giocatori ── */
+        .section-title {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin: 32px 0 16px;
+            font-weight: 600;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 0 -16px;
+            padding: 0 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            min-width: 700px;
+        }
+        thead th {
+            background: var(--bg-card);
+            color: var(--text-muted);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 10px 8px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 57px;
+            z-index: 10;
+        }
+        tbody tr {
+            border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+            transition: background 0.15s ease;
+        }
+        tbody tr:hover { background: var(--bg-card-hover); }
+        tbody td {
+            padding: 10px 8px;
+            vertical-align: middle;
+        }
+
+        /* Riga colorata per status */
+        tr.hit { background: var(--hit-bg); border-left: 3px solid var(--accent); }
+        tr.miss { background: var(--miss-bg); border-left: 3px solid var(--cold); }
+        tr.lateral { background: var(--lateral-bg); border-left: 3px solid var(--warm); }
+
+        .status-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 2px 8px;
+            border-radius: 2px;
+            text-transform: uppercase;
+        }
+        .status-badge.hit { background: rgba(0,255,65,0.15); color: var(--accent); }
+        .status-badge.miss { background: rgba(100,116,139,0.15); color: var(--cold); }
+        .status-badge.lateral { background: rgba(251,191,36,0.15); color: var(--warm); }
+
+        .score-badge {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .score-hot { color: var(--hot); }
+        .score-warm { color: var(--warm); }
+        .score-cold { color: var(--cold); }
+
+        .roi {
+            font-family: var(--font-mono);
+            font-weight: 700;
+        }
+        .roi-high { color: var(--accent); }
+        .roi-low { color: var(--cold); }
+
+        .player-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+        .player-club {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* ── Watermark ── */
+        .ob1-watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 4rem;
+            font-weight: 700;
+            opacity: 0.04;
+            color: var(--text);
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            margin-top: 48px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .footer-brand {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* ── Methodology ── */
+        .methodology {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 20px;
+            margin: 32px 0;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        .methodology h4 {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .methodology ul {
+            list-style: none;
+            padding: 0;
+        }
+        .methodology li {
+            padding: 4px 0;
+            color: var(--text-secondary);
+        }
+        .methodology li::before {
+            content: ">";
+            color: var(--accent);
+            font-family: var(--font-mono);
+            margin-right: 8px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .real-case .metrics { gap: 16px; }
+            .real-case .metric-value { font-size: 1.2rem; }
+            .ob1-watermark { font-size: 2.5rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="ob1-watermark">OB1 Scout &bull; matchanalysispro.online</div>
+
+<!-- Header -->
+<header class="header">
+    <div class="container header-inner">
+        <a href="index.html" class="logo">
+            <span class="logo-mark">&gt;</span>
+            <div>
+                <h1>OB1 SCOUT</h1>
+                <span class="logo-sub">Backtested Signals</span>
+            </div>
+        </a>
+        <div class="header-links">
+            <a href="index.html">RADAR</a>
+            <a href="https://www.matchanalysispro.online/" target="_blank" rel="noopener">MAP</a>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+        <strong>Simulazione retroattiva</strong> — Se OB1 Scout fosse stato attivo nel giugno 2023,
+        avrebbe generato i segnali mostrati in questa pagina. I dati 2022-2023 sono stati raccolti
+        da FBref e processati con lo stesso algoritmo OB1 Score a 8 fattori usato in produzione.
+        I risultati attuali sono verificati su Transfermarkt.
+    </div>
+
+    <!-- Caso Reale Verificato -->
+    <div class="real-case">
+        <span class="real-badge">Segnale Reale Verificato</span>
+        <h3>Caso Villarreal</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+            Giocatore intercettato dal sistema OB1 in Serie C. Acquistato a &euro;1.8M,
+            oggi con clausola rescissoria di &euro;51M. Non un backtest &mdash; un risultato reale.
+        </p>
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-value">&euro;1.8M</div>
+                <div class="metric-label">Costo Acquisto</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">&euro;51M</div>
+                <div class="metric-label">Clausola</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">28x</div>
+                <div class="metric-label">ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">Serie C &rarr; Liga</div>
+                <div class="metric-label">Percorso</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistiche Aggregate -->
+    <div class="stats-grid" id="statsGrid">
+        <div class="stat-card">
+            <div class="val" id="statTotal">—</div>
+            <div class="lbl">Flaggati</div>
+        </div>
+        <div class="stat-card hit">
+            <div class="val" id="statHits">—</div>
+            <div class="lbl">Hit</div>
+        </div>
+        <div class="stat-card miss">
+            <div class="val" id="statMisses">—</div>
+            <div class="lbl">Miss</div>
+        </div>
+        <div class="stat-card lateral">
+            <div class="val" id="statLateral">—</div>
+            <div class="lbl">Lateral</div>
+        </div>
+        <div class="stat-card gain">
+            <div class="val" id="statGain">—</div>
+            <div class="lbl">Plusvalenza</div>
+        </div>
+    </div>
+
+    <!-- Narrative -->
+    <div class="narrative" id="narrative">
+        Caricamento dati backtest...
+    </div>
+
+    <!-- Tabella Giocatori -->
+    <div class="section-title">&gt; SEGNALI BACKTESTATI</div>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Giocatore</th>
+                    <th>Pos</th>
+                    <th>Club 2023</th>
+                    <th>OB1 Score</th>
+                    <th>Valore 2023</th>
+                    <th>Club Oggi</th>
+                    <th>Valore Oggi</th>
+                    <th>ROI</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="playersTable">
+                <tr><td colspan="10" style="text-align:center; padding:32px; color:var(--text-muted);">Caricamento...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Metodologia -->
+    <div class="methodology">
+        <h4>&gt; Metodologia</h4>
+        <ul>
+            <li>Fonte dati: FBref (statistiche stagionali pubbliche)</li>
+            <li>Stagione: 2022-2023 Serie C</li>
+            <li>Data congelamento: 30 giugno 2023</li>
+            <li>Scorer: OB1 Score a 8 fattori (freshness forzata a 100)</li>
+            <li>Verifica: dati attuali da Transfermarkt</li>
+            <li>Hit: salto di categoria + valore cresciuto &gt;3x</li>
+            <li>Miss: stessa categoria, valore stabile o in calo</li>
+            <li>Lateral: cambio squadra nella stessa fascia, crescita &lt;3x</li>
+        </ul>
+    </div>
+
+</main>
+
+<!-- Footer -->
+<div class="footer container">
+    <div>
+        Generato da OB1 Scout v3.2 &bull;
+        Il sistema che ha intercettato Villarreal a &euro;1.8M (Clausola &euro;51M)
+    </div>
+    <div class="footer-brand">
+        <a href="https://matchanalysispro.online">matchanalysispro.online</a>
+        &bull;
+        <a href="https://t.me/ob1scout">t.me/ob1scout</a>
+    </div>
+</div>
+
+<script>
+// Carica dati backtest dal JSON generato da backtest_score.py
+(async function() {
+    const DATA_URL = '../data/backtest/backtest_results.json';
+
+    try {
+        const resp = await fetch(DATA_URL);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+        render(data);
+    } catch (e) {
+        // Fallback: prova path relativo alternativo
+        try {
+            const resp2 = await fetch('backtest_results.json');
+            if (resp2.ok) {
+                render(await resp2.json());
+                return;
+            }
+        } catch (_) {}
+
+        document.getElementById('narrative').textContent =
+            'Dati backtest non ancora disponibili. Esegui: python scripts/backtest_collector.py && python scripts/backtest_score.py';
+        document.getElementById('playersTable').innerHTML =
+            '<tr><td colspan="10" style="text-align:center; padding:32px; color:var(--text-muted);">Nessun dato disponibile</td></tr>';
+    }
+
+    function render(data) {
+        const summary = data.summary || {};
+        const results = data.results || [];
+
+        // Stats aggregate
+        document.getElementById('statTotal').textContent = summary.total_flagged || results.length;
+        document.getElementById('statHits').textContent = summary.hits || 0;
+        document.getElementById('statMisses').textContent = summary.misses || 0;
+        document.getElementById('statLateral').textContent = summary.lateral || 0;
+        document.getElementById('statGain').textContent = formatValue(summary.cumulative_value_gain);
+
+        // Narrative
+        document.getElementById('narrative').textContent = summary.narrative || '';
+
+        // Tabella
+        const tbody = document.getElementById('playersTable');
+        tbody.innerHTML = '';
+
+        results.forEach((p, i) => {
+            const tr = document.createElement('tr');
+            tr.className = p.status || 'miss';
+
+            const scoreClass = p.ob1_score_2023 >= 70 ? 'score-hot' :
+                               p.ob1_score_2023 >= 57 ? 'score-warm' : 'score-cold';
+
+            const roiClass = p.roi_multiplier >= 3 ? 'roi-high' : 'roi-low';
+
+            tr.innerHTML = `
+                <td style="color:var(--text-muted);">${i + 1}</td>
+                <td><span class="player-name">${esc(p.name)}</span></td>
+                <td style="color:var(--text-secondary);">${esc(p.position)}</td>
+                <td><span class="player-club">${esc(p.club_2023)}</span></td>
+                <td><span class="score-badge ${scoreClass}">${p.ob1_score_2023}</span></td>
+                <td style="font-family:var(--font-mono); font-size:0.8rem;">${formatValue(p.market_value_2023)}</td>
+                <td>${esc(p.club_now || '—')}</td>
+                <td style="font-family:var(--font-mono); font-size:0.8rem;">${formatValue(p.market_value_now)}</td>
+                <td><span class="roi ${roiClass}">${p.roi_multiplier ? p.roi_multiplier + 'x' : '—'}</span></td>
+                <td><span class="status-badge ${p.status}">${p.status || '—'}</span></td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function formatValue(v) {
+        if (!v && v !== 0) return '—';
+        if (v >= 1000000) return '\u20AC' + (v / 1000000).toFixed(1) + 'M';
+        if (v >= 1000) return '\u20AC' + Math.round(v / 1000) + 'k';
+        return '\u20AC' + v;
+    }
+
+    function esc(str) {
+        if (!str) return '';
+        const d = document.createElement('div');
+        d.textContent = str;
+        return d.innerHTML;
+    }
+})();
+</script>
+
+</body>
+</html>

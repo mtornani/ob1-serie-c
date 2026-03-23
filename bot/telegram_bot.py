@@ -53,6 +53,15 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+# Footer fisso con social proof — appendere a ogni messaggio in uscita
+OB1_FOOTER = (
+    "\n──────────────────\n"
+    "🔎 OB1 Scout v3.2\n"
+    "📈 Villarreal: €1.8M → Clausola €51M\n"
+    "🔗 t.me/ob1scout"
+)
+
+
 class OB1TelegramBot:
     """Bot Telegram per OB1"""
 
@@ -101,60 +110,51 @@ class OB1TelegramBot:
             )
             return
 
-        welcome = f"""
-🎯 *OB1 Serie C Radar*
+        welcome = (
+            f"🎯 *OB1 Serie C Radar*\n\n"
+            f"Ciao {user.first_name}! Sono il tuo assistente per lo scouting in Serie C e Serie D.\n\n"
+            f"*Cosa posso fare:*\n"
+            f"• Trovare giocatori svincolati\n"
+            f"• Analizzare profili con agente e statistiche\n"
+            f"• Cercare per agenzia o stats stagionali\n"
+            f"• Ricerca avanzata per criteri multipli\n\n"
+            f"*Comandi rapidi:*\n"
+            f"/svincolati - Lista svincolati disponibili\n"
+            f"/player <nome> - Analisi giocatore (con agente e stats)\n"
+            f"/agent <agenzia> - Trova giocatori di un'agenzia\n"
+            f"/stats <min_presenze> - Filtra per statistiche stagionali\n"
+            f"/summary - Riepilogo mercato\n"
+            f"/cerca <criteri> - Ricerca avanzata\n"
+            f"/help - Guida completa\n\n"
+            f"Oppure scrivimi direttamente cosa cerchi! 💬"
+        )
 
-Ciao {user.first_name}! Sono il tuo assistente per lo scouting in Serie C e Serie D.
-
-*Cosa posso fare:*
-• Trovare giocatori svincolati
-• Analizzare profili con agente e statistiche
-• Cercare per agenzia o stats stagionali
-• Ricerca avanzata per criteri multipli
-
-*Comandi rapidi:*
-/svincolati - Lista svincolati disponibili
-/player <nome> - Analisi giocatore (con agente e stats)
-/agent <agenzia> - Trova giocatori di un'agenzia
-/stats <min_presenze> - Filtra per statistiche stagionali
-/summary - Riepilogo mercato
-/cerca <criteri> - Ricerca avanzata
-/help - Guida completa
-
-Oppure scrivimi direttamente cosa cerchi! 💬
-        """
-
-        await update.message.reply_text(welcome)
+        await self._send_long_message(update, welcome)
 
     async def help_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Handler /help"""
 
-        help_text = """
-📖 *Guida OB1 - Comandi Aggiornati*
+        help_text = (
+            "📖 *Guida OB1 - Comandi Aggiornati*\n\n"
+            "*Ricerche base:*\n"
+            "• `/svincolati` - tutti gli svincolati\n"
+            "• `/svincolati difensore` - svincolati per ruolo\n"
+            "• `/player Rossi` - info completa su un giocatore (con agente e stats)\n\n"
+            "*Nuovi filtri (DATA-003):*\n"
+            "• `/agent Esse Sports` - giocatori di un'agenzia specifica\n"
+            "• `/stats 15` - giocatori con almeno 15 presenze\n"
+            "• `/stats 10 centrocampista` - filtra per stats e ruolo\n\n"
+            "*Ricerca avanzata:*\n"
+            "`/cerca centrocampista under 25 con 20+ presenze`\n\n"
+            "*Domande libere:*\n"
+            "Puoi chiedermi qualsiasi cosa, ad esempio:\n"
+            "- \"Chi sono i migliori svincolati under 23?\"\n"
+            "- \"Trova giocatori dell'agenzia CAA Base Ltd\"\n"
+            "- \"Chi ha fatto almeno 20 presenze quest'anno?\"\n\n"
+            "*Tip:* I dati includono ora agente, presenze, gol, assist e minuti giocati!"
+        )
 
-*Ricerche base:*
-• `/svincolati` - tutti gli svincolati
-• `/svincolati difensore` - svincolati per ruolo
-• `/player Rossi` - info completa su un giocatore (con agente e stats)
-
-*Nuovi filtri (DATA-003):*
-• `/agent Esse Sports` - giocatori di un'agenzia specifica
-• `/stats 15` - giocatori con almeno 15 presenze
-• `/stats 10 centrocampista` - filtra per stats e ruolo
-
-*Ricerca avanzata:*
-`/cerca centrocampista under 25 con 20+ presenze`
-
-*Domande libere:*
-Puoi chiedermi qualsiasi cosa, ad esempio:
-- "Chi sono i migliori svincolati under 23?"
-- "Trova giocatori dell'agenzia CAA Base Ltd"
-- "Chi ha fatto almeno 20 presenze quest'anno?"
-
-*Tip:* I dati includono ora agente, presenze, gol, assist e minuti giocati!
-        """
-
-        await update.message.reply_text(help_text)
+        await self._send_long_message(update, help_text)
 
     async def svincolati(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Handler /svincolati"""
@@ -164,7 +164,7 @@ Puoi chiedermi qualsiasi cosa, ad esempio:
 
         role = " ".join(context.args) if context.args else None
 
-        await update.message.reply_text("🔍 Cerco svincolati...")
+        await update.message.reply_text("🔍 Cerco svincolati...")  # messaggio transitorio, no footer
 
         agent = self._get_agent(update.effective_user.id)
         response = agent.find_svincolati(role=role)
@@ -310,15 +310,18 @@ Puoi chiedermi qualsiasi cosa, ad esempio:
         await self._send_long_message(update, response)
 
     async def _send_long_message(self, update: Update, text: str):
-        """Invia messaggio, splitta se troppo lungo"""
+        """Invia messaggio con footer OB1. Splitta se supera 4096 char Telegram."""
 
-        MAX_LENGTH = 4000
+        MAX_LENGTH = 4000  # margine sicuro sotto il limite Telegram di 4096
 
-        if len(text) <= MAX_LENGTH:
-            await update.message.reply_text(text)
+        # Appendi footer al testo completo
+        text_with_footer = text + OB1_FOOTER
+
+        if len(text_with_footer) <= MAX_LENGTH:
+            await update.message.reply_text(text_with_footer)
             return
 
-        # Split by paragraphs
+        # Split per paragrafi, footer solo sull'ultimo chunk
         parts = []
         current = ""
 
@@ -333,7 +336,15 @@ Puoi chiedermi qualsiasi cosa, ad esempio:
             parts.append(current)
 
         for i, part in enumerate(parts):
-            await update.message.reply_text(f"{part}\n\n({i + 1}/{len(parts)})")
+            is_last = (i == len(parts) - 1)
+            suffix = OB1_FOOTER if is_last else ""
+            chunk = f"{part}{suffix}\n\n({i + 1}/{len(parts)})"
+            # Se anche con footer sfora, manda senza e aggiungi footer come messaggio separato
+            if len(chunk) > MAX_LENGTH and is_last:
+                await update.message.reply_text(f"{part}\n\n({i + 1}/{len(parts)})")
+                await update.message.reply_text(OB1_FOOTER)
+            else:
+                await update.message.reply_text(chunk)
 
     # =========================================================================
     # RUN

@@ -578,12 +578,29 @@ def generate_html_report(opportunities: list, dna_matches: list = None) -> str:
         }}
         footer a {{ color: #666; }}
 
+        /* Watermark semi-trasparente — non croppabile, dietro al contenuto */
+        .ob1-watermark {{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 4rem;
+            font-weight: 700;
+            opacity: 0.06;
+            color: #1a1a2e;
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+            user-select: none;
+        }}
+
         /* Print */
         @media print {{
             body {{ background: white; font-size: 12px; }}
             .container {{ max-width: 100%; padding: 0; }}
             .player-card, .reparto, .market-pulse {{ box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; }}
             header {{ background: #333 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }}
+            .ob1-watermark {{ position: fixed; opacity: 0.04; }}
         }}
 
         @media (max-width: 600px) {{
@@ -594,6 +611,7 @@ def generate_html_report(opportunities: list, dna_matches: list = None) -> str:
     </style>
 </head>
 <body>
+    <div class="ob1-watermark">OB1 Scout &bull; matchanalysispro.online</div>
     <div class="container">
         <header>
             <h1>OB1 Scout</h1>
@@ -751,11 +769,16 @@ def generate_html_report(opportunities: list, dna_matches: list = None) -> str:
         </div>
 '''
 
-    # ── FOOTER ──
+    # ── FOOTER CON SOCIAL PROOF ──
     html += f'''
+        <div style="margin-top:3rem; padding:1rem; border-top:1px solid #ddd; text-align:center; font-size:0.85rem; opacity:0.7;">
+            Generato da OB1 Scout v3.2 &bull;
+            Il sistema che ha intercettato Villarreal a &euro;1.8M (Clausola &euro;51M) &bull;
+            <a href="https://matchanalysispro.online" style="color:#2980b9;">matchanalysispro.online</a>
+        </div>
         <footer>
             <p style="margin-bottom:5px;">Report generato da OB1 Scout — {date_str}</p>
-            <p><a href="https://mtornani.github.io/ob1-serie-c/">Dashboard interattiva</a> · <a href="https://t.me/Ob1LegaPro_bot">Bot Telegram</a></p>
+            <p><a href="https://mtornani.github.io/ob1-serie-c/">Dashboard interattiva</a> · <a href="https://t.me/ob1scout">t.me/ob1scout</a></p>
         </footer>
     </div>
 </body>

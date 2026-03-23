@@ -115,7 +115,6 @@ STATISTICHE STAGIONE 2025/26 (opzionali):
 Se un dato non è presente, metti null.
 Per il valore di mercato, cerca "Valore attuale:" o simili.
 Per la cittadinanza, cerca "Nazionalità:" o "Citizenship:". Spesso sono presenti due bandiere se ha il doppio passaporto.
-<<<<<<< HEAD
 Per le statistiche stagionali, cerca tabelle con "Presenze", "Gol", "Assist", "Minuti" relative alla stagione 25/26 o alla stagione piu' recente disponibile.
 
 CONTENUTO PAGINA:
@@ -123,7 +122,7 @@ CONTENUTO PAGINA:
 
 JSON:"""
 
-        gemini_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={self.gemini_key}"
+        gemini_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={self.gemini_key}"
 
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],

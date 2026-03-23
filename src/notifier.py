@@ -15,6 +15,17 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+# Footer fisso con social proof — appendere a ogni messaggio in uscita
+OB1_FOOTER = (
+    "\n──────────────────\n"
+    "🔎 OB1 Scout v3.2\n"
+    "📈 Villarreal: €1.8M → Clausola €51M\n"
+    "🔗 t.me/ob1scout"
+)
+
+TELEGRAM_MAX_LENGTH = 4096
+
+
 class TelegramNotifier:
     """Gestisce notifiche Telegram arricchite per opportunita' di mercato"""
 
@@ -39,7 +50,54 @@ class TelegramNotifier:
         return [self.DEFAULT_CHAT_ID]
 
     def send_message(self, text: str, parse_mode: str = 'HTML', reply_markup: dict = None) -> bool:
-        """Invia messaggio a tutti i chat configurati"""
+        """Invia messaggio con footer OB1 a tutti i chat configurati.
+        Se testo + footer supera 4096 char, splitta e mette footer solo sull'ultimo chunk."""
+
+        if not self.enabled:
+            return False
+
+        text_with_footer = text + OB1_FOOTER
+
+        # Se entra in un messaggio, invio diretto
+        if len(text_with_footer) <= TELEGRAM_MAX_LENGTH:
+            return self._send_raw(text_with_footer, parse_mode, reply_markup)
+
+        # Split per paragrafi, footer solo sull'ultimo chunk
+        max_chunk = TELEGRAM_MAX_LENGTH - 20  # margine contatore
+        lines = text.split('\n')
+        parts = []
+        current = ''
+
+        for line in lines:
+            if len(current) + len(line) + 1 > max_chunk:
+                parts.append(current)
+                current = line
+            else:
+                current += ('\n' + line) if current else line
+
+        if current:
+            parts.append(current)
+
+        success = True
+        for i, part in enumerate(parts):
+            is_last = (i == len(parts) - 1)
+            suffix = OB1_FOOTER if is_last else ''
+            chunk = f"{part}{suffix}\n\n({i + 1}/{len(parts)})"
+
+            if len(chunk) > TELEGRAM_MAX_LENGTH and is_last:
+                if not self._send_raw(f"{part}\n\n({i + 1}/{len(parts)})", parse_mode):
+                    success = False
+                if not self._send_raw(OB1_FOOTER, parse_mode):
+                    success = False
+            else:
+                rm = reply_markup if is_last else None  # keyboard solo sull'ultimo
+                if not self._send_raw(chunk, parse_mode, rm):
+                    success = False
+
+        return success
+
+    def _send_raw(self, text: str, parse_mode: str = 'HTML', reply_markup: dict = None) -> bool:
+        """Invio diretto senza footer (uso interno)."""
 
         if not self.enabled:
             return False
@@ -536,7 +594,7 @@ class TelegramNotifier:
             print("   Alert pubblico skip: gia' inviato oggi")
             return False
 
-        msg = self.format_hot_alert_public(opp)
+        msg = self.format_hot_alert_public(opp) + OB1_FOOTER
 
         url = f"https://api.telegram.org/bot{self.bot_token}/sendMessage"
         payload = {

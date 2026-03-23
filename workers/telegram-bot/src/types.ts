@@ -62,6 +62,7 @@ export interface TelegramChat {
 export interface Opportunity {
    id: string;
    league_id?: string;
+   region?: string;
    player_name: string;
    age: number;
    role: string;

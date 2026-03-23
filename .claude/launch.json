@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "scouting-reports",
+      "runtimeExecutable": "C:\\Users\\Mirko\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "runtimeArgs": ["-m", "http.server", "8090", "--directory", "docs/reports/scouting"],
+      "port": 8090
+    }
+  ]
+}

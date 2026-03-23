@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_eb0aa584a6662cc0dcc53cd19ab9bf25 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_eb0aa584a6662cc0dcc53cd19ab9bf25" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_eb0aa584a6662cc0dcc53cd19ab9bf25 = L.map(
+                "map_eb0aa584a6662cc0dcc53cd19ab9bf25",
+                {
+                    center: [45.00714605263158, 10.000787500000001],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f57858d5f5e12a032a857c9a3b4d9be3 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f57858d5f5e12a032a857c9a3b4d9be3.addTo(map_eb0aa584a6662cc0dcc53cd19ab9bf25);
+        
+    
+            var tile_layer_20463bb09a2e0b9ab757087360cf0bcf = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Tiles \u0026copy; Esri \u0026mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_20463bb09a2e0b9ab757087360cf0bcf.addTo(map_eb0aa584a6662cc0dcc53cd19ab9bf25);
+        
+    
+            var tile_layer_431be673ae0ce7a5634f98d4de587631 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_431be673ae0ce7a5634f98d4de587631.addTo(map_eb0aa584a6662cc0dcc53cd19ab9bf25);
+        
+    
+            var layer_control_bc8b8c48bb758b5fa28f35ad066e9d8b_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_f57858d5f5e12a032a857c9a3b4d9be3,
+                    "esriworldimagery" : tile_layer_20463bb09a2e0b9ab757087360cf0bcf,
+                    "Satellite" : tile_layer_431be673ae0ce7a5634f98d4de587631,
+                },
+                overlays :  {
+                    "Via Romana" : feature_group_37c9b68bd45da4e7e1f3172d70c59686,
+                },
+            };
+            let layer_control_bc8b8c48bb758b5fa28f35ad066e9d8b = L.control.layers(
+                layer_control_bc8b8c48bb758b5fa28f35ad066e9d8b_layers.base_layers,
+                layer_control_bc8b8c48bb758b5fa28f35ad066e9d8b_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_eb0aa584a6662cc0dcc53cd19ab9bf25);
+
+        
+    
+            var feature_group_37c9b68bd45da4e7e1f3172d70c59686 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_46c6969bb3e65580b67d0ec2c6d313b6 = L.marker(
+                [45.046475, 9.9947],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_68bd6cdaecd7313cbbea3a3043c877fe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fca2b7a12b9870790ca2db03fa6dead4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4eb389f456ab47bb99e8a1b972158fe4 = $(`<div id="html_4eb389f456ab47bb99e8a1b972158fe4" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04648, 9.99470                 </div>                 </div>`)[0];
+                popup_fca2b7a12b9870790ca2db03fa6dead4.setContent(html_4eb389f456ab47bb99e8a1b972158fe4);
+            
+        
+
+        marker_46c6969bb3e65580b67d0ec2c6d313b6.bindPopup(popup_fca2b7a12b9870790ca2db03fa6dead4)
+        ;
+
+        
+    
+    
+            marker_46c6969bb3e65580b67d0ec2c6d313b6.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_46c6969bb3e65580b67d0ec2c6d313b6.setIcon(icon_68bd6cdaecd7313cbbea3a3043c877fe);
+            
+    
+            var marker_4134268332fd8c9390ab226327819576 = L.marker(
+                [44.951800000000006, 10.01955],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_0b68e8da2c2c73ad34621212b792c42a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b3d5b65a3b1b1cc45a92748c103ffebf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d4730d47cd77cfa9ebd99f361f404646 = $(`<div id="html_d4730d47cd77cfa9ebd99f361f404646" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95180, 10.01955                 </div>                 </div>`)[0];
+                popup_b3d5b65a3b1b1cc45a92748c103ffebf.setContent(html_d4730d47cd77cfa9ebd99f361f404646);
+            
+        
+
+        marker_4134268332fd8c9390ab226327819576.bindPopup(popup_b3d5b65a3b1b1cc45a92748c103ffebf)
+        ;
+
+        
+    
+    
+            marker_4134268332fd8c9390ab226327819576.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4134268332fd8c9390ab226327819576.setIcon(icon_0b68e8da2c2c73ad34621212b792c42a);
+            
+    
+            var marker_e5ff94be6fcba80c451e3ce2ca2b0898 = L.marker(
+                [44.952625, 10.013200000000001],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_52def1ccff33897cf588dde40dba5163 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c4a394c9dfb5a1272d5bd2a2217a9eb9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f3885350f3a43c589ace7203da1a7b5d = $(`<div id="html_f3885350f3a43c589ace7203da1a7b5d" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95262, 10.01320                 </div>                 </div>`)[0];
+                popup_c4a394c9dfb5a1272d5bd2a2217a9eb9.setContent(html_f3885350f3a43c589ace7203da1a7b5d);
+            
+        
+
+        marker_e5ff94be6fcba80c451e3ce2ca2b0898.bindPopup(popup_c4a394c9dfb5a1272d5bd2a2217a9eb9)
+        ;
+
+        
+    
+    
+            marker_e5ff94be6fcba80c451e3ce2ca2b0898.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e5ff94be6fcba80c451e3ce2ca2b0898.setIcon(icon_52def1ccff33897cf588dde40dba5163);
+            
+    
+            var marker_8a32cb991189941bef8dce5aae0fa26f = L.marker(
+                [45.04705, 9.979875],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_df426a747583e7b463e59eaa11ce9308 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ad385f0e75b7f2725f37dc9114aa45e9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dcce8b50bd9c4c3eaa9b52f8394572b5 = $(`<div id="html_dcce8b50bd9c4c3eaa9b52f8394572b5" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04705, 9.97987                 </div>                 </div>`)[0];
+                popup_ad385f0e75b7f2725f37dc9114aa45e9.setContent(html_dcce8b50bd9c4c3eaa9b52f8394572b5);
+            
+        
+
+        marker_8a32cb991189941bef8dce5aae0fa26f.bindPopup(popup_ad385f0e75b7f2725f37dc9114aa45e9)
+        ;
+
+        
+    
+    
+            marker_8a32cb991189941bef8dce5aae0fa26f.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8a32cb991189941bef8dce5aae0fa26f.setIcon(icon_df426a747583e7b463e59eaa11ce9308);
+            
+    
+            var marker_a7a53991dd8003a74f61c0d5242d35f8 = L.marker(
+                [45.043775, 9.9698],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_d788e550f895d2c6f472ab99d7f08d23 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b0dac0b699d3910d6e3120a87fcfe761 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9f42d1cc6613b63455565fe4f0ffaddc = $(`<div id="html_9f42d1cc6613b63455565fe4f0ffaddc" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04377, 9.96980                 </div>                 </div>`)[0];
+                popup_b0dac0b699d3910d6e3120a87fcfe761.setContent(html_9f42d1cc6613b63455565fe4f0ffaddc);
+            
+        
+
+        marker_a7a53991dd8003a74f61c0d5242d35f8.bindPopup(popup_b0dac0b699d3910d6e3120a87fcfe761)
+        ;
+
+        
+    
+    
+            marker_a7a53991dd8003a74f61c0d5242d35f8.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a7a53991dd8003a74f61c0d5242d35f8.setIcon(icon_d788e550f895d2c6f472ab99d7f08d23);
+            
+    
+            var marker_8e0b4f44e794613b616b66cfb7d84b12 = L.marker(
+                [45.0457, 9.974525],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_782b4a37cf30dc99e09ffdd776754599 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a8b3c03efa86206896d3156b1b6296ba = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_aac1e542df9951ad31c94c98d4f0e92a = $(`<div id="html_aac1e542df9951ad31c94c98d4f0e92a" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04570, 9.97452                 </div>                 </div>`)[0];
+                popup_a8b3c03efa86206896d3156b1b6296ba.setContent(html_aac1e542df9951ad31c94c98d4f0e92a);
+            
+        
+
+        marker_8e0b4f44e794613b616b66cfb7d84b12.bindPopup(popup_a8b3c03efa86206896d3156b1b6296ba)
+        ;
+
+        
+    
+    
+            marker_8e0b4f44e794613b616b66cfb7d84b12.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8e0b4f44e794613b616b66cfb7d84b12.setIcon(icon_782b4a37cf30dc99e09ffdd776754599);
+            
+    
+            var marker_d9138da3e05a9b680315f2a2aa495afe = L.marker(
+                [44.952225, 10.0259],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_4c315650410cf54d217408c9030b9317 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3e671826f3b7634c97ec2e6b0407f455 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9166491768c24ac8f0b6a36420fa2246 = $(`<div id="html_9166491768c24ac8f0b6a36420fa2246" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95222, 10.02590                 </div>                 </div>`)[0];
+                popup_3e671826f3b7634c97ec2e6b0407f455.setContent(html_9166491768c24ac8f0b6a36420fa2246);
+            
+        
+
+        marker_d9138da3e05a9b680315f2a2aa495afe.bindPopup(popup_3e671826f3b7634c97ec2e6b0407f455)
+        ;
+
+        
+    
+    
+            marker_d9138da3e05a9b680315f2a2aa495afe.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d9138da3e05a9b680315f2a2aa495afe.setIcon(icon_4c315650410cf54d217408c9030b9317);
+            
+    
+            var marker_8bf225848a50f3a23012d9520d122da3 = L.marker(
+                [44.953475, 10.03165],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_2c1360d8e84cc4346ec526604e00cb0f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c2d14a5a048d01789f417cb82fbba00b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a5f1ed70a8d2ec7e326a38a08c35b6bb = $(`<div id="html_a5f1ed70a8d2ec7e326a38a08c35b6bb" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95347, 10.03165                 </div>                 </div>`)[0];
+                popup_c2d14a5a048d01789f417cb82fbba00b.setContent(html_a5f1ed70a8d2ec7e326a38a08c35b6bb);
+            
+        
+
+        marker_8bf225848a50f3a23012d9520d122da3.bindPopup(popup_c2d14a5a048d01789f417cb82fbba00b)
+        ;
+
+        
+    
+    
+            marker_8bf225848a50f3a23012d9520d122da3.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8bf225848a50f3a23012d9520d122da3.setIcon(icon_2c1360d8e84cc4346ec526604e00cb0f);
+            
+    
+            var marker_6dd0f8e784582077308df53c3ee43104 = L.marker(
+                [45.048899999999996, 9.963999999999999],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_a3c440e89b1adc13f55c4d771616b6e7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d0db66335029fa14d23c29620d7f35d8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6aa00f1c7c67d33bf8686de587a4f481 = $(`<div id="html_6aa00f1c7c67d33bf8686de587a4f481" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04890, 9.96400                 </div>                 </div>`)[0];
+                popup_d0db66335029fa14d23c29620d7f35d8.setContent(html_6aa00f1c7c67d33bf8686de587a4f481);
+            
+        
+
+        marker_6dd0f8e784582077308df53c3ee43104.bindPopup(popup_d0db66335029fa14d23c29620d7f35d8)
+        ;
+
+        
+    
+    
+            marker_6dd0f8e784582077308df53c3ee43104.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6dd0f8e784582077308df53c3ee43104.setIcon(icon_a3c440e89b1adc13f55c4d771616b6e7);
+            
+    
+            var marker_6e01db1154fc546e7a0d702ef9d65c55 = L.marker(
+                [44.952875000000006, 10.00665],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_78b399f53ba02be14e0449b81f0d63ab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dbadbfb234960aa5aac779d3406dcdfe = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dc75dd9ee251bb42b8faa94d443518c1 = $(`<div id="html_dc75dd9ee251bb42b8faa94d443518c1" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95288, 10.00665                 </div>                 </div>`)[0];
+                popup_dbadbfb234960aa5aac779d3406dcdfe.setContent(html_dc75dd9ee251bb42b8faa94d443518c1);
+            
+        
+
+        marker_6e01db1154fc546e7a0d702ef9d65c55.bindPopup(popup_dbadbfb234960aa5aac779d3406dcdfe)
+        ;
+
+        
+    
+    
+            marker_6e01db1154fc546e7a0d702ef9d65c55.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6e01db1154fc546e7a0d702ef9d65c55.setIcon(icon_78b399f53ba02be14e0449b81f0d63ab);
+            
+    
+            var marker_ec36e666f71d306292727a480588d72b = L.marker(
+                [44.950900000000004, 9.994250000000001],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_9034209546124183b732e16a4b7314e7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8415ee9b55476114d176ee8afe49f765 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_05661d309e835d7f74b1e433e690cffa = $(`<div id="html_05661d309e835d7f74b1e433e690cffa" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95090, 9.99425                 </div>                 </div>`)[0];
+                popup_8415ee9b55476114d176ee8afe49f765.setContent(html_05661d309e835d7f74b1e433e690cffa);
+            
+        
+
+        marker_ec36e666f71d306292727a480588d72b.bindPopup(popup_8415ee9b55476114d176ee8afe49f765)
+        ;
+
+        
+    
+    
+            marker_ec36e666f71d306292727a480588d72b.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ec36e666f71d306292727a480588d72b.setIcon(icon_9034209546124183b732e16a4b7314e7);
+            
+    
+            var marker_f00f1f450e7e69d239eb7b430a87ae3b = L.marker(
+                [44.9521, 10.0367],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_723ec7220ea1b4cb6b7c3b559e570c80 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f3e8343b91b7dc5be257b81813fd1afa = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b49673e9c585755006df1bd7ca34fa68 = $(`<div id="html_b49673e9c585755006df1bd7ca34fa68" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95210, 10.03670                 </div>                 </div>`)[0];
+                popup_f3e8343b91b7dc5be257b81813fd1afa.setContent(html_b49673e9c585755006df1bd7ca34fa68);
+            
+        
+
+        marker_f00f1f450e7e69d239eb7b430a87ae3b.bindPopup(popup_f3e8343b91b7dc5be257b81813fd1afa)
+        ;
+
+        
+    
+    
+            marker_f00f1f450e7e69d239eb7b430a87ae3b.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f00f1f450e7e69d239eb7b430a87ae3b.setIcon(icon_723ec7220ea1b4cb6b7c3b559e570c80);
+            
+    
+            var marker_86f8c116d0ec98b76b27a1ba4af0634e = L.marker(
+                [45.0483, 9.984774999999999],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_d5e1dd6467d36b161fda5c16425b015a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_adfab18d8e2aa52f31bfedfc2228b19a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e9b85c04a93661e045a9acfae095e16e = $(`<div id="html_e9b85c04a93661e045a9acfae095e16e" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04830, 9.98477                 </div>                 </div>`)[0];
+                popup_adfab18d8e2aa52f31bfedfc2228b19a.setContent(html_e9b85c04a93661e045a9acfae095e16e);
+            
+        
+
+        marker_86f8c116d0ec98b76b27a1ba4af0634e.bindPopup(popup_adfab18d8e2aa52f31bfedfc2228b19a)
+        ;
+
+        
+    
+    
+            marker_86f8c116d0ec98b76b27a1ba4af0634e.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_86f8c116d0ec98b76b27a1ba4af0634e.setIcon(icon_d5e1dd6467d36b161fda5c16425b015a);
+            
+    
+            var marker_316eb198de55d39a1c2af669c89d1096 = L.marker(
+                [45.0428, 9.9826],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_880b61a5071856e6af767f69c744e8de = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_148c96dc0b07bcb56d58d0e81de39499 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_368b2ab666c4f595142cbd7c56c9c7b9 = $(`<div id="html_368b2ab666c4f595142cbd7c56c9c7b9" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04280, 9.98260                 </div>                 </div>`)[0];
+                popup_148c96dc0b07bcb56d58d0e81de39499.setContent(html_368b2ab666c4f595142cbd7c56c9c7b9);
+            
+        
+
+        marker_316eb198de55d39a1c2af669c89d1096.bindPopup(popup_148c96dc0b07bcb56d58d0e81de39499)
+        ;
+
+        
+    
+    
+            marker_316eb198de55d39a1c2af669c89d1096.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_316eb198de55d39a1c2af669c89d1096.setIcon(icon_880b61a5071856e6af767f69c744e8de);
+            
+    
+            var marker_72b1e82f834e3c6bc1e6c5d05da82a4a = L.marker(
+                [44.95122500000001, 9.999325],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_9a96de2bb18e94b875e6890b4c5d0436 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7f359343cd9c9d76ffd1c4a0904b7777 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_16f88805e199141e6a8decdb1d78b248 = $(`<div id="html_16f88805e199141e6a8decdb1d78b248" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95123, 9.99933                 </div>                 </div>`)[0];
+                popup_7f359343cd9c9d76ffd1c4a0904b7777.setContent(html_16f88805e199141e6a8decdb1d78b248);
+            
+        
+
+        marker_72b1e82f834e3c6bc1e6c5d05da82a4a.bindPopup(popup_7f359343cd9c9d76ffd1c4a0904b7777)
+        ;
+
+        
+    
+    
+            marker_72b1e82f834e3c6bc1e6c5d05da82a4a.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_72b1e82f834e3c6bc1e6c5d05da82a4a.setIcon(icon_9a96de2bb18e94b875e6890b4c5d0436);
+            
+    
+            var marker_0271f2e47fdeab398db326f520e8aee9 = L.marker(
+                [45.048824999999994, 9.969574999999999],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_0ad127ac136a7b64c0f112f51979c552 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c5c3d4e0bd78a8a501b1a56bd0e17791 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3d2775d12fc5c75795c16f93ab1aaf47 = $(`<div id="html_3d2775d12fc5c75795c16f93ab1aaf47" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04882, 9.96957                 </div>                 </div>`)[0];
+                popup_c5c3d4e0bd78a8a501b1a56bd0e17791.setContent(html_3d2775d12fc5c75795c16f93ab1aaf47);
+            
+        
+
+        marker_0271f2e47fdeab398db326f520e8aee9.bindPopup(popup_c5c3d4e0bd78a8a501b1a56bd0e17791)
+        ;
+
+        
+    
+    
+            marker_0271f2e47fdeab398db326f520e8aee9.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0271f2e47fdeab398db326f520e8aee9.setIcon(icon_0ad127ac136a7b64c0f112f51979c552);
+            
+    
+            var marker_8363647ac822a4ac783c203aee6e3459 = L.marker(
+                [45.046925, 9.99975],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_95d5fa3fc7a3b123868c84cf3c8899ef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_54865d4cb3f37e41bf49f21d32d04fb7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7c1e55a518731cc3391b802c79374ee1 = $(`<div id="html_7c1e55a518731cc3391b802c79374ee1" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04693, 9.99975                 </div>                 </div>`)[0];
+                popup_54865d4cb3f37e41bf49f21d32d04fb7.setContent(html_7c1e55a518731cc3391b802c79374ee1);
+            
+        
+
+        marker_8363647ac822a4ac783c203aee6e3459.bindPopup(popup_54865d4cb3f37e41bf49f21d32d04fb7)
+        ;
+
+        
+    
+    
+            marker_8363647ac822a4ac783c203aee6e3459.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8363647ac822a4ac783c203aee6e3459.setIcon(icon_95d5fa3fc7a3b123868c84cf3c8899ef);
+            
+    
+            var marker_feffdc2b0f1bfbaa1b481ffa8408c52a = L.marker(
+                [45.04837499999999, 10.03855],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_54db9a79b05cf782b0fc4afbe9d9409c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0960e01676343982149f5bd911e8c480 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_506d4b0754f53ea82bbea2a1fbc4bb91 = $(`<div id="html_506d4b0754f53ea82bbea2a1fbc4bb91" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04837, 10.03855                 </div>                 </div>`)[0];
+                popup_0960e01676343982149f5bd911e8c480.setContent(html_506d4b0754f53ea82bbea2a1fbc4bb91);
+            
+        
+
+        marker_feffdc2b0f1bfbaa1b481ffa8408c52a.bindPopup(popup_0960e01676343982149f5bd911e8c480)
+        ;
+
+        
+    
+    
+            marker_feffdc2b0f1bfbaa1b481ffa8408c52a.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_feffdc2b0f1bfbaa1b481ffa8408c52a.setIcon(icon_54db9a79b05cf782b0fc4afbe9d9409c);
+            
+    
+            var marker_a20c05dc88ca47b9d0e94bf5845dc814 = L.marker(
+                [45.0443, 9.960925],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_d2865a628f779ad1f3cccceda0f04b4e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_748fd15dac872ddba12d89d7dc7b3fad = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_63393ecdb7e9cef91b066b618fde0f39 = $(`<div id="html_63393ecdb7e9cef91b066b618fde0f39" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04430, 9.96092                 </div>                 </div>`)[0];
+                popup_748fd15dac872ddba12d89d7dc7b3fad.setContent(html_63393ecdb7e9cef91b066b618fde0f39);
+            
+        
+
+        marker_a20c05dc88ca47b9d0e94bf5845dc814.bindPopup(popup_748fd15dac872ddba12d89d7dc7b3fad)
+        ;
+
+        
+    
+    
+            marker_a20c05dc88ca47b9d0e94bf5845dc814.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a20c05dc88ca47b9d0e94bf5845dc814.setIcon(icon_d2865a628f779ad1f3cccceda0f04b4e);
+            
+    
+            var marker_b63a1a76ce44a639acca39b9cf125f14 = L.marker(
+                [45.0497, 10.00665],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_1a6b979c9987d873994f196155dfba95 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b3bff5b42b741f76e8f2437282452365 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f1b37ec87bd81d68466ba5ffb101c30b = $(`<div id="html_f1b37ec87bd81d68466ba5ffb101c30b" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04970, 10.00665                 </div>                 </div>`)[0];
+                popup_b3bff5b42b741f76e8f2437282452365.setContent(html_f1b37ec87bd81d68466ba5ffb101c30b);
+            
+        
+
+        marker_b63a1a76ce44a639acca39b9cf125f14.bindPopup(popup_b3bff5b42b741f76e8f2437282452365)
+        ;
+
+        
+    
+    
+            marker_b63a1a76ce44a639acca39b9cf125f14.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b63a1a76ce44a639acca39b9cf125f14.setIcon(icon_1a6b979c9987d873994f196155dfba95);
+            
+    
+            var marker_07d0c8e4ddbe861cdd715331a05f9e08 = L.marker(
+                [44.958275, 10.026825],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_debcbee655422d17b5f40d4bffb0cea9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d2bf48f43d7cc251ac1b78d9e0f86191 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b7b84020e7a701b33c5d4e3a580a7b73 = $(`<div id="html_b7b84020e7a701b33c5d4e3a580a7b73" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95828, 10.02683                 </div>                 </div>`)[0];
+                popup_d2bf48f43d7cc251ac1b78d9e0f86191.setContent(html_b7b84020e7a701b33c5d4e3a580a7b73);
+            
+        
+
+        marker_07d0c8e4ddbe861cdd715331a05f9e08.bindPopup(popup_d2bf48f43d7cc251ac1b78d9e0f86191)
+        ;
+
+        
+    
+    
+            marker_07d0c8e4ddbe861cdd715331a05f9e08.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_07d0c8e4ddbe861cdd715331a05f9e08.setIcon(icon_debcbee655422d17b5f40d4bffb0cea9);
+            
+    
+            var marker_1d19ad4e6471a58896da0c7aebcd68fb = L.marker(
+                [44.951075, 10.041925],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_45fb5d9a2a558dad7d90fe02eb3b5f54 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_315ad952982f8d4e0ff84fe007e8b862 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_86648d05b572be8a6db37fcd21e20ed7 = $(`<div id="html_86648d05b572be8a6db37fcd21e20ed7" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95108, 10.04193                 </div>                 </div>`)[0];
+                popup_315ad952982f8d4e0ff84fe007e8b862.setContent(html_86648d05b572be8a6db37fcd21e20ed7);
+            
+        
+
+        marker_1d19ad4e6471a58896da0c7aebcd68fb.bindPopup(popup_315ad952982f8d4e0ff84fe007e8b862)
+        ;
+
+        
+    
+    
+            marker_1d19ad4e6471a58896da0c7aebcd68fb.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1d19ad4e6471a58896da0c7aebcd68fb.setIcon(icon_45fb5d9a2a558dad7d90fe02eb3b5f54);
+            
+    
+            var marker_34394dd3ffd42ad9249843c2f05c7fb4 = L.marker(
+                [45.047599999999996, 9.98975],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_06ad316f4ab9d5f83794bc12adb6cb99 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7ad178efd7f4f1125a8255a2eab1fb08 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_54e9c9fc50c526606ed5f8aac683bf0e = $(`<div id="html_54e9c9fc50c526606ed5f8aac683bf0e" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04760, 9.98975                 </div>                 </div>`)[0];
+                popup_7ad178efd7f4f1125a8255a2eab1fb08.setContent(html_54e9c9fc50c526606ed5f8aac683bf0e);
+            
+        
+
+        marker_34394dd3ffd42ad9249843c2f05c7fb4.bindPopup(popup_7ad178efd7f4f1125a8255a2eab1fb08)
+        ;
+
+        
+    
+    
+            marker_34394dd3ffd42ad9249843c2f05c7fb4.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_34394dd3ffd42ad9249843c2f05c7fb4.setIcon(icon_06ad316f4ab9d5f83794bc12adb6cb99);
+            
+    
+            var marker_b8a138d06530758f04a23bbe27ad3db6 = L.marker(
+                [45.048674999999996, 9.957625],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_ab56b9d6c9ba2e7789c724e437ac2a6c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e17eed1d0bb2f7841ffe036c674252cf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_54a210dafc6525e5b584bdde81478827 = $(`<div id="html_54a210dafc6525e5b584bdde81478827" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04867, 9.95763                 </div>                 </div>`)[0];
+                popup_e17eed1d0bb2f7841ffe036c674252cf.setContent(html_54a210dafc6525e5b584bdde81478827);
+            
+        
+
+        marker_b8a138d06530758f04a23bbe27ad3db6.bindPopup(popup_e17eed1d0bb2f7841ffe036c674252cf)
+        ;
+
+        
+    
+    
+            marker_b8a138d06530758f04a23bbe27ad3db6.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b8a138d06530758f04a23bbe27ad3db6.setIcon(icon_ab56b9d6c9ba2e7789c724e437ac2a6c);
+            
+    
+            var marker_4ce2f3aa0b16dc46782e08601c0b3923 = L.marker(
+                [44.954075, 9.989425],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_ae3f55d686d6a4c54a8013c90aec6cd4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_479c1e820a0235b54c50bb2ee9c1c5f9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fdcbd85a3c9e083f17e0a4f2c65ffdb7 = $(`<div id="html_fdcbd85a3c9e083f17e0a4f2c65ffdb7" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95408, 9.98943                 </div>                 </div>`)[0];
+                popup_479c1e820a0235b54c50bb2ee9c1c5f9.setContent(html_fdcbd85a3c9e083f17e0a4f2c65ffdb7);
+            
+        
+
+        marker_4ce2f3aa0b16dc46782e08601c0b3923.bindPopup(popup_479c1e820a0235b54c50bb2ee9c1c5f9)
+        ;
+
+        
+    
+    
+            marker_4ce2f3aa0b16dc46782e08601c0b3923.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4ce2f3aa0b16dc46782e08601c0b3923.setIcon(icon_ae3f55d686d6a4c54a8013c90aec6cd4);
+            
+    
+            var marker_42f6667d586cf7590c75a3fee1f46d76 = L.marker(
+                [45.047725, 10.021225000000001],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_a23fd13b1283bcd8201f9e14fcf20ad8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_91cc3cd2500afdae6486c1fa70721179 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_93787f460cf9c9d79bb2caf762ff8ddd = $(`<div id="html_93787f460cf9c9d79bb2caf762ff8ddd" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04772, 10.02123                 </div>                 </div>`)[0];
+                popup_91cc3cd2500afdae6486c1fa70721179.setContent(html_93787f460cf9c9d79bb2caf762ff8ddd);
+            
+        
+
+        marker_42f6667d586cf7590c75a3fee1f46d76.bindPopup(popup_91cc3cd2500afdae6486c1fa70721179)
+        ;
+
+        
+    
+    
+            marker_42f6667d586cf7590c75a3fee1f46d76.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_42f6667d586cf7590c75a3fee1f46d76.setIcon(icon_a23fd13b1283bcd8201f9e14fcf20ad8);
+            
+    
+            var marker_41ade50cb57c4d328aa70e1116b19a34 = L.marker(
+                [45.04935, 10.0278],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_ea2820441999bfc8c48128793afd17f0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_836774cb86f8851091ea3247d46d116c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3aa76eb76b66a81dcae152d7c4cc7568 = $(`<div id="html_3aa76eb76b66a81dcae152d7c4cc7568" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04935, 10.02780                 </div>                 </div>`)[0];
+                popup_836774cb86f8851091ea3247d46d116c.setContent(html_3aa76eb76b66a81dcae152d7c4cc7568);
+            
+        
+
+        marker_41ade50cb57c4d328aa70e1116b19a34.bindPopup(popup_836774cb86f8851091ea3247d46d116c)
+        ;
+
+        
+    
+    
+            marker_41ade50cb57c4d328aa70e1116b19a34.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_41ade50cb57c4d328aa70e1116b19a34.setIcon(icon_ea2820441999bfc8c48128793afd17f0);
+            
+    
+            var marker_4d17c2b317b12eff1d624f32877245bb = L.marker(
+                [45.0484, 10.012599999999999],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_84e39424eef13795f08e9b2e91f10588 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ee84ace121b000205814379d373ff250 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b6840b5eb0784c31cdece3db1652416b = $(`<div id="html_b6840b5eb0784c31cdece3db1652416b" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04840, 10.01260                 </div>                 </div>`)[0];
+                popup_ee84ace121b000205814379d373ff250.setContent(html_b6840b5eb0784c31cdece3db1652416b);
+            
+        
+
+        marker_4d17c2b317b12eff1d624f32877245bb.bindPopup(popup_ee84ace121b000205814379d373ff250)
+        ;
+
+        
+    
+    
+            marker_4d17c2b317b12eff1d624f32877245bb.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4d17c2b317b12eff1d624f32877245bb.setIcon(icon_84e39424eef13795f08e9b2e91f10588);
+            
+    
+            var marker_7e3569e1af0e2d493f21403afe4dcff6 = L.marker(
+                [45.04492499999999, 10.0428],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_2ad87fe88597c59bb940e84078abf883 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_89f284ecc4cba7d555189c41205eef80 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e0e4803a25617029d361ed59bc04c6cf = $(`<div id="html_e0e4803a25617029d361ed59bc04c6cf" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04492, 10.04280                 </div>                 </div>`)[0];
+                popup_89f284ecc4cba7d555189c41205eef80.setContent(html_e0e4803a25617029d361ed59bc04c6cf);
+            
+        
+
+        marker_7e3569e1af0e2d493f21403afe4dcff6.bindPopup(popup_89f284ecc4cba7d555189c41205eef80)
+        ;
+
+        
+    
+    
+            marker_7e3569e1af0e2d493f21403afe4dcff6.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7e3569e1af0e2d493f21403afe4dcff6.setIcon(icon_2ad87fe88597c59bb940e84078abf883);
+            
+    
+            var marker_f544cd82078443a41e22ff903d181d77 = L.marker(
+                [45.043875, 10.00405],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_2fa07a90b4a1f99785ba639264f5c8a5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_53f1d17d1e2bee22526564d6644fb317 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a599d78386587e07d286d461b22e8196 = $(`<div id="html_a599d78386587e07d286d461b22e8196" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04387, 10.00405                 </div>                 </div>`)[0];
+                popup_53f1d17d1e2bee22526564d6644fb317.setContent(html_a599d78386587e07d286d461b22e8196);
+            
+        
+
+        marker_f544cd82078443a41e22ff903d181d77.bindPopup(popup_53f1d17d1e2bee22526564d6644fb317)
+        ;
+
+        
+    
+    
+            marker_f544cd82078443a41e22ff903d181d77.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f544cd82078443a41e22ff903d181d77.setIcon(icon_2fa07a90b4a1f99785ba639264f5c8a5);
+            
+    
+            var marker_e86dbeca597ace4188bb461c0b1cc78a = L.marker(
+                [45.042175, 9.998000000000001],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_e73b286d1b86c9efc5c7e01929ea4658 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d115a171edd0f70a780ee3f62dc1c6f9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0e552607ec39eebd926caf33ce842bb5 = $(`<div id="html_0e552607ec39eebd926caf33ce842bb5" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04218, 9.99800                 </div>                 </div>`)[0];
+                popup_d115a171edd0f70a780ee3f62dc1c6f9.setContent(html_0e552607ec39eebd926caf33ce842bb5);
+            
+        
+
+        marker_e86dbeca597ace4188bb461c0b1cc78a.bindPopup(popup_d115a171edd0f70a780ee3f62dc1c6f9)
+        ;
+
+        
+    
+    
+            marker_e86dbeca597ace4188bb461c0b1cc78a.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e86dbeca597ace4188bb461c0b1cc78a.setIcon(icon_e73b286d1b86c9efc5c7e01929ea4658);
+            
+    
+            var marker_b2fc5761da5889385aa8b2e0405b7f26 = L.marker(
+                [45.0426, 10.018975000000001],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_11c78dfb111ac5f0b723bcbb18ff9100 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_908c4d50f2b3c0575527bdef4f63e941 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0e7bef3f42618e021b58401ca8b63ae5 = $(`<div id="html_0e7bef3f42618e021b58401ca8b63ae5" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04260, 10.01898                 </div>                 </div>`)[0];
+                popup_908c4d50f2b3c0575527bdef4f63e941.setContent(html_0e7bef3f42618e021b58401ca8b63ae5);
+            
+        
+
+        marker_b2fc5761da5889385aa8b2e0405b7f26.bindPopup(popup_908c4d50f2b3c0575527bdef4f63e941)
+        ;
+
+        
+    
+    
+            marker_b2fc5761da5889385aa8b2e0405b7f26.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b2fc5761da5889385aa8b2e0405b7f26.setIcon(icon_11c78dfb111ac5f0b723bcbb18ff9100);
+            
+    
+            var marker_1bfa1c3c3d7b6b7eae43bc43a2947aac = L.marker(
+                [44.9576, 10.0182],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_56d80706a6917da5e35b0d1facfc1e37 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_09da3980e0e52dd60c59a995b4154fcf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_867abf70005d03746b46d6e5d89dfa5b = $(`<div id="html_867abf70005d03746b46d6e5d89dfa5b" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95760, 10.01820                 </div>                 </div>`)[0];
+                popup_09da3980e0e52dd60c59a995b4154fcf.setContent(html_867abf70005d03746b46d6e5d89dfa5b);
+            
+        
+
+        marker_1bfa1c3c3d7b6b7eae43bc43a2947aac.bindPopup(popup_09da3980e0e52dd60c59a995b4154fcf)
+        ;
+
+        
+    
+    
+            marker_1bfa1c3c3d7b6b7eae43bc43a2947aac.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1bfa1c3c3d7b6b7eae43bc43a2947aac.setIcon(icon_56d80706a6917da5e35b0d1facfc1e37);
+            
+    
+            var marker_51b17eead98a753970046f2abc25bee4 = L.marker(
+                [45.04769999999999, 10.033525000000001],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_936109a5887cd99530e47c065fcf622f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cab9c63b9964a1c4c3696847d9da760c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d000e4438954346e7f08bb302b6e17b0 = $(`<div id="html_d000e4438954346e7f08bb302b6e17b0" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 99.0%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 45.04770, 10.03353                 </div>                 </div>`)[0];
+                popup_cab9c63b9964a1c4c3696847d9da760c.setContent(html_d000e4438954346e7f08bb302b6e17b0);
+            
+        
+
+        marker_51b17eead98a753970046f2abc25bee4.bindPopup(popup_cab9c63b9964a1c4c3696847d9da760c)
+        ;
+
+        
+    
+    
+            marker_51b17eead98a753970046f2abc25bee4.bindTooltip(
+                `<div>
+                     roman_road (99%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_51b17eead98a753970046f2abc25bee4.setIcon(icon_936109a5887cd99530e47c065fcf622f);
+            
+    
+            var marker_157a4e9628ef155a79b0fc08100df521 = L.marker(
+                [44.953900000000004, 9.983175],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_13cd55966be2ad3c8751d9091a4ab7aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_19f62514b46a74c7c832c30b1813dd30 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_be1c9f87f71410b22c571850df32844b = $(`<div id="html_be1c9f87f71410b22c571850df32844b" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 97.3%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95390, 9.98317                 </div>                 </div>`)[0];
+                popup_19f62514b46a74c7c832c30b1813dd30.setContent(html_be1c9f87f71410b22c571850df32844b);
+            
+        
+
+        marker_157a4e9628ef155a79b0fc08100df521.bindPopup(popup_19f62514b46a74c7c832c30b1813dd30)
+        ;
+
+        
+    
+    
+            marker_157a4e9628ef155a79b0fc08100df521.bindTooltip(
+                `<div>
+                     roman_road (97%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_157a4e9628ef155a79b0fc08100df521.setIcon(icon_13cd55966be2ad3c8751d9091a4ab7aa);
+            
+    
+            var marker_b59b15d39001e3345eb35e17ae112369 = L.marker(
+                [44.9525, 9.976475],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_4d0da871051b567cbbcb8c889b6db405 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_16850c0b65f0622d7b96adf1e9461100 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_179fbb3c529a32580849673738d2412e = $(`<div id="html_179fbb3c529a32580849673738d2412e" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 96.5%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95250, 9.97648                 </div>                 </div>`)[0];
+                popup_16850c0b65f0622d7b96adf1e9461100.setContent(html_179fbb3c529a32580849673738d2412e);
+            
+        
+
+        marker_b59b15d39001e3345eb35e17ae112369.bindPopup(popup_16850c0b65f0622d7b96adf1e9461100)
+        ;
+
+        
+    
+    
+            marker_b59b15d39001e3345eb35e17ae112369.bindTooltip(
+                `<div>
+                     roman_road (97%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b59b15d39001e3345eb35e17ae112369.setIcon(icon_4d0da871051b567cbbcb8c889b6db405);
+            
+    
+            var marker_516ee829017c553601e5c957f5fdf76e = L.marker(
+                [44.950525, 9.963925],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_3d3e464ac49368d511c816fa04e8e593 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_22e2e8852c447303b8c6ac699457f2a6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a9bf1da733bd5cd426f31e4160991547 = $(`<div id="html_a9bf1da733bd5cd426f31e4160991547" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 96.1%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95052, 9.96392                 </div>                 </div>`)[0];
+                popup_22e2e8852c447303b8c6ac699457f2a6.setContent(html_a9bf1da733bd5cd426f31e4160991547);
+            
+        
+
+        marker_516ee829017c553601e5c957f5fdf76e.bindPopup(popup_22e2e8852c447303b8c6ac699457f2a6)
+        ;
+
+        
+    
+    
+            marker_516ee829017c553601e5c957f5fdf76e.bindTooltip(
+                `<div>
+                     roman_road (96%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_516ee829017c553601e5c957f5fdf76e.setIcon(icon_3d3e464ac49368d511c816fa04e8e593);
+            
+    
+            var marker_31bf63f0845b31f5b7b8ad193213c18c = L.marker(
+                [44.952225, 9.970675],
+                {
+}
+            ).addTo(feature_group_37c9b68bd45da4e7e1f3172d70c59686);
+        
+    
+            var icon_b4731aacca648d0ed979a6d80caa46fd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "road",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7bcc82830b3ed5ba1b62728b3b62aa0d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_43582955efe0f1d490da22f204baae6a = $(`<div id="html_43582955efe0f1d490da22f204baae6a" style="width: 100.0%; height: 100.0%;">                 <div style="width: 200px">                     <h4 style="margin: 0">Via Romana</h4>                     <b>Confidenza:</b> 95.3%<br>                     <b>Fonte:</b> classic_hough<br>                     <b>Desc:</b> Doppia linea parallela - possibile via romana<br>                     <b>Coord:</b> 44.95222, 9.97067                 </div>                 </div>`)[0];
+                popup_7bcc82830b3ed5ba1b62728b3b62aa0d.setContent(html_43582955efe0f1d490da22f204baae6a);
+            
+        
+
+        marker_31bf63f0845b31f5b7b8ad193213c18c.bindPopup(popup_7bcc82830b3ed5ba1b62728b3b62aa0d)
+        ;
+
+        
+    
+    
+            marker_31bf63f0845b31f5b7b8ad193213c18c.bindTooltip(
+                `<div>
+                     roman_road (95%)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_31bf63f0845b31f5b7b8ad193213c18c.setIcon(icon_b4731aacca648d0ed979a6d80caa46fd);
+            
+    
+            feature_group_37c9b68bd45da4e7e1f3172d70c59686.addTo(map_eb0aa584a6662cc0dcc53cd19ab9bf25);
+        
+</script>
+</html>

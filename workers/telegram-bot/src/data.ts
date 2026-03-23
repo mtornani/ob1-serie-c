@@ -59,7 +59,33 @@ export function searchOpportunities(opportunities: Opportunity[], query: string)
 
   if (!lowerQuery) return [];
 
+  // Mappa keyword a codice regione (campo region, non piu' prefisso nel nome)
+  const regionMap: Record<string, string> = {
+    'brasile': 'BR',
+    'brasiliano': 'BR',
+    'brasiliana': 'BR',
+    'argentina': 'AR',
+    'argentino': 'AR',
+    'italia': 'IT',
+    'italiano': 'IT',
+    'serie c': 'IT',
+  };
+
+  let targetRegion = '';
+  for (const [key, region] of Object.entries(regionMap)) {
+    if (lowerQuery.includes(key)) {
+      targetRegion = region;
+      break;
+    }
+  }
+
   return opportunities.filter(o => {
+    // Filtra per regione (campo region o fallback al prefisso legacy nel nome)
+    if (targetRegion) {
+      const oppRegion = o.region || (o.player_name.match(/^\[([A-Z]{2})\]/)?.[1] ?? '');
+      if (oppRegion !== targetRegion) return false;
+    }
+
     const searchable = [
       o.player_name,
       o.role_name || o.role,
@@ -126,8 +152,32 @@ export interface FilterOptions {
  * Filter opportunities based on multiple criteria
  */
 export function filterOpportunities(opportunities: Opportunity[], filters: FilterOptions): Opportunity[] {
+  // Mappa keyword a codice regione per filtro linguaggio naturale
+  const regionMap: Record<string, string> = {
+    'brasile': 'BR', 'brasiliano': 'BR', 'brasiliana': 'BR',
+    'argentina': 'AR', 'argentino': 'AR',
+    'italia': 'IT', 'italiano': 'IT', 'serie c': 'IT',
+  };
+
+  let targetRegion = '';
+  if (filters.query) {
+    const lowerQ = filters.query.toLowerCase();
+    for (const [key, region] of Object.entries(regionMap)) {
+      if (lowerQ.includes(key)) {
+        targetRegion = region;
+        break;
+      }
+    }
+  }
+
   return opportunities.filter(o => {
-    // Role filter
+    // 1. Filtro regione (campo region o fallback prefisso legacy)
+    if (targetRegion) {
+      const oppRegion = o.region || (o.player_name.match(/^\[([A-Z]{2})\]/)?.[1] ?? '');
+      if (oppRegion !== targetRegion) return false;
+    }
+
+    // 2. Role filter
     if (filters.role) {
       const roleNormalized = (o.role_name || o.role || '').toLowerCase();
       if (!roleNormalized.includes(filters.role.toLowerCase())) {

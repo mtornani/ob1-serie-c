@@ -123,7 +123,8 @@ def run_ouroboros():
                         # Structured Dict for Bot/Dashboard
                         opp_dict = {
                             "id": hashlib.md5(f"{opp.player_name}_{opp.source_url}".encode()).hexdigest(),
-                            "player_name": f"[{league_prefix}] {opp.player_name}",
+                            "player_name": opp.player_name,
+                            "region": league_prefix,
                             "opportunity_type": opp.opportunity_type.value,
                             "description": opp.description,
                             "ob1_score": opp.relevance_score * 20,

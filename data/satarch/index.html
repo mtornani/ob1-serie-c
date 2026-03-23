@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SAT-ARCH: Risultati Archeologia Satellitare</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { padding: 20px; background: #1a1a2e; color: #eee; }
+        .card { background: #16213e; border: none; margin-bottom: 20px; }
+        .card-header { background: #0f3460; font-weight: bold; }
+        .stat-number { font-size: 2em; font-weight: bold; color: #e94560; }
+        .type-badge { 
+            padding: 5px 10px; margin: 2px; border-radius: 15px;
+            font-size: 0.8em;
+        }
+        .conf-high { background: #28a745; }
+        .conf-medium { background: #ffc107; color: #000; }
+        .conf-low { background: #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1><i class="fas fa-satellite"></i> SAT-ARCH: Scanner Archeologia Satellitare</h1>
+        <p class="lead">Pianura Padana - 38 anomalie rilevate</p>
+        
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">Totale Rilevazioni</div>
+                    <div class="card-body text-center">
+                        <div class="stat-number">38</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">Alta Confidenza</div>
+                    <div class="card-body text-center">
+                        <div class="stat-number">38</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">Rilevazioni AI</div>
+                    <div class="card-body text-center">
+                        <div class="stat-number">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">Tipi Rilevati</div>
+                    <div class="card-body text-center">
+                        <div class="stat-number">1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Per Tipo</div>
+                    <div class="card-body">
+                        <span class="type-badge" style="background: red">Via Romana: 38</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Per Fonte</div>
+                    <div class="card-body">
+                        <span class="type-badge bg-secondary">classic_hough: 38</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">Mappa Interattiva</div>
+            <div class="card-body p-0">
+                <iframe src="map.html" style="width: 100%; height: 600px; border: none;"></iframe>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">Dettaglio Rilevazioni</div>
+            <div class="card-body">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Confidenza</th>
+                            <th>Fonte</th>
+                            <th>Coordinate</th>
+                            <th>Descrizione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04648, 9.99470</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>44.95180, 10.01955</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>44.95262, 10.01320</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04705, 9.97987</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04377, 9.96980</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04570, 9.97452</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>44.95222, 10.02590</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>44.95347, 10.03165</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04890, 9.96400</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>44.95288, 10.00665</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>44.95090, 9.99425</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>44.95210, 10.03670</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04830, 9.98477</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04280, 9.98260</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>44.95123, 9.99933</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04882, 9.96957</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04693, 9.99975</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04837, 10.03855</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04430, 9.96092</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04970, 10.00665</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>44.95828, 10.02683</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>44.95108, 10.04193</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04760, 9.98975</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04867, 9.95763</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>44.95408, 9.98943</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04772, 10.02123</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04935, 10.02780</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04840, 10.01260</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04492, 10.04280</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04387, 10.00405</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04218, 9.99800</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04260, 10.01898</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>44.95760, 10.01820</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">99.0%</span></td><td>classic_hough</td><td>45.04770, 10.03353</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">97.3%</span></td><td>classic_hough</td><td>44.95390, 9.98317</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">96.5%</span></td><td>classic_hough</td><td>44.95250, 9.97648</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">96.1%</span></td><td>classic_hough</td><td>44.95052, 9.96392</td><td>Doppia linea parallela - possibile via romana</td></tr><tr><td>Via Romana</td><td><span class="conf-high">95.3%</span></td><td>classic_hough</td><td>44.95222, 9.97067</td><td>Doppia linea parallela - possibile via romana</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
