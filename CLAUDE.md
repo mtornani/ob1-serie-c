@@ -67,6 +67,18 @@ Classificazione: HOT ≥ 70, WARM ≥ 57, COLD < 57
 
 ## Changelog
 
+### 2026-03-24 — Pipeline refresh + Security hardening
+- Fresh scraping via Tavily: 4 nuove opportunità (Cinque, Rosa, Capanni, Kljajic)
+- Enrichment Scrapling: 10/12 U23 arricchiti con stats reali da Transfermarkt
+- Database cleanup: rimossi 67 entries spazzatura (non-giocatori, fonti estere)
+- Report filtrati: solo giocatori Serie C con stats verificabili (esclusi Serie D)
+- Security: API keys rimosse da .claude/settings.local.json, file rimosso dal tracking git
+- Security: reports/scouting/ aggiunto a .gitignore (report privati, non pubblici)
+- Security: .claude/settings.local.json aggiunto a .gitignore
+- Dashboard docs/data.json rigenerato con scoring SCORE-002 aggiornato
+- Fix: generate_scouting_reports.py output path corretto (reports/ invece di docs/reports/)
+- 5 report U23 finali: Levak, Shpendi, Buffon, Doumbia, Gallea
+
 ### 2026-03-23 — Scouting Reports v1
 - Creato pipeline enrichment con Scrapling (headless browser) + Gemini 2.5 Flash
 - 14 report individuali U23 con dati TM reali (presenze, gol, assist, valore, agente)

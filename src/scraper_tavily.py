@@ -157,7 +157,7 @@ ARTICOLO:
 
 JSON:'''
 
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={self.gemini_key}"
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={self.gemini_key}"
 
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],

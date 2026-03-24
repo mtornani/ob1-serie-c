@@ -19,7 +19,7 @@ from src.scoring import OB1Scorer
 
 DATA_DIR = Path(__file__).parent.parent / 'data'
 DOCS_DIR = Path(__file__).parent.parent / 'docs'
-REPORTS_DIR = DOCS_DIR / 'reports' / 'scouting'
+REPORTS_DIR = Path(__file__).parent.parent / 'reports' / 'scouting'
 
 # ============================================================================
 # HELPERS
@@ -829,11 +829,38 @@ def main():
     u23 = [o for o in filtered if o.get('age') and o['age'] <= 23]
     print(f"Under 23 players: {len(u23)}")
 
+    # Filter: only players with actual stats (appearances > 0) — no gaps in reports
+    u23_with_stats = [o for o in u23 if o.get('appearances') and o['appearances'] > 0]
+    print(f"U23 with stats: {len(u23_with_stats)}")
+
+    # Filter: only Serie C clubs (exclude Serie D, foreign, retired)
+    serie_c_clubs = [
+        'cesena', 'atalanta u23', 'pontedera', 'lumezzane', 'altamura', 'team altamura',
+        'messina', 'acr messina', 'cavese', 'pescara', 'torres', 'arezzo', 'perugia',
+        'vis pesaro', 'gubbio', 'spal', 'rimini', 'ascoli', 'virtus entella',
+        'pianese', 'pineto', 'campobasso', 'carpi', 'milan futuro', 'juventus next gen',
+        'avellino', 'benevento', 'catania', 'cerignola', 'crotone', 'foggia',
+        'giugliano', 'latina', 'monopoli', 'potenza', 'sorrento', 'taranto',
+        'trapani', 'turris', 'casertana', 'siracusa', 'triestina', 'feralpisalo',
+        'pro vercelli', 'novara', 'pro patria', 'albinoleffe', 'lecco',
+        'padova', 'trento', 'vicenza', 'union clodiense', 'arzignano',
+        'caldiero terme', 'giana erminio', 'pergolettese', 'renate',
+        'alcione milano', 'lc legnago', 'sestri levante',
+    ]
+    u23_serie_c = []
+    for o in u23_with_stats:
+        club = (o.get('current_club', '') or '').lower()
+        if any(sc in club for sc in serie_c_clubs):
+            u23_serie_c.append(o)
+        else:
+            print(f"  Excluded (not Serie C): {o.get('player_name')} — {o.get('current_club')}")
+    print(f"U23 Serie C with stats: {len(u23_serie_c)}")
+
     # Sort by score
-    u23.sort(key=lambda x: x.get('ob1_score', 0), reverse=True)
+    u23_serie_c.sort(key=lambda x: x.get('ob1_score', 0), reverse=True)
 
     # Take top 15 (or all if fewer)
-    top = u23[:15]
+    top = u23_serie_c[:15]
     print(f"Top segnalazioni: {len(top)}")
 
     if not top:

@@ -2,6 +2,12 @@
 .env
 .env.local
 
+# Claude Code settings (may contain API key permissions)
+.claude/settings.local.json
+
+# Scouting reports (private, not for public GitHub Pages)
+reports/scouting/
+
 # Python
 __pycache__/
 *.pyc
