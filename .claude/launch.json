@@ -6,6 +6,12 @@
       "runtimeExecutable": "C:\\Users\\Mirko\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
       "runtimeArgs": ["-m", "http.server", "8090", "--directory", "reports/scouting"],
       "port": 8090
+    },
+    {
+      "name": "dashboard",
+      "runtimeExecutable": "C:\\Users\\Mirko\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "runtimeArgs": ["-m", "http.server", "8091", "--directory", "docs"],
+      "port": 8091
     }
   ]
 }

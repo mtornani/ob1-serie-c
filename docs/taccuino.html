@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>OB1 Taccuino — Note Scout</title>
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <style>
+        /* ── Reset + Base ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0a0a0a;
+            --card: #111;
+            --border: #333;
+            --text: #e2e8f0;
+            --text-muted: #64748b;
+            --green: #00ff41;
+            --yellow: #fbbf24;
+            --red: #ef4444;
+            --blue: #3b82f6;
+            --mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* ── Header ── */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-left a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .logo {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--green);
+        }
+
+        .logo-sub {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-icon {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 6px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-icon:active { background: rgba(255,255,255,0.05); }
+
+        /* ── Quick Input ── */
+        .input-section {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .input-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .input-field {
+            flex: 1;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-family: var(--sans);
+            outline: none;
+        }
+
+        .input-field:focus {
+            border-color: var(--green);
+        }
+
+        .input-field::placeholder {
+            color: var(--text-muted);
+        }
+
+        textarea.input-field {
+            resize: none;
+            min-height: 60px;
+        }
+
+        /* ── Category Chips ── */
+        .category-row {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .cat-chip {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: none;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-family: var(--mono);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .cat-chip.active {
+            border-color: var(--green);
+            color: var(--green);
+            background: rgba(0,255,65,0.08);
+        }
+
+        .cat-chip[data-cat="possesso"].active {
+            border-color: var(--blue);
+            color: var(--blue);
+            background: rgba(59,130,246,0.08);
+        }
+
+        .cat-chip[data-cat="non-possesso"].active {
+            border-color: var(--yellow);
+            color: var(--yellow);
+            background: rgba(251,191,36,0.08);
+        }
+
+        .cat-chip[data-cat="transizione"].active {
+            border-color: var(--red);
+            color: var(--red);
+            background: rgba(239,68,68,0.08);
+        }
+
+        .cat-chip[data-cat="carattere"].active {
+            border-color: #a78bfa;
+            color: #a78bfa;
+            background: rgba(167,139,250,0.08);
+        }
+
+        /* ── Rating Stars ── */
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .rating-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-family: var(--mono);
+            text-transform: uppercase;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 4px;
+        }
+
+        .star {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            background: none;
+            color: var(--text-muted);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .star.active {
+            color: var(--yellow);
+            border-color: var(--yellow);
+            background: rgba(251,191,36,0.1);
+        }
+
+        /* ── Submit ── */
+        .btn-save {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: var(--green);
+            color: #000;
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        .btn-save:active {
+            opacity: 0.8;
+        }
+
+        .btn-save:disabled {
+            background: var(--border);
+            color: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        /* ── Notes List ── */
+        .notes-section {
+            padding: 16px;
+        }
+
+        .notes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .notes-title {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--green);
+        }
+
+        .notes-count {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .note-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+        }
+
+        .note-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+
+        .note-player {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .note-time {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .note-cat {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+
+        .note-cat-possesso { background: rgba(59,130,246,0.15); color: var(--blue); }
+        .note-cat-non-possesso { background: rgba(251,191,36,0.15); color: var(--yellow); }
+        .note-cat-transizione { background: rgba(239,68,68,0.15); color: var(--red); }
+        .note-cat-carattere { background: rgba(167,139,250,0.15); color: #a78bfa; }
+        .note-cat-generale { background: rgba(0,255,65,0.1); color: var(--green); }
+
+        .note-text {
+            font-size: 0.85rem;
+            color: var(--text);
+            line-height: 1.4;
+            margin-top: 6px;
+        }
+
+        .note-rating {
+            margin-top: 6px;
+            color: var(--yellow);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .note-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .btn-small {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 0.7rem;
+            cursor: pointer;
+        }
+
+        .btn-small:active { background: rgba(255,255,255,0.05); }
+        .btn-small.danger { border-color: rgba(239,68,68,0.3); color: var(--red); }
+
+        /* ── Empty State ── */
+        .empty-notes {
+            text-align: center;
+            padding: 40px 16px;
+            color: var(--text-muted);
+        }
+
+        .empty-notes .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        /* ── Export Banner ── */
+        .export-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border);
+            padding: 8px 16px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .export-bar button {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: none;
+            color: var(--text);
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .export-bar button:active { background: rgba(255,255,255,0.05); }
+
+        /* ── Toast ── */
+        .toast {
+            position: fixed;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--green);
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 200;
+        }
+
+        .toast.show { opacity: 1; }
+
+        /* pad bottom for export bar */
+        .notes-section { padding-bottom: 80px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <a href="index.html">&larr;</a>
+            <div>
+                <span class="logo">&gt; TACCUINO</span>
+                <span class="logo-sub">OB1 SCOUT NOTES</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="btn-icon" id="btnClear" title="Pulisci form">C</button>
+        </div>
+    </div>
+
+    <!-- Quick Input -->
+    <div class="input-section">
+        <div class="input-row">
+            <input type="text" class="input-field" id="inputPlayer" placeholder="Giocatore" autocomplete="off">
+            <input type="text" class="input-field" id="inputMatch" placeholder="Partita (opz.)" style="max-width:40%" autocomplete="off">
+        </div>
+
+        <!-- Categories -->
+        <div class="category-row" id="categoryChips">
+            <button class="cat-chip" data-cat="possesso">POSSESSO</button>
+            <button class="cat-chip" data-cat="non-possesso">NON POSS.</button>
+            <button class="cat-chip" data-cat="transizione">TRANSIZ.</button>
+            <button class="cat-chip" data-cat="carattere">CARATTERE</button>
+            <button class="cat-chip" data-cat="generale">GENERALE</button>
+        </div>
+
+        <!-- Rating -->
+        <div class="rating-row">
+            <span class="rating-label">Valutazione</span>
+            <div class="rating-stars" id="ratingStars">
+                <button class="star" data-val="1">1</button>
+                <button class="star" data-val="2">2</button>
+                <button class="star" data-val="3">3</button>
+                <button class="star" data-val="4">4</button>
+                <button class="star" data-val="5">5</button>
+            </div>
+        </div>
+
+        <!-- Note Text -->
+        <textarea class="input-field" id="inputNote" placeholder="Nota rapida... (tocca e scrivi)"></textarea>
+
+        <div style="height:8px"></div>
+
+        <button class="btn-save" id="btnSave">SALVA NOTA</button>
+    </div>
+
+    <!-- Notes List -->
+    <div class="notes-section">
+        <div class="notes-header">
+            <span class="notes-title">&gt; NOTE_SALVATE</span>
+            <span class="notes-count" id="notesCount">0 note</span>
+        </div>
+        <div id="notesList"></div>
+    </div>
+
+    <!-- Export Bar -->
+    <div class="export-bar">
+        <button id="btnExportJSON">ESPORTA JSON</button>
+        <button id="btnExportClip">COPIA TESTO</button>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+    /* ──────────────────────────────────────────────────────────
+       OB1 Taccuino Digitale — Zero framework, offline-first
+       Dati persistiti in localStorage
+       ────────────────────────────────────────────────────────── */
+
+    const STORAGE_KEY = 'ob1_taccuino_notes';
+
+    const state = {
+        notes: [],
+        selectedCats: [],
+        rating: 0,
+    };
+
+    // ── Init ──
+    document.addEventListener('DOMContentLoaded', () => {
+        loadNotes();
+        renderNotes();
+        initListeners();
+    });
+
+    function initListeners() {
+        // Category chips (multi-select)
+        document.getElementById('categoryChips').addEventListener('click', (e) => {
+            const chip = e.target.closest('.cat-chip');
+            if (!chip) return;
+            const cat = chip.dataset.cat;
+            chip.classList.toggle('active');
+            if (state.selectedCats.includes(cat)) {
+                state.selectedCats = state.selectedCats.filter(c => c !== cat);
+            } else {
+                state.selectedCats.push(cat);
+            }
+        });
+
+        // Rating stars
+        document.getElementById('ratingStars').addEventListener('click', (e) => {
+            const star = e.target.closest('.star');
+            if (!star) return;
+            const val = parseInt(star.dataset.val);
+            state.rating = (state.rating === val) ? 0 : val; // toggle
+            document.querySelectorAll('.star').forEach(s => {
+                s.classList.toggle('active', parseInt(s.dataset.val) <= state.rating);
+            });
+        });
+
+        // Save
+        document.getElementById('btnSave').addEventListener('click', saveNote);
+
+        // Clear
+        document.getElementById('btnClear').addEventListener('click', clearForm);
+
+        // Export
+        document.getElementById('btnExportJSON').addEventListener('click', exportJSON);
+        document.getElementById('btnExportClip').addEventListener('click', exportClipboard);
+
+        // Enter on player field focuses note
+        document.getElementById('inputPlayer').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('inputNote').focus();
+            }
+        });
+    }
+
+    // ── CRUD ──
+
+    function saveNote() {
+        const player = document.getElementById('inputPlayer').value.trim();
+        const note = document.getElementById('inputNote').value.trim();
+
+        if (!player || !note) {
+            showToast('Inserisci giocatore e nota');
+            return;
+        }
+
+        const entry = {
+            id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
+            player: player,
+            match: document.getElementById('inputMatch').value.trim(),
+            categories: [...state.selectedCats],
+            rating: state.rating,
+            text: note,
+            timestamp: new Date().toISOString(),
+        };
+
+        state.notes.unshift(entry);
+        persistNotes();
+        renderNotes();
+        clearForm();
+        showToast('Nota salvata');
+    }
+
+    function deleteNote(id) {
+        state.notes = state.notes.filter(n => n.id !== id);
+        persistNotes();
+        renderNotes();
+        showToast('Nota eliminata');
+    }
+
+    function clearForm() {
+        document.getElementById('inputPlayer').value = '';
+        document.getElementById('inputMatch').value = '';
+        document.getElementById('inputNote').value = '';
+        state.selectedCats = [];
+        state.rating = 0;
+        document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.star').forEach(s => s.classList.remove('active'));
+        document.getElementById('inputPlayer').focus();
+    }
+
+    // ── Persistence (localStorage) ──
+
+    function loadNotes() {
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            state.notes = raw ? JSON.parse(raw) : [];
+        } catch {
+            state.notes = [];
+        }
+    }
+
+    function persistNotes() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state.notes));
+    }
+
+    // ── Render ──
+
+    function renderNotes() {
+        const list = document.getElementById('notesList');
+        const count = document.getElementById('notesCount');
+        count.textContent = `${state.notes.length} note`;
+
+        if (state.notes.length === 0) {
+            list.innerHTML = `<div class="empty-notes">
+                <div class="icon">&gt;_</div>
+                <p>Nessuna nota. Inizia a scrivere.</p>
+            </div>`;
+            return;
+        }
+
+        list.innerHTML = state.notes.map(n => {
+            const time = new Date(n.timestamp);
+            const timeStr = time.toLocaleString('it-IT', {
+                day: '2-digit', month: '2-digit',
+                hour: '2-digit', minute: '2-digit'
+            });
+
+            const cats = (n.categories || []).map(c =>
+                `<span class="note-cat note-cat-${c}">${c.toUpperCase()}</span>`
+            ).join('');
+
+            const stars = n.rating > 0
+                ? `<div class="note-rating">${'★'.repeat(n.rating)}${'☆'.repeat(5-n.rating)}</div>`
+                : '';
+
+            const matchStr = n.match ? ` <span style="color:var(--text-muted);font-size:0.75rem">// ${n.match}</span>` : '';
+
+            return `<div class="note-card" data-id="${n.id}">
+                <div class="note-top">
+                    <span class="note-player">${n.player}${matchStr}</span>
+                    <span class="note-time">${timeStr}</span>
+                </div>
+                <div>${cats}</div>
+                ${stars}
+                <div class="note-text">${escapeHtml(n.text)}</div>
+                <div class="note-actions">
+                    <button class="btn-small danger" onclick="deleteNote('${n.id}')">Elimina</button>
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    // ── Export ──
+
+    function exportJSON() {
+        if (state.notes.length === 0) {
+            showToast('Nessuna nota da esportare');
+            return;
+        }
+        const blob = new Blob([JSON.stringify(state.notes, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `ob1_taccuino_${new Date().toISOString().slice(0,10)}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('JSON scaricato');
+    }
+
+    function exportClipboard() {
+        if (state.notes.length === 0) {
+            showToast('Nessuna nota da copiare');
+            return;
+        }
+        const text = state.notes.map(n => {
+            const cats = (n.categories || []).map(c => c.toUpperCase()).join(', ');
+            const stars = n.rating > 0 ? ` [${'★'.repeat(n.rating)}]` : '';
+            const match = n.match ? ` (${n.match})` : '';
+            return `${n.player}${match}${stars}\n[${cats}] ${n.text}`;
+        }).join('\n\n---\n\n');
+
+        navigator.clipboard.writeText(text).then(() => {
+            showToast('Copiato negli appunti');
+        }).catch(() => {
+            showToast('Errore copia');
+        });
+    }
+
+    // ── Utils ──
+
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2000);
+    }
+    </script>
+</body>
+</html>

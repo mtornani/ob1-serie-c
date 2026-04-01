@@ -2723,3 +2723,235 @@ input, select {
 .hero-stat.hot .hero-stat-value {
   color: var(--color-primary);
 }
+
+/* =============================================================================
+   INTEL Engine — ROI Minutaggio + Traffic Light FIGC
+   ============================================================================= */
+
+/* ── INTEL Badge (card-level) ── */
+.intel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.intel-elite {
+  background: rgba(0, 255, 65, 0.15);
+  color: #00ff41;
+  border: 1px solid rgba(0, 255, 65, 0.3);
+}
+
+.intel-high {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.intel-medium {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.intel-low {
+  background: rgba(148, 163, 184, 0.1);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.intel-none, .intel-minimal {
+  background: rgba(100, 116, 139, 0.08);
+  color: #64748b;
+  border: 1px solid rgba(100, 116, 139, 0.15);
+}
+
+/* ── Traffic Light Badge (card-level) ── */
+.traffic-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.traffic-green {
+  background: rgba(0, 255, 65, 0.1);
+  color: #00ff41;
+}
+
+.traffic-yellow {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+}
+
+.traffic-red {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ── INTEL Section (modal detail) ── */
+.detail-intel {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.detail-intel h4 {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+.intel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+@media (min-width: 480px) {
+  .intel-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.intel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-sm);
+  background: rgba(255,255,255,0.03);
+  border-radius: 6px;
+}
+
+.intel-label {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.intel-value {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.intel-value.intel-elite { color: #00ff41; }
+.intel-value.intel-high { color: #fbbf24; }
+.intel-value.intel-medium { color: #60a5fa; }
+.intel-value.intel-low { color: #94a3b8; }
+.intel-value.intel-none { color: #64748b; }
+
+.intel-detail {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  padding: var(--space-sm);
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+  margin-bottom: var(--space-sm);
+}
+
+.intel-traffic {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.intel-lista-detail {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* ── Contextual Signals (P2) ── */
+.signal-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.signal-red {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.signal-yellow {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+}
+
+.signal-green {
+  background: rgba(0, 255, 65, 0.1);
+  color: #00ff41;
+}
+
+/* Signal rows in modal */
+.intel-signals {
+  margin-top: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.signal-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: var(--font-size-xs);
+}
+
+.signal-row.signal-red {
+  background: rgba(239, 68, 68, 0.08);
+  border-left: 2px solid #ef4444;
+}
+
+.signal-row.signal-yellow {
+  background: rgba(251, 191, 36, 0.08);
+  border-left: 2px solid #fbbf24;
+}
+
+.signal-row.signal-green {
+  background: rgba(0, 255, 65, 0.06);
+  border-left: 2px solid #00ff41;
+}
+
+.signal-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.signal-detail {
+  color: var(--color-text-secondary);
+}

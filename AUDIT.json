@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "audit_date": "2026-03-31",
+    "version": "INTEL-001",
+    "generated_by": "Claude Opus 4.6",
+    "purpose": "Stato sistema OB1 post-implementazione INTEL Engine"
+  },
+
+  "stato_attuale": {
+    "profili_monitorati": 83,
+    "classificazione": { "hot": 5, "warm": 57, "cold": 21 },
+    "svincolati_rescissioni": 28,
+    "pipeline": "Scraping (Tavily) → Enrichment (TM + Gemini) → Scoring (SCORE-002) → INTEL (INTEL-001) → Dashboard HTML",
+    "aggiornamento": "Automatico ogni 6 ore via GitHub Actions"
+  },
+
+  "cosa_fa_intel_engine": {
+    "calcolo_minutaggio": {
+      "formula": "Mp = Me × C_età × (1 + B_vivaio + B_tesseramento)",
+      "coefficienti": { "2001": 0.8, "2002": 1.0, "2003": 1.2, "2004+": 1.4 },
+      "bonus_tesseramento_definitivo": "+30% (svincolati, rescissioni, acquisti — no prestiti)",
+      "bonus_vivaio": "200% (primi 30 min) / 400% (oltre 30 min) — non ancora popolato nei dati",
+      "soglia_minima_gara": "271 minuti",
+      "output": "Moltiplicatore per giocatore + proiezione stagionale in minuti ponderati"
+    },
+    "semaforo_liste_figc": {
+      "serie_c": "Over = nato prima del 2002, limite 23 in lista",
+      "serie_b": "Over = nato prima del 1999, limite 18 in lista",
+      "output": "Verde (Under, non occupa slot) / Giallo (Over, pochi slot) / Rosso (lista piena)"
+    },
+    "integrazione_dashboard": {
+      "card": "Badge ROI (es. ROI MEDIO x1.82) + semaforo lista su ogni giocatore",
+      "modal": "Sezione INTEL_MINUTAGGIO con coefficiente, moltiplicatore, proiezione stagionale, status lista",
+      "filtro": "Chip ALTO ROI nella toolbar"
+    }
+  },
+
+  "taccuino_digitale": {
+    "file": "docs/taccuino.html",
+    "cosa_fa": "Form per note rapide da tribuna — giocatore, partita, categoria, rating 1-5, testo libero",
+    "categorie": ["possesso", "non possesso", "transizione", "carattere", "generale"],
+    "persistenza": "localStorage (funziona offline, dati sul dispositivo)",
+    "export": "JSON scaricabile + copia testo in clipboard"
+  },
+
+  "numeri_intel": {
+    "giocatori_con_roi_calcolato": 20,
+    "giocatori_senza_eta": 63,
+    "distribuzione_roi": { "medium": 7, "low": 6, "no_contribution": 7 },
+    "under_non_occupa_slot": 11,
+    "over_occupa_slot": 9,
+    "moltiplicatore_medio": 1.52,
+    "top_roi": [
+      { "nome": "Sergej Levak", "eta": 20, "molt": 1.82, "proiezione_stagionale": 3822, "tipo": "svincolato" },
+      { "nome": "Chec Benelli Doumbia", "eta": 19, "molt": 1.82, "proiezione_stagionale": 2166, "tipo": "mercato" },
+      { "nome": "Francesco Cinque", "eta": 19, "molt": 1.82, "proiezione_stagionale": 3185, "tipo": "rescissione" }
+    ]
+  },
+
+  "problemi_aperti": {
+    "p0_data_quality": "63/83 giocatori senza età — senza età il calcolo INTEL non parte. Serve enrichment TM più completo.",
+    "p1_vivaio": "Il flag vivaio non esiste nel modello dati. Il bonus 200%/400% non si attiva. Richiede contesto club-specifico.",
+    "p2_rose_attuali": "Il semaforo non sa quanti Over ha già il club target. Serve database rose Serie C.",
+    "p3_filtro_roi_vuoto": "Il filtro ALTO ROI mostra 0 risultati — nessun giocatore raggiunge soglia elite/high senza dati vivaio. Valutare se includere 'medium'."
+  },
+
+  "file_modificati": {
+    "nuovi": [
+      "src/minutaggio.py — Engine coefficienti + traffic light",
+      "docs/taccuino.html — Note scout offline-first"
+    ],
+    "modificati": [
+      "scripts/generate_dashboard.py — Integrazione INTEL nel pipeline",
+      "docs/js/app.js — Badge su card, sezione INTEL nel modal, filtro ROI",
+      "docs/css/style.css — Stili badge INTEL e traffic light",
+      "docs/index.html — Chip filtro ALTO ROI + link Taccuino"
+    ]
+  },
+
+  "urls": {
+    "repo": "https://github.com/mtornani/ob1-serie-c",
+    "dashboard": "https://mtornani.github.io/ob1-serie-c/",
+    "taccuino": "https://mtornani.github.io/ob1-serie-c/taccuino.html",
+    "data_json": "https://mtornani.github.io/ob1-serie-c/data.json"
+  }
+}

@@ -178,6 +178,11 @@ function filterAndRender() {
     filtered = filtered.filter(o => o.age != null && o.age <= 21);
   } else if (state.currentFilter === 'free') {
     filtered = filtered.filter(o => (o.opportunity_type || '').toLowerCase().includes('svincol'));
+  } else if (state.currentFilter === 'roi') {
+    filtered = filtered.filter(o => {
+      const rc = (o.intel || {}).roi_class;
+      return rc === 'elite' || rc === 'high';
+    }).sort((a,b) => ((b.intel||{}).moltiplicatore||0) - ((a.intel||{}).moltiplicatore||0));
   }
 
   // Type filter
@@ -261,6 +266,25 @@ function createCard(opp) {
   let tags = `<span class="opp-tag type-${type}">${type}</span>`;
   if (age !== null) tags += `<span class="opp-tag">${age} anni</span>`;
 
+  // INTEL badge (ROI minutaggio)
+  const intel = opp.intel || {};
+  let intelBadge = '';
+  if (intel.roi_class && intel.roi_class !== 'none' && intel.roi_class !== 'unknown') {
+    intelBadge = `<span class="intel-badge intel-${intel.roi_class}" title="${intel.roi_dettaglio || ''}">${intel.roi_label} x${intel.moltiplicatore || 0}</span>`;
+  }
+  // Traffic light (lista FIGC)
+  let trafficBadge = '';
+  if (intel.traffic_light && intel.traffic_light !== 'gray') {
+    trafficBadge = `<span class="traffic-badge traffic-${intel.traffic_light}">${intel.traffic_icon} ${intel.traffic_label}</span>`;
+  }
+  // Contextual signals (contract expiry, apprentice)
+  let signalBadges = '';
+  if (intel.signals && intel.signals.length > 0) {
+    signalBadges = intel.signals.map(s =>
+      `<span class="signal-badge signal-${s.severity}" title="${s.detail}">${s.label}</span>`
+    ).join('');
+  }
+
   return `<article class="opp-card ${tier}" data-id="${opp.id}">
     <div class="opp-top">
       <div class="opp-info">
@@ -269,7 +293,7 @@ function createCard(opp) {
       </div>
       <span class="opp-score ${tier}">${score}</span>
     </div>
-    <div class="opp-tags">${tags}</div>
+    <div class="opp-tags">${tags}${intelBadge}${trafficBadge}${signalBadges}</div>
   </article>`;
 }
 
@@ -332,6 +356,41 @@ function showDetail(opp) {
 
   const analysisText = recommendation || summary || 'Profilo monitorato dal sistema OB1.';
 
+  // INTEL section
+  const intel = opp.intel || {};
+  let intelHtml = '';
+  if (intel.roi_class && intel.roi_class !== 'unknown') {
+    intelHtml = `<div class="detail-intel">
+      <h4>> INTEL_MINUTAGGIO</h4>
+      <div class="intel-grid">
+        <div class="intel-item">
+          <span class="intel-label">ROI Minutaggio</span>
+          <span class="intel-value intel-${intel.roi_class}">${intel.roi_label}</span>
+        </div>
+        <div class="intel-item">
+          <span class="intel-label">Coefficiente</span>
+          <span class="intel-value">x${intel.coefficiente_eta || 0}</span>
+        </div>
+        <div class="intel-item">
+          <span class="intel-label">Moltiplicatore</span>
+          <span class="intel-value">x${intel.moltiplicatore || 0}</span>
+        </div>
+        <div class="intel-item">
+          <span class="intel-label">Proiez. Stagione</span>
+          <span class="intel-value">${intel.proiezione_stagionale || 0} min</span>
+        </div>
+      </div>
+      <div class="intel-detail">${intel.roi_dettaglio || ''}</div>
+      <div class="intel-traffic">
+        <span class="traffic-badge traffic-${intel.traffic_light || 'gray'}">${intel.traffic_icon || ''} Lista: ${intel.traffic_label || '?'}</span>
+        <span class="intel-lista-detail">${intel.lista_dettaglio || ''}</span>
+      </div>
+      ${(intel.signals && intel.signals.length > 0) ? `<div class="intel-signals">${intel.signals.map(s =>
+        `<div class="signal-row signal-${s.severity}"><span class="signal-label">${s.label}</span><span class="signal-detail">${s.detail}</span></div>`
+      ).join('')}</div>` : ''}
+    </div>`;
+  }
+
   elements.modalTitle.textContent = opp.player_name;
   elements.modalContent.innerHTML = `
     <div class="detail-header">
@@ -340,6 +399,7 @@ function showDetail(opp) {
     </div>
     <table class="detail-table">${metaRows}</table>
     ${statsRow}
+    ${intelHtml}
     <div class="detail-box">
       <h4>> OB1_ANALISI</h4>
       <p>${analysisText}</p>

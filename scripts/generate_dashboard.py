@@ -13,6 +13,7 @@ from datetime import datetime
 sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
 
 from scoring import OB1Scorer
+from minutaggio import genera_intel_badge
 
 
 def is_generic_tm_page(url: str) -> bool:
@@ -214,6 +215,14 @@ def main():
             'recommendation': generate_recommendation(opp),
         }
 
+        # ── INTEL Engine: ROI Minutaggio + Traffic Light FIGC + Signals ──
+        # Pass contract_expires from enrichment data for signal calculation
+        intel_input = dict(dashboard_opp)
+        intel_input['contract_expires'] = opp.get('contract_expires') or profile.get('contract_expires', '')
+        intel = genera_intel_badge(intel_input, league='serie_c')
+        dashboard_opp['intel'] = intel
+        dashboard_opp['contract_expires'] = intel_input.get('contract_expires', '')
+
         # Fix missing/bad role names - map codes to readable names
         ROLE_MAP = {
             'PO': 'Portiere', 'DC': 'Difensore Centrale', 'TD': 'Terzino Destro',
@@ -265,6 +274,13 @@ def main():
     stale_count = sum(1 for o in dashboard_opportunities if o.get('stale_free_agent'))
     svincolati_count = sum(1 for o in dashboard_opportunities if o['opportunity_type'] in ('svincolato', 'rescissione'))
 
+    # ── INTEL Stats ──
+    intel_stats = {'elite': 0, 'high': 0, 'medium': 0, 'low': 0, 'none': 0}
+    for o in dashboard_opportunities:
+        roi_class = (o.get('intel') or {}).get('roi_class', 'none')
+        if roi_class in intel_stats:
+            intel_stats[roi_class] += 1
+
     # Create data.json for the dashboard
     dashboard_data = {
         'opportunities': dashboard_opportunities,
@@ -275,10 +291,12 @@ def main():
             'cold': cold_count,
             'today': today_count,
             'svincolati': svincolati_count,
-            'stale_free_agents': stale_count
+            'stale_free_agents': stale_count,
+            'intel_roi': intel_stats,
         },
         'last_update': datetime.now().isoformat(),
-        'scoring_version': 'SCORE-002'
+        'scoring_version': 'SCORE-002',
+        'intel_version': 'INTEL-001',
     }
 
     # Write data.json to docs folder
@@ -289,12 +307,18 @@ def main():
     if stale_count:
         print(f"   ⚠️ Stale free agents (>30gg senza contratto, >=10 presenze): {stale_count}")
 
+    # INTEL summary
+    print(f"   INTEL ROI: {intel_stats['elite']} Elite, {intel_stats['high']} High, "
+          f"{intel_stats['medium']} Medium, {intel_stats['low']} Low, {intel_stats['none']} No contrib.")
+
     # Print top 5 for verification
     if dashboard_opportunities:
         print("\nTop 5 opportunities:")
         for i, opp in enumerate(dashboard_opportunities[:5], 1):
             tag = 'HOT' if opp['classification'] == 'hot' else 'WARM' if opp['classification'] == 'warm' else 'COLD'
-            print(f"  {i}. [{tag}] {opp['player_name']} - {opp['ob1_score']}/100 ({opp['opportunity_type']})")
+            intel = opp.get('intel', {})
+            roi_lbl = intel.get('roi_label', '—')
+            print(f"  {i}. [{tag}] {opp['player_name']} - {opp['ob1_score']}/100 ({opp['opportunity_type']}) | ROI: {roi_lbl}")
 
 
 def calculate_age(birth_year):

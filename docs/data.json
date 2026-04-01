@@ -38,6 +38,23 @@
         "completeness": 100
       },
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Valore di mercato interessante (5500k€).",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3822,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2028,
+        "roi_dettaglio": "Classe 2028 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
+      },
+      "contract_expires": "2028-06-30",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -81,6 +98,30 @@
         "completeness": 100
       },
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero. Valore di mercato interessante (800k€).",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3822,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "apprentice_reached",
+            "severity": "green",
+            "label": "ART.99bis OK",
+            "detail": "30 presenze — soglia 15 raggiunta, blindaggio contrattuale possibile"
+          }
+        ],
+        "birth_year": 2030,
+        "roi_dettaglio": "Classe 2030 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
+      },
+      "contract_expires": "2030-06-30",
       "days_without_contract": 31,
       "stale_free_agent": true
     },
@@ -129,6 +170,23 @@
         "completeness": 100
       },
       "recommendation": "Età ideale (25 anni), nel pieno della maturazione. In uscita dal club, costo contenuto. Passato da Racing Santander, Viterbese, Grosseto.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 2001,
+        "roi_dettaglio": "Classe 2001 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -173,6 +231,30 @@
         "completeness": 100
       },
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valutabile in prestito. Valore di mercato interessante (1000k€).",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "ROI BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.4,
+        "proiezione_stagionale": 882,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 89gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (89 giorni)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 882 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
+      },
+      "contract_expires": "2026-06-30",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -214,6 +296,36 @@
         "completeness": 100
       },
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valore di mercato interessante (400k€).",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 2166,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 89gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (89 giorni)"
+          },
+          {
+            "type": "apprentice_reached",
+            "severity": "green",
+            "label": "ART.99bis OK",
+            "detail": "17 presenze — soglia 15 raggiunta, blindaggio contrattuale possibile"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 2166 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
+      },
+      "contract_expires": "2026-06-30",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -255,6 +367,36 @@
         "completeness": 100
       },
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 2166,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 89gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (89 giorni)"
+          },
+          {
+            "type": "apprentice_reached",
+            "severity": "green",
+            "label": "ART.99bis OK",
+            "detail": "17 presenze — soglia 15 raggiunta, blindaggio contrattuale possibile"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 2166 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
+      },
+      "contract_expires": "2026-06-30",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -300,6 +442,23 @@
         "completeness": 100
       },
       "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Passato da Roma, Benevento, Catanzaro.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 2001,
+        "roi_dettaglio": "Classe 2001 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -352,6 +511,23 @@
         "completeness": 100
       },
       "recommendation": "Esperienza (31 anni), può portare leadership. Valutabile in prestito. Passato da Castiglione, Savona, San Marino.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1995,
+        "roi_dettaglio": "Classe 1995 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -395,6 +571,23 @@
         "completeness": 80
       },
       "recommendation": "Valutabile in prestito.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -436,6 +629,30 @@
         "completeness": 100
       },
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Valutabile in prestito.",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "ROI BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.4,
+        "proiezione_stagionale": 588,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 89gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (89 giorni)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 588 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
+      },
+      "contract_expires": "2026-06-30",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -480,6 +697,23 @@
         "completeness": 100
       },
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. In uscita dal club, costo contenuto. Passato da Cavese, Pompei.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3185,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2007,
+        "roi_dettaglio": "Classe 2007 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
+      },
+      "contract_expires": "",
       "days_without_contract": 8,
       "stale_free_agent": false
     },
@@ -521,6 +755,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -562,6 +813,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -603,6 +871,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -644,6 +929,23 @@
         "completeness": 100
       },
       "recommendation": "Piena maturità (26 anni), pronto per impatto immediato. In uscita dal club, costo contenuto.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 2000,
+        "roi_dettaglio": "Classe 2000 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -685,6 +987,30 @@
         "completeness": 100
       },
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 637,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 89gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (89 giorni)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 637 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
+      },
+      "contract_expires": "2026-06-30",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -726,6 +1052,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 30,
       "stale_free_agent": false
     },
@@ -767,6 +1110,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 30,
       "stale_free_agent": false
     },
@@ -808,6 +1168,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 30,
       "stale_free_agent": false
     },
@@ -849,6 +1226,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 30,
       "stale_free_agent": false
     },
@@ -890,6 +1284,23 @@
         "completeness": 100
       },
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Valutabile in prestito.",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "ROI BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 0.8,
+        "moltiplicatore": 0.8,
+        "proiezione_stagionale": 280,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2003,
+        "roi_dettaglio": "Classe 2003 (x0.8) | prestito (no bonus tess.) | molt. x0.8 | proiez. stagione: 280 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -933,6 +1344,23 @@
         "completeness": 80
       },
       "recommendation": "In uscita dal club, costo contenuto.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -974,6 +1402,23 @@
         "completeness": 100
       },
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Valutabile in prestito.",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "ROI BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 0.8,
+        "moltiplicatore": 0.8,
+        "proiezione_stagionale": 1400,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2003,
+        "roi_dettaglio": "Classe 2003 (x0.8) | prestito (no bonus tess.) | molt. x0.8 | proiez. stagione: 1400 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -1015,6 +1460,30 @@
         "completeness": 100
       },
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. In uscita dal club, costo contenuto.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3185,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "contract_expired",
+            "severity": "red",
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2025-07-01)"
+          }
+        ],
+        "birth_year": 2025,
+        "roi_dettaglio": "Classe 2025 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
+      },
+      "contract_expires": "2025-07-01",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -1058,6 +1527,23 @@
         "completeness": 80
       },
       "recommendation": "Girelli è stato ceduto dalla Sampdoria alla Casertana. Giocatore da seguire per le dinamiche della Serie C.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -1099,6 +1585,23 @@
         "completeness": 80
       },
       "recommendation": "In uscita dal club, costo contenuto.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 30,
       "stale_free_agent": false
     },
@@ -1140,6 +1643,23 @@
         "completeness": 80
       },
       "recommendation": "In uscita dal club, costo contenuto.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 30,
       "stale_free_agent": false
     },
@@ -1183,6 +1703,23 @@
         "completeness": 80
       },
       "recommendation": "Ritorno di prestito dal Modena (Serie B). Contratto in scadenza nel 2026. Cercato dalla Juve Stabia (B).",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -1224,6 +1761,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -1265,6 +1819,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -1306,6 +1877,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -1347,6 +1935,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -1388,6 +1993,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -1429,6 +2051,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 30,
       "stale_free_agent": false
     },
@@ -1472,6 +2111,23 @@
         "completeness": 80
       },
       "recommendation": "Valutabile in prestito.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -1515,6 +2171,23 @@
         "completeness": 80
       },
       "recommendation": "Valutabile in prestito.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -1556,6 +2229,23 @@
         "completeness": 80
       },
       "recommendation": "Ha rescisso il contratto con il Cavese. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -1597,6 +2287,23 @@
         "completeness": 80
       },
       "recommendation": "Ha rescisso il contratto con la Casertana. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -1638,6 +2345,23 @@
         "completeness": 80
       },
       "recommendation": "Ha rescisso il contratto con il Benevento. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -1679,6 +2403,23 @@
         "completeness": 80
       },
       "recommendation": "Ha rescisso il contratto con il Team Altamura. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -1720,6 +2461,23 @@
         "completeness": 80
       },
       "recommendation": "In uscita dal club, costo contenuto.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -1761,6 +2519,23 @@
         "completeness": 80
       },
       "recommendation": "Centrocampista della Pro Vercelli che potrebbe cambiare squadra durante la sessione di mercato invernale. Si valutano proposte per un miglioramento ec",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -1802,6 +2577,23 @@
         "completeness": 80
       },
       "recommendation": "Centrocampista del Catania che potrebbe cambiare squadra durante la sessione di mercato invernale. Si valutano proposte per un miglioramento economico",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -1843,6 +2635,23 @@
         "completeness": 100
       },
       "recommendation": "Esperienza (31 anni), può portare leadership. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1995,
+        "roi_dettaglio": "Classe 1995 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
       "days_without_contract": 29,
       "stale_free_agent": false
     },
@@ -1888,6 +2697,23 @@
         "completeness": 80
       },
       "recommendation": "Passato da Borgoratti, Atalanta, Sampdoria.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -1931,6 +2757,23 @@
         "completeness": 100
       },
       "recommendation": "Giocatore esperto (2005 anni). Valutabile in prestito.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 21,
+        "roi_dettaglio": "Classe 21 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 21 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -1974,6 +2817,23 @@
         "completeness": 80
       },
       "recommendation": "Ritorno di prestito dall'Avellino (Serie C). Cedibile.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2020,6 +2880,23 @@
         "completeness": 80
       },
       "recommendation": "Passato da Virtus Entella, Pistoiese, Avellino.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2063,6 +2940,23 @@
         "completeness": 80
       },
       "recommendation": "Valutabile in prestito.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2106,6 +3000,23 @@
         "completeness": 80
       },
       "recommendation": "Talento classe 2007 proveniente dalle giovanili del Bayern Monaco. Inizierà con la Juve NextGen in Serie C.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2147,6 +3058,23 @@
         "completeness": 80
       },
       "recommendation": "In uscita dal club, costo contenuto.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 30,
       "stale_free_agent": false
     },
@@ -2188,6 +3116,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 30,
       "stale_free_agent": false
     },
@@ -2229,6 +3174,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 30,
       "stale_free_agent": false
     },
@@ -2270,6 +3232,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 30,
       "stale_free_agent": false
     },
@@ -2311,6 +3290,23 @@
         "completeness": 80
       },
       "recommendation": "Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 30,
       "stale_free_agent": false
     },
@@ -2352,6 +3348,23 @@
         "completeness": 80
       },
       "recommendation": "Acquistato a titolo definitivo dal Latina dal Sorrento.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2395,6 +3408,23 @@
         "completeness": 80
       },
       "recommendation": "Valutabile in prestito.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2436,6 +3466,23 @@
         "completeness": 80
       },
       "recommendation": "Valutabile in prestito.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2477,6 +3524,23 @@
         "completeness": 100
       },
       "recommendation": "Giocatore esperto (2002 anni).",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3185,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 2027,
+        "roi_dettaglio": "Classe 2027 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "lista_dettaglio": "Over classe 24 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "2027-06-30",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2518,6 +3582,23 @@
         "completeness": 100
       },
       "recommendation": "Giocatore esperto (2001 anni).",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 25,
+        "roi_dettaglio": "Classe 25 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 25 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2559,6 +3640,23 @@
         "completeness": 80
       },
       "recommendation": "Valutabile in prestito.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2600,6 +3698,23 @@
         "completeness": 80
       },
       "recommendation": "Ha segnato un gol importante contro il Foggia. Potrebbe essere un'opportunità per club di Serie C che cercano un centrocampista con capacità di inseri",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2641,6 +3756,23 @@
         "completeness": 80
       },
       "recommendation": "Autore di una doppietta, è un giocatore che si sta mettendo in mostra in un Siracusa con problemi societari. Potrebbe essere un'opportunità per club d",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2682,6 +3814,23 @@
         "completeness": 80
       },
       "recommendation": "Dopo essere stato messo da parte, è stato rilanciato da Cosmi e ha offerto una prestazione super. Potrebbe essere un'opportunità per club di Serie C c",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2723,6 +3872,23 @@
         "completeness": 80
       },
       "recommendation": "Nonostante qualche critica, ha dimostrato forza e personalità, ottenendo il decimo clean sheet stagionale. Potrebbe essere un'opportunità per club di ",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2764,6 +3930,23 @@
         "completeness": 80
       },
       "recommendation": "Raffaele Russo potrebbe lasciare l'Avellino. Il Benevento sta facendo un tentativo per arrivare al numero 10 biancoverde.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2805,6 +3988,23 @@
         "completeness": 80
       },
       "recommendation": "La Pro Patria cerca un rinforzo di spessore: vicino l'arrivo di Andrea Sala dal Crotone.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2846,6 +4046,23 @@
         "completeness": 80
       },
       "recommendation": "Il Team Altamura non sarebbe riuscita a chiudere per Agostino Camigliano del Potenza.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2887,6 +4104,23 @@
         "completeness": 80
       },
       "recommendation": "Il Campobasso è interessato a rinforzare il centrocampo con Pasquale Riccardi dal Sorrento.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2928,6 +4162,23 @@
         "completeness": 80
       },
       "recommendation": "Attaccante del Siracusa, acquistato dal Cagliari che lo lascerà in prestito fino a giugno.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -2969,6 +4220,23 @@
         "completeness": 80
       },
       "recommendation": "Ha rescisso il contratto con il Casarano. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -3010,6 +4278,30 @@
         "completeness": 80
       },
       "recommendation": "Ha rescisso il contratto con l'AZ Picerno. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3185,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [
+          {
+            "type": "contract_expired",
+            "severity": "red",
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-01-30)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "2026-01-30",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -3051,6 +4343,23 @@
         "completeness": 80
       },
       "recommendation": "Ha rescisso il contratto con l'AZ Picerno. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -3092,6 +4401,23 @@
         "completeness": 80
       },
       "recommendation": "Attaccante dell'Imolese che potrebbe cambiare squadra durante la sessione di mercato invernale. Si valutano proposte per un miglioramento economico o ",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -3133,6 +4459,23 @@
         "completeness": 80
       },
       "recommendation": "Ceduto a titolo definitivo dal Lecce al Catanzaro.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -3174,6 +4517,23 @@
         "completeness": 80
       },
       "recommendation": "Punta centrale in arrivo dal Casarano all'Atalanta U23.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -3215,6 +4575,23 @@
         "completeness": 80
       },
       "recommendation": "Rabbi è un centravanti del Cittadella. L'articolo menziona l'interesse della Reggiana per lui, suggerendo una potenziale opportunità di mercato.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -3256,6 +4633,23 @@
         "completeness": 100
       },
       "recommendation": "Giocatore esperto (2003 anni). Valutabile in prestito.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 23,
+        "roi_dettaglio": "Classe 23 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 23 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -3297,6 +4691,23 @@
         "completeness": 80
       },
       "recommendation": "Valutabile in prestito.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -3338,6 +4749,23 @@
         "completeness": 80
       },
       "recommendation": "Valutabile in prestito.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -3379,6 +4807,23 @@
         "completeness": 80
       },
       "recommendation": "La Juventus Under 23 sarebbe vicino al passaggio in bianconero di Emeka Adiele del West Ham.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -3420,6 +4865,23 @@
         "completeness": 80
       },
       "recommendation": "Il Foggia avrebbe messo nel mirino Micheal Liguori della Salernitana.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -3461,6 +4923,23 @@
         "completeness": 80
       },
       "recommendation": "Il Giugliano prova a chiudere il colpo per il centrocampo con Jeremie Broh.",
+      "intel": {
+        "roi_class": "unknown",
+        "roi_label": "N/D",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "gray",
+        "traffic_label": "?",
+        "traffic_icon": "⚪",
+        "is_over": null,
+        "signals": [],
+        "birth_year": null,
+        "roi_dettaglio": "Età non disponibile",
+        "lista_dettaglio": "Età non disponibile — impossibile classificare"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     }
@@ -3472,8 +4951,16 @@
     "cold": 27,
     "today": 0,
     "svincolati": 28,
-    "stale_free_agents": 1
+    "stale_free_agents": 1,
+    "intel_roi": {
+      "elite": 0,
+      "high": 0,
+      "medium": 9,
+      "low": 4,
+      "none": 8
+    }
   },
-  "last_update": "2026-04-01T07:46:55.782127",
-  "scoring_version": "SCORE-002"
+  "last_update": "2026-04-01T11:10:24.975434",
+  "scoring_version": "SCORE-002",
+  "intel_version": "INTEL-001"
 }
