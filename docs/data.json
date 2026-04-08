@@ -64,7 +64,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2030-06-30",
-      "days_without_contract": 37,
+      "days_without_contract": 38,
       "stale_free_agent": true
     },
     {
@@ -187,7 +187,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -246,8 +246,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 83gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (83 giorni)"
+            "label": "SCADE 82gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (82 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -311,8 +311,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 83gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (83 giorni)"
+            "label": "SCADE 82gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (82 giorni)"
           },
           {
             "type": "apprentice_reached",
@@ -327,67 +327,6 @@
       },
       "contract_expires": "2026-06-30",
       "days_without_contract": 0,
-      "stale_free_agent": false
-    },
-    {
-      "id": "opp_160d0fc9",
-      "player_name": "Francesco Cinque",
-      "age": 19,
-      "role": "TD",
-      "role_name": "Terzino Destro",
-      "opportunity_type": "rescissione",
-      "reported_date": "2026-03-24",
-      "source_name": "TMW",
-      "source_url": "https://www.tuttomercatoweb.com/serie-c/cavese-il-terzino-19enne-francesco-cinque-rescinde-il-contratto-e-svincolato-2128745",
-      "previous_clubs": [
-        "Cavese",
-        "Pompei"
-      ],
-      "current_club": "Cavese",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "Francesco Cinque, terzino destro classe 2006, ha rescisso consensualmente il contratto con la Cavese ed è ora svincolato. Cresciuto nel settore giovanile della Cavese, ha giocato in prestito al Pompei in Serie D (18 presenze) e ha collezionato 23 presenze con la Cavese tra il 2023 e il 2024. È un giovane talento con esperienza in Serie D.",
-      "nationality": null,
-      "second_nationality": null,
-      "foot": null,
-      "market_value": null,
-      "market_value_formatted": null,
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-03-24T06:22:05.275697",
-      "ob1_score": 67,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 60,
-        "opportunity_type": 95,
-        "experience": 60,
-        "age": 65,
-        "market_value": 40,
-        "league_fit": 80,
-        "source": 80,
-        "completeness": 100
-      },
-      "recommendation": "Profilo giovane (19 anni), potenziale di crescita. In uscita dal club, costo contenuto. Passato da Cavese, Pompei.",
-      "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 3185,
-        "traffic_light": "green",
-        "traffic_label": "UNDER",
-        "traffic_icon": "🟢",
-        "is_over": false,
-        "signals": [],
-        "birth_year": 2007,
-        "roi_dettaglio": "Classe 2007 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
-        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 14,
       "stale_free_agent": false
     },
     {
@@ -443,8 +382,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 83gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (83 giorni)"
+            "label": "SCADE 82gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (82 giorni)"
           },
           {
             "type": "apprentice_reached",
@@ -593,6 +532,67 @@
       "stale_free_agent": false
     },
     {
+      "id": "opp_160d0fc9",
+      "player_name": "Francesco Cinque",
+      "age": 19,
+      "role": "TD",
+      "role_name": "Terzino Destro",
+      "opportunity_type": "rescissione",
+      "reported_date": "2026-03-24",
+      "source_name": "TMW",
+      "source_url": "https://www.tuttomercatoweb.com/serie-c/cavese-il-terzino-19enne-francesco-cinque-rescinde-il-contratto-e-svincolato-2128745",
+      "previous_clubs": [
+        "Cavese",
+        "Pompei"
+      ],
+      "current_club": "Cavese",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "Francesco Cinque, terzino destro classe 2006, ha rescisso consensualmente il contratto con la Cavese ed è ora svincolato. Cresciuto nel settore giovanile della Cavese, ha giocato in prestito al Pompei in Serie D (18 presenze) e ha collezionato 23 presenze con la Cavese tra il 2023 e il 2024. È un giovane talento con esperienza in Serie D.",
+      "nationality": null,
+      "second_nationality": null,
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-03-24T06:22:05.275697",
+      "ob1_score": 65,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 95,
+        "experience": 60,
+        "age": 65,
+        "market_value": 40,
+        "league_fit": 80,
+        "source": 80,
+        "completeness": 100
+      },
+      "recommendation": "Profilo giovane (19 anni), potenziale di crescita. In uscita dal club, costo contenuto. Passato da Cavese, Pompei.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3185,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2007,
+        "roi_dettaglio": "Classe 2007 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 15,
+      "stale_free_agent": false
+    },
+    {
       "id": "opp_a99b4224",
       "player_name": "Rizzo Pinna",
       "age": null,
@@ -705,8 +705,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 83gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (83 giorni)"
+            "label": "SCADE 82gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (82 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -772,7 +772,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -830,7 +830,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -888,7 +888,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -944,8 +944,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 83gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (83 giorni)"
+            "label": "SCADE 82gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (82 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -1011,7 +1011,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -1069,7 +1069,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 36,
+      "days_without_contract": 37,
       "stale_free_agent": false
     },
     {
@@ -1127,7 +1127,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 36,
+      "days_without_contract": 37,
       "stale_free_agent": false
     },
     {
@@ -1185,7 +1185,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 36,
+      "days_without_contract": 37,
       "stale_free_agent": false
     },
     {
@@ -1243,7 +1243,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 36,
+      "days_without_contract": 37,
       "stale_free_agent": false
     },
     {
@@ -1421,7 +1421,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -1724,7 +1724,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2025-07-01",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -1782,7 +1782,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 36,
+      "days_without_contract": 37,
       "stale_free_agent": false
     },
     {
@@ -1840,7 +1840,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 36,
+      "days_without_contract": 37,
       "stale_free_agent": false
     },
     {
@@ -2081,7 +2081,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -2139,7 +2139,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -2197,7 +2197,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -2255,7 +2255,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -2313,7 +2313,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -2371,7 +2371,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 36,
+      "days_without_contract": 37,
       "stale_free_agent": false
     },
     {
@@ -2607,7 +2607,7 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -2959,7 +2959,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 35,
+      "days_without_contract": 36,
       "stale_free_agent": false
     },
     {
@@ -3193,7 +3193,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 36,
+      "days_without_contract": 37,
       "stale_free_agent": false
     },
     {
@@ -3251,7 +3251,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 36,
+      "days_without_contract": 37,
       "stale_free_agent": false
     },
     {
@@ -3309,7 +3309,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 36,
+      "days_without_contract": 37,
       "stale_free_agent": false
     },
     {
@@ -3367,7 +3367,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 36,
+      "days_without_contract": 37,
       "stale_free_agent": false
     },
     {
@@ -3425,7 +3425,7 @@
         "lista_dettaglio": "Età non disponibile — impossibile classificare"
       },
       "contract_expires": "",
-      "days_without_contract": 36,
+      "days_without_contract": 37,
       "stale_free_agent": false
     },
     {
@@ -3773,7 +3773,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 5,
+      "days_without_contract": 6,
       "stale_free_agent": false
     },
     {
@@ -5018,7 +5018,7 @@
       "none": 9
     }
   },
-  "last_update": "2026-04-07T19:17:57.320054",
+  "last_update": "2026-04-08T02:52:51.194160",
   "scoring_version": "SCORE-002",
   "intel_version": "INTEL-001"
 }
