@@ -1,194 +1,1047 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>OB1 Radar - Serie C Scout</title>
-    <meta name="description" content="Ouroboros Protocol: scout AI per Serie C e Serie D italiana. Trova opportunita di mercato prima degli altri.">
-    <meta name="theme-color" content="#0a0a0a">
-    <meta property="og:title" content="OB1 Radar - Serie C Scout">
-    <meta property="og:description" content="Scout AI automatico per la Lega Pro. Monitora giocatori, segnala opportunita, genera report. Ogni 6 ore.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mtornani.github.io/ob1-serie-c/">
-    <meta name="twitter:card" content="summary">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icons/icon-192.svg">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%2300ff41' stroke-width='4'/><circle cx='50' cy='15' r='5' fill='%2300ff41'/></svg>">
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a0a" />
+<meta name="description" content="Ouroboros Protocol: scout AI per Serie C e Lega Pro italiana. Trova opportunita di mercato prima degli altri.">
+<meta property="og:title" content="OB1 // Lega Pro Scout">
+<meta property="og:description" content="Scout AI automatico per la Lega Pro. Monitora giocatori, segnala opportunita, genera report. Ogni 6 ore.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mtornani.github.io/ob1-serie-c/">
+<meta name="twitter:card" content="summary">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.svg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%2300ff66' stroke-width='4'/><circle cx='50' cy='15' r='5' fill='%2300ff66'/></svg>">
+<title>OB1 // Lega Pro Scout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+<script>
+const TWEAK_DEFAULTS = {
+  "accent":       "#00ff66",
+  "density":      "comfortable",
+  "cardStyle":    "brief",
+  "scoreWeight":  "heavy",
+  "urgencyMode":  "bar"
+};
+</script>
+
+<style>
+:root{
+  --bg:          #0a0a0a;
+  --bg-1:        #0f0f0f;
+  --bg-2:        #151515;
+  --line:        #222;
+  --line-2:      #2a2a2a;
+  --ink:         #e8e8e8;
+  --ink-dim:     #9a9a9a;
+  --ink-mute:    #5c5c5c;
+  --ink-ghost:   #3a3a3a;
+
+  --acc:         #00ff66;
+  --acc-dim:     #00c94f;
+  --acc-bg:      rgba(0,255,102,.08);
+
+  --red:         #ff3b4d;
+  --red-bg:      rgba(255,59,77,.12);
+  --amber:       #ffb020;
+  --amber-bg:    rgba(255,176,32,.12);
+  --blue:        #4d9bff;
+  --blue-bg:     rgba(77,155,255,.12);
+  --grey-bg:     rgba(255,255,255,.04);
+
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: 'Space Grotesk', -apple-system, system-ui, sans-serif;
+
+  --step: 12px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html,body{ background:var(--bg); color:var(--ink); }
+body{
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  overflow-x:hidden;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+button, input, select{ font:inherit; color:inherit; background:none; border:0; }
+button{ cursor:pointer; }
+a{ color:inherit; text-decoration:none; }
+
+/* ============ SCANLINE / NOISE ============ */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0) 0,
+      rgba(255,255,255,0) 2px,
+      rgba(255,255,255,.012) 3px,
+      rgba(255,255,255,0) 4px
+    );
+  pointer-events:none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* ============ SHELL ============ */
+.shell{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============ TOP BAR ============ */
+.topbar{
+  position: sticky;
+  top:0; z-index: 20;
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner{
+  max-width:1200px; margin:0 auto;
+  padding: 12px 16px;
+  display:grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items:center;
+}
+.brand{
+  display:flex; align-items:center; gap:8px;
+  font-family: var(--mono);
+  font-weight:700;
+  font-size:12px;
+  letter-spacing: .04em;
+}
+.brand .caret{
+  color: var(--acc);
+  text-shadow: 0 0 12px color-mix(in oklab, var(--acc) 55%, transparent);
+  animation: blink 1.1s steps(2,end) infinite;
+}
+@keyframes blink{ 50%{ opacity:.35; } }
+.brand .pipe{ color: var(--ink-ghost); }
+.brand .sub{ color: var(--ink-dim); font-weight:500; }
+
+.topbar .status{
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-dim);
+  display:flex; gap:10px; align-items:center;
+  justify-content:flex-end;
+  white-space:nowrap;
+  overflow:hidden;
+}
+.status .dot{
+  width:6px; height:6px; border-radius:999px;
+  background: var(--acc);
+  box-shadow: 0 0 8px var(--acc);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{ 50%{ opacity:.45; transform:scale(.85); } }
+
+.topbar-links{ display:flex; gap:6px; }
+.topbar-links a{
+  font-size: 10.5px; letter-spacing:.08em;
+  padding: 6px 8px;
+  color: var(--ink-dim);
+  border: 1px solid transparent;
+}
+.topbar-links a:hover{ color: var(--ink); border-color: var(--line-2); }
+
+@media (max-width: 720px){
+  .topbar-inner{ grid-template-columns: auto 1fr; }
+  .topbar .status{ display:none; }
+}
+
+/* ============ HERO / COMMAND BAR ============ */
+.cmd{
+  padding: 20px 0 14px;
+  border-bottom: 1px solid var(--line);
+}
+.cmd-row{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: end;
+}
+.cmd h1{
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: clamp(22px, 4.8vw, 34px);
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+.cmd h1 .green{ color: var(--acc); }
+.cmd .blurb{
+  margin-top: 6px;
+  font-size: 12px; color: var(--ink-dim);
+  max-width: 54ch;
+}
+
+.counters{
+  display:flex; gap: 22px; align-items: baseline;
+  font-family: var(--mono);
+}
+.counter{
+  display:flex; flex-direction:column; gap:2px;
+  align-items:flex-end; min-width: 52px;
+}
+.counter .n{ font-size: 22px; font-weight:700; line-height:1; color: var(--ink); }
+.counter .l{ font-size: 9.5px; letter-spacing:.12em; color: var(--ink-mute); }
+.counter.hot .n{ color: var(--acc); }
+
+@media (max-width: 720px){
+  .cmd-row{ grid-template-columns: 1fr; }
+  .counters{ gap: 14px; justify-content: space-between; }
+  .counter{ align-items:flex-start; min-width: 0; }
+}
+
+/* ============ TICKER ============ */
+.ticker{
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 8px 0;
+  font-size: 10.5px;
+  color: var(--ink-dim);
+  display:flex;
+  mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.ticker-track{
+  display:inline-flex; gap: 28px;
+  animation: tick 55s linear infinite;
+  padding-left: 100%;
+}
+.ticker:hover .ticker-track{ animation-play-state: paused; }
+@keyframes tick{ to{ transform: translateX(-100%); } }
+.ticker .t-item{ display:inline-flex; gap:8px; align-items:center; }
+.ticker .t-item .tag{ color: var(--ink-mute); }
+.ticker .t-item .n{ color: var(--ink); font-weight:600; }
+.ticker .t-item .up{ color: var(--acc); }
+.ticker .t-item .dn{ color: var(--red); }
+.ticker .dot{ color: var(--ink-ghost); }
+
+/* ============ CONTROLS ============ */
+.controls{
+  position: sticky;
+  top: 48px;
+  z-index: 15;
+  background: color-mix(in oklab, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
+}
+.search{
+  display:flex; align-items:center; gap:8px;
+  border: 1px solid var(--line-2);
+  padding: 10px 12px;
+  background: var(--bg-1);
+  transition: border-color .15s;
+}
+.search:focus-within{ border-color: var(--acc); }
+.search .prompt{ color: var(--acc); font-weight:700; }
+.search input{
+  flex:1; min-width:0;
+  font-family: var(--mono);
+  font-size: 14px;
+  outline:0;
+}
+.search input::placeholder{ color: var(--ink-mute); }
+.search .kbd{
+  font-size:10px; color: var(--ink-mute);
+  border:1px solid var(--line-2); padding:2px 6px;
+}
+@media (max-width: 720px){ .search .kbd{ display:none; } }
+
+.filterbar{
+  display:flex; gap: 0;
+  margin-top: 10px;
+  overflow-x:auto;
+  border: 1px solid var(--line-2);
+  scrollbar-width: none;
+}
+.filterbar::-webkit-scrollbar{ display:none; }
+.chip{
+  flex: 1 0 auto;
+  padding: 10px 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .09em;
+  color: var(--ink-dim);
+  border-right: 1px solid var(--line-2);
+  white-space: nowrap;
+  position: relative;
+  transition: color .12s, background .12s;
+}
+.chip:last-child{ border-right: 0; }
+.chip .num{ margin-left:6px; color: var(--ink-mute); font-size:10px; }
+.chip:hover{ color: var(--ink); background: var(--bg-1); }
+.chip.on{
+  color: var(--bg);
+  background: var(--acc);
+}
+.chip.on .num{ color: color-mix(in oklab, var(--bg) 80%, transparent); }
+
+.sub-row{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top: 10px;
+  font-size: 11px; color: var(--ink-mute);
+}
+.sub-row select{
+  background: var(--bg-1);
+  border:1px solid var(--line-2);
+  padding:5px 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink);
+}
+.sub-row .sort-group{ display:flex; gap:6px; }
+.results{ color: var(--ink-dim); }
+.results .n{ color: var(--acc); font-weight:700; }
+
+/* ============ CARD GRID ============ */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 10px;
+  padding: 14px 0 80px;
+}
+@media (max-width: 520px){
+  .grid{ grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* --- CARD --- */
+.card{
+  position: relative;
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  padding: 14px 14px 12px;
+  cursor: pointer;
+  transition: border-color .12s, transform .12s, background .12s;
+  isolation: isolate;
+  overflow: hidden;
+}
+.card:hover{
+  border-color: var(--acc);
+  background: var(--bg-2);
+}
+.card:hover .name{ color: var(--acc); }
+.card:active{ transform: translateY(1px); }
+
+/* urgency left bar */
+.card .urgency{
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--ink-ghost);
+}
+.card[data-urgency="critical"] .urgency{ background: var(--red); box-shadow: 0 0 8px var(--red); }
+.card[data-urgency="high"]     .urgency{ background: var(--amber); }
+.card[data-urgency="warm"]     .urgency{ background: var(--acc); }
+.card[data-urgency="cold"]     .urgency{ background: var(--ink-ghost); }
+
+/* tier-score glow */
+.card[data-tier="hot"]{
+  background: linear-gradient(180deg, rgba(0,255,102,.03) 0%, transparent 60%), var(--bg-1);
+}
+
+.card-head{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: flex-start;
+}
+.name-block .name{
+  font-family: var(--sans);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  line-height: 1.1;
+  color: var(--ink);
+  transition: color .12s;
+}
+.name-block .meta{
+  margin-top: 3px;
+  font-size: 11.5px;
+  color: var(--ink-dim);
+  display:flex; gap:6px; align-items:center; flex-wrap:wrap;
+}
+.name-block .meta .sep{ color: var(--ink-ghost); }
+.name-block .meta .role{ color: var(--ink); }
+.name-block .meta .age{ color: var(--ink-dim); }
+
+/* big score */
+.score{
+  font-family: var(--mono);
+  font-weight: 800;
+  font-size: 42px;
+  line-height: .85;
+  letter-spacing: -.02em;
+  color: var(--ink);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.card[data-tier="hot"]  .score{ color: var(--acc); text-shadow: 0 0 18px color-mix(in oklab, var(--acc) 40%, transparent); }
+.card[data-tier="warm"] .score{ color: var(--ink); }
+.card[data-tier="cold"] .score{ color: var(--ink-mute); }
+.score .dlabel{
+  display:block;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: .14em;
+  color: var(--ink-mute);
+  margin-top: 3px;
+  text-align: right;
+}
+
+/* body row */
+.card-body{
+  margin-top: 12px;
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.tag-row{
+  display:flex; flex-wrap:wrap; gap:4px;
+}
+.tag{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  padding: 3px 6px;
+  border: 1px solid var(--line-2);
+  color: var(--ink-dim);
+  background: var(--bg-2);
+  white-space: nowrap;
+}
+.tag.type-svincolato { color: var(--acc);   border-color: color-mix(in oklab, var(--acc) 40%, var(--line-2)); background: var(--acc-bg); }
+.tag.type-rescissione{ color: var(--amber); border-color: color-mix(in oklab, var(--amber) 40%, var(--line-2)); background: var(--amber-bg); }
+.tag.type-prestito   { color: var(--blue);  border-color: color-mix(in oklab, var(--blue) 40%, var(--line-2)); background: var(--blue-bg); }
+.tag.type-scadenza   { color: var(--red);   border-color: color-mix(in oklab, var(--red) 40%, var(--line-2)); background: var(--red-bg); }
+.tag.type-mercato    { color: var(--ink);   border-color: var(--line-2); }
+
+.tag.u21   { color: var(--acc); border-color: color-mix(in oklab, var(--acc) 40%, var(--line-2)); }
+.tag.roi-elite  { color: var(--acc); border-color: color-mix(in oklab, var(--acc) 40%, var(--line-2)); background: var(--acc-bg); }
+.tag.roi-high   { color: var(--acc-dim); border-color: color-mix(in oklab, var(--acc-dim) 40%, var(--line-2)); }
+.tag.roi-medium { color: var(--blue); border-color: color-mix(in oklab, var(--blue) 40%, var(--line-2)); }
+.tag.roi-low    { color: var(--ink-mute); }
+
+/* urgency timer */
+.timer{
+  font-family: var(--mono);
+  text-align: right;
+  min-width: 70px;
+}
+.timer .days{
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.02em;
+}
+.timer .unit{
+  font-size: 9px; letter-spacing: .12em;
+  color: var(--ink-mute);
+  margin-top: 2px;
+  display:block;
+}
+.card[data-urgency="critical"] .timer .days{ color: var(--red); }
+.card[data-urgency="high"]     .timer .days{ color: var(--amber); }
+.card[data-urgency="warm"]     .timer .days{ color: var(--acc); }
+.card[data-urgency="cold"]     .timer .days{ color: var(--ink-mute); }
+
+/* progress bar for contract */
+.card-bar{
+  margin-top: 10px;
+  height: 2px;
+  background: var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.card-bar .fill{
+  position:absolute; left:0; top:0; bottom:0;
+  width: 30%;
+  background: var(--ink-ghost);
+}
+.card[data-urgency="critical"] .card-bar .fill{ background: var(--red); }
+.card[data-urgency="high"]     .card-bar .fill{ background: var(--amber); }
+.card[data-urgency="warm"]     .card-bar .fill{ background: var(--acc); }
+.card[data-urgency="cold"]     .card-bar .fill{ background: var(--ink-ghost); }
+
+/* empty */
+.empty{
+  padding: 60px 16px;
+  text-align:center;
+  color: var(--ink-mute);
+  font-family: var(--mono);
+}
+.empty .big{
+  font-family: var(--mono);
+  color: var(--acc);
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* ============ DETAIL DRAWER ============ */
+.overlay{
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.75);
+  backdrop-filter: blur(4px);
+  display: none;
+  z-index: 50;
+  overscroll-behavior: contain;
+}
+.overlay.open{ display: block; animation: fadeIn .15s ease; }
+@keyframes fadeIn{ from{ opacity:0; } }
+
+.drawer{
+  position: fixed;
+  right: 0; top: 0; bottom: 0;
+  width: min(560px, 100%);
+  background: var(--bg);
+  border-left: 1px solid var(--acc);
+  box-shadow: -24px 0 60px rgba(0,0,0,.6);
+  transform: translateX(100%);
+  transition: transform .22s cubic-bezier(.2,.7,.2,1);
+  overflow-y: auto;
+  z-index: 60;
+  display:flex; flex-direction: column;
+}
+.overlay.open .drawer{ transform: translateX(0); }
+
+@media (max-width: 560px){
+  .drawer{
+    top: auto;
+    right: 0; left: 0; bottom: 0;
+    width: 100%;
+    height: 92vh;
+    border-left: 0;
+    border-top: 1px solid var(--acc);
+    transform: translateY(100%);
+  }
+  .overlay.open .drawer{ transform: translateY(0); }
+}
+
+.drawer-top{
+  position: sticky; top:0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 18px;
+  display:flex; justify-content:space-between; align-items:center;
+  gap: 14px;
+  z-index: 5;
+}
+.drawer-top .bread{
+  font-size: 10.5px;
+  color: var(--ink-mute);
+  letter-spacing: .1em;
+}
+.drawer-top .bread .acc{ color: var(--acc); }
+.drawer-top .close{
+  width: 34px; height: 34px;
+  border: 1px solid var(--line-2);
+  color: var(--ink-dim);
+  font-size: 18px;
+  display:grid; place-items:center;
+  transition: border-color .12s, color .12s;
+}
+.drawer-top .close:hover{ border-color: var(--red); color: var(--red); }
+
+.brief{
+  padding: 18px;
+  display:flex; flex-direction: column;
+  gap: 18px;
+}
+
+/* headline block */
+.brief-head{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: flex-start;
+}
+.brief-head .name{
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: clamp(26px, 6vw, 36px);
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.brief-head .sub{
+  margin-top: 6px;
+  font-size: 12px; color: var(--ink-dim);
+  display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+}
+.brief-head .sub .sep{ color: var(--ink-ghost); }
+.brief-head .sub .role{ color: var(--ink); }
+.brief-head .big-score{
+  font-family: var(--mono);
+  font-size: 60px;
+  font-weight: 800;
+  line-height: .8;
+  letter-spacing: -.03em;
+  font-variant-numeric: tabular-nums;
+}
+.brief-head .big-score.hot{ color: var(--acc); text-shadow: 0 0 22px color-mix(in oklab, var(--acc) 45%, transparent); }
+.brief-head .big-score.warm{ color: var(--ink); }
+.brief-head .big-score.cold{ color: var(--ink-mute); }
+.brief-head .big-score .pct{ font-size: 14px; color: var(--ink-mute); }
+
+/* urgency bloc */
+.urgency-bloc{
+  border: 1px solid var(--line-2);
+  padding: 12px 14px;
+  display:grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center;
+  background: var(--bg-1);
+}
+.urgency-bloc .badge{
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .14em;
+  padding: 4px 7px;
+  border: 1px solid var(--line-2);
+  color: var(--ink-dim);
+  background: var(--bg-2);
+}
+.urgency-bloc .countdown{
+  font-family: var(--mono);
+  font-size: 20px; font-weight:700; letter-spacing:-.01em;
+  font-variant-numeric: tabular-nums;
+  text-align:right;
+}
+.urgency-bloc[data-urgency="critical"]{ border-color: color-mix(in oklab, var(--red) 55%, var(--line-2)); background: var(--red-bg); }
+.urgency-bloc[data-urgency="critical"] .countdown{ color: var(--red); }
+.urgency-bloc[data-urgency="critical"] .badge{ color: var(--red); border-color: var(--red); }
+.urgency-bloc[data-urgency="high"]{ border-color: color-mix(in oklab, var(--amber) 55%, var(--line-2)); background: var(--amber-bg); }
+.urgency-bloc[data-urgency="high"] .countdown{ color: var(--amber); }
+.urgency-bloc[data-urgency="high"] .badge{ color: var(--amber); border-color: var(--amber); }
+.urgency-bloc[data-urgency="warm"]{ border-color: color-mix(in oklab, var(--acc) 35%, var(--line-2)); }
+.urgency-bloc[data-urgency="warm"] .countdown{ color: var(--acc); }
+.urgency-bloc .line{
+  display:flex; flex-direction:column; gap:2px;
+  font-size: 11px; color: var(--ink-dim);
+}
+.urgency-bloc .line .strong{ color: var(--ink); font-weight:600; }
+
+/* stats strip */
+.strip{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.strip .cell{
+  background: var(--bg);
+  padding: 12px 10px;
+  display:flex; flex-direction:column; gap:4px;
+  align-items: flex-start;
+}
+.strip .cell .v{
+  font-family: var(--mono);
+  font-size: 20px; font-weight:700;
+  line-height:1;
+  font-variant-numeric: tabular-nums;
+}
+.strip .cell .l{
+  font-size: 9.5px; letter-spacing:.12em;
+  color: var(--ink-mute);
+}
+
+/* section */
+.sect{
+  display:flex; flex-direction:column; gap:10px;
+}
+.sect-title{
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing:.14em;
+  color: var(--acc);
+  display:flex; align-items:center; gap:8px;
+  border-bottom: 1px dashed var(--line-2);
+  padding-bottom: 6px;
+}
+.sect-title::before{ content: ">"; color: var(--acc); }
+.sect-title .dim{ color: var(--ink-mute); margin-left:auto; font-family: var(--mono); letter-spacing: .08em; }
+
+/* meta table */
+.meta-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--line-2);
+}
+.meta-grid .cell{
+  padding: 9px 12px;
+  border-right: 1px solid var(--line-2);
+  border-bottom: 1px solid var(--line-2);
+  display:flex; flex-direction:column; gap:2px;
+  font-size: 12px;
+}
+.meta-grid .cell:nth-child(2n){ border-right: 0; }
+.meta-grid .cell:nth-last-child(-n+2){ border-bottom: 0; }
+.meta-grid .cell .k{
+  font-size: 9.5px; letter-spacing:.12em; color: var(--ink-mute);
+}
+.meta-grid .cell .v{ color: var(--ink); font-weight:500; }
+
+/* minutaggio intel */
+.intel-grid{
+  display:grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+}
+.intel-cell{
+  border-left: 2px solid var(--acc);
+  padding: 8px 12px;
+  background: var(--bg-1);
+}
+.intel-cell .k{ font-size: 9.5px; letter-spacing:.12em; color: var(--ink-mute); }
+.intel-cell .v{ font-family: var(--mono); font-size: 16px; font-weight:700; color: var(--ink); margin-top:2px; font-variant-numeric: tabular-nums; }
+.intel-cell.acc .v{ color: var(--acc); }
+.intel-cell.blue .v{ color: var(--blue); }
+
+.intel-note{
+  font-size: 11px; color: var(--ink-dim);
+  padding: 8px 12px;
+  background: var(--bg-1);
+  border: 1px dashed var(--line-2);
+}
+
+.lista{
+  display:flex; gap: 10px; align-items: center; padding: 10px 12px;
+  border: 1px solid var(--line-2); background: var(--bg-1);
+}
+.lista .light{
+  width:10px; height:10px; border-radius:999px;
+  background: var(--acc); box-shadow: 0 0 8px var(--acc);
+}
+.lista.green .light{ background: var(--acc); box-shadow: 0 0 8px var(--acc); }
+.lista.amber .light{ background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+.lista.red .light{ background: var(--red); box-shadow: 0 0 8px var(--red); }
+.lista.gray .light{ background: var(--ink-mute); box-shadow: none; }
+.lista .lista-main{ font-size: 12px; color: var(--ink); font-weight:600; }
+.lista .lista-sub{ font-size: 10.5px; color: var(--ink-dim); margin-top:2px; }
+
+/* breakdown bars */
+.bd-row{
+  display:grid; grid-template-columns: 96px 1fr 40px;
+  gap: 10px; align-items: center;
+  padding: 4px 0;
+}
+.bd-row .bk{ font-size: 10px; letter-spacing: .1em; color: var(--ink-mute); }
+.bd-row .bt{ position: relative; height: 6px; background: var(--line); }
+.bd-row .bf{ position: absolute; left:0; top:0; bottom:0; background: var(--ink-ghost); }
+.bd-row .bf.good{ background: var(--acc); }
+.bd-row .bf.mid{  background: var(--amber); }
+.bd-row .bf.low{  background: var(--red); }
+.bd-row .bv{ font-family: var(--mono); font-size: 11px; text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* signals */
+.signals{ display:flex; flex-direction:column; gap:6px; }
+.signal{
+  border-left: 3px solid var(--acc);
+  padding: 8px 10px;
+  background: var(--bg-1);
+  display:flex; flex-direction:column; gap:2px;
+}
+.signal.green{ border-left-color: var(--acc); }
+.signal.amber{ border-left-color: var(--amber); }
+.signal.red  { border-left-color: var(--red); }
+.signal .sl{ font-size: 10.5px; letter-spacing: .1em; color: var(--ink); font-weight:700; }
+.signal .sd{ font-size: 11px; color: var(--ink-dim); }
+
+/* action row */
+.actions{
+  display:grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--line);
+  position: sticky;
+  bottom: 0;
+  background: var(--bg);
+}
+.act{
+  padding: 12px;
+  text-align:center;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .1em;
+  font-weight: 600;
+  border: 1px solid var(--line-2);
+  color: var(--ink);
+  transition: border-color .12s, background .12s, color .12s;
+}
+.act:hover{ border-color: var(--acc); color: var(--acc); }
+.act.primary{
+  background: var(--acc); color: #001a08; border-color: var(--acc);
+}
+.act.primary:hover{ background: var(--acc-dim); }
+
+/* summary blockquote */
+.summary{
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  padding: 14px;
+  border-left: 3px solid var(--acc);
+  background: var(--bg-1);
+  text-wrap: pretty;
+}
+.summary::before{
+  content: "\201C";
+  color: var(--acc); font-size: 24px; line-height: 0; margin-right: 4px; vertical-align: -4px;
+  font-family: var(--mono);
+}
+
+/* footer */
+.foot{
+  padding: 30px 0 20px;
+  font-size: 10.5px;
+  color: var(--ink-mute);
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+  display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+}
+.foot a{ color: var(--ink-dim); }
+.foot a:hover{ color: var(--acc); }
+
+/* ============ TWEAKS PANEL ============ */
+.tweaks{
+  position: fixed;
+  right: 16px; bottom: 16px;
+  width: 280px;
+  background: var(--bg-1);
+  border: 1px solid var(--acc);
+  box-shadow: 0 10px 40px rgba(0,0,0,.7), 0 0 30px color-mix(in oklab, var(--acc) 20%, transparent);
+  z-index: 70;
+  font-family: var(--mono);
+  font-size: 11px;
+  display: none;
+  transform: translateY(8px);
+  opacity: 0;
+  transition: opacity .15s, transform .15s;
+}
+.tweaks.open{ display:block; opacity:1; transform:translateY(0); }
+.tweaks .t-head{
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line-2);
+  display:flex; justify-content:space-between; align-items:center;
+  color: var(--acc); font-weight:700; letter-spacing: .1em;
+}
+.tweaks .t-body{ padding: 10px 12px; display:flex; flex-direction:column; gap: 12px; }
+.tweaks label{ font-size: 10px; color: var(--ink-mute); letter-spacing: .12em; display:block; margin-bottom:4px; }
+.tweaks .opts{ display:flex; gap:0; border:1px solid var(--line-2); }
+.tweaks .opts button{
+  flex:1; padding: 6px 6px; font-size: 10px; color: var(--ink-dim);
+  border-right: 1px solid var(--line-2);
+  letter-spacing: .08em;
+  transition: background .12s, color .12s;
+}
+.tweaks .opts button:last-child{ border-right:0; }
+.tweaks .opts button.on{ background: var(--acc); color: var(--bg); }
+.tweaks .swatches{ display:flex; gap:6px; }
+.tweaks .sw{
+  width: 22px; height: 22px; border: 1px solid var(--line-2); cursor:pointer;
+}
+.tweaks .sw.on{ outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* density */
+[data-density="compact"] .grid{ grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 6px; }
+[data-density="compact"] .card{ padding: 10px 12px 10px; }
+[data-density="compact"] .name-block .name{ font-size: 16px; }
+[data-density="compact"] .score{ font-size: 34px; }
+
+/* scoreWeight=light */
+[data-score-weight="light"] .score{ font-weight: 500; color: var(--ink); text-shadow:none; }
+[data-score-weight="light"] .card[data-tier="hot"] .score{ color: var(--acc); text-shadow: none; }
+
+/* urgencyMode=tag: hide progress bar */
+[data-urgency-mode="tag"] .card-bar{ display:none; }
+/* cardStyle=minimal: hide tags on card */
+[data-card-style="minimal"] .card .tag-row{ display:none; }
+[data-card-style="minimal"] .card-body{ grid-template-columns: 1fr auto; }
+</style>
 </head>
 <body>
-    <!-- Pull to Refresh Indicator -->
-    <div class="pull-indicator" id="pullIndicator">
-        <span class="pull-icon">&#8635;</span>
-        <span class="pull-text">Rilascia per aggiornare</span>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="caret">▋</span>
+      <span>OB1</span>
+      <span class="pipe">::</span>
+      <span class="sub">LEGA_PRO</span>
     </div>
-
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">
-                <span class="logo-mark">&gt;</span>
-                <div class="logo-text">
-                    <h1>OB1 SERIE C</h1>
-                    <span class="logo-subtitle">LEGA PRO SCOUT</span>
-                </div>
-            </div>
-            <div class="header-actions">
-                <a href="taccuino.html" class="header-link">TACCUINO</a>
-                <a href="https://www.matchanalysispro.online/" class="header-link" target="_blank" rel="noopener">MAP</a>
-                <a href="https://mtornani.github.io/ob1-scout/" class="header-link" target="_blank" rel="noopener">GLOBAL</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-
-        <!-- LANDING VIEW -->
-        <div id="landingView" class="view-section">
-            <div class="hero">
-                <div class="hero-badge">SERIE C NOW</div>
-                <h2 class="hero-title">Scout automatico<br>per la Lega Pro</h2>
-                <p class="hero-subtitle">Monitora giocatori, segnala opportunita, genera report. Automatico. Costo zero.</p>
-
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <span class="hero-stat-value" id="heroStatProfiles">—</span>
-                        <span class="hero-stat-label">PROFILI</span>
-                    </div>
-                    <div class="hero-stat hot">
-                        <span class="hero-stat-value" id="heroStatHot">—</span>
-                        <span class="hero-stat-label">HOT</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-value" id="heroStatFree">—</span>
-                        <span class="hero-stat-label">SVINCOLATI</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-value">6h</span>
-                        <span class="hero-stat-label">CICLO</span>
-                    </div>
-                </div>
-
-                <!-- Top 3 Preview -->
-                <div class="top-preview" id="topPreview"></div>
-
-                <div class="hero-cta">
-                    <button class="btn-primary" id="btnExploreAll">Esplora le opportunita &#8594;</button>
-                    <a href="https://t.me/Ob1LegaPro_bot" target="_blank" class="btn-secondary">Bot Telegram</a>
-                </div>
-            </div>
-
-            <div class="hero-how">
-                <h3 class="hero-how-title">&gt; COME_FUNZIONA</h3>
-                <div class="hero-steps">
-                    <div class="hero-step">
-                        <span class="hero-step-icon">SCRAPE</span>
-                        <p>Monitora fonti h24</p>
-                    </div>
-                    <div class="hero-step">
-                        <span class="hero-step-icon">ANALYZE</span>
-                        <p>Analizza occasioni reali</p>
-                    </div>
-                    <div class="hero-step">
-                        <span class="hero-step-icon">ALERT</span>
-                        <p>Ti avvisa su Telegram</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- EXPLORE VIEW -->
-        <div id="exploreView" class="view-section" style="display: none;">
-            <div class="explore-toolbar">
-                <button class="btn-back" id="btnBackFromExplore">&larr; Home</button>
-                <div class="cycle-status" id="cycleStatus"></div>
-            </div>
-
-            <!-- Search Bar -->
-            <div class="search-container">
-                <input type="search"
-                       class="search-input"
-                       id="searchInput"
-                       placeholder="Cerca giocatore, ruolo, club..."
-                       autocomplete="off">
-                <span class="search-icon">&gt;</span>
-            </div>
-
-            <!-- Quick Filters -->
-            <div class="filter-bar">
-                <div class="filter-chips" id="filterChips">
-                    <button class="filter-chip active" data-filter="all">TUTTI</button>
-                    <button class="filter-chip" data-filter="hot">TOP 10</button>
-                    <button class="filter-chip" data-filter="under">U21</button>
-                    <button class="filter-chip" data-filter="free">SVINCOLATI</button>
-                    <button class="filter-chip" data-filter="roi">ALTO ROI</button>
-                </div>
-                <span class="result-count"><span id="resultCount">0</span> risultati</span>
-            </div>
-            <div class="secondary-filters">
-                <select class="filter-select-mini" id="typeFilter">
-                    <option value="">Tipo: Tutti</option>
-                    <option value="svincolato">Svincolato</option>
-                    <option value="rescissione">Rescissione</option>
-                    <option value="prestito">Prestito</option>
-                    <option value="mercato">Mercato</option>
-                    <option value="scadenza">Scadenza</option>
-                </select>
-                <select class="filter-select-mini" id="sortBy">
-                    <option value="score">Score &darr;</option>
-                    <option value="name">Nome A-Z</option>
-                    <option value="date">Recenti</option>
-                </select>
-            </div>
-
-            <!-- Opportunities Grid -->
-            <div class="opportunities-grid" id="opportunitiesGrid"></div>
-
-            <!-- Empty State -->
-            <div class="empty-state" id="emptyState" style="display: none;">
-                <div class="empty-icon">&gt;_</div>
-                <h3>Nessuna opportunita trovata</h3>
-                <p>Prova a cambiare filtro o torna piu tardi.</p>
-            </div>
-        </div>
-    </main>
-
-    <!-- Detail Modal -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal" id="detailModal">
-            <div class="modal-header">
-                <div>
-                    <h2 id="modalTitle">Scouting Report</h2>
-                </div>
-                <button class="modal-close" id="modalClose" aria-label="Chiudi">&times;</button>
-            </div>
-            <div class="modal-content" id="modalContent">
-                <!-- Dynamic content -->
-            </div>
-        </div>
+    <div class="topbar-links">
+      <a href="taccuino.html">TACCUINO</a>
+      <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener">GLOBAL</a>
+      <a href="https://t.me/Ob1LegaPro_bot" target="_blank" rel="noopener">⇢ TG_BOT</a>
     </div>
+    <div class="status">
+      <span class="dot"></span>
+      <span id="cycleStatus">OUROBOROS ::  --:--  //  next --h --m</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Toast Notifications -->
-    <div class="toast-container" id="toastContainer"></div>
+<div class="shell">
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-inner">
-            <span class="footer-brand">&gt; OB1_SERIE_C</span>
-            <span class="footer-sep">|</span>
-            <span class="footer-text">Powered by Ouroboros Protocol</span>
+  <!-- COMMAND HERO -->
+  <section class="cmd">
+    <div class="cmd-row">
+      <div>
+        <h1>SCOUT <span class="green">/&gt;</span> LEGA PRO<br>Veloce. Brutale. Gratis.</h1>
+        <p class="blurb">Ouroboros Protocol scansiona le fonti ogni 6 ore. Svincolati, rescissioni, prestiti in scadenza — rank automatico. Guarda chi serve prima di ogni riunione.</p>
+      </div>
+      <div class="counters">
+        <div class="counter hot">
+          <div class="n" id="ctHot">—</div><div class="l">HOT ≥70</div>
         </div>
-        <div class="footer-links">
-            <a href="https://www.matchanalysispro.online/" target="_blank" rel="noopener">matchanalysispro.online</a>
-            <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener">OB1 Global</a>
-            <a href="https://www.matchanalysispro.online/theseus/" target="_blank" rel="noopener">Theseus Protocol</a>
+        <div class="counter">
+          <div class="n" id="ctFree">—</div><div class="l">SVINCOLATI</div>
         </div>
-    </footer>
+        <div class="counter">
+          <div class="n" id="ctU21">—</div><div class="l">U21</div>
+        </div>
+        <div class="counter">
+          <div class="n" id="ctAll">—</div><div class="l">PROFILI</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="js/dna-engine.js"></script>
-    <script src="js/app.js"></script>
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+
+  <!-- CONTROLS -->
+  <section class="controls">
+    <div class="search">
+      <span class="prompt">&gt;</span>
+      <input id="q" type="search" placeholder="cerca player / club / ruolo…" autocomplete="off" />
+      <span class="kbd">/ per cercare</span>
+    </div>
+    <div class="filterbar" id="filters">
+      <button class="chip on" data-f="all">TUTTI<span class="num" data-ct="all">0</span></button>
+      <button class="chip" data-f="hot">TOP 10<span class="num" data-ct="hot">0</span></button>
+      <button class="chip" data-f="under">U21<span class="num" data-ct="under">0</span></button>
+      <button class="chip" data-f="free">SVINCOLATI<span class="num" data-ct="free">0</span></button>
+      <button class="chip" data-f="roi">ALTO ROI<span class="num" data-ct="roi">0</span></button>
+      <button class="chip" data-f="urgent">URGENTI<span class="num" data-ct="urgent">0</span></button>
+    </div>
+    <div class="sub-row">
+      <div class="results">
+        <span class="n" id="rcount">0</span> / <span id="rtotal">0</span> risultati
+      </div>
+      <div class="sort-group">
+        <select id="typeF">
+          <option value="">tipo: tutti</option>
+          <option value="svincolato">svincolato</option>
+          <option value="rescissione">rescissione</option>
+          <option value="prestito">prestito</option>
+          <option value="mercato">mercato</option>
+          <option value="scadenza">scadenza</option>
+        </select>
+        <select id="sortBy">
+          <option value="score">↓ score</option>
+          <option value="urgency">↓ urgenza</option>
+          <option value="name">a→z</option>
+          <option value="date">↓ recenti</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="grid" id="grid"></section>
+  <div class="empty" id="empty" style="display:none">
+    <div class="big">&gt;_ no_match</div>
+    <div>cambia filtro o aspetta il prossimo ciclo.</div>
+  </div>
+
+  <footer class="foot">
+    <div>&gt; OB1_SERIE_C :: 2026 :: ouroboros</div>
+    <div>
+      <a href="https://t.me/Ob1LegaPro_bot" target="_blank" rel="noopener">telegram</a> ·
+      <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener">global</a> ·
+      <a href="taccuino.html">taccuino</a>
+    </div>
+  </footer>
+</div>
+
+<!-- Detail drawer -->
+<div class="overlay" id="ov">
+  <aside class="drawer" id="drawer">
+    <div class="drawer-top">
+      <div class="bread"><span class="acc">&gt;</span> BRIEF // <span id="breadName">—</span></div>
+      <button class="close" id="closeBtn" aria-label="close">×</button>
+    </div>
+    <div class="brief" id="brief"></div>
+    <div class="actions">
+      <a class="act" href="#" id="sourceLink" target="_blank" rel="noopener">APRI FONTE ↗</a>
+      <a class="act primary" href="https://t.me/Ob1LegaPro_bot" target="_blank" rel="noopener">SALVA IN TACCUINO</a>
+    </div>
+  </aside>
+</div>
+
+<!-- Tweaks -->
+<div class="tweaks" id="tweaks">
+  <div class="t-head">&gt; TWEAKS<button id="tweakClose" style="background:none;border:0;color:var(--ink-mute);cursor:pointer;font-size:16px;">×</button></div>
+  <div class="t-body">
+    <div>
+      <label>ACCENT</label>
+      <div class="swatches" id="swatches">
+        <div class="sw" data-c="#00ff66" style="background:#00ff66"></div>
+        <div class="sw" data-c="#00d4ff" style="background:#00d4ff"></div>
+        <div class="sw" data-c="#ff5500" style="background:#ff5500"></div>
+        <div class="sw" data-c="#ff00a8" style="background:#ff00a8"></div>
+        <div class="sw" data-c="#f5f5f5" style="background:#f5f5f5"></div>
+      </div>
+    </div>
+    <div>
+      <label>DENSITÀ</label>
+      <div class="opts" data-tw="density">
+        <button data-v="compact">COMPACT</button>
+        <button data-v="comfortable">COMFORT</button>
+      </div>
+    </div>
+    <div>
+      <label>STILE CARD</label>
+      <div class="opts" data-tw="cardStyle">
+        <button data-v="brief">BRIEF</button>
+        <button data-v="minimal">MINIMAL</button>
+      </div>
+    </div>
+    <div>
+      <label>PESO SCORE</label>
+      <div class="opts" data-tw="scoreWeight">
+        <button data-v="heavy">HEAVY</button>
+        <button data-v="light">LIGHT</button>
+      </div>
+    </div>
+    <div>
+      <label>URGENZA</label>
+      <div class="opts" data-tw="urgencyMode">
+        <button data-v="bar">BAR+TIMER</button>
+        <button data-v="tag">SOLO TIMER</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js?v=3"></script>
 </body>
 </html>

@@ -9,9 +9,15 @@
     },
     {
       "name": "dashboard",
-      "runtimeExecutable": "C:\\Users\\Mirko\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8091", "--directory", "docs"],
       "port": 8091
+    },
+    {
+      "name": "report-ravenna",
+      "runtimeExecutable": "C:\\Users\\Mirko\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "runtimeArgs": ["-m", "http.server", "8092", "--directory", "reports"],
+      "port": 8092
     }
   ]
 }
