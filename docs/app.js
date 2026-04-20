@@ -380,6 +380,10 @@ function openDrawer(o){
     srcLink.style.display = 'none';
   }
 
+  const tmLink = el('#tmLink');
+  const tmQuery = encodeURIComponent(o.player_name || '');
+  tmLink.href = `https://www.transfermarkt.it/schnellsuche/ergebnis/schnellsuche?query=${tmQuery}`;
+
   el('#ov').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
