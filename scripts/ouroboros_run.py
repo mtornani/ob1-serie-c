@@ -44,9 +44,19 @@ def is_valid_player_name(name: str) -> bool:
     if '|' in name:
         return False
     junk_terms = [
+        # Existing
         'transfermarkt', 'calciomercato', 'svincolati', 'la casa di c',
         'jugadores libres', 'ranking', 'classifica', 'tabella',
         'sul mercato', 'quanti svincolati',
+        # Media / news sources observed in CI logs
+        'rádio', 'fischio finale', 'ultime notizie', 'el gráfico',
+        'sitio oficial', 'diario democracia', 'portal brazuca',
+        # Non-player concepts
+        'libre comercio', 'mercado libre', 'economic freedom', 'sou tricolor',
+        'craques do futebol', 'football club',
+        # League / competition names
+        'reserve league', 'liga profesional', 'selección', 'seleccion',
+        'mundial sub', 'sub-20', 'sub-23',
     ]
     name_lower = name.lower()
     if any(term in name_lower for term in junk_terms):
