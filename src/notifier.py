@@ -4,6 +4,7 @@ OB1 Serie C - Enhanced Telegram Notifier (NOTIF-001)
 Notifiche actionable con scoring integrato
 """
 
+import html
 import os
 import json
 import requests
@@ -13,6 +14,13 @@ from typing import List, Optional, Dict, Any
 from dotenv import load_dotenv
 
 load_dotenv()
+
+
+def _esc(value) -> str:
+    """Escape HTML special chars. Handles None, int, list gracefully."""
+    if value is None:
+        return ''
+    return html.escape(str(value))
 
 
 # Footer fisso con social proof — appendere a ogni messaggio in uscita
@@ -170,24 +178,24 @@ class TelegramNotifier:
         Formatta alert per opportunita' HOT (score 80+)
         Massimo dettaglio per decisione rapida
         """
-        player = opp.get('player_name', 'N/D')
+        player = _esc(opp.get('player_name', 'N/D'))
         age = opp.get('age', '')
-        role = opp.get('role_name', opp.get('role', ''))
-        opp_type = opp.get('opportunity_type', 'mercato').upper()
+        role = _esc(opp.get('role_name') or opp.get('role') or '')
+        opp_type = _esc(opp.get('opportunity_type') or 'mercato').upper()
         score = opp.get('ob1_score', 0)
         classification = opp.get('classification', 'warm')
 
-        current_club = opp.get('current_club', '')
+        current_club = _esc(opp.get('current_club', ''))
         previous_clubs = opp.get('previous_clubs', [])
         appearances = opp.get('appearances', 0)
         goals = opp.get('goals', 0)
         assists = opp.get('assists', 0)
-        agent = opp.get('agent', '')
+        agent = _esc(opp.get('agent', ''))
 
-        source = opp.get('source_name', 'N/D')
+        source = _esc(opp.get('source_name', 'N/D'))
         source_url = opp.get('source_url', '')
         reported_date = opp.get('reported_date', '')
-        summary = opp.get('summary', '')
+        summary = _esc(opp.get('summary', ''))
 
         breakdown = opp.get('score_breakdown', {})
 
@@ -211,7 +219,7 @@ class TelegramNotifier:
         if current_club:
             lines.append(f"🏟️ Attuale: {current_club}")
         if previous_clubs:
-            clubs_str = ', '.join(previous_clubs[:3])
+            clubs_str = ', '.join(_esc(c) for c in previous_clubs[:3])
             if len(previous_clubs) > 3:
                 clubs_str += '...'
             lines.append(f"📋 Ex: {clubs_str}")
@@ -241,10 +249,9 @@ class TelegramNotifier:
 
         lines.append("")
 
-        # Summary (truncated)
+        # Summary
         if summary and len(summary) > 10:
-            truncated = summary[:150] + '...' if len(summary) > 150 else summary
-            lines.append(f"💬 <i>{truncated}</i>")
+            lines.append(f"💬 <i>{summary}</i>")
             lines.append("")
 
         # Source
@@ -290,12 +297,12 @@ class TelegramNotifier:
         ]
 
         for i, opp in enumerate(opportunities[:8], 1):
-            player = opp.get('player_name', 'N/D')
+            player = _esc(opp.get('player_name', 'N/D'))
             age = opp.get('age', '')
-            role = opp.get('role_name', opp.get('role', ''))[:3].upper() if opp.get('role_name') or opp.get('role') else ''
+            role = _esc(opp.get('role_name') or opp.get('role') or '')[:3].upper()
             score = opp.get('ob1_score', 0)
-            opp_type = opp.get('opportunity_type', 'mercato')
-            current_club = opp.get('current_club', '')
+            opp_type = _esc(opp.get('opportunity_type', 'mercato'))
+            current_club = _esc(opp.get('current_club', ''))
 
             # Compact format
             player_info = f"<b>{player}</b>"
@@ -428,9 +435,9 @@ class TelegramNotifier:
         ]
 
         for i, opp in enumerate(opportunities[:5], 1):
-            player = opp.get('player_name', 'N/D')
-            club = opp.get('current_club', 'N/D')
-            opp_type = opp.get('opportunity_type', 'mercato')
+            player = _esc(opp.get('player_name', 'N/D'))
+            club = _esc(opp.get('current_club', 'N/D'))
+            opp_type = _esc(opp.get('opportunity_type', 'mercato'))
 
             emoji_map = {
                 'svincolato': '🟢',
@@ -521,16 +528,16 @@ class TelegramNotifier:
         Formato alert pubblico per canale @ob1scout (DATA-003-MW3).
         Pulito, nessun score breakdown, nessun agente, firma fissa.
         """
-        name = opp.get('player_name', 'N/D')
+        name = _esc(opp.get('player_name', 'N/D'))
         age = opp.get('age', '')
-        role = opp.get('role_name', opp.get('role', ''))
-        opp_type = (opp.get('opportunity_type', 'mercato') or 'mercato').capitalize()
+        role = _esc(opp.get('role_name') or opp.get('role') or '')
+        opp_type = _esc(opp.get('opportunity_type') or 'mercato').capitalize()
         score = opp.get('ob1_score', 0)
         appearances = opp.get('appearances') or 0
         goals = opp.get('goals')
         assists = opp.get('assists')
-        club = opp.get('current_club', '')
-        market_value = opp.get('market_value_formatted', '')
+        club = _esc(opp.get('current_club', ''))
+        market_value = _esc(opp.get('market_value_formatted', ''))
 
         lines = ["🔴 <b>NUOVA SEGNALAZIONE</b>", ""]
 
