@@ -63,6 +63,12 @@ jobs:
     - name: Generate dashboard
       run: python scripts/generate_dashboard.py
 
+    - name: Sanity check pipeline output
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_OFFICE_CHAT_ID: ${{ secrets.TELEGRAM_OFFICE_CHAT_ID }}
+      run: python scripts/sanity_check.py
+
     - name: Generate HTML Report
       run: python scripts/generate_report.py
 
