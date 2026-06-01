@@ -499,6 +499,41 @@ class TelegramNotifier:
         msg = f"⚠️ <b>OB1 SCOUT - Errore</b>\n\n{error_msg}"
         return self.send_message(msg)
 
+    def admin_alert(self, severity: str, source: str, message: str) -> bool:
+        """
+        Admin alert su TELEGRAM_OFFICE_CHAT_ID.
+        Direct requests.post — mai via send_message (anti-ricorsione).
+        """
+        office_chat = os.getenv('TELEGRAM_OFFICE_CHAT_ID')
+        if not office_chat or not self.bot_token:
+            print(f"[ADMIN ALERT] {severity} | {source} | {message}")
+            return False
+
+        ts = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+        emoji = {'ERROR': '🚨', 'WARNING': '⚠️', 'INFO': 'ℹ️'}.get(severity.upper(), '🔔')
+        text = (
+            f"{emoji} <b>OB1 LEGA PRO — {severity.upper()}</b>\n\n"
+            f"<b>Fonte:</b> {_esc(source)}\n"
+            f"<b>Messaggio:</b> {_esc(message)}\n\n"
+            f"<i>{ts}</i>"
+        )
+
+        url = f"https://api.telegram.org/bot{self.bot_token}/sendMessage"
+        try:
+            resp = requests.post(url, json={
+                'chat_id': office_chat,
+                'text': text,
+                'parse_mode': 'HTML',
+                'disable_web_page_preview': True,
+            }, timeout=10)
+            if resp.status_code != 200:
+                print(f"[ADMIN ALERT FAIL] {resp.status_code}: {resp.text}")
+                return False
+            return True
+        except Exception as exc:
+            print(f"[ADMIN ALERT EXCEPTION] {exc}")
+            return False
+
     # =========================================================================
     # DATA-003-MW3: Public Channel Alerts
     # =========================================================================
