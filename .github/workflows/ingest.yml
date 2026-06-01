@@ -63,6 +63,12 @@ jobs:
     - name: Generate dashboard
       run: python scripts/generate_dashboard.py
 
+    - name: Sanity check pipeline output
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_OFFICE_CHAT_ID: ${{ secrets.TELEGRAM_OFFICE_CHAT_ID }}
+      run: python scripts/sanity_check.py
+
     - name: Generate HTML Report
       run: python scripts/generate_report.py
 
@@ -70,6 +76,7 @@ jobs:
       if: success()
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       run: python scripts/send_notification.py
 
     - name: Upload database artifact
@@ -87,6 +94,35 @@ jobs:
         git add docs/data.json docs/report.html docs/dna_matches.json data/ || true
         git diff --staged --quiet || git commit -m "🤖 Auto-update: $(date -u +'%Y-%m-%d %H:%M UTC')"
         git push || echo "Nothing to push"
+
+    - name: Alert admin on pipeline failure
+      if: failure()
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_OFFICE_CHAT_ID: ${{ secrets.TELEGRAM_OFFICE_CHAT_ID }}
+      run: |
+        python - <<'EOF'
+        import os, requests
+        token = os.getenv('TELEGRAM_BOT_TOKEN', '')
+        chat = os.getenv('TELEGRAM_OFFICE_CHAT_ID', '')
+        if not token or not chat:
+            print("[ADMIN ALERT] Missing token/chat — skipping")
+            raise SystemExit(0)
+        run_id = os.getenv('GITHUB_RUN_ID', 'N/A')
+        repo = os.getenv('GITHUB_REPOSITORY', 'N/A')
+        text = (
+            "🚨 <b>OB1 LEGA PRO — PIPELINE FAILURE</b>\n\n"
+            f"<b>Repo:</b> {repo}\n"
+            f"<b>Run ID:</b> {run_id}\n\n"
+            "<i>Controlla GitHub Actions per i dettagli.</i>"
+        )
+        resp = requests.post(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            json={"chat_id": chat, "text": text, "parse_mode": "HTML"},
+            timeout=10,
+        )
+        print(f"Admin alert sent: {resp.status_code}")
+        EOF
 
     - name: Log completion
       run: echo "✅ Pipeline completed at $(date -u +'%Y-%m-%d %H:%M UTC')"

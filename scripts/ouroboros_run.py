@@ -21,6 +21,7 @@ from src.scoring_global import OB1Scorer
 from src.dna.engine_global import DNAEngine
 from src.ingest import OB1Ingest, GEMINI_AVAILABLE
 from src.models import MarketOpportunity
+from src.notifier import TelegramNotifier
 
 OPPS_FILE = Path("data/opportunities.json")
 
@@ -76,6 +77,7 @@ def run_ouroboros():
     scraper = GlobalScraper(config_path="config/leagues.yaml")
     dna_engine = DNAEngine(manifesto_path="config/dna_manifestos.yaml")
     ingest = OB1Ingest() if GEMINI_AVAILABLE else None
+    notifier = TelegramNotifier()
 
     existing_opps = load_existing_opps()
 
@@ -148,6 +150,7 @@ def run_ouroboros():
 
         except Exception as e:
             print(f"❌ Error in {league_id}: {e}")
+            notifier.admin_alert("ERROR", f"ouroboros/{league_id}", str(e))
 
     # Final Save
     save_opps(existing_opps)
