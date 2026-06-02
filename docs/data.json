@@ -3719,6 +3719,64 @@
       "stale_free_agent": false
     },
     {
+      "id": "c9ead979880a69df83de3376c4a413d2",
+      "player_name": "Daniele Trevisani",
+      "age": 74,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-02",
+      "source_name": "www.studiotrevisani.it",
+      "source_url": "https://www.studiotrevisani.it/i-principi-della-crescita-personale-nellevoluzione-sociale",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-02T15:03:33.417357",
+      "ob1_score": 54,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 35,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Giocatore esperto (74 anni).",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1952,
+        "roi_dettaglio": "Classe 1952 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1952 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false
+    },
+    {
       "id": "opp_9fcfd195",
       "player_name": "Versienti",
       "age": null,
@@ -5061,11 +5119,11 @@
     }
   ],
   "stats": {
-    "total": 85,
+    "total": 86,
     "hot": 3,
     "warm": 35,
-    "cold": 47,
-    "today": 0,
+    "cold": 48,
+    "today": 1,
     "svincolati": 29,
     "stale_free_agents": 1,
     "intel_roi": {
@@ -5073,10 +5131,10 @@
       "high": 0,
       "medium": 9,
       "low": 5,
-      "none": 9
+      "none": 10
     }
   },
-  "last_update": "2026-06-02T10:54:54.958897",
+  "last_update": "2026-06-02T15:04:27.629404",
   "scoring_version": "SCORE-002",
   "intel_version": "INTEL-001"
 }
