@@ -56,17 +56,16 @@ class GlobalScraper:
             self.config = yaml.safe_load(f)
         self.leagues = self.config.get('leagues', {})
 
-    def search_tavily(self, query: str, include_domains: Optional[List[str]] = None) -> List[Dict]:
-        """High-quality discovery phase."""
+    def search_tavily(self, query: str) -> List[Dict]:
+        """High-quality discovery phase. Open search intentionally — no domain filter."""
         if not self.tavily_key: return []
-        
+
         url = "https://api.tavily.com/search"
         payload = {
             "api_key": self.tavily_key,
             "query": query,
             "search_depth": "advanced",
-            "max_results": 10
-            # Discovery aperta: non usiamo include_domains qui per non tagliare fuori notizie nuove
+            "max_results": 10,
         }
         
         try:
@@ -112,7 +111,7 @@ class GlobalScraper:
 
         for query in conf.get('queries', []):
             # Discovery using Tavily
-            results = self.search_tavily(query, include_domains=conf.get('trusted_sources'))
+            results = self.search_tavily(query)
 
             for item in results:
                 url = item.get('url', '')
@@ -157,9 +156,9 @@ class GlobalScraper:
 
     def _detect_type(self, text: str) -> OpportunityType:
         text = text.lower()
-        if any(k in text for k in ['svincolato', 'free agent', 'libre']): return OpportunityType.SVINCOLATO
-        if any(k in text for k in ['rescinde', 'risoluzione']): return OpportunityType.RESCISSIONE
-        if any(k in text for k in ['prestito', 'loan', 'empréstimo']): return OpportunityType.PRESTITO
+        if any(k in text for k in ['svincolato', 'parametro zero', 'free agent']): return OpportunityType.SVINCOLATO
+        if any(k in text for k in ['rescinde', 'risoluzione', 'rescissione']): return OpportunityType.RESCISSIONE
+        if any(k in text for k in ['prestito', 'loan']): return OpportunityType.PRESTITO
         return OpportunityType.TALENT
 
     def _extract_name(self, title: str) -> str:

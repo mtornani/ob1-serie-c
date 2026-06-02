@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import sys, os, json, time
+from datetime import datetime
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 from src.enricher_tm import TransfermarktEnricher
@@ -56,7 +57,7 @@ def main():
                         p[key] = val
                 if not opp.get('age') and tm_data.get('birth_date'):
                     try:
-                        opp['age'] = 2026 - int(tm_data['birth_date'][:4])
+                        opp['age'] = datetime.now().year - int(tm_data['birth_date'][:4])
                     except:
                         pass
                 opp['tm_enriched'] = True
