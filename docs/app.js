@@ -509,7 +509,7 @@ function wireKeyShortcuts(){
     }
     // Arrow keys → navigate cards
     if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !el('#ov').classList.contains('open')){
-      if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+      if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
       const cards = els('.card');
       if (!cards.length) return;
       const idx = cards.indexOf(document.activeElement);

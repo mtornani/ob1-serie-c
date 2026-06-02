@@ -9,9 +9,15 @@ _JUNK_TERMS = [
     'transfermarkt', 'calciomercato', 'svincolati', 'la casa di c',
     'rádio', 'fischio finale', 'ultime notizie', 'football club',
     'web radio', 'il portale', 'il piccolo', 'management magazine',
-    'next pro wiki', 'chiamarsi bomber', 'spareggi nazionali',
+    'next pro wiki', 'chiamarsi bomber', 'spareggi nazionali', 'spareggi',
     'stagione sportiva', 'sport news', 'giornale', 'magazine',
     'notiziario', 'dipartimento', 'interregionale', 'associazione',
+    'sky sport', 'rappresentativa', 'juniores cup', 'parametro zero',
+    'football italy', 'migliori giovani', 'giovani talenti', 'occasione serie',
+    'notizie calcio', 'scuola superiore', 'tutto mercato', 'calciomercato live',
+    'accordo collettivo', 'guardian', 'ultimo uomo', 'mediaset',
+    'jugadores libres', 'ranking', 'classifica', 'tabella',
+    'reserve league', 'liga profesional', 'selección', 'seleccion',
 ]
 
 def _is_enrichable(name: str) -> bool:
@@ -79,7 +85,7 @@ def main():
                         age = datetime.now().year - int(str(tm_data['birth_date'])[:4])
                         if 10 <= age <= 60:
                             opp['age'] = age
-                    except:
+                    except (ValueError, TypeError):
                         pass
                 opp['tm_enriched'] = True
                 updated_count += 1

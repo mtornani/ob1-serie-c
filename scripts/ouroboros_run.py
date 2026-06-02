@@ -54,6 +54,10 @@ def is_valid_player_name(name: str) -> bool:
         'giovani talenti', 'occasione serie', 'notizie calcio',
         'scuola superiore', 'fischio finale', 'ultime notizie',
         'la casa di c', 'tutto mercato', 'calciomercato live',
+        'accordo collettivo', 'accordo', 'collettivo',
+        # Media / news outlets
+        'guardian', 'ultimo uomo', 'mediaset', 'calcio professionistiche',
+        'talenti serie', 'salerno in web', 'cosenza quotidiano', 'tutto calcio',
         # Spanish / Portuguese junk
         'jugadores libres', 'ranking', 'classifica', 'tabella',
         'sul mercato', 'quanti svincolati',
@@ -67,19 +71,14 @@ def is_valid_player_name(name: str) -> bool:
     name_lower = name.lower()
     if any(term in name_lower for term in junk_terms):
         return False
-    # Reject names starting with Italian articles/prepositions (org names, not people)
-    first_word = name.split()[0].lower()
-    if first_word in ('il', 'la', 'lo', 'le', 'gli', 'i', 'un', 'una',
-                      'da', 'dal', 'della', 'dello', 'degli', 'the',
-                      'tutto', 'nuova', 'nuovo', 'cinque', 'tanti'):
+    # Reject org-like names starting with non-name words.
+    # NOTE: do NOT include 'la','lo','da','dal','della','degli' — real players like
+    # La Gumina, Da Silva, Della Morte would be incorrectly blocked.
+    words = name.split()
+    if not words:
         return False
-    # Reject known media / news outlets
-    media_terms = [
-        'guardian', 'ultimo uomo', 'mediaset', 'calcio professionistiche',
-        'talenti serie', 'salerno in web', 'cosenza quotidiano',
-        'tutto calcio', 'sport news',
-    ]
-    if any(t in name_lower for t in media_terms):
+    first_word = words[0].lower()
+    if first_word in ('the', 'tutto', 'nuova', 'nuovo', 'cinque', 'tanti', 'un', 'una'):
         return False
     return True
 
