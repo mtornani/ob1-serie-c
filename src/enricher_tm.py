@@ -5,6 +5,7 @@ Arricchisce i profili giocatori con dati strutturati da Transfermarkt (via Tavil
 """
 
 import os
+import re
 import json
 import time
 from typing import Dict, Any, Optional
@@ -104,14 +105,6 @@ DATI RICHIESTI (rispondi in JSON senz'altro testo):
   "minutes_played": numero intero minuti giocati stagione corrente 2025/26 o null
 }}
 
-STATISTICHE STAGIONE 2025/26 (opzionali):
-{{
-  "appearances": numero intero di presenze o null,
-  "goals": numero intero di gol o null,
-  "assists": numero intero di assist o null,
-  "minutes_played": numero intero di minuti giocati o null
-}}
-
 Se un dato non è presente, metti null.
 Per il valore di mercato, cerca "Valore attuale:" o simili.
 Per la cittadinanza, cerca "Nazionalità:" o "Citizenship:". Spesso sono presenti due bandiere se ha il doppio passaporto.
@@ -127,8 +120,8 @@ JSON:"""
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {
-                "temperature": 0.0,  # Deterministic
-                "maxOutputTokens": 1500,
+                "temperature": 0.0,
+                "maxOutputTokens": 2048,
                 "responseMimeType": "application/json",
             },
         }
@@ -158,6 +151,14 @@ JSON:"""
             if not text:
                 print("  [WARN] Testo vuoto in risposta Gemini")
                 return {}
+
+            # Strip markdown fences if model wrapped output
+            text = re.sub(r'^```(?:json)?\s*', '', text.strip())
+            text = re.sub(r'\s*```$', '', text.strip())
+            # Extract first JSON object in case of extra text
+            m = re.search(r'\{.*\}', text, re.DOTALL)
+            if m:
+                text = m.group(0)
 
             parsed = json.loads(text)
             return parsed
