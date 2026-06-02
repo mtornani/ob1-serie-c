@@ -889,6 +889,20 @@ body::before{
   z-index: 14;
 }
 
+/* ============ TIER LEGEND ============ */
+.tier-legend{
+  display:flex; flex-wrap:wrap; gap:4px 12px;
+  margin-top: 10px;
+  font-size: 10.5px;
+  font-family: var(--mono);
+  letter-spacing: .05em;
+}
+.tl{ color: var(--ink-mute); }
+.tl-hot{ color: var(--acc); }
+.tl-warm{ color: var(--ink-dim); }
+.tl-cold{ color: var(--ink-mute); }
+.tl-sep{ color: var(--ink-ghost); }
+
 /* card focus ring for keyboard nav */
 .card:focus-visible{
   outline: 2px solid var(--acc);
@@ -926,7 +940,7 @@ body::before{
     <div class="cmd-row">
       <div>
         <h1>SCOUT <span class="green">/&gt;</span> LEGA PRO<br>Veloce. Preciso. Sempre aggiornato.</h1>
-        <p class="blurb">Il radar scansiona le fonti ogni 6 ore. Svincolati, rescissioni, prestiti in scadenza — ordinati per priorità. Vedi chi vale prima di ogni sessione di mercato.</p>
+        <p class="blurb">Ogni giocatore riceve un <strong style="color:var(--ink)">VOTO da 0 a 100</strong>, calcolato su 8 fattori verificati: esperienza in carriera, età, valore di mercato, tipo di opportunità, urgenza contrattuale, adattabilità alla Serie C, affidabilità della fonte, completezza dei dati. <span style="color:var(--acc)">Chi è in cima vale la pena contattare subito.</span></p>
       </div>
       <div class="counters">
         <div class="counter hot">
@@ -964,6 +978,13 @@ body::before{
       <button class="chip" data-f="free">SVINCOLATI<span class="num" data-ct="free">0</span></button>
       <button class="chip" data-f="roi">TOP VALORE<span class="num" data-ct="roi">0</span></button>
       <button class="chip" data-f="urgent">URGENTI<span class="num" data-ct="urgent">0</span></button>
+    </div>
+    <div class="tier-legend" aria-label="Legenda punteggi">
+      <span class="tl tl-hot">● HOT 70-100 — contattare subito</span>
+      <span class="tl tl-sep">·</span>
+      <span class="tl tl-warm">● WARM 57-69 — tenere d'occhio</span>
+      <span class="tl tl-sep">·</span>
+      <span class="tl tl-cold">○ COLD &lt;57 — bassa priorità</span>
     </div>
     <div class="sub-row">
       <div class="results">
