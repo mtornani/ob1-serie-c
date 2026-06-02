@@ -187,7 +187,7 @@ class GlobalScraper:
                         player_name=player_name,
                         description=str(item.get('description') or ''),
                         source_url=url,
-                        source_name=url.split('/')[2] if url.count('/') >= 2 else url,
+                        source_name=url.lstrip('/').split('://')[-1].split('/')[0],
                     )
                     opportunities.append(opp)
                 continue  # grounding succeeded — skip Tavily for this query
