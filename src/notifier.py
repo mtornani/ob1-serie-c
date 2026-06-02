@@ -299,7 +299,7 @@ class TelegramNotifier:
         for i, opp in enumerate(opportunities[:8], 1):
             player = _esc(opp.get('player_name', 'N/D'))
             age = opp.get('age', '')
-            role = _esc(opp.get('role_name') or opp.get('role') or '')[:3].upper()
+            role = _esc((opp.get('role_name') or opp.get('role') or '')[:3]).upper()
             score = opp.get('ob1_score', 0)
             opp_type = _esc(opp.get('opportunity_type', 'mercato'))
             current_club = _esc(opp.get('current_club', ''))

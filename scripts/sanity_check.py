@@ -29,16 +29,6 @@ DASH_FILE = BASE_DIR / "docs" / "data.json"
 # ─────────────────────────────────────────────────────────────────────────────
 
 
-def check(label: str, condition: bool, message: str, critical: bool = True) -> bool:
-    """Print check result. Returns False if condition fails."""
-    if condition:
-        print(f"  ✅ {label}")
-        return True
-    tag = "❌ CRITICAL" if critical else "⚠️  WARNING"
-    print(f"  {tag}: {label} — {message}")
-    return not critical  # critical failure → return False so caller can track
-
-
 def main() -> int:
     notifier = TelegramNotifier()
     errors: list[str] = []
@@ -128,7 +118,7 @@ def main() -> int:
                     print(f"  ⚠️  WARNING: last_update {age_hours:.1f}h fa")
                 else:
                     print(f"  ✅ last_update {age_hours:.1f}h fa (fresh)")
-            except ValueError:
+            except (ValueError, AttributeError, TypeError):
                 warnings.append(f"last_update non parsabile: {last_up!r}")
                 print(f"  ⚠️  WARNING: last_update non parsabile: {last_up!r}")
         else:
