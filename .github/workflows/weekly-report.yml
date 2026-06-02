@@ -8,8 +8,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   weekly-report:
@@ -24,7 +22,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: '3.12'
         cache: 'pip'
 
     - name: Install dependencies
@@ -37,7 +35,7 @@ jobs:
         name: ob1-database
         path: data/
 
-    - name: Update data.json from latest artifact
+    - name: Update dashboard data
       run: |
         if [ -f data/opportunities.json ]; then
           python scripts/generate_dashboard.py
@@ -48,7 +46,7 @@ jobs:
     - name: Generate weekly report
       run: python scripts/generate_weekly_report.py
 
-    - name: Generate DS report (PDF)
+    - name: Generate DS report
       run: python scripts/generate_ds_report.py
 
     - name: Commit report files
@@ -59,23 +57,49 @@ jobs:
         git diff --staged --quiet || git commit -m "📝 Weekly report: $(date -u +'%Y-%m-%d')"
         git push || echo "Nothing to push"
 
-    - name: Generate social posts (DATA-003-MW3)
-      run: |
-        mkdir -p data/social
-        python scripts/generate_social_post.py
-
-    - name: Send public Telegram report + X post to private (DATA-003-MW3)
+    - name: Notify private channel
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        TELEGRAM_PUBLIC_CHANNEL_ID: ${{ secrets.TELEGRAM_PUBLIC_CHANNEL_ID }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      run: python scripts/send_public_report.py
-
-    - name: Commit social posts
+        TELEGRAM_OFFICE_CHAT_ID: ${{ secrets.TELEGRAM_OFFICE_CHAT_ID }}
       run: |
-        git add data/social/ || true
-        git diff --staged --quiet || git commit -m "📊 Weekly social post $(date -u +'%Y-%m-%d')"
-        git push || echo "Nothing to push"
+        python - <<'EOF'
+        import os, requests, json
+        from pathlib import Path
+        from datetime import datetime
+
+        token = os.getenv('TELEGRAM_BOT_TOKEN', '')
+        chat = os.getenv('TELEGRAM_CHAT_ID', '') or os.getenv('TELEGRAM_OFFICE_CHAT_ID', '')
+        if not token or not chat:
+            print("Telegram non configurato, skip")
+            raise SystemExit(0)
+
+        stats = {}
+        try:
+            data = json.loads(Path('docs/data.json').read_text())
+            stats = data.get('stats', {})
+        except Exception:
+            pass
+
+        total = stats.get('total', '—')
+        hot   = stats.get('hot', '—')
+        warm  = stats.get('warm', '—')
+        date  = datetime.now().strftime('%d/%m/%Y')
+
+        text = (
+            f"📋 <b>OB1 Lega Pro — Report Settimanale</b>\n"
+            f"<i>{date}</i>\n\n"
+            f"• Opportunità totali: <b>{total}</b>\n"
+            f"• HOT: <b>{hot}</b> · WARM: <b>{warm}</b>\n\n"
+            f"🔗 Dashboard aggiornata"
+        )
+        resp = requests.post(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            json={"chat_id": chat, "text": text, "parse_mode": "HTML"},
+            timeout=10,
+        )
+        print(f"Notifica inviata: {resp.status_code}")
+        EOF
 
     - name: Log completion
-      run: echo "✅ Weekly report + social posts generated at $(date -u +'%Y-%m-%d %H:%M UTC')"
+      run: echo "✅ Weekly report completato $(date -u +'%Y-%m-%d %H:%M UTC')"
