@@ -1,13 +1,20 @@
 # OB1 Lega Pro - LEAGUES CONFIGURATION
 leagues:
   italy_serie_c_d:
-    name: "Serie C & D Italiana"
+    name: "Serie C, D & Eccellenza Italiana"
     country: IT
     language: it
     serper_gl: it
     serper_hl: it
     queries:
-      - 'Serie C svincolato mercato oggi'
-      - 'Lega Pro calciomercato parametro zero'
-      - 'Serie D giovani talenti promesse'
-    trusted_sources: [tuttoc.com, calciomercato.com, lacasadic.com]
+      # Lega Pro / Serie C — mercato primario
+      - 'Serie C svincolato parametro zero estate 2026'
+      - 'Lega Pro calciomercato trattativa accordo 2026'
+      - 'retrocessa Lega Pro giocatori disponibili mercato'
+      # Serie D — fascia intermedia
+      - 'Serie D svincolato calciomercato estate 2026'
+      - 'Serie D Under 23 trattativa interesse Lega Pro'
+      # Eccellenza — vantaggio asimmetrico (zero coverage su altri tool)
+      - 'Eccellenza nazionale svincolato accordo Serie D 2026'
+      - 'Eccellenza talento promessa interesse categoria superiore'
+    trusted_sources: [tuttoc.com, calciomercato.com, lacasadic.com, mister-x.it, calciodilettanti.it]
