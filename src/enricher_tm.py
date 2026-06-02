@@ -11,6 +11,7 @@ import time
 from typing import Dict, Any, Optional
 import requests
 from dotenv import load_dotenv
+from google import genai
 
 load_dotenv()
 
@@ -31,6 +32,7 @@ class TransfermarktEnricher:
             raise ValueError("GEMINI_API_KEY mancante")
 
         self.session = requests.Session()
+        self.gemini_client = genai.Client(api_key=self.gemini_key)
 
     def search_player_profile(self, player_name: str) -> Optional[Dict[str, Any]]:
         """Cerca il profilo Transfermarkt di un giocatore"""
@@ -75,8 +77,7 @@ class TransfermarktEnricher:
     def extract_data_with_gemini(self, content: str, url: str) -> Dict[str, Any]:
         """Usa Gemini per estrarre dati strutturati dal testo grezzo della pagina"""
 
-        # Truncate content to avoid token limits (TM pages can be long)
-        max_chars = 12000
+        max_chars = 20000
         if len(content) > max_chars:
             content = content[:max_chars] + "..."
 
@@ -115,53 +116,29 @@ CONTENUTO PAGINA:
 
 JSON:"""
 
-        gemini_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={self.gemini_key}"
-
-        payload = {
-            "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {
-                "temperature": 0.0,
-                "maxOutputTokens": 2048,
-                "responseMimeType": "application/json",
-            },
-        }
-
         try:
-            response = self.session.post(gemini_url, json=payload, timeout=30)
-            response.raise_for_status()
-            data = response.json()
-
-            candidates = data.get("candidates", [])
-            if not candidates:
-                print("  [WARN] Nessuna risposta da Gemini")
-                return {}
-
-            content_dict = candidates[0].get("content", {})
-            if not isinstance(content_dict, dict):
-                print("  [WARN] Contenuto non valido in risposta Gemini")
-                return {}
-
-            parts = content_dict.get("parts", [])
-            if not isinstance(parts, list) or not parts:
-                print("  [WARN] Nessun contenuto in risposta Gemini")
-                return {}
-
-            parts_list = list(parts)
-            text = parts_list[0].get("text", "")
+            response = self.gemini_client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=prompt,
+                config=genai.types.GenerateContentConfig(
+                    temperature=0.0,
+                    max_output_tokens=2048,
+                    response_mime_type="application/json",
+                ),
+            )
+            text = response.text or ""
             if not text:
                 print("  [WARN] Testo vuoto in risposta Gemini")
                 return {}
 
-            # Strip markdown fences if model wrapped output
+            # Safety net: strip markdown fences + extract JSON object
             text = re.sub(r'^```(?:json)?\s*', '', text.strip())
             text = re.sub(r'\s*```$', '', text.strip())
-            # Extract first JSON object in case of extra text
             m = re.search(r'\{.*\}', text, re.DOTALL)
             if m:
                 text = m.group(0)
 
-            parsed = json.loads(text)
-            return parsed
+            return json.loads(text)
 
         except Exception as e:
             print(f"  [ERROR] Errore parsing Gemini: {e}")

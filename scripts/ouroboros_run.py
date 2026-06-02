@@ -127,7 +127,7 @@ def run_ouroboros():
                     if opp.relevance_score >= 3:
                         # DNA Matching with 3s delay
                         print(f"  [INTEL] Analyzing {opp.player_name}...")
-                        time.sleep(3) # Heavy Anti-429
+                        time.sleep(1) # Anti-429 (Gemini 2.5 Flash higher rate limits)
 
                         dna_results = dna_engine.calculate_dna_fit(opp)
                         dna_fit = {k: v for k, v in dna_results.items() if isinstance(v, dict)}

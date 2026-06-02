@@ -4,6 +4,22 @@ from datetime import datetime
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 from src.enricher_tm import TransfermarktEnricher
+
+_JUNK_TERMS = [
+    'transfermarkt', 'calciomercato', 'svincolati', 'la casa di c',
+    'rádio', 'fischio finale', 'ultime notizie', 'football club',
+    'web radio', 'il portale', 'il piccolo', 'management magazine',
+    'next pro wiki', 'chiamarsi bomber', 'spareggi nazionali',
+    'stagione sportiva', 'sport news', 'giornale', 'magazine',
+    'notiziario', 'dipartimento', 'interregionale', 'associazione',
+]
+
+def _is_enrichable(name: str) -> bool:
+    """Skip names that are clearly not individual players."""
+    if not name or len(name) < 4 or '|' in name:
+        return False
+    n = name.lower()
+    return not any(t in n for t in _JUNK_TERMS)
 DATA_FILE = Path("data/opportunities.json")
 DATA_FILE_DOCS = Path("docs/data.json")
 MAX_RETRIES = 3
@@ -38,6 +54,9 @@ def main():
     skipped = 0
     for i, opp in enumerate(opportunities):
         player_name = opp.get('player_name')
+        if not _is_enrichable(player_name):
+            skipped += 1
+            continue
         profile = opp.get('player_profile', {}) or {}
         if profile.get('market_value') or opp.get('tm_enriched', False):
             skipped += 1

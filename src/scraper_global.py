@@ -11,6 +11,7 @@ import json
 import requests
 from typing import List, Dict, Any, Optional, Tuple
 from dotenv import load_dotenv
+from google import genai
 
 # Scrapling Integration
 try:
@@ -46,15 +47,57 @@ class GlobalScraper:
         'jugadores libres', 'ranking', 'classifica', 'tabella',
         'gli svincolati', 'sul mercato', 'quanti svincolati',
         'transferencias', 'calendario', 'risultati',
+        'ultime notizie', 'tutto mercato', 'calciomercato live',
+        'notiziario', 'fischio finale',
     ]
 
     def __init__(self, config_path: str = "config/leagues.yaml"):
         self.serper_key = os.getenv('SERPER_API_KEY')
         self.tavily_key = os.getenv('TAVILY_API_KEY')
-        
+        self.gemini_key = os.getenv('GEMINI_API_KEY')
+        self.gemini_client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
+
         with open(config_path, 'r', encoding='utf-8') as f:
             self.config = yaml.safe_load(f)
         self.leagues = self.config.get('leagues', {})
+
+    def search_grounded(self, query: str) -> List[Dict]:
+        """Gemini Search Grounding — one call: searches Google + extracts player names."""
+        if not self.gemini_client:
+            return []
+
+        prompt = (
+            f"Cerca su Google notizie recenti (2026) su: {query}\n\n"
+            "Identifica SOLO i nomi di calciatori italiani reali menzionati nelle notizie trovate.\n"
+            "Escludi: giornalisti, allenatori, club, istituzioni, siti web, agenzie di stampa.\n\n"
+            "Rispondi ESCLUSIVAMENTE con un JSON array, nessun testo aggiuntivo:\n"
+            '[{"player_name": "Nome Cognome", "source_url": "url", '
+            '"opportunity_type": "svincolato|prestito|rescissione|mercato", '
+            '"description": "contesto breve max 100 caratteri"}]\n\n'
+            "Se non ci sono calciatori reali nei risultati, rispondi: []"
+        )
+
+        try:
+            response = self.gemini_client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=prompt,
+                config=genai.types.GenerateContentConfig(
+                    tools=[genai.types.Tool(google_search=genai.types.GoogleSearch())],
+                    temperature=0.0,
+                ),
+            )
+            text = response.text or ""
+            m = re.search(r'\[.*\]', text, re.DOTALL)
+            if not m:
+                return []
+            items = json.loads(m.group(0))
+            if not isinstance(items, list):
+                return []
+            print(f"    [GROUNDED] {len(items)} giocatori trovati per: {query[:40]}...")
+            return items
+        except Exception as e:
+            print(f"    [GROUNDED ERROR] {e}")
+            return []
 
     def search_tavily(self, query: str) -> List[Dict]:
         """High-quality discovery phase. Open search intentionally — no domain filter."""
@@ -110,7 +153,38 @@ class GlobalScraper:
         seen_urls = set()
 
         for query in conf.get('queries', []):
-            # Discovery using Tavily
+            # Primary: Gemini Search Grounding (understands football context, no regex needed)
+            grounded = self.search_grounded(query)
+            if grounded:
+                for item in grounded:
+                    url = item.get('source_url', '')
+                    if not url or url in seen_urls:
+                        continue
+                    seen_urls.add(url)
+
+                    player_name = item.get('player_name', '').strip()[:50]
+                    if not player_name:
+                        continue
+
+                    fresh, reason = is_article_fresh(url)
+                    if not fresh:
+                        print(f"  [STALE] Skipping {url}: {reason}")
+                        continue
+
+                    opp = MarketOpportunity(
+                        league_id=league_id,
+                        opportunity_type=self._detect_type(
+                            item.get('opportunity_type', '') + ' ' + item.get('description', '')
+                        ),
+                        player_name=player_name,
+                        description=item.get('description', ''),
+                        source_url=url,
+                        source_name=url.split('/')[2] if url.count('/') >= 2 else url,
+                    )
+                    opportunities.append(opp)
+                continue  # grounding succeeded — skip Tavily for this query
+
+            # Fallback: Tavily + regex extraction
             results = self.search_tavily(query)
 
             for item in results:
@@ -118,37 +192,32 @@ class GlobalScraper:
                 if url in seen_urls: continue
                 seen_urls.add(url)
 
-                # 1. Skip index/listing pages
                 if self._is_junk_url(url):
                     print(f"  [JUNK URL] Skipping: {url[:60]}...")
                     continue
 
-                # 2. Skip generic page titles
                 title = item.get('title', '')
                 if self._is_junk_title(title):
                     print(f"  [JUNK TITLE] Skipping: {title[:60]}...")
                     continue
 
-                # 3. Date Filtering (Anti-Stale)
                 fresh, reason = is_article_fresh(url)
                 if not fresh:
                     print(f"  [STALE] Skipping {url}: {reason}")
                     continue
 
-                # 4. Extract player name — skip if no real name found
                 player_name = self._extract_name(title)
                 if not player_name:
                     print(f"  [NO NAME] Skipping: {title[:60]}...")
                     continue
 
-                # 5. Build opportunity
                 opp = MarketOpportunity(
                     league_id=league_id,
                     opportunity_type=self._detect_type(title + (item.get('content', '') or '')),
                     player_name=player_name,
                     description=item.get('content', ''),
                     source_url=url,
-                    source_name=url.split('/')[2]
+                    source_name=url.split('/')[2],
                 )
                 opportunities.append(opp)
 
@@ -194,12 +263,21 @@ class GlobalScraper:
             text
         )
 
-        # Filter out non-person names
+        # Filter out non-person names (clubs, leagues, media brands, institutions)
         skip_words = {
-            'Serie', 'Lega', 'Coppa', 'Girone', 'Transfermarkt', 'Calciomercato',
-            'Italia', 'Mercato', 'Juventus', 'Milan', 'Inter', 'Roma', 'Napoli',
-            'Champions', 'League', 'Europa', 'Conference', 'Copa', 'Brazil',
-            'Argentina', 'Premier', 'Bundesliga',
+            # Leagues / competitions
+            'Serie', 'Lega', 'Coppa', 'Girone', 'Champions', 'League', 'Europa',
+            'Conference', 'Copa', 'Premier', 'Bundesliga',
+            # Clubs
+            'Juventus', 'Milan', 'Inter', 'Roma', 'Napoli',
+            # Countries / regions
+            'Italia', 'Brazil', 'Argentina',
+            # Media / platforms
+            'Transfermarkt', 'Calciomercato', 'Mercato', 'Sky', 'Sport',
+            'Football', 'Italy', 'Tuttoc', 'Mister',
+            # Institutions / generic
+            'Associazione', 'Italiana', 'Dipartimento', 'Interregionale',
+            'Scuola', 'Superiore', 'Portale', 'Notizie', 'Calcio',
         }
 
         for match in matches:
