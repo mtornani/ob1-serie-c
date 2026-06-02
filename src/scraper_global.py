@@ -157,12 +157,14 @@ class GlobalScraper:
             grounded = self.search_grounded(query)
             if grounded:
                 for item in grounded:
-                    url = item.get('source_url', '')
+                    if not isinstance(item, dict):
+                        continue
+                    url = str(item.get('source_url') or '').strip()
                     if not url or url in seen_urls:
                         continue
                     seen_urls.add(url)
 
-                    player_name = item.get('player_name', '').strip()[:50]
+                    player_name = str(item.get('player_name') or '').strip()[:50]
                     if not player_name:
                         continue
 
@@ -174,10 +176,10 @@ class GlobalScraper:
                     opp = MarketOpportunity(
                         league_id=league_id,
                         opportunity_type=self._detect_type(
-                            item.get('opportunity_type', '') + ' ' + item.get('description', '')
+                            str(item.get('opportunity_type') or '') + ' ' + str(item.get('description') or '')
                         ),
                         player_name=player_name,
-                        description=item.get('description', ''),
+                        description=str(item.get('description') or ''),
                         source_url=url,
                         source_name=url.split('/')[2] if url.count('/') >= 2 else url,
                     )
@@ -217,7 +219,7 @@ class GlobalScraper:
                     player_name=player_name,
                     description=item.get('content', ''),
                     source_url=url,
-                    source_name=url.split('/')[2],
+                    source_name=url.split('/')[2] if url.count('/') >= 2 else url,
                 )
                 opportunities.append(opp)
 

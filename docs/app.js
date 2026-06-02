@@ -320,7 +320,7 @@ function openDrawer(o){
     const accClass = intel.roi_class==='elite'||intel.roi_class==='high' ? 'acc' : (intel.roi_class==='medium' ? 'blue' : '');
     intelHtml = `
       <div class="sect">
-        <div class="sect-title">MINUTAGGIO<span class="dim">${intel.roi_label||''}</span></div>
+        <div class="sect-title">MINUTAGGIO<span class="dim">${esc(intel.roi_label||'')}</span></div>
         <div class="intel-grid">
           <div class="intel-cell ${accClass}"><div class="k">RITORNO</div><div class="v">${esc(intel.roi_label||'—')}</div></div>
           <div class="intel-cell"><div class="k">MOLTIPLICATORE</div><div class="v">×${intel.moltiplicatore||0}</div></div>
@@ -422,6 +422,7 @@ function shortMoney(s){
 function updateCycle(){
   if (!STATE.lastUpdate) return;
   const last  = new Date(STATE.lastUpdate);
+  if (isNaN(last.getTime())) return;
   const now   = new Date();
   const diffMs = Math.max(0, now - last);
   const diffH  = Math.floor(diffMs / 3600000);
@@ -454,7 +455,8 @@ function checkStale(){
 function trackSession(){
   const today = new Date().toISOString().slice(0, 10);
   try {
-    const sessions = JSON.parse(localStorage.getItem('ob1_sessions') || '[]');
+    let sessions = JSON.parse(localStorage.getItem('ob1_sessions') || '[]');
+    if (!Array.isArray(sessions)) sessions = [];
     if (!sessions.includes(today)) {
       sessions.push(today);
       localStorage.setItem('ob1_sessions', JSON.stringify(sessions.slice(-90)));
@@ -507,6 +509,7 @@ function wireKeyShortcuts(){
     }
     // Arrow keys → navigate cards
     if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !el('#ov').classList.contains('open')){
+      if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
       const cards = els('.card');
       if (!cards.length) return;
       const idx = cards.indexOf(document.activeElement);

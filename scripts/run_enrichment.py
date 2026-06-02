@@ -16,7 +16,7 @@ _JUNK_TERMS = [
 
 def _is_enrichable(name: str) -> bool:
     """Skip names that are clearly not individual players."""
-    if not name or len(name) < 4 or '|' in name:
+    if not isinstance(name, str) or len(name) < 4 or '|' in name:
         return False
     n = name.lower()
     return not any(t in n for t in _JUNK_TERMS)
@@ -76,7 +76,9 @@ def main():
                         p[key] = val
                 if not opp.get('age') and tm_data.get('birth_date'):
                     try:
-                        opp['age'] = datetime.now().year - int(tm_data['birth_date'][:4])
+                        age = datetime.now().year - int(str(tm_data['birth_date'])[:4])
+                        if 10 <= age <= 60:
+                            opp['age'] = age
                     except:
                         pass
                 opp['tm_enriched'] = True
