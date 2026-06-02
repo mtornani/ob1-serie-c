@@ -228,7 +228,7 @@ function card(o){
         <span>${esc(club)}</span>
       </div>
     </div>
-    <div class="score">${o.ob1_score}<span class="dlabel">VOTO</span></div>
+    <div class="score">${o.ob1_score}<span class="dlabel">VOTO · ${o._tier.toUpperCase()}</span></div>
   </div>
   <div class="card-body">
     <div class="tag-row">${typeTag}${u21Tag}${roiTag}</div>
@@ -383,6 +383,7 @@ function openDrawer(o){
 
     <div class="sect">
       <div class="sect-title">COME È STATO VALUTATO<span class="dim">voto: ${o.ob1_score}/100</span></div>
+      <div class="intel-note" style="margin-bottom:6px">Il voto misura quanto vale la pena seguire questa opportunità adesso. Si basa su 8 fattori: più la barra è verde, più quel fattore gioca a favore.</div>
       <div>${bdHtml}</div>
     </div>
   `;
