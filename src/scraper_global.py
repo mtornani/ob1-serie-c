@@ -68,13 +68,19 @@ class GlobalScraper:
 
         prompt = (
             f"Cerca su Google notizie recenti (2026) su: {query}\n\n"
-            "Identifica SOLO i nomi di calciatori italiani reali menzionati nelle notizie trovate.\n"
-            "Escludi: giornalisti, allenatori, club, istituzioni, siti web, agenzie di stampa.\n\n"
+            "Identifica SOLO nomi di calciatori INDIVIDUALI (persone fisiche) menzionati nelle notizie.\n\n"
+            "ESCLUDI assolutamente:\n"
+            "- Giornalisti o opinionisti (es. Gianluca Di Marzio, Fabrizio Romano)\n"
+            "- Nomi di siti web, media, radio (es. Sky Sport, Calciomercato.com, Web Radio)\n"
+            "- Organizzazioni, federazioni (es. Dipartimento Interregionale, Associazione Italiana Calciatori)\n"
+            "- Squadre, rappresentative, campionati (es. Rappresentativa Serie D, Juniores Cup)\n"
+            "- Concetti generici (es. Parametro Zero, Giovani Talenti, Stagione Sportiva)\n"
+            "- Qualsiasi nome che non sia 'Cognome Nome' di un calciatore reale\n\n"
             "Rispondi ESCLUSIVAMENTE con un JSON array, nessun testo aggiuntivo:\n"
-            '[{"player_name": "Nome Cognome", "source_url": "url", '
+            '[{"player_name": "Cognome Nome", "source_url": "url articolo", '
             '"opportunity_type": "svincolato|prestito|rescissione|mercato", '
-            '"description": "contesto breve max 100 caratteri"}]\n\n'
-            "Se non ci sono calciatori reali nei risultati, rispondi: []"
+            '"description": "max 80 caratteri sul motivo"}]\n\n'
+            "Se non trovi calciatori individuali reali, rispondi esattamente: []"
         )
 
         try:

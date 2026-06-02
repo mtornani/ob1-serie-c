@@ -40,26 +40,46 @@ def is_valid_player_name(name: str) -> bool:
     """Validate that a name looks like a real person, not a page title."""
     if not name or len(name) < 3:
         return False
-    # Must not contain typical page-title separators
     if '|' in name:
         return False
     junk_terms = [
-        # Existing
-        'transfermarkt', 'calciomercato', 'svincolati', 'la casa di c',
+        # Italian media / organizations (observed in CI logs)
+        'sky sport', 'transfermarkt', 'calciomercato', 'svincolati',
+        'web radio', 'il portale', 'il piccolo', 'management magazine',
+        'next pro wiki', 'chiamarsi bomber', 'spareggi nazionali', 'spareggi',
+        'stagione sportiva', 'sport news', 'giornale', 'magazine',
+        'notiziario', 'dipartimento', 'interregionale', 'associazione',
+        'rappresentativa', 'juniores cup', 'parametro zero',
+        'football italy', 'football club', 'migliori giovani',
+        'giovani talenti', 'occasione serie', 'notizie calcio',
+        'scuola superiore', 'fischio finale', 'ultime notizie',
+        'la casa di c', 'tutto mercato', 'calciomercato live',
+        # Spanish / Portuguese junk
         'jugadores libres', 'ranking', 'classifica', 'tabella',
         'sul mercato', 'quanti svincolati',
-        # Media / news sources observed in CI logs
-        'rádio', 'fischio finale', 'ultime notizie', 'el gráfico',
-        'sitio oficial', 'diario democracia', 'portal brazuca',
-        # Non-player concepts
+        'rádio', 'el gráfico', 'sitio oficial', 'diario democracia', 'portal brazuca',
         'libre comercio', 'mercado libre', 'economic freedom', 'sou tricolor',
-        'craques do futebol', 'football club',
+        'craques do futebol',
         # League / competition names
         'reserve league', 'liga profesional', 'selección', 'seleccion',
         'mundial sub', 'sub-20', 'sub-23',
     ]
     name_lower = name.lower()
     if any(term in name_lower for term in junk_terms):
+        return False
+    # Reject names starting with Italian articles/prepositions (org names, not people)
+    first_word = name.split()[0].lower()
+    if first_word in ('il', 'la', 'lo', 'le', 'gli', 'i', 'un', 'una',
+                      'da', 'dal', 'della', 'dello', 'degli', 'the',
+                      'tutto', 'nuova', 'nuovo', 'cinque', 'tanti'):
+        return False
+    # Reject known media / news outlets
+    media_terms = [
+        'guardian', 'ultimo uomo', 'mediaset', 'calcio professionistiche',
+        'talenti serie', 'salerno in web', 'cosenza quotidiano',
+        'tutto calcio', 'sport news',
+    ]
+    if any(t in name_lower for t in media_terms):
         return False
     return True
 
