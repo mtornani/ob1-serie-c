@@ -186,7 +186,7 @@ class GlobalScraper:
                         player_name=player_name,
                         description=str(item.get('description') or ''),
                         source_url=url,
-                        source_name=url.lstrip('/').split('://')[-1].split('/')[0],
+                        source_name=self._source_name(url),
                     )
                     opportunities.append(opp)
                 continue  # grounding succeeded — skip Tavily for this query
@@ -224,11 +224,17 @@ class GlobalScraper:
                     player_name=player_name,
                     description=item.get('content', ''),
                     source_url=url,
-                    source_name=url.lstrip('/').split('://')[-1].split('/')[0],
+                    source_name=self._source_name(url),
                 )
                 opportunities.append(opp)
 
         return opportunities
+
+    def _source_name(self, url: str) -> str:
+        """Return a clean source name. Grounding redirect URLs get a readable label."""
+        if 'vertexaisearch.cloud.google.com' in url or 'grounding-api' in url:
+            return 'Gemini Search'
+        return url.lstrip('/').split('://')[-1].split('/')[0]
 
     def _detect_type(self, text: str) -> OpportunityType:
         text = text.lower()
