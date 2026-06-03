@@ -232,6 +232,88 @@ function esc(s){ return String(s ?? '').replace(/[<>&"']/g, c=>({'<':'&lt;','>':
 
 /* ============ DRAWER ============ */
 
+const SCORE_WEIGHTS = { freshness:15, opportunity_type:10, experience:20, age:15, market_value:15, league_fit:15, source:5, completeness:5 };
+
+function scoreReason(k, v, o) {
+  switch (k) {
+    case 'freshness':
+      return v >= 90 ? 'Segnalato oggi o ieri'
+           : v >= 70 ? 'Notizia di questa settimana'
+           : v >= 40 ? 'Notizia recente (meno di 30 giorni)'
+           : 'Notizia datata — verificare disponibilità';
+    case 'opportunity_type': {
+      const t = (o.opportunity_type||'').toLowerCase();
+      if (t === 'svincolato')  return 'Svincolato — zero costi di cartellino';
+      if (t === 'rescissione') return 'Rescissione — in uscita dal club';
+      if (t === 'prestito')    return 'Prestito — investimento contenuto';
+      if (t === 'scadenza')    return 'Contratto in scadenza — da muovere subito';
+      return 'Opportunità generica di mercato';
+    }
+    case 'experience':
+      if (o.appearances != null) {
+        const a = o.appearances;
+        return a >= 150 ? `${a} presenze — veterano di categoria`
+             : a >= 80  ? `${a} presenze — esperienza solida`
+             : a >= 30  ? `${a} presenze — profilo emergente`
+             : `${a} presenze — ancora poca esperienza`;
+      }
+      return 'Presenze non ancora verificate su Transfermarkt';
+    case 'age':
+      if (o.age != null) {
+        const a = o.age;
+        return a <= 22 ? `${a} anni — profilo U23, ideale per minutaggio FIGC`
+             : a <= 26 ? `${a} anni — picco della carriera`
+             : a <= 29 ? `${a} anni — esperienza matura`
+             : a <= 32 ? `${a} anni — esperienza ma futuribilità limitata`
+             : `${a} anni — profilo senior`;
+      }
+      return 'Età non disponibile';
+    case 'market_value':
+      if (o.market_value_formatted) return `Valore TM: ${o.market_value_formatted}`;
+      if (o.market_value) return `Valore stimato: ${Math.round(o.market_value/1000)}k€`;
+      return 'Valore di mercato non ancora verificato su TM';
+    case 'league_fit':
+      return v >= 80 ? 'Profilo nella fascia giusta per la Lega Pro'
+           : v >= 50 ? 'Pertinenza Lega Pro da confermare'
+           : 'Profilo fuori categoria target';
+    case 'source':
+      return v >= 80 ? `Fonte specializzata: ${o.source_name||''}`
+           : v >= 60 ? `Fonte verificata: ${o.source_name||''}`
+           : 'Gemini Search — notizia da confermare su fonte diretta';
+    case 'completeness': {
+      const have = ['nationality','foot','agent','appearances','market_value'].filter(f=>o[f]!=null).length;
+      return have >= 4 ? `Profilo completo — ${have}/5 dati verificati su TM`
+           : have >= 2 ? `Profilo parziale — ${have}/5 dati verificati (arricchimento in corso)`
+           : `Profilo quasi vuoto — ${have}/5 campi, arricchimento necessario`;
+    }
+    default: return '';
+  }
+}
+
+function scoreVerdict(o) {
+  const bd = o.score_breakdown || {};
+  const s  = o.ob1_score || 0;
+
+  const plusFn = {
+    opportunity_type: () => { const t=(o.opportunity_type||'').toLowerCase(); return t==='svincolato'?'parametro zero':t==='rescissione'?'in uscita dal club':t==='prestito'?'disponibile in prestito':null; },
+    age:              () => o.age ? (o.age<=22?`U23 (${o.age}a)`:`${o.age} anni`) : null,
+    experience:       () => o.appearances!=null ? `${o.appearances} presenze` : null,
+    freshness:        () => 'notizia fresca',
+    market_value:     () => o.market_value_formatted || null,
+  };
+  const minusLabel = { experience:'presenze da verificare', market_value:'valore non confermato', league_fit:'categoria da confermare', source:'fonte non specializzata', completeness:'profilo incompleto' };
+
+  const strong = Object.entries(bd).filter(([k,v])=>v>=75&&plusFn[k]).map(([k])=>plusFn[k]?.()).filter(Boolean).slice(0,3);
+  const weak   = Object.entries(bd).filter(([k,v])=>v<50&&minusLabel[k]).map(([k])=>minusLabel[k]).filter(Boolean).slice(0,2);
+  const action = s>=70 ? 'Contattare subito.' : s>=57 ? 'Tenere d\'occhio.' : 'Bassa priorità.';
+
+  const parts = [];
+  if (strong.length) parts.push(strong.join(' + '));
+  if (weak.length)   parts.push(`Penalizza: ${weak.join(', ')}`);
+  parts.push(action);
+  return parts.join(' — ');
+}
+
 function openDrawer(o){
   trackDrawerOpen(o.player_name);
 
@@ -301,9 +383,14 @@ function openDrawer(o){
   };
   const bd = o.score_breakdown || {};
   const bdHtml = Object.entries(bd).map(([k,v])=>{
-    const cls = v>=70?'good':v>=40?'mid':'low';
-    return `<div class="bd-row"><span class="bk">${bdLabels[k]||k}</span><div class="bt"><div class="bf ${cls}" style="width:${v}%"></div></div><span class="bv">${v}</span></div>`;
+    const icon = v>=75?'✅':v>=45?'⚡':'❌';
+    const cls  = v>=75?'good':v>=45?'mid':'low';
+    const lbl  = bdLabels[k]||k;
+    const wt   = SCORE_WEIGHTS[k] ? `<span class="reason-weight"> ${SCORE_WEIGHTS[k]}%</span>` : '';
+    const why  = esc(scoreReason(k, v, o));
+    return `<div class="reason-row"><span class="reason-icon">${icon}</span><div class="reason-body"><span class="reason-label">${lbl}${wt}</span><span class="reason-text">${why}</span></div><span class="reason-score ${cls}">${v}</span></div>`;
   }).join('');
+  const verdict = scoreVerdict(o);
 
   const summaryText = o.recommendation || o.summary || '';
   const prevClubs   = Array.isArray(o.previous_clubs) && o.previous_clubs.length ? o.previous_clubs.join(' → ') : '';
@@ -385,9 +472,9 @@ function openDrawer(o){
     ${signalsHtml}
 
     <details class="score-details sect">
-      <summary>COME È STATO VALUTATO<span class="dim">voto: ${o.ob1_score}/100</span></summary>
+      <summary>PERCHÉ ${o.ob1_score}/100<span class="dim">${o._tier.toUpperCase()}</span></summary>
       <div class="score-body">
-        <div class="intel-note" style="margin-bottom:8px">8 fattori pesati: più la barra è lunga, più quel fattore contribuisce al voto.</div>
+        <div class="verdict-note">${esc(verdict)}</div>
         <div>${bdHtml}</div>
       </div>
     </details>
