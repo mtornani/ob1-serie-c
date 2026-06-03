@@ -100,6 +100,7 @@ Classificazione: HOT ≥ 70, WARM ≥ 57, COLD < 57
 - Gemini model: `gemini-2.5-flash` (NON 2.0-flash, è deprecato/404)
 - Scrapling: usare `page.get_all_text()` (NON `page.text` che ritorna vuoto)
 - Git: branch `main`, commit in inglese, push su origin
+- Git post-merge: dopo ogni PR merge → `git fetch origin main && git rebase origin/main && git push --force-with-lease origin <branch>`. Mantiene il branch sincronizzato con main e silenzia lo stop-hook GPG (il range origin/branch..HEAD diventa vuoto).
 
 ## Sicurezza
 - Report scouting in `reports/` (NON in `docs/` — non devono essere pubblici)
