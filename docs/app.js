@@ -241,7 +241,7 @@ function card(o){
     <div class="score">${o.ob1_score}<span class="dlabel">VOTO · ${o._tier.toUpperCase()}</span></div>
   </div>
   <div class="card-body">
-    <div class="tag-row">${typeTag}${u21Tag}${roiTag}${newTag}${tmTag}</div>
+    <div class="tag-row">${typeTag}${newTag}${u21Tag}</div>
     <div class="timer">
       <div class="days">${daysText}</div>
       <span class="unit">${daysUnit}</span>

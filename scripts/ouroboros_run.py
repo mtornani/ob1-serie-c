@@ -98,6 +98,30 @@ def purge_junk_entries(opps: list) -> list:
     return clean
 
 
+# Clubs that play in Serie A or Serie B — not relevant for a Lega Pro radar.
+# U23/NextGen teams are intentionally excluded (they play physically in Serie C).
+_WRONG_LEAGUE_CLUBS = {
+    'cesena fc', 'salernitana', 'reggiana', 'cremonese', 'juve stabia',
+    'cittadella', 'catanzaro', 'lazio', 'roma', 'bologna', 'empoli',
+    'lecce', 'spezia', 'modena', 'sudtirol', 'bari', 'palermo',
+    'sampdoria', 'parma', 'pisa', 'brescia', 'cosenza',
+}
+
+def purge_wrong_league(opps: list) -> list:
+    """Remove players contracted to Serie A/B clubs (not acquirable by Lega Pro teams)."""
+    clean = []
+    removed = 0
+    for opp in opps:
+        club = (opp.get('current_club') or '').lower().strip()
+        if any(bad in club for bad in _WRONG_LEAGUE_CLUBS):
+            removed += 1
+            continue
+        clean.append(opp)
+    if removed:
+        print(f"  [PURGE] Removed {removed} wrong-league entries (Serie A/B clubs)")
+    return clean
+
+
 def run_ouroboros():
     print("=" * 60)
     print("🐍 OUROBOROS - GLOBAL CYCLE START (v5.1)")
@@ -110,8 +134,9 @@ def run_ouroboros():
 
     existing_opps = load_existing_opps()
 
-    # One-time cleanup: purge any junk entries already in the DB
+    # Cleanup: purge junk names and wrong-league club entries
     existing_opps = purge_junk_entries(existing_opps)
+    existing_opps = purge_wrong_league(existing_opps)
 
     new_opps_count = 0
     skipped_count = 0

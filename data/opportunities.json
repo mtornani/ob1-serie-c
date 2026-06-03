@@ -181,70 +181,6 @@
     "tm_enriched": true
   },
   {
-    "id": "opp_4c57786e",
-    "player_name": "Matino",
-    "age": null,
-    "role": "DC",
-    "role_name": "Difensore Centrale",
-    "opportunity_type": "mercato",
-    "current_club": "Salernitana",
-    "previous_clubs": [],
-    "summary": "Dopo essere stato messo da parte, è stato rilanciato da Cosmi e ha offerto una prestazione super. Potrebbe essere un'opportunità per club di Serie C che cercano un difensore centrale solido.",
-    "source_url": "https://www.tuttomercatoweb.com/serie-c/la-top-11-del-girone-c-di-serie-c-matino-alza-il-muro-della-salernitana-2208473",
-    "source_name": "TMW",
-    "source_title": "La Top 11 del Girone C di Serie C: Matino alza il muro della ...",
-    "discovered_at": "2026-03-03T13:09:47.664021",
-    "tm_url": "https://www.transfermarkt.it/pol-virtus-matino/startseite/verein/65712",
-    "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/pol-virtus-matino/startseite/verein/65712"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_4b9dd46d",
-    "player_name": "Donnarumma",
-    "age": null,
-    "role": "PO",
-    "role_name": "Portiere",
-    "opportunity_type": "mercato",
-    "current_club": "Salernitana",
-    "previous_clubs": [],
-    "summary": "Nonostante qualche critica, ha dimostrato forza e personalità, ottenendo il decimo clean sheet stagionale. Potrebbe essere un'opportunità per club di Serie C che cercano un portiere affidabile.",
-    "source_url": "https://www.tuttomercatoweb.com/serie-c/la-top-11-del-girone-c-di-serie-c-matino-alza-il-muro-della-salernitana-2208473",
-    "source_name": "TMW",
-    "source_title": "La Top 11 del Girone C di Serie C: Matino alza il muro della ...",
-    "discovered_at": "2026-03-03T13:09:47.663997",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/antonio-donnarumma/profil/spieler/430532",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/antonio-donnarumma/profil/spieler/430532"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_711fda76",
-    "player_name": "Rabbi",
-    "age": null,
-    "role": "AT",
-    "role_name": "Centravanti",
-    "opportunity_type": "mercato",
-    "current_club": "Cittadella",
-    "previous_clubs": [],
-    "summary": "Rabbi è un centravanti del Cittadella. L'articolo menziona l'interesse della Reggiana per lui, suggerendo una potenziale opportunità di mercato.",
-    "source_url": "https://www.tuttomercatoweb.com/serie-c/la-top-11-del-girone-a-di-serie-c-ospitaletto-rabbia-per-la-mancata-vittoria-2208468",
-    "source_name": "TMW",
-    "source_title": "La Top 11 del Girone A di Serie C: Ospitaletto, RABBIa per la ...",
-    "discovered_at": "2026-03-03T13:09:44.316299",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/riccardo-rabbi/profil/spieler/492412",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/riccardo-rabbi/profil/spieler/492412"
-    },
-    "tm_enriched": true
-  },
-  {
     "id": "opp_a0419214",
     "player_name": "Rizzo",
     "age": null,
@@ -621,30 +557,6 @@
     "contract_expires": "2025-07-01"
   },
   {
-    "id": "opp_03193a9a",
-    "player_name": "Noa Kljajic",
-    "age": null,
-    "role": "AT",
-    "role_name": "Attaccante",
-    "opportunity_type": "rescissione",
-    "current_club": "Reggiana",
-    "previous_clubs": [
-      "Mainz"
-    ],
-    "summary": "Giovane attaccante che ha risolto il contratto con la Reggiana. Arrivato dal Mainz, ha giocato solo con la Primavera. Ora è svincolato.",
-    "source_url": "https://www.tuttomercatoweb.com/serie-b/reggiana-arriva-saro-fra-i-pali-risoluzione-per-l-attaccante-kljajic-2141605",
-    "source_name": "TMW",
-    "source_title": "Reggiana, arriva Saro fra i pali. Risoluzione per l'attaccante Kljajic",
-    "discovered_at": "2026-03-03T07:00:15.931919",
-    "nationality": "Croazia",
-    "tm_url": "https://www.transfermarkt.it/noa-kljajic/profil/spieler/991489",
-    "player_profile": {
-      "nationality": "Croazia",
-      "tm_url": "https://www.transfermarkt.it/noa-kljajic/profil/spieler/991489"
-    },
-    "tm_enriched": true
-  },
-  {
     "id": "opp_2317f6a6",
     "player_name": "Luan Capanni",
     "age": 25,
@@ -674,28 +586,6 @@
       "second_nationality": "Italia",
       "foot": "destro",
       "tm_url": "https://www.transfermarkt.it/luan-capanni/profil/spieler/601877"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_0af49da8",
-    "player_name": "Daniele De Rossi",
-    "age": null,
-    "role": "CC",
-    "role_name": "Allenatore",
-    "opportunity_type": "rescissione",
-    "current_club": "Roma",
-    "previous_clubs": [],
-    "summary": "Daniele De Rossi ha rescisso il contratto con la Roma. Era legato al club fino al 2027. Ora è libero di allenare in Italia o all'estero. Attualmente è presidente dell'Ostiamare (Serie D).",
-    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Roma/01-10-2025/roma-de-rossi-rescinde-il-contratto-da-allenatore.shtml",
-    "source_name": "Gazzetta",
-    "source_title": "Roma-De Rossi, è davvero finita: contratto rescisso ufficialmente",
-    "discovered_at": "2026-03-03T07:00:10.457156",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/daniele-de-rossi/profil/spieler/5947",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/daniele-de-rossi/profil/spieler/5947"
     },
     "tm_enriched": true
   },
@@ -975,28 +865,6 @@
     "minutes_played": 0
   },
   {
-    "id": "opp_bc48d995",
-    "player_name": "Gianluca Di Chiara",
-    "age": 31,
-    "role": "DC",
-    "role_name": "Difensore",
-    "opportunity_type": "svincolato",
-    "current_club": "Catanzaro",
-    "previous_clubs": [],
-    "summary": "Di Chiara è tornato al Catanzaro da svincolato, ma sta trovando poco spazio. Il Catania (Serie C) è interessato a lui. Potrebbe lasciare il Catanzaro a gennaio.",
-    "source_url": "https://www.pianetaserieb.it/calciomercato-serie-b/di-chiara-catanzaro-big-serie-c/",
-    "source_name": "Pianetaserieb",
-    "source_title": "Di Chiara via da Catanzaro già a gennaio? Una BIG di Serie C ...",
-    "discovered_at": "2026-03-03T02:36:12.192058",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/gianluca-di-chiara/profil/spieler/189340",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/gianluca-di-chiara/profil/spieler/189340"
-    },
-    "tm_enriched": true
-  },
-  {
     "id": "opp_9aa3e4c0",
     "player_name": "Alessandro Girelli",
     "age": null,
@@ -1045,40 +913,6 @@
       "tm_url": "https://www.transfermarkt.it/gianluca-rizzo/profil/spieler/196236"
     },
     "tm_enriched": true
-  },
-  {
-    "id": "opp_4e6ab676",
-    "player_name": "Cristian Shpendi",
-    "age": 23,
-    "role": "PC",
-    "role_name": "Punta centrale",
-    "opportunity_type": "mercato",
-    "current_club": "Cesena FC",
-    "previous_clubs": [],
-    "summary": "Giovane centravanti classe 2003 del Cesena, autore di 9 gol. Viene descritto come un talento emergente che studia Hojlund e sogna la Serie A. Ha un gemello, Cristian, che gioca con lui.",
-    "source_url": "https://www.gazzetta.it/Calcio/altri-campionati/pagina-67/",
-    "source_name": "Gazzetta",
-    "source_title": "Serie C e D: classifiche e risultati in diretta | La Gazzetta dello Sport",
-    "discovered_at": "2026-03-02T18:58:01.394714",
-    "nationality": "Albania",
-    "second_nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/cristian-shpendi/profil/spieler/908760",
-    "player_profile": {
-      "nationality": "Albania",
-      "second_nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/cristian-shpendi/profil/spieler/908760"
-    },
-    "tm_enriched": true,
-    "foot": "destro",
-    "height_cm": 181,
-    "agent": "LIAN Sports Group",
-    "contract_expires": "2028-06-30",
-    "market_value": 5500000,
-    "market_value_formatted": "5,50 mln €",
-    "appearances": 31,
-    "goals": 10,
-    "assists": 4,
-    "minutes_played": 0
   },
   {
     "id": "opp_339594c5",
@@ -1193,28 +1027,6 @@
     "tm_enriched": true
   },
   {
-    "id": "opp_8bfae399",
-    "player_name": "Rémi Oudin",
-    "age": null,
-    "role": "AT",
-    "role_name": "Attaccante",
-    "opportunity_type": "mercato",
-    "current_club": "Lecce",
-    "previous_clubs": [],
-    "summary": "Ceduto a titolo definitivo dal Lecce al Catanzaro.",
-    "source_url": "https://www.gazzetta.it/Calciomercato/01-09-2025/calciomercato-tutte-le-notizie-di-oggi-1-settembre-live-la-diretta.shtml",
-    "source_name": "Gazzetta",
-    "source_title": "Calciomercato: tutte le notizie di oggi, 1 settembre LIVE | La diretta",
-    "discovered_at": "2026-03-02T18:57:25.678938",
-    "nationality": "Francia",
-    "tm_url": "https://www.transfermarkt.it/remi-oudin/profil/spieler/399543",
-    "player_profile": {
-      "nationality": "Francia",
-      "tm_url": "https://www.transfermarkt.it/remi-oudin/profil/spieler/399543"
-    },
-    "tm_enriched": true
-  },
-  {
     "id": "opp_d23ea65b",
     "player_name": "Giulio Carotenuto",
     "age": null,
@@ -1307,28 +1119,6 @@
     "tm_enriched": true
   },
   {
-    "id": "opp_587b6333",
-    "player_name": "Trabucchi",
-    "age": null,
-    "role": "CC",
-    "role_name": "N/D",
-    "opportunity_type": "prestito",
-    "current_club": "Parma",
-    "previous_clubs": [],
-    "summary": "Prestito di Trabucchi dal Parma alla Dolomiti Bellunesi Calcio.",
-    "source_url": "https://www.gazzetta.it/Calciomercato/23-01-2026/calciomercato-live-le-notizie-di-oggi-e-le-trattative.shtml",
-    "source_name": "Gazzetta",
-    "source_title": "Calciomercato LIVE: le notizie di oggi e le trattative | Gazzetta.it",
-    "discovered_at": "2026-03-02T13:11:02.125253",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/nicolas-trabucchi/profil/spieler/1119655",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/nicolas-trabucchi/profil/spieler/1119655"
-    },
-    "tm_enriched": true
-  },
-  {
     "id": "opp_8db7ebb6",
     "player_name": "Alessandro Russo",
     "age": 23,
@@ -1380,39 +1170,6 @@
     "player_profile": {
       "nationality": "Italia",
       "tm_url": "https://www.transfermarkt.it/emanuele-zanaboni/profil/spieler/1101344"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_d52f3044",
-    "player_name": "Ivan Varone",
-    "age": 31,
-    "role": "CC",
-    "role_name": "Centrocampista",
-    "opportunity_type": "prestito",
-    "current_club": "Salernitana",
-    "previous_clubs": [
-      "Castiglione",
-      "Savona",
-      "San Marino",
-      "Fondi",
-      "Carrarese",
-      "Reggiana",
-      "Novara",
-      "Cesena",
-      "Ascoli",
-      "Panetolikos"
-    ],
-    "summary": "Centrocampista di esperienza con oltre 60 gare in Serie B e più di 200 in Lega Pro. Acquisito in prestito dal Gubbio dalla Salernitana fino al 30 Giugno 2026.",
-    "source_url": "https://www.tuttomercatoweb.com/serie-c/gubbio-arriva-in-prestito-dalla-salernitana-il-centrocampista-ivan-varone-2197980",
-    "source_name": "TMW",
-    "source_title": "Gubbio, arriva in prestito dalla Salernitana il centrocampista Ivan Varone",
-    "discovered_at": "2026-03-02T13:10:55.069250",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/ivan-varone/profil/spieler/123258",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/ivan-varone/profil/spieler/123258"
     },
     "tm_enriched": true
   },
@@ -1603,30 +1360,6 @@
     "tm_enriched": true
   },
   {
-    "id": "opp_1e99c9ee",
-    "player_name": "Destiny Egharevba",
-    "age": 2003,
-    "role": "AT",
-    "role_name": "Attaccante",
-    "opportunity_type": "prestito",
-    "current_club": "Cittadella",
-    "previous_clubs": [],
-    "summary": "Acquisito a titolo temporaneo con diritto di opzione per ulteriori due stagioni sportive dal Giugliano dal Cittadella.",
-    "source_url": "https://www.corrieredellosport.it/news/calcio/calcio-mercato/2026/01/09-145733798/calciomercato_diretta_da_raspadori_a_sterling_segui_tutte_le_trattative_di_oggi_live",
-    "source_name": "Corriere dello Sport",
-    "source_title": "Calciomercato, da Raspadori a Sterling: tutte le trattative di oggi ...",
-    "discovered_at": "2026-03-02T07:06:03.111754",
-    "nationality": "Italia",
-    "second_nationality": "Nigeria",
-    "tm_url": "https://www.transfermarkt.it/destiny-egharevba/profil/spieler/704176",
-    "player_profile": {
-      "nationality": "Italia",
-      "second_nationality": "Nigeria",
-      "tm_url": "https://www.transfermarkt.it/destiny-egharevba/profil/spieler/704176"
-    },
-    "tm_enriched": true
-  },
-  {
     "id": "opp_d95be66f",
     "player_name": "Amadou Sarr",
     "age": null,
@@ -1651,30 +1384,6 @@
     "tm_enriched": true
   },
   {
-    "id": "opp_7851b9d1",
-    "player_name": "Leonardo Di Tommaso",
-    "age": 2005,
-    "role": "CC",
-    "role_name": "Centrocampista",
-    "opportunity_type": "prestito",
-    "current_club": "Lazio",
-    "previous_clubs": [
-      "Casertana FC"
-    ],
-    "summary": "Nuovo prestito all'Audace Cerignola dalla Lazio, dopo aver giocato nella prima parte della stagione con la Casertana.",
-    "source_url": "https://www.corrieredellosport.it/news/calcio/calcio-mercato/2026/01/09-145733798/calciomercato_diretta_da_raspadori_a_sterling_segui_tutte_le_trattative_di_oggi_live",
-    "source_name": "Corriere dello Sport",
-    "source_title": "Calciomercato, da Raspadori a Sterling: tutte le trattative di oggi ...",
-    "discovered_at": "2026-03-02T07:06:03.111729",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/leonardo-di-tommaso/profil/spieler/929746",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/leonardo-di-tommaso/profil/spieler/929746"
-    },
-    "tm_enriched": true
-  },
-  {
     "id": "opp_c9114f3b",
     "player_name": "Luigi Carillo",
     "age": null,
@@ -1693,28 +1402,6 @@
     "player_profile": {
       "nationality": "Italia",
       "tm_url": "https://www.transfermarkt.it/luigi-carillo/profil/spieler/240338"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_c84bf6f2",
-    "player_name": "Luca Belardinelli",
-    "age": null,
-    "role": "CC",
-    "role_name": "Centrocampista",
-    "opportunity_type": "prestito",
-    "current_club": "Empoli",
-    "previous_clubs": [],
-    "summary": "Trasferimento a titolo temporaneo alla Reggiana dall'Empoli.",
-    "source_url": "https://www.corrieredellosport.it/news/calcio/calcio-mercato/2026/01/09-145733798/calciomercato_diretta_da_raspadori_a_sterling_segui_tutte_le_trattative_di_oggi_live",
-    "source_name": "Corriere dello Sport",
-    "source_title": "Calciomercato, da Raspadori a Sterling: tutte le trattative di oggi ...",
-    "discovered_at": "2026-03-02T07:06:03.111691",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/luca-belardinelli/profil/spieler/467994",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/luca-belardinelli/profil/spieler/467994"
     },
     "tm_enriched": true
   },
@@ -2119,77 +1806,6 @@
     "tm_enriched": true
   },
   {
-    "id": "opp_5d4da1b5",
-    "player_name": "Lorenzo Moretti",
-    "age": null,
-    "role": "DC",
-    "role_name": "Difensore",
-    "opportunity_type": "mercato",
-    "current_club": "Cremonese",
-    "previous_clubs": [
-      "Virtus Entella",
-      "Pistoiese",
-      "Avellino",
-      "Triestina"
-    ],
-    "summary": "L'Union Brescia puntella il reparto difensivo con l'arrivo di Lorenzo Moretti dalla Cremonese.",
-    "source_url": "https://www.tuttoc.com/calciomercato/serie-c-le-trattative-dell-ultimo-giorno-segui-il-calciomercato-con-noi-430152",
-    "source_name": "TuttoC",
-    "source_title": "Serie C, le trattative dell'ultimo giorno: segui il calciomercato con noi",
-    "discovered_at": "2026-03-01T18:41:28.282003",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/lorenzo-moretti/profil/spieler/310757",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/lorenzo-moretti/profil/spieler/310757"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_fddabf61",
-    "player_name": "Gennaro Anatriello",
-    "age": null,
-    "role": "AT",
-    "role_name": "Attaccante",
-    "opportunity_type": "prestito",
-    "current_club": "Bologna",
-    "previous_clubs": [
-      "Potenza"
-    ],
-    "summary": "Gennaro Anatriello sarà un nuovo attaccante del Lumezzane in prestito secco dal Bologna.",
-    "source_url": "https://www.tuttoc.com/calciomercato/serie-c-le-trattative-dell-ultimo-giorno-segui-il-calciomercato-con-noi-430152",
-    "source_name": "TuttoC",
-    "source_title": "Serie C, le trattative dell'ultimo giorno: segui il calciomercato con noi",
-    "discovered_at": "2026-03-01T18:41:28.281996",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/gennaro-anatriello/profil/spieler/818889",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/gennaro-anatriello/profil/spieler/818889"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_05c0017d",
-    "player_name": "Aaron Ciammaglichella",
-    "age": null,
-    "role": "CC",
-    "role_name": "Centrocampista",
-    "opportunity_type": "prestito",
-    "current_club": "Juve Stabia",
-    "previous_clubs": [],
-    "summary": "La Virtus Verona è sulle tracce del centrocampista Aaron Ciammaglichella, in prestito alla Juve Stabia dal Torino.",
-    "source_url": "https://www.tuttoc.com/calciomercato/serie-c-le-trattative-dell-ultimo-giorno-segui-il-calciomercato-con-noi-430152",
-    "source_name": "TuttoC",
-    "source_title": "Serie C, le trattative dell'ultimo giorno: segui il calciomercato con noi",
-    "discovered_at": "2026-03-01T18:41:28.281988",
-    "tm_url": "https://www.transfermarkt.it/ss-juve-stabia/startseite/verein/5587",
-    "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/ss-juve-stabia/startseite/verein/5587"
-    },
-    "tm_enriched": true
-  },
-  {
     "id": "opp_635be7d8",
     "player_name": "Raffaele Russo",
     "age": null,
@@ -2280,50 +1896,6 @@
     "tm_enriched": true
   },
   {
-    "id": "opp_c7033314",
-    "player_name": "Micheal Liguori",
-    "age": null,
-    "role": "CC",
-    "role_name": "Non Specificato",
-    "opportunity_type": "mercato",
-    "current_club": "Salernitana",
-    "previous_clubs": [],
-    "summary": "Il Foggia avrebbe messo nel mirino Micheal Liguori della Salernitana.",
-    "source_url": "https://www.tuttoc.com/calciomercato/serie-c-le-trattative-dell-ultimo-giorno-segui-il-calciomercato-con-noi-430152",
-    "source_name": "TuttoC",
-    "source_title": "Serie C, le trattative dell'ultimo giorno: segui il calciomercato con noi",
-    "discovered_at": "2026-03-01T18:41:28.281938",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/michael-liguori/profil/spieler/484703",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/michael-liguori/profil/spieler/484703"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_1350c550",
-    "player_name": "Marco Delle Monache",
-    "age": null,
-    "role": "CC",
-    "role_name": "Non Specificato",
-    "opportunity_type": "prestito",
-    "current_club": "Lecce",
-    "previous_clubs": [],
-    "summary": "Il Potenza avrebbe messo nel mirino Marco Delle Monache. Si proverà ad ufficializzare il prestito dal Lecce.",
-    "source_url": "https://www.tuttoc.com/calciomercato/serie-c-le-trattative-dell-ultimo-giorno-segui-il-calciomercato-con-noi-430152",
-    "source_name": "TuttoC",
-    "source_title": "Serie C, le trattative dell'ultimo giorno: segui il calciomercato con noi",
-    "discovered_at": "2026-03-01T18:41:28.281929",
-    "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/marco-delle-monache/profil/spieler/899543",
-    "player_profile": {
-      "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/marco-delle-monache/profil/spieler/899543"
-    },
-    "tm_enriched": true
-  },
-  {
     "id": "opp_92cd31c6",
     "player_name": "Jeremie Broh",
     "age": null,
@@ -2344,30 +1916,6 @@
       "nationality": "Italia",
       "second_nationality": "Costa d'Avorio",
       "tm_url": "https://www.transfermarkt.it/jeremie-broh/profil/spieler/340075"
-    },
-    "tm_enriched": true
-  },
-  {
-    "id": "opp_48bbc3a9",
-    "player_name": "Oliver Urso",
-    "age": null,
-    "role": "CC",
-    "role_name": "Non Specificato",
-    "opportunity_type": "prestito",
-    "current_club": "Reggiana",
-    "previous_clubs": [],
-    "summary": "Il Lecco è vicino alla chiusura per Oliver Urso in prestito dalla Reggiana.",
-    "source_url": "https://www.tuttoc.com/calciomercato/serie-c-le-trattative-dell-ultimo-giorno-segui-il-calciomercato-con-noi-430152",
-    "source_name": "TuttoC",
-    "source_title": "Serie C, le trattative dell'ultimo giorno: segui il calciomercato con noi",
-    "discovered_at": "2026-03-01T18:41:28.281908",
-    "nationality": "Danimarca",
-    "second_nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/oliver-urso/profil/spieler/390719/sort/tore.desc",
-    "player_profile": {
-      "nationality": "Danimarca",
-      "second_nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/oliver-urso/profil/spieler/390719/sort/tore.desc"
     },
     "tm_enriched": true
   },
