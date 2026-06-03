@@ -36,9 +36,6 @@ TELEGRAM_MAX_LENGTH = 4096
 class TelegramNotifier:
     """Gestisce notifiche Telegram arricchite per opportunita' di mercato"""
 
-    # Chat ID di default (Mirko Tornani)
-    DEFAULT_CHAT_ID = "1465485090"
-
     def __init__(self):
         self.bot_token = os.getenv('TELEGRAM_BOT_TOKEN')
         self.chat_ids = self._parse_chat_ids()
@@ -50,11 +47,12 @@ class TelegramNotifier:
             print(f"✅ Telegram notifier attivo - destinatari: {self.chat_ids}")
 
     def _parse_chat_ids(self) -> List[str]:
-        """Parse TELEGRAM_CHAT_IDS o usa il canale di default"""
+        """Parse TELEGRAM_CHAT_IDS (comma-separated) o TELEGRAM_CHAT_ID (singolo)."""
         raw = os.getenv('TELEGRAM_CHAT_IDS', '')
         if raw:
             return [cid.strip() for cid in raw.split(',') if cid.strip()]
-        return [self.DEFAULT_CHAT_ID]
+        fallback = os.getenv('TELEGRAM_CHAT_ID', '')
+        return [fallback] if fallback else []
 
     def send_message(self, text: str, parse_mode: str = 'HTML', reply_markup: dict = None) -> bool:
         """Invia messaggio con footer OB1 a tutti i chat configurati.

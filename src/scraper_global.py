@@ -131,10 +131,9 @@ class GlobalScraper:
         if not SCRAPLING_AVAILABLE: return ""
         
         try:
-            # StealthyFetcher with Cloudflare solver
             fetcher = StealthyFetcher(headless=True)
             page = fetcher.fetch(url, network_idle=True)
-            return page.text
+            return page.get_all_text()
         except Exception as e:
             print(f"  [SCRAPLING ERROR] {url}: {e}")
             return ""

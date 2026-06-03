@@ -44,7 +44,6 @@ async function init(){
   setInterval(updateCycle, 30000);
   trackSession();
   paintCounters();
-  paintTicker();
   applyFilter();
 }
 
@@ -157,19 +156,6 @@ function paintCounters(){
 
 function paintResultCount(){
   el('#rcount').textContent = STATE.filtered.length;
-}
-
-/* ============ TICKER ============ */
-
-function paintTicker(){
-  const track = el('#ticker');
-  const top = [...STATE.all].sort((a,b)=>b.ob1_score-a.ob1_score).slice(0, 20);
-  const items = top.map(o=>{
-    const arrow = o.ob1_score >= 70 ? '▲' : '●';
-    const cls   = o.ob1_score >= 70 ? 'up' : '';
-    return `<span class="t-item"><span class="tag">${(o.opportunity_type||'—').toUpperCase().slice(0,4)}</span> <span>${o.player_name}</span> <span class="n ${cls}">${arrow} ${o.ob1_score}</span></span>`;
-  });
-  track.innerHTML = (items.join('<span class="dot">/</span>') + '<span class="dot">/</span>').repeat(2);
 }
 
 /* ============ GRID ============ */
