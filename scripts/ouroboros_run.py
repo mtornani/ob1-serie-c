@@ -9,7 +9,6 @@ import json
 import hashlib
 import re
 import unicodedata
-import time
 from datetime import datetime
 from pathlib import Path
 
@@ -20,7 +19,6 @@ sys.path.insert(0, os.path.join(_root, 'src'))
 
 from src.scraper_global import GlobalScraper
 from src.scoring_global import OB1Scorer
-from src.dna.engine_global import DNAEngine
 from src.ingest import OB1Ingest, GEMINI_AVAILABLE
 from src.models import MarketOpportunity
 from src.notifier import TelegramNotifier
@@ -44,6 +42,8 @@ def is_valid_player_name(name: str) -> bool:
         return False
     if '|' in name:
         return False
+    # Normalize non-breaking spaces and other unicode whitespace before matching
+    name = name.replace('\xa0', ' ').replace('​', '')
     junk_terms = [
         # Italian media / organizations (observed in CI logs)
         'sky sport', 'transfermarkt', 'calciomercato', 'svincolati',
@@ -167,7 +167,6 @@ def run_ouroboros():
     print("=" * 60)
 
     scraper = GlobalScraper(config_path="config/leagues.yaml")
-    dna_engine = DNAEngine(manifesto_path="config/dna_manifestos.yaml")
     ingest = OB1Ingest() if GEMINI_AVAILABLE else None
     notifier = TelegramNotifier()
 
@@ -209,14 +208,6 @@ def run_ouroboros():
                     opp.relevance_score = scorer.calculate_score(opp)
 
                     if opp.relevance_score >= 4:
-                        # DNA Matching with 3s delay
-                        print(f"  [INTEL] Analyzing {opp.player_name}...")
-                        time.sleep(1) # Anti-429 (Gemini 2.5 Flash higher rate limits)
-
-                        dna_results = dna_engine.calculate_dna_fit(opp)
-                        dna_fit = {k: v for k, v in dna_results.items() if isinstance(v, dict)}
-
-                        # Structured Dict for Bot/Dashboard
                         opp_dict = {
                             "id": hashlib.md5(f"{opp.player_name}_{opp.source_url}".encode()).hexdigest(),
                             "player_name": opp.player_name,
@@ -228,7 +219,6 @@ def run_ouroboros():
                             "source_url": opp.source_url,
                             "discovered_at": datetime.now().isoformat(),
                             "league_id": league_id,
-                            "dna_strategic_fit": dna_fit
                         }
 
                         # Dedup and Add
