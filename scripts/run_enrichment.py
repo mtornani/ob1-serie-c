@@ -64,13 +64,27 @@ def main():
             skipped += 1
             continue
         profile = opp.get('player_profile', {}) or {}
-        if profile.get('market_value') or opp.get('tm_enriched', False):
+        # Only skip if we already have substantive data — partial entries (nationality/agent only)
+        # are retried so grounding can fill in stats on the next run.
+        already_rich = (
+            profile.get('market_value') or
+            opp.get('market_value') or
+            opp.get('appearances') or
+            opp.get('contract_expires')
+        )
+        if already_rich:
             skipped += 1
             continue
         print(f"\n[{i+1}/{len(opportunities)}] Arricchimento: {player_name}")
         try:
             tm_data = enrich_with_retry(enricher, player_name)
             if tm_data:
+                # Normalize grounding key names → DB key names
+                if tm_data.get('market_value_eur') and not tm_data.get('market_value'):
+                    tm_data['market_value'] = tm_data['market_value_eur']
+                if tm_data.get('market_value_text') and not tm_data.get('market_value_formatted'):
+                    tm_data['market_value_formatted'] = tm_data['market_value_text']
+
                 for key in ['nationality', 'second_nationality', 'foot', 'market_value', 'market_value_formatted', 'height_cm', 'birth_date', 'contract_expires', 'tm_url', 'agent', 'appearances', 'goals', 'assists', 'minutes_played']:
                     val = tm_data.get(key)
                     if val is not None:
@@ -87,12 +101,16 @@ def main():
                             opp['age'] = age
                     except (ValueError, TypeError):
                         pass
-                opp['tm_enriched'] = True
+                # Only lock as enriched when substantive data is present.
+                # Entries with only nationality/agent stay unlocked for retry.
+                has_substance = any(tm_data.get(k) for k in ['market_value', 'appearances', 'contract_expires', 'goals'])
+                opp['tm_enriched'] = has_substance
                 updated_count += 1
                 nat_str = tm_data.get('nationality', 'N/A')
                 if tm_data.get('second_nationality'):
                     nat_str += f" / {tm_data.get('second_nationality')}"
-                print(f"  ✅ {nat_str} | {tm_data.get('market_value_text', 'N/A')}")
+                mv_str = tm_data.get('market_value_formatted') or tm_data.get('market_value_text', 'N/A')
+                print(f"  ✅ {nat_str} | {mv_str} | apps={tm_data.get('appearances','?')}")
                 if updated_count % 5 == 0:
                     save_progress(data, opportunities, DATA_FILE)
                     print("  💾 Salvataggio...")
