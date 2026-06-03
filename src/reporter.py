@@ -27,7 +27,7 @@ class OB1Report(FPDF):
         self.set_y(-15)
         self.set_font('Helvetica', 'I', 7)
         self.set_text_color(128)
-        self.cell(0, 5, f'Page {self.page_no()} | OB1 Scout v3.2 | Villarreal: EUR 1.8M -> Clausola EUR 51M | matchanalysispro.online', align='C')
+        self.cell(0, 5, f'Page {self.page_no()} | OB1 Scout v3.2 | matchanalysispro.online', align='C')
         self.ln(3)
         self.cell(0, 5, 't.me/ob1scout', align='C')
 

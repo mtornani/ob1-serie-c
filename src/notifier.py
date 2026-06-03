@@ -27,7 +27,6 @@ def _esc(value) -> str:
 OB1_FOOTER = (
     "\n──────────────────\n"
     "🔎 OB1 Scout v3.2\n"
-    "📈 Villarreal: €1.8M → Clausola €51M\n"
     "🔗 t.me/ob1scout"
 )
 
