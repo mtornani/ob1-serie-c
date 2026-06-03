@@ -103,6 +103,11 @@ function applyFilter(){
     const rc=(o.intel||{}).roi_class; return rc==='elite'||rc==='high';
   }).sort((a,b)=>((b.intel||{}).moltiplicatore||0)-((a.intel||{}).moltiplicatore||0));
   else if (STATE.filter === 'urgent') list = list.filter(o=>o._urgency==='critical'||o._urgency==='high');
+  else if (STATE.filter === 'new'){
+    const cutoff = Date.now() - 30 * 86400000;
+    list = list.filter(o => o.discovered_at && new Date(o.discovered_at).getTime() >= cutoff);
+    list.sort((a,b)=>(b.discovered_at||'').localeCompare(a.discovered_at||''));
+  }
 
   if (STATE.type) list = list.filter(o=>(o.opportunity_type||'').toLowerCase()===STATE.type);
 
@@ -138,13 +143,15 @@ function paintCounters(){
   const u21    = all.filter(o=>o.age!=null && o.age<=21).length;
   const urgent = all.filter(o=>o._urgency==='critical'||o._urgency==='high').length;
   const roi    = all.filter(o=>{ const rc=(o.intel||{}).roi_class; return rc==='elite'||rc==='high'; }).length;
+  const cutoff30 = Date.now() - 30 * 86400000;
+  const newCt  = all.filter(o => o.discovered_at && new Date(o.discovered_at).getTime() >= cutoff30).length;
 
   el('#ctHot').textContent  = hot;
   el('#ctFree').textContent = free;
   el('#ctU21').textContent  = u21;
   el('#ctAll').textContent  = all.length;
 
-  const map = { all:all.length, hot, free, under:u21, roi, urgent };
+  const map = { all:all.length, hot, free, under:u21, roi, urgent, new:newCt };
   els('.chip .num').forEach(n=>{
     const k = n.dataset.ct;
     n.textContent = map[k] ?? 0;
@@ -198,6 +205,9 @@ function card(o){
     ? `<span class="tag roi-${roiClass}">ROI ×${intel.moltiplicatore||0}</span>` : '';
   const u21Tag  = (o.age!=null && o.age<=21) ? `<span class="tag u21">U21</span>` : '';
   const typeTag = type ? `<span class="tag type-${type}">${type.toUpperCase()}</span>` : '';
+  const daysOld = o.discovered_at ? Math.round((Date.now() - new Date(o.discovered_at)) / 86400000) : null;
+  const newTag  = (daysOld !== null && daysOld <= 30) ? `<span class="tag new-signal">NUOVO</span>` : '';
+  const tmTag   = o.market_value ? `<span class="tag tm-ok">TM ✓</span>` : '';
 
   let daysText, daysUnit;
   if (o._isFree){
@@ -231,7 +241,7 @@ function card(o){
     <div class="score">${o.ob1_score}<span class="dlabel">VOTO · ${o._tier.toUpperCase()}</span></div>
   </div>
   <div class="card-body">
-    <div class="tag-row">${typeTag}${u21Tag}${roiTag}</div>
+    <div class="tag-row">${typeTag}${u21Tag}${roiTag}${newTag}${tmTag}</div>
     <div class="timer">
       <div class="days">${daysText}</div>
       <span class="unit">${daysUnit}</span>
@@ -294,7 +304,11 @@ function openDrawer(o){
   const agentCell     = o.agent ? `<div class="cell"><span class="k">AGENTE</span><span class="v">${esc(o.agent)}</span></div>`:'';
   const clubCell      = `<div class="cell"><span class="k">CLUB ATTUALE</span><span class="v">${esc(club)}</span></div>`;
   const typeCell      = `<div class="cell"><span class="k">TIPO</span><span class="v" style="text-transform:uppercase;">${esc(type||'—')}</span></div>`;
-  const discoveredCell = o.discovered_at ? `<div class="cell"><span class="k">SCOPERTO IL</span><span class="v">${new Date(o.discovered_at).toLocaleDateString('it-IT')}</span></div>`:'';
+  const discoveredCell = o.discovered_at ? (()=>{
+    const d = new Date(o.discovered_at);
+    const dAgo = Math.round((Date.now() - d) / 86400000);
+    return `<div class="cell"><span class="k">RADAR OB1</span><span class="v">${d.toLocaleDateString('it-IT')} · +${dAgo}gg</span></div>`;
+  })() : '';
 
   const metaCells = [clubCell, typeCell, ageCell, natCell, footCell, mvCell, agentCell, discoveredCell].filter(Boolean);
   if (metaCells.length % 2) metaCells.push('<div class="cell"></div>');

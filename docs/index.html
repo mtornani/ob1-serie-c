@@ -446,6 +446,9 @@ body::before{
 .tag.roi-high   { color: var(--acc-dim); border-color: color-mix(in oklab, var(--acc-dim) 40%, var(--line-2)); }
 .tag.roi-medium { color: var(--blue); border-color: color-mix(in oklab, var(--blue) 40%, var(--line-2)); }
 .tag.roi-low    { color: var(--ink-mute); }
+.tag.new-signal { color: var(--acc); border-color: color-mix(in oklab, var(--acc) 45%, transparent); background: var(--acc-bg); animation: new-pulse 2.5s ease-in-out infinite; }
+@keyframes new-pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.55; } }
+.tag.tm-ok  { color: var(--blue); border-color: color-mix(in oklab, var(--blue) 40%, transparent); background: var(--blue-bg); }
 
 /* urgency timer */
 .timer{
@@ -987,6 +990,7 @@ body::before{
       <button class="chip" data-f="free">SVINCOLATI<span class="num" data-ct="free">0</span></button>
       <button class="chip" data-f="roi">TOP VALORE<span class="num" data-ct="roi">0</span></button>
       <button class="chip" data-f="urgent">URGENTI<span class="num" data-ct="urgent">0</span></button>
+      <button class="chip" data-f="new">NOVITÀ<span class="num" data-ct="new">0</span></button>
     </div>
     <div class="tier-legend" aria-label="Legenda punteggi">
       <span class="tl tl-hot">● HOT 70-100 — contattare subito</span>
