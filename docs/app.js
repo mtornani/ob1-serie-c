@@ -17,8 +17,6 @@ const safe = (v, f='—') => (v===null||v===undefined||v===''||v==='null') ? f :
 document.addEventListener('DOMContentLoaded', init);
 
 async function init(){
-  applyTweaksFromDefaults();
-  wireTweaks();
   wireKeyShortcuts();
   wireControls();
   wireDrawer();
@@ -99,9 +97,7 @@ function applyFilter(){
   if (STATE.filter === 'hot')    list = list.filter(o=>o.ob1_score>=70).sort((a,b)=>b.ob1_score-a.ob1_score).slice(0,10);
   else if (STATE.filter === 'under')  list = list.filter(o=>o.age!=null && o.age<=21);
   else if (STATE.filter === 'free')   list = list.filter(o=>o._isFree);
-  else if (STATE.filter === 'roi')    list = list.filter(o=>{
-    const rc=(o.intel||{}).roi_class; return rc==='elite'||rc==='high';
-  }).sort((a,b)=>((b.intel||{}).moltiplicatore||0)-((a.intel||{}).moltiplicatore||0));
+  else if (STATE.filter === 'verified') list = list.filter(o => o.market_value || o.appearances);
   else if (STATE.filter === 'urgent') list = list.filter(o=>o._urgency==='critical'||o._urgency==='high');
   else if (STATE.filter === 'new'){
     const cutoff = Date.now() - 30 * 86400000;
@@ -141,8 +137,8 @@ function paintCounters(){
   const hot    = all.filter(o=>o.ob1_score>=70).length;
   const free   = all.filter(o=>o._isFree).length;
   const u21    = all.filter(o=>o.age!=null && o.age<=21).length;
-  const urgent = all.filter(o=>o._urgency==='critical'||o._urgency==='high').length;
-  const roi    = all.filter(o=>{ const rc=(o.intel||{}).roi_class; return rc==='elite'||rc==='high'; }).length;
+  const urgent   = all.filter(o=>o._urgency==='critical'||o._urgency==='high').length;
+  const verified = all.filter(o => o.market_value || o.appearances).length;
   const cutoff30 = Date.now() - 30 * 86400000;
   const newCt  = all.filter(o => o.discovered_at && new Date(o.discovered_at).getTime() >= cutoff30).length;
 
@@ -151,7 +147,7 @@ function paintCounters(){
   el('#ctU21').textContent  = u21;
   el('#ctAll').textContent  = all.length;
 
-  const map = { all:all.length, hot, free, under:u21, roi, urgent, new:newCt };
+  const map = { all:all.length, hot, free, under:u21, verified, urgent, new:newCt };
   els('.chip .num').forEach(n=>{
     const k = n.dataset.ct;
     n.textContent = map[k] ?? 0;
@@ -199,15 +195,10 @@ function card(o){
   const role  = safe(o.role_name, o.role || '—');
   const club  = safe(o.current_club, 'Svincolato');
   const age   = o.age!=null ? `${o.age}a` : '';
-  const intel = o.intel || {};
-  const roiClass = intel.roi_class || '';
-  const roiTag  = (roiClass && roiClass!=='none' && roiClass!=='unknown')
-    ? `<span class="tag roi-${roiClass}">ROI ×${intel.moltiplicatore||0}</span>` : '';
   const u21Tag  = (o.age!=null && o.age<=21) ? `<span class="tag u21">U21</span>` : '';
   const typeTag = type ? `<span class="tag type-${type}">${type.toUpperCase()}</span>` : '';
   const daysOld = o.discovered_at ? Math.round((Date.now() - new Date(o.discovered_at)) / 86400000) : null;
   const newTag  = (daysOld !== null && daysOld <= 30) ? `<span class="tag new-signal">NUOVO</span>` : '';
-  const tmTag   = o.market_value ? `<span class="tag tm-ok">TM ✓</span>` : '';
 
   let daysText, daysUnit;
   if (o._isFree){
@@ -238,7 +229,7 @@ function card(o){
         <span>${esc(club)}</span>
       </div>
     </div>
-    <div class="score">${o.ob1_score}<span class="dlabel">VOTO · ${o._tier.toUpperCase()}</span></div>
+    <div class="score">${o.ob1_score}<span class="dlabel">${o._tier.toUpperCase()}</span></div>
   </div>
   <div class="card-body">
     <div class="tag-row">${typeTag}${newTag}${u21Tag}</div>
@@ -262,7 +253,6 @@ function openDrawer(o){
   const type  = (o.opportunity_type||'').toLowerCase();
   const role  = safe(o.role_name, o.role || '—');
   const club  = safe(o.current_club, 'Svincolato');
-  const intel = o.intel || {};
 
   el('#breadName').textContent = (o.player_name||'').toUpperCase();
 
@@ -290,9 +280,9 @@ function openDrawer(o){
     : (o._days == null ? '—' : (o._days < 0 ? 'SCAD.' : (o._days > 999 ? `${Math.round(o._days/30)}m` : `${o._days}gg`)));
 
   const stats = [
-    { v: safe(o.appearances, 0), l: 'PRESENZE' },
-    { v: safe(o.goals, 0),       l: 'GOL' },
-    { v: safe(o.assists, 0),     l: 'ASSIST' },
+    { v: safe(o.appearances, '—'), l: 'PRESENZE' },
+    { v: safe(o.goals, '—'),       l: 'GOL' },
+    { v: safe(o.assists, '—'),     l: 'ASSIST' },
     { v: o.market_value_formatted ? shortMoney(o.market_value_formatted) : (o.age!=null?o.age:'—'),
       l: o.market_value_formatted ? 'VALORE' : 'ETÀ' },
   ];
@@ -328,31 +318,6 @@ function openDrawer(o){
     const cls = v>=70?'good':v>=40?'mid':'low';
     return `<div class="bd-row"><span class="bk">${bdLabels[k]||k}</span><div class="bt"><div class="bf ${cls}" style="width:${v}%"></div></div><span class="bv">${v}</span></div>`;
   }).join('');
-
-  let intelHtml = '';
-  if (intel.roi_class && intel.roi_class !== 'unknown'){
-    const accClass = intel.roi_class==='elite'||intel.roi_class==='high' ? 'acc' : (intel.roi_class==='medium' ? 'blue' : '');
-    intelHtml = `
-      <div class="sect">
-        <div class="sect-title">MINUTAGGIO<span class="dim">${esc(intel.roi_label||'')}</span></div>
-        <div class="intel-grid">
-          <div class="intel-cell ${accClass}"><div class="k">RITORNO</div><div class="v">${esc(intel.roi_label||'—')}</div></div>
-          <div class="intel-cell"><div class="k">MOLTIPLICATORE</div><div class="v">×${intel.moltiplicatore||0}</div></div>
-          <div class="intel-cell"><div class="k">FATTORE ETÀ</div><div class="v">×${intel.coefficiente_eta||0}</div></div>
-          <div class="intel-cell"><div class="k">PROIEZIONE STAGIONE</div><div class="v">${intel.proiezione_stagionale||0}<span style="font-size:11px;color:var(--ink-mute);font-weight:400"> min</span></div></div>
-        </div>
-        ${intel.roi_dettaglio?`<div class="intel-note">${esc(intel.roi_dettaglio)}</div>`:''}
-        ${intel.traffic_light?`<div class="lista ${intel.traffic_light}"><span class="light"></span><div><div class="lista-main">LISTA FIGC — ${esc(intel.traffic_label||'—')}</div><div class="lista-sub">${esc(intel.lista_dettaglio||'')}</div></div></div>`:''}
-      </div>`;
-  }
-
-  const signalsHtml = (intel.signals && intel.signals.length) ? `
-    <div class="sect">
-      <div class="sect-title">SEGNALI</div>
-      <div class="signals">
-        ${intel.signals.map(s=>`<div class="signal ${s.severity}"><div class="sl">${esc(s.label)}</div><div class="sd">${esc(s.detail)}</div></div>`).join('')}
-      </div>
-    </div>` : '';
 
   const summaryText = o.recommendation || o.summary || '';
   const prevClubs   = Array.isArray(o.previous_clubs) && o.previous_clubs.length ? o.previous_clubs.join(' → ') : '';
@@ -392,9 +357,6 @@ function openDrawer(o){
       ${prevClubs ? `<div class="intel-note"><span style="color:var(--ink-mute);letter-spacing:.12em;font-size:10px;">STORICO CLUB </span>${esc(prevClubs)}</div>` : ''}
     </div>
 
-    ${intelHtml}
-    ${signalsHtml}
-
     <div class="sect">
       <div class="sect-title">COME È STATO VALUTATO<span class="dim">voto: ${o.ob1_score}/100</span></div>
       <div class="intel-note" style="margin-bottom:6px">Il voto misura quanto vale la pena seguire questa opportunità adesso. Si basa su 8 fattori: più la barra è verde, più quel fattore gioca a favore.</div>
@@ -411,9 +373,10 @@ function openDrawer(o){
     srcLink.style.display = 'none';
   }
 
-  const tmLink    = el('#tmLink');
-  const tmQuery   = encodeURIComponent(o.player_name || '');
-  tmLink.href     = `https://www.transfermarkt.it/schnellsuche/ergebnis/schnellsuche?query=${tmQuery}`;
+  const tmLink = el('#tmLink');
+  tmLink.href = o.tm_url
+    ? o.tm_url
+    : `https://www.transfermarkt.it/schnellsuche/ergebnis/schnellsuche?query=${encodeURIComponent(o.player_name||'')}`;
 
   el('#ov').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -539,75 +502,3 @@ function wireKeyShortcuts(){
 
 function debounce(fn, ms){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), ms); }; }
 
-/* ============ TWEAKS ============ */
-
-function applyTweaksFromDefaults(){
-  const t = (window.TWEAK_DEFAULTS || {});
-  setAccent(t.accent || '#00ff66');
-  document.documentElement.setAttribute('data-density',      t.density      || 'comfortable');
-  document.documentElement.setAttribute('data-card-style',   t.cardStyle    || 'brief');
-  document.documentElement.setAttribute('data-score-weight', t.scoreWeight  || 'heavy');
-  document.documentElement.setAttribute('data-urgency-mode', t.urgencyMode  || 'bar');
-  window.__tweaks = {...t};
-}
-
-function setAccent(c){
-  document.documentElement.style.setProperty('--acc',    c);
-  document.documentElement.style.setProperty('--acc-dim', c);
-  document.documentElement.style.setProperty('--acc-bg', hexWithAlpha(c, .1));
-}
-function hexWithAlpha(hex, a){
-  if (!hex.startsWith('#') || hex.length<7) return `rgba(0,255,102,${a})`;
-  const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
-  return `rgba(${r},${g},${b},${a})`;
-}
-
-function persistTweak(k, v){
-  window.__tweaks = {...(window.__tweaks||{}), [k]: v};
-  try { window.parent.postMessage({type:'__edit_mode_set_keys', edits:{[k]: v}}, '*'); } catch(_){}
-}
-
-function wireTweaks(){
-  const panel = el('#tweaks');
-  window.addEventListener('message', e=>{
-    if (!e.data) return;
-    if (e.data.type === '__activate_edit_mode')  { panel.classList.add('open'); refreshTweakUI(); }
-    if (e.data.type === '__deactivate_edit_mode') { panel.classList.remove('open'); }
-  });
-  try { window.parent.postMessage({type:'__edit_mode_available'}, '*'); } catch(_){}
-
-  el('#tweakClose').addEventListener('click', ()=>panel.classList.remove('open'));
-
-  el('#swatches').addEventListener('click', e=>{
-    const sw = e.target.closest('.sw'); if (!sw) return;
-    const c = sw.dataset.c;
-    setAccent(c);
-    persistTweak('accent', c);
-    refreshTweakUI();
-  });
-
-  els('.opts').forEach(g=>{
-    g.addEventListener('click', e=>{
-      const b = e.target.closest('button'); if (!b) return;
-      const key = g.dataset.tw;
-      const v   = b.dataset.v;
-      if (key === 'density')      document.documentElement.setAttribute('data-density',      v);
-      if (key === 'cardStyle')    document.documentElement.setAttribute('data-card-style',   v);
-      if (key === 'scoreWeight')  document.documentElement.setAttribute('data-score-weight', v);
-      if (key === 'urgencyMode')  document.documentElement.setAttribute('data-urgency-mode', v);
-      persistTweak(key, v);
-      refreshTweakUI();
-    });
-  });
-
-  refreshTweakUI();
-}
-
-function refreshTweakUI(){
-  const t = window.__tweaks || {};
-  els('#swatches .sw').forEach(s => s.classList.toggle('on', s.dataset.c === t.accent));
-  els('.opts').forEach(g=>{
-    const key = g.dataset.tw;
-    els('button', g).forEach(b=> b.classList.toggle('on', b.dataset.v === t[key]));
-  });
-}

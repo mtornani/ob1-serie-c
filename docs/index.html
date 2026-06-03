@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="it">
+<html lang="it" data-density="comfortable" data-card-style="brief" data-score-weight="heavy" data-urgency-mode="bar">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -19,15 +19,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
-<script>
-const TWEAK_DEFAULTS = {
-  "accent":       "#00ff66",
-  "density":      "comfortable",
-  "cardStyle":    "brief",
-  "scoreWeight":  "heavy",
-  "urgencyMode":  "bar"
-};
-</script>
 
 <style>
 :root{
@@ -442,10 +433,6 @@ body::before{
 .tag.type-mercato    { color: var(--ink);   border-color: var(--line-2); }
 
 .tag.u21   { color: var(--acc); border-color: color-mix(in oklab, var(--acc) 40%, var(--line-2)); }
-.tag.roi-elite  { color: var(--acc); border-color: color-mix(in oklab, var(--acc) 40%, var(--line-2)); background: var(--acc-bg); }
-.tag.roi-high   { color: var(--acc-dim); border-color: color-mix(in oklab, var(--acc-dim) 40%, var(--line-2)); }
-.tag.roi-medium { color: var(--blue); border-color: color-mix(in oklab, var(--blue) 40%, var(--line-2)); }
-.tag.roi-low    { color: var(--ink-mute); }
 .tag.new-signal { color: var(--acc); border-color: color-mix(in oklab, var(--acc) 45%, transparent); background: var(--acc-bg); animation: new-pulse 2.5s ease-in-out infinite; }
 @keyframes new-pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.55; } }
 .tag.tm-ok  { color: var(--blue); border-color: color-mix(in oklab, var(--blue) 40%, transparent); background: var(--blue-bg); }
@@ -828,46 +815,6 @@ body::before{
 .foot a{ color: var(--ink-dim); }
 .foot a:hover{ color: var(--acc); }
 
-/* ============ TWEAKS PANEL ============ */
-.tweaks{
-  position: fixed;
-  right: 16px; bottom: 16px;
-  width: 280px;
-  background: var(--bg-1);
-  border: 1px solid var(--acc);
-  box-shadow: 0 10px 40px rgba(0,0,0,.7), 0 0 30px color-mix(in oklab, var(--acc) 20%, transparent);
-  z-index: 70;
-  font-family: var(--mono);
-  font-size: 11px;
-  display: none;
-  transform: translateY(8px);
-  opacity: 0;
-  transition: opacity .15s, transform .15s;
-}
-.tweaks.open{ display:block; opacity:1; transform:translateY(0); }
-.tweaks .t-head{
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--line-2);
-  display:flex; justify-content:space-between; align-items:center;
-  color: var(--acc); font-weight:700; letter-spacing: .1em;
-}
-.tweaks .t-body{ padding: 10px 12px; display:flex; flex-direction:column; gap: 12px; }
-.tweaks label{ font-size: 10px; color: var(--ink-mute); letter-spacing: .12em; display:block; margin-bottom:4px; }
-.tweaks .opts{ display:flex; gap:0; border:1px solid var(--line-2); }
-.tweaks .opts button{
-  flex:1; padding: 6px 6px; font-size: 10px; color: var(--ink-dim);
-  border-right: 1px solid var(--line-2);
-  letter-spacing: .08em;
-  transition: background .12s, color .12s;
-}
-.tweaks .opts button:last-child{ border-right:0; }
-.tweaks .opts button.on{ background: var(--acc); color: var(--bg); }
-.tweaks .swatches{ display:flex; gap:6px; }
-.tweaks .sw{
-  width: 22px; height: 22px; border: 1px solid var(--line-2); cursor:pointer;
-}
-.tweaks .sw.on{ outline: 2px solid var(--ink); outline-offset: 2px; }
-
 /* density */
 [data-density="compact"] .grid{ grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 6px; }
 [data-density="compact"] .card{ padding: 10px 12px 10px; }
@@ -951,7 +898,7 @@ body::before{
   <section class="cmd">
     <div class="cmd-row">
       <div>
-        <h1>SCOUT <span class="green">/&gt;</span> LEGA PRO<br>Veloce. Preciso. Sempre aggiornato.</h1>
+        <h1>SCOUT <span class="green">/&gt;</span> LEGA PRO</h1>
         <p class="blurb">Opportunità di mercato Lega Pro in tempo reale. <span style="color:var(--acc)">Chi è in cima vale la pena contattare subito.</span></p>
       </div>
       <div class="counters">
@@ -988,7 +935,7 @@ body::before{
       <button class="chip" data-f="hot">TOP 10<span class="num" data-ct="hot">0</span></button>
       <button class="chip" data-f="under">U21<span class="num" data-ct="under">0</span></button>
       <button class="chip" data-f="free">SVINCOLATI<span class="num" data-ct="free">0</span></button>
-      <button class="chip" data-f="roi">TOP VALORE<span class="num" data-ct="roi">0</span></button>
+      <button class="chip" data-f="verified">VERIFICATI<span class="num" data-ct="verified">0</span></button>
       <button class="chip" data-f="urgent">URGENTI<span class="num" data-ct="urgent">0</span></button>
       <button class="chip" data-f="new">NOVITÀ<span class="num" data-ct="new">0</span></button>
     </div>
@@ -1055,50 +1002,6 @@ body::before{
   </aside>
 </div>
 
-<!-- Tweaks -->
-<div class="tweaks" id="tweaks">
-  <div class="t-head">&gt; TWEAKS<button id="tweakClose" style="background:none;border:0;color:var(--ink-mute);cursor:pointer;font-size:16px;">×</button></div>
-  <div class="t-body">
-    <div>
-      <label>ACCENT</label>
-      <div class="swatches" id="swatches">
-        <div class="sw" data-c="#00ff66" style="background:#00ff66"></div>
-        <div class="sw" data-c="#00d4ff" style="background:#00d4ff"></div>
-        <div class="sw" data-c="#ff5500" style="background:#ff5500"></div>
-        <div class="sw" data-c="#ff00a8" style="background:#ff00a8"></div>
-        <div class="sw" data-c="#f5f5f5" style="background:#f5f5f5"></div>
-      </div>
-    </div>
-    <div>
-      <label>DENSITÀ</label>
-      <div class="opts" data-tw="density">
-        <button data-v="compact">COMPACT</button>
-        <button data-v="comfortable">COMFORT</button>
-      </div>
-    </div>
-    <div>
-      <label>STILE CARD</label>
-      <div class="opts" data-tw="cardStyle">
-        <button data-v="brief">BRIEF</button>
-        <button data-v="minimal">MINIMAL</button>
-      </div>
-    </div>
-    <div>
-      <label>PESO SCORE</label>
-      <div class="opts" data-tw="scoreWeight">
-        <button data-v="heavy">HEAVY</button>
-        <button data-v="light">LIGHT</button>
-      </div>
-    </div>
-    <div>
-      <label>URGENZA</label>
-      <div class="opts" data-tw="urgencyMode">
-        <button data-v="bar">BAR+TIMER</button>
-        <button data-v="tag">SOLO TIMER</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <script src="app.js?v=4"></script>
 </body>
