@@ -61,6 +61,63 @@ Classificazione: HOT ≥ 70, WARM ≥ 57, COLD < 57
 - `.claude/settings.local.json` NON deve contenere API keys reali
 - La repo è pubblica su GitHub — attenzione a cosa si committa
 
+## GitHub Secrets (Settings → Secrets → Actions)
+
+### Pipeline (ingest.yml)
+| Secret | Descrizione |
+|--------|-------------|
+| `GEMINI_API_KEY` | Google AI Studio |
+| `TAVILY_API_KEY` | Tavily search API |
+| `SERPER_API_KEY` | Serper.dev API |
+| `TELEGRAM_BOT_TOKEN` | Token del bot @Ob1LegaPro_bot |
+| `TELEGRAM_CHAT_ID` | Chat ID broadcast principale (es. 1465485090) |
+| `TELEGRAM_OFFICE_CHAT_ID` | Chat ID admin alert (privato) |
+
+### Cloudflare Pages (deploy-cf-pages.yml)
+| Secret | Come ottenerlo |
+|--------|----------------|
+| `CLOUDFLARE_API_TOKEN` | CF Dashboard → My Profile → API Tokens → Create Token → "Edit Cloudflare Pages" template |
+| `CLOUDFLARE_ACCOUNT_ID` | CF Dashboard → qualsiasi sito → barra destra → Account ID |
+
+## Cloudflare Setup (passi manuali da dashboard)
+
+### 1. Cloudflare Pages — primo deploy
+Il workflow `deploy-cf-pages.yml` crea automaticamente il progetto `ob1-lega-pro`
+al primo run. Dopo il deploy sarà accessibile a:
+`https://ob1-lega-pro.pages.dev`
+
+### 2. Custom Domain
+CF Dashboard → Pages → ob1-lega-pro → Custom domains → Add custom domain
+- Esempio: `scout.ob1.io` o `ob1.ksport.it`
+- Aggiungere il record CNAME nel DNS: `scout CNAME ob1-lega-pro.pages.dev`
+
+### 3. Zero Trust Access (login obbligatorio)
+CF Dashboard → Zero Trust → Access → Applications → Add an application → Self-hosted
+
+Compilare:
+- **Application name**: OB1 Lega Pro Scout
+- **Application domain**: `scout.ob1.io` (il custom domain)
+- **Session duration**: 24h
+
+Policy (Add a policy):
+- **Policy name**: Authorized Users
+- **Action**: Allow
+- **Include**: Email → `mirkotornani@gmail.com`
+- Aggiungere altri indirizzi per K-Sport
+
+**Authentication**: One-time PIN (email OTP) — zero setup aggiuntivo
+
+### Architettura finale
+```
+GitHub repo (public)
+  ↓ push to main
+  ├─ pages.yml       → GitHub Pages (pubblico, fallback)
+  └─ deploy-cf-pages.yml → Cloudflare Pages (protetto con Zero Trust)
+                              ↑
+                         custom domain
+                         + login email OTP
+```
+
 ## Contesto business
 - I report sono destinati a osservatori professionisti (es. Daniele Corazza, Ascoli)
 - Devono contenere SOLO dati verificabili (Transfermarkt, FBRef, Lega Pro)
