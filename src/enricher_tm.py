@@ -34,10 +34,11 @@ Rispondi ESCLUSIVAMENTE con JSON valido, nessun testo aggiuntivo:
   "main_position": "Ruolo principale" o null,
   "agent": "Nome agenzia" o null,
   "tm_url": "URL profilo Transfermarkt" o null,
-  "appearances": numero presenze stagione 2025/26 o null,
-  "goals": numero gol stagione 2025/26 o null,
-  "assists": numero assist stagione 2025/26 o null,
-  "minutes_played": numero minuti stagione 2025/26 o null
+  "appearances": numero presenze nell'ultima stagione disponibile (2025/26 o 2024/25) o null,
+  "goals": numero gol nell'ultima stagione disponibile o null,
+  "assists": numero assist nell'ultima stagione disponibile o null,
+  "minutes_played": numero minuti nell'ultima stagione disponibile o null,
+  "season": "stagione di riferimento per le stats, es. 2025/26" o null
 }}
 
 Se il calciatore non è trovato su Transfermarkt, rispondi esattamente: {{}}"""
