@@ -17,7 +17,7 @@ Scraping (Tavily/Scrapling) → Enrichment (TM + Gemini) → Scoring (SCORE-002)
 - `scripts/` — Pipeline scripts (enrichment, report generation, backtest)
 - `reports/scouting/` — Report HTML individuali (PRIVATI, non in docs/)
 - `docs/` — Dashboard pubblica (GitHub Pages serve da qui)
-- `data/` — opportunities.json (database principale), backtest, satarch
+- `data/` — opportunities.json (database principale), backtest
 - `config/` — YAML configs
 - `workers/` — Cloudflare Workers (Telegram bot — l'unico bot attivo)
 

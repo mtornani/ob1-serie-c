@@ -97,7 +97,7 @@ function applyFilter(){
   if (STATE.filter === 'hot')    list = list.filter(o=>o.ob1_score>=70).sort((a,b)=>b.ob1_score-a.ob1_score).slice(0,10);
   else if (STATE.filter === 'under')  list = list.filter(o=>o.age!=null && o.age<=21);
   else if (STATE.filter === 'free')   list = list.filter(o=>o._isFree);
-  else if (STATE.filter === 'verified') list = list.filter(o => o.market_value || o.appearances);
+  else if (STATE.filter === 'verified') list = list.filter(o => o.market_value != null || o.appearances != null);
   else if (STATE.filter === 'urgent') list = list.filter(o=>o._urgency==='critical'||o._urgency==='high');
   else if (STATE.filter === 'new'){
     const cutoff = Date.now() - 30 * 86400000;
@@ -138,7 +138,7 @@ function paintCounters(){
   const free   = all.filter(o=>o._isFree).length;
   const u21    = all.filter(o=>o.age!=null && o.age<=21).length;
   const urgent   = all.filter(o=>o._urgency==='critical'||o._urgency==='high').length;
-  const verified = all.filter(o => o.market_value || o.appearances).length;
+  const verified = all.filter(o => o.market_value != null || o.appearances != null).length;
   const cutoff30 = Date.now() - 30 * 86400000;
   const newCt  = all.filter(o => o.discovered_at && new Date(o.discovered_at).getTime() >= cutoff30).length;
 
@@ -395,7 +395,7 @@ function openDrawer(o){
 
     <div class="sect">
       <div class="sect-title">COME È STATO VALUTATO<span class="dim">voto: ${o.ob1_score}/100</span></div>
-      <div class="intel-note" style="margin-bottom:6px">Il voto misura quanto vale la pena seguire questa opportunità adesso. Si basa su 8 fattori: più la barra è verde, più quel fattore gioca a favore.</div>
+      <div class="intel-note" style="margin-bottom:6px">Il voto misura quanto vale la pena seguire questa opportunità adesso. Si basa su 8 fattori: più la barra è lunga, più quel fattore gioca a favore.</div>
       <div>${bdHtml}</div>
     </div>
   `;

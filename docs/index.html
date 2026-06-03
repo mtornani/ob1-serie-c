@@ -155,6 +155,7 @@ body::before{
   background: var(--acc-bg);
   animation: tg-pulse 3s ease-in-out infinite;
 }
+@media (prefers-reduced-motion: reduce) { .topbar-links .tg-cta { animation: none; } }
 .topbar-links .tg-cta:hover{ color: var(--bg); background: var(--acc); border-color: var(--acc); }
 @keyframes tg-pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.7; } }
 
@@ -880,7 +881,7 @@ body::before{
     </div>
     <div class="topbar-links">
       <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener">GLOBAL</a>
-      <a href="https://t.me/Ob1LegaPro_bot" class="tg-cta" target="_blank" rel="noopener" title="Ricevi una notifica Telegram ogni volta che esce una nuova opportunità HOT">⇢ ALERT LIVE</a>
+      <a href="https://t.me/Ob1LegaPro_bot" class="tg-cta" target="_blank" rel="noopener" aria-label="Alert Live su Telegram: ricevi una notifica ogni volta che esce una nuova opportunità HOT"><span aria-hidden="true">⇢</span> ALERT LIVE</a>
     </div>
     <div class="status">
       <span class="dot"></span>
@@ -898,7 +899,7 @@ body::before{
     <div class="cmd-row">
       <div>
         <h1>SCOUT <span class="green">/&gt;</span> LEGA PRO</h1>
-        <p class="blurb">Opportunità di mercato Lega Pro in tempo reale. <span style="color:var(--acc)">Chi è in cima vale la pena contattare subito.</span></p>
+        <p class="blurb">Opportunità di mercato Lega Pro in tempo reale. <span style="color:var(--acc)">Vale la pena contattare subito chi è in cima.</span></p>
       </div>
       <div class="counters">
         <div class="counter hot">

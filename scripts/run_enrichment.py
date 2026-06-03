@@ -22,7 +22,7 @@ _JUNK_TERMS = [
 
 def _is_enrichable(name: str) -> bool:
     """Skip names that are clearly not individual players."""
-    if not isinstance(name, str) or len(name) < 4 or '|' in name:
+    if not isinstance(name, str) or len(name) < 3 or '|' in name:
         return False
     n = name.lower()
     return not any(t in n for t in _JUNK_TERMS)
