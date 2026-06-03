@@ -42,8 +42,8 @@ def is_valid_player_name(name: str) -> bool:
         return False
     if '|' in name:
         return False
-    # Normalize non-breaking spaces and other unicode whitespace before matching
-    name = name.replace('\xa0', ' ').replace('​', '')
+    # Normalize all unicode whitespace (handles \xa0, zero-width, etc.)
+    name = ' '.join(name.split())
     junk_terms = [
         # Italian media / organizations (observed in CI logs)
         'sky sport', 'transfermarkt', 'calciomercato', 'svincolati',

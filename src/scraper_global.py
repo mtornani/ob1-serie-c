@@ -75,9 +75,9 @@ class GlobalScraper:
             "- Organizzazioni, federazioni (es. Dipartimento Interregionale, Associazione Italiana Calciatori)\n"
             "- Squadre, rappresentative, campionati (es. Rappresentativa Serie D, Juniores Cup)\n"
             "- Concetti generici (es. Parametro Zero, Giovani Talenti, Stagione Sportiva)\n"
-            "- Qualsiasi nome che non sia 'Cognome Nome' di un calciatore reale\n\n"
+            "- Qualsiasi nome che non sia 'Nome Cognome' di un calciatore reale\n\n"
             "Rispondi ESCLUSIVAMENTE con un JSON array, nessun testo aggiuntivo:\n"
-            '[{"player_name": "Cognome Nome", "source_url": "url articolo", '
+            '[{"player_name": "Nome Cognome", "source_url": "url articolo", '
             '"opportunity_type": "svincolato|prestito|rescissione|mercato", '
             '"description": "max 80 caratteri sul motivo"}]\n\n'
             "Se non trovi calciatori individuali reali, rispondi esattamente: []"
@@ -225,7 +225,7 @@ class GlobalScraper:
                     player_name=player_name,
                     description=item.get('content', ''),
                     source_url=url,
-                    source_name=url.split('/')[2] if url.count('/') >= 2 else url,
+                    source_name=url.lstrip('/').split('://')[-1].split('/')[0],
                 )
                 opportunities.append(opp)
 
