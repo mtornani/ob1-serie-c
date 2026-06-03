@@ -18,9 +18,8 @@ Scraping (Tavily/Scrapling) → Enrichment (TM + Gemini) → Scoring (SCORE-002)
 - `reports/scouting/` — Report HTML individuali (PRIVATI, non in docs/)
 - `docs/` — Dashboard pubblica (GitHub Pages serve da qui)
 - `data/` — opportunities.json (database principale), backtest, satarch
-- `bot/` — Telegram bot
 - `config/` — YAML configs
-- `workers/` — Cloudflare Workers (Telegram bot serverless)
+- `workers/` — Cloudflare Workers (Telegram bot — l'unico bot attivo)
 
 ### File chiave
 - `data/opportunities.json` — Database opportunità (100 entries)
