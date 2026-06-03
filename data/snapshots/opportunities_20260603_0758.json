@@ -2,7 +2,7 @@
   {
     "id": "opp_be2008a5",
     "player_name": "Pietro Saio",
-    "age": 23,
+    "age": null,
     "role": "DC",
     "role_name": "Difensore",
     "opportunity_type": "mercato",
@@ -19,16 +19,9 @@
     "player_profile": {
       "nationality": "Italia",
       "tm_url": "https://www.transfermarkt.it/pietro-saio/profil/spieler/708070",
-      "agent": "TECASPORT & MANAGEMENT SRL",
-      "market_value": 200000,
-      "market_value_formatted": "200 mila €",
-      "height_cm": 193
+      "agent": "TECASPORT & MANAGEMENT SRL"
     },
-    "tm_enriched": true,
-    "market_value": 200000,
-    "market_value_formatted": "200 mila €",
-    "height_cm": 193,
-    "birth_date": "2003-08-04"
+    "tm_enriched": false
   },
   {
     "id": "opp_acce84fa",
@@ -68,7 +61,7 @@
   {
     "id": "opp_2eb1fc3d",
     "player_name": "Francesco Di Paolo",
-    "age": 21,
+    "age": null,
     "role": "AT",
     "role_name": "Attaccante",
     "opportunity_type": "mercato",
@@ -80,19 +73,12 @@
     "source_title": "La Serie A fa shopping in Serie C. Un figlio d'arte sceglie la Lega ...",
     "discovered_at": "2026-03-03T13:10:03.945507",
     "nationality": "Italia",
-    "tm_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHD35PNX6lgNnKWvPaowCnaO-RS_oiI1NX43b8m7yEcTliFgV46rtHeiQElBIh42CkbbFMorCDaTOZ7HwCArF593VB1vD0G76qzUnBOCapvKSK9N726Iji1mrCaKHedWlW4xveYbDehk2Baq0lnq5IuAYUoCj2FsF1CANZCx_SlGM57",
+    "tm_url": "https://www.transfermarkt.it/francesco-di-paola/profil/spieler/409657",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHD35PNX6lgNnKWvPaowCnaO-RS_oiI1NX43b8m7yEcTliFgV46rtHeiQElBIh42CkbbFMorCDaTOZ7HwCArF593VB1vD0G76qzUnBOCapvKSK9N726Iji1mrCaKHedWlW4xveYbDehk2Baq0lnq5IuAYUoCj2FsF1CANZCx_SlGM57",
-      "market_value": 50000,
-      "market_value_formatted": "50 mila €",
-      "height_cm": 185
+      "tm_url": "https://www.transfermarkt.it/francesco-di-paola/profil/spieler/409657"
     },
-    "tm_enriched": true,
-    "market_value": 50000,
-    "market_value_formatted": "50 mila €",
-    "height_cm": 185,
-    "birth_date": "2005-05-24"
+    "tm_enriched": false
   },
   {
     "id": "opp_6ead68c1",
@@ -129,7 +115,7 @@
   {
     "id": "opp_a99b4224",
     "player_name": "Rizzo Pinna",
-    "age": 26,
+    "age": null,
     "role": "CC",
     "role_name": "Tutto Campista",
     "opportunity_type": "prestito",
@@ -143,23 +129,12 @@
     "source_title": "La Top 11 del Girone B di Serie C: Rizzo Pinna trascinatore dell'Ascoli",
     "discovered_at": "2026-03-03T13:09:49.094290",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/538430",
+    "tm_url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/538430",
-      "market_value": 400000,
-      "market_value_formatted": "400 mila €",
-      "foot": "destro",
-      "height_cm": 172,
-      "agent": "MM-Management"
+      "tm_url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 400000,
-    "market_value_formatted": "400 mila €",
-    "height_cm": 172,
-    "birth_date": "2000-01-13",
-    "agent": "MM-Management"
+    "tm_enriched": false
   },
   {
     "id": "opp_b644b063",
@@ -179,21 +154,9 @@
     "tm_url": "https://www.transfermarkt.it/stefano-pellizzari/profil/spieler/312745",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/stefano-pellizzari/profil/spieler/312745",
-      "market_value": 100000,
-      "market_value_formatted": "100 mila €",
-      "foot": "destro",
-      "height_cm": 184,
-      "agent": "Romano Eleven SAS"
+      "tm_url": "https://www.transfermarkt.it/stefano-pellizzari/profil/spieler/312745"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 100000,
-    "market_value_formatted": "100 mila €",
-    "height_cm": 184,
-    "birth_date": "1997-01-03",
-    "contract_expires": "2026-06-30",
-    "agent": "Romano Eleven SAS"
+    "tm_enriched": false
   },
   {
     "id": "opp_cc074b88",
@@ -241,25 +204,22 @@
     "source_name": "TMW",
     "source_title": "Siracusa, risoluzione consensuale del contratto con Luan Capanni",
     "discovered_at": "2026-03-03T07:00:11.988700",
-    "nationality": "Brazil",
+    "nationality": "Brasile",
     "second_nationality": "Italia",
     "foot": "destro",
-    "tm_url": "https://www.transfermarkt.com/luan-capani/profil/spieler/547553",
+    "tm_url": "https://www.transfermarkt.it/luan-capanni/profil/spieler/601877",
     "player_profile": {
-      "nationality": "Brazil",
+      "nationality": "Brasile",
       "second_nationality": "Italia",
       "foot": "destro",
-      "tm_url": "https://www.transfermarkt.com/luan-capani/profil/spieler/547553",
-      "height_cm": 190
+      "tm_url": "https://www.transfermarkt.it/luan-capanni/profil/spieler/601877"
     },
-    "tm_enriched": false,
-    "height_cm": 190,
-    "birth_date": "2000-05-29"
+    "tm_enriched": false
   },
   {
     "id": "opp_6d5dc502",
     "player_name": "Adin Licina",
-    "age": 19,
+    "age": null,
     "role": "CC",
     "role_name": "Ala Mancina",
     "opportunity_type": "mercato",
@@ -272,20 +232,13 @@
     "source_name": "Gazzetta",
     "source_title": "LIVE Mercato: Pisa, Gilardino esonerato. Lookman non convocato ...",
     "discovered_at": "2026-03-03T06:59:51.107971",
-    "nationality": "Germany",
-    "tm_url": "https://www.transfermarkt.com/adin-licina/profil/spieler/810920",
+    "nationality": "Germania",
+    "tm_url": "https://www.transfermarkt.it/adin-licina/profil/spieler/960943",
     "player_profile": {
-      "nationality": "Germany",
-      "tm_url": "https://www.transfermarkt.com/adin-licina/profil/spieler/810920",
-      "market_value": 700000,
-      "market_value_formatted": "700 mila €",
-      "agent": "LEADERBROCK"
+      "nationality": "Germania",
+      "tm_url": "https://www.transfermarkt.it/adin-licina/profil/spieler/960943"
     },
-    "tm_enriched": true,
-    "market_value": 700000,
-    "market_value_formatted": "700 mila €",
-    "birth_date": "2007-01-06",
-    "agent": "LEADERBROCK"
+    "tm_enriched": false
   },
   {
     "id": "opp_26167402",
@@ -306,31 +259,12 @@
     "source_title": "Brignola può lasciare la Ternana: doppio sondaggio dalla Serie C",
     "discovered_at": "2026-03-03T02:37:25.008397",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.com/enrico-brignola/profil/spieler/362992",
+    "tm_url": "https://www.transfermarkt.it/enrico-brignola/profil/spieler/323147",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.com/enrico-brignola/profil/spieler/362992",
-      "market_value": 50000,
-      "market_value_formatted": "50 mila €",
-      "foot": "sinistro",
-      "height_cm": 168,
-      "agent": "Player Management",
-      "appearances": 5,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 78
+      "tm_url": "https://www.transfermarkt.it/enrico-brignola/profil/spieler/323147"
     },
-    "tm_enriched": true,
-    "foot": "sinistro",
-    "market_value": 50000,
-    "market_value_formatted": "50 mila €",
-    "height_cm": 168,
-    "birth_date": "1999-07-08",
-    "agent": "Player Management",
-    "appearances": 5,
-    "goals": 0,
-    "assists": 0,
-    "minutes_played": 78
+    "tm_enriched": false
   },
   {
     "id": "opp_e32967c0",
@@ -405,7 +339,7 @@
   {
     "id": "opp_8f17be17",
     "player_name": "Danilo Giacinto Ventola",
-    "age": 26,
+    "age": null,
     "role": "AT",
     "role_name": "Attaccante",
     "opportunity_type": "mercato",
@@ -417,22 +351,17 @@
     "source_title": "INTERVISTA TC - Cicchetti: \"Mi attendo un mercato ... - TuttoC.com",
     "discovered_at": "2026-03-03T02:37:06.097893",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/danilo-ventola/profil/spieler/400100",
+    "tm_url": "https://www.transfermarkt.it/danilo-ventola/profil/spieler/401802",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/danilo-ventola/profil/spieler/400100",
-      "foot": "destro",
-      "height_cm": 185
+      "tm_url": "https://www.transfermarkt.it/danilo-ventola/profil/spieler/401802"
     },
-    "tm_enriched": false,
-    "foot": "destro",
-    "height_cm": 185,
-    "birth_date": "2000-09-11"
+    "tm_enriched": false
   },
   {
     "id": "opp_0c9111a1",
     "player_name": "Giovanni Graziano",
-    "age": 31,
+    "age": null,
     "role": "CC",
     "role_name": "Centrocampista",
     "opportunity_type": "mercato",
@@ -444,24 +373,17 @@
     "source_title": "INTERVISTA TC - Cicchetti: \"Mi attendo un mercato ... - TuttoC.com",
     "discovered_at": "2026-03-03T02:37:06.097882",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/giovanni-graziano/profil/spieler/95",
+    "tm_url": "https://www.transfermarkt.it/giovanni-graziano/profil/spieler/241074",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/giovanni-graziano/profil/spieler/95",
-      "market_value": 75000,
-      "market_value_formatted": "75 mila €",
-      "height_cm": 187
+      "tm_url": "https://www.transfermarkt.it/giovanni-graziano/profil/spieler/241074"
     },
-    "tm_enriched": true,
-    "market_value": 75000,
-    "market_value_formatted": "75 mila €",
-    "height_cm": 187,
-    "birth_date": "1995-11-07"
+    "tm_enriched": false
   },
   {
     "id": "opp_48df769b",
     "player_name": "Bruno Vicente",
-    "age": 37,
+    "age": null,
     "role": "CC",
     "role_name": "Centrocampista",
     "opportunity_type": "mercato",
@@ -474,20 +396,13 @@
     "discovered_at": "2026-03-03T02:37:06.097859",
     "nationality": "Brasile",
     "second_nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.com/vicente/profil/spieler/88700",
+    "tm_url": "https://www.transfermarkt.it/vicente/profil/spieler/102471",
     "player_profile": {
       "nationality": "Brasile",
       "second_nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.com/vicente/profil/spieler/88700",
-      "foot": "destro",
-      "height_cm": 176,
-      "agent": "Gianfranco Cicchetti"
+      "tm_url": "https://www.transfermarkt.it/vicente/profil/spieler/102471"
     },
-    "tm_enriched": false,
-    "foot": "destro",
-    "height_cm": 176,
-    "birth_date": "1989-02-18",
-    "agent": "Gianfranco Cicchetti"
+    "tm_enriched": false
   },
   {
     "id": "opp_186b4287",
@@ -535,24 +450,16 @@
     "source_name": "Gazzetta",
     "source_title": "Mercato: tutti i colpi dell'ultima giornata | Gazzetta.it",
     "discovered_at": "2026-03-03T02:36:08.777561",
-    "tm_url": "https://www.transfermarkt.it/alessandro-di-pardo/profil/spieler/457674",
+    "tm_url": "https://www.transfermarkt.it/us-pergolettese-1932/startseite/verein/4553/saison_id/2021",
     "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/alessandro-di-pardo/profil/spieler/457674",
-      "nationality": "Italia",
-      "market_value": 800000,
-      "market_value_formatted": "800 mila €"
+      "tm_url": "https://www.transfermarkt.it/us-pergolettese-1932/startseite/verein/4553/saison_id/2021"
     },
-    "tm_enriched": true,
-    "nationality": "Italia",
-    "market_value": 800000,
-    "market_value_formatted": "800 mila €",
-    "birth_date": "18/07/1999",
-    "contract_expires": "30/06/2029"
+    "tm_enriched": false
   },
   {
     "id": "opp_03181fd7",
     "player_name": "Luca Rizzo",
-    "age": 34,
+    "age": null,
     "role": "CC",
     "role_name": "Non Specificato",
     "opportunity_type": "mercato",
@@ -567,33 +474,20 @@
     "source_name": "Gazzetta",
     "source_title": "Serie C e D: classifiche e risultati in diretta | La Gazzetta dello Sport",
     "discovered_at": "2026-03-02T18:58:01.394740",
-    "nationality": "Italia",
+    "nationality": "Germania",
     "second_nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/luca-rizzo/profil/spieler/163471",
+    "tm_url": "https://www.transfermarkt.it/gianluca-rizzo/profil/spieler/196236",
     "player_profile": {
-      "nationality": "Italia",
+      "nationality": "Germania",
       "second_nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/luca-rizzo/profil/spieler/163471",
-      "foot": "destro",
-      "height_cm": 188,
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0
+      "tm_url": "https://www.transfermarkt.it/gianluca-rizzo/profil/spieler/196236"
     },
-    "tm_enriched": false,
-    "foot": "destro",
-    "height_cm": 188,
-    "birth_date": "1992-04-24",
-    "appearances": 0,
-    "goals": 0,
-    "assists": 0,
-    "minutes_played": 0
+    "tm_enriched": false
   },
   {
     "id": "opp_339594c5",
     "player_name": "Andrei Anton",
-    "age": 23,
+    "age": null,
     "role": "DC",
     "role_name": "Difensore",
     "opportunity_type": "svincolato",
@@ -606,25 +500,18 @@
     "discovered_at": "2026-03-02T18:57:34.091488",
     "nationality": "Romania",
     "second_nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.com/andrei-anton/profil/spieler/930300",
+    "tm_url": "https://www.transfermarkt.it/andrei-anton/profil/spieler/704729",
     "player_profile": {
       "nationality": "Romania",
       "second_nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.com/andrei-anton/profil/spieler/930300",
-      "market_value": 50000,
-      "market_value_formatted": "50 mila €",
-      "height_cm": 189
+      "tm_url": "https://www.transfermarkt.it/andrei-anton/profil/spieler/704729"
     },
-    "tm_enriched": true,
-    "market_value": 50000,
-    "market_value_formatted": "50 mila €",
-    "height_cm": 189,
-    "birth_date": "2003-08-23"
+    "tm_enriched": false
   },
   {
     "id": "opp_5b7ff5d9",
     "player_name": "Mbarik Fall",
-    "age": 29,
+    "age": null,
     "role": "DC",
     "role_name": "Difensore",
     "opportunity_type": "svincolato",
@@ -637,21 +524,18 @@
     "discovered_at": "2026-03-02T18:57:34.091479",
     "nationality": "Senegal",
     "second_nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/mbarick-fall/profil/spieler/",
+    "tm_url": "https://www.transfermarkt.it/mbarick-fall/profil/spieler/408359",
     "player_profile": {
       "nationality": "Senegal",
       "second_nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/mbarick-fall/profil/spieler/",
-      "height_cm": 190
+      "tm_url": "https://www.transfermarkt.it/mbarick-fall/profil/spieler/408359"
     },
-    "tm_enriched": false,
-    "height_cm": 190,
-    "birth_date": "1997-06-21"
+    "tm_enriched": false
   },
   {
     "id": "opp_e56a897a",
     "player_name": "Francesco Pio Petito",
-    "age": 24,
+    "age": null,
     "role": "CC",
     "role_name": "Non Specificato",
     "opportunity_type": "svincolato",
@@ -663,34 +547,17 @@
     "source_title": "Serie C, tutte le operazioni di calciomercato: acquisti e cessioni ...",
     "discovered_at": "2026-03-02T02:34:42.514130",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/francesco-pio-petito/profil/spieler/603909",
+    "tm_url": "https://www.transfermarkt.it/francesco-pio-petito/profil/spieler/823457",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/francesco-pio-petito/profil/spieler/603909",
-      "market_value": 200000,
-      "market_value_formatted": "200 mila €",
-      "foot": "destro",
-      "height_cm": 182,
-      "appearances": 18,
-      "goals": 11,
-      "assists": 0,
-      "minutes_played": 346
+      "tm_url": "https://www.transfermarkt.it/francesco-pio-petito/profil/spieler/823457"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 200000,
-    "market_value_formatted": "200 mila €",
-    "height_cm": 182,
-    "birth_date": "2002-12-02",
-    "appearances": 18,
-    "goals": 11,
-    "assists": 0,
-    "minutes_played": 346
+    "tm_enriched": false
   },
   {
     "id": "opp_75b31a35",
     "player_name": "Mattia Del Favero",
-    "age": 28,
+    "age": null,
     "role": "PO",
     "role_name": "Portiere",
     "opportunity_type": "svincolato",
@@ -702,26 +569,17 @@
     "source_title": "Serie C, tutte le operazioni di calciomercato: acquisti e cessioni ...",
     "discovered_at": "2026-03-02T18:57:34.091458",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/mattia-del-favero/profil/spieler/346560",
+    "tm_url": "https://www.transfermarkt.it/mattia-del-favero/profil/spieler/265079",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/mattia-del-favero/profil/spieler/346560",
-      "market_value": 75000,
-      "market_value_formatted": "€75k",
-      "foot": "destro",
-      "height_cm": 190
+      "tm_url": "https://www.transfermarkt.it/mattia-del-favero/profil/spieler/265079"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 75000,
-    "market_value_formatted": "€75k",
-    "height_cm": 190,
-    "birth_date": "1998-06-05"
+    "tm_enriched": false
   },
   {
     "id": "opp_8cfb0aa0",
     "player_name": "Giacomo Sciacca",
-    "age": 30,
+    "age": null,
     "role": "DC",
     "role_name": "Difensore",
     "opportunity_type": "svincolato",
@@ -733,24 +591,17 @@
     "source_title": "Serie C, tutte le operazioni di calciomercato: acquisti e cessioni ...",
     "discovered_at": "2026-03-02T18:57:34.091430",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/giacomo-sciacca/profil/spieler/199260",
+    "tm_url": "https://www.transfermarkt.it/giacomo-sciacca/profil/spieler/238992",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/giacomo-sciacca/profil/spieler/199260",
-      "market_value": 100000,
-      "market_value_formatted": "100 mila €",
-      "height_cm": 180
+      "tm_url": "https://www.transfermarkt.it/giacomo-sciacca/profil/spieler/238992"
     },
-    "tm_enriched": true,
-    "market_value": 100000,
-    "market_value_formatted": "100 mila €",
-    "height_cm": 180,
-    "birth_date": "1996-04-19"
+    "tm_enriched": false
   },
   {
     "id": "opp_d23ea65b",
     "player_name": "Giulio Carotenuto",
-    "age": 28,
+    "age": null,
     "role": "CC",
     "role_name": "Calciatore",
     "opportunity_type": "rescissione",
@@ -762,26 +613,17 @@
     "source_title": "LIVE TMW - Serie C, le ufficialità di oggi: Avellino, colpo Di Gaudio ...",
     "discovered_at": "2026-03-02T18:57:05.376502",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/giulio-carotenuto/profil/spieler/",
+    "tm_url": "https://www.transfermarkt.it/giulio-carotenuto/profil/spieler/410488",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/giulio-carotenuto/profil/spieler/",
-      "market_value": 50000,
-      "market_value_formatted": "50 mila €",
-      "foot": "destro",
-      "height_cm": 179
+      "tm_url": "https://www.transfermarkt.it/giulio-carotenuto/profil/spieler/410488"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 50000,
-    "market_value_formatted": "50 mila €",
-    "height_cm": 179,
-    "birth_date": "1998-04-09"
+    "tm_enriched": false
   },
   {
     "id": "opp_071a617d",
     "player_name": "Andraz Struna",
-    "age": 37,
+    "age": null,
     "role": "CC",
     "role_name": "Laterale",
     "opportunity_type": "rescissione",
@@ -796,14 +638,9 @@
     "tm_url": "https://www.transfermarkt.it/andraz-struna/profil/spieler/70592",
     "player_profile": {
       "nationality": "Slovenia",
-      "tm_url": "https://www.transfermarkt.it/andraz-struna/profil/spieler/70592",
-      "foot": "destro",
-      "height_cm": 183
+      "tm_url": "https://www.transfermarkt.it/andraz-struna/profil/spieler/70592"
     },
-    "tm_enriched": false,
-    "foot": "destro",
-    "height_cm": 183,
-    "birth_date": "1989-04-23"
+    "tm_enriched": false
   },
   {
     "id": "opp_faaa28af",
@@ -834,7 +671,7 @@
   {
     "id": "opp_4a537abf",
     "player_name": "Mario Noce",
-    "age": 27,
+    "age": null,
     "role": "DC",
     "role_name": "Difensore",
     "opportunity_type": "rescissione",
@@ -849,25 +686,9 @@
     "tm_url": "https://www.transfermarkt.it/mario-noce/profil/spieler/524406",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/mario-noce/profil/spieler/524406",
-      "market_value": 150000,
-      "market_value_formatted": "150 mila €",
-      "foot": "destro",
-      "height_cm": 189,
-      "agent": "Avv Claudio Parlato",
-      "appearances": 32,
-      "goals": 2
+      "tm_url": "https://www.transfermarkt.it/mario-noce/profil/spieler/524406"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 150000,
-    "market_value_formatted": "150 mila €",
-    "height_cm": 189,
-    "birth_date": "1999-10-20",
-    "contract_expires": "2026-06-30",
-    "agent": "Avv Claudio Parlato",
-    "appearances": 32,
-    "goals": 2
+    "tm_enriched": false
   },
   {
     "id": "opp_8db7ebb6",
@@ -905,7 +726,7 @@
   {
     "id": "opp_1e66eb9f",
     "player_name": "Emanuele Zanaboni",
-    "age": 21,
+    "age": null,
     "role": "CC",
     "role_name": "Punta Centrale",
     "opportunity_type": "mercato",
@@ -917,26 +738,12 @@
     "source_title": "Calciomercato LIVE: le notizie di oggi e le trattative | Gazzetta.it",
     "discovered_at": "2026-03-02T13:11:02.125211",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/emanuele-zanaboni/profil/spieler/900000",
+    "tm_url": "https://www.transfermarkt.it/emanuele-zanaboni/profil/spieler/1101344",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/emanuele-zanaboni/profil/spieler/900000",
-      "market_value": 250000,
-      "market_value_formatted": "250 mila €",
-      "foot": "sinistro",
-      "height_cm": 189,
-      "agent": "Bola",
-      "goals": 3
+      "tm_url": "https://www.transfermarkt.it/emanuele-zanaboni/profil/spieler/1101344"
     },
-    "tm_enriched": true,
-    "foot": "sinistro",
-    "market_value": 250000,
-    "market_value_formatted": "250 mila €",
-    "height_cm": 189,
-    "birth_date": "2005-02-05",
-    "contract_expires": "2030-06-30",
-    "agent": "Bola",
-    "goals": 3
+    "tm_enriched": false
   },
   {
     "id": "opp_f6082347",
@@ -975,7 +782,7 @@
   {
     "id": "opp_c623d8f2",
     "player_name": "Nicola Falasco",
-    "age": 33,
+    "age": null,
     "role": "DC",
     "role_name": "Difensore",
     "opportunity_type": "svincolato",
@@ -987,29 +794,17 @@
     "source_title": "Serie C, tutte le operazioni di calciomercato: acquisti e cessioni ...",
     "discovered_at": "2026-03-02T07:06:07.269888",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/nicola-falasco/profil/spieler/240999",
+    "tm_url": "https://www.transfermarkt.it/nicola-falasco/profil/spieler/176180",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/nicola-falasco/profil/spieler/240999",
-      "market_value": 100000,
-      "market_value_formatted": "100 mila €",
-      "foot": "sinistro",
-      "height_cm": 184,
-      "agent": "OFP OMNIA FOOTBALL PLAYERS'"
+      "tm_url": "https://www.transfermarkt.it/nicola-falasco/profil/spieler/176180"
     },
-    "tm_enriched": true,
-    "foot": "sinistro",
-    "market_value": 100000,
-    "market_value_formatted": "100 mila €",
-    "height_cm": 184,
-    "birth_date": "1993-10-05",
-    "contract_expires": "2026-06-30",
-    "agent": "OFP OMNIA FOOTBALL PLAYERS'"
+    "tm_enriched": false
   },
   {
     "id": "opp_e9f2382a",
     "player_name": "Mattia Leoncini",
-    "age": 22,
+    "age": null,
     "role": "CC",
     "role_name": "Non Specificato",
     "opportunity_type": "svincolato",
@@ -1021,26 +816,17 @@
     "source_title": "Serie C, tutte le operazioni di calciomercato: acquisti e cessioni ...",
     "discovered_at": "2026-03-02T02:34:42.514176",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/mattia-leoncini/profil/spieler/939000",
+    "tm_url": "https://www.transfermarkt.it/mattia-leoncini/profil/spieler/877257",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/mattia-leoncini/profil/spieler/939000",
-      "market_value": 75000,
-      "market_value_formatted": "75 mila €",
-      "foot": "destro",
-      "height_cm": 174
+      "tm_url": "https://www.transfermarkt.it/mattia-leoncini/profil/spieler/877257"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 75000,
-    "market_value_formatted": "75 mila €",
-    "height_cm": 174,
-    "birth_date": "2004-11-28"
+    "tm_enriched": false
   },
   {
     "id": "opp_c4f9cc3b",
     "player_name": "Gianmarco Ingrosso",
-    "age": 37,
+    "age": null,
     "role": "DC",
     "role_name": "Difensore",
     "opportunity_type": "svincolato",
@@ -1052,29 +838,17 @@
     "source_title": "Serie C, tutte le operazioni di calciomercato: acquisti e cessioni ...",
     "discovered_at": "2026-03-02T02:34:42.514168",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/gianmarco-ingrosso/profil/spieler/119000",
+    "tm_url": "https://www.transfermarkt.it/gianmarco-ingrosso/profil/spieler/61605",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/gianmarco-ingrosso/profil/spieler/119000",
-      "market_value": 75000,
-      "market_value_formatted": "75 mila €",
-      "foot": "destro",
-      "height_cm": 186,
-      "agent": "Gea World"
+      "tm_url": "https://www.transfermarkt.it/gianmarco-ingrosso/profil/spieler/61605"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 75000,
-    "market_value_formatted": "75 mila €",
-    "height_cm": 186,
-    "birth_date": "1989-01-28",
-    "contract_expires": "2026-06-29",
-    "agent": "Gea World"
+    "tm_enriched": false
   },
   {
     "id": "opp_d2378f18",
     "player_name": "Iacopo Cernigoi",
-    "age": 31,
+    "age": null,
     "role": "AT",
     "role_name": "Attaccante",
     "opportunity_type": "svincolato",
@@ -1085,25 +859,16 @@
     "source_name": "TMW",
     "source_title": "Serie C, tutte le operazioni di calciomercato: acquisti e cessioni ...",
     "discovered_at": "2026-03-02T02:34:42.514159",
-    "tm_url": "https://www.transfermarkt.it/iacopo-cernigoi/profil/spieler/287099",
+    "tm_url": "https://www.transfermarkt.it/virtusvecomp-verona/startseite/verein/29251",
     "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/iacopo-cernigoi/profil/spieler/287099",
-      "nationality": "Italia",
-      "market_value": 100000,
-      "market_value_formatted": "100 mila €",
-      "height_cm": 193
+      "tm_url": "https://www.transfermarkt.it/virtusvecomp-verona/startseite/verein/29251"
     },
-    "tm_enriched": true,
-    "nationality": "Italia",
-    "market_value": 100000,
-    "market_value_formatted": "100 mila €",
-    "height_cm": 193,
-    "birth_date": "1995-01-04"
+    "tm_enriched": false
   },
   {
     "id": "opp_d95be66f",
     "player_name": "Amadou Sarr",
-    "age": 22,
+    "age": null,
     "role": "CC",
     "role_name": "N/D",
     "opportunity_type": "prestito",
@@ -1116,22 +881,13 @@
     "discovered_at": "2026-03-02T07:06:03.111742",
     "nationality": "Senegal",
     "second_nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.com/amadou-sarr/profil/spieler/930000",
+    "tm_url": "https://www.transfermarkt.it/amadou-sarr/profil/spieler/723771",
     "player_profile": {
       "nationality": "Senegal",
       "second_nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.com/amadou-sarr/profil/spieler/930000",
-      "market_value": 150000,
-      "market_value_formatted": "150 K €",
-      "height_cm": 190,
-      "agent": "YOU FIRST"
+      "tm_url": "https://www.transfermarkt.it/amadou-sarr/profil/spieler/723771"
     },
-    "tm_enriched": true,
-    "market_value": 150000,
-    "market_value_formatted": "150 K €",
-    "height_cm": 190,
-    "birth_date": "2004-06-28",
-    "agent": "YOU FIRST"
+    "tm_enriched": false
   },
   {
     "id": "087af395bac427cdf6ee6809bb389cf0",
@@ -1189,22 +945,13 @@
     "source_name": "Transfermarkt",
     "source_title": "Serie C - Girone C - Scadenza contratto 2026 | Transfermarkt",
     "discovered_at": "2026-03-02T07:05:00.747820",
-    "nationality": "Iceland",
-    "tm_url": "https://www.transfermarkt.com/sveinn-aron-gudjohnsen/profil/spieler/332461",
+    "nationality": "Islanda",
+    "tm_url": "https://www.transfermarkt.it/sveinn-aron-gudjohnsen/profil/spieler/332527",
     "player_profile": {
-      "nationality": "Iceland",
-      "tm_url": "https://www.transfermarkt.com/sveinn-aron-gudjohnsen/profil/spieler/332461",
-      "market_value": 450000,
-      "market_value_formatted": "€450k",
-      "height_cm": 189,
-      "agent": "CAA Stellar"
+      "nationality": "Islanda",
+      "tm_url": "https://www.transfermarkt.it/sveinn-aron-gudjohnsen/profil/spieler/332527"
     },
-    "tm_enriched": true,
-    "market_value": 450000,
-    "market_value_formatted": "€450k",
-    "height_cm": 189,
-    "birth_date": "1998-05-12",
-    "agent": "CAA Stellar"
+    "tm_enriched": false
   },
   {
     "id": "opp_8219e706",
@@ -1221,19 +968,12 @@
     "source_title": "Serie C - Girone C - Scadenza contratto 2026 | Transfermarkt",
     "discovered_at": "2026-03-02T07:05:00.747806",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.com/federico-proia/profil/spieler/334600",
+    "tm_url": "https://www.transfermarkt.it/federico-proia/profil/spieler/287651",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.com/federico-proia/profil/spieler/334600",
-      "market_value": 450000,
-      "market_value_formatted": "450 mila €",
-      "height_cm": 185
+      "tm_url": "https://www.transfermarkt.it/federico-proia/profil/spieler/287651"
     },
-    "tm_enriched": true,
-    "market_value": 450000,
-    "market_value_formatted": "450 mila €",
-    "height_cm": 185,
-    "birth_date": "1996-02-04"
+    "tm_enriched": false
   },
   {
     "id": "opp_a573577a",
@@ -1249,35 +989,11 @@
     "source_name": "Transfermarkt",
     "source_title": "Serie C - Girone C - Scadenza contratto 2026 | Transfermarkt",
     "discovered_at": "2026-03-02T07:05:00.747778",
-    "tm_url": "https://www.transfermarkt.it/shady-oukhadda/profil/spieler/400120",
+    "tm_url": "https://www.transfermarkt.it/fc-turin/startseite/verein/416/saison_id/2018",
     "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/shady-oukhadda/profil/spieler/400120",
-      "nationality": "Marocco",
-      "second_nationality": "Italia",
-      "market_value": 650000,
-      "market_value_formatted": "650 mila €",
-      "foot": "destro",
-      "height_cm": 187,
-      "agent": "Italian Managers Group s.r.l.",
-      "appearances": 33,
-      "goals": 1,
-      "assists": 0,
-      "minutes_played": 2663
+      "tm_url": "https://www.transfermarkt.it/fc-turin/startseite/verein/416/saison_id/2018"
     },
-    "tm_enriched": true,
-    "nationality": "Marocco",
-    "second_nationality": "Italia",
-    "foot": "destro",
-    "market_value": 650000,
-    "market_value_formatted": "650 mila €",
-    "height_cm": 187,
-    "birth_date": "1999-01-17",
-    "contract_expires": "2026-06-30",
-    "agent": "Italian Managers Group s.r.l.",
-    "appearances": 33,
-    "goals": 1,
-    "assists": 0,
-    "minutes_played": 2663
+    "tm_enriched": false
   },
   {
     "id": "opp_bf37bdae",
@@ -1294,21 +1010,12 @@
     "source_title": "Serie C - Girone C - Scadenza contratto 2026 | Transfermarkt",
     "discovered_at": "2026-03-02T02:33:24.957619",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/luca-caldirola/profil/spieler/88629",
+    "tm_url": "https://www.transfermarkt.it/luca-caldirola/profil/spieler/88680",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/luca-caldirola/profil/spieler/88629",
-      "market_value": 400000,
-      "market_value_formatted": "400 mila €",
-      "foot": "sinistro",
-      "height_cm": 186
+      "tm_url": "https://www.transfermarkt.it/luca-caldirola/profil/spieler/88680"
     },
-    "tm_enriched": true,
-    "foot": "sinistro",
-    "market_value": 400000,
-    "market_value_formatted": "400 mila €",
-    "height_cm": 186,
-    "birth_date": "1991-02-01"
+    "tm_enriched": false
   },
   {
     "id": "opp_fbbd5b4f",
@@ -1351,7 +1058,7 @@
   {
     "id": "opp_635be7d8",
     "player_name": "Raffaele Russo",
-    "age": 27,
+    "age": null,
     "role": "CC",
     "role_name": "Non Specificato",
     "opportunity_type": "mercato",
@@ -1363,36 +1070,17 @@
     "source_title": "Serie C, le trattative dell'ultimo giorno: segui il calciomercato con noi",
     "discovered_at": "2026-03-01T18:41:28.281980",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/raffaele-russo/profil/spieler/489000",
+    "tm_url": "https://www.transfermarkt.it/raffaele-russo/profil/spieler/924698",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/raffaele-russo/profil/spieler/489000",
-      "market_value": 350000,
-      "market_value_formatted": "350 mila €",
-      "foot": "destro",
-      "height_cm": 171,
-      "agent": "Pascale Gianni",
-      "appearances": 36,
-      "goals": 4,
-      "assists": 3,
-      "minutes_played": 1509
+      "tm_url": "https://www.transfermarkt.it/raffaele-russo/profil/spieler/924698"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 350000,
-    "market_value_formatted": "350 mila €",
-    "height_cm": 171,
-    "birth_date": "1999-02-25",
-    "agent": "Pascale Gianni",
-    "appearances": 36,
-    "goals": 4,
-    "assists": 3,
-    "minutes_played": 1509
+    "tm_enriched": false
   },
   {
     "id": "opp_0011a87e",
     "player_name": "Andrea Sala",
-    "age": 33,
+    "age": null,
     "role": "CC",
     "role_name": "Non Specificato",
     "opportunity_type": "mercato",
@@ -1404,24 +1092,17 @@
     "source_title": "Serie C, le trattative dell'ultimo giorno: segui il calciomercato con noi",
     "discovered_at": "2026-03-01T18:41:28.281972",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/andrea-sala/profil/spieler/",
+    "tm_url": "https://www.transfermarkt.it/andrea-sala/profil/spieler/709553",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/andrea-sala/profil/spieler/",
-      "market_value": 100000,
-      "market_value_formatted": "100 mila €",
-      "height_cm": 187
+      "tm_url": "https://www.transfermarkt.it/andrea-sala/profil/spieler/709553"
     },
-    "tm_enriched": true,
-    "market_value": 100000,
-    "market_value_formatted": "100 mila €",
-    "height_cm": 187,
-    "birth_date": "1993-09-16"
+    "tm_enriched": false
   },
   {
     "id": "opp_401e2199",
     "player_name": "Agostino Camigliano",
-    "age": 32,
+    "age": null,
     "role": "DC",
     "role_name": "Difensore",
     "opportunity_type": "mercato",
@@ -1433,26 +1114,17 @@
     "source_title": "Serie C, le trattative dell'ultimo giorno: segui il calciomercato con noi",
     "discovered_at": "2026-03-01T18:41:28.281964",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/agostino-camigliano/profil/spieler/261600",
+    "tm_url": "https://www.transfermarkt.it/agostino-camigliano/profil/spieler/240400",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/agostino-camigliano/profil/spieler/261600",
-      "market_value": 250000,
-      "market_value_formatted": "250 mila €",
-      "height_cm": 188,
-      "agent": "Avv Claudio Parlato"
+      "tm_url": "https://www.transfermarkt.it/agostino-camigliano/profil/spieler/240400"
     },
-    "tm_enriched": true,
-    "market_value": 250000,
-    "market_value_formatted": "250 mila €",
-    "height_cm": 188,
-    "birth_date": "1994-07-11",
-    "agent": "Avv Claudio Parlato"
+    "tm_enriched": false
   },
   {
     "id": "opp_7ae86259",
     "player_name": "Emeka Adiele",
-    "age": 19,
+    "age": null,
     "role": "CC",
     "role_name": "Non Specificato",
     "opportunity_type": "mercato",
@@ -1463,34 +1135,20 @@
     "source_name": "TuttoC",
     "source_title": "Serie C, le trattative dell'ultimo giorno: segui il calciomercato con noi",
     "discovered_at": "2026-03-01T18:41:28.281956",
-    "nationality": "England",
+    "nationality": "Inghilterra",
     "second_nationality": "Nigeria",
     "tm_url": "https://www.transfermarkt.it/emeka-adiele/profil/spieler/1112524",
     "player_profile": {
-      "nationality": "England",
+      "nationality": "Inghilterra",
       "second_nationality": "Nigeria",
-      "tm_url": "https://www.transfermarkt.it/emeka-adiele/profil/spieler/1112524",
-      "market_value": 700000,
-      "market_value_formatted": "700 mila €",
-      "foot": "sinistro",
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 46
+      "tm_url": "https://www.transfermarkt.it/emeka-adiele/profil/spieler/1112524"
     },
-    "tm_enriched": true,
-    "foot": "sinistro",
-    "market_value": 700000,
-    "market_value_formatted": "700 mila €",
-    "birth_date": "2007-07-31",
-    "contract_expires": "2030-06-30",
-    "goals": 0,
-    "assists": 0,
-    "minutes_played": 46
+    "tm_enriched": false
   },
   {
     "id": "opp_92cd31c6",
     "player_name": "Jeremie Broh",
-    "age": 29,
+    "age": null,
     "role": "CC",
     "role_name": "Centrocampista",
     "opportunity_type": "mercato",
@@ -1503,28 +1161,18 @@
     "discovered_at": "2026-03-01T18:41:28.281918",
     "nationality": "Italia",
     "second_nationality": "Costa d'Avorio",
-    "tm_url": "https://www.transfermarkt.it/jeremie-broh/profil/spieler/334006",
+    "tm_url": "https://www.transfermarkt.it/jeremie-broh/profil/spieler/340075",
     "player_profile": {
       "nationality": "Italia",
       "second_nationality": "Costa d'Avorio",
-      "tm_url": "https://www.transfermarkt.it/jeremie-broh/profil/spieler/334006",
-      "market_value": 100000,
-      "market_value_formatted": "100 mila €",
-      "foot": "destro",
-      "height_cm": 180
+      "tm_url": "https://www.transfermarkt.it/jeremie-broh/profil/spieler/340075"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 100000,
-    "market_value_formatted": "100 mila €",
-    "height_cm": 180,
-    "birth_date": "1997-03-21",
-    "contract_expires": "2027-06-30"
+    "tm_enriched": false
   },
   {
     "id": "opp_753571c8",
     "player_name": "Pasquale Riccardi",
-    "age": 23,
+    "age": null,
     "role": "CC",
     "role_name": "Centrocampista",
     "opportunity_type": "mercato",
@@ -1539,14 +1187,9 @@
     "tm_url": "https://www.transfermarkt.it/pasquale-riccardi/profil/spieler/704505",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/pasquale-riccardi/profil/spieler/704505",
-      "market_value": 50000,
-      "market_value_formatted": "50 mila €"
+      "tm_url": "https://www.transfermarkt.it/pasquale-riccardi/profil/spieler/704505"
     },
-    "tm_enriched": true,
-    "market_value": 50000,
-    "market_value_formatted": "50 mila €",
-    "birth_date": "2003-07-30"
+    "tm_enriched": false
   },
   {
     "id": "opp_160d0fc9",
@@ -1567,18 +1210,9 @@
     "discovered_at": "2026-03-24T06:22:05.275697",
     "tm_url": "https://www.transfermarkt.it/as-ostiamare-lido-calcio/startseite/verein/9793",
     "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/as-ostiamare-lido-calcio/startseite/verein/9793",
-      "nationality": "Italia",
-      "market_value": 25000,
-      "market_value_formatted": "25 mila €",
-      "height_cm": 182
+      "tm_url": "https://www.transfermarkt.it/as-ostiamare-lido-calcio/startseite/verein/9793"
     },
-    "tm_enriched": true,
-    "nationality": "Italia",
-    "market_value": 25000,
-    "market_value_formatted": "25 mila €",
-    "height_cm": 182,
-    "birth_date": "2006-06-13"
+    "tm_enriched": false
   },
   {
     "id": "914d5423b24d196a296625f3f84af1b7",
@@ -1609,19 +1243,17 @@
     "foot": "destro",
     "height_cm": 173,
     "birth_date": "2007-11-14",
-    "tm_url": "https://www.transfermarkt.com/antonio-cimmaruta/profil/spieler/1000000",
+    "tm_url": "https://www.transfermarkt.it/antonio-cimmaruta/profil/spieler/1136558",
     "agent": "Epic Sports Italy",
     "player_profile": {
       "nationality": "Italia",
       "foot": "destro",
       "height_cm": 173,
-      "tm_url": "https://www.transfermarkt.com/antonio-cimmaruta/profil/spieler/1000000",
-      "agent": "Epic Sports Italy",
-      "market_value_formatted": "-"
+      "tm_url": "https://www.transfermarkt.it/antonio-cimmaruta/profil/spieler/1136558",
+      "agent": "Epic Sports Italy"
     },
     "age": 19,
-    "tm_enriched": false,
-    "market_value_formatted": "-"
+    "tm_enriched": false
   },
   {
     "id": "b51ed698b4c993cb9917aa5cea0ee3a8",
@@ -1648,19 +1280,11 @@
         "verdict": "Emanuele Catania, at 38 years old in 2019, does not align with the club's focus on superior athletic ability and long-term potential, despite his past goal-scoring record and experience."
       }
     },
-    "tm_url": "https://www.transfermarkt.it/emanuele-catania/profil/spieler/84600",
+    "tm_url": "https://www.transfermarkt.it/emanuele-catania/profil/spieler/140423",
     "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/emanuele-catania/profil/spieler/84600",
-      "nationality": "Italia",
-      "foot": "ambidestro",
-      "height_cm": 180
+      "tm_url": "https://www.transfermarkt.it/emanuele-catania/profil/spieler/140423"
     },
-    "tm_enriched": false,
-    "nationality": "Italia",
-    "foot": "ambidestro",
-    "height_cm": 180,
-    "birth_date": "1981-03-15",
-    "age": 45
+    "tm_enriched": false
   },
   {
     "id": "9d3127779b935f95ae27d0b7629017ad",
@@ -1687,9 +1311,9 @@
         "verdict": "This player report focuses on the Serie D league's role in developing young talent, and lacks specific information about Luigi Barbiero's individual skills and attributes, making it impossible to assess his suitability for our club."
       }
     },
-    "tm_url": "https://www.transfermarkt.it/calcio-padova/startseite/verein/3037/saison_id/1968",
+    "tm_url": "https://www.transfermarkt.it/cagliari-calcio/startseite/verein/1390/saison_id/1964",
     "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/calcio-padova/startseite/verein/3037/saison_id/1968"
+      "tm_url": "https://www.transfermarkt.it/cagliari-calcio/startseite/verein/1390/saison_id/1964"
     },
     "tm_enriched": false
   },
@@ -1707,13 +1331,9 @@
     "dna_strategic_fit": {},
     "tm_url": "https://www.transfermarkt.it/aaron-sky-schwarz/profil/spieler/604458",
     "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/aaron-sky-schwarz/profil/spieler/604458",
-      "nationality": "Austria",
-      "agent": "Filip Zalomir"
+      "tm_url": "https://www.transfermarkt.it/aaron-sky-schwarz/profil/spieler/604458"
     },
-    "tm_enriched": false,
-    "nationality": "Austria",
-    "agent": "Filip Zalomir"
+    "tm_enriched": false
   },
   {
     "id": "f89e5b604c4164ce9a7249f1b9214e08",
@@ -1742,21 +1362,13 @@
     },
     "nationality": "Italia",
     "second_nationality": "Brasile",
-    "tm_url": "https://www.transfermarkt.it/dominic-vavassori/profil/spieler/935000",
+    "tm_url": "https://www.transfermarkt.it/dominic-vavassori/profil/spieler/936739",
     "player_profile": {
       "nationality": "Italia",
       "second_nationality": "Brasile",
-      "tm_url": "https://www.transfermarkt.it/dominic-vavassori/profil/spieler/935000",
-      "market_value": 2000000,
-      "market_value_formatted": "2,00 Mio. €",
-      "height_cm": 177
+      "tm_url": "https://www.transfermarkt.it/dominic-vavassori/profil/spieler/936739"
     },
-    "tm_enriched": true,
-    "market_value": 2000000,
-    "market_value_formatted": "2,00 Mio. €",
-    "height_cm": 177,
-    "birth_date": "2005-12-09",
-    "age": 21
+    "tm_enriched": false
   },
   {
     "id": "f04ce5c318a8d639c86c286566232c6c",
@@ -1783,21 +1395,17 @@
         "verdict": "Luigi Castegnaro is an excellent fit, as his status as the best player in Serie C strongly suggests he embodies the hyper-offensive, high-athleticism profile our club seeks."
       }
     },
-    "nationality": "Italy",
+    "nationality": "Italia",
     "birth_date": "2007-05-03",
-    "tm_url": "https://www.transfermarkt.com/luigi-castegnaro/profil/spieler/1000000",
+    "tm_url": "https://www.transfermarkt.it/luigi-castegnaro/profil/spieler/1443435",
     "agent": "Talma Mauro",
     "player_profile": {
-      "nationality": "Italy",
-      "tm_url": "https://www.transfermarkt.com/luigi-castegnaro/profil/spieler/1000000",
-      "agent": "Talma Mauro",
-      "market_value": 50000,
-      "market_value_formatted": "50 mila €"
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/luigi-castegnaro/profil/spieler/1443435",
+      "agent": "Talma Mauro"
     },
     "age": 19,
-    "tm_enriched": true,
-    "market_value": 50000,
-    "market_value_formatted": "50 mila €"
+    "tm_enriched": false
   },
   {
     "id": "4ba51ebfb2495d37cf10bf807b539cc2",
@@ -1867,22 +1475,12 @@
       }
     },
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/ivan-varone/profil/spieler/200200",
+    "tm_url": "https://www.transfermarkt.it/ivan-varone/profil/spieler/123258",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/ivan-varone/profil/spieler/200200",
-      "market_value": 250000,
-      "market_value_formatted": "250 mila €",
-      "foot": "destro",
-      "height_cm": 184
+      "tm_url": "https://www.transfermarkt.it/ivan-varone/profil/spieler/123258"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 250000,
-    "market_value_formatted": "250 mila €",
-    "height_cm": 184,
-    "birth_date": "1992-10-11",
-    "age": 34
+    "tm_enriched": false
   },
   {
     "id": "b324de26a572e7a54aff23eac57cd170",
@@ -1910,25 +1508,12 @@
       }
     },
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/filippo-pirola/profil/spieler/476100",
+    "tm_url": "https://www.transfermarkt.it/filippo-pirola/profil/spieler/449860",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/filippo-pirola/profil/spieler/476100",
-      "market_value": 325000,
-      "market_value_formatted": "325 mila €",
-      "foot": "destro",
-      "height_cm": 185,
-      "agent": "QUAN SPORTS MANAGEMENT ITALIA"
+      "tm_url": "https://www.transfermarkt.it/filippo-pirola/profil/spieler/449860"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 325000,
-    "market_value_formatted": "325 mila €",
-    "height_cm": 185,
-    "birth_date": "1998-01-30",
-    "contract_expires": "2026-06-30",
-    "agent": "QUAN SPORTS MANAGEMENT ITALIA",
-    "age": 28
+    "tm_enriched": false
   },
   {
     "id": "d6931b64b14cb31c8dfe1d1e151f9c05",
@@ -2040,19 +1625,12 @@
       }
     },
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/simone-iuliano/profil/spieler/990000",
+    "tm_url": "https://www.transfermarkt.it/simone-iuliano/profil/spieler/1181813",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/simone-iuliano/profil/spieler/990000",
-      "market_value": 175000,
-      "market_value_formatted": "175 mila €"
+      "tm_url": "https://www.transfermarkt.it/simone-iuliano/profil/spieler/1181813"
     },
-    "tm_enriched": true,
-    "market_value": 175000,
-    "market_value_formatted": "175 mila €",
-    "birth_date": "2007-09-27",
-    "contract_expires": "2028-06-30",
-    "age": 19
+    "tm_enriched": false
   },
   {
     "id": "18896156e53e56495c16b9dc3f6eeea3",
@@ -2080,22 +1658,12 @@
       }
     },
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.com/alessio-amadio/profil/spieler/720909",
+    "tm_url": "https://www.transfermarkt.it/alessio-amadio/profil/spieler/392447",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.com/alessio-amadio/profil/spieler/720909",
-      "market_value": 50000,
-      "market_value_formatted": "50 mila €",
-      "foot": "destro",
-      "height_cm": 178
+      "tm_url": "https://www.transfermarkt.it/alessio-amadio/profil/spieler/392447"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 50000,
-    "market_value_formatted": "50 mila €",
-    "height_cm": 178,
-    "birth_date": "1999-05-11",
-    "age": 27
+    "tm_enriched": false
   },
   {
     "id": "013065cd27668e249b2ae9a451f1cb44",
@@ -2123,20 +1691,12 @@
       }
     },
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/mattia-aramu/profil/spieler/199279",
+    "tm_url": "https://www.transfermarkt.it/mattia-aramu/profil/spieler/200188",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/mattia-aramu/profil/spieler/199279",
-      "market_value": 800000,
-      "market_value_formatted": "800 mila €",
-      "height_cm": 180
+      "tm_url": "https://www.transfermarkt.it/mattia-aramu/profil/spieler/200188"
     },
-    "tm_enriched": true,
-    "market_value": 800000,
-    "market_value_formatted": "800 mila €",
-    "height_cm": 180,
-    "birth_date": "1995-05-14",
-    "age": 31
+    "tm_enriched": false
   },
   {
     "id": "5d8b9ead9d9eda8e1f549f9a9f196b89",
@@ -2164,22 +1724,12 @@
       }
     },
     "nationality": "Italia",
-    "tm_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF0arbsTvGVn8FyikSAkqLrktiGMMJtLbXMGr_qhLAaa2Z01tG7KZ7SSzakFGoyuVRpE4UXMiH_uChZ2YHD5NK3-5GUIq3m80xGev2wD1UOwbSLi69fvBImqdVDis4Nk-9B6QIu_Lz0Q60W3xiFJ2vUibLM-5VY28ucZ7y17g==",
+    "tm_url": "https://www.transfermarkt.it/lorenzo-vallisa/profil/spieler/644887",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF0arbsTvGVn8FyikSAkqLrktiGMMJtLbXMGr_qhLAaa2Z01tG7KZ7SSzakFGoyuVRpE4UXMiH_uChZ2YHD5NK3-5GUIq3m80xGev2wD1UOwbSLi69fvBImqdVDis4Nk-9B6QIu_Lz0Q60W3xiFJ2vUibLM-5VY28ucZ7y17g==",
-      "market_value": 100000,
-      "market_value_formatted": "100 mila €",
-      "foot": "destro",
-      "height_cm": 178
+      "tm_url": "https://www.transfermarkt.it/lorenzo-vallisa/profil/spieler/644887"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 100000,
-    "market_value_formatted": "100 mila €",
-    "height_cm": 178,
-    "birth_date": "2002-05-17",
-    "age": 24
+    "tm_enriched": false
   },
   {
     "id": "0c96aa4223bb42cce2fb84cfef2e3244",
@@ -2207,19 +1757,12 @@
       }
     },
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/stefano-giacomelli/profil/spieler/84609",
+    "tm_url": "https://www.transfermarkt.it/stefano-giacomelli/profil/spieler/88691",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/stefano-giacomelli/profil/spieler/84609",
-      "foot": "destro",
-      "height_cm": 170
+      "tm_url": "https://www.transfermarkt.it/stefano-giacomelli/profil/spieler/88691"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "height_cm": 170,
-    "birth_date": "1990-04-30",
-    "contract_expires": "2026-06-30",
-    "age": 36
+    "tm_enriched": false
   },
   {
     "id": "5098216e133a79bb8faab7b9bf5e1d0e",
@@ -2247,16 +1790,12 @@
       }
     },
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/alessandro-bernardini/profil/spieler/84609",
+    "tm_url": "https://www.transfermarkt.it/alessandro-bernardini/profil/spieler/37413",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/alessandro-bernardini/profil/spieler/84609",
-      "height_cm": 191
+      "tm_url": "https://www.transfermarkt.it/alessandro-bernardini/profil/spieler/37413"
     },
-    "tm_enriched": false,
-    "height_cm": 191,
-    "birth_date": "1987-01-21",
-    "age": 39
+    "tm_enriched": false
   },
   {
     "id": "94c636ad2de2cd97467a2e6489bae095",
@@ -2287,23 +1826,9 @@
     "tm_url": "https://www.transfermarkt.it/matteo-enza/profil/spieler/1182963",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/matteo-enza/profil/spieler/1182963",
-      "market_value": 50000,
-      "market_value_formatted": "50 mila €",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0
+      "tm_url": "https://www.transfermarkt.it/matteo-enza/profil/spieler/1182963"
     },
-    "tm_enriched": true,
-    "market_value": 50000,
-    "market_value_formatted": "50 mila €",
-    "birth_date": "2007-04-09",
-    "appearances": 0,
-    "goals": 0,
-    "assists": 0,
-    "minutes_played": 0,
-    "age": 19
+    "tm_enriched": false
   },
   {
     "id": "ca7d9e3dca1c61239896b57fdcd7e413",
@@ -2372,22 +1897,13 @@
         "verdict": "While his free agent status is noted, the report provides no information to evaluate his suitability for our hyper-offensive, athletic, and high-pressing tactical strategy."
       }
     },
-    "nationality": "Latvia",
-    "tm_url": "https://www.transfermarkt.com/klavs-bethers/profil/spieler/",
+    "nationality": "Lettonia",
+    "tm_url": "https://www.transfermarkt.it/klavs-bethers/profil/spieler/595530",
     "player_profile": {
-      "nationality": "Latvia",
-      "tm_url": "https://www.transfermarkt.com/klavs-bethers/profil/spieler/",
-      "market_value": 200000,
-      "market_value_formatted": "200 mila €",
-      "foot": "destro"
+      "nationality": "Lettonia",
+      "tm_url": "https://www.transfermarkt.it/klavs-bethers/profil/spieler/595530"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 200000,
-    "market_value_formatted": "200 mila €",
-    "birth_date": "2003-12-24",
-    "contract_expires": "2026-06-30",
-    "age": 23
+    "tm_enriched": false
   },
   {
     "id": "930c1c5f19fd94030d892d537f1e8d39",
@@ -2418,22 +1934,9 @@
     "tm_url": "https://www.transfermarkt.it/alessandro-celli/profil/spieler/340509",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/alessandro-celli/profil/spieler/340509",
-      "market_value": 225000,
-      "market_value_formatted": "225 mila €",
-      "foot": "sinistro",
-      "height_cm": 182,
-      "agent": "GP Soccer and Management Srl"
+      "tm_url": "https://www.transfermarkt.it/alessandro-celli/profil/spieler/340509"
     },
-    "tm_enriched": true,
-    "foot": "sinistro",
-    "market_value": 225000,
-    "market_value_formatted": "225 mila €",
-    "height_cm": 182,
-    "birth_date": "1994-01-28",
-    "contract_expires": "2026-06-30",
-    "agent": "GP Soccer and Management Srl",
-    "age": 32
+    "tm_enriched": false
   },
   {
     "id": "563dc2462284a3dc836cb3a8f927a544",
@@ -2461,21 +1964,12 @@
       }
     },
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/andrea-cistana/profil/spieler/346560",
+    "tm_url": "https://www.transfermarkt.it/andrea-cistana/profil/spieler/337381",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/andrea-cistana/profil/spieler/346560",
-      "market_value": 750000,
-      "market_value_formatted": "750 mila €",
-      "height_cm": 185
+      "tm_url": "https://www.transfermarkt.it/andrea-cistana/profil/spieler/337381"
     },
-    "tm_enriched": true,
-    "market_value": 750000,
-    "market_value_formatted": "750 mila €",
-    "height_cm": 185,
-    "birth_date": "1997-04-01",
-    "contract_expires": "2027-06-30",
-    "age": 29
+    "tm_enriched": false
   },
   {
     "id": "56a84c368b0f0f39d35cc2299c2e3d69",
@@ -2502,20 +1996,11 @@
         "verdict": "This player demonstrates strong offensive instincts and a proven ability to create chances, aligning well with our club's hyper-offensive philosophy and verticality."
       }
     },
-    "tm_url": "https://www.transfermarkt.it/pele/profil/spieler/17121",
+    "tm_url": "https://www.transfermarkt.it/ronaldo/profil/spieler/3140",
     "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/pele/profil/spieler/17121",
-      "nationality": "Brasile",
-      "foot": "entrambi",
-      "appearances": "92",
-      "goals": "77"
+      "tm_url": "https://www.transfermarkt.it/ronaldo/profil/spieler/3140"
     },
-    "tm_enriched": true,
-    "nationality": "Brasile",
-    "foot": "entrambi",
-    "birth_date": "23/10/1940",
-    "appearances": "92",
-    "goals": "77"
+    "tm_enriched": false
   },
   {
     "id": "4f020d33689b1fd7b6cb630d0d388b8f",
@@ -2543,22 +2028,12 @@
       }
     },
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/federico-angiulli/profil/spieler/199600",
+    "tm_url": "https://www.transfermarkt.it/federico-angiulli/profil/spieler/164545/sort/wettbewerb",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/federico-angiulli/profil/spieler/199600",
-      "market_value": 75000,
-      "market_value_formatted": "75 mila €",
-      "foot": "sinistro",
-      "height_cm": 170
+      "tm_url": "https://www.transfermarkt.it/federico-angiulli/profil/spieler/164545/sort/wettbewerb"
     },
-    "tm_enriched": true,
-    "foot": "sinistro",
-    "market_value": 75000,
-    "market_value_formatted": "75 mila €",
-    "height_cm": 170,
-    "birth_date": "1992-03-04",
-    "age": 34
+    "tm_enriched": false
   },
   {
     "id": "057f65fa5f393b9caa4aeee9f1de8059",
@@ -2586,14 +2061,12 @@
       }
     },
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/elia-guidotti/profil/spieler/",
+    "tm_url": "https://www.transfermarkt.it/elia-guidotti/profil/spieler/678720",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/elia-guidotti/profil/spieler/"
+      "tm_url": "https://www.transfermarkt.it/elia-guidotti/profil/spieler/678720"
     },
-    "tm_enriched": false,
-    "birth_date": "1990-07-27",
-    "age": 36
+    "tm_enriched": false
   },
   {
     "id": "298a3bdb3eb8ba4575de473d606e8dc9",
@@ -2620,25 +2093,15 @@
         "verdict": "This report provides no specific player attributes or performance data to evaluate any individual player against our club's hyper-offensive, athletic, and high-pressing strategy."
       }
     },
-    "nationality": "Portogallo, Angola",
+    "nationality": "Portogallo",
     "second_nationality": "Angola",
     "tm_url": "https://www.transfermarkt.it/joao-mario/profil/spieler/149729",
     "player_profile": {
-      "nationality": "Portogallo, Angola",
+      "nationality": "Portogallo",
       "second_nationality": "Angola",
-      "tm_url": "https://www.transfermarkt.it/joao-mario/profil/spieler/149729",
-      "market_value": 1800000,
-      "market_value_formatted": "1,80 mln €",
-      "foot": "destro",
-      "agent": "P&P Sport ..."
+      "tm_url": "https://www.transfermarkt.it/joao-mario/profil/spieler/149729"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 1800000,
-    "market_value_formatted": "1,80 mln €",
-    "birth_date": "19/01/1993",
-    "contract_expires": "30/06/2026",
-    "agent": "P&P Sport ..."
+    "tm_enriched": false
   },
   {
     "id": "0e3345281c23f8dc621c0975dd81b80b",
@@ -2666,33 +2129,12 @@
       }
     },
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/matteo-gerbaudo/profil/spieler/241676",
+    "tm_url": "https://www.transfermarkt.it/matteo-gerbaudo/profil/spieler/239584",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/matteo-gerbaudo/profil/spieler/241676",
-      "market_value": 100000,
-      "market_value_formatted": "100 mila €",
-      "foot": "sinistro",
-      "height_cm": 180,
-      "agent": "Studio Assist & Partners",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0
+      "tm_url": "https://www.transfermarkt.it/matteo-gerbaudo/profil/spieler/239584"
     },
-    "tm_enriched": true,
-    "foot": "sinistro",
-    "market_value": 100000,
-    "market_value_formatted": "100 mila €",
-    "height_cm": 180,
-    "birth_date": "1995-05-10",
-    "contract_expires": "2026-06-30",
-    "agent": "Studio Assist & Partners",
-    "appearances": 0,
-    "goals": 0,
-    "assists": 0,
-    "minutes_played": 0,
-    "age": 31
+    "tm_enriched": false
   },
   {
     "id": "c0f5a7d3ad7cab4375d8e28d7e413611",
@@ -2721,22 +2163,13 @@
     },
     "nationality": "Uruguay",
     "second_nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.com/agustin-albarracin/profil/spieler/1070000",
+    "tm_url": "https://www.transfermarkt.it/agustin-albarracin/profil/spieler/1104206",
     "player_profile": {
       "nationality": "Uruguay",
       "second_nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.com/agustin-albarracin/profil/spieler/1070000",
-      "market_value": 2300000,
-      "market_value_formatted": "2,30 mill. €",
-      "height_cm": 178
+      "tm_url": "https://www.transfermarkt.it/agustin-albarracin/profil/spieler/1104206"
     },
-    "tm_enriched": true,
-    "market_value": 2300000,
-    "market_value_formatted": "2,30 mill. €",
-    "height_cm": 178,
-    "birth_date": "2005-08-29",
-    "contract_expires": "2030-06-30",
-    "age": 21
+    "tm_enriched": false
   },
   {
     "id": "0b7edacd4c3a1a7e2b7480576a18fce2",
@@ -2765,25 +2198,15 @@
     },
     "nationality": "Argentina",
     "second_nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/juan-brunet/profil/spieler/540000",
+    "tm_url": "https://www.transfermarkt.it/juan-brunet/profil/spieler/696883",
     "agent": "Bergantiños FC- Borja Seoane Rivadulla",
     "player_profile": {
       "nationality": "Argentina",
       "second_nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/juan-brunet/profil/spieler/540000",
-      "agent": "Bergantiños FC- Borja Seoane Rivadulla",
-      "market_value": 200000,
-      "market_value_formatted": "200 mila €",
-      "foot": "destro",
-      "height_cm": 190
+      "tm_url": "https://www.transfermarkt.it/juan-brunet/profil/spieler/696883",
+      "agent": "Bergantiños FC- Borja Seoane Rivadulla"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 200000,
-    "market_value_formatted": "200 mila €",
-    "height_cm": 190,
-    "birth_date": "1998-01-24",
-    "age": 28
+    "tm_enriched": false
   },
   {
     "id": "acff82008f89433272a4926b7030418d",
@@ -2814,18 +2237,8 @@
     "tm_url": "https://www.transfermarkt.it/filippo-boccardi/profil/spieler/341093",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/filippo-boccardi/profil/spieler/341093",
-      "market_value": 75000,
-      "market_value_formatted": "75 mila €",
-      "foot": "destro",
-      "height_cm": 177
+      "tm_url": "https://www.transfermarkt.it/filippo-boccardi/profil/spieler/341093"
     },
-    "tm_enriched": true,
-    "foot": "destro",
-    "market_value": 75000,
-    "market_value_formatted": "75 mila €",
-    "height_cm": 177,
-    "birth_date": "1996-10-04",
-    "age": 30
+    "tm_enriched": false
   }
 ]
