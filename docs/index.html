@@ -355,7 +355,11 @@ body::before{
 /* tier-score glow */
 .card[data-tier="hot"]{
   background: linear-gradient(180deg, rgba(0,255,102,.03) 0%, transparent 60%), var(--bg-1);
+  border-color: color-mix(in oklab, var(--acc) 45%, var(--line));
 }
+.card[data-tier="hot"]  .dlabel{ color: var(--acc); }
+.card[data-tier="warm"] .dlabel{ color: var(--ink-dim); }
+.card[data-tier="cold"] .dlabel{ color: var(--ink-mute); }
 
 .card-head{
   display:grid;
@@ -398,10 +402,10 @@ body::before{
 .card[data-tier="cold"] .score{ color: var(--ink-mute); }
 .score .dlabel{
   display:block;
-  font-size: 9px; font-weight: 600;
+  font-size: 10px; font-weight: 700;
   letter-spacing: .14em;
   color: var(--ink-mute);
-  margin-top: 3px;
+  margin-top: 4px;
   text-align: right;
 }
 
@@ -867,6 +871,33 @@ body::before{
   outline: 2px solid var(--acc);
   outline-offset: -2px;
 }
+
+/* collapsible scoring breakdown */
+.score-details summary{
+  cursor: pointer;
+  list-style: none;
+  display: flex; align-items: center; gap: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--line-2);
+  font-family: var(--mono); font-size: 10.5px;
+  letter-spacing: .14em; color: var(--acc);
+  user-select: none;
+}
+.score-details summary::-webkit-details-marker{ display:none; }
+.score-details summary::before{ content: ">"; color: var(--acc); }
+.score-details summary::after{ content: "▸"; font-size: 9px; color: var(--ink-mute); margin-left:auto; }
+.score-details[open] summary::after{ content: "▾"; }
+.score-details .dim{ color: var(--ink-mute); margin-left:4px; font-size:10px; }
+.score-details .score-body{ margin-top: 10px; }
+
+/* stats strip empty state */
+.strip-empty{
+  padding: 12px 14px;
+  font-size: 11px; color: var(--ink-mute);
+  border: 1px dashed var(--line-2);
+  text-align: center;
+  letter-spacing: .06em;
+}
 </style>
 </head>
 <body>
@@ -909,7 +940,7 @@ body::before{
           <div class="n" id="ctFree">—</div><div class="l">SVINCOLATI</div>
         </div>
         <div class="counter">
-          <div class="n" id="ctU21">—</div><div class="l">U21</div>
+          <div class="n" id="ctU21">—</div><div class="l">U23</div>
         </div>
         <div class="counter">
           <div class="n" id="ctAll">—</div><div class="l">PROFILI</div>
@@ -933,7 +964,7 @@ body::before{
     <div class="filterbar" id="filters">
       <button class="chip on" data-f="all">TUTTI<span class="num" data-ct="all">0</span></button>
       <button class="chip" data-f="hot">TOP 10<span class="num" data-ct="hot">0</span></button>
-      <button class="chip" data-f="under">U21<span class="num" data-ct="under">0</span></button>
+      <button class="chip" data-f="under">U23<span class="num" data-ct="under">0</span></button>
       <button class="chip" data-f="free">SVINCOLATI<span class="num" data-ct="free">0</span></button>
       <button class="chip" data-f="verified">VERIFICATI<span class="num" data-ct="verified">0</span></button>
       <button class="chip" data-f="urgent">URGENTI<span class="num" data-ct="urgent">0</span></button>
