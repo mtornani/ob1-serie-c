@@ -1,0 +1,6 @@
+# Cloudflare Pages — OB1 Lega Pro Dashboard
+# Deploy command: wrangler pages deploy docs --project-name=ob1-lega-pro
+
+[env.production]
+# Custom domain configured via: Cloudflare Dashboard → Pages → ob1-lega-pro → Custom domains
+# Zero Trust access configured via: Cloudflare Dashboard → Zero Trust → Access → Applications

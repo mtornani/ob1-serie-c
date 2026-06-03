@@ -36,9 +36,6 @@ TELEGRAM_MAX_LENGTH = 4096
 class TelegramNotifier:
     """Gestisce notifiche Telegram arricchite per opportunita' di mercato"""
 
-    # Chat ID di default (Mirko Tornani)
-    DEFAULT_CHAT_ID = "1465485090"
-
     def __init__(self):
         self.bot_token = os.getenv('TELEGRAM_BOT_TOKEN')
         self.chat_ids = self._parse_chat_ids()
@@ -50,11 +47,12 @@ class TelegramNotifier:
             print(f"✅ Telegram notifier attivo - destinatari: {self.chat_ids}")
 
     def _parse_chat_ids(self) -> List[str]:
-        """Parse TELEGRAM_CHAT_IDS o usa il canale di default"""
+        """Parse TELEGRAM_CHAT_IDS (comma-separated) o TELEGRAM_CHAT_ID (singolo)."""
         raw = os.getenv('TELEGRAM_CHAT_IDS', '')
         if raw:
             return [cid.strip() for cid in raw.split(',') if cid.strip()]
-        return [self.DEFAULT_CHAT_ID]
+        fallback = os.getenv('TELEGRAM_CHAT_ID', '')
+        return [fallback] if fallback else []
 
     def send_message(self, text: str, parse_mode: str = 'HTML', reply_markup: dict = None) -> bool:
         """Invia messaggio con footer OB1 a tutti i chat configurati.
@@ -210,8 +208,8 @@ class TelegramNotifier:
             player_line += f" ({age} anni)"
         lines.append(player_line)
 
-        # Role
-        if role:
+        # Role (only when known)
+        if role and role.lower() not in ('n/d', 'n/a', '', 'none'):
             lines.append(f"📍 {role}")
 
         # Clubs
@@ -253,30 +251,15 @@ class TelegramNotifier:
             lines.append(f"💬 <i>{summary}</i>")
             lines.append("")
 
-        # Source
-        lines.append(f"📰 {source}")
-        if source_url:
-            short_url = source_url[:60] + '...' if len(source_url) > 60 else source_url
-            lines.append(f"🔗 {short_url}")
-
-        # Score breakdown (compact)
-        if breakdown:
-            lines.append("")
-            lines.append("━━━━━━━━━━━━━━")
-            lines.append("<b>Score Breakdown:</b>")
-
-            emoji_map = {
-                'freshness': '⏰',
-                'opportunity_type': '💼',
-                'experience': '⭐',
-                'age': '🎂',
-                'source': '📰',
-                'completeness': '✅'
-            }
-
-            for key, value in breakdown.items():
-                emoji = emoji_map.get(key, '•')
-                lines.append(f"  {emoji} {key}: {value}")
+        # Source — skip raw grounding redirect URLs
+        is_grounding = source_url and ('vertexaisearch' in source_url or 'grounding-api' in source_url)
+        if not is_grounding:
+            lines.append(f"📰 {source}")
+            if source_url:
+                short_url = source_url[:60] + '...' if len(source_url) > 60 else source_url
+                lines.append(f"🔗 {short_url}")
+        else:
+            lines.append("📰 Gemini Search")
 
         return '\n'.join(lines)
 
@@ -298,35 +281,36 @@ class TelegramNotifier:
         for i, opp in enumerate(opportunities[:8], 1):
             player = _esc(opp.get('player_name', 'N/D'))
             age = opp.get('age', '')
-            role = _esc((opp.get('role_name') or opp.get('role') or '')[:3]).upper()
+            role_raw = (opp.get('role_name') or opp.get('role') or '').strip()
+            role = _esc(role_raw[:3]).upper() if role_raw else ''
             score = opp.get('ob1_score', 0)
             opp_type = _esc(opp.get('opportunity_type', 'mercato'))
             current_club = _esc(opp.get('current_club', ''))
 
             # Compact format
             player_info = f"<b>{player}</b>"
+            parts = []
             if age:
-                player_info += f" ({age}"
-                if role:
-                    player_info += f", {role}"
-                player_info += ")"
-            elif role:
-                player_info += f" ({role})"
+                parts.append(f"{age}a")
+            if role:
+                parts.append(role)
+            if parts:
+                player_info += f" ({', '.join(parts)})"
 
-            lines.append(f"{i}. ⚡ {player_info} - Score {score}")
+            lines.append(f"{i}. ⚡ {player_info} — Score {score}")
 
-            # Second line with details
-            detail = f"   {opp_type.title()}"
+            # Second line: type + club (skip if empty/unknown)
+            detail_parts = [opp_type.title()]
             if current_club:
-                detail += f" | {current_club}"
-            lines.append(detail)
+                detail_parts.append(current_club)
+            lines.append(f"   {'  |  '.join(detail_parts)}")
             lines.append("")
 
         if len(opportunities) > 8:
             lines.append(f"<i>...e altre {len(opportunities) - 8} opportunita'</i>")
             lines.append("")
 
-        lines.append("📋 Dettagli completi sulla dashboard")
+        lines.append('📋 <a href="https://mtornani.github.io/ob1-serie-c/">Apri dashboard</a>')
 
         return '\n'.join(lines)
 

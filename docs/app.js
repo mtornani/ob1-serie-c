@@ -44,7 +44,6 @@ async function init(){
   setInterval(updateCycle, 30000);
   trackSession();
   paintCounters();
-  paintTicker();
   applyFilter();
 }
 
@@ -95,7 +94,7 @@ function applyFilter(){
   let list = [...STATE.all];
 
   if (STATE.filter === 'hot')    list = list.filter(o=>o.ob1_score>=70).sort((a,b)=>b.ob1_score-a.ob1_score).slice(0,10);
-  else if (STATE.filter === 'under')  list = list.filter(o=>o.age!=null && o.age<=21);
+  else if (STATE.filter === 'under')  list = list.filter(o=>o.age!=null && o.age<=22);
   else if (STATE.filter === 'free')   list = list.filter(o=>o._isFree);
   else if (STATE.filter === 'verified') list = list.filter(o => o.market_value != null || o.appearances != null);
   else if (STATE.filter === 'urgent') list = list.filter(o=>o._urgency==='critical'||o._urgency==='high');
@@ -136,7 +135,7 @@ function paintCounters(){
   const all = STATE.all;
   const hot    = all.filter(o=>o.ob1_score>=70).length;
   const free   = all.filter(o=>o._isFree).length;
-  const u21    = all.filter(o=>o.age!=null && o.age<=21).length;
+  const u21    = all.filter(o=>o.age!=null && o.age<=22).length;
   const urgent   = all.filter(o=>o._urgency==='critical'||o._urgency==='high').length;
   const verified = all.filter(o => o.market_value != null || o.appearances != null).length;
   const cutoff30 = Date.now() - 30 * 86400000;
@@ -157,19 +156,6 @@ function paintCounters(){
 
 function paintResultCount(){
   el('#rcount').textContent = STATE.filtered.length;
-}
-
-/* ============ TICKER ============ */
-
-function paintTicker(){
-  const track = el('#ticker');
-  const top = [...STATE.all].sort((a,b)=>b.ob1_score-a.ob1_score).slice(0, 20);
-  const items = top.map(o=>{
-    const arrow = o.ob1_score >= 70 ? '▲' : '●';
-    const cls   = o.ob1_score >= 70 ? 'up' : '';
-    return `<span class="t-item"><span class="tag">${(o.opportunity_type||'—').toUpperCase().slice(0,4)}</span> <span>${o.player_name}</span> <span class="n ${cls}">${arrow} ${o.ob1_score}</span></span>`;
-  });
-  track.innerHTML = (items.join('<span class="dot">/</span>') + '<span class="dot">/</span>').repeat(2);
 }
 
 /* ============ GRID ============ */
@@ -195,7 +181,7 @@ function card(o){
   const role  = safe(o.role_name, o.role || '—');
   const club  = safe(o.current_club, 'Svincolato');
   const age   = o.age!=null ? `${o.age}a` : '';
-  const u21Tag  = (o.age!=null && o.age<=21) ? `<span class="tag u21">U21</span>` : '';
+  const u21Tag  = (o.age!=null && o.age<=22) ? `<span class="tag u21">U21</span>` : '';
   const typeTag = type ? `<span class="tag type-${type}">${type.toUpperCase()}</span>` : '';
   const daysOld = o.discovered_at ? Math.round((Date.now() - new Date(o.discovered_at)) / 86400000) : null;
   const newTag  = (daysOld !== null && daysOld <= 30) ? `<span class="tag new-signal">NUOVO</span>` : '';
@@ -206,8 +192,8 @@ function card(o){
     daysText = dwc === 0 ? 'FREE' : dwc;
     daysUnit = dwc === 0 ? 'APPENA LIBERO' : 'GG LIBERO';
   } else if (o._days == null){
-    daysText = '∞';
-    daysUnit = 'N/D';
+    daysText = '—';
+    daysUnit = '';
   } else if (o._days < 0){
     daysText = '—';
     daysUnit = 'SCADUTO';
@@ -323,6 +309,13 @@ function openDrawer(o){
   const prevClubs   = Array.isArray(o.previous_clubs) && o.previous_clubs.length ? o.previous_clubs.join(' → ') : '';
   const intel       = o.intel || {};
 
+  // Stats strip: only render if at least one stat has real data
+  const hasStats = o.appearances != null || o.goals != null || o.assists != null || o.market_value_formatted;
+  const seasonNote = o.season ? `<div style="font-size:10px;color:var(--ink-mute);letter-spacing:.08em;margin-top:4px">stagione ${esc(o.season)}</div>` : '';
+  const stripHtml = hasStats
+    ? `<div class="strip">${stats.map(s=>`<div class="cell"><span class="v">${s.v}</span><span class="l">${s.l}</span></div>`).join('')}</div>${seasonNote}`
+    : `<div class="strip-empty">PRESENZE E STATS TM — ARRICCHIMENTO IN CORSO</div>`;
+
   // Minutaggio FIGC — solo se ci sono dati reali
   let minutaggioHtml = '';
   if (intel.roi_class && intel.roi_class !== 'unknown') {
@@ -380,12 +373,10 @@ function openDrawer(o){
 
     ${summaryText ? `<div class="summary">${esc(summaryText)}</div>` : ''}
 
-    <div class="strip">
-      ${stats.map(s=>`<div class="cell"><span class="v">${s.v}</span><span class="l">${s.l}</span></div>`).join('')}
-    </div>
+    ${stripHtml}
 
     <div class="sect">
-      <div class="sect-title">SCHEDA<span class="dim">${o.id||''}</span></div>
+      <div class="sect-title">SCHEDA</div>
       <div class="meta-grid">${metaCells.join('')}</div>
       ${prevClubs ? `<div class="intel-note"><span style="color:var(--ink-mute);letter-spacing:.12em;font-size:10px;">STORICO CLUB </span>${esc(prevClubs)}</div>` : ''}
     </div>
@@ -393,11 +384,13 @@ function openDrawer(o){
     ${minutaggioHtml}
     ${signalsHtml}
 
-    <div class="sect">
-      <div class="sect-title">COME È STATO VALUTATO<span class="dim">voto: ${o.ob1_score}/100</span></div>
-      <div class="intel-note" style="margin-bottom:6px">Il voto misura quanto vale la pena seguire questa opportunità adesso. Si basa su 8 fattori: più la barra è lunga, più quel fattore gioca a favore.</div>
-      <div>${bdHtml}</div>
-    </div>
+    <details class="score-details sect">
+      <summary>COME È STATO VALUTATO<span class="dim">voto: ${o.ob1_score}/100</span></summary>
+      <div class="score-body">
+        <div class="intel-note" style="margin-bottom:8px">8 fattori pesati: più la barra è lunga, più quel fattore contribuisce al voto.</div>
+        <div>${bdHtml}</div>
+      </div>
+    </details>
   `;
 
   const srcLink = el('#sourceLink');
