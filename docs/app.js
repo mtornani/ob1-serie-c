@@ -93,7 +93,7 @@ function decorate(o){
 function applyFilter(){
   let list = [...STATE.all];
 
-  if (STATE.filter === 'hot')    list = list.filter(o=>o.ob1_score>=70).sort((a,b)=>b.ob1_score-a.ob1_score).slice(0,10);
+  if (STATE.filter === 'hot')    list = list.filter(o=>o.ob1_score>=70);
   else if (STATE.filter === 'under')  list = list.filter(o=>o.age!=null && o.age<=22);
   else if (STATE.filter === 'free')   list = list.filter(o=>o._isFree);
   else if (STATE.filter === 'verified') list = list.filter(o => o.market_value != null || o.appearances != null);
@@ -181,25 +181,25 @@ function card(o){
   const role  = safe(o.role_name, o.role || '—');
   const club  = safe(o.current_club, 'Svincolato');
   const age   = o.age!=null ? `${o.age}a` : '';
-  const u21Tag  = (o.age!=null && o.age<=22) ? `<span class="tag u21">U21</span>` : '';
   const typeTag = type ? `<span class="tag type-${type}">${type.toUpperCase()}</span>` : '';
   const daysOld = o.discovered_at ? Math.round((Date.now() - new Date(o.discovered_at)) / 86400000) : null;
-  const newTag  = (daysOld !== null && daysOld <= 30) ? `<span class="tag new-signal">NUOVO</span>` : '';
+  const newTag  = (daysOld !== null && daysOld <= 3) ? `<span class="tag new-signal">NUOVO</span>` : '';
+  const tmTag   = o.tm_enriched === true ? `<span class="tag tm-ok">TM ✓</span>` : '';
 
   let daysText, daysUnit;
   if (o._isFree){
     const dwc = o.days_without_contract || 0;
     daysText = dwc === 0 ? 'FREE' : dwc;
-    daysUnit = dwc === 0 ? 'APPENA LIBERO' : 'GG LIBERO';
+    daysUnit = dwc === 0 ? 'appena libero' : 'gg libero';
   } else if (o._days == null){
     daysText = '—';
     daysUnit = '';
   } else if (o._days < 0){
     daysText = '—';
-    daysUnit = 'SCADUTO';
+    daysUnit = 'scaduto';
   } else {
-    if (o._days > 999) { daysText = Math.round(o._days/30); daysUnit = 'MESI AL CTR.'; }
-    else               { daysText = o._days;                 daysUnit = 'GG AL CTR.'; }
+    if (o._days > 730) { daysText = Math.round(o._days/30); daysUnit = 'mesi al ctr.'; }
+    else               { daysText = o._days;                 daysUnit = 'gg al ctr.'; }
   }
 
   return `
@@ -212,13 +212,13 @@ function card(o){
         <span class="role">${esc(role)}</span>
         ${age?`<span class="sep">·</span><span class="age">${age}</span>`:''}
         <span class="sep">·</span>
-        <span>${esc(club)}</span>
+        <span class="club">${esc(club)}</span>
       </div>
     </div>
     <div class="score">${o.ob1_score}<span class="dlabel">${o._tier.toUpperCase()}</span></div>
   </div>
   <div class="card-body">
-    <div class="tag-row">${typeTag}${newTag}${u21Tag}</div>
+    <div class="tag-row">${typeTag}${tmTag}${newTag}</div>
     <div class="timer">
       <div class="days">${daysText}</div>
       <span class="unit">${daysUnit}</span>
