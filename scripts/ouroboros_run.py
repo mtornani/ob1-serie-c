@@ -168,7 +168,7 @@ def run_ouroboros():
 
                     opp.relevance_score = scorer.calculate_score(opp)
 
-                    if opp.relevance_score >= 3:
+                    if opp.relevance_score >= 4:
                         # DNA Matching with 3s delay
                         print(f"  [INTEL] Analyzing {opp.player_name}...")
                         time.sleep(1) # Anti-429 (Gemini 2.5 Flash higher rate limits)
