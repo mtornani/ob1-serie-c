@@ -173,25 +173,23 @@ class OB1Scorer:
         return min(100, score)
 
     def _calc_age(self, age: Optional[int]) -> int:
-        """Score basato sull'eta del giocatore"""
+        """Score basato sull'eta del giocatore — target U23 per FIGC minutaggio"""
         if not age:
             return 60  # Neutro se non conosciamo l'eta
 
-        # Fascia ottimale: 22-28
-        if 22 <= age <= 28:
-            return 100
-        elif 20 <= age < 22:
-            return 85   # Giovane promettente
-        elif 28 < age <= 30:
-            return 75   # Ancora valido
-        elif 18 <= age < 20:
-            return 65   # Molto giovane, potenziale
-        elif 30 < age <= 32:
-            return 55   # Esperienza ma calo
-        elif age > 32:
-            return 35   # Fuori target
+        # U23 è il target principale: FIGC minutaggio rende i giovani extra-preziosi
+        if 18 <= age <= 22:
+            return 100  # Fascia U23 — massimo valore FIGC
+        elif 23 <= age <= 26:
+            return 90   # Ancora giovane, ottimo profilo
+        elif 27 <= age <= 29:
+            return 75   # Prime anni, esperienza senza U23 bonus
+        elif age < 18:
+            return 60   # Troppo giovane per continuità Serie C
+        elif 30 <= age <= 32:
+            return 45   # Esperienza ma nessun contributo minutaggio U23
         else:
-            return 50   # Under 18
+            return 25   # Fuori target
 
     def _calc_source(self, source_name: str) -> int:
         """Score basato sull'affidabilita della fonte"""

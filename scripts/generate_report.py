@@ -773,7 +773,6 @@ def generate_html_report(opportunities: list, dna_matches: list = None) -> str:
     html += f'''
         <div style="margin-top:3rem; padding:1rem; border-top:1px solid #ddd; text-align:center; font-size:0.85rem; opacity:0.7;">
             Generato da OB1 Scout v3.2 &bull;
-            Il sistema che ha intercettato Villarreal a &euro;1.8M (Clausola &euro;51M) &bull;
             <a href="https://matchanalysispro.online" style="color:#2980b9;">matchanalysispro.online</a>
         </div>
         <footer>

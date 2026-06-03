@@ -18,7 +18,7 @@ sys.path.insert(0, _root)
 sys.path.insert(0, os.path.join(_root, 'src'))
 
 from src.scraper_global import GlobalScraper
-from src.scoring_global import OB1Scorer
+from src.scoring import OB1Scorer
 from src.ingest import OB1Ingest, GEMINI_AVAILABLE
 from src.models import MarketOpportunity
 from src.notifier import TelegramNotifier
@@ -195,26 +195,36 @@ def run_ouroboros():
                 print(f"  [ERROR] Invalid config for {league_id}")
                 continue
 
-            scorer = OB1Scorer(league_conf)
+            scorer = OB1Scorer()
             league_prefix = league_id.split('_')[0].upper() # IT, BR, AR
 
             for opp in raw_opps:
                 try:
-                    # Validate player name before expensive DNA matching
+                    # Validate player name before scoring
                     if not is_valid_player_name(opp.player_name):
                         skipped_count += 1
                         continue
 
-                    opp.relevance_score = scorer.calculate_score(opp)
+                    # Gate with the same SCORE-002 used by the dashboard (pre-enrichment)
+                    raw_dict = {
+                        'player_name': opp.player_name,
+                        'opportunity_type': opp.opportunity_type.value,
+                        'discovered_at': opp.reported_date,
+                        'source_name': opp.source_name,
+                        'source_url': opp.source_url,
+                        'summary': opp.description,
+                    }
+                    gate_score = scorer.score(raw_dict)['ob1_score']
+                    opp.relevance_score = max(1, min(5, gate_score // 20))
 
-                    if opp.relevance_score >= 4:
+                    if gate_score >= 55:  # WARM floor — worth enriching
                         opp_dict = {
                             "id": hashlib.md5(f"{opp.player_name}_{opp.source_url}".encode()).hexdigest(),
                             "player_name": opp.player_name,
                             "region": league_prefix,
                             "opportunity_type": opp.opportunity_type.value,
                             "description": opp.description,
-                            "ob1_score": opp.relevance_score * 20,
+                            "ob1_score": gate_score,
                             "source_name": opp.source_name,
                             "source_url": opp.source_url,
                             "discovered_at": datetime.now().isoformat(),
