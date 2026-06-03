@@ -63,16 +63,10 @@ def main():
         if not _is_enrichable(player_name):
             skipped += 1
             continue
-        profile = opp.get('player_profile', {}) or {}
-        # Only skip if we already have substantive data — partial entries (nationality/agent only)
-        # are retried so grounding can fill in stats on the next run.
-        already_rich = (
-            profile.get('market_value') or
-            opp.get('market_value') or
-            opp.get('appearances') or
-            opp.get('contract_expires')
-        )
-        if already_rich:
+        # Skip only fully-enriched entries (tm_enriched=True).
+        # Entries with partial data (market_value but no appearances, etc.) are re-enriched
+        # so grounding can fill in the missing stats fields.
+        if opp.get('tm_enriched') is True:
             skipped += 1
             continue
         print(f"\n[{i+1}/{len(opportunities)}] Arricchimento: {player_name}")

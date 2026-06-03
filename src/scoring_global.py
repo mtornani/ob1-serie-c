@@ -25,14 +25,27 @@ class OB1Scorer:
     def calculate_score(self, opp: MarketOpportunity) -> int:
         """Calculates relevance score (1-5) based on weighted factors."""
         score = 0.0
-        
-        # 1. Freshness (Max 100 points)
-        days_old = (datetime.now() - datetime.strptime(opp.reported_date, "%Y-%m-%d")).days
-        freshness_score = max(0, 100 - (days_old * 20))
+
+        # 1. Freshness (Max 100 points) — gradual decay, not cliff at 5 days
+        try:
+            days_old = (datetime.now() - datetime.strptime(opp.reported_date, "%Y-%m-%d")).days
+        except (ValueError, TypeError):
+            days_old = 7  # assume week-old if date missing
+        if days_old <= 0:
+            freshness_score = 100
+        elif days_old <= 3:
+            freshness_score = 85
+        elif days_old <= 7:
+            freshness_score = 70
+        elif days_old <= 14:
+            freshness_score = 55
+        elif days_old <= 30:
+            freshness_score = 40
+        else:
+            freshness_score = 20
         score += freshness_score * self.weights.get('freshness', 0.25)
 
         # 2. Source Quality (Max 100 points)
-        # Check if source is in trusted_sources
         trusted = self.config.get('trusted_sources', [])
         source_score = 100 if any(ts in opp.source_url.lower() for ts in trusted) else 40
         score += source_score * self.weights.get('source_quality', 0.20)
@@ -41,18 +54,47 @@ class OB1Scorer:
         type_scores = {
             OpportunityType.RESCISSIONE: 100,
             OpportunityType.SVINCOLATO: 90,
-            OpportunityType.PRESTITO: 70,
             OpportunityType.TALENT: 80,
-            OpportunityType.TRANSFER_RUMOR: 50
+            OpportunityType.PRESTITO: 70,
+            OpportunityType.TRANSFER_RUMOR: 50,
         }
         type_score = type_scores.get(opp.opportunity_type, 60)
         score += type_score * self.weights.get('type_relevance', 0.20)
 
         # 4. Completeness (Does it have player name and description?)
         completeness = 0
-        if opp.player_name and opp.player_name != "Unknown": completeness += 50
-        if len(opp.description) > 50: completeness += 50
+        if opp.player_name and opp.player_name != "Unknown":
+            completeness += 50
+        if len(opp.description) > 50:
+            completeness += 50
         score += completeness * self.weights.get('completeness', 0.15)
+
+        # 5. Market Value (Max 100 points) — proxy for player quality at scrape time
+        mv = opp.market_value or 0
+        if mv >= 500000:
+            mv_score = 100
+        elif mv >= 250000:
+            mv_score = 85
+        elif mv >= 100000:
+            mv_score = 70
+        elif mv > 0:
+            mv_score = 50
+        else:
+            mv_score = 55  # unknown ≠ bad — most raw scrapes lack this
+        score += mv_score * self.weights.get('market_value', 0.10)
+
+        # 6. League Fit (Max 100 points) — is the article Italy-focused?
+        url_lower = opp.source_url.lower()
+        desc_lower = opp.description.lower()
+        if any(d in url_lower for d in ['tuttoc', 'lacasadic', 'mister-x', 'legapro', 'calciodilettanti']):
+            league_score = 100
+        elif any(kw in desc_lower for kw in ['serie c', 'lega pro', 'serie d', 'eccellenza']):
+            league_score = 80
+        elif any(kw in desc_lower for kw in ['serie b', 'serie a']):
+            league_score = 60
+        else:
+            league_score = 40
+        score += league_score * self.weights.get('league_fit', 0.10)
 
         # Map to 1-5 scale
         final_score = round(score / 20)
