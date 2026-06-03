@@ -7,14 +7,16 @@ leagues:
     serper_gl: it
     serper_hl: it
     queries:
-      # Lega Pro / Serie C — mercato primario
-      - 'Serie C svincolato parametro zero'
-      - 'Lega Pro calciomercato trattativa accordo'
-      - 'retrocesse Serie C giocatori svincolati mercato'
-      # Serie D — fascia intermedia
-      - 'Serie D svincolato calciomercato'
-      - 'Serie D Under 23 trattativa interesse Lega Pro'
+      # Finestra estiva 2026 — contratti scaduti / svincolati ora
+      - 'svincolato Serie C giugno 2026 calciomercato disponibile'
+      - 'contratto scade 2026 Lega Pro parametro zero estate'
+      - 'retrocessa Serie C 2025-26 giocatori svincolati disponibili'
+      # Ruoli prioritari — ricerca mirata per posizione
+      - 'portiere svincolato Serie C D estate 2026'
+      - 'difensore Under 23 svincolato Lega Pro 2026'
+      - 'attaccante Under 23 svincolato Serie C D luglio 2026'
+      # Serie D → Lega Pro pipeline
+      - 'Serie D Under 23 interesse Lega Pro estate 2026'
       # Eccellenza — vantaggio asimmetrico (zero coverage su altri tool)
-      - 'Eccellenza calciatore svincolato trattativa Serie D 2026'
-      - 'Eccellenza Under 23 promessa interesse Serie C giugno 2026'
+      - 'Eccellenza Under 23 talento svincolato Serie C 2026'
     trusted_sources: [tuttoc.com, calciomercato.com, lacasadic.com, mister-x.it, calciodilettanti.it]
