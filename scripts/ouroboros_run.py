@@ -7,6 +7,8 @@ import os
 import sys
 import json
 import hashlib
+import re
+import unicodedata
 import time
 from datetime import datetime
 from pathlib import Path
@@ -122,6 +124,43 @@ def purge_wrong_league(opps: list) -> list:
     return clean
 
 
+def _normalize_name(name: str) -> str:
+    n = unicodedata.normalize('NFKD', name).encode('ascii', 'ignore').decode().lower().strip()
+    return re.sub(r'\s+', ' ', n)
+
+
+def deduplicate(opps: list) -> list:
+    """Merge duplicate entries for the same player (different source articles).
+    Keeps the entry with the most data; discards single-word names (surname-only).
+    """
+    # Drop single-word names first — unenrichable noise
+    valid = [o for o in opps if len((o.get('player_name') or '').strip().split()) >= 2]
+    dropped_singles = len(opps) - len(valid)
+
+    def _score(o):
+        return (
+            bool(o.get('market_value')) * 100 +
+            bool(o.get('appearances')) * 50 +
+            bool(o.get('contract_expires')) * 30 +
+            bool(o.get('goals')) * 20 +
+            bool(o.get('agent')) * 10 +
+            bool(o.get('nationality')) * 5 +
+            len(o.get('description', '') or o.get('summary', '') or '') // 10
+        )
+
+    groups: dict = {}
+    for o in valid:
+        key = _normalize_name(o.get('player_name', ''))
+        if key not in groups or _score(o) > _score(groups[key]):
+            groups[key] = o
+
+    result = list(groups.values())
+    merged = len(valid) - len(result)
+    if dropped_singles or merged:
+        print(f"  [DEDUP] Removed {dropped_singles} single-word names, merged {merged} duplicates → {len(result)} unique")
+    return result
+
+
 def run_ouroboros():
     print("=" * 60)
     print("🐍 OUROBOROS - GLOBAL CYCLE START (v5.1)")
@@ -134,9 +173,10 @@ def run_ouroboros():
 
     existing_opps = load_existing_opps()
 
-    # Cleanup: purge junk names and wrong-league club entries
+    # Cleanup: purge junk names, wrong-league clubs, single-word names, duplicates
     existing_opps = purge_junk_entries(existing_opps)
     existing_opps = purge_wrong_league(existing_opps)
+    existing_opps = deduplicate(existing_opps)
 
     new_opps_count = 0
     skipped_count = 0
