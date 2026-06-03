@@ -321,6 +321,39 @@ function openDrawer(o){
 
   const summaryText = o.recommendation || o.summary || '';
   const prevClubs   = Array.isArray(o.previous_clubs) && o.previous_clubs.length ? o.previous_clubs.join(' → ') : '';
+  const intel       = o.intel || {};
+
+  // Minutaggio FIGC — solo se ci sono dati reali
+  let minutaggioHtml = '';
+  if (intel.roi_class && intel.roi_class !== 'unknown') {
+    const trafficColor = intel.traffic_light === 'green' ? 'var(--acc)' : intel.traffic_light === 'yellow' ? 'var(--amber)' : intel.traffic_light === 'red' ? 'var(--red)' : 'var(--ink-mute)';
+    const molt = intel.moltiplicatore ? `×${intel.moltiplicatore}` : '—';
+    const roiClass = (intel.roi_class === 'elite' || intel.roi_class === 'high') ? 'acc' : intel.roi_class === 'medium' ? 'blue' : '';
+    minutaggioHtml = `
+      <div class="sect">
+        <div class="sect-title">MINUTAGGIO FIGC<span class="dim">${esc(intel.roi_label||'')}</span></div>
+        <div class="intel-grid">
+          <div class="intel-cell" style="border-left-color:${trafficColor}">
+            <div class="k">LISTA OVER</div>
+            <div class="v" style="color:${trafficColor}">${esc(intel.traffic_label||'—')}</div>
+          </div>
+          <div class="intel-cell ${roiClass}">
+            <div class="k">MOLT. MINUTAGGIO</div>
+            <div class="v">${molt}</div>
+          </div>
+        </div>
+        ${intel.roi_dettaglio ? `<div class="intel-note">${esc(intel.roi_dettaglio)}</div>` : ''}
+      </div>`;
+  }
+
+  // Segnali contrattuali
+  const signalsHtml = (intel.signals && intel.signals.length) ? `
+    <div class="sect">
+      <div class="sect-title">SEGNALI</div>
+      <div class="signals">
+        ${intel.signals.map(s=>`<div class="signal ${s.severity}"><div class="sl">${esc(s.label)}</div><div class="sd">${esc(s.detail)}</div></div>`).join('')}
+      </div>
+    </div>` : '';
 
   brief.innerHTML = `
     <div class="brief-head">
@@ -356,6 +389,9 @@ function openDrawer(o){
       <div class="meta-grid">${metaCells.join('')}</div>
       ${prevClubs ? `<div class="intel-note"><span style="color:var(--ink-mute);letter-spacing:.12em;font-size:10px;">STORICO CLUB </span>${esc(prevClubs)}</div>` : ''}
     </div>
+
+    ${minutaggioHtml}
+    ${signalsHtml}
 
     <div class="sect">
       <div class="sect-title">COME È STATO VALUTATO<span class="dim">voto: ${o.ob1_score}/100</span></div>
