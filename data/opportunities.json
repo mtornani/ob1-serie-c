@@ -424,10 +424,10 @@
     "source_title": "INTERVISTA TC - Cicchetti: \"Mi attendo un mercato ... - TuttoC.com",
     "discovered_at": "2026-03-03T02:37:06.097893",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/danilo-ventola/profil/spieler/400000",
+    "tm_url": "https://www.transfermarkt.it/danilo-ventola/profil/spieler/400100",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/danilo-ventola/profil/spieler/400000",
+      "tm_url": "https://www.transfermarkt.it/danilo-ventola/profil/spieler/400100",
       "foot": "destro",
       "height_cm": 185
     },
@@ -479,22 +479,26 @@
     "source_name": "TuttoC",
     "source_title": "INTERVISTA TC - Cicchetti: \"Mi attendo un mercato ... - TuttoC.com",
     "discovered_at": "2026-03-03T02:37:06.097859",
-    "nationality": "Brasile",
-    "second_nationality": "Italia",
+    "nationality": "Brazil",
+    "second_nationality": "Italy",
     "tm_url": "https://www.transfermarkt.it/bruno-vicente/profil/spieler/84579",
     "player_profile": {
-      "nationality": "Brasile",
-      "second_nationality": "Italia",
+      "nationality": "Brazil",
+      "second_nationality": "Italy",
       "tm_url": "https://www.transfermarkt.it/bruno-vicente/profil/spieler/84579",
       "foot": "destro",
       "height_cm": 176,
-      "agent": "Gianfranco Cicchetti"
+      "agent": "Gianfranco Cicchetti",
+      "appearances": 30,
+      "goals": 0
     },
-    "tm_enriched": false,
+    "tm_enriched": true,
     "foot": "destro",
     "height_cm": 176,
     "birth_date": "1989-02-18",
-    "agent": "Gianfranco Cicchetti"
+    "agent": "Gianfranco Cicchetti",
+    "appearances": 30,
+    "goals": 0
   },
   {
     "id": "opp_186b4287",
@@ -576,24 +580,24 @@
     "discovered_at": "2026-03-02T18:58:01.394740",
     "nationality": "Italia",
     "second_nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.com/luca-rizzo/profil/spieler/199550",
+    "tm_url": "https://www.transfermarkt.it/luca-rizzo/profil/spieler/163349",
     "player_profile": {
       "nationality": "Italia",
       "second_nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.com/luca-rizzo/profil/spieler/199550",
+      "tm_url": "https://www.transfermarkt.it/luca-rizzo/profil/spieler/163349",
       "foot": "destro",
       "height_cm": 188,
-      "appearances": 0,
-      "goals": 0,
+      "appearances": 9,
+      "goals": 4,
       "assists": 0,
       "minutes_played": 0
     },
-    "tm_enriched": false,
+    "tm_enriched": true,
     "foot": "destro",
     "height_cm": 188,
     "birth_date": "1992-04-24",
-    "appearances": 0,
-    "goals": 0,
+    "appearances": 9,
+    "goals": 4,
     "assists": 0,
     "minutes_played": 0
   },
@@ -1672,9 +1676,9 @@
         "verdict": "Emanuele Catania, at 38 years old in 2019, does not align with the club's focus on superior athletic ability and long-term potential, despite his past goal-scoring record and experience."
       }
     },
-    "tm_url": "https://www.transfermarkt.it/emanuele-catania/profil/spieler/84579",
+    "tm_url": "https://www.transfermarkt.it/emanuele-catania/profil/spieler/",
     "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/emanuele-catania/profil/spieler/84579",
+      "tm_url": "https://www.transfermarkt.it/emanuele-catania/profil/spieler/",
       "nationality": "Italia",
       "foot": "ambidestro",
       "height_cm": 180
@@ -1711,14 +1715,14 @@
         "verdict": "This player report focuses on the Serie D league's role in developing young talent, and lacks specific information about Luigi Barbiero's individual skills and attributes, making it impossible to assess his suitability for our club."
       }
     },
-    "tm_url": "https://www.transfermarkt.it/cagliari-calcio/startseite/verein/1390/saison_id/1964",
+    "tm_url": "https://www.transfermarkt.it/sergio-buso/profil/spieler/347799",
     "player_profile": {
-      "tm_url": "https://www.transfermarkt.it/cagliari-calcio/startseite/verein/1390/saison_id/1964",
+      "tm_url": "https://www.transfermarkt.it/sergio-buso/profil/spieler/347799",
       "nationality": "Italia"
     },
     "tm_enriched": false,
     "nationality": "Italia",
-    "birth_date": "03/04/1950"
+    "birth_date": "1950-04-03"
   },
   {
     "id": "33d5bce11e134a8fca9ab5bdad554832",
@@ -3990,13 +3994,14 @@
     "source_url": "https://forzafootball.com/tournament/1224/fixtures",
     "discovered_at": "2026-06-04T20:13:18.828588",
     "league_id": "italy_serie_c_d",
-    "nationality": "Camerun",
+    "nationality": "Camerun, Malta",
     "tm_url": "https://www.transfermarkt.it/njongo-priso/profil/spieler/119381",
     "player_profile": {
-      "nationality": "Camerun",
+      "nationality": "Camerun, Malta",
       "tm_url": "https://www.transfermarkt.it/njongo-priso/profil/spieler/119381"
     },
-    "tm_enriched": false
+    "tm_enriched": false,
+    "birth_date": "24/12/1988"
   },
   {
     "id": "7f46cd048a32558246749a13f23936a2",
@@ -4030,6 +4035,56 @@
       "agent": "Football Service"
     },
     "age": 20,
+    "tm_enriched": true
+  },
+  {
+    "id": "d56aabd0df0f1b90ffa28ea40d8ab7fe",
+    "player_name": "La Gazzetta",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "La Gazzetta dello Sport\n\n38.2K views\n\n · \n\n14h ago\n\nImage 24: Video thumbnail 2:27\n\n[](\n\nDall’Arabia Saudita agli USA fino al Portogallo: qual è la maglia più bella del Mondiale 2026? 👕🏆👀 🎙️ Tommaso Milanese, Marco Guidi, Fabrizio Salvio, Francesco Pietrella\n\nLa Gazzetta dello Sport\n\n37.4K views\n\n · \n\n14h ago\n\nImage 25: Video thumbnail 0:27\n\n[](\n\nLa Gazzetta dello Sport's video\n\nLa Gazzetta dello Sport\n\n90.8K views\n\n · \n\n15h ago\n\nImage 26: Video thumbnail 1:00\n\n[](\n\nLa Gazzetta dello Sport's video\n\nLa Gazzetta dello Sport\n\n45.6K views\n\n · \n\n16h ago\n\nImage 27: Video thumbnail 0:11\n\n[](\n\nYamal-Ronaldinho: la palla non cade mai 🤝⚽️ 🎥 YT / @lamineyamal\n\nLa Gazzetta dello Sport\n\n169.8K views\n\n · \n\n19h ago\n\nPages\n\nBusinesses\n\nMedia/news company\n\nLa Gazzetta dello Sport\n\nVideos\n\nView Transcript [...] # A giugno ci saranno molte occasioni nel mercato dei parametri zero. Scopriamo la top-XI 😍👀 🎙️ @lorenzourbani__ | La Gazzetta dello Sport | Facebook\n\nLog In\n\nLog In\n\nForgot Account?\n\n# Video\n\nHome\n\nLive\n\nReels\n\nExplore\n\nMore\n\nHome\n\nLive\n\nReels\n\nExplore\n\nImage 1\n\nVideo 1\n\nA giugno ci saranno molte occasioni nel mercato dei parametri zero. Scopriamo la top-XI 😍👀 🎙️ @lorenzourbani__\n\nLike\n\nComment\n\nShare\n\nImage 2\n\n460\n\n · \n\n33 comments\n\n · \n\n97K views\n\n[](\n\n## La Gazzetta dello Sport\n\nDecember 29, 2025 · \n\nFollow\n\nA giugno ci saranno molte occasioni nel mercato dei parametri zero. Scopriamo la top-XI Image 3: 😍Image 4: 👀…\n\nSee more\n\n## Comments\n\n[](\n\nSandro Cannatella\n\nIo fossi nell'Inter, farei un tentativo per Maignan.\n\n   22w \n\n4\n\nImage 5Image 6\n\nVincenzo Rinaldi\n\nTrova l'intruso\n\n   22w [...] La Gazzetta dello Sport\n\nVideos\n\nView Transcript\n\nHome\n\nLive\n\nExplore\n\n   Privacy · \n   Consumer Health Privacy · \n   Terms · \n   Advertising · \n   Ad Choices · \n   Cookies · \n   More \n\nSee more on Facebook\n\nSee more on Facebook\n\nEmail or phone number\n\n \n\nPassword\n\n \n\nLog In\n\nForgot password?\n\nor\n\nCreate new account",
+    "ob1_score": 57,
+    "source_name": "www.facebook.com",
+    "source_url": "https://www.facebook.com/LaGazzettaDelloSport/videos/a-giugno-ci-saranno-molte-occasioni-nel-mercato-dei-parametri-zero-scopriamo-la-/888469447127619",
+    "discovered_at": "2026-06-05T20:00:34.393345",
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italia",
+    "birth_date": "02/10/1966",
+    "tm_url": "https://www.transfermarkt.it/peter-enrico-gazzetta/profil/spieler/691971",
+    "player_profile": {
+      "nationality": "Italia",
+      "tm_url": "https://www.transfermarkt.it/peter-enrico-gazzetta/profil/spieler/691971"
+    },
+    "tm_enriched": false
+  },
+  {
+    "id": "d1b6ed6b57ee3e4bce570b212893d2c6",
+    "player_name": "Issa Doumbia",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Frasi che hanno ancora più significato oggi, con il talento originario di Treviglio che si trasferirà in Portogallo per vestire la maglia dello Sporting CP: è ufficiale infatti il suo passaggio a titolo definitivo al club di Lisbona. Dalla Serie C a un top club europeo, tra attesa, gavetta e sogni realizzati.\n\nCresciuto calcisticamente nel settore giovanile del club bergamasco, è uno degli ultimi esempi di un modello che funziona alla perfezione. L'esordio nel 2021, a soli 17 anni, durante un match di Coppa Italia Serie C contro la Pro Vercelli, poi la prima volta anche in campionato, il 7 novembre 2021 nuovamente contro la formazione piemontese. Quindici minuti per Doumbia, che chiuderà la sua stagione con 12 presenze complessive. [...] Il sogno di quei due ragazzi partiti dalla Serie C, intanto, è un altro: \"Ci siamo promessi che un giorno torneremo a giocare insieme, questa volta la Champions League\".Fame, coraggio e voglia di arrivare: le tre linee guida di un figlio della C pronto a iniziare una avventura.\n\nSezione: News / Data: Lun 01 giugno 2026 alle 20:30   \n Autore: Rocco Cristarella   \n  vedi letture)\n\n### Altre notizie - News\n\nSambenedettese, inserimento per Perucchini del Foggia\n\nUltim'oraSambenedettese, inserimento per Perucchini del Foggia\n\nCalciomercato Serie C, tutte le trattative di giovedì 4 giugno | LIVE\n\nUltim'oraCalciomercato Serie C, tutte le trattative di giovedì 4 giugno | LIVE\n\nTriestina, ammenda di 8.000 euro per violazioni amministrative [...] 23:57 Il Cagliari continua a guardare in C: i sardi spingono per Berenbruch dell’Inter U23\n 21:40 Savoia, Emanuele Filiberto: \"The RoyaLand Company Ltd. ha completato l’acquisizione del 90% del club\"\n 21:33 Forlì, il club smentisce la possibile cessione: “Siamo impegnati alla preparazione della prossima stagione”\n 21:30 Calciomercato Serie C: tutte le trattative di mercoledì 3 giugno\n 20:20 Pianese, per il post Birindelli in pole Buzzegoli: i dettagli\n 20:10 Playoff Serie C, finisce 1-1 la finale d'andata tra Union Brescia e Ascoli: si deciderà tutto nel ritorno al Del Duca\n 20:07 Union Brescia, Corini: \"Abbiamo fatto fatica a rientrare in partita, abbiamo altri 90' per raggiungere l'obiettivo\"",
+    "ob1_score": 60,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/interviste-e-storie/un-figlio-della-c-verso-lo-sporting-lisbona-la-nuova-tappa-di-issa-doumbia-454904",
+    "discovered_at": "2026-06-05T20:00:34.393770",
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italia",
+    "foot": "destro",
+    "market_value": 8000000,
+    "market_value_formatted": "8,00 mio. €",
+    "height_cm": 187,
+    "birth_date": "2003-10-16",
+    "contract_expires": "2029-06-30",
+    "tm_url": "https://www.transfermarkt.it/issa-doumbia/profil/spieler/800000",
+    "player_profile": {
+      "nationality": "Italia",
+      "market_value": 8000000,
+      "market_value_formatted": "8,00 mio. €",
+      "foot": "destro",
+      "height_cm": 187,
+      "tm_url": "https://www.transfermarkt.it/issa-doumbia/profil/spieler/800000"
+    },
+    "age": 23,
     "tm_enriched": true
   }
 ]
