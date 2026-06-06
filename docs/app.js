@@ -481,7 +481,8 @@ function openDrawer(o){
   `;
 
   const srcLink = el('#sourceLink');
-  if (o.source_url){
+  const isGrounding = o.source_url && (o.source_url.includes('vertexaisearch') || o.source_url.includes('grounding-api'));
+  if (o.source_url && !isGrounding){
     srcLink.href = o.source_url;
     srcLink.textContent = `LEGGI L'ARTICOLO — ${(o.source_name||'fonte').toUpperCase()} ↗`;
     srcLink.style.display = '';
