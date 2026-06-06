@@ -9,8 +9,23 @@ import json
 import hashlib
 import re
 import unicodedata
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
+RETENTION_HOURS = 48  # recently-discovered entries are protected from purge
+
+def _is_recent(opp: dict, hours: int = RETENTION_HOURS) -> bool:
+    """Return True if the entry was discovered within the retention window."""
+    raw = opp.get('discovered_at', '')
+    if not raw:
+        return False
+    try:
+        dt = datetime.fromisoformat(raw.replace('Z', '+00:00'))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return datetime.now(timezone.utc) - dt < timedelta(hours=hours)
+    except (ValueError, TypeError):
+        return False
 
 # Add project root (for 'from src.xxx') AND src/ (for internal 'from models' etc.)
 _root = str(Path(__file__).parent.parent)
@@ -91,7 +106,7 @@ def purge_junk_entries(opps: list) -> list:
     removed = 0
     for opp in opps:
         name = opp.get('player_name', '')
-        if not is_valid_player_name(name):
+        if not is_valid_player_name(name) and not _is_recent(opp):
             removed += 1
             continue
         clean.append(opp)
@@ -115,7 +130,7 @@ def purge_wrong_league(opps: list) -> list:
     removed = 0
     for opp in opps:
         club = (opp.get('current_club') or '').lower().strip()
-        if any(bad in club for bad in _WRONG_LEAGUE_CLUBS):
+        if any(bad in club for bad in _WRONG_LEAGUE_CLUBS) and not _is_recent(opp):
             removed += 1
             continue
         clean.append(opp)

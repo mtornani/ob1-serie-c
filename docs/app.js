@@ -487,7 +487,10 @@ function openDrawer(o){
     srcLink.textContent = `LEGGI L'ARTICOLO — ${(o.source_name||'fonte').toUpperCase()} ↗`;
     srcLink.style.display = '';
   } else {
-    srcLink.style.display = 'none';
+    const q = encodeURIComponent((o.player_name||'') + ' Serie C calciatore');
+    srcLink.href = `https://www.google.com/search?q=${q}`;
+    srcLink.textContent = `CERCA SU GOOGLE — ${o.player_name||'PLAYER'} ↗`;
+    srcLink.style.display = '';
   }
 
   const tmLink = el('#tmLink');
