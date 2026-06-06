@@ -282,7 +282,7 @@ class TelegramNotifier:
             player = _esc(opp.get('player_name', 'N/D'))
             age = opp.get('age', '')
             role_raw = (opp.get('role_name') or opp.get('role') or '').strip()
-            role = _esc(role_raw[:3]).upper() if role_raw else ''
+            role = _esc(role_raw[:3]).upper() if role_raw and role_raw.lower() not in ('n/d', 'n/a', 'none') else ''
             score = opp.get('ob1_score', 0)
             opp_type = _esc(opp.get('opportunity_type', 'mercato'))
             current_club = _esc(opp.get('current_club', ''))
