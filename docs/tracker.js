@@ -8,6 +8,6 @@
       s: screen.width + 'x' + screen.height,
       t: Date.now()
     };
-    navigator.sendBeacon(url, JSON.stringify(payload));
+    navigator.sendBeacon(url, new Blob([JSON.stringify(payload)], { type: 'application/json' }));
   } catch(e) {}
 })();
