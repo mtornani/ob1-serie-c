@@ -695,7 +695,7 @@
       "stale_free_agent": false
     },
     {
-      "id": "8f7b3a3f52a1c717d30fe3a52b60cc99",
+      "id": "cb66072d8a458a71d274d0eba22d3f1c",
       "player_name": "Shady Oukhadda",
       "age": 27,
       "role": "",
@@ -703,7 +703,7 @@
       "opportunity_type": "svincolato",
       "reported_date": "2026-06-12",
       "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFFYJuSKhEN7V5xwmOMES-DrDHpP08Tg16xN2MhHWmuu3Yy6p4oNglZOtA1myzragibF-PwJDGCj_idQIAEjbwrg3l5I0GuGAYNCikf8n_a-94l_fOfxDkSiW0tbNfZYmkzewNDhafJ8A-bwrg3l5I0GuGAYNCikf8n_a-94l_fOfxDkSiW0tbNfZYmkzewNDhafJ8A-ykwGpxXoRw-mXBYIXAM-Nz7PyTgRvq7d0hGRD0oDLpA==",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEA7e_5Dsc4Sy7yBWxtrNlDnam0o2rvusyVLkHJqPspTttCGxxF_bpDTnoLOIxw4mwvw-0hsfd3JSbwVAzzQ2MO-TOj47w2mbcbwGwYwgVbLrtPkMZL30Lbwynwowf9ZTQR6mlShYaGbcbD9puC6z2k10x70_Bo48rCg1rq8vEyP6K5CAWVqQY7tA==",
       "previous_clubs": [],
       "current_club": "",
       "appearances": 0,
@@ -712,13 +712,13 @@
       "minutes_played": 0,
       "summary": "",
       "nationality": "Morocco",
-      "second_nationality": "Italia",
-      "foot": "destro",
+      "second_nationality": null,
+      "foot": null,
       "market_value": 650000,
-      "market_value_formatted": "650 mila €",
+      "market_value_formatted": "650k €",
       "player_image_url": null,
       "agent": null,
-      "discovered_at": "2026-06-12T15:26:24.595609",
+      "discovered_at": "2026-06-12T20:17:36.439863",
       "ob1_score": 74,
       "classification": "hot",
       "score_breakdown": {
@@ -733,29 +733,22 @@
       },
       "recommendation": "Piena maturità (27 anni), pronto per impatto immediato. Disponibile a parametro zero. Valore di mercato interessante (650k€).",
       "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 3185,
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
         "traffic_light": "green",
         "traffic_label": "OK",
         "traffic_icon": "🟢",
         "is_over": true,
-        "signals": [
-          {
-            "type": "contract_expiry",
-            "severity": "red",
-            "label": "SCADE 17gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (17 giorni)"
-          }
-        ],
-        "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "signals": [],
+        "birth_year": 1999,
+        "roi_dettaglio": "Classe 1999 — non contribuisce al minutaggio giovani",
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
-      "contract_expires": "2026-06-30",
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -6441,7 +6434,7 @@
       "assists": 0,
       "minutes_played": 0,
       "summary": "",
-      "nationality": "Francia",
+      "nationality": "France",
       "second_nationality": null,
       "foot": null,
       "market_value": null,
@@ -8648,7 +8641,7 @@
       "assists": 0,
       "minutes_played": 0,
       "summary": "",
-      "nationality": "Italy",
+      "nationality": "Italia",
       "second_nationality": null,
       "foot": "destro",
       "market_value": null,
@@ -11303,12 +11296,12 @@
     "intel_roi": {
       "elite": 0,
       "high": 0,
-      "medium": 81,
+      "medium": 80,
       "low": 56,
-      "none": 46
+      "none": 47
     }
   },
-  "last_update": "2026-06-12T15:40:10.392127",
+  "last_update": "2026-06-12T20:30:50.341456",
   "scoring_version": "SCORE-002",
   "intel_version": "INTEL-001"
 }
