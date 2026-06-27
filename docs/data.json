@@ -64,7 +64,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2030-06-30",
-      "days_without_contract": 117,
+      "days_without_contract": 118,
       "stale_free_agent": true
     },
     {
@@ -183,8 +183,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -248,8 +248,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           },
           {
             "type": "apprentice_reached",
@@ -264,71 +264,6 @@
       },
       "contract_expires": "2026-06-30",
       "days_without_contract": 0,
-      "stale_free_agent": false
-    },
-    {
-      "id": "9b1398a38282bfdd8bc0c1216fbe9c24",
-      "player_name": "Francesco Donati",
-      "age": 25,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-06-12",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHwKkMqeHAE-9EoDNCldEb09nDqViV0yinfmP33s5SEga_IpR3_uEm7r8fAkogrDooutF3D43TuNthXROPHyz8zIk-oF1NmgIVTIkzykgTJKqBRfmSmKLKLv-9UrAqq7imTBS_-cXgrW7IK7mHp7DL_sQcMBWfA5_8uC-aKgb1K_dLp1MfeP4gZ",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 34,
-      "goals": 2,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 500000,
-      "market_value_formatted": "500 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-06-12T10:22:20.717780",
-      "ob1_score": 72,
-      "classification": "hot",
-      "score_breakdown": {
-        "freshness": 60,
-        "opportunity_type": 100,
-        "experience": 60,
-        "age": 90,
-        "market_value": 100,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (500k€).",
-      "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 3822,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [
-          {
-            "type": "contract_expiry",
-            "severity": "red",
-            "label": "SCADE 62gg",
-            "detail": "Contratto in scadenza: 2026-08-28 (62 giorni)"
-          }
-        ],
-        "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
-        "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "2026-08-28",
-      "days_without_contract": 14,
       "stale_free_agent": false
     },
     {
@@ -386,7 +321,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
@@ -444,7 +379,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
@@ -500,8 +435,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -509,7 +444,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 5,
+      "days_without_contract": 6,
       "stale_free_agent": false
     },
     {
@@ -565,8 +500,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -574,7 +509,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 10,
+      "days_without_contract": 11,
       "stale_free_agent": false
     },
     {
@@ -690,8 +625,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -699,7 +634,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 116,
+      "days_without_contract": 117,
       "stale_free_agent": true
     },
     {
@@ -764,7 +699,72 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2029-06-30",
-      "days_without_contract": 18,
+      "days_without_contract": 19,
+      "stale_free_agent": false
+    },
+    {
+      "id": "9b1398a38282bfdd8bc0c1216fbe9c24",
+      "player_name": "Francesco Donati",
+      "age": 25,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-12",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHwKkMqeHAE-9EoDNCldEb09nDqViV0yinfmP33s5SEga_IpR3_uEm7r8fAkogrDooutF3D43TuNthXROPHyz8zIk-oF1NmgIVTIkzykgTJKqBRfmSmKLKLv-9UrAqq7imTBS_-cXgrW7IK7mHp7DL_sQcMBWfA5_8uC-aKgb1K_dLp1MfeP4gZ",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 34,
+      "goals": 2,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 500000,
+      "market_value_formatted": "500 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-12T10:22:20.717780",
+      "ob1_score": 70,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 100,
+        "experience": 60,
+        "age": 90,
+        "market_value": 100,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (500k€).",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3822,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 61gg",
+            "detail": "Contratto in scadenza: 2026-08-28 (61 giorni)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "2026-08-28",
+      "days_without_contract": 15,
       "stale_free_agent": false
     },
     {
@@ -822,7 +822,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2029-06-30",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
       "stale_free_agent": false
     },
     {
@@ -878,8 +878,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -887,7 +887,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -943,8 +943,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -952,7 +952,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -1010,7 +1010,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
       "stale_free_agent": false
     },
     {
@@ -1066,8 +1066,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -1075,7 +1075,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -1131,8 +1131,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 2gg",
-            "detail": "Contratto in scadenza: 2026-06-29 (2 giorni)"
+            "label": "SCADE 1gg",
+            "detail": "Contratto in scadenza: 2026-06-29 (1 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -1140,7 +1140,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-29",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
@@ -1198,72 +1198,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2030-06-30",
-      "days_without_contract": 17,
-      "stale_free_agent": false
-    },
-    {
-      "id": "3db349d74536e48886e9af225c6e7255",
-      "player_name": "Dusan Vlahovic",
-      "age": 26,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-06-12",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHzCJurtF_sdKQ9BZ74oyuV9_w03baVPZJzqNhxyr3dZg-naFyMaQ-V3bzHC3H30wAedKhFtEnkJ4r8YMPZ99QZaMyNrlX-zjC4gNPwJepnGm6moJyk4ofiSqAWMX7FoWsZppJpYuN4ju-0gms8S8jWpGO84yUYZU64SuCT3Fzn5g==",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Serbia",
-      "second_nationality": null,
-      "foot": "sinistro",
-      "market_value": 35000000,
-      "market_value_formatted": "35,00 mln €",
-      "player_image_url": null,
-      "agent": "Relatives",
-      "discovered_at": "2026-06-12T04:26:27.788838",
-      "ob1_score": 70,
-      "classification": "hot",
-      "score_breakdown": {
-        "freshness": 60,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 90,
-        "market_value": 100,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Piena maturità (26 anni), pronto per impatto immediato. Disponibile a parametro zero. Valore di mercato interessante (35000k€).",
-      "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 3185,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [
-          {
-            "type": "contract_expiry",
-            "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
-          }
-        ],
-        "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
-        "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "2026-06-30",
-      "days_without_contract": 14,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -1321,7 +1256,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -1377,8 +1312,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -1386,7 +1321,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
@@ -1449,8 +1384,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 277gg",
-            "detail": "Contratto: 2027-03-31 (277 giorni)"
+            "label": "SCADE 276gg",
+            "detail": "Contratto: 2027-03-31 (276 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -1458,7 +1393,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-03-31",
-      "days_without_contract": 115,
+      "days_without_contract": 116,
       "stale_free_agent": true
     },
     {
@@ -1516,7 +1451,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 116,
+      "days_without_contract": 117,
       "stale_free_agent": false
     },
     {
@@ -1578,64 +1513,6 @@
       "stale_free_agent": false
     },
     {
-      "id": "0867f50dc5975f71720fde21f33fffec",
-      "player_name": "Antonio Lagonigro",
-      "age": 20,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-06-12",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFhQ5RcN6SFxtJmXrTFkMpAKo7gh5OcIjrLKRwImZFZmSjp5lUoW-cGnw8uKpQWoPCv2f1yV_BDQgqkvBBOAYA-hDB7uqhTn8-pK1WX6E2NCPZBDheLCsuUU_pguCVY7H-ZsxDvSDFyr9jKQFTjulRMzDpujFj_le_EH-E5yvfO2RIDHNL4xzf8zw==",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 2,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 210,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": null,
-      "market_value": 150000,
-      "market_value_formatted": "150 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-06-12T04:26:27.789201",
-      "ob1_score": 69,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 60,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 100,
-        "market_value": 80,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero.",
-      "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 255,
-        "traffic_light": "green",
-        "traffic_label": "UNDER",
-        "traffic_icon": "🟢",
-        "is_over": false,
-        "signals": [],
-        "birth_year": 2006,
-        "roi_dettaglio": "Classe 2006 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
-        "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 14,
-      "stale_free_agent": false
-    },
-    {
       "id": "d233701adc99190748ed9d7f55e943c4",
       "player_name": "Rok Vadjunec",
       "age": 20,
@@ -1688,8 +1565,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           },
           {
             "type": "apprentice_reached",
@@ -1759,8 +1636,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -1768,7 +1645,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 13,
+      "days_without_contract": 14,
       "stale_free_agent": false
     },
     {
@@ -1824,8 +1701,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -1833,7 +1710,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -1891,7 +1768,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -1947,8 +1824,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -1956,7 +1833,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 10,
+      "days_without_contract": 11,
       "stale_free_agent": false
     },
     {
@@ -2012,8 +1889,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -2021,7 +1898,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 5,
+      "days_without_contract": 6,
       "stale_free_agent": false
     },
     {
@@ -2077,8 +1954,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -2086,7 +1963,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 10,
+      "days_without_contract": 11,
       "stale_free_agent": false
     },
     {
@@ -2144,7 +2021,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -2260,7 +2137,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -2316,8 +2193,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -2325,7 +2202,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 5,
+      "days_without_contract": 6,
       "stale_free_agent": false
     },
     {
@@ -2381,8 +2258,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           },
           {
             "type": "apprentice_reached",
@@ -2514,7 +2391,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 116,
+      "days_without_contract": 117,
       "stale_free_agent": true
     },
     {
@@ -2572,7 +2449,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -2630,7 +2507,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2028-06-30",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -2686,8 +2563,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -2695,7 +2572,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 10,
+      "days_without_contract": 11,
       "stale_free_agent": false
     },
     {
@@ -2751,8 +2628,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -2760,19 +2637,19 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
-      "id": "6c2d1008f956b4c1b91657bd845cb2d1",
-      "player_name": "AUDERO Emil",
-      "age": 29,
+      "id": "3db349d74536e48886e9af225c6e7255",
+      "player_name": "Dusan Vlahovic",
+      "age": 26,
       "role": "",
       "role_name": "N/D",
       "opportunity_type": "svincolato",
       "reported_date": "2026-06-12",
       "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGEr_-14dQmezffPa6OpcgtUe3FGShPQy4UReBxDgpBEhs6HFZoC8oTqBid8fpKNexV9dkLaMI8qbesDCa8AYK0G7oDJlCdHqqNwX6RmDu4EfDdtHWVgQk4LWxMWWJQa8aQvwI7rGe_rFPuTZhNxGkNscC7a19fBDo=",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHzCJurtF_sdKQ9BZ74oyuV9_w03baVPZJzqNhxyr3dZg-naFyMaQ-V3bzHC3H30wAedKhFtEnkJ4r8YMPZ99QZaMyNrlX-zjC4gNPwJepnGm6moJyk4ofiSqAWMX7FoWsZppJpYuN4ju-0gms8S8jWpGO84yUYZU64SuCT3Fzn5g==",
       "previous_clubs": [],
       "current_club": "",
       "appearances": 0,
@@ -2780,27 +2657,27 @@
       "assists": 0,
       "minutes_played": 0,
       "summary": "",
-      "nationality": "Indonesia",
+      "nationality": "Serbia",
       "second_nationality": null,
-      "foot": "destro",
-      "market_value": 2800000,
-      "market_value_formatted": "2,80 mln €",
+      "foot": "sinistro",
+      "market_value": 35000000,
+      "market_value_formatted": "35,00 mln €",
       "player_image_url": null,
-      "agent": "TMP SOCCER srl",
-      "discovered_at": "2026-06-12T04:26:27.788981",
+      "agent": "Relatives",
+      "discovered_at": "2026-06-12T04:26:27.788838",
       "ob1_score": 68,
       "classification": "warm",
       "score_breakdown": {
-        "freshness": 60,
+        "freshness": 45,
         "opportunity_type": 100,
         "experience": 50,
-        "age": 75,
+        "age": 90,
         "market_value": 100,
         "league_fit": 50,
         "source": 50,
         "completeness": 55
       },
-      "recommendation": "Esperienza (29 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (2800k€).",
+      "recommendation": "Piena maturità (26 anni), pronto per impatto immediato. Disponibile a parametro zero. Valore di mercato interessante (35000k€).",
       "intel": {
         "roi_class": "medium",
         "roi_label": "ROI MEDIO",
@@ -2816,16 +2693,16 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
         "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
-        "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
+        "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 14,
+      "days_without_contract": 15,
       "stale_free_agent": false
     },
     {
@@ -2883,7 +2760,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2029-06-30",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -3119,7 +2996,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -3177,7 +3054,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -3233,8 +3110,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -3242,7 +3119,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -3416,65 +3293,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 8,
-      "stale_free_agent": false
-    },
-    {
-      "id": "563cabd6ceb22d8460d76b71cc12f6f8",
-      "player_name": "Endri Muhameti",
-      "age": 22,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "prestito",
-      "reported_date": "2026-06-19",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFFmc46SqkrOstaPa5_7tD24z6O703eMuG78y4brB2g_jNtwYPW2F2vHmB9_0aOr7PaG6CDXP66tJD9ivQF6r8FnnXI-DnhzuLtuf48nMSCDGy0OW2kSMxSwbT4AS92qiRsl7IIk9kyv84xxjZMCJLb0HGGUcyJWgkteFUPzkTwz4FXUOs",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Albania",
-      "second_nationality": null,
-      "foot": null,
-      "market_value": 150000,
-      "market_value_formatted": "150 mila €",
-      "player_image_url": null,
-      "agent": "YOU FIRST",
-      "discovered_at": "2026-06-19T04:52:34.326015",
-      "ob1_score": 67,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 70,
-        "opportunity_type": 70,
-        "experience": 50,
-        "age": 100,
-        "market_value": 80,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Valutabile in prestito.",
-      "intel": {
-        "roi_class": "low",
-        "roi_label": "ROI BASSO",
-        "roi_color": "#94a3b8",
-        "coefficiente_eta": 1.0,
-        "moltiplicatore": 1.0,
-        "proiezione_stagionale": 1750,
-        "traffic_light": "green",
-        "traffic_label": "UNDER",
-        "traffic_icon": "🟢",
-        "is_over": false,
-        "signals": [],
-        "birth_year": 2004,
-        "roi_dettaglio": "Classe 2004 (x1.0) | prestito (no bonus tess.) | molt. x1.0 | proiez. stagione: 1750 min pond.",
-        "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 0,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -3532,7 +3351,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
@@ -3646,8 +3465,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 2gg",
-            "detail": "Contratto in scadenza: 2026-06-29 (2 giorni)"
+            "label": "SCADE 1gg",
+            "detail": "Contratto in scadenza: 2026-06-29 (1 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -3778,7 +3597,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 116,
+      "days_without_contract": 117,
       "stale_free_agent": false
     },
     {
@@ -3836,7 +3655,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 116,
+      "days_without_contract": 117,
       "stale_free_agent": false
     },
     {
@@ -3955,7 +3774,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 94,
+      "days_without_contract": 95,
       "stale_free_agent": false
     },
     {
@@ -4013,7 +3832,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "2028-06-30",
-      "days_without_contract": 24,
+      "days_without_contract": 25,
       "stale_free_agent": false
     },
     {
@@ -4069,8 +3888,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -4078,7 +3897,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -4134,8 +3953,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -4143,7 +3962,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -4380,8 +4199,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -4389,7 +4208,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
       "stale_free_agent": false
     },
     {
@@ -4445,8 +4264,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -4454,7 +4273,65 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
+      "stale_free_agent": false
+    },
+    {
+      "id": "0867f50dc5975f71720fde21f33fffec",
+      "player_name": "Antonio Lagonigro",
+      "age": 20,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-12",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFhQ5RcN6SFxtJmXrTFkMpAKo7gh5OcIjrLKRwImZFZmSjp5lUoW-cGnw8uKpQWoPCv2f1yV_BDQgqkvBBOAYA-hDB7uqhTn8-pK1WX6E2NCPZBDheLCsuUU_pguCVY7H-ZsxDvSDFyr9jKQFTjulRMzDpujFj_le_EH-E5yvfO2RIDHNL4xzf8zw==",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 2,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 210,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 150000,
+      "market_value_formatted": "150 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-12T04:26:27.789201",
+      "ob1_score": 66,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 100,
+        "market_value": 80,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 255,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2006,
+        "roi_dettaglio": "Classe 2006 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 15,
       "stale_free_agent": false
     },
     {
@@ -4510,8 +4387,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -4519,7 +4396,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -4577,7 +4454,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -4635,7 +4512,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -4693,7 +4570,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -4751,7 +4628,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 15,
+      "days_without_contract": 16,
       "stale_free_agent": false
     },
     {
@@ -4820,6 +4697,71 @@
       "stale_free_agent": false
     },
     {
+      "id": "6c2d1008f956b4c1b91657bd845cb2d1",
+      "player_name": "AUDERO Emil",
+      "age": 29,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-12",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGEr_-14dQmezffPa6OpcgtUe3FGShPQy4UReBxDgpBEhs6HFZoC8oTqBid8fpKNexV9dkLaMI8qbesDCa8AYK0G7oDJlCdHqqNwX6RmDu4EfDdtHWVgQk4LWxMWWJQa8aQvwI7rGe_rFPuTZhNxGkNscC7a19fBDo=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Indonesia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 2800000,
+      "market_value_formatted": "2,80 mln €",
+      "player_image_url": null,
+      "agent": "TMP SOCCER srl",
+      "discovered_at": "2026-06-12T04:26:27.788981",
+      "ob1_score": 66,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 75,
+        "market_value": 100,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Esperienza (29 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (2800k€).",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3185,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "2026-06-30",
+      "days_without_contract": 15,
+      "stale_free_agent": false
+    },
+    {
       "id": "599b87cf15fbc65bf85299835b6b399b",
       "player_name": "Mirko Elia",
       "age": 21,
@@ -4872,8 +4814,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -4939,7 +4881,65 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
+      "stale_free_agent": false
+    },
+    {
+      "id": "563cabd6ceb22d8460d76b71cc12f6f8",
+      "player_name": "Endri Muhameti",
+      "age": 22,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "prestito",
+      "reported_date": "2026-06-19",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFFmc46SqkrOstaPa5_7tD24z6O703eMuG78y4brB2g_jNtwYPW2F2vHmB9_0aOr7PaG6CDXP66tJD9ivQF6r8FnnXI-DnhzuLtuf48nMSCDGy0OW2kSMxSwbT4AS92qiRsl7IIk9kyv84xxjZMCJLb0HGGUcyJWgkteFUPzkTwz4FXUOs",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Albania",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 150000,
+      "market_value_formatted": "150 mila €",
+      "player_image_url": null,
+      "agent": "YOU FIRST",
+      "discovered_at": "2026-06-19T04:52:34.326015",
+      "ob1_score": 66,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 70,
+        "experience": 50,
+        "age": 100,
+        "market_value": 80,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Valutabile in prestito.",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "ROI BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.0,
+        "moltiplicatore": 1.0,
+        "proiezione_stagionale": 1750,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2004,
+        "roi_dettaglio": "Classe 2004 (x1.0) | prestito (no bonus tess.) | molt. x1.0 | proiez. stagione: 1750 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
       "stale_free_agent": false
     },
     {
@@ -4995,8 +4995,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -5004,7 +5004,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 24,
+      "days_without_contract": 25,
       "stale_free_agent": false
     },
     {
@@ -5060,8 +5060,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -5127,7 +5127,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -5241,8 +5241,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -5250,7 +5250,7 @@
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
       "stale_free_agent": false
     },
     {
@@ -5306,8 +5306,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           },
           {
             "type": "apprentice_reached",
@@ -5377,8 +5377,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -5386,7 +5386,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 18,
+      "days_without_contract": 19,
       "stale_free_agent": false
     },
     {
@@ -5564,71 +5564,6 @@
       "stale_free_agent": false
     },
     {
-      "id": "bd05a0259a89b77ec8595f99abf4aa11",
-      "player_name": "Andrea Bartoccioni",
-      "age": 22,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-06-12",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHgBnI_4lVfm3iYEWsJjD4JHsEQg7XF0iZNh2pFKA3nk6nCZwIzQy6ty4OnrkOkLCYiIwGvsGROr-9QpjtmWpsNrZe6i35jE0OE2pNU599WO_mbYWLd5rB2vHORPEG5qwJJT6H9rK65oG5tjefCvjh--sSa-gsw4yyyIyTSYaWPQ3MOlhaYIuAjrMMq5Pe-z2CEvMnbY8rX890iskPqvG6shg==",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 50000,
-      "market_value_formatted": "50 mila €",
-      "player_image_url": null,
-      "agent": "SportsGeneration",
-      "discovered_at": "2026-06-12T04:26:27.789127",
-      "ob1_score": 65,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 60,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 100,
-        "market_value": 55,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Disponibile a parametro zero.",
-      "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 3185,
-        "traffic_light": "green",
-        "traffic_label": "UNDER",
-        "traffic_icon": "🟢",
-        "is_over": false,
-        "signals": [
-          {
-            "type": "contract_expiry",
-            "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
-          }
-        ],
-        "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
-        "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
-      },
-      "contract_expires": "2026-06-30",
-      "days_without_contract": 14,
-      "stale_free_agent": false
-    },
-    {
       "id": "2a9ee444c78c1055ebab0dce02dda433",
       "player_name": "Benedikt Rottensteiner",
       "age": 21,
@@ -5681,8 +5616,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -5690,7 +5625,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -5748,72 +5683,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 9,
-      "stale_free_agent": false
-    },
-    {
-      "id": "ad75b054284ec4e2e8ace52602ae8179",
-      "player_name": "Liggi Spaltro",
-      "age": 26,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-06-19",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcYbrikOpB7t7qmcngY2klkpaAmzNmXG_r4IsDAw60grn9zDnhDI51MDULF_UE2PK8f_DuaZCGubiaySrhjHN6yu6_mIvuToc00ILfVffymYghw5sE5vULHhOr1uopMBoSkt5nNfE=",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 1,
-      "goals": 1,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 50000,
-      "market_value_formatted": "50 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-06-19T10:46:49.152761",
-      "ob1_score": 65,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 70,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 90,
-        "market_value": 55,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Piena maturità (26 anni), pronto per impatto immediato. Disponibile a parametro zero.",
-      "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 127,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [
-          {
-            "type": "contract_expiry",
-            "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
-          }
-        ],
-        "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 127 min pond.",
-        "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "2026-06-30",
-      "days_without_contract": 7,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -5869,8 +5739,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -5934,8 +5804,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -5943,7 +5813,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 115,
+      "days_without_contract": 116,
       "stale_free_agent": false
     },
     {
@@ -6001,7 +5871,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 116,
+      "days_without_contract": 117,
       "stale_free_agent": false
     },
     {
@@ -6059,7 +5929,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 116,
+      "days_without_contract": 117,
       "stale_free_agent": false
     },
     {
@@ -6173,8 +6043,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -6238,8 +6108,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -6247,7 +6117,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 24,
+      "days_without_contract": 25,
       "stale_free_agent": false
     },
     {
@@ -6361,8 +6231,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -6428,7 +6298,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 18,
+      "days_without_contract": 19,
       "stale_free_agent": false
     },
     {
@@ -6600,8 +6470,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 62gg",
-            "detail": "Contratto in scadenza: 2026-08-28 (62 giorni)"
+            "label": "SCADE 61gg",
+            "detail": "Contratto in scadenza: 2026-08-28 (61 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -6609,64 +6479,6 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-08-28",
-      "days_without_contract": 0,
-      "stale_free_agent": false
-    },
-    {
-      "id": "75cab40ad8d5af9aadc6ef07722aa2e5",
-      "player_name": "Ludovico Di Nella",
-      "age": 18,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "talento",
-      "reported_date": "2026-06-19",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEIqho4dldlHb1ibWa8Fc2hqUSY3RWH9T1s43hZWQH-Wt5MB0nPNkt1ACtTfjc0dUlmmojnsujchg0OAteToKXeo6XO8pTclmwYoFHhKFWadOrE6Reww4esUUd56mONbBzzjaOe7zwDe7lKJGnKfyvzV6M1Z1HwVOsu_1BFjtQ1orh-gE-YTu4bC39Ys12BZWVF2m1N9n_wWnynQTEsMd63x1t6cxJgQujKP0vEP7To82Pd7yP8D3NdADaf2oWb43JA1bEMy9PmxaEybMWrTJOyW9BW",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 4,
-      "goals": 4,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "sinistro",
-      "market_value": 100000,
-      "market_value_formatted": "100 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-06-19T15:31:40.965935",
-      "ob1_score": 64,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 70,
-        "opportunity_type": 50,
-        "experience": 50,
-        "age": 100,
-        "market_value": 70,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Profilo giovane (18 anni), potenziale di crescita.",
-      "intel": {
-        "roi_class": "low",
-        "roi_label": "ROI BASSO",
-        "roi_color": "#94a3b8",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.4,
-        "proiezione_stagionale": 392,
-        "traffic_light": "green",
-        "traffic_label": "UNDER",
-        "traffic_icon": "🟢",
-        "is_over": false,
-        "signals": [],
-        "birth_year": 2008,
-        "roi_dettaglio": "Classe 2008 (x1.4) | molt. x1.4 | proiez. stagione: 392 min pond.",
-        "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
-      },
-      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -6723,8 +6535,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -6732,7 +6544,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
@@ -6846,8 +6658,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           },
           {
             "type": "apprentice_reached",
@@ -6862,71 +6674,6 @@
       },
       "contract_expires": "2026-06-30",
       "days_without_contract": 0,
-      "stale_free_agent": false
-    },
-    {
-      "id": "c26e8634a89d216877761f1a7ae0e80c",
-      "player_name": "Raheem Sterling",
-      "age": 32,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-06-12",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHPDz34DZ7YczGrGpoBrtyO9LbKnLZiNbuevDGsSbR1dNQlNyU32yT4LUeH7L6BSfuq308Pwi2Jb6ptp5pyNkvoIbXk6zpQXs-RTAh8fmwjzt3ZQ3rAIJIhdMvVkFkhh3U3X0HGTH5gGOwesnf2ZzCqa2Rf18aKVS_c66eYl_dQM3TO4KoF0IIDlxWIhIlrs0HjIwFiiJN1RQpjF8r0jhKbmoPKq0pnL7CuYc7uyWKLCKjfcTDmbmNa",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 8,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "England",
-      "second_nationality": "Jamaica",
-      "foot": "ambidestro",
-      "market_value": 3000000,
-      "market_value_formatted": "3,00 Mio. €",
-      "player_image_url": null,
-      "agent": "16NinetyTwo Sports Management",
-      "discovered_at": "2026-06-12T04:26:27.788752",
-      "ob1_score": 64,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 60,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 45,
-        "market_value": 100,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Giocatore esperto (32 anni). Disponibile a parametro zero. Valore di mercato interessante (3000k€).",
-      "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 1019,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [
-          {
-            "type": "contract_expiry",
-            "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
-          }
-        ],
-        "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 1019 min pond.",
-        "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "2026-06-30",
-      "days_without_contract": 14,
       "stale_free_agent": false
     },
     {
@@ -7047,8 +6794,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -7056,7 +6803,7 @@
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
@@ -7114,7 +6861,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -7234,6 +6981,71 @@
       "stale_free_agent": false
     },
     {
+      "id": "ad75b054284ec4e2e8ace52602ae8179",
+      "player_name": "Liggi Spaltro",
+      "age": 26,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-19",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcYbrikOpB7t7qmcngY2klkpaAmzNmXG_r4IsDAw60grn9zDnhDI51MDULF_UE2PK8f_DuaZCGubiaySrhjHN6yu6_mIvuToc00ILfVffymYghw5sE5vULHhOr1uopMBoSkt5nNfE=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 1,
+      "goals": 1,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 50000,
+      "market_value_formatted": "50 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-19T10:46:49.152761",
+      "ob1_score": 64,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 90,
+        "market_value": 55,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Piena maturità (26 anni), pronto per impatto immediato. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 127,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 127 min pond.",
+        "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "2026-06-30",
+      "days_without_contract": 8,
+      "stale_free_agent": false
+    },
+    {
       "id": "7532543e981b3986624eec36225cc501",
       "player_name": "Deivi Cipi",
       "age": 21,
@@ -7286,8 +7098,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -7295,7 +7107,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 5,
+      "days_without_contract": 6,
       "stale_free_agent": false
     },
     {
@@ -7351,8 +7163,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -7418,7 +7230,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 23,
+      "days_without_contract": 24,
       "stale_free_agent": false
     },
     {
@@ -7474,8 +7286,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -7483,7 +7295,7 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -7541,7 +7353,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 24,
+      "days_without_contract": 25,
       "stale_free_agent": false
     },
     {
@@ -7657,7 +7469,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 23,
+      "days_without_contract": 24,
       "stale_free_agent": false
     },
     {
@@ -7713,8 +7525,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 34gg",
-            "detail": "Contratto in scadenza: 2026-07-31 (34 giorni)"
+            "label": "SCADE 33gg",
+            "detail": "Contratto in scadenza: 2026-07-31 (33 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -7842,6 +7654,71 @@
       "stale_free_agent": false
     },
     {
+      "id": "bd05a0259a89b77ec8595f99abf4aa11",
+      "player_name": "Andrea Bartoccioni",
+      "age": 22,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-12",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHgBnI_4lVfm3iYEWsJjD4JHsEQg7XF0iZNh2pFKA3nk6nCZwIzQy6ty4OnrkOkLCYiIwGvsGROr-9QpjtmWpsNrZe6i35jE0OE2pNU599WO_mbYWLd5rB2vHORPEG5qwJJT6H9rK65oG5tjefCvjh--sSa-gsw4yyyIyTSYaWPQ3MOlhaYIuAjrMMq5Pe-z2CEvMnbY8rX890iskPqvG6shg==",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 50000,
+      "market_value_formatted": "50 mila €",
+      "player_image_url": null,
+      "agent": "SportsGeneration",
+      "discovered_at": "2026-06-12T04:26:27.789127",
+      "ob1_score": 63,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 100,
+        "market_value": 55,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3185,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
+      },
+      "contract_expires": "2026-06-30",
+      "days_without_contract": 15,
+      "stale_free_agent": false
+    },
+    {
       "id": "eb37817122780f9adf2e19dba80ef7fa",
       "player_name": "Cosimo Bargellini",
       "age": 20,
@@ -7896,7 +7773,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -7954,72 +7831,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 11,
-      "stale_free_agent": false
-    },
-    {
-      "id": "fc55cdd6e87b317e82a567c0a4cf03c6",
-      "player_name": "Giacomo Pozzer",
-      "age": 25,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-06-19",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG12c_XIGFeJU177Kpy1LssxLLrGwg89sMrxc79Kd-WGpofIINouPuh5CXcPpIVuM-Yi-pkqaGYT1PhfgKjD_Vay1ZyLWCXDz3vSIIwGUWE2YP-kuGMBsmWsnQ1cJ5l890fGfVuygO1s5_6AGYh4O1NsGmW77Xaa7h2cnuoXraj3aYY7m3ERNVoVo8QJOqLLFZ3nFRjX9tOoim2K6A=",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 2,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": null,
-      "market_value_formatted": null,
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-06-19T10:46:49.153034",
-      "ob1_score": 63,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 70,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 90,
-        "market_value": 40,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Disponibile a parametro zero.",
-      "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 255,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [
-          {
-            "type": "contract_expiry",
-            "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
-          }
-        ],
-        "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
-        "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "2026-06-30",
-      "days_without_contract": 7,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -8077,7 +7889,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
@@ -8133,8 +7945,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -8198,8 +8010,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -8207,7 +8019,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -8321,8 +8133,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -8334,68 +8146,61 @@
       "stale_free_agent": false
     },
     {
-      "id": "d6259600d50ca158077bfd34aa77ab69",
-      "player_name": "Tommaso Nobile",
-      "age": 30,
+      "id": "75cab40ad8d5af9aadc6ef07722aa2e5",
+      "player_name": "Ludovico Di Nella",
+      "age": 18,
       "role": "",
       "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-06-12",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-19",
       "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGK59KTII8N7ROKhG2xsl-Hc6J-knPqf83OyizaXL5iqTYr9AKBchd3o28e1qfEP9rJbBpsBGoss2I-V3y0IPWdIM18QyrH8KTTQ2LTpRDPZr2CcaFpeeM3jwmzDiMZPJiPhPbVsc_UHNMlXnpBZ0EyeG6dXmmM1wZAD4JilYn0vQceHFKpAzUlHg==",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEIqho4dldlHb1ibWa8Fc2hqUSY3RWH9T1s43hZWQH-Wt5MB0nPNkt1ACtTfjc0dUlmmojnsujchg0OAteToKXeo6XO8pTclmwYoFHhKFWadOrE6Reww4esUUd56mONbBzzjaOe7zwDe7lKJGnKfyvzV6M1Z1HwVOsu_1BFjtQ1orh-gE-YTu4bC39Ys12BZWVF2m1N9n_wWnynQTEsMd63x1t6cxJgQujKP0vEP7To82Pd7yP8D3NdADaf2oWb43JA1bEMy9PmxaEybMWrTJOyW9BW",
       "previous_clubs": [],
       "current_club": "",
-      "appearances": 0,
-      "goals": 0,
+      "appearances": 4,
+      "goals": 4,
       "assists": 0,
       "minutes_played": 0,
       "summary": "",
       "nationality": "Italia",
       "second_nationality": null,
       "foot": "sinistro",
-      "market_value": 275000,
-      "market_value_formatted": "275 mila €",
+      "market_value": 100000,
+      "market_value_formatted": "100 mila €",
       "player_image_url": null,
-      "agent": "Famiglia",
-      "discovered_at": "2026-06-12T04:26:27.789053",
+      "agent": null,
+      "discovered_at": "2026-06-19T15:31:40.965935",
       "ob1_score": 62,
       "classification": "warm",
       "score_breakdown": {
         "freshness": 60,
-        "opportunity_type": 100,
+        "opportunity_type": 50,
         "experience": 50,
-        "age": 45,
-        "market_value": 90,
+        "age": 100,
+        "market_value": 70,
         "league_fit": 50,
         "source": 50,
         "completeness": 55
       },
-      "recommendation": "Esperienza (30 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (275k€).",
+      "recommendation": "Profilo giovane (18 anni), potenziale di crescita.",
       "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
+        "roi_class": "low",
+        "roi_label": "ROI BASSO",
+        "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 3185,
+        "moltiplicatore": 1.4,
+        "proiezione_stagionale": 392,
         "traffic_light": "green",
-        "traffic_label": "OK",
+        "traffic_label": "UNDER",
         "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [
-          {
-            "type": "contract_expiry",
-            "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
-          }
-        ],
-        "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
-        "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2008,
+        "roi_dettaglio": "Classe 2008 (x1.4) | molt. x1.4 | proiez. stagione: 392 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
       },
-      "contract_expires": "2026-06-30",
-      "days_without_contract": 14,
+      "contract_expires": "",
+      "days_without_contract": 0,
       "stale_free_agent": false
     },
     {
@@ -8509,8 +8314,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -8518,7 +8323,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -8645,71 +8450,6 @@
       "stale_free_agent": false
     },
     {
-      "id": "836ecd22bc96b79b07fa300f8ae35ff1",
-      "player_name": "Alessio Cragno",
-      "age": 32,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-06-12",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHUrm6uiAdYVcYq2gWAVuLIiWeihyvr1XPBhaGeTHpqDrOKyY-oIb1fIoSOwguNRIuXoGsgYUvaK4FV2IzW1cEUwkBBTthpyz8xLvFUyK_vW42sRfl2d2alegGxRmNeyYWS3_FjZeI-FRRCZfXt-gc_S3mGmOxPGCy8T9NXoSkTLk2XrBurHRPNp8enleafF3Pib0v7b0m9IHbHcW9_6I-8TsCl0HvnzO5wB0ageKELx3kXo7Gi2qwvOPc=",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 2,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 158,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 400000,
-      "market_value_formatted": "400 mila €",
-      "player_image_url": null,
-      "agent": "Branchini Associati S.p.A.",
-      "discovered_at": "2026-06-12T04:26:27.788910",
-      "ob1_score": 62,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 60,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 45,
-        "market_value": 90,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Giocatore esperto (32 anni). Disponibile a parametro zero. Valore di mercato interessante (400k€).",
-      "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 255,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [
-          {
-            "type": "contract_expiry",
-            "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
-          }
-        ],
-        "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
-        "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "2026-06-30",
-      "days_without_contract": 14,
-      "stale_free_agent": false
-    },
-    {
       "id": "4e429b9623ac02deb4cdd5b472c63701",
       "player_name": "Emanuele Ndoj",
       "age": 30,
@@ -8762,8 +8502,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -8771,7 +8511,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 10,
+      "days_without_contract": 11,
       "stale_free_agent": false
     },
     {
@@ -8885,8 +8625,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -8950,8 +8690,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -9024,7 +8764,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2025-07-01",
-      "days_without_contract": 115,
+      "days_without_contract": 116,
       "stale_free_agent": false
     },
     {
@@ -9082,7 +8822,7 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -9196,8 +8936,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -9205,7 +8945,7 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 23,
+      "days_without_contract": 24,
       "stale_free_agent": false
     },
     {
@@ -9263,7 +9003,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -9319,8 +9059,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -9328,65 +9068,7 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 22,
-      "stale_free_agent": false
-    },
-    {
-      "id": "34752e5ab6acae68b13faf60c5aad8f5",
-      "player_name": "Giacomo Venturi",
-      "age": 34,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-06-12",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFS1R6nHttuD1DqsiJds6-Kb4iUnAKP7TkxKO5BcWya4Pjy-dxrOZaG1kt_rb_5IQdg-nRmbvF0LUidBSw4OMZpbIuXuijLF2CVaL0hG-NFwFZ5RNZmK_wTHE5SOXbB7a2dmtBJfGIKsPEPjYlxbSHEjVvdSyIPJsuvPb-EznB70R8eMrGLUzzm",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 36,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 300000,
-      "market_value_formatted": "300 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-06-12T10:22:20.718136",
-      "ob1_score": 61,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 60,
-        "opportunity_type": 100,
-        "experience": 60,
-        "age": 25,
-        "market_value": 90,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Giocatore esperto (34 anni). Disponibile a parametro zero. Valore di mercato interessante (300k€).",
-      "intel": {
-        "roi_class": "none",
-        "roi_label": "NO CONTRIB.",
-        "roi_color": "gray",
-        "coefficiente_eta": 0,
-        "moltiplicatore": 0,
-        "proiezione_stagionale": 0,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [],
-        "birth_year": 1992,
-        "roi_dettaglio": "Classe 1992 — non contribuisce al minutaggio giovani",
-        "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 14,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -9442,8 +9124,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -9451,7 +9133,7 @@
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
       "stale_free_agent": false
     },
     {
@@ -9507,8 +9189,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           },
           {
             "type": "apprentice_reached",
@@ -9578,8 +9260,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -9587,7 +9269,72 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
+      "stale_free_agent": false
+    },
+    {
+      "id": "c26e8634a89d216877761f1a7ae0e80c",
+      "player_name": "Raheem Sterling",
+      "age": 32,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-12",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHPDz34DZ7YczGrGpoBrtyO9LbKnLZiNbuevDGsSbR1dNQlNyU32yT4LUeH7L6BSfuq308Pwi2Jb6ptp5pyNkvoIbXk6zpQXs-RTAh8fmwjzt3ZQ3rAIJIhdMvVkFkhh3U3X0HGTH5gGOwesnf2ZzCqa2Rf18aKVS_c66eYl_dQM3TO4KoF0IIDlxWIhIlrs0HjIwFiiJN1RQpjF8r0jhKbmoPKq0pnL7CuYc7uyWKLCKjfcTDmbmNa",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 8,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "England",
+      "second_nationality": "Jamaica",
+      "foot": "ambidestro",
+      "market_value": 3000000,
+      "market_value_formatted": "3,00 Mio. €",
+      "player_image_url": null,
+      "agent": "16NinetyTwo Sports Management",
+      "discovered_at": "2026-06-12T04:26:27.788752",
+      "ob1_score": 61,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 45,
+        "market_value": 100,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Giocatore esperto (32 anni). Disponibile a parametro zero. Valore di mercato interessante (3000k€).",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 1019,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 1019 min pond.",
+        "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "2026-06-30",
+      "days_without_contract": 15,
       "stale_free_agent": false
     },
     {
@@ -9645,25 +9392,25 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026",
-      "days_without_contract": 10,
+      "days_without_contract": 11,
       "stale_free_agent": false
     },
     {
-      "id": "41bcc500c6e491dbb680f70375056cbb",
-      "player_name": "Gieole Conte",
-      "age": 19,
+      "id": "fc55cdd6e87b317e82a567c0a4cf03c6",
+      "player_name": "Giacomo Pozzer",
+      "age": 25,
       "role": "",
       "role_name": "N/D",
-      "opportunity_type": "talento",
+      "opportunity_type": "svincolato",
       "reported_date": "2026-06-19",
       "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH246JMX9LTvmVrC8Ny01MoMqeTfiCPf0P8xYhe-H9GsttwKn_8Lbsi7r99gF0Ixlg-F9j6qaTnLN9klFKdGDT6Ai2lIesXn8K3bsj5C3n4ruaiUvlrtCbQMO9pqGImWaNGrbIYPxFOnA5XuViaM-_kuFRdIKBDIdPGBEfqF_zlJrw3pkI2LnfwGQRL2zSepTMEsrtLVa5QTf28EbzqJKDpSRjI9VkuXr7b5oc0D223",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG12c_XIGFeJU177Kpy1LssxLLrGwg89sMrxc79Kd-WGpofIINouPuh5CXcPpIVuM-Yi-pkqaGYT1PhfgKjD_Vay1ZyLWCXDz3vSIIwGUWE2YP-kuGMBsmWsnQ1cJ5l890fGfVuygO1s5_6AGYh4O1NsGmW77Xaa7h2cnuoXraj3aYY7m3ERNVoVo8QJOqLLFZ3nFRjX9tOoim2K6A=",
       "previous_clubs": [],
       "current_club": "",
-      "appearances": 22,
-      "goals": 18,
+      "appearances": 2,
+      "goals": 0,
       "assists": 0,
-      "minutes_played": 1792,
+      "minutes_played": 0,
       "summary": "",
       "nationality": "Italia",
       "second_nationality": null,
@@ -9672,45 +9419,45 @@
       "market_value_formatted": null,
       "player_image_url": null,
       "agent": null,
-      "discovered_at": "2026-06-19T15:31:40.965857",
+      "discovered_at": "2026-06-19T10:46:49.153034",
       "ob1_score": 61,
       "classification": "warm",
       "score_breakdown": {
-        "freshness": 70,
-        "opportunity_type": 50,
-        "experience": 60,
-        "age": 100,
+        "freshness": 60,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 90,
         "market_value": 40,
         "league_fit": 50,
         "source": 50,
         "completeness": 55
       },
-      "recommendation": "Profilo giovane (19 anni), potenziale di crescita.",
+      "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Disponibile a parametro zero.",
       "intel": {
-        "roi_class": "low",
-        "roi_label": "ROI BASSO",
-        "roi_color": "#94a3b8",
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.4,
-        "proiezione_stagionale": 2156,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 255,
         "traffic_light": "green",
-        "traffic_label": "UNDER",
+        "traffic_label": "OK",
         "traffic_icon": "🟢",
-        "is_over": false,
+        "is_over": true,
         "signals": [
           {
-            "type": "apprentice_reached",
-            "severity": "green",
-            "label": "ART.99bis OK",
-            "detail": "22 presenze — soglia 15 raggiunta, blindaggio contrattuale possibile"
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
-        "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | molt. x1.4 | proiez. stagione: 2156 min pond.",
-        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
+        "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
-      "contract_expires": "2027-06-30",
-      "days_without_contract": 0,
+      "contract_expires": "2026-06-30",
+      "days_without_contract": 8,
       "stale_free_agent": false
     },
     {
@@ -9891,7 +9638,7 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 116,
+      "days_without_contract": 117,
       "stale_free_agent": false
     },
     {
@@ -9947,8 +9694,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -9956,7 +9703,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 23,
+      "days_without_contract": 24,
       "stale_free_agent": false
     },
     {
@@ -10012,8 +9759,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -10021,7 +9768,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
       "stale_free_agent": false
     },
     {
@@ -10079,7 +9826,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -10195,7 +9942,72 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
+      "stale_free_agent": false
+    },
+    {
+      "id": "d6259600d50ca158077bfd34aa77ab69",
+      "player_name": "Tommaso Nobile",
+      "age": 30,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-12",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGK59KTII8N7ROKhG2xsl-Hc6J-knPqf83OyizaXL5iqTYr9AKBchd3o28e1qfEP9rJbBpsBGoss2I-V3y0IPWdIM18QyrH8KTTQ2LTpRDPZr2CcaFpeeM3jwmzDiMZPJiPhPbVsc_UHNMlXnpBZ0EyeG6dXmmM1wZAD4JilYn0vQceHFKpAzUlHg==",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "sinistro",
+      "market_value": 275000,
+      "market_value_formatted": "275 mila €",
+      "player_image_url": null,
+      "agent": "Famiglia",
+      "discovered_at": "2026-06-12T04:26:27.789053",
+      "ob1_score": 60,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 45,
+        "market_value": 90,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Esperienza (30 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (275k€).",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3185,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "2026-06-30",
+      "days_without_contract": 15,
       "stale_free_agent": false
     },
     {
@@ -10251,8 +10063,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -10260,7 +10072,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 18,
+      "days_without_contract": 19,
       "stale_free_agent": false
     },
     {
@@ -10318,7 +10130,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 18,
+      "days_without_contract": 19,
       "stale_free_agent": false
     },
     {
@@ -10374,8 +10186,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -10383,7 +10195,72 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
+      "stale_free_agent": false
+    },
+    {
+      "id": "836ecd22bc96b79b07fa300f8ae35ff1",
+      "player_name": "Alessio Cragno",
+      "age": 32,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-12",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHUrm6uiAdYVcYq2gWAVuLIiWeihyvr1XPBhaGeTHpqDrOKyY-oIb1fIoSOwguNRIuXoGsgYUvaK4FV2IzW1cEUwkBBTthpyz8xLvFUyK_vW42sRfl2d2alegGxRmNeyYWS3_FjZeI-FRRCZfXt-gc_S3mGmOxPGCy8T9NXoSkTLk2XrBurHRPNp8enleafF3Pib0v7b0m9IHbHcW9_6I-8TsCl0HvnzO5wB0ageKELx3kXo7Gi2qwvOPc=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 2,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 158,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 400000,
+      "market_value_formatted": "400 mila €",
+      "player_image_url": null,
+      "agent": "Branchini Associati S.p.A.",
+      "discovered_at": "2026-06-12T04:26:27.788910",
+      "ob1_score": 60,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 45,
+        "market_value": 90,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Giocatore esperto (32 anni). Disponibile a parametro zero. Valore di mercato interessante (400k€).",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 255,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
+        "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "2026-06-30",
+      "days_without_contract": 15,
       "stale_free_agent": false
     },
     {
@@ -10441,7 +10318,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -10497,8 +10374,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -10629,7 +10506,72 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2028-06-30",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
+      "stale_free_agent": false
+    },
+    {
+      "id": "41bcc500c6e491dbb680f70375056cbb",
+      "player_name": "Gieole Conte",
+      "age": 19,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-19",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH246JMX9LTvmVrC8Ny01MoMqeTfiCPf0P8xYhe-H9GsttwKn_8Lbsi7r99gF0Ixlg-F9j6qaTnLN9klFKdGDT6Ai2lIesXn8K3bsj5C3n4ruaiUvlrtCbQMO9pqGImWaNGrbIYPxFOnA5XuViaM-_kuFRdIKBDIdPGBEfqF_zlJrw3pkI2LnfwGQRL2zSepTMEsrtLVa5QTf28EbzqJKDpSRjI9VkuXr7b5oc0D223",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 22,
+      "goals": 18,
+      "assists": 0,
+      "minutes_played": 1792,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-19T15:31:40.965857",
+      "ob1_score": 60,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 50,
+        "experience": 60,
+        "age": 100,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Profilo giovane (19 anni), potenziale di crescita.",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "ROI BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.4,
+        "proiezione_stagionale": 2156,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "apprentice_reached",
+            "severity": "green",
+            "label": "ART.99bis OK",
+            "detail": "22 presenze — soglia 15 raggiunta, blindaggio contrattuale possibile"
+          }
+        ],
+        "birth_year": 2027,
+        "roi_dettaglio": "Classe 2027 (x1.4) | molt. x1.4 | proiez. stagione: 2156 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
+      },
+      "contract_expires": "2027-06-30",
+      "days_without_contract": 0,
       "stale_free_agent": false
     },
     {
@@ -10687,7 +10629,7 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
@@ -10745,7 +10687,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
@@ -10919,7 +10861,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 116,
+      "days_without_contract": 117,
       "stale_free_agent": false
     },
     {
@@ -11033,8 +10975,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -11042,7 +10984,7 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -11100,7 +11042,65 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
+      "stale_free_agent": false
+    },
+    {
+      "id": "34752e5ab6acae68b13faf60c5aad8f5",
+      "player_name": "Giacomo Venturi",
+      "age": 34,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-12",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFS1R6nHttuD1DqsiJds6-Kb4iUnAKP7TkxKO5BcWya4Pjy-dxrOZaG1kt_rb_5IQdg-nRmbvF0LUidBSw4OMZpbIuXuijLF2CVaL0hG-NFwFZ5RNZmK_wTHE5SOXbB7a2dmtBJfGIKsPEPjYlxbSHEjVvdSyIPJsuvPb-EznB70R8eMrGLUzzm",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 36,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 300000,
+      "market_value_formatted": "300 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-12T10:22:20.718136",
+      "ob1_score": 59,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 100,
+        "experience": 60,
+        "age": 25,
+        "market_value": 90,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Giocatore esperto (34 anni). Disponibile a parametro zero. Valore di mercato interessante (300k€).",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1992,
+        "roi_dettaglio": "Classe 1992 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 15,
       "stale_free_agent": false
     },
     {
@@ -11165,7 +11165,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2025-06-30",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
       "stale_free_agent": false
     },
     {
@@ -11223,7 +11223,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -11281,7 +11281,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 15,
+      "days_without_contract": 16,
       "stale_free_agent": false
     },
     {
@@ -11337,8 +11337,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -11346,7 +11346,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -11404,7 +11404,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -11462,72 +11462,7 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 8,
-      "stale_free_agent": false
-    },
-    {
-      "id": "f8482b85aa904fc22e0b9ff47641c551",
-      "player_name": "Christian Marcone",
-      "age": 19,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "talento",
-      "reported_date": "2026-06-19",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFzBf32wLcOUEKo8_5TEVZ8pRnxB0mwm-dHcSPso9kkON2kWaSiMIotsIpCkoijotdl_CO8ghgGVjg5hDpAccs7dprkRQHwVqNOXqrd2nRg0HM8-MCHxze3XCn208vboIMD79JL6PZveTx0owqR6KgJrjNOlqzrru-q4PfFiO_VzQqCZ_AJ12qKis6wk66R9Mr1J8xC8s7lRuzYO9m7eC42hWHsmNOVmRoAdBzJL2bwbTx9bf0ctFWlRYV7wLc1jiY5hSmWFwVWhEcBEdLjP9PDUogs",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": null,
-      "market_value_formatted": null,
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-06-19T10:46:49.153280",
-      "ob1_score": 59,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 70,
-        "opportunity_type": 50,
-        "experience": 50,
-        "age": 100,
-        "market_value": 40,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Profilo giovane (19 anni), potenziale di crescita.",
-      "intel": {
-        "roi_class": "low",
-        "roi_label": "ROI BASSO",
-        "roi_color": "#94a3b8",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.4,
-        "proiezione_stagionale": 2450,
-        "traffic_light": "green",
-        "traffic_label": "UNDER",
-        "traffic_icon": "🟢",
-        "is_over": false,
-        "signals": [
-          {
-            "type": "contract_expiry",
-            "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
-          }
-        ],
-        "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
-        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
-      },
-      "contract_expires": "2026-06-30",
-      "days_without_contract": 0,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -11585,7 +11520,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
@@ -11873,8 +11808,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -11882,7 +11817,7 @@
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 24,
+      "days_without_contract": 25,
       "stale_free_agent": false
     },
     {
@@ -11938,8 +11873,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -11947,7 +11882,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -12003,8 +11938,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -12186,7 +12121,7 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 13,
+      "days_without_contract": 14,
       "stale_free_agent": false
     },
     {
@@ -12244,7 +12179,7 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -12367,7 +12302,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -12423,8 +12358,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -12546,8 +12481,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -12555,7 +12490,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -12617,6 +12552,71 @@
       "stale_free_agent": false
     },
     {
+      "id": "f8482b85aa904fc22e0b9ff47641c551",
+      "player_name": "Christian Marcone",
+      "age": 19,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-19",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFzBf32wLcOUEKo8_5TEVZ8pRnxB0mwm-dHcSPso9kkON2kWaSiMIotsIpCkoijotdl_CO8ghgGVjg5hDpAccs7dprkRQHwVqNOXqrd2nRg0HM8-MCHxze3XCn208vboIMD79JL6PZveTx0owqR6KgJrjNOlqzrru-q4PfFiO_VzQqCZ_AJ12qKis6wk66R9Mr1J8xC8s7lRuzYO9m7eC42hWHsmNOVmRoAdBzJL2bwbTx9bf0ctFWlRYV7wLc1jiY5hSmWFwVWhEcBEdLjP9PDUogs",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-19T10:46:49.153280",
+      "ob1_score": 58,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 100,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Profilo giovane (19 anni), potenziale di crescita.",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "ROI BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.4,
+        "proiezione_stagionale": 2450,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "red",
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
+      },
+      "contract_expires": "2026-06-30",
+      "days_without_contract": 0,
+      "stale_free_agent": false
+    },
+    {
       "id": "5e18f192c56d7f34c4c8b1002b1b1700",
       "player_name": "RROCI KEVIN",
       "age": 16,
@@ -12671,7 +12671,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2010 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
@@ -12727,8 +12727,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -12736,7 +12736,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 24,
+      "days_without_contract": 25,
       "stale_free_agent": false
     },
     {
@@ -12792,8 +12792,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -12801,7 +12801,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false
     },
     {
@@ -12917,7 +12917,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 18,
+      "days_without_contract": 19,
       "stale_free_agent": false
     },
     {
@@ -13038,8 +13038,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -13047,7 +13047,7 @@
         "lista_dettaglio": "Over classe 1988 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 16,
+      "days_without_contract": 17,
       "stale_free_agent": false
     },
     {
@@ -13105,7 +13105,7 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 15,
+      "days_without_contract": 16,
       "stale_free_agent": false
     },
     {
@@ -13163,7 +13163,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -13222,71 +13222,6 @@
       },
       "contract_expires": "",
       "days_without_contract": 0,
-      "stale_free_agent": false
-    },
-    {
-      "id": "95ef298560a16d103101e7a1b51a52e1",
-      "player_name": "Aljaz Struna",
-      "age": 36,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-06-12",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHPfId_M4rFYgfx5ylHXE4tbMK-Z2T5DZQ6kciwjcvrOgdF0m5oWY4f6Tzak8YdR0kqkpdIfFHyv_rjrGefsG4od_DGjfXFy7ab_z2EdNTkmNilgIwZAgZJzsn0_trUoIRmiaWv7BaLxZcemd7W-UcOUYVArgNuly4ZFAclgUMm4BG5RiC0YWTEKHLn3I==",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 2,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 91,
-      "summary": "",
-      "nationality": "Slovenia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 100000,
-      "market_value_formatted": "100 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-06-12T20:17:36.440208",
-      "ob1_score": 56,
-      "classification": "cold",
-      "score_breakdown": {
-        "freshness": 60,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 25,
-        "market_value": 70,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Giocatore esperto (36 anni). Disponibile a parametro zero.",
-      "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 255,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [
-          {
-            "type": "contract_expired",
-            "severity": "red",
-            "label": "SCADUTO",
-            "detail": "Contratto scaduto (2025-01-31)"
-          }
-        ],
-        "birth_year": 2025,
-        "roi_dettaglio": "Classe 2025 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
-        "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "2025-01-31",
-      "days_without_contract": 14,
       "stale_free_agent": false
     },
     {
@@ -13587,64 +13522,6 @@
       "stale_free_agent": false
     },
     {
-      "id": "c6a1d43f1176a2a009037790260c5d14",
-      "player_name": "Stefano Negro",
-      "age": 31,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "talento",
-      "reported_date": "2026-06-19",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGKQjJURqkBOEO2JsRr2D4USyU1ei02EnrtT-w3TJ7rEvP3xN3aZbyWXDGpir8KhM7RyG0L6MvwQwUY9DZGmhbZ0zUfkh7WdDFRFAgkYUslusHgh-Loqi86IabM2owK7nt54LRX8_iCv9hk61MmL520rRGN7Bi98uHp1P2lsSSawY9xHRjLrw6Ne47x0fplg_Y2O62CEmF8IvK6II8qeSU_aa5uR_pkU93-HX-UmtPEnBWiGHjcjsFV6LNXBrbN1uE=",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 17,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 100000,
-      "market_value_formatted": "100 mila €",
-      "player_image_url": null,
-      "agent": "FOOTBALL STARS AGENCY",
-      "discovered_at": "2026-06-19T19:55:52.330780",
-      "ob1_score": 56,
-      "classification": "cold",
-      "score_breakdown": {
-        "freshness": 70,
-        "opportunity_type": 50,
-        "experience": 50,
-        "age": 45,
-        "market_value": 70,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Esperienza (31 anni), può portare leadership.",
-      "intel": {
-        "roi_class": "none",
-        "roi_label": "NO CONTRIB.",
-        "roi_color": "gray",
-        "coefficiente_eta": 0,
-        "moltiplicatore": 0,
-        "proiezione_stagionale": 0,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [],
-        "birth_year": 1995,
-        "roi_dettaglio": "Classe 1995 — non contribuisce al minutaggio giovani",
-        "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 0,
-      "stale_free_agent": false
-    },
-    {
       "id": "opp_0011a87e",
       "player_name": "Andrea Sala",
       "age": 33,
@@ -13813,8 +13690,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -13878,8 +13755,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -13887,7 +13764,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 15,
+      "days_without_contract": 16,
       "stale_free_agent": false
     },
     {
@@ -13945,7 +13822,7 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 16,
+      "days_without_contract": 17,
       "stale_free_agent": false
     },
     {
@@ -14003,7 +13880,7 @@
         "lista_dettaglio": "Over classe 1989 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 116,
+      "days_without_contract": 117,
       "stale_free_agent": false
     },
     {
@@ -14059,8 +13936,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -14068,7 +13945,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 116,
+      "days_without_contract": 117,
       "stale_free_agent": false
     },
     {
@@ -14124,8 +14001,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 2gg",
-            "detail": "Contratto in scadenza: 2026-06-29 (2 giorni)"
+            "label": "SCADE 1gg",
+            "detail": "Contratto in scadenza: 2026-06-29 (1 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -14133,7 +14010,7 @@
         "lista_dettaglio": "Over classe 1989 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-29",
-      "days_without_contract": 116,
+      "days_without_contract": 117,
       "stale_free_agent": false
     },
     {
@@ -14189,8 +14066,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           },
           {
             "type": "apprentice_reached",
@@ -14324,6 +14201,71 @@
       "stale_free_agent": false
     },
     {
+      "id": "95ef298560a16d103101e7a1b51a52e1",
+      "player_name": "Aljaz Struna",
+      "age": 36,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-12",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHPfId_M4rFYgfx5ylHXE4tbMK-Z2T5DZQ6kciwjcvrOgdF0m5oWY4f6Tzak8YdR0kqkpdIfFHyv_rjrGefsG4od_DGjfXFy7ab_z2EdNTkmNilgIwZAgZJzsn0_trUoIRmiaWv7BaLxZcemd7W-UcOUYVArgNuly4ZFAclgUMm4BG5RiC0YWTEKHLn3I==",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 2,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 91,
+      "summary": "",
+      "nationality": "Slovenia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 100000,
+      "market_value_formatted": "100 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-12T20:17:36.440208",
+      "ob1_score": 54,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 25,
+        "market_value": 70,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Giocatore esperto (36 anni). Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 255,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [
+          {
+            "type": "contract_expired",
+            "severity": "red",
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2025-01-31)"
+          }
+        ],
+        "birth_year": 2025,
+        "roi_dettaglio": "Classe 2025 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
+        "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "2025-01-31",
+      "days_without_contract": 15,
+      "stale_free_agent": false
+    },
+    {
       "id": "6a0d3aed4989f75829c6df860c732ace",
       "player_name": "David Cancola",
       "age": 30,
@@ -14378,7 +14320,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 23,
+      "days_without_contract": 24,
       "stale_free_agent": false
     },
     {
@@ -14434,8 +14376,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -14443,7 +14385,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2010 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 23,
+      "days_without_contract": 24,
       "stale_free_agent": false
     },
     {
@@ -14559,7 +14501,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2009 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 18,
+      "days_without_contract": 19,
       "stale_free_agent": false
     },
     {
@@ -14617,7 +14559,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2009 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 16,
+      "days_without_contract": 17,
       "stale_free_agent": false
     },
     {
@@ -14673,6 +14615,64 @@
         "birth_year": 1996,
         "roi_dettaglio": "Classe 1996 — non contribuisce al minutaggio giovani",
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false
+    },
+    {
+      "id": "c6a1d43f1176a2a009037790260c5d14",
+      "player_name": "Stefano Negro",
+      "age": 31,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-19",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGKQjJURqkBOEO2JsRr2D4USyU1ei02EnrtT-w3TJ7rEvP3xN3aZbyWXDGpir8KhM7RyG0L6MvwQwUY9DZGmhbZ0zUfkh7WdDFRFAgkYUslusHgh-Loqi86IabM2owK7nt54LRX8_iCv9hk61MmL520rRGN7Bi98uHp1P2lsSSawY9xHRjLrw6Ne47x0fplg_Y2O62CEmF8IvK6II8qeSU_aa5uR_pkU93-HX-UmtPEnBWiGHjcjsFV6LNXBrbN1uE=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 17,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 100000,
+      "market_value_formatted": "100 mila €",
+      "player_image_url": null,
+      "agent": "FOOTBALL STARS AGENCY",
+      "discovered_at": "2026-06-19T19:55:52.330780",
+      "ob1_score": 54,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 45,
+        "market_value": 70,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Esperienza (31 anni), può portare leadership.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1995,
+        "roi_dettaglio": "Classe 1995 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
       "days_without_contract": 0,
@@ -14740,7 +14740,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2025-07-01",
-      "days_without_contract": 5,
+      "days_without_contract": 6,
       "stale_free_agent": false
     },
     {
@@ -14854,8 +14854,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -14921,7 +14921,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false
     },
     {
@@ -14979,7 +14979,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
       "stale_free_agent": false
     },
     {
@@ -15037,7 +15037,7 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
       "stale_free_agent": false
     },
     {
@@ -15267,8 +15267,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -15276,7 +15276,7 @@
         "lista_dettaglio": "Over classe 1987 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 6,
+      "days_without_contract": 7,
       "stale_free_agent": false
     },
     {
@@ -15394,8 +15394,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -15575,8 +15575,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -15584,7 +15584,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 24,
+      "days_without_contract": 25,
       "stale_free_agent": false
     },
     {
@@ -15642,7 +15642,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 24,
+      "days_without_contract": 25,
       "stale_free_agent": false
     },
     {
@@ -15707,7 +15707,7 @@
         "lista_dettaglio": "Over classe 1987 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2020-02-14",
-      "days_without_contract": 23,
+      "days_without_contract": 24,
       "stale_free_agent": false
     },
     {
@@ -15772,7 +15772,7 @@
         "lista_dettaglio": "Over classe 1988 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2025-09-13",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
       "stale_free_agent": false
     },
     {
@@ -15830,7 +15830,7 @@
         "lista_dettaglio": "Over classe 1985 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 16,
+      "days_without_contract": 17,
       "stale_free_agent": false
     },
     {
@@ -16002,8 +16002,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -16125,8 +16125,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 3gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (3 giorni)"
+            "label": "SCADE 2gg",
+            "detail": "Contratto in scadenza: 2026-06-30 (2 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -16256,8 +16256,8 @@
   ],
   "stats": {
     "total": 265,
-    "hot": 22,
-    "warm": 192,
+    "hot": 21,
+    "warm": 193,
     "cold": 51,
     "today": 0,
     "svincolati": 151,
@@ -16270,7 +16270,7 @@
       "none": 69
     }
   },
-  "last_update": "2026-06-26T19:55:56.140780",
+  "last_update": "2026-06-27T03:51:41.830491",
   "scoring_version": "SCORE-002",
   "intel_version": "INTEL-001"
 }
