@@ -160,6 +160,25 @@ Aggiunto verdict sentence sopra il breakdown (es. "parametro zero + U23 (21a) �
 
 ---
 
+## Tuning discovery → enrichment (giugno 2026)
+
+### BUG-019 — Errori transitori Gemini perdevano query intere
+**File:** `src/scraper_global.py`
+**Problema:** `search_grounded()` su 503 (model overload) o 429 (rate limit) restituiva `[]` silenziosamente — tutti i giocatori di quella query persi. Sul free tier il 429 sotto carico è il fallimento *atteso*.
+**Fix:** Retry con backoff esponenziale (3 tentativi, sleep 2s/4s) sugli errori transitori (429/503/RESOURCE_EXHAUSTED/UNAVAILABLE/overloaded, match case-insensitive). Gli errori non-transitori restano fatali.
+
+### BUG-020 — Roster-dump da singolo articolo inondava il DB
+**File:** `src/scraper_global.py`
+**Problema:** Il grounding a volte restituisce un articolo-lista (roster) con decine di nomi. Dopo il fix dedup-by-name, tutti passavano: una query ha prodotto 57 nomi Eccellenza da un solo articolo.
+**Fix:** Cap `MAX_PLAYERS_PER_SOURCE = 5` per `source_url`. Filtra per **densità di sorgente, non per lega** — un gioiello in categoria oscura passa, un dump no. Verificato: query da 39 nomi → capped a 5, nessuna sorgente sopra il cap.
+
+### FINDING — Il floor di score pre-enrichment è inerte (by design)
+**File:** `scripts/ouroboros_run.py` (`SCORE_FLOOR = 55`)
+**Osservazione:** In un measure run, **tutti** i 27 svincolati validi segnavano 62-64. Motivo strutturale: pre-enrichment mancano i fattori discriminanti (età, presenze, valore, club) → `svincolato + fresh` cade sempre a ~62-64. Il floor a 55 non taglia nulla (0 tagliati su 27).
+**Conseguenza:** Il floor pre-enrichment va lasciato come **gate grezzo** ("è un svincolato plausibile"), NON è la leva qualità. La differenziazione per segnale avviene **post-enrichment** in `generate_dashboard.py`, dove età/presenze/valore reali spalmano i punteggi. **Se la dashboard è rumorosa, la manopola da girare è il floor POST-enrichment, non quello al gate.** Il knob di volume in discovery è il cap per-sorgente.
+
+---
+
 ## Codice eliminato
 
 | File rimosso | Motivo |
