@@ -6,12 +6,23 @@ High-performance scouting engine using Scrapling (Anti-Bot) and Tavily (Discover
 
 import os
 import re
+import time
 import yaml
 import json
 import requests
 from typing import List, Dict, Any, Optional, Tuple
 from dotenv import load_dotenv
 from google import genai
+
+# --- Tunable guard-rails (knobs, not editorial policy) ----------------------
+# Retry transient Gemini failures (429 rate / 503 overload) with backoff.
+# On the free tier a 429 under load is the expected failure; backoff absorbs it.
+GROUNDING_MAX_RETRIES = 3
+GROUNDING_BACKOFF_BASE = 2  # seconds: waits 2s, then 4s between attempts
+# Cap players accepted from a single source article. Kills roster-dump
+# responses (one listing → dozens of names) WITHOUT judging the league.
+# A real transfer article names a handful of players; a dump names 50+.
+MAX_PLAYERS_PER_SOURCE = 5
 
 # Scrapling Integration
 try:
@@ -83,15 +94,36 @@ class GlobalScraper:
             "Se non trovi calciatori individuali reali, rispondi esattamente: []"
         )
 
+        response = None
+        for attempt in range(GROUNDING_MAX_RETRIES):
+            try:
+                response = self.gemini_client.models.generate_content(
+                    model="gemini-2.5-flash",
+                    contents=prompt,
+                    config=genai.types.GenerateContentConfig(
+                        tools=[genai.types.Tool(google_search=genai.types.GoogleSearch())],
+                        temperature=0.0,
+                    ),
+                )
+                break
+            except Exception as e:
+                msg = str(e)
+                # Transient: rate limit (429) or model overload (503). Retry these.
+                transient = any(k in msg for k in (
+                    '429', '503', 'RESOURCE_EXHAUSTED', 'UNAVAILABLE', 'overloaded'))
+                if transient and attempt < GROUNDING_MAX_RETRIES - 1:
+                    wait = GROUNDING_BACKOFF_BASE * (2 ** attempt)
+                    print(f"    [GROUNDED RETRY] attempt {attempt + 1} failed "
+                          f"({msg[:50]}...), backoff {wait}s")
+                    time.sleep(wait)
+                    continue
+                print(f"    [GROUNDED ERROR] {e}")
+                return []
+
+        if response is None:
+            return []
+
         try:
-            response = self.gemini_client.models.generate_content(
-                model="gemini-2.5-flash",
-                contents=prompt,
-                config=genai.types.GenerateContentConfig(
-                    tools=[genai.types.Tool(google_search=genai.types.GoogleSearch())],
-                    temperature=0.0,
-                ),
-            )
             text = response.text or ""
             m = re.search(r'\[.*\]', text, re.DOTALL)
             if not m:
@@ -102,7 +134,7 @@ class GlobalScraper:
             print(f"    [GROUNDED] {len(items)} giocatori trovati per: {query[:40]}...")
             return items
         except Exception as e:
-            print(f"    [GROUNDED ERROR] {e}")
+            print(f"    [GROUNDED PARSE ERROR] {e}")
             return []
 
     def search_tavily(self, query: str) -> List[Dict]:
@@ -157,6 +189,7 @@ class GlobalScraper:
         opportunities = []
         seen_urls = set()
         seen_names = set()
+        per_source = {}  # source_url -> accepted count (cap roster dumps)
 
         for query in conf.get('queries', []):
             # Primary: Gemini Search Grounding (understands football context, no regex needed)
@@ -177,6 +210,14 @@ class GlobalScraper:
                         continue
 
                     url = str(item.get('source_url') or '').strip()
+                    # Cap players per source article: one listing yielding dozens
+                    # of names is a roster dump, not scouting signal. Filters by
+                    # source density, not by league.
+                    if url and per_source.get(url, 0) >= MAX_PLAYERS_PER_SOURCE:
+                        print(f"  [DUMP CAP] {player_name}: source already at "
+                              f"{MAX_PLAYERS_PER_SOURCE} players")
+                        continue
+
                     if url:
                         fresh, reason = is_article_fresh(url)
                         if not fresh:
@@ -186,6 +227,8 @@ class GlobalScraper:
                     # Register only after all validity checks pass, so a stale
                     # article doesn't block the same player from a later fresh one.
                     seen_names.add(name_key)
+                    if url:
+                        per_source[url] = per_source.get(url, 0) + 1
 
                     opp = MarketOpportunity(
                         league_id=league_id,
