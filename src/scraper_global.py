@@ -156,6 +156,7 @@ class GlobalScraper:
         print(f"🌐 Scraping: {conf['name']}...")
         opportunities = []
         seen_urls = set()
+        seen_names = set()
 
         for query in conf.get('queries', []):
             # Primary: Gemini Search Grounding (understands football context, no regex needed)
@@ -164,19 +165,24 @@ class GlobalScraper:
                 for item in grounded:
                     if not isinstance(item, dict):
                         continue
-                    url = str(item.get('source_url') or '').strip()
-                    if not url or url in seen_urls:
-                        continue
-                    seen_urls.add(url)
 
                     player_name = str(item.get('player_name') or '').strip()[:50]
                     if not player_name:
                         continue
-
-                    fresh, reason = is_article_fresh(url)
-                    if not fresh:
-                        print(f"  [STALE] Skipping {url}: {reason}")
+                    # Dedup by player NAME, not URL: grounding frequently returns
+                    # several distinct players sharing one source article (same
+                    # redirect URL). Gating on URL would drop everyone but the first.
+                    name_key = player_name.lower()
+                    if name_key in seen_names:
                         continue
+                    seen_names.add(name_key)
+
+                    url = str(item.get('source_url') or '').strip()
+                    if url:
+                        fresh, reason = is_article_fresh(url)
+                        if not fresh:
+                            print(f"  [STALE] Skipping {player_name}: {reason}")
+                            continue
 
                     opp = MarketOpportunity(
                         league_id=league_id,
@@ -217,6 +223,10 @@ class GlobalScraper:
                 if not player_name:
                     print(f"  [NO NAME] Skipping: {title[:60]}...")
                     continue
+                name_key = player_name.lower()
+                if name_key in seen_names:
+                    continue
+                seen_names.add(name_key)
 
                 opp = MarketOpportunity(
                     league_id=league_id,
