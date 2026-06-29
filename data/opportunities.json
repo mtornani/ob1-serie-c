@@ -2618,12 +2618,12 @@
     "player_profile": {
       "nationality": "Italia",
       "tm_url": "https://www.transfermarkt.it/elia-guidotti/profil/spieler/",
-      "market_value_formatted": "-"
+      "market_value_formatted": "- €"
     },
     "tm_enriched": false,
     "birth_date": "1990-07-27",
     "age": 36,
-    "market_value_formatted": "-"
+    "market_value_formatted": "- €"
   },
   {
     "id": "0e3345281c23f8dc621c0975dd81b80b",
@@ -4433,11 +4433,11 @@
     "nationality": "Italia",
     "height_cm": 186,
     "birth_date": "1996-02-12",
-    "tm_url": "https://www.transfermarkt.it/riccardo-bertozzi/profil/spieler/480200",
+    "tm_url": "https://www.transfermarkt.it/riccardo-bertozzi/profil/spieler/",
     "player_profile": {
       "nationality": "Italia",
       "height_cm": 186,
-      "tm_url": "https://www.transfermarkt.it/riccardo-bertozzi/profil/spieler/480200",
+      "tm_url": "https://www.transfermarkt.it/riccardo-bertozzi/profil/spieler/",
       "foot": "destro",
       "market_value_formatted": "-"
     },
@@ -9601,6 +9601,222 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFSu-RTTWpLwhb7IAK7tiFEZVk7KIjvucn8-6S2UWjlGi0X-sfIraqs6PPBnHL90vACr4aAA7Y3KfflcT1fnwvUsEcVINw_Z1ETTbIozS27Hb6l7FZi-TYKTWhiHj6SSSqotn7TEiou7UiR05QwombLLgf__4x3OymkNnHpL7wlGf_Ehz4NNUMx",
     "discovered_at": "2026-06-21T14:21:58.133379",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "236b659cf1f8cccea7a85d247a11b75f",
+    "player_name": "Lorenzo Cordaro",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Portiere, contratto in scadenza 30/06/2026 con US Pergolettese 1932",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFWxQC4_jpNXKoQfx9Dgwzmc4wKyzl-DDjZVpKQ4CLzSsEmvwR1ilpjgB9nZ5xwtJIigw3ZX3JhwZwg8LwgvQgcGHYMiJBDZmz28b6hpE6c0BsB_EDCN8MqUQP0k0cW1Dor5TcODa7XC6uj6wHy1xJXfjw7v3IRd2t1N-5G7D50Zqalu4M0qTz2CQ==",
+    "discovered_at": "2026-06-29T11:10:21.251579",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "3c130746c5a22e385bfb1069fe516cea",
+    "player_name": "Jonathan Spedalieri",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Difensore centrale, contratto in scadenza 30/06/2026 con AC Renate",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFWxQC4_jpNXKoQfx9Dgwzmc4wKyzl-DDjZVpKQ4CLzSsEmvwR1ilpjgB9nZ5xwtJIigw3ZX3JhwZwg8LwgvQgcGHYMiJBDZmz28b6hpE6c0BsB_EDCN8MqUQP0k0cW1Dor5TcODa7XC6uj6wHy1xJXfjw7v3IRd2t1N-5G7D50Zqalu4M0qTz2CQ==",
+    "discovered_at": "2026-06-29T11:10:21.251793",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ebd563597e1a8a8c84e667b1fcc2e388",
+    "player_name": "Samuele Righetti",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Terzino sinistro, contratto in scadenza 30/06/2026 con SS Arezzo",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHoi1_Y4YQ9mRxkFPazacDWtWco2jnSCHkvnLIeZjU1nCXemKtChY4aTjrXdR2ISZv0pm8hv2mcawE1mvHOYG8c4NxI2L3KEeW_iK8vGcwr5tE5kEA0XjmCFFIpjp_WVXEP61-dMAUklLQRjWXlgh-6TEz3tTvt_2p4msptzwurLA5CYiNp7QlWlA==",
+    "discovered_at": "2026-06-29T11:10:21.251888",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d0b47198281f010f0ed4eb46afa128f3",
+    "player_name": "Mattia Aramu",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Trequartista, contratto in scadenza 30/06/2026 con Ternana Calcio",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHoi1_Y4YQ9mRxkFPazacDWtWco2jnSCHkvnLIeZjU1nCXemKtChY4aTjrXdR2ISZv0pm8hv2mcawE1mvHOYG8c4NxI2L3KEeW_iK8vGcwr5tE5kEA0XjmCFFIpjp_WVXEP61-dMAUklLQRjWXlgh-6TEz3tTvt_2p4msptzwurLA5CYiNp7QlWlA==",
+    "discovered_at": "2026-06-29T11:10:21.251974",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "befd00b55d165d023c5211668cc260e3",
+    "player_name": "Giulio Favale",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Destinato alla cessione dal Padova, contratto in scadenza 2027",
+    "ob1_score": 57,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPVsTS_HLLtUKqbL-kuPwuZZx0oUrkrEJ2vabEDtTjZut3HnPkWQ3eT9g5Sfd7t7Odvb4YEeBv6Utz97Q5qHZ_cF5Bt6BXMmMJfZTt6xZG0VOqPx8fKNGBdAAK8amDyBpDECWNqYz-tlHbMGmVADAhrIoaGyby8-L9xLfNZ5lH2VnK18-6ilqTIuqCgC5MFA0Fc_3LVrE=",
+    "discovered_at": "2026-06-29T11:10:21.252060",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "88ad7f35c27fde8417653e91c4ed2a16",
+    "player_name": "Cristian Buonaiuto",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Destinato alla cessione dal Padova",
+    "ob1_score": 57,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPVsTS_HLLtUKqbL-kuPwuZZx0oUrkrEJ2vabEDtTjZut3HnPkWQ3eT9g5Sfd7t7Odvb4YEeBv6Utz97Q5qHZ_cF5Bt6BXMmMJfZTt6xZG0VOqPx8fKNGBdAAK8amDyBpDECWNqYz-tlHbMGmVADAhrIoaGyby8-L9xLfNZ5lH2VnK18-6ilqTIuqCgC5MFA0Fc_3LVrE=",
+    "discovered_at": "2026-06-29T11:10:21.252144",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "41a864376d9703d0856ffb41242fb967",
+    "player_name": "Kevin Lasagna",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Futuro in dubbio al Padova, da valutare condizioni fisiche",
+    "ob1_score": 57,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPVsTS_HLLtUKqbL-kuPwuZZx0oUrkrEJ2vabEDtTjZut3HnPkWQ3eT9g5Sfd7t7Odvb4YEeBv6Utz97Q5qHZ_cF5Bt6BXMmMJfZTt6xZG0VOqPx8fKNGBdAAK8amDyBpDECWNqYz-tlHbMGmVADAhrIoaGyby8-L9xLfNZ5lH2VnK18-6ilqTIuqCgC5MFA0Fc_3LVrE=",
+    "discovered_at": "2026-06-29T11:10:21.252227",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "91d875ba357d1d4658135d1bd093a75d",
+    "player_name": "Kevin Varas",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Futuro in dubbio al Padova, da valutare impiego",
+    "ob1_score": 57,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPVsTS_HLLtUKqbL-kuPwuZZx0oUrkrEJ2vabEDtTjZut3HnPkWQ3eT9g5Sfd7t7Odvb4YEeBv6Utz97Q5qHZ_cF5Bt6BXMmMJfZTt6xZG0VOqPx8fKNGBdAAK8amDyBpDECWNqYz-tlHbMGmVADAhrIoaGyby8-L9xLfNZ5lH2VnK18-6ilqTIuqCgC5MFA0Fc_3LVrE=",
+    "discovered_at": "2026-06-29T11:10:21.252309",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "c7040f0921350ce78ccc895c9771e95f",
+    "player_name": "Di Mariano",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Futuro in dubbio al Padova, da valutare compatibilità tecnica",
+    "ob1_score": 57,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPVsTS_HLLtUKqbL-kuPwuZZx0oUrkrEJ2vabEDtTjZut3HnPkWQ3eT9g5Sfd7t7Odvb4YEeBv6Utz97Q5qHZ_cF5Bt6BXMmMJfZTt6xZG0VOqPx8fKNGBdAAK8amDyBpDECWNqYz-tlHbMGmVADAhrIoaGyby8-L9xLfNZ5lH2VnK18-6ilqTIuqCgC5MFA0Fc_3LVrE=",
+    "discovered_at": "2026-06-29T11:10:21.252391",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ab8a03bc799a04852b7bfc75c8074e8b",
+    "player_name": "Dominic Vavassori",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Contratto in scadenza a fine stagione 2026 in Serie C (Lega Pro).",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFDHmPTJC2bjCUX2yKyGtw4i7iPueJS28iBbfSs8ZUPBshhGU-D9gzlPf4SZ6KlRYJy8FJofCyRN-DlQwf8ZY-uXXY4ZNSRWrrEwiyxrgdSUDgZ8K9KsLN9DtCIg32NYE5LhaS_VLEoiOrYur_MhfjnSV-N5V0sVs20Jl1k5nJWSNUIDA9qlGuMCw==",
+    "discovered_at": "2026-06-29T11:10:21.252502",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "9a711d3d61db7bda6289471cda7b722e",
+    "player_name": "Alessio Maestrelli",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Difensore svincolato dalla Ternana, interesse del Barletta per la Lega Pro.",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHem4jYh8WhISrbhTE3e8CM0DFu64r5DMm0WR_MNnRdP9mqb-4w3tsa-ekXiUTTP2ADjmLscFsfaBNL4cPqmnnh6ahs5Jq4KzFksCSbsYsNU4dMWVoaZ55rVZ3cOjb_awBY-_2SvshLX1MPx9VEvDkbT9L1bti928VDXODqsi6MJgvaX9dKzv7Lgq5al5Npek=",
+    "discovered_at": "2026-06-29T11:10:21.252620",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "1049d3a310d6af346bb3cc2f66acdb57",
+    "player_name": "Pierpaolo Longo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "attaccante classe 2003 in arrivo alla Luparense",
+    "ob1_score": 57,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHiIMdlEF8kHejKX7PwsscxIqQTy4jleY_zpsULFzpI6fuSm7fSO3csv1R7zxsXh_zcXcw28OmF0cLhOLtIlZdzsfsQGee7IrkbfqM9E5bDn4sEQo_RXSDjZLKBrz8HhlFtA0-sXxqbrptUbi6BwnFuBApbxMRr6jm95RAkgyEVkUCVhNwxlHIAIjWcFGHe7eR6aQg=",
+    "discovered_at": "2026-06-29T11:10:21.252707",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "7cb871116c967551a1ab636b70022b98",
+    "player_name": "Vincenzo Potenza",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "terzino destro classe 2002 nel mirino del Taranto",
+    "ob1_score": 57,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHiIMdlEF8kHejKX7PwsscxIqQTy4jleY_zpsULFzpI6fuSm7fSO3csv1R7zxsXh_zcXcw28OmF0cLhOLtIlZdzsfsQGee7IrkbfqM9E5bDn4sEQo_RXSDjZLKBrz8HhlFtA0-sXxqbrptUbi6BwnFuBApbxMRr6jm95RAkgyEVkUCVhNwxlHIAIjWcFGHe7eR6aQg=",
+    "discovered_at": "2026-06-29T11:10:21.252788",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "a13bb57bb12e07897c9c95daa4515adf",
+    "player_name": "Tennyson Omoregie",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "centravanti classe 2001 ufficiale alla Correggese",
+    "ob1_score": 57,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHiIMdlEF8kHejKX7PwsscxIqQTy4jleY_zpsULFzpI6fuSm7fSO3csv1R7zxsXh_zcXcw28OmF0cLhOLtIlZdzsfsQGee7IrkbfqM9E5bDn4sEQo_RXSDjZLKBrz8HhlFtA0-sXxqbrptUbi6BwnFuBApbxMRr6jm95RAkgyEVkUCVhNwxlHIAIjWcFGHe7eR6aQg=",
+    "discovered_at": "2026-06-29T11:10:21.252869",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d561e6a96363035e496b000ad34c5d72",
+    "player_name": "Roberto Strechie",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "mediano classe 2000 in arrivo al Villa Valle",
+    "ob1_score": 57,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHiIMdlEF8kHejKX7PwsscxIqQTy4jleY_zpsULFzpI6fuSm7fSO3csv1R7zxsXh_zcXcw28OmF0cLhOLtIlZdzsfsQGee7IrkbfqM9E5bDn4sEQo_RXSDjZLKBrz8HhlFtA0-sXxqbrptUbi6BwnFuBApbxMRr6jm95RAkgyEVkUCVhNwxlHIAIjWcFGHe7eR6aQg=",
+    "discovered_at": "2026-06-29T11:10:21.252950",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "6ea687b514df59f17cb37de80221bf28",
+    "player_name": "Davide Benzoni",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "attaccante classe 2004 in arrivo al Villa Valle",
+    "ob1_score": 57,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHiIMdlEF8kHejKX7PwsscxIqQTy4jleY_zpsULFzpI6fuSm7fSO3csv1R7zxsXh_zcXcw28OmF0cLhOLtIlZdzsfsQGee7IrkbfqM9E5bDn4sEQo_RXSDjZLKBrz8HhlFtA0-sXxqbrptUbi6BwnFuBApbxMRr6jm95RAkgyEVkUCVhNwxlHIAIjWcFGHe7eR6aQg=",
+    "discovered_at": "2026-06-29T11:10:21.253029",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "5365538fd88ea6464926174f9704e676",
+    "player_name": "Andrea Michieletto",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "attaccante classe 2008, possibile Atalanta U23",
+    "ob1_score": 57,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFfUipsC3WuWU6vAHXfg-aL96Wx4EnmXPGrm6GjtKBzzAQZUgmjssZQj4s82u3XY3tJd_gzXP0JOAhuKL2mMzIQplZxV9VhwdLnL-xFgFmTYbXFE7XEDEvOzsxXWrIwoMwNWjgaH7sQnNw1tJJ2CRLUpjWhvtlKPvljc-P_voCxSL7dW8rz6d9xHUtYthFbopjelJ15pVpd5RU_j7Gr4LgogDwq6TzNS-FDiVj_im5HBAQnwZkGy-Yw1EeFPnWWIu__Kj8R8NIZx1wZvgZgYhA=",
+    "discovered_at": "2026-06-29T11:10:21.253111",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ccab6bc102d3f8ea75da4c8e8bb61c42",
+    "player_name": "Giacomo Sali",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "attaccante esterno classe 2004 dalla Serie D, conteso dall'estero",
+    "ob1_score": 57,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFfUipsC3WuWU6vAHXfg-aL96Wx4EnmXPGrm6GjtKBzzAQZUgmjssZQj4s82u3XY3tJd_gzXP0JOAhuKL2mMzIQplZxV9VhwdLnL-xFgFmTYbXFE7XEDEvOzsxXWrIwoMwNWjgaH7sQnNw1tJJ2CRLUpjWhvtlKPvljc-P_voCxSL7dW8rz6d9xHUtYthFbopjelJ15pVpd5RU_j7Gr4LgogDwq6TzNS-FDiVj_im5HBAQnwZkGy-Yw1EeFPnWWIu__Kj8R8NIZx1wZvgZgYhA=",
+    "discovered_at": "2026-06-29T11:10:21.253190",
     "league_id": "italy_serie_c_d"
   }
 ]
