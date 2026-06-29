@@ -175,7 +175,6 @@ class GlobalScraper:
                     name_key = player_name.lower()
                     if name_key in seen_names:
                         continue
-                    seen_names.add(name_key)
 
                     url = str(item.get('source_url') or '').strip()
                     if url:
@@ -183,6 +182,10 @@ class GlobalScraper:
                         if not fresh:
                             print(f"  [STALE] Skipping {player_name}: {reason}")
                             continue
+
+                    # Register only after all validity checks pass, so a stale
+                    # article doesn't block the same player from a later fresh one.
+                    seen_names.add(name_key)
 
                     opp = MarketOpportunity(
                         league_id=league_id,

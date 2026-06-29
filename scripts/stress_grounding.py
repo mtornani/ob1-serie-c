@@ -19,7 +19,7 @@ _root = str(Path(__file__).parent.parent)
 sys.path.insert(0, _root)
 sys.path.insert(0, str(Path(_root) / 'src'))
 
-from src.scraper_global import OB1ScraperGlobal  # noqa: E402
+from src.scraper_global import GlobalScraper  # noqa: E402
 
 print("=" * 64)
 print("GROUNDING STRESS RUN — free key, full discovery sweep")
@@ -29,7 +29,7 @@ if not os.getenv('GEMINI_API_KEY'):
     print("FATAL: no GEMINI_API_KEY in environment")
     sys.exit(1)
 
-scraper = OB1ScraperGlobal()
+scraper = GlobalScraper()
 if not scraper.gemini_client:
     print("FATAL: gemini client not initialised")
     sys.exit(1)
@@ -39,11 +39,11 @@ call_log = []
 _real_gen = scraper.gemini_client.models.generate_content
 
 
-def _wrapped(**kwargs):
+def _wrapped(*args, **kwargs):
     idx = len(call_log) + 1
     t0 = time.time()
     try:
-        r = _real_gen(**kwargs)
+        r = _real_gen(*args, **kwargs)
         call_log.append({'idx': idx, 'ok': True, 'dt': time.time() - t0, 'err': None})
         return r
     except Exception as e:
