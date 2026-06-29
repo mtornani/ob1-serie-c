@@ -1,0 +1,28 @@
+name: Measure Filters (cap + score floor)
+
+# Isolated manual diagnostic: runs discovery with the cap-per-source active,
+# scores each player with the production gate scorer, and reports how many
+# clear the score floor + the score distribution. No Telegram, no commit.
+on:
+  workflow_dispatch:
+
+jobs:
+  measure-filters:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run filter measurement
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        run: python scripts/measure_filters.py

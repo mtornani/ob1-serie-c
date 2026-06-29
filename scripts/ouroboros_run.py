@@ -40,6 +40,12 @@ from src.notifier import TelegramNotifier
 
 OPPS_FILE = Path("data/opportunities.json")
 
+# Score floor (knob): a player must clear this gate score to enter the DB.
+# Filters by SIGNAL, not by league — a genuine gem in an obscure category
+# clears it, while filler from any league does not. Raise it if clubs find
+# the dashboard noisy; it's a dial, not an irreversible commitment.
+SCORE_FLOOR = 55  # WARM floor
+
 def load_existing_opps():
     if OPPS_FILE.exists():
         try:
@@ -232,7 +238,7 @@ def run_ouroboros():
                     gate_score = scorer.score(raw_dict)['ob1_score']
                     opp.relevance_score = max(1, min(5, gate_score // 20))
 
-                    if gate_score >= 55:  # WARM floor — worth enriching
+                    if gate_score >= SCORE_FLOOR:  # worth enriching
                         opp_dict = {
                             "id": hashlib.md5(f"{opp.player_name}_{opp.source_url}".encode()).hexdigest(),
                             "player_name": opp.player_name,
