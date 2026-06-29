@@ -15,8 +15,11 @@ _root = str(Path(__file__).parent.parent)
 sys.path.insert(0, _root)
 sys.path.insert(0, str(Path(_root) / 'src'))
 
+sys.path.insert(0, str(Path(_root) / 'scripts'))
+
 from src.scraper_global import GlobalScraper, MAX_PLAYERS_PER_SOURCE  # noqa: E402
 from src.scoring import OB1Scorer  # noqa: E402
+from ouroboros_run import is_valid_player_name  # noqa: E402  (same gate as prod)
 
 SCORE_FLOOR = 55  # mirrors ouroboros_run.SCORE_FLOOR
 
@@ -44,6 +47,9 @@ for league_id in scraper.leagues:
 # --- Score each player with the production gate scorer ------------------------
 scored = []
 for opp in discovered:
+    # Mirror production: junk names are skipped before scoring (ouroboros_run).
+    if not is_valid_player_name(opp.player_name):
+        continue
     raw_dict = {
         'player_name': opp.player_name,
         'opportunity_type': opp.opportunity_type.value,
@@ -89,11 +95,13 @@ for k, v in buckets.items():
 
 # Per-source density (proves the cap held — no source should exceed the cap)
 from collections import Counter  # noqa: E402
-src_counts = Counter(opp.source_name for opp in discovered)
-print("\nPlayers per source (cap check):")
+# Count by source_url, not source_name: grounding maps every redirect to the
+# label "Gemini Search", so only the URL reveals whether the cap held.
+src_counts = Counter(opp.source_url for opp in discovered if opp.source_url)
+print("\nPlayers per source URL (cap check):")
 for src, c in src_counts.most_common(8):
-    flag = '  <-- AT/OVER CAP' if c > MAX_PLAYERS_PER_SOURCE else ''
-    print(f"  {c:>3}  {src}{flag}")
+    flag = '  <-- OVER CAP' if c > MAX_PLAYERS_PER_SOURCE else ''
+    print(f"  {c:>3}  {src[:60]}{flag}")
 
 print(f"\nSurvivors (>= {SCORE_FLOOR}), sorted by score:")
 for n, s in sorted(survivors, key=lambda x: -x[1]):

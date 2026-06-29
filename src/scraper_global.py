@@ -109,8 +109,10 @@ class GlobalScraper:
             except Exception as e:
                 msg = str(e)
                 # Transient: rate limit (429) or model overload (503). Retry these.
-                transient = any(k in msg for k in (
-                    '429', '503', 'RESOURCE_EXHAUSTED', 'UNAVAILABLE', 'overloaded'))
+                # Lowercase so mixed-case gRPC status strings still match.
+                msg_lower = msg.lower()
+                transient = any(k in msg_lower for k in (
+                    '429', '503', 'resource_exhausted', 'unavailable', 'overloaded'))
                 if transient and attempt < GROUNDING_MAX_RETRIES - 1:
                     wait = GROUNDING_BACKOFF_BASE * (2 ** attempt)
                     print(f"    [GROUNDED RETRY] attempt {attempt + 1} failed "
@@ -229,6 +231,7 @@ class GlobalScraper:
                     seen_names.add(name_key)
                     if url:
                         per_source[url] = per_source.get(url, 0) + 1
+                        seen_urls.add(url)  # keep both phases consistent
 
                     opp = MarketOpportunity(
                         league_id=league_id,
