@@ -54,8 +54,13 @@ def build_and_enrich(name, kind):
         print(f"  [ENRICH ERR] {name}: {e}")
         tm = None
     if tm:
+        # Mirror run_enrichment.py exactly — no more, no less. Copying fields
+        # production does NOT copy (current_club, role) would over-credit real
+        # players with bonuses the real dashboard never applies, biasing the test.
         if tm.get('market_value_eur') and not tm.get('market_value'):
             tm['market_value'] = tm['market_value_eur']
+        if tm.get('market_value_text') and not tm.get('market_value_formatted'):
+            tm['market_value_formatted'] = tm['market_value_text']
         for k in ENRICH_KEYS:
             v = tm.get(k)
             if v is not None:
