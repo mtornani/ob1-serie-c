@@ -64,7 +64,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2030-06-30",
-      "days_without_contract": 120,
+      "days_without_contract": 121,
       "stale_free_agent": true
     },
     {
@@ -181,10 +181,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -246,10 +246,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           },
           {
             "type": "apprentice_reached",
@@ -317,10 +317,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -328,7 +328,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 13,
+      "days_without_contract": 14,
       "stale_free_agent": false
     },
     {
@@ -386,7 +386,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -500,10 +500,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -511,7 +511,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 119,
+      "days_without_contract": 120,
       "stale_free_agent": true
     },
     {
@@ -576,7 +576,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2029-06-30",
-      "days_without_contract": 21,
+      "days_without_contract": 22,
       "stale_free_agent": false
     },
     {
@@ -632,8 +632,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 59gg",
-            "detail": "Contratto in scadenza: 2026-08-28 (59 giorni)"
+            "label": "SCADE 58gg",
+            "detail": "Contratto in scadenza: 2026-08-28 (58 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -641,7 +641,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-08-28",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -699,7 +699,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2029-06-30",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -753,10 +753,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -764,7 +764,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 25,
+      "days_without_contract": 26,
       "stale_free_agent": false
     },
     {
@@ -818,10 +818,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -829,7 +829,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false
     },
     {
@@ -887,7 +887,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -941,10 +941,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -952,7 +952,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false
     },
     {
@@ -1010,7 +1010,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2030-06-30",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false
     },
     {
@@ -1068,7 +1068,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -1126,7 +1126,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -1180,10 +1180,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -1191,7 +1191,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -1254,8 +1254,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 274gg",
-            "detail": "Contratto: 2027-03-31 (274 giorni)"
+            "label": "SCADE 273gg",
+            "detail": "Contratto: 2027-03-31 (273 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -1263,7 +1263,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-03-31",
-      "days_without_contract": 118,
+      "days_without_contract": 119,
       "stale_free_agent": true
     },
     {
@@ -1321,7 +1321,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 119,
+      "days_without_contract": 120,
       "stale_free_agent": false
     },
     {
@@ -1444,7 +1444,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-29",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -1502,7 +1502,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -1556,10 +1556,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -1567,7 +1567,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 13,
+      "days_without_contract": 14,
       "stale_free_agent": false
     },
     {
@@ -1621,10 +1621,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -1632,7 +1632,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 13,
+      "days_without_contract": 14,
       "stale_free_agent": false
     },
     {
@@ -1690,7 +1690,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -1806,7 +1806,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -1860,10 +1860,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -1871,7 +1871,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -1925,10 +1925,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           },
           {
             "type": "apprentice_reached",
@@ -2060,7 +2060,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 119,
+      "days_without_contract": 120,
       "stale_free_agent": true
     },
     {
@@ -2118,7 +2118,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 25,
+      "days_without_contract": 26,
       "stale_free_agent": false
     },
     {
@@ -2176,7 +2176,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2028-06-30",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -2230,10 +2230,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -2241,7 +2241,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 13,
+      "days_without_contract": 14,
       "stale_free_agent": false
     },
     {
@@ -2295,10 +2295,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -2306,7 +2306,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -2364,7 +2364,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2029-06-30",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -2542,7 +2542,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -2598,8 +2598,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -2607,7 +2607,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 25,
+      "days_without_contract": 26,
       "stale_free_agent": false
     },
     {
@@ -2661,10 +2661,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -2672,7 +2672,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -2726,10 +2726,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           },
           {
             "type": "apprentice_reached",
@@ -2744,71 +2744,6 @@
       },
       "contract_expires": "2026-06-30",
       "days_without_contract": 0,
-      "stale_free_agent": false
-    },
-    {
-      "id": "a8aa6d894b56d43483406913fda7a841",
-      "player_name": "Mattia Pretato",
-      "age": 24,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-06-15",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEilramjwOyU1nOeeAA5vAXT39AXiw4PkML_vXoHM253OL8QfuWB5wnhSCFK-4pZSPr4q7hkI9bTtFtcHJgjw8msoqbRgUZ8c_u7Ga2wex4Fd0_ZRUetASfqVlZZakWHheoS8YmZ-DSmcwSlOv2NXcQW5EY47myjSlFDbuWb6HxFCxgCwlOS9kzSBD5J7dR3msXotc0-l_LEm93xOXJEaAAa_vFfF2B7w7PtvR_6kGFcmNNUFpS1IgB",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "sinistro",
-      "market_value": 150000,
-      "market_value_formatted": "150 mila €",
-      "player_image_url": null,
-      "agent": "Green Soccer",
-      "discovered_at": "2026-06-15T21:13:18.488132",
-      "ob1_score": 67,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 60,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 90,
-        "market_value": 80,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Età ideale (24 anni), nel pieno della maturazione. Disponibile a parametro zero.",
-      "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 3185,
-        "traffic_light": "green",
-        "traffic_label": "UNDER",
-        "traffic_icon": "🟢",
-        "is_over": false,
-        "signals": [
-          {
-            "type": "contract_expiry",
-            "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
-          }
-        ],
-        "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
-        "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
-      },
-      "contract_expires": "2026-06-30",
-      "days_without_contract": 14,
       "stale_free_agent": false
     },
     {
@@ -2920,10 +2855,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -2931,7 +2866,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -3047,7 +2982,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -3159,10 +3094,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -3170,7 +3105,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -3228,7 +3163,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 119,
+      "days_without_contract": 120,
       "stale_free_agent": false
     },
     {
@@ -3286,7 +3221,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 119,
+      "days_without_contract": 120,
       "stale_free_agent": false
     },
     {
@@ -3405,7 +3340,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 97,
+      "days_without_contract": 98,
       "stale_free_agent": false
     },
     {
@@ -3463,7 +3398,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "2028-06-30",
-      "days_without_contract": 27,
+      "days_without_contract": 28,
       "stale_free_agent": false
     },
     {
@@ -3517,10 +3452,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -3528,7 +3463,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 25,
+      "days_without_contract": 26,
       "stale_free_agent": false
     },
     {
@@ -3582,10 +3517,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -3593,7 +3528,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 25,
+      "days_without_contract": 26,
       "stale_free_agent": false
     },
     {
@@ -3828,10 +3763,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -3839,7 +3774,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -3893,10 +3828,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -3904,7 +3839,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false
     },
     {
@@ -3962,7 +3897,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -4016,10 +3951,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -4027,7 +3962,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -4085,7 +4020,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false
     },
     {
@@ -4143,7 +4078,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false
     },
     {
@@ -4199,8 +4134,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -4208,7 +4143,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false
     },
     {
@@ -4266,7 +4201,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 18,
+      "days_without_contract": 19,
       "stale_free_agent": false
     },
     {
@@ -4385,10 +4320,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -4396,7 +4331,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -4450,10 +4385,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -4461,7 +4396,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 16,
+      "days_without_contract": 17,
       "stale_free_agent": false
     },
     {
@@ -4515,10 +4450,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -4526,7 +4461,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 15,
+      "days_without_contract": 16,
       "stale_free_agent": false
     },
     {
@@ -4584,7 +4519,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -4700,7 +4635,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -4884,10 +4819,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -4895,7 +4830,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 27,
+      "days_without_contract": 28,
       "stale_free_agent": false
     },
     {
@@ -4949,10 +4884,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -5018,7 +4953,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 25,
+      "days_without_contract": 26,
       "stale_free_agent": false
     },
     {
@@ -5130,10 +5065,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -5141,7 +5076,7 @@
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -5195,10 +5130,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           },
           {
             "type": "apprentice_reached",
@@ -5266,10 +5201,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -5277,7 +5212,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 21,
+      "days_without_contract": 22,
       "stale_free_agent": false
     },
     {
@@ -5455,6 +5390,71 @@
       "stale_free_agent": false
     },
     {
+      "id": "a8aa6d894b56d43483406913fda7a841",
+      "player_name": "Mattia Pretato",
+      "age": 24,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-15",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEilramjwOyU1nOeeAA5vAXT39AXiw4PkML_vXoHM253OL8QfuWB5wnhSCFK-4pZSPr4q7hkI9bTtFtcHJgjw8msoqbRgUZ8c_u7Ga2wex4Fd0_ZRUetASfqVlZZakWHheoS8YmZ-DSmcwSlOv2NXcQW5EY47myjSlFDbuWb6HxFCxgCwlOS9kzSBD5J7dR3msXotc0-l_LEm93xOXJEaAAa_vFfF2B7w7PtvR_6kGFcmNNUFpS1IgB",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "sinistro",
+      "market_value": 150000,
+      "market_value_formatted": "150 mila €",
+      "player_image_url": null,
+      "agent": "Green Soccer",
+      "discovered_at": "2026-06-15T21:13:18.488132",
+      "ob1_score": 65,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 90,
+        "market_value": 80,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Età ideale (24 anni), nel pieno della maturazione. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3185,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "contract_expired",
+            "severity": "red",
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
+      },
+      "contract_expires": "2026-06-30",
+      "days_without_contract": 15,
+      "stale_free_agent": false
+    },
+    {
       "id": "2a9ee444c78c1055ebab0dce02dda433",
       "player_name": "Benedikt Rottensteiner",
       "age": 21,
@@ -5505,10 +5505,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -5516,7 +5516,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -5574,7 +5574,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -5686,10 +5686,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -5697,7 +5697,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 118,
+      "days_without_contract": 119,
       "stale_free_agent": false
     },
     {
@@ -5753,8 +5753,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -5762,7 +5762,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 119,
+      "days_without_contract": 120,
       "stale_free_agent": false
     },
     {
@@ -5820,7 +5820,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 119,
+      "days_without_contract": 120,
       "stale_free_agent": false
     },
     {
@@ -5932,10 +5932,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -5997,10 +5997,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -6008,7 +6008,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 27,
+      "days_without_contract": 28,
       "stale_free_agent": false
     },
     {
@@ -6120,10 +6120,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -6187,8 +6187,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -6196,7 +6196,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 21,
+      "days_without_contract": 22,
       "stale_free_agent": false
     },
     {
@@ -6368,8 +6368,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 59gg",
-            "detail": "Contratto in scadenza: 2026-08-28 (59 giorni)"
+            "label": "SCADE 58gg",
+            "detail": "Contratto in scadenza: 2026-08-28 (58 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -6489,10 +6489,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           },
           {
             "type": "apprentice_reached",
@@ -6560,10 +6560,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -6629,7 +6629,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -6799,10 +6799,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -6810,7 +6810,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 10,
+      "days_without_contract": 11,
       "stale_free_agent": false
     },
     {
@@ -6864,10 +6864,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -6933,7 +6933,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 26,
+      "days_without_contract": 27,
       "stale_free_agent": false
     },
     {
@@ -6987,10 +6987,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -6998,7 +6998,7 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 25,
+      "days_without_contract": 26,
       "stale_free_agent": false
     },
     {
@@ -7056,7 +7056,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 27,
+      "days_without_contract": 28,
       "stale_free_agent": false
     },
     {
@@ -7112,8 +7112,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -7179,7 +7179,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 26,
+      "days_without_contract": 27,
       "stale_free_agent": false
     },
     {
@@ -7235,8 +7235,8 @@
           {
             "type": "contract_expiry",
             "severity": "red",
-            "label": "SCADE 31gg",
-            "detail": "Contratto in scadenza: 2026-07-31 (31 giorni)"
+            "label": "SCADE 30gg",
+            "detail": "Contratto in scadenza: 2026-07-31 (30 giorni)"
           }
         ],
         "birth_year": 2026,
@@ -7414,10 +7414,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -7425,65 +7425,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 17,
-      "stale_free_agent": false
-    },
-    {
-      "id": "7fa6e0324f988c4952e9c61b8db47f2a",
-      "player_name": "Mattia Gagliano",
-      "age": 20,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-06-15",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFbHlHq3CPBeFyATDw9hZFpy1QfsoRDIYQsH5ZDbyynyIzEYse6LBdbWO_wtw0lpfmRrRli_poa3DcASfv5fvOnhrvMZzhTBfAcu9BrbQlnwl9jMiOx-p9Uye-JDQF-HyAWVx4wYH4BkE5UlPZuHXKgOilufgAwPUAtTAh5krVKlpF-PLAFvBU1QPtPTbKbam5egbhNH2Zb62UUt3UvkFlTLwejXQKoG6NVpHC21DHPCVT5ssmwsQ29HiWgmyuiXWO3jdOVjEylGv0",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 1,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": null,
-      "market_value_formatted": null,
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-06-15T21:13:18.487983",
-      "ob1_score": 63,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 60,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 100,
-        "market_value": 40,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero.",
-      "intel": {
-        "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.82,
-        "proiezione_stagionale": 127,
-        "traffic_light": "green",
-        "traffic_label": "UNDER",
-        "traffic_icon": "🟢",
-        "is_over": false,
-        "signals": [],
-        "birth_year": 2006,
-        "roi_dettaglio": "Classe 2006 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 127 min pond.",
-        "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 14,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -7537,10 +7479,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -7548,7 +7490,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -7602,10 +7544,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -7667,10 +7609,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -7678,7 +7620,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false
     },
     {
@@ -7790,10 +7732,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -7913,10 +7855,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -7924,7 +7866,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -8036,10 +7978,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -8047,7 +7989,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -8103,8 +8045,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           },
           {
             "type": "apprentice_reached",
@@ -8295,10 +8237,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -8306,7 +8248,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 13,
+      "days_without_contract": 14,
       "stale_free_agent": false
     },
     {
@@ -8418,10 +8360,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -8483,10 +8425,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -8548,10 +8490,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -8559,7 +8501,7 @@
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -8613,10 +8555,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -8689,7 +8631,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2025-07-01",
-      "days_without_contract": 118,
+      "days_without_contract": 119,
       "stale_free_agent": false
     },
     {
@@ -8801,10 +8743,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -8812,7 +8754,7 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 26,
+      "days_without_contract": 27,
       "stale_free_agent": false
     },
     {
@@ -8868,8 +8810,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -8877,7 +8819,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -8931,10 +8873,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -8942,7 +8884,7 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 25,
+      "days_without_contract": 26,
       "stale_free_agent": false
     },
     {
@@ -8996,10 +8938,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -9007,7 +8949,7 @@
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -9061,10 +9003,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -9072,7 +9014,7 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -9126,10 +9068,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -9137,7 +9079,7 @@
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -9195,7 +9137,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026",
-      "days_without_contract": 13,
+      "days_without_contract": 14,
       "stale_free_agent": false
     },
     {
@@ -9249,10 +9191,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -9260,7 +9202,7 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 10,
+      "days_without_contract": 11,
       "stale_free_agent": false
     },
     {
@@ -9318,7 +9260,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -9434,7 +9376,7 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 119,
+      "days_without_contract": 120,
       "stale_free_agent": false
     },
     {
@@ -9488,10 +9430,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -9499,7 +9441,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 26,
+      "days_without_contract": 27,
       "stale_free_agent": false
     },
     {
@@ -9553,10 +9495,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -9564,7 +9506,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -9622,7 +9564,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 25,
+      "days_without_contract": 26,
       "stale_free_agent": false
     },
     {
@@ -9738,7 +9680,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 23,
+      "days_without_contract": 24,
       "stale_free_agent": false
     },
     {
@@ -9792,10 +9734,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -9803,7 +9745,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -9857,10 +9799,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -9868,7 +9810,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 21,
+      "days_without_contract": 22,
       "stale_free_agent": false
     },
     {
@@ -9926,7 +9868,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 21,
+      "days_without_contract": 22,
       "stale_free_agent": false
     },
     {
@@ -9980,10 +9922,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           },
           {
             "type": "apprentice_reached",
@@ -10051,10 +9993,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -10062,7 +10004,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false
     },
     {
@@ -10116,10 +10058,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -10127,7 +10069,7 @@
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -10185,7 +10127,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 15,
+      "days_without_contract": 16,
       "stale_free_agent": false
     },
     {
@@ -10243,7 +10185,65 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
+      "stale_free_agent": false
+    },
+    {
+      "id": "7fa6e0324f988c4952e9c61b8db47f2a",
+      "player_name": "Mattia Gagliano",
+      "age": 20,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-15",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFbHlHq3CPBeFyATDw9hZFpy1QfsoRDIYQsH5ZDbyynyIzEYse6LBdbWO_wtw0lpfmRrRli_poa3DcASfv5fvOnhrvMZzhTBfAcu9BrbQlnwl9jMiOx-p9Uye-JDQF-HyAWVx4wYH4BkE5UlPZuHXKgOilufgAwPUAtTAh5krVKlpF-PLAFvBU1QPtPTbKbam5egbhNH2Zb62UUt3UvkFlTLwejXQKoG6NVpHC21DHPCVT5ssmwsQ29HiWgmyuiXWO3jdOVjEylGv0",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 1,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-15T21:13:18.487983",
+      "ob1_score": 60,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 100,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "ROI MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 127,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2006,
+        "roi_dettaglio": "Classe 2006 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 127 min pond.",
+        "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 15,
       "stale_free_agent": false
     },
     {
@@ -10297,10 +10297,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -10364,8 +10364,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           },
           {
             "type": "apprentice_reached",
@@ -10437,7 +10437,7 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2028-06-30",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -10493,8 +10493,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           },
           {
             "type": "apprentice_reached",
@@ -10689,7 +10689,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 119,
+      "days_without_contract": 120,
       "stale_free_agent": false
     },
     {
@@ -10805,7 +10805,7 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 15,
+      "days_without_contract": 16,
       "stale_free_agent": false
     },
     {
@@ -10863,7 +10863,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 25,
+      "days_without_contract": 26,
       "stale_free_agent": false
     },
     {
@@ -10921,7 +10921,7 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -10986,7 +10986,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2025-06-30",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -11042,8 +11042,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -11051,7 +11051,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false
     },
     {
@@ -11109,7 +11109,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 18,
+      "days_without_contract": 19,
       "stale_free_agent": false
     },
     {
@@ -11167,7 +11167,7 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -11225,7 +11225,7 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -11283,7 +11283,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -11455,8 +11455,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -11576,10 +11576,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -11587,7 +11587,7 @@
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 27,
+      "days_without_contract": 28,
       "stale_free_agent": false
     },
     {
@@ -11641,10 +11641,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -11652,7 +11652,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 25,
+      "days_without_contract": 26,
       "stale_free_agent": false
     },
     {
@@ -11706,10 +11706,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -11898,7 +11898,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false
     },
     {
@@ -11952,10 +11952,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -12075,10 +12075,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -12086,7 +12086,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -12198,10 +12198,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -12265,8 +12265,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -12274,7 +12274,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -12386,10 +12386,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -12397,7 +12397,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 27,
+      "days_without_contract": 28,
       "stale_free_agent": false
     },
     {
@@ -12451,10 +12451,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -12462,7 +12462,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 23,
+      "days_without_contract": 24,
       "stale_free_agent": false
     },
     {
@@ -12516,10 +12516,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -12527,7 +12527,7 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 15,
+      "days_without_contract": 16,
       "stale_free_agent": false
     },
     {
@@ -12585,7 +12585,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 21,
+      "days_without_contract": 22,
       "stale_free_agent": false
     },
     {
@@ -12641,8 +12641,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           },
           {
             "type": "apprentice_reached",
@@ -12710,10 +12710,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -12721,7 +12721,7 @@
         "lista_dettaglio": "Over classe 1988 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
       "stale_free_agent": false
     },
     {
@@ -12779,7 +12779,7 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 18,
+      "days_without_contract": 19,
       "stale_free_agent": false
     },
     {
@@ -12833,10 +12833,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -12844,7 +12844,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 15,
+      "days_without_contract": 16,
       "stale_free_agent": false
     },
     {
@@ -12902,7 +12902,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 15,
+      "days_without_contract": 16,
       "stale_free_agent": false
     },
     {
@@ -12960,7 +12960,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false
     },
     {
@@ -13018,7 +13018,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2010 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -13315,123 +13315,7 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 15,
-      "stale_free_agent": false
-    },
-    {
-      "id": "74364c9728a5fe4c3719e956ae77a822",
-      "player_name": "Francesco Barranca",
-      "age": 28,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "talento",
-      "reported_date": "2026-06-15",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE9Zv4rJqN3MuzQEqD4NTFoLV35q1YccTkx4WimBQkrT7XEHyN2rHJTJIED-sPYMMvCxvuWo5O2ZSpp7kaGHKcyeotvwSZrmQpT2Y3ITz7beGNW7mHRKolsVQ1aZRQAiXEMn_PT0_4YQFCW4WmVMFrXXiy1Sshj_GLZU5wCvfRcstUqtlYV22m6e_c-_t2OKj5LkztlH0dqp1-CeqQ=",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": null,
-      "market_value": 50000,
-      "market_value_formatted": "50 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-06-15T04:55:18.841001",
-      "ob1_score": 56,
-      "classification": "cold",
-      "score_breakdown": {
-        "freshness": 60,
-        "opportunity_type": 50,
-        "experience": 50,
-        "age": 75,
-        "market_value": 55,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Piena maturità (28 anni), pronto per impatto immediato.",
-      "intel": {
-        "roi_class": "none",
-        "roi_label": "NO CONTRIB.",
-        "roi_color": "gray",
-        "coefficiente_eta": 0,
-        "moltiplicatore": 0,
-        "proiezione_stagionale": 0,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [],
-        "birth_year": 1998,
-        "roi_dettaglio": "Classe 1998 — non contribuisce al minutaggio giovani",
-        "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 0,
-      "stale_free_agent": false
-    },
-    {
-      "id": "f0da00bbd9e19fb9acaa5bca34db7909",
-      "player_name": "De Rosa",
-      "age": 32,
-      "role": "",
-      "role_name": "N/D",
-      "opportunity_type": "talento",
-      "reported_date": "2026-06-15",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE-obu1mu4uLNu6WJF4SWBGLP-fI3BZ8ZpJpr_LV5fpOcVVLSwS-kbLNWf4zxQJqRbOT_lQfD4g4j0I3mRWV2ERFD7CmzJIIIQj1_-MTrTdSSMEiCoOiLfna0WAiRKf277ZxHq_kj7FhSUkrZj8Af1WfXsZiHpfcVMghmcFzB-NHRSsypVfS0CnktnhocJIkfKp85MN0iLMq4rAq3nc",
-      "previous_clubs": [],
-      "current_club": "",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": null,
-      "market_value": 225000,
-      "market_value_formatted": "225 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-06-15T12:25:50.999168",
-      "ob1_score": 56,
-      "classification": "cold",
-      "score_breakdown": {
-        "freshness": 60,
-        "opportunity_type": 50,
-        "experience": 50,
-        "age": 45,
-        "market_value": 80,
-        "league_fit": 50,
-        "source": 50,
-        "completeness": 55
-      },
-      "recommendation": "Giocatore esperto (32 anni). Valore di mercato interessante (225k€).",
-      "intel": {
-        "roi_class": "none",
-        "roi_label": "NO CONTRIB.",
-        "roi_color": "gray",
-        "coefficiente_eta": 0,
-        "moltiplicatore": 0,
-        "proiezione_stagionale": 0,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [],
-        "birth_year": 1994,
-        "roi_dettaglio": "Classe 1994 — non contribuisce al minutaggio giovani",
-        "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 0,
+      "days_without_contract": 16,
       "stale_free_agent": false
     },
     {
@@ -13659,10 +13543,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -13724,10 +13608,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -13735,7 +13619,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 18,
+      "days_without_contract": 19,
       "stale_free_agent": false
     },
     {
@@ -13793,7 +13677,7 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
       "stale_free_agent": false
     },
     {
@@ -13851,7 +13735,7 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 16,
+      "days_without_contract": 17,
       "stale_free_agent": false
     },
     {
@@ -13909,7 +13793,7 @@
         "lista_dettaglio": "Over classe 1989 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 119,
+      "days_without_contract": 120,
       "stale_free_agent": false
     },
     {
@@ -13963,10 +13847,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -13974,7 +13858,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 119,
+      "days_without_contract": 120,
       "stale_free_agent": false
     },
     {
@@ -14039,7 +13923,7 @@
         "lista_dettaglio": "Over classe 1989 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-29",
-      "days_without_contract": 119,
+      "days_without_contract": 120,
       "stale_free_agent": false
     },
     {
@@ -14093,10 +13977,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           },
           {
             "type": "apprentice_reached",
@@ -14291,7 +14175,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2025-01-31",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false
     },
     {
@@ -14349,7 +14233,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 26,
+      "days_without_contract": 27,
       "stale_free_agent": false
     },
     {
@@ -14403,10 +14287,10 @@
         "is_over": false,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -14414,7 +14298,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2010 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 26,
+      "days_without_contract": 27,
       "stale_free_agent": false
     },
     {
@@ -14588,7 +14472,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2009 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 21,
+      "days_without_contract": 22,
       "stale_free_agent": false
     },
     {
@@ -14646,7 +14530,65 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2009 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
+      "stale_free_agent": false
+    },
+    {
+      "id": "74364c9728a5fe4c3719e956ae77a822",
+      "player_name": "Francesco Barranca",
+      "age": 28,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-15",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE9Zv4rJqN3MuzQEqD4NTFoLV35q1YccTkx4WimBQkrT7XEHyN2rHJTJIED-sPYMMvCxvuWo5O2ZSpp7kaGHKcyeotvwSZrmQpT2Y3ITz7beGNW7mHRKolsVQ1aZRQAiXEMn_PT0_4YQFCW4WmVMFrXXiy1Sshj_GLZU5wCvfRcstUqtlYV22m6e_c-_t2OKj5LkztlH0dqp1-CeqQ=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 50000,
+      "market_value_formatted": "50 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-15T04:55:18.841001",
+      "ob1_score": 54,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 75,
+        "market_value": 55,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Piena maturità (28 anni), pronto per impatto immediato.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1998,
+        "roi_dettaglio": "Classe 1998 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
       "stale_free_agent": false
     },
     {
@@ -14766,6 +14708,64 @@
       "stale_free_agent": false
     },
     {
+      "id": "f0da00bbd9e19fb9acaa5bca34db7909",
+      "player_name": "De Rosa",
+      "age": 32,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-15",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE-obu1mu4uLNu6WJF4SWBGLP-fI3BZ8ZpJpr_LV5fpOcVVLSwS-kbLNWf4zxQJqRbOT_lQfD4g4j0I3mRWV2ERFD7CmzJIIIQj1_-MTrTdSSMEiCoOiLfna0WAiRKf277ZxHq_kj7FhSUkrZj8Af1WfXsZiHpfcVMghmcFzB-NHRSsypVfS0CnktnhocJIkfKp85MN0iLMq4rAq3nc",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 225000,
+      "market_value_formatted": "225 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-15T12:25:50.999168",
+      "ob1_score": 53,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 45,
+        "market_value": 80,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Giocatore esperto (32 anni). Valore di mercato interessante (225k€).",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1994,
+        "roi_dettaglio": "Classe 1994 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false
+    },
+    {
       "id": "opp_48df769b",
       "player_name": "Bruno Vicente",
       "age": 37,
@@ -14874,10 +14874,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -14943,7 +14943,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 23,
+      "days_without_contract": 24,
       "stale_free_agent": false
     },
     {
@@ -15001,7 +15001,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -15059,7 +15059,7 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -15240,7 +15240,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2025-07-01",
-      "days_without_contract": 8,
+      "days_without_contract": 9,
       "stale_free_agent": false
     },
     {
@@ -15356,10 +15356,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -15421,10 +15421,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -15432,7 +15432,7 @@
         "lista_dettaglio": "Over classe 1987 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false
     },
     {
@@ -15660,10 +15660,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -15671,7 +15671,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 27,
+      "days_without_contract": 28,
       "stale_free_agent": false
     },
     {
@@ -15729,7 +15729,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 27,
+      "days_without_contract": 28,
       "stale_free_agent": false
     },
     {
@@ -15794,7 +15794,7 @@
         "lista_dettaglio": "Over classe 1987 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2020-02-14",
-      "days_without_contract": 26,
+      "days_without_contract": 27,
       "stale_free_agent": false
     },
     {
@@ -15859,7 +15859,7 @@
         "lista_dettaglio": "Over classe 1988 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2025-09-13",
-      "days_without_contract": 22,
+      "days_without_contract": 23,
       "stale_free_agent": false
     },
     {
@@ -15917,7 +15917,7 @@
         "lista_dettaglio": "Over classe 1985 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 19,
+      "days_without_contract": 20,
       "stale_free_agent": false
     },
     {
@@ -16031,8 +16031,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 365gg",
-            "detail": "Contratto: 2027-06-30 (365 giorni)"
+            "label": "SCADE 364gg",
+            "detail": "Contratto: 2027-06-30 (364 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -16094,10 +16094,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -16217,10 +16217,10 @@
         "is_over": true,
         "signals": [
           {
-            "type": "contract_expiry",
+            "type": "contract_expired",
             "severity": "red",
-            "label": "SCADE 0gg",
-            "detail": "Contratto in scadenza: 2026-06-30 (0 giorni)"
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
           }
         ],
         "birth_year": 2026,
@@ -16364,7 +16364,7 @@
       "none": 69
     }
   },
-  "last_update": "2026-06-29T20:05:36.064363",
+  "last_update": "2026-06-30T04:02:07.304882",
   "scoring_version": "SCORE-002",
   "intel_version": "INTEL-001"
 }
