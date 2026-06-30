@@ -2618,12 +2618,12 @@
     "player_profile": {
       "nationality": "Italia",
       "tm_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE9CrOZyDtxHNbnUmwxH7wF9b1WhYCGsJDC6P8X7pXyEoDbNjMi_wBr0Yo-Gp1UiMtPph9VKcgcsLzlL7fqRKfyjZIBd3YmndRvb0Z-ojVSEoJzXBrkzHz37_f12b1DKi20vv8NwzXBrnlz_8lsnOMOUR46MJcoR09X56o=",
-      "market_value_formatted": "- €"
+      "market_value_formatted": "-"
     },
     "tm_enriched": false,
     "birth_date": "1990-07-27",
     "age": 36,
-    "market_value_formatted": "- €"
+    "market_value_formatted": "-"
   },
   {
     "id": "0e3345281c23f8dc621c0975dd81b80b",
@@ -10024,18 +10024,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "2fb9fdb653f6bbb9fc0330fc238e43f4",
-    "player_name": "Giacomo Faticanti",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Contratto non rinnovato con Juventus Next Gen.",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG9bSFbOj-Bvpv6xic0Ld01RBQIsfyGfw02KPgQiospwTxvepgNWcOvd4qUrbPRXcvl6H9Biyuv2hhocQivFV8yoFcUqelK8NCk5LN2mrkUpIZ3EKpt9USjs8-ZjsS7BLG_QYLl5SgjI8FWnKnWOSRgADe9HWn1ZCZvVdxKYcmPUU0JtVyCK7GZNO1Zig1gcV_HgLENfkAebg==",
-    "discovered_at": "2026-06-30T14:28:47.546625",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "b3efc5b41688171685ee4fb7e86f5d38",
     "player_name": "Dean Huiberts",
     "region": "ITALY",
@@ -10057,66 +10045,6 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG9bSFbOj-Bvpv6xic0Ld01RBQIsfyGfw02KPgQiospwTxvepgNWcOvd4qUrbPRXcvl6H9Biyuv2hhocQivFV8yoFcUqelK8NCk5LN2mrkUpIZ3EKpt9USjs8-ZjsS7BLG_QYLl5SgjI8FWnKnWOSRgADe9HWn1ZCZvVdxKYcmPUU0JtVyCK7GZNO1Zig1gcV_HgLENfkAebg==",
     "discovered_at": "2026-06-30T14:28:47.546881",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "984c429b467e22134aa4cff96c433619",
-    "player_name": "Iacopo Regonesi",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Lascia la Pro Vercelli.",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG9bSFbOj-Bvpv6xic0Ld01RBQIsfyGfw02KPgQiospwTxvepgNWcOvd4qUrbPRXcvl6H9Biyuv2hhocQivFV8yoFcUqelK8NCk5LN2mrkUpIZ3EKpt9USjs8-ZjsS7BLG_QYLl5SgjI8FWnKnWOSRgADe9HWn1ZCZvVdxKYcmPUU0JtVyCK7GZNO1Zig1gcV_HgLENfkAebg==",
-    "discovered_at": "2026-06-30T14:28:47.546974",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "dea879946dcf45792a4bfefc4ab4ed7a",
-    "player_name": "Lorenzo Cordaro",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Contratto in scadenza con US Pergolettese 1932.",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGuXj_ngJjVN8WtECvG18mWNyWFj0uCR0doA122vPScXKfPerp_rd3uvbScBT7k2cW0-C8bSzl4AqBI7oEjjQNDFPWVtvPl3ZGxTSulRUxevkOQl6XfxdXw1Z92iFCOkRYOgqNTJFphzZ2nODfD5p9_vbokGio1QG7easBU_zIT9UEirwXMP0KaGQ==",
-    "discovered_at": "2026-06-30T14:28:47.547070",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "4e08a14dce667e79bcd16b8389f79953",
-    "player_name": "Jonathan Spedalieri",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Contratto in scadenza con AC Renate.",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGuXj_ngJjVN8WtECvG18mWNyWFj0uCR0doA122vPScXKfPerp_rd3uvbScBT7k2cW0-C8bSzl4AqBI7oEjjQNDFPWVtvPl3ZGxTSulRUxevkOQl6XfxdXw1Z92iFCOkRYOgqNTJFphzZ2nODfD5p9_vbokGio1QG7easBU_zIT9UEirwXMP0KaGQ==",
-    "discovered_at": "2026-06-30T14:28:47.547224",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "59a224a02f99a79dade86f02bdd1894d",
-    "player_name": "Samuele Righetti",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Contratto in scadenza con SS Arezzo.",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEIucWtLwSAzlPZXvmqDQVikyk7X8kZkIaRa1yUMPmvMwfDDwRVQiLwIg-sV08VB1sLCuek7F5qe_z4BxxEMZi4BOqGmlhXRjtVurZmM2gDbbU7YFznsfNRZDTIo7az4s1EFfCVUi7AnWw6jLj6qSe-iaZfhMt402isR3v-gyVpSW9Cmk2wc4paSw==",
-    "discovered_at": "2026-06-30T14:28:47.547338",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "84cbf86ef0f45eac500e095eee794ad4",
-    "player_name": "Mattia Aramu",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Contratto in scadenza con Ternana Calcio.",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEIucWtLwSAzlPZXvmqDQVikyk7X8kZkIaRa1yUMPmvMwfDDwRVQiLwIg-sV08VB1sLCuek7F5qe_z4BxxEMZi4BOqGmlhXRjtVurZmM2gDbbU7YFznsfNRZDTIo7az4s1EFfCVUi7AnWw6jLj6qSe-iaZfhMt402isR3v-gyVpSW9Cmk2wc4paSw==",
-    "discovered_at": "2026-06-30T14:28:47.547426",
     "league_id": "italy_serie_c_d"
   }
 ]
