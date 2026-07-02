@@ -10194,7 +10194,12 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF9Qw6x8BacXUbVB8uaT-_0nUywwcfmb9Z51gGRHGZ7H-pYD5bgC-CR9PgymqUtGdBeKMhUvxCcvGYjmskblu5PVJknNu6yV9bc4clk5N3s_Xg4DyvKed6LjawPlBhzQCTk3NVL4i6M6g7PQs3Nzmh_g8LXJ2PDGWABiCFux7J",
     "discovered_at": "2026-07-01T10:00:16.877054",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/asd-borgo-mogliano-madal/startseite/verein/109660/saison_id/2025",
+    "player_profile": {
+      "tm_url": "https://www.transfermarkt.it/asd-borgo-mogliano-madal/startseite/verein/109660/saison_id/2025"
+    },
+    "tm_enriched": false
   },
   {
     "id": "1a802b7767b2bb3ff96174e7ee6bba8c",
@@ -10389,66 +10394,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "acd8e94bd2031825ab42b9634ed43791",
-    "player_name": "Lorenzo Cordaro",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Contratto in scadenza il 30 giugno 2026 con US Pergolettese 1932",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZRQUJE8ONvm4M7Xjl3U74peoiV5-EIUs5AfWU7m6AxsCmws06riJaAZ2dFvHog9L6iGfKbgcraL2SNNBaw3g-gwFOMIVC-j4FTfUzL6Wt3cKMmbg65HEJv7opjeqg6KthA34zn3z62pi2FxhjLQoHvdiJ9T2pk14Ggp4SNG86xfx8IQGprQo1eA==",
-    "discovered_at": "2026-07-01T20:03:12.001473",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "1ec88ddf69db18b802c35dfa985ad58f",
-    "player_name": "Jonathan Spedalieri",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Contratto in scadenza il 30 giugno 2026 con AC Renate",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZRQUJE8ONvm4M7Xjl3U74peoiV5-EIUs5AfWU7m6AxsCmws06riJaAZ2dFvHog9L6iGfKbgcraL2SNNBaw3g-gwFOMIVC-j4FTfUzL6Wt3cKMmbg65HEJv7opjeqg6KthA34zn3z62pi2FxhjLQoHvdiJ9T2pk14Ggp4SNG86xfx8IQGprQo1eA==",
-    "discovered_at": "2026-07-01T20:03:12.001689",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "a98cf2a9960b7f740b92ef98c2b60838",
-    "player_name": "Kevin Bright",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Contratto in scadenza il 30 giugno 2026 con Alcione Milano",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZRQUJE8ONvm4M7Xjl3U74peoiV5-EIUs5AfWU7m6AxsCmws06riJaAZ2dFvHog9L6iGfKbgcraL2SNNBaw3g-gwFOMIVC-j4FTfUzL6Wt3cKMmbg65HEJv7opjeqg6KthA34zn3z62pi2FxhjLQoHvdiJ9T2pk14Ggp4SNG86xfx8IQGprQo1eA==",
-    "discovered_at": "2026-07-01T20:03:12.001779",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "bed875cfa49357fc32d36b0023f41eb9",
-    "player_name": "Gregorio Tanco",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Contratto in scadenza il 30 giugno 2026 con Calcio Lecco",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZRQUJE8ONvm4M7Xjl3U74peoiV5-EIUs5AfWU7m6AxsCmws06riJaAZ2dFvHog9L6iGfKbgcraL2SNNBaw3g-gwFOMIVC-j4FTfUzL6Wt3cKMmbg65HEJv7opjeqg6KthA34zn3z62pi2FxhjLQoHvdiJ9T2pk14Ggp4SNG86xfx8IQGprQo1eA==",
-    "discovered_at": "2026-07-01T20:03:12.001886",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "95d874468deb67bc26840fdb595e6861",
-    "player_name": "Alessio Maestrelli",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Difensore svincolato dalla Ternana (Lega Pro) al 1 luglio 2026.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGTfAAF8lhqnFfXWqTSG9aGYoPfUGQJUhsTGSr3ygudurWKGTp5C9S548Z5p6qVhQMrkjwe3ZW2WR1JAteZ1ZE4jGTf6ZQTHHdC2ocFBAE86VcTtDMiE54eywtDtYWzSj6i6cISFIdfvG-D6Mh3dqFeJZaBu0ofvB9qayQgA94HxEYPg6I8VLd4HIVjmjXH730=",
-    "discovered_at": "2026-07-01T20:03:12.001982",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "f77f08679d81f071290380f04824db2b",
     "player_name": "Nicola Binda",
     "region": "ITALY",
@@ -10461,15 +10406,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "0d1c129eb66f939b5055e71ff91f62d8",
-    "player_name": "Il Gioco",
+    "id": "a775cbd180842e182840bcb594a8daec",
+    "player_name": "Romagna Sport",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "dalla Serie C non ha accesso alla Serie D e pu ripartire esclusivamente dall'Eccellenza Regionale. Per ottenere questo titolo straordinario, la nuova societ deve soddisfare contemporaneamente quattro requisiti tassativi: [...] 1) l'accreditamento ufficiale da parte del Sindaco del Comune interessato, che seleziona il nuovo gruppo imprenditoriale.  \n2) Principio di totale discontinuit societaria, che vieta la presenza nel nuovo club di soci, amministratori o dirigenti che abbiano ricoperto cariche nella vecchia societ nei cinque anni precedenti l'esclusione  \n3) Versamento alla FIGC di un contributo economico straordinario a fondo perduto, pari a un minimo di 300.000 euro per la Serie D e di 100.000 euro per l'Eccellenza.  \n4) Dimostrazione di una solida capacit finanziaria e la presentazione di adeguate garanzie fideiussorie a copertura dell'intero campionato da disputare. Tutti i calciatori del vecchio club vengono contestualmente svincolati d'ufficio. [...] In caso di non ammissione, esclusione o revoca dell'affiliazione di una societ dai campionati professionistici (Serie A, Serie B e Serie C), l'Articolo 52, comma 10 delle NOIF stabilisce che il Presidente Federale, d'intesa con la Lega Nazionale Dilettanti, pu ammettere in soprannumero una nuova societ rappresentativa della stessa citt a un campionato dilettantistico. Questa assegnazione straordinaria applica il vincolo inderogabile della discesa di due categorie inferiori rispetto al campionato da cui il club  stato escluso. Nello specifico, una squadra esclusa dalla Serie A pu ripartire dalla Serie D, una esclusa dalla Serie B (caso eventuale della Juve Stabia, nda) pu ripartire dalla Serie D, mentre una esclusa dalla Serie C non ha accesso alla Serie D e pu ripartire",
-    "ob1_score": 62,
+    "description": "Andrea Tonini / Portiere Svincolati\n\n  Portiere  \n   Tonini Andrea  \n   16/10/2000\n Davide Turtura / Portiere Svincolati\n\n  Portiere  \n   Turtura Davide  \n   24/03/2006\n Matteo Vergalli / Portiere Svincolati\n\n  Portiere  \n   Vergalli Matteo  \n   06/05/2005\n Patrik Acciaroli / Difensore Svincolati\n\n  Difensore  \n   Acciaroli Patrik  \n   11/02/2003\n Giacomo Agostini / Difensore Svincolati\n\n  Difensore  \n   Agostini Giacomo  \n   15/01/1996\n Melvin Ahmedi / Difensore Svincolati\n\n  Difensore  \n   Ahmedi Melvin  \n   21/07/2004\n Alberto Alari / Difensore Svincolati\n\n  Difensore  \n   Alari Alberto  \n   21/01/1999  \n   Calcinate (Bg)\n Lorenzo Alboni / Difensore Svincolati\n\n  Difensore  \n   Alboni Lorenzo  \n   09/03/2001  \n   Imola (Bo)\n Diego Antonini / Difensore Svincolati [...] Attaccante  \n   Camara Souleymane  \n   28/10/1996\n Mattia Cappelletti / Attaccante Svincolati\n\n  Attaccante  \n   Cappelletti Mattia  \n   11/12/2001\n Niki Caragiulo / Attaccante Svincolati\n\n  Attaccante  \n   Caragiulo Niki  \n   02/07/1984\n Leonardo Carletti / Attaccante Svincolati\n\n  Attaccante  \n   Carletti Leonardo  \n   19/09/2004\n Nicholas Carta / Attaccante Svincolati\n\n  Attaccante  \n   Carta Nicholas  \n   26/05/2005\n Marco Casalboni / Attaccante Svincolati\n\n  Attaccante  \n   Casalboni Marco  \n   14/06/2004\n Facundo Cascio / Attaccante Svincolati\n\n  Attaccante  \n   Cascio Facundo  \n   02/08/1997  \n   Cordoba (Argentina)\n Andrea Catena / Attaccante Svincolati\n\n  Attaccante  \n   Catena Andrea  \n   11/12/2006\n Fiqeret Celcima / Attaccante Svincolati [...] Difensore  \n   Daporti Manuel  \n   2007\n Francesco De Luca / Difensore Svincolati\n\n  Difensore  \n   De Luca Francesco  \n   05/06/2007\n Bruno De Pace / Difensore Svincolati\n\n  Difensore  \n   De Pace Bruno  \n   06/08/2000\n Diego Del Pontano / Difensore Svincolati\n\n  Difensore  \n   Del Pontano Diego  \n   28/05/2003\n Marcello Di Blasi / Difensore Svincolati\n\n  Difensore  \n   Di Blasi Marcello  \n   16/01/2003\n Alessio Di Cesare / Difensore Svincolati\n\n  Difensore  \n   Di Cesare Alessio  \n   16/01/2007\n Michele Di Ruscio / Difensore Svincolati\n\n  Difensore  \n   Di Ruscio Michele  \n   06/08/1996\n Maksym Dmytruk / Difensore Svincolati\n\n  Difensore  \n   Dmytruk Maksym  \n   20/06/2007\n Simone Fabbri / Difensore Svincolati",
+    "ob1_score": 57,
     "source_name": "www.romagnasport.com",
-    "source_url": "https://www.romagnasport.com/news.php?id=288763",
-    "discovered_at": "2026-07-01T20:03:12.002169",
+    "source_url": "https://www.romagnasport.com/tuttocalcio/squadra.php?id_squadra=1420",
+    "discovered_at": "2026-07-02T03:57:33.394313",
     "league_id": "italy_serie_c_d"
   }
 ]
