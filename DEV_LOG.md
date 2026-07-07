@@ -177,6 +177,24 @@ Aggiunto verdict sentence sopra il breakdown (es. "parametro zero + U23 (21a) �
 **Osservazione:** In un measure run, **tutti** i 27 svincolati validi segnavano 62-64. Motivo strutturale: pre-enrichment mancano i fattori discriminanti (età, presenze, valore, club) → `svincolato + fresh` cade sempre a ~62-64. Il floor a 55 non taglia nulla (0 tagliati su 27).
 **Conseguenza:** Il floor pre-enrichment va lasciato come **gate grezzo** ("è un svincolato plausibile"), NON è la leva qualità. La differenziazione per segnale avviene **post-enrichment** in `generate_dashboard.py`, dove età/presenze/valore reali spalmano i punteggi. **Se la dashboard è rumorosa, la manopola da girare è il floor POST-enrichment, non quello al gate.** Il knob di volume in discovery è il cap per-sorgente.
 
+### FINDING CRITICO — Free tier Gemini = 20 richieste/giorno → serve billed PAYG
+**Scoperta:** Il verify run di enrichment ha ricevuto `429 RESOURCE_EXHAUSTED` su quasi tutte le chiamate, con messaggio esplicito: `limit: 20, GenerateRequestsPerDayPerProjectPerModel-FreeTier, model: gemini-2.5-flash`. Il free tier ha un tetto **per-progetto, per-modello, di 20 richieste/giorno**. Esaurito cumulativamente dai test di oggi (smoke 2 + stress 8 + measure 8 + verify ~2 ≈ 20).
+**Implicazione:** La pipeline serie-c usa Gemini per discovery (grounding, ~8/run) **+** enrichment (~1/player). Un singolo ciclo completo brucia i 20/giorno → il free-tier-only rende il prodotto azzoppato (1 run/giorno, enrichment a pochi player) proprio mentre entrano i club. Il retry+backoff (BUG-019) NON salva: è quota giornaliera, non throttle al minuto.
+**Decisione:** **(A) Gemini billed pay-as-you-go** per serie-c. Due paletti dalla lezione ob1-scout: (1) **PAYG, non prepagato** — il buco dei 5 giorni di ob1-scout era credito prepagato svuotato senza ricarica; PAYG si addebita a consumo. Mettere un **budget alert**. (2) Costo reale ≈ centesimi/giorno (2.5-flash a consumo + ampia franchigia grounding giornaliera sul tier paid). "Non più gratis" = spiccioli.
+**Verifica operativa:** serie-c e ob1-scout devono usare **progetti Gemini separati** — il cap è per-progetto. ob1-scout fa 1 sola chiamata Gemini/run (analisi; enrichment via Serper/TM), quindi 4/giorno: sta sotto i 20 con 5x di margine, NON va toccato.
+**Micro-conferma meccanismo:** nel verify run, l'unico player arricchito prima del cap (Mattia Aramu) è saltato a **71 HOT** (€400k, 31a) staccando il cluster base a 64 → l'enrichment solleva il vero sopra la base. 1 caso, non la prova completa: il ranking pulito va rifatto col billed attivo.
+**Fase B (cost opt):** portare la discovery fuori da Gemini (pattern ob1-scout: scraper esterno → Gemini senza grounding) resta come ottimizzazione costo futura, non urgente.
+
+---
+
+## Known issues / backlog
+
+| Issue | Stato | Note |
+|---|---|---|
+| Fallback enrichment Tavily → `432 Client Error` | Aperto, non bloccante | Chiave scaduta o API cambiata. Da indagare quando si tocca l'enrichment. |
+| Verify ranking dump-vs-real | In attesa | Rilanciare `verify_enrichment.py` con Gemini billed attivo (no cap) per il ranking pulito. |
+| Discovery fuori da Gemini (pattern ob1-scout) | Fase B | Ottimizzazione costo, non urgente. |
+
 ---
 
 ## Codice eliminato
