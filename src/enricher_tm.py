@@ -9,12 +9,19 @@ import os
 import re
 import json
 import time
-from typing import Dict, Any, Optional
+from typing import Dict, Any, List, Optional
 import requests
 from dotenv import load_dotenv
 from google import genai
 
 load_dotenv()
+
+# Batch size for grounded enrichment. One Gemini call covers this many
+# players — the main cost lever (N players -> N/BATCH calls instead of N).
+# Kept small so grounding still searches each player properly.
+BATCH_SIZE = 5
+_MAX_RETRIES = 3
+_BACKOFF_BASE = 2  # seconds
 
 _GROUNDING_PROMPT = """Cerca su Transfermarkt il profilo del calciatore "{name}".
 Estrai i dati reali dalla pagina profilo Transfermarkt (transfermarkt.it o transfermarkt.com).
@@ -42,6 +49,33 @@ Rispondi ESCLUSIVAMENTE con JSON valido, nessun testo aggiuntivo:
 }}
 
 Se il calciatore non è trovato su Transfermarkt, rispondi esattamente: {{}}"""
+
+_BATCH_PROMPT = """Cerca su Transfermarkt (transfermarkt.it o transfermarkt.com) il profilo di OGNUNO di questi calciatori:
+{names}
+
+Rispondi ESCLUSIVAMENTE con un oggetto JSON valido, nessun testo aggiuntivo.
+Le chiavi devono essere ESATTAMENTE i nomi come scritti sopra. Per ogni calciatore il valore è:
+{{
+  "birth_date": "YYYY-MM-DD" o null,
+  "nationality": "Nazionalità principale" o null,
+  "second_nationality": "Seconda nazionalità" o null,
+  "height_cm": numero intero o null,
+  "foot": "destro" | "sinistro" | "ambidestro" | null,
+  "current_club": "Nome Club" o "Svincolato" o null,
+  "contract_expires": "YYYY-MM-DD" o null,
+  "market_value_eur": numero intero o null,
+  "market_value_text": "es. 150 mila €" o null,
+  "main_position": "Ruolo principale" o null,
+  "agent": "Nome agenzia" o null,
+  "tm_url": "URL profilo Transfermarkt" o null,
+  "appearances": presenze ultima stagione disponibile o null,
+  "goals": gol ultima stagione o null,
+  "assists": assist ultima stagione o null,
+  "minutes_played": minuti ultima stagione o null,
+  "season": "es. 2025/26" o null
+}}
+
+Se un calciatore non è trovato su Transfermarkt, usa {{}} come suo valore. Non inventare dati."""
 
 
 class TransfermarktEnricher:
@@ -153,6 +187,56 @@ class TransfermarktEnricher:
             return data
         print(f"  [FALLBACK] Trying Tavily for {player_name}...")
         return self.enrich_player_tavily(player_name)
+
+    def enrich_players_batch(self, names: List[str]) -> Dict[str, Dict[str, Any]]:
+        """Enrich up to BATCH_SIZE players with ONE grounded call.
+
+        Returns {input_name: tm_data} — players the model couldn't find map
+        to {} and stay eligible for the next run. Retries transient 429/503
+        with backoff before giving up on the whole batch.
+        """
+        if not names:
+            return {}
+        prompt = _BATCH_PROMPT.format(names="\n".join(f"- {n}" for n in names))
+
+        response = None
+        for attempt in range(_MAX_RETRIES):
+            try:
+                response = self.gemini_client.models.generate_content(
+                    model="gemini-2.5-flash",
+                    contents=prompt,
+                    config=genai.types.GenerateContentConfig(
+                        tools=[genai.types.Tool(google_search=genai.types.GoogleSearch())],
+                        temperature=0.0,
+                    ),
+                )
+                break
+            except Exception as e:
+                msg = str(e).lower()
+                transient = any(k in msg for k in (
+                    '429', '503', 'resource_exhausted', 'unavailable', 'overloaded'))
+                if transient and attempt < _MAX_RETRIES - 1:
+                    wait = _BACKOFF_BASE * (2 ** attempt)
+                    print(f"  [BATCH RETRY] attempt {attempt + 1} failed, backoff {wait}s")
+                    time.sleep(wait)
+                    continue
+                print(f"  [BATCH ERROR] {e}")
+                return {}
+
+        raw = self._parse_json_response(response.text or "") if response else {}
+        if not isinstance(raw, dict):
+            return {}
+
+        # Match model keys back to input names (tolerant to case/spacing drift).
+        def _norm(s: str) -> str:
+            return re.sub(r'\s+', ' ', s).strip().lower()
+        by_norm = {_norm(k): v for k, v in raw.items() if isinstance(v, dict)}
+        out = {}
+        for name in names:
+            out[name] = by_norm.get(_norm(name), {})
+        found = sum(1 for v in out.values() if v)
+        print(f"  [BATCH] {found}/{len(names)} profili trovati in 1 chiamata")
+        return out
 
 
 if __name__ == "__main__":
