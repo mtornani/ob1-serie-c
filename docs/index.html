@@ -4,9 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#0a0a0a" />
-<meta name="description" content="Ouroboros Protocol: scout AI per Serie C e Lega Pro italiana. Trova opportunita di mercato prima degli altri.">
-<meta property="og:title" content="OB1 // Lega Pro Scout">
-<meta property="og:description" content="Scout AI automatico per la Lega Pro. Monitora giocatori, segnala opportunita, genera report. Ogni 6 ore.">
+<meta name="description" content="OB1: il radar di mercato per la Lega Pro. Svincolati, prestiti e occasioni, aggiornati ogni 6 ore.">
+<meta property="og:title" content="OB1 — Scout Lega Pro">
+<meta property="og:description" content="Il radar di mercato per la Lega Pro: svincolati, prestiti e occasioni, aggiornati ogni 6 ore.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mtornani.github.io/ob1-serie-c/">
 <meta name="twitter:card" content="summary">
@@ -15,7 +15,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.svg">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%2300ff66' stroke-width='4'/><circle cx='50' cy='15' r='5' fill='%2300ff66'/></svg>">
-<title>OB1 // Lega Pro Scout</title>
+<title>OB1 — Scout Lega Pro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
@@ -382,7 +382,7 @@ body::before{
 .score .dlabel{
   display:block;
   font-size: 10px; font-weight: 700;
-  letter-spacing: .14em;
+  letter-spacing: .05em;
   color: var(--ink-mute);
   margin-top: 4px;
   text-align: right;
@@ -880,18 +880,16 @@ body::before{
 <div class="topbar">
   <div class="topbar-inner">
     <div class="brand">
-      <span class="caret">▋</span>
       <span>OB1</span>
-      <span class="pipe">::</span>
-      <span class="sub">LEGA_PRO</span>
+      <span class="sub">Lega Pro</span>
     </div>
     <div class="topbar-links">
-      <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener">GLOBAL</a>
-      <a href="https://t.me/Ob1LegaPro_bot" class="tg-cta" target="_blank" rel="noopener" aria-label="Alert Live su Telegram: ricevi una notifica ogni volta che esce una nuova opportunità HOT"><span aria-hidden="true">⇢</span> ALERT LIVE</a>
+      <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener">OB1 Global</a>
+      <a href="https://t.me/Ob1LegaPro_bot" class="tg-cta" target="_blank" rel="noopener" aria-label="Ricevi un avviso su Telegram per ogni nuova occasione di mercato">Avvisi Telegram</a>
     </div>
     <div class="status">
       <span class="dot"></span>
-      <span id="cycleStatus">RADAR :: caricamento…</span>
+      <span id="cycleStatus">Aggiornamento…</span>
     </div>
   </div>
 </div>
@@ -904,21 +902,21 @@ body::before{
   <section class="cmd">
     <div class="cmd-row">
       <div>
-        <h1>SCOUT <span class="green">/&gt;</span> LEGA PRO</h1>
-        <p class="blurb">Opportunità di mercato Lega Pro — aggiornato ogni 6 ore.</p>
+        <h1>Scout <span class="green">Lega Pro</span></h1>
+        <p class="blurb">Le occasioni di mercato della Serie C, aggiornate ogni 6 ore.</p>
       </div>
       <div class="counters">
         <div class="counter hot">
-          <div class="n" id="ctHot">—</div><div class="l">HOT</div>
+          <div class="n" id="ctHot">—</div><div class="l">Occasioni</div>
         </div>
         <div class="counter">
-          <div class="n" id="ctFree">—</div><div class="l">SVINCOLATI</div>
+          <div class="n" id="ctFree">—</div><div class="l">Svincolati</div>
         </div>
         <div class="counter">
-          <div class="n" id="ctU21">—</div><div class="l">U23</div>
+          <div class="n" id="ctU21">—</div><div class="l">Under 23</div>
         </div>
         <div class="counter">
-          <div class="n" id="ctAll">—</div><div class="l">PROFILI</div>
+          <div class="n" id="ctAll">—</div><div class="l">Giocatori</div>
         </div>
       </div>
     </div>
@@ -927,17 +925,15 @@ body::before{
   <!-- CONTROLS -->
   <section class="controls">
     <div class="search">
-      <span class="prompt">&gt;</span>
-      <input id="q" type="search" placeholder="cerca player / club / ruolo…" autocomplete="off" />
-      <span class="kbd">/ per cercare</span>
+      <input id="q" type="search" placeholder="Cerca giocatore, club o ruolo…" autocomplete="off" />
     </div>
     <div class="filterbar" id="filters">
-      <button class="chip on" data-f="all">TUTTI<span class="num" data-ct="all">0</span></button>
-      <button class="chip" data-f="hot">HOT<span class="num" data-ct="hot">0</span></button>
-      <button class="chip" data-f="under">U23<span class="num" data-ct="under">0</span></button>
-      <button class="chip" data-f="free">SVINCOLATI<span class="num" data-ct="free">0</span></button>
-      <button class="chip" data-f="verified">VERIFICATI<span class="num" data-ct="verified">0</span></button>
-      <button class="chip" data-f="new">NOVITÀ<span class="num" data-ct="new">0</span></button>
+      <button class="chip on" data-f="all">Tutti<span class="num" data-ct="all">0</span></button>
+      <button class="chip" data-f="hot">Occasioni<span class="num" data-ct="hot">0</span></button>
+      <button class="chip" data-f="under">Under 23<span class="num" data-ct="under">0</span></button>
+      <button class="chip" data-f="free">Svincolati<span class="num" data-ct="free">0</span></button>
+      <button class="chip" data-f="verified">Dati verificati<span class="num" data-ct="verified">0</span></button>
+      <button class="chip" data-f="new">Novità<span class="num" data-ct="new">0</span></button>
     </div>
     <div class="sub-row">
       <div class="results">
@@ -945,18 +941,18 @@ body::before{
       </div>
       <div class="sort-group">
         <select id="typeF">
-          <option value="">tipo: tutti</option>
-          <option value="svincolato">svincolato</option>
-          <option value="rescissione">rescissione</option>
-          <option value="prestito">prestito</option>
-          <option value="mercato">mercato</option>
-          <option value="scadenza">scadenza</option>
+          <option value="">Tutte le situazioni</option>
+          <option value="svincolato">Svincolato</option>
+          <option value="rescissione">Rescissione</option>
+          <option value="prestito">Prestito</option>
+          <option value="mercato">Voce di mercato</option>
+          <option value="scadenza">Contratto in scadenza</option>
         </select>
         <select id="sortBy">
-          <option value="score">↓ score</option>
-          <option value="urgency">↓ urgenza</option>
-          <option value="name">a→z</option>
-          <option value="date">↓ recenti</option>
+          <option value="score">Punteggio</option>
+          <option value="urgency">Urgenza</option>
+          <option value="name">Nome</option>
+          <option value="date">Più recenti</option>
         </select>
       </div>
     </div>
@@ -965,15 +961,15 @@ body::before{
   <!-- GRID -->
   <section class="grid" id="grid"></section>
   <div class="empty" id="empty" style="display:none">
-    <div class="big">&gt;_ no_match</div>
-    <div>cambia filtro o aspetta il prossimo ciclo.</div>
+    <div class="big">Nessun risultato</div>
+    <div>Prova a cambiare filtro o cerca un altro nome.</div>
   </div>
 
   <footer class="foot">
-    <div>&gt; OB1_SERIE_C :: 2026 :: ouroboros</div>
+    <div>OB1 Serie C — 2026</div>
     <div>
-      <a href="https://t.me/Ob1LegaPro_bot" target="_blank" rel="noopener">telegram</a> ·
-      <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener">global</a>
+      <a href="https://t.me/Ob1LegaPro_bot" target="_blank" rel="noopener">Telegram</a> ·
+      <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener">OB1 Global</a>
     </div>
   </footer>
 </div>
@@ -982,19 +978,19 @@ body::before{
 <div class="overlay" id="ov">
   <aside class="drawer" id="drawer">
     <div class="drawer-top">
-      <div class="bread"><span class="acc">&gt;</span> BRIEF // <span id="breadName">—</span></div>
+      <div class="bread"><span id="breadName">—</span></div>
       <button class="close" id="closeBtn" aria-label="close">×</button>
     </div>
     <div class="brief" id="brief"></div>
     <div class="actions" style="grid-template-columns:1fr 1fr;">
-      <a class="act" href="#" id="sourceLink" target="_blank" rel="noopener">APRI FONTE ↗</a>
-      <a class="act primary" href="#" id="tmLink" target="_blank" rel="noopener">PROFILO TM ↗</a>
+      <a class="act" href="#" id="sourceLink" target="_blank" rel="noopener">Leggi la notizia ↗</a>
+      <a class="act primary" href="#" id="tmLink" target="_blank" rel="noopener">Profilo Transfermarkt ↗</a>
     </div>
   </aside>
 </div>
 
 
-<script src="app.js?v=7"></script>
+<script src="app.js?v=8"></script>
 <script src="tracker.js" data-track-url="https://white-cherry-07a3.mirkotornani.workers.dev/"></script>
 </body>
 </html>

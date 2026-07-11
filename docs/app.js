@@ -1,4 +1,4 @@
-/* OB1 :: LEGA PRO — app v4 */
+/* OB1 — Scout Lega Pro (app v5) */
 
 const STATE = {
   all: [],
@@ -9,6 +9,8 @@ const STATE = {
   q: '',
   lastUpdate: null,
 };
+
+const TIER_LABEL = { hot: 'occasione', warm: 'da seguire', cold: 'archivio' };
 
 const el  = (s, r=document) => r.querySelector(s);
 const els = (s, r=document) => [...r.querySelectorAll(s)];
@@ -178,28 +180,29 @@ function paintGrid(){
 
 function card(o){
   const type  = (o.opportunity_type||'').toLowerCase();
-  const role  = safe(o.role_name, o.role || '—');
+  const roleRaw = o.role_name || o.role || '';
+  const role  = /^(n\/d|n\/a|none|—|-)?$/i.test(roleRaw.trim()) ? '' : roleRaw;
   const club  = safe(o.current_club, 'Svincolato');
-  const age   = o.age!=null ? `${o.age}a` : '';
+  const age   = o.age!=null ? `${o.age} anni` : '';
   const typeTag = type ? `<span class="tag type-${type}">${type.toUpperCase()}</span>` : '';
   const daysOld = o.discovered_at ? Math.round((Date.now() - new Date(o.discovered_at)) / 86400000) : null;
   const newTag  = (daysOld !== null && daysOld <= 3) ? `<span class="tag new-signal">NUOVO</span>` : '';
-  const tmTag   = o.tm_enriched === true ? `<span class="tag tm-ok">TM ✓</span>` : '';
+  const tmTag   = o.tm_enriched === true ? `<span class="tag tm-ok">Verificato</span>` : '';
 
   let daysText, daysUnit;
   if (o._isFree){
     const dwc = o.days_without_contract || 0;
-    daysText = dwc === 0 ? 'FREE' : dwc;
-    daysUnit = dwc === 0 ? 'appena libero' : 'gg libero';
+    daysText = dwc === 0 ? 'oggi' : dwc;
+    daysUnit = dwc === 0 ? 'appena svincolato' : (dwc === 1 ? 'giorno da svincolato' : 'giorni da svincolato');
   } else if (o._days == null){
     daysText = '—';
     daysUnit = '';
   } else if (o._days < 0){
     daysText = '—';
-    daysUnit = 'scaduto';
+    daysUnit = 'contratto scaduto';
   } else {
-    if (o._days > 730) { daysText = Math.round(o._days/30); daysUnit = 'mesi al ctr.'; }
-    else               { daysText = o._days;                 daysUnit = 'gg al ctr.'; }
+    if (o._days > 730) { daysText = Math.round(o._days/30); daysUnit = 'mesi alla scadenza'; }
+    else               { daysText = o._days;                 daysUnit = o._days === 1 ? 'giorno alla scadenza' : 'giorni alla scadenza'; }
   }
 
   return `
@@ -209,13 +212,10 @@ function card(o){
     <div class="name-block">
       <div class="name">${esc(o.player_name)}</div>
       <div class="meta">
-        <span class="role">${esc(role)}</span>
-        ${age?`<span class="sep">·</span><span class="age">${age}</span>`:''}
-        <span class="sep">·</span>
-        <span class="club">${esc(club)}</span>
+        ${[role && `<span class="role">${esc(role)}</span>`, age && `<span class="age">${age}</span>`, `<span class="club">${esc(club)}</span>`].filter(Boolean).join('<span class="sep">·</span>')}
       </div>
     </div>
-    <div class="score">${o.ob1_score}<span class="dlabel">${o._tier.toUpperCase()}</span></div>
+    <div class="score">${o.ob1_score}<span class="dlabel">${TIER_LABEL[o._tier]}</span></div>
   </div>
   <div class="card-body">
     <div class="tag-row">${typeTag}${tmTag}${newTag}</div>
@@ -279,7 +279,7 @@ function scoreReason(k, v, o) {
     case 'source':
       return v >= 80 ? `Fonte specializzata: ${o.source_name||''}`
            : v >= 60 ? `Fonte verificata: ${o.source_name||''}`
-           : 'Gemini Search — notizia da confermare su fonte diretta';
+           : 'Trovato dalla ricerca automatica — da confermare su fonte diretta';
     case 'completeness': {
       const have = ['nationality','foot','agent','appearances','market_value'].filter(f=>o[f]!=null).length;
       return have >= 4 ? `Profilo completo — ${have}/5 dati verificati su TM`
@@ -319,10 +319,11 @@ function openDrawer(o){
 
   const brief = el('#brief');
   const type  = (o.opportunity_type||'').toLowerCase();
-  const role  = safe(o.role_name, o.role || '—');
+  const roleRaw = o.role_name || o.role || '';
+  const role  = /^(n\/d|n\/a|none|—|-)?$/i.test(roleRaw.trim()) ? '' : roleRaw;
   const club  = safe(o.current_club, 'Svincolato');
 
-  el('#breadName').textContent = (o.player_name||'').toUpperCase();
+  el('#breadName').textContent = o.player_name || '';
 
   let urgencyLine = '', urgencyDate = '', urgencyBadge = 'CONTRATTO';
   if (o._isFree){
@@ -344,8 +345,8 @@ function openDrawer(o){
   }
 
   const daysHeadline = o._isFree
-    ? ((o.days_without_contract||0) === 0 ? 'FREE' : `${o.days_without_contract}gg`)
-    : (o._days == null ? '—' : (o._days < 0 ? 'SCAD.' : (o._days > 999 ? `${Math.round(o._days/30)}m` : `${o._days}gg`)));
+    ? ((o.days_without_contract||0) === 0 ? 'oggi' : `${o.days_without_contract} gg`)
+    : (o._days == null ? '—' : (o._days < 0 ? 'scaduto' : (o._days > 999 ? `${Math.round(o._days/30)} mesi` : `${o._days} gg`)));
 
   const stats = [
     { v: safe(o.appearances, '—'), l: 'PRESENZE' },
@@ -364,8 +365,7 @@ function openDrawer(o){
   const typeCell      = `<div class="cell"><span class="k">TIPO</span><span class="v" style="text-transform:uppercase;">${esc(type||'—')}</span></div>`;
   const discoveredCell = o.discovered_at ? (()=>{
     const d = new Date(o.discovered_at);
-    const dAgo = Math.round((Date.now() - d) / 86400000);
-    return `<div class="cell"><span class="k">RADAR OB1</span><span class="v">${d.toLocaleDateString('it-IT')} · +${dAgo}gg</span></div>`;
+    return `<div class="cell"><span class="k">SEGNALATO IL</span><span class="v">${d.toLocaleDateString('it-IT')}</span></div>`;
   })() : '';
 
   const metaCells = [clubCell, typeCell, ageCell, natCell, footCell, mvCell, agentCell, discoveredCell].filter(Boolean);
@@ -401,7 +401,7 @@ function openDrawer(o){
   const seasonNote = o.season ? `<div style="font-size:10px;color:var(--ink-mute);letter-spacing:.08em;margin-top:4px">stagione ${esc(o.season)}</div>` : '';
   const stripHtml = hasStats
     ? `<div class="strip">${stats.map(s=>`<div class="cell"><span class="v">${s.v}</span><span class="l">${s.l}</span></div>`).join('')}</div>${seasonNote}`
-    : `<div class="strip-empty">PRESENZE E STATS TM — ARRICCHIMENTO IN CORSO</div>`;
+    : `<div class="strip-empty">Statistiche in arrivo — verifica su Transfermarkt in corso</div>`;
 
   // Minutaggio FIGC — solo se ci sono dati reali
   let minutaggioHtml = '';
@@ -411,14 +411,14 @@ function openDrawer(o){
     const roiClass = (intel.roi_class === 'elite' || intel.roi_class === 'high') ? 'acc' : intel.roi_class === 'medium' ? 'blue' : '';
     minutaggioHtml = `
       <div class="sect">
-        <div class="sect-title">MINUTAGGIO FIGC<span class="dim">${esc(intel.roi_label||'')}</span></div>
+        <div class="sect-title">MINUTAGGIO FIGC</div>
         <div class="intel-grid">
           <div class="intel-cell" style="border-left-color:${trafficColor}">
             <div class="k">LISTA OVER</div>
             <div class="v" style="color:${trafficColor}">${esc(intel.traffic_label||'—')}</div>
           </div>
           <div class="intel-cell ${roiClass}">
-            <div class="k">MOLT. MINUTAGGIO</div>
+            <div class="k">MOLTIPLICATORE</div>
             <div class="v">${molt}</div>
           </div>
         </div>
@@ -440,10 +440,7 @@ function openDrawer(o){
       <div>
         <div class="name">${esc(o.player_name)}</div>
         <div class="sub">
-          <span class="role">${esc(role)}</span>
-          ${o.age!=null?`<span class="sep">·</span><span>${o.age} anni</span>`:''}
-          <span class="sep">·</span><span>${esc(club)}</span>
-          ${o.nationality?`<span class="sep">·</span><span>${esc(o.nationality)}</span>`:''}
+          ${[role && `<span class="role">${esc(role)}</span>`, o.age!=null && `<span>${o.age} anni</span>`, `<span>${esc(club)}</span>`, o.nationality && `<span>${esc(o.nationality)}</span>`].filter(Boolean).join('<span class="sep">·</span>')}
         </div>
       </div>
       <div class="big-score ${o._tier}">${o.ob1_score}<div class="pct">/100</div></div>
@@ -472,7 +469,7 @@ function openDrawer(o){
     ${signalsHtml}
 
     <details class="score-details sect">
-      <summary>PERCHÉ ${o.ob1_score}/100<span class="dim">${o._tier.toUpperCase()}</span></summary>
+      <summary>Perché questo punteggio<span class="dim">${TIER_LABEL[o._tier]}</span></summary>
       <div class="score-body">
         <div class="verdict-note">${esc(verdict)}</div>
         <div>${bdHtml}</div>
@@ -484,12 +481,12 @@ function openDrawer(o){
   const isGrounding = o.source_url && (o.source_url.includes('vertexaisearch') || o.source_url.includes('grounding-api'));
   if (o.source_url && !isGrounding){
     srcLink.href = o.source_url;
-    srcLink.textContent = `LEGGI L'ARTICOLO — ${(o.source_name||'fonte').toUpperCase()} ↗`;
+    srcLink.textContent = `Leggi la notizia — ${o.source_name||'fonte'} ↗`;
     srcLink.style.display = '';
   } else {
     const q = encodeURIComponent((o.player_name||'') + ' Serie C calciatore');
     srcLink.href = `https://www.google.com/search?q=${q}`;
-    srcLink.textContent = `CERCA SU GOOGLE — ${o.player_name||'PLAYER'} ↗`;
+    srcLink.textContent = 'Cerca su Google ↗';
     srcLink.style.display = '';
   }
 
@@ -529,9 +526,9 @@ function updateCycle(){
   const nH = Math.floor(nextMs/3600000), nM = Math.floor((nextMs%3600000)/60000);
   const hh = String(last.getHours()).padStart(2,'0');
   const mm = String(last.getMinutes()).padStart(2,'0');
-  const ago  = diffH > 0 ? `${diffH}h ${diffM}m fa` : `${diffM}m fa`;
-  const next = nextMs > 0 ? `prossimo tra ${nH}h ${nM}m` : 'in aggiornamento…';
-  el('#cycleStatus').textContent = `RADAR :: ${hh}:${mm} (${ago}) — ${next}`;
+  const ago  = diffH > 0 ? `${diffH} h fa` : `${diffM} min fa`;
+  const next = nextMs > 0 ? `prossimo tra ${nH > 0 ? nH + ' h' : nM + ' min'}` : 'aggiornamento in corso…';
+  el('#cycleStatus').textContent = `Aggiornato ${ago} · ${next}`;
 }
 
 /* ============ STALE WARNING ============ */
@@ -543,7 +540,7 @@ function checkStale(){
   if (!banner) return;
   if (ageH > 12) {
     const h = Math.round(ageH);
-    banner.textContent = `⚠  Dati vecchi di ${h} ore — il radar sta aggiornando, ricarica tra poco.`;
+    banner.textContent = `⚠ Dati di ${h} ore fa — aggiornamento in corso, ricarica tra poco.`;
     banner.style.display = 'block';
   }
 }
