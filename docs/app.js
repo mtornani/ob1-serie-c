@@ -403,27 +403,15 @@ function openDrawer(o){
     ? `<div class="strip">${stats.map(s=>`<div class="cell"><span class="v">${s.v}</span><span class="l">${s.l}</span></div>`).join('')}</div>${seasonNote}`
     : `<div class="strip-empty">Statistiche in arrivo — verifica su Transfermarkt in corso</div>`;
 
-  // Minutaggio FIGC — solo se ci sono dati reali
+  // Minutaggio FIGC — una sola riga in linguaggio piano. I dettagli
+  // (moltiplicatori, proiezioni) restano nei report privati, non qui.
   let minutaggioHtml = '';
-  if (intel.roi_class && intel.roi_class !== 'unknown') {
-    const trafficColor = intel.traffic_light === 'green' ? 'var(--acc)' : intel.traffic_light === 'yellow' ? 'var(--amber)' : intel.traffic_light === 'red' ? 'var(--red)' : 'var(--ink-mute)';
-    const molt = intel.moltiplicatore ? `×${intel.moltiplicatore}` : '—';
-    const roiClass = (intel.roi_class === 'elite' || intel.roi_class === 'high') ? 'acc' : intel.roi_class === 'medium' ? 'blue' : '';
-    minutaggioHtml = `
-      <div class="sect">
-        <div class="sect-title">MINUTAGGIO FIGC</div>
-        <div class="intel-grid">
-          <div class="intel-cell" style="border-left-color:${trafficColor}">
-            <div class="k">LISTA OVER</div>
-            <div class="v" style="color:${trafficColor}">${esc(intel.traffic_label||'—')}</div>
-          </div>
-          <div class="intel-cell ${roiClass}">
-            <div class="k">MOLTIPLICATORE</div>
-            <div class="v">${molt}</div>
-          </div>
-        </div>
-        ${intel.roi_dettaglio ? `<div class="intel-note">${esc(intel.roi_dettaglio)}</div>` : ''}
-      </div>`;
+  if (intel.traffic_light === 'green') {
+    const bonus = ['elite','high','medium'].includes(intel.roi_class)
+      ? ' e porta contributi minutaggio giovani' : '';
+    minutaggioHtml = `<div class="intel-note" style="border-left:3px solid var(--acc);padding-left:10px;">✓ Under per le liste FIGC${bonus}</div>`;
+  } else if (intel.traffic_light === 'red') {
+    minutaggioHtml = `<div class="intel-note" style="border-left:3px solid var(--ink-mute);padding-left:10px;">Occupa un posto Over in lista</div>`;
   }
 
   // Segnali contrattuali
