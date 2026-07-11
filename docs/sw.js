@@ -4,7 +4,7 @@
  * data.json is NEVER cached (always fresh from network)
  */
 
-const CACHE_NAME = 'ob1-radar-v7';
+const CACHE_NAME = 'ob1-radar-v8';
 const STATIC_ASSETS = [
   './',
   './index.html',
