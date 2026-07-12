@@ -215,7 +215,7 @@ function card(o){
         ${[role && `<span class="role">${esc(role)}</span>`, age && `<span class="age">${age}</span>`, `<span class="club">${esc(club)}</span>`].filter(Boolean).join('<span class="sep">·</span>')}
       </div>
     </div>
-    <div class="score">${o.ob1_score}<span class="dlabel">${TIER_LABEL[o._tier]}</span></div>
+    <div class="score">${o.ob1_score}<span class="dlabel">${TIER_LABEL[o._tier]||''}</span></div>
   </div>
   <div class="card-body">
     <div class="tag-row">${typeTag}${tmTag}${newTag}</div>
@@ -365,6 +365,7 @@ function openDrawer(o){
   const typeCell      = `<div class="cell"><span class="k">TIPO</span><span class="v" style="text-transform:uppercase;">${esc(type||'—')}</span></div>`;
   const discoveredCell = o.discovered_at ? (()=>{
     const d = new Date(o.discovered_at);
+    if (isNaN(d.getTime())) return '';
     return `<div class="cell"><span class="k">SEGNALATO IL</span><span class="v">${d.toLocaleDateString('it-IT')}</span></div>`;
   })() : '';
 
@@ -457,7 +458,7 @@ function openDrawer(o){
     ${signalsHtml}
 
     <details class="score-details sect">
-      <summary>Perché questo punteggio<span class="dim">${TIER_LABEL[o._tier]}</span></summary>
+      <summary>Perché questo punteggio<span class="dim">${TIER_LABEL[o._tier]||''}</span></summary>
       <div class="score-body">
         <div class="verdict-note">${esc(verdict)}</div>
         <div>${bdHtml}</div>

@@ -60,7 +60,11 @@ def apply_tm_data(opp: dict, tm: dict) -> bool:
     for key in _TM_KEYS:
         if tm.get(key) is not None:
             opp[key] = tm[key]
-    profile = opp.setdefault('player_profile', {})
+    # setdefault would return an existing null value; guard for that.
+    profile = opp.get('player_profile')
+    if not isinstance(profile, dict):
+        profile = {}
+        opp['player_profile'] = profile
     for key in _TM_KEYS:
         if tm.get(key) is not None:
             profile[key] = tm[key]
