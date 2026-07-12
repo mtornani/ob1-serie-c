@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#0a0a0a" />
-<meta name="description" content="Ouroboros Protocol: scout AI per Serie C e Lega Pro italiana. Trova opportunita di mercato prima degli altri.">
-<meta property="og:title" content="OB1 // Lega Pro Scout">
-<meta property="og:description" content="Scout AI automatico per la Lega Pro. Monitora giocatori, segnala opportunita, genera report. Ogni 6 ore.">
+<meta name="theme-color" content="#0c0c0c" />
+<meta name="description" content="OB1: il radar di mercato per la Lega Pro. Svincolati, prestiti e occasioni, aggiornati ogni 6 ore.">
+<meta property="og:title" content="OB1 — Scout Lega Pro">
+<meta property="og:description" content="Il radar di mercato per la Lega Pro: svincolati, prestiti e occasioni, aggiornati ogni 6 ore.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mtornani.github.io/ob1-serie-c/">
 <meta name="twitter:card" content="summary">
@@ -14,8 +14,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.svg">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%2300ff66' stroke-width='4'/><circle cx='50' cy='15' r='5' fill='%2300ff66'/></svg>">
-<title>OB1 // Lega Pro Scout</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%232fbf71' stroke-width='4'/><circle cx='50' cy='15' r='5' fill='%232fbf71'/></svg>">
+<title>OB1 — Scout Lega Pro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
@@ -32,9 +32,9 @@
   --ink-mute:    #5c5c5c;
   --ink-ghost:   #3a3a3a;
 
-  --acc:         #00ff66;
-  --acc-dim:     #00c94f;
-  --acc-bg:      rgba(0,255,102,.08);
+  --acc:         #2fbf71;
+  --acc-dim:     #26a35f;
+  --acc-bg:      rgba(47,191,113,.10);
 
   --red:         #ff3b4d;
   --red-bg:      rgba(255,59,77,.12);
@@ -53,8 +53,8 @@
 *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 html,body{ background:var(--bg); color:var(--ink); }
 body{
-  font-family:var(--mono);
-  font-size:13px;
+  font-family:var(--sans);
+  font-size:13.5px;
   line-height:1.45;
   -webkit-font-smoothing:antialiased;
   min-height:100vh;
@@ -67,6 +67,7 @@ a{ color:inherit; text-decoration:none; }
 
 /* ============ SCANLINE / NOISE ============ */
 body::before{
+  display:none;
   content:"";
   position:fixed; inset:0;
   background:
@@ -110,22 +111,15 @@ body::before{
 }
 .brand{
   display:flex; align-items:center; gap:8px;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-weight:700;
   font-size:12px;
   letter-spacing: .04em;
 }
-.brand .caret{
-  color: var(--acc);
-  text-shadow: 0 0 12px color-mix(in oklab, var(--acc) 55%, transparent);
-  animation: blink 1.1s steps(2,end) infinite;
-}
-@keyframes blink{ 50%{ opacity:.35; } }
-.brand .pipe{ color: var(--ink-ghost); }
 .brand .sub{ color: var(--ink-dim); font-weight:500; }
 
 .topbar .status{
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10.5px;
   color: var(--ink-dim);
   display:flex; gap:10px; align-items:center;
@@ -136,8 +130,6 @@ body::before{
 .status .dot{
   width:6px; height:6px; border-radius:999px;
   background: var(--acc);
-  box-shadow: 0 0 8px var(--acc);
-  animation: pulse 2s ease-in-out infinite;
 }
 @keyframes pulse{ 50%{ opacity:.45; transform:scale(.85); } }
 
@@ -153,7 +145,6 @@ body::before{
   color: var(--acc);
   border-color: color-mix(in oklab, var(--acc) 35%, transparent);
   background: var(--acc-bg);
-  animation: tg-pulse 3s ease-in-out infinite;
 }
 @media (prefers-reduced-motion: reduce) { .topbar-links .tg-cta { animation: none; } }
 .topbar-links .tg-cta:hover{ color: var(--bg); background: var(--acc); border-color: var(--acc); }
@@ -192,14 +183,13 @@ body::before{
 
 .counters{
   display:flex; gap: 22px; align-items: baseline;
-  font-family: var(--mono);
 }
 .counter{
   display:flex; flex-direction:column; gap:2px;
   align-items:flex-end; min-width: 52px;
 }
-.counter .n{ font-size: 22px; font-weight:700; line-height:1; color: var(--ink); }
-.counter .l{ font-size: 9.5px; letter-spacing:.12em; color: var(--ink-mute); }
+.counter .n{ font-family: var(--mono); font-size: 22px; font-weight:700; line-height:1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.counter .l{ font-size: 9.5px; letter-spacing:.07em; color: var(--ink-mute); }
 .counter.hot .n{ color: var(--acc); }
 
 @media (max-width: 720px){
@@ -230,11 +220,11 @@ body::before{
 .search .prompt{ color: var(--acc); font-weight:700; }
 .search input{
   flex:1; min-width:0;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 14px;
   outline:0;
 }
-.search input::placeholder{ color: var(--ink-mute); }
+.search input::placeholder{ color: var(--ink-dim); }
 .search .kbd{
   font-size:10px; color: var(--ink-mute);
   border:1px solid var(--line-2); padding:2px 6px;
@@ -252,9 +242,10 @@ body::before{
 .chip{
   flex: 1 0 auto;
   padding: 10px 14px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: .09em;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .02em;
   color: var(--ink-dim);
   border-right: 1px solid var(--line-2);
   white-space: nowrap;
@@ -279,8 +270,8 @@ body::before{
   background: var(--bg-1);
   border:1px solid var(--line-2);
   padding:5px 8px;
-  font-family: var(--mono);
-  font-size: 11px;
+  font-family: var(--sans);
+  font-size: 12px;
   color: var(--ink);
 }
 .sub-row .sort-group{ display:flex; gap:6px; }
@@ -324,14 +315,14 @@ body::before{
   background: var(--ink-ghost);
 }
 .card[data-tier="hot"] .urgency{ width: 4px; }
-.card[data-urgency="critical"] .urgency{ background: var(--red); box-shadow: 0 0 8px var(--red); }
+.card[data-urgency="critical"] .urgency{ background: var(--red); }
 .card[data-urgency="high"]     .urgency{ background: var(--amber); }
 .card[data-urgency="warm"]     .urgency{ background: var(--acc); }
 .card[data-urgency="cold"]     .urgency{ background: var(--ink-ghost); }
 
 /* tier-score glow */
 .card[data-tier="hot"]{
-  background: linear-gradient(180deg, rgba(0,255,102,.05) 0%, transparent 55%), var(--bg-1);
+  background: linear-gradient(180deg, rgba(47,191,113,.05) 0%, transparent 55%), var(--bg-1);
   border-color: color-mix(in oklab, var(--acc) 55%, var(--line));
   border-width: 1px 1px 1px 1px;
 }
@@ -376,13 +367,13 @@ body::before{
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-.card[data-tier="hot"]  .score{ color: var(--acc); text-shadow: 0 0 18px color-mix(in oklab, var(--acc) 40%, transparent); }
+.card[data-tier="hot"]  .score{ color: var(--acc); }
 .card[data-tier="warm"] .score{ color: var(--ink); }
 .card[data-tier="cold"] .score{ color: var(--ink-mute); }
 .score .dlabel{
   display:block;
   font-size: 10px; font-weight: 700;
-  letter-spacing: .14em;
+  letter-spacing: .05em;
   color: var(--ink-mute);
   margin-top: 4px;
   text-align: right;
@@ -417,7 +408,7 @@ body::before{
 .tag.type-mercato    { color: var(--ink);   border-color: var(--line-2); }
 
 .tag.u21   { color: var(--acc); border-color: color-mix(in oklab, var(--acc) 40%, var(--line-2)); }
-.tag.new-signal { color: var(--acc); border-color: color-mix(in oklab, var(--acc) 45%, transparent); background: var(--acc-bg); animation: new-pulse 2.5s ease-in-out infinite; }
+.tag.new-signal { color: var(--acc); border-color: color-mix(in oklab, var(--acc) 45%, transparent); background: var(--acc-bg); }
 @keyframes new-pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.55; } }
 .tag.tm-ok  { color: var(--blue); border-color: color-mix(in oklab, var(--blue) 40%, transparent); background: var(--blue-bg); }
 
@@ -435,7 +426,8 @@ body::before{
   letter-spacing: -.02em;
 }
 .timer .unit{
-  font-size: 9px; letter-spacing: .04em;
+  font-family: var(--sans);
+  font-size: 9.5px; letter-spacing: .01em;
   color: var(--ink-mute);
   margin-top: 2px;
   display:block;
@@ -578,7 +570,7 @@ body::before{
   letter-spacing: -.03em;
   font-variant-numeric: tabular-nums;
 }
-.brief-head .big-score.hot{ color: var(--acc); text-shadow: 0 0 22px color-mix(in oklab, var(--acc) 45%, transparent); }
+.brief-head .big-score.hot{ color: var(--acc); }
 .brief-head .big-score.warm{ color: var(--ink); }
 .brief-head .big-score.cold{ color: var(--ink-mute); }
 .brief-head .big-score .pct{ font-size: 14px; color: var(--ink-mute); }
@@ -593,7 +585,7 @@ body::before{
 .urgency-bloc .badge{
   font-family: var(--mono);
   font-size: 9.5px;
-  letter-spacing: .14em;
+  letter-spacing: .06em;
   padding: 4px 7px;
   border: 1px solid var(--line-2);
   color: var(--ink-dim);
@@ -640,7 +632,7 @@ body::before{
   font-variant-numeric: tabular-nums;
 }
 .strip .cell .l{
-  font-size: 9.5px; letter-spacing:.12em;
+  font-size: 9.5px; letter-spacing:.07em;
   color: var(--ink-mute);
 }
 
@@ -651,13 +643,12 @@ body::before{
 .sect-title{
   font-family: var(--mono);
   font-size: 10.5px;
-  letter-spacing:.14em;
-  color: var(--acc);
+  letter-spacing:.06em;
+  color: var(--ink-dim);
   display:flex; align-items:center; gap:8px;
-  border-bottom: 1px dashed var(--line-2);
+  border-bottom: 1px solid var(--line-2);
   padding-bottom: 6px;
 }
-.sect-title::before{ content: ">"; color: var(--acc); }
 .sect-title .dim{ color: var(--ink-mute); margin-left:auto; font-family: var(--mono); letter-spacing: .08em; }
 
 /* meta table */
@@ -677,7 +668,7 @@ body::before{
 .meta-grid .cell:nth-child(2n){ border-right: 0; }
 .meta-grid .cell:nth-last-child(-n+2){ border-bottom: 0; }
 .meta-grid .cell .k{
-  font-size: 9.5px; letter-spacing:.12em; color: var(--ink-mute);
+  font-size: 9.5px; letter-spacing:.07em; color: var(--ink-mute);
 }
 .meta-grid .cell .v{ color: var(--ink); font-weight:500; }
 
@@ -690,7 +681,7 @@ body::before{
   padding: 8px 12px;
   background: var(--bg-1);
 }
-.intel-cell .k{ font-size: 9.5px; letter-spacing:.12em; color: var(--ink-mute); }
+.intel-cell .k{ font-size: 9.5px; letter-spacing:.07em; color: var(--ink-mute); }
 .intel-cell .v{ font-family: var(--mono); font-size: 16px; font-weight:700; color: var(--ink); margin-top:2px; font-variant-numeric: tabular-nums; }
 .intel-cell.acc .v{ color: var(--acc); }
 .intel-cell.blue .v{ color: var(--blue); }
@@ -699,7 +690,7 @@ body::before{
   font-size: 11px; color: var(--ink-dim);
   padding: 8px 12px;
   background: var(--bg-1);
-  border: 1px dashed var(--line-2);
+  border: 1px solid var(--line-2);
 }
 
 .lista{
@@ -732,7 +723,7 @@ body::before{
 .reason-row:last-child{ border-bottom:0; }
 .reason-icon{ font-size: 13px; line-height: 1.4; }
 .reason-body{ display:flex; flex-direction:column; gap:2px; }
-.reason-label{ font-size: 9px; letter-spacing:.14em; color: var(--ink-mute); text-transform:uppercase; }
+.reason-label{ font-size: 9px; letter-spacing:.06em; color: var(--ink-mute); text-transform:uppercase; }
 .reason-weight{ color: var(--ink-ghost); }
 .reason-text{ font-size: 12px; color: var(--ink); line-height:1.3; }
 .reason-score{ font-family: var(--mono); font-size: 13px; font-weight:700; text-align:right; line-height:1.6; font-variant-numeric: tabular-nums; }
@@ -831,9 +822,8 @@ body::before{
   background: var(--amber-bg);
   border-bottom: 1px solid color-mix(in oklab, var(--amber) 40%, transparent);
   color: var(--amber);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: .06em;
+  font-family: var(--sans);
+  font-size: 12px;
   padding: 8px 16px;
   text-align: center;
   position: sticky;
@@ -853,13 +843,12 @@ body::before{
   list-style: none;
   display: flex; align-items: center; gap: 8px;
   padding-bottom: 6px;
-  border-bottom: 1px dashed var(--line-2);
-  font-family: var(--mono); font-size: 10.5px;
-  letter-spacing: .14em; color: var(--acc);
+  border-bottom: 1px solid var(--line-2);
+  font-family: var(--sans); font-size: 12px; font-weight:600;
+  letter-spacing: 0; color: var(--ink);
   user-select: none;
 }
 .score-details summary::-webkit-details-marker{ display:none; }
-.score-details summary::before{ content: ">"; color: var(--acc); }
 .score-details summary::after{ content: "▸"; font-size: 9px; color: var(--ink-mute); margin-left:auto; }
 .score-details[open] summary::after{ content: "▾"; }
 .score-details .dim{ color: var(--ink-mute); margin-left:4px; font-size:10px; }
@@ -869,7 +858,7 @@ body::before{
 .strip-empty{
   padding: 12px 14px;
   font-size: 11px; color: var(--ink-mute);
-  border: 1px dashed var(--line-2);
+  border: 1px solid var(--line-2);
   text-align: center;
   letter-spacing: .06em;
 }
@@ -880,18 +869,16 @@ body::before{
 <div class="topbar">
   <div class="topbar-inner">
     <div class="brand">
-      <span class="caret">▋</span>
       <span>OB1</span>
-      <span class="pipe">::</span>
-      <span class="sub">LEGA_PRO</span>
+      <span class="sub">Lega Pro</span>
     </div>
     <div class="topbar-links">
-      <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener">GLOBAL</a>
-      <a href="https://t.me/Ob1LegaPro_bot" class="tg-cta" target="_blank" rel="noopener" aria-label="Alert Live su Telegram: ricevi una notifica ogni volta che esce una nuova opportunità HOT"><span aria-hidden="true">⇢</span> ALERT LIVE</a>
+      <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener">OB1 Global</a>
+      <a href="https://t.me/Ob1LegaPro_bot" class="tg-cta" target="_blank" rel="noopener" aria-label="Ricevi un avviso su Telegram per ogni nuova occasione di mercato">Avvisi Telegram</a>
     </div>
     <div class="status">
       <span class="dot"></span>
-      <span id="cycleStatus">RADAR :: caricamento…</span>
+      <span id="cycleStatus">Aggiornamento…</span>
     </div>
   </div>
 </div>
@@ -904,21 +891,21 @@ body::before{
   <section class="cmd">
     <div class="cmd-row">
       <div>
-        <h1>SCOUT <span class="green">/&gt;</span> LEGA PRO</h1>
-        <p class="blurb">Opportunità di mercato Lega Pro — aggiornato ogni 6 ore.</p>
+        <h1>Scout <span class="green">Lega Pro</span></h1>
+        <p class="blurb">Le occasioni di mercato della Serie C, aggiornate ogni 6 ore.</p>
       </div>
       <div class="counters">
         <div class="counter hot">
-          <div class="n" id="ctHot">—</div><div class="l">HOT</div>
+          <div class="n" id="ctHot">—</div><div class="l">Occasioni</div>
         </div>
         <div class="counter">
-          <div class="n" id="ctFree">—</div><div class="l">SVINCOLATI</div>
+          <div class="n" id="ctFree">—</div><div class="l">Svincolati</div>
         </div>
         <div class="counter">
-          <div class="n" id="ctU21">—</div><div class="l">U23</div>
+          <div class="n" id="ctU21">—</div><div class="l">Under 23</div>
         </div>
         <div class="counter">
-          <div class="n" id="ctAll">—</div><div class="l">PROFILI</div>
+          <div class="n" id="ctAll">—</div><div class="l">Giocatori</div>
         </div>
       </div>
     </div>
@@ -927,17 +914,15 @@ body::before{
   <!-- CONTROLS -->
   <section class="controls">
     <div class="search">
-      <span class="prompt">&gt;</span>
-      <input id="q" type="search" placeholder="cerca player / club / ruolo…" autocomplete="off" />
-      <span class="kbd">/ per cercare</span>
+      <input id="q" type="search" placeholder="Cerca giocatore, club o ruolo…" autocomplete="off" />
     </div>
     <div class="filterbar" id="filters">
-      <button class="chip on" data-f="all">TUTTI<span class="num" data-ct="all">0</span></button>
-      <button class="chip" data-f="hot">HOT<span class="num" data-ct="hot">0</span></button>
-      <button class="chip" data-f="under">U23<span class="num" data-ct="under">0</span></button>
-      <button class="chip" data-f="free">SVINCOLATI<span class="num" data-ct="free">0</span></button>
-      <button class="chip" data-f="verified">VERIFICATI<span class="num" data-ct="verified">0</span></button>
-      <button class="chip" data-f="new">NOVITÀ<span class="num" data-ct="new">0</span></button>
+      <button class="chip on" data-f="all">Tutti<span class="num" data-ct="all">0</span></button>
+      <button class="chip" data-f="hot">Occasioni<span class="num" data-ct="hot">0</span></button>
+      <button class="chip" data-f="under">Under 23<span class="num" data-ct="under">0</span></button>
+      <button class="chip" data-f="free">Svincolati<span class="num" data-ct="free">0</span></button>
+      <button class="chip" data-f="verified">Dati verificati<span class="num" data-ct="verified">0</span></button>
+      <button class="chip" data-f="new">Novità<span class="num" data-ct="new">0</span></button>
     </div>
     <div class="sub-row">
       <div class="results">
@@ -945,18 +930,18 @@ body::before{
       </div>
       <div class="sort-group">
         <select id="typeF">
-          <option value="">tipo: tutti</option>
-          <option value="svincolato">svincolato</option>
-          <option value="rescissione">rescissione</option>
-          <option value="prestito">prestito</option>
-          <option value="mercato">mercato</option>
-          <option value="scadenza">scadenza</option>
+          <option value="">Tutte le situazioni</option>
+          <option value="svincolato">Svincolato</option>
+          <option value="rescissione">Rescissione</option>
+          <option value="prestito">Prestito</option>
+          <option value="mercato">Voce di mercato</option>
+          <option value="scadenza">Contratto in scadenza</option>
         </select>
         <select id="sortBy">
-          <option value="score">↓ score</option>
-          <option value="urgency">↓ urgenza</option>
-          <option value="name">a→z</option>
-          <option value="date">↓ recenti</option>
+          <option value="score">Punteggio</option>
+          <option value="urgency">Urgenza</option>
+          <option value="name">Nome</option>
+          <option value="date">Più recenti</option>
         </select>
       </div>
     </div>
@@ -965,15 +950,15 @@ body::before{
   <!-- GRID -->
   <section class="grid" id="grid"></section>
   <div class="empty" id="empty" style="display:none">
-    <div class="big">&gt;_ no_match</div>
-    <div>cambia filtro o aspetta il prossimo ciclo.</div>
+    <div class="big">Nessun risultato</div>
+    <div>Prova a cambiare filtro o cerca un altro nome.</div>
   </div>
 
   <footer class="foot">
-    <div>&gt; OB1_SERIE_C :: 2026 :: ouroboros</div>
+    <div>OB1 Serie C — 2026</div>
     <div>
-      <a href="https://t.me/Ob1LegaPro_bot" target="_blank" rel="noopener">telegram</a> ·
-      <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener">global</a>
+      <a href="https://t.me/Ob1LegaPro_bot" target="_blank" rel="noopener">Telegram</a> ·
+      <a href="https://mtornani.github.io/ob1-scout/" target="_blank" rel="noopener">OB1 Global</a>
     </div>
   </footer>
 </div>
@@ -982,19 +967,19 @@ body::before{
 <div class="overlay" id="ov">
   <aside class="drawer" id="drawer">
     <div class="drawer-top">
-      <div class="bread"><span class="acc">&gt;</span> BRIEF // <span id="breadName">—</span></div>
+      <div class="bread"><span id="breadName">—</span></div>
       <button class="close" id="closeBtn" aria-label="close">×</button>
     </div>
     <div class="brief" id="brief"></div>
     <div class="actions" style="grid-template-columns:1fr 1fr;">
-      <a class="act" href="#" id="sourceLink" target="_blank" rel="noopener">APRI FONTE ↗</a>
-      <a class="act primary" href="#" id="tmLink" target="_blank" rel="noopener">PROFILO TM ↗</a>
+      <a class="act" href="#" id="sourceLink" target="_blank" rel="noopener">Leggi la notizia ↗</a>
+      <a class="act primary" href="#" id="tmLink" target="_blank" rel="noopener">Profilo Transfermarkt ↗</a>
     </div>
   </aside>
 </div>
 
 
-<script src="app.js?v=7"></script>
+<script src="app.js?v=11"></script>
 <script src="tracker.js" data-track-url="https://white-cherry-07a3.mirkotornani.workers.dev/"></script>
 </body>
 </html>

@@ -34,7 +34,6 @@ sys.path.insert(0, os.path.join(_root, 'src'))
 
 from src.scraper_global import GlobalScraper
 from src.scoring import OB1Scorer
-from src.ingest import OB1Ingest, GEMINI_AVAILABLE
 from src.models import MarketOpportunity
 from src.notifier import TelegramNotifier
 
@@ -188,7 +187,6 @@ def run_ouroboros():
     print("=" * 60)
 
     scraper = GlobalScraper(config_path="config/leagues.yaml")
-    ingest = OB1Ingest() if GEMINI_AVAILABLE else None
     notifier = TelegramNotifier()
 
     existing_opps = load_existing_opps()
@@ -258,10 +256,6 @@ def run_ouroboros():
                             new_opps_count += 1
                 except Exception as e:
                     print(f"  [SKIP] Player error: {e}")
-
-            # Ingest to RAG
-            if ingest and raw_opps:
-                ingest.ingest_opportunities(league_id, raw_opps)
 
         except Exception as e:
             print(f"❌ Error in {league_id}: {e}")

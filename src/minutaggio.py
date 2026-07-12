@@ -214,37 +214,36 @@ def calcola_roi_potenziale(player: Dict[str, Any]) -> Dict[str, Any]:
     )
     proiezione = round(calc_stagione['minutaggio_ponderato'] * presenze_stima, 0)
 
-    # Classificazione ROI
+    # Classificazione contributo minutaggio (etichette leggibili da non addetti)
     molt = calc_90['moltiplicatore_totale']
     if molt >= 5.0:
         roi_class = 'elite'
-        roi_label = 'ASSET ELITE'
+        roi_label = 'CONTRIBUTO MASSIMO'
         roi_color = '#00ff41'
     elif molt >= 2.5:
         roi_class = 'high'
-        roi_label = 'ALTO ROI'
+        roi_label = 'CONTRIBUTO ALTO'
         roi_color = '#fbbf24'
     elif molt >= 1.5:
         roi_class = 'medium'
-        roi_label = 'ROI MEDIO'
+        roi_label = 'CONTRIBUTO MEDIO'
         roi_color = '#3b82f6'
     elif molt >= 0.8:
         roi_class = 'low'
-        roi_label = 'ROI BASSO'
+        roi_label = 'CONTRIBUTO BASSO'
         roi_color = '#94a3b8'
     else:
         roi_class = 'minimal'
-        roi_label = 'MINIMO'
+        roi_label = 'CONTRIBUTO MINIMO'
         roi_color = '#64748b'
 
-    # Dettaglio testuale
-    dettaglio_parts = [f'Classe {birth_year} (x{coeff})']
+    # Dettaglio testuale — frase piana, niente abbreviazioni tecniche
+    dettaglio_parts = [f'Classe {birth_year}: ogni minuto giocato vale ×{molt} per i contributi FIGC']
     if is_tesseramento_def:
-        dettaglio_parts.append('tess. definitivo (+30%)')
+        dettaglio_parts.append('bonus tesseramento definitivo incluso')
     if is_prestito:
-        dettaglio_parts.append('prestito (no bonus tess.)')
-    dettaglio_parts.append(f'molt. x{molt}')
-    dettaglio_parts.append(f'proiez. stagione: {int(proiezione)} min pond.')
+        dettaglio_parts.append('in prestito: senza bonus tesseramento')
+    dettaglio_parts.append(f'stima su una stagione: {int(proiezione):,} minuti ponderati'.replace(',', '.'))
 
     return {
         'roi_class': roi_class,
@@ -258,7 +257,7 @@ def calcola_roi_potenziale(player: Dict[str, Any]) -> Dict[str, Any]:
         'presenze_stimate': presenze_stima,
         'is_prestito': is_prestito,
         'is_tesseramento_definitivo': is_tesseramento_def,
-        'dettaglio': ' | '.join(dettaglio_parts),
+        'dettaglio': ' — '.join(dettaglio_parts),
     }
 
 

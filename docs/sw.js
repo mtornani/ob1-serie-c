@@ -4,17 +4,16 @@
  * data.json is NEVER cached (always fresh from network)
  */
 
-const CACHE_NAME = 'ob1-radar-v6';
+const CACHE_NAME = 'ob1-radar-v8';
 const STATIC_ASSETS = [
   './',
   './index.html',
-  './css/style.css',
-  './js/app.js',
+  './app.js',
   './manifest.json'
 ];
 
 // Files that should NEVER be served from cache
-const NEVER_CACHE = ['data.json', 'dna_matches.json'];
+const NEVER_CACHE = ['data.json'];
 
 // Install: Cache static assets
 self.addEventListener('install', event => {
