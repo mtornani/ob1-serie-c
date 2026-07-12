@@ -1,41 +1,22 @@
 {
-  "name": "OB1 Radar - Serie C Scout",
-  "short_name": "OB1 Radar",
-  "description": "Scout AI per Serie C e Serie D italiana. Trova opportunita di mercato prima degli altri.",
-  "start_url": "/ob1-serie-c/",
-  "scope": "/ob1-serie-c/",
+  "name": "OB1 — Scout Lega Pro",
+  "short_name": "OB1 Scout",
+  "description": "Il radar di mercato per la Lega Pro: svincolati, prestiti e occasioni, aggiornati ogni 6 ore.",
+  "start_url": "./?src=pwa",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0a0a0a",
-  "theme_color": "#0a0a0a",
+  "background_color": "#0c0c0c",
+  "theme_color": "#0c0c0c",
   "categories": ["sports", "business"],
   "lang": "it",
   "icons": [
-    {
-      "src": "icons/icon-192.svg",
-      "sizes": "192x192",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-192.svg",
-      "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    }
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
   "shortcuts": [
-    {
-      "name": "HOT Opportunities",
-      "short_name": "HOT",
-      "description": "Vedi opportunita ad alta priorita",
-      "url": "/ob1-serie-c/?filter=hot"
-    },
-    {
-      "name": "Salvati",
-      "short_name": "Salvati",
-      "description": "Vedi giocatori salvati",
-      "url": "/ob1-serie-c/?view=saved"
-    }
+    { "name": "Occasioni", "short_name": "Occasioni", "description": "Giocatori ad alta priorità", "url": "./?filter=hot" },
+    { "name": "Svincolati", "short_name": "Svincolati", "description": "Solo svincolati", "url": "./?filter=free" }
   ]
 }

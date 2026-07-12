@@ -41,12 +41,30 @@ async function init(){
     return;
   }
 
+  applyUrlFilter();
   updateCycle();
   checkStale();
   setInterval(updateCycle, 30000);
   trackSession();
   paintCounters();
   applyFilter();
+}
+
+/* Deep-link / PWA shortcut: ?filter=hot|free|under|verified|new */
+function applyUrlFilter(){
+  const f = new URLSearchParams(location.search).get('filter');
+  const valid = ['all','hot','under','free','verified','new'];
+  if (!f || !valid.includes(f)) return;
+  STATE.filter = f;
+  const chip = el(`.chip[data-f="${f}"]`);
+  if (chip){ els('.chip').forEach(x=>x.classList.remove('on')); chip.classList.add('on'); }
+}
+
+/* Register the service worker so the app is installable + works offline */
+if ('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('sw.js').catch(err=>console.warn('[OB1] SW registration failed', err));
+  });
 }
 
 /* ============ DECORATE ============ */
