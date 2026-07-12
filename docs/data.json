@@ -42,7 +42,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero. Valore di mercato interessante (800k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -60,7 +60,7 @@
           }
         ],
         "birth_year": 2030,
-        "roi_dettaglio": "Classe 2030 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "roi_dettaglio": "Classe 2030: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.822 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2030-06-30",
@@ -170,7 +170,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valutabile in prestito. Valore di mercato interessante (1000k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -188,7 +188,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 882 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 882 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -235,7 +235,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valore di mercato interessante (400k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -259,7 +259,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 2166 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.166 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -308,7 +308,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valore di mercato interessante (700k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -319,7 +319,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2007,
-        "roi_dettaglio": "Classe 2007 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2007: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -366,7 +366,7 @@
       "recommendation": "Piena maturità (27 anni), pronto per impatto immediato. In uscita dal club, costo contenuto.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -384,7 +384,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.822 minuti ponderati",
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -431,7 +431,7 @@
       "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (500k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -449,7 +449,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.822 minuti ponderati",
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-08-28",
@@ -503,7 +503,7 @@
       "recommendation": "Età ideale (25 anni), nel pieno della maturazione. In uscita dal club, costo contenuto. Passato da Racing Santander, Viterbese, Grosseto.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -521,7 +521,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 2166 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.166 minuti ponderati",
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-03-31",
@@ -568,7 +568,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 0.8,
         "moltiplicatore": 1.04,
@@ -579,7 +579,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2003,
-        "roi_dettaglio": "Classe 2003 (x0.8) | tess. definitivo (+30%) | molt. x1.04 | proiez. stagione: 1820 min pond.",
+        "roi_dettaglio": "Classe 2003: ogni minuto giocato vale ×1.04 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 1.820 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -626,7 +626,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Valutabile in prestito.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.0,
         "moltiplicatore": 1.0,
@@ -637,7 +637,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2004,
-        "roi_dettaglio": "Classe 2004 (x1.0) | prestito (no bonus tess.) | molt. x1.0 | proiez. stagione: 1750 min pond.",
+        "roi_dettaglio": "Classe 2004: ogni minuto giocato vale ×1.0 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 1.750 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -684,7 +684,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -708,7 +708,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 2166 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.166 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -873,7 +873,7 @@
       "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (400k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -891,7 +891,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.822 minuti ponderati",
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -938,7 +938,7 @@
       "recommendation": "Piena maturità (26 anni), pronto per impatto immediato. Disponibile a parametro zero. Valore di mercato interessante (35000k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -956,7 +956,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -1061,7 +1061,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Disponibile a parametro zero. Valore di mercato interessante (250k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -1072,7 +1072,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2007,
-        "roi_dettaglio": "Classe 2007 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2007: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -1119,7 +1119,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (375k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.0,
         "moltiplicatore": 1.3,
@@ -1130,7 +1130,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2004,
-        "roi_dettaglio": "Classe 2004 (x1.0) | tess. definitivo (+30%) | molt. x1.3 | proiez. stagione: 2275 min pond.",
+        "roi_dettaglio": "Classe 2004: ogni minuto giocato vale ×1.3 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.275 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -1177,7 +1177,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (350k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -1195,7 +1195,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -1362,7 +1362,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (300k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -1380,7 +1380,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3567 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.567 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -1427,7 +1427,7 @@
       "recommendation": "Piena maturità (26 anni), pronto per impatto immediato. Disponibile a parametro zero. Valore di mercato interessante (30000k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -1438,12 +1438,128 @@
         "is_over": true,
         "signals": [],
         "birth_year": 2030,
-        "roi_dettaglio": "Classe 2030 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "roi_dettaglio": "Classe 2030: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.822 minuti ponderati",
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2030-06-30",
       "days_without_contract": 33,
       "stale_free_agent": true
+    },
+    {
+      "id": "d9b70de8afa6045dbad500d930ec5242",
+      "player_name": "Michele Ambrosini",
+      "age": 23,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-30",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPVS67E6lZT22JHFDzWq3DHDU1ONQznR6CikcxaneehqCyLOS8x1y7GJ0U7zconu9bFRbfcOvkSBbrvkTTqqEEBZUMhKNI5KAGs5VBRKNUemXINL0dMDKeyFmmsKj4WnNgcViCnI5dSnc0zOPL8SNKFQN2pBaXRxBKZMBStjIdqvdMbSU7jQpZ",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "sinistro",
+      "market_value": 225000,
+      "market_value_formatted": "225 mila €",
+      "player_image_url": null,
+      "agent": "FUTURA 2",
+      "discovered_at": "2026-06-30T04:01:55.657077",
+      "ob1_score": 67,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 90,
+        "market_value": 80,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (225k€).",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "CONTRIBUTO BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 0.8,
+        "moltiplicatore": 1.04,
+        "proiezione_stagionale": 1820,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2003,
+        "roi_dettaglio": "Classe 2003: ogni minuto giocato vale ×1.04 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 1.820 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 12,
+      "stale_free_agent": false
+    },
+    {
+      "id": "9a711d3d61db7bda6289471cda7b722e",
+      "player_name": "Alessio Maestrelli",
+      "age": 23,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-06-29",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHem4jYh8WhISrbhTE3e8CM0DFu64r5DMm0WR_MNnRdP9mqb-4w3tsa-ekXiUTTP2ADjmLscFsfaBNL4cPqmnnh6ahs5Jq4KzFksCSbsYsNU4dMWVoaZ55rVZ3cOjb_awBY-_2SvshLX1MPx9VEvDkbT9L1bti928VDXODqsi6MJgvaX9dKzv7Lgq5al5Npek=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 5,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 450,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 150000,
+      "market_value_formatted": "150 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-29T11:10:21.252620",
+      "ob1_score": 67,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 90,
+        "market_value": 80,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "CONTRIBUTO MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 637,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2028,
+        "roi_dettaglio": "Classe 2028: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 637 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
+      },
+      "contract_expires": "2028-06-30",
+      "days_without_contract": 13,
+      "stale_free_agent": false
     },
     {
       "id": "opp_75b31a35",
@@ -1543,7 +1659,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.0,
         "moltiplicatore": 1.3,
@@ -1554,7 +1670,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2004,
-        "roi_dettaglio": "Classe 2004 (x1.0) | tess. definitivo (+30%) | molt. x1.3 | proiez. stagione: 2275 min pond.",
+        "roi_dettaglio": "Classe 2004: ogni minuto giocato vale ×1.3 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.275 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -1601,7 +1717,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valore di mercato interessante (700k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -1612,7 +1728,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2030,
-        "roi_dettaglio": "Classe 2030 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2030: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "2030-06-30",
@@ -1662,7 +1778,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. In uscita dal club, costo contenuto. Passato da Cavese, Pompei.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -1673,7 +1789,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2007,
-        "roi_dettaglio": "Classe 2007 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2007: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -1720,7 +1836,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Disponibile a parametro zero. Valore di mercato interessante (2000k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -1738,7 +1854,7 @@
           }
         ],
         "birth_year": 2029,
-        "roi_dettaglio": "Classe 2029 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 1401 min pond.",
+        "roi_dettaglio": "Classe 2029: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 1.401 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2029-06-30",
@@ -1785,7 +1901,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero. Valore di mercato interessante (2500k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -1796,7 +1912,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2029,
-        "roi_dettaglio": "Classe 2029 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 127 min pond.",
+        "roi_dettaglio": "Classe 2029: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 127 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2029-06-30",
@@ -1843,7 +1959,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (1200k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -1861,7 +1977,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -1908,7 +2024,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero. Valore di mercato interessante (1200k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -1919,7 +2035,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2006,
-        "roi_dettaglio": "Classe 2006 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -1966,7 +2082,7 @@
       "recommendation": "Piena maturità (27 anni), pronto per impatto immediato. Disponibile a parametro zero. Valore di mercato interessante (350k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -1977,7 +2093,7 @@
         "is_over": true,
         "signals": [],
         "birth_year": 2028,
-        "roi_dettaglio": "Classe 2028 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3312 min pond.",
+        "roi_dettaglio": "Classe 2028: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.312 minuti ponderati",
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2028-06-30",
@@ -2024,7 +2140,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Disponibile a parametro zero. Valore di mercato interessante (700k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -2042,7 +2158,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -2089,7 +2205,7 @@
       "recommendation": "Piena maturità (27 anni), pronto per impatto immediato. Disponibile a parametro zero. Valore di mercato interessante (400k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -2107,7 +2223,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.822 minuti ponderati",
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -2154,7 +2270,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -2165,7 +2281,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2006,
-        "roi_dettaglio": "Classe 2006 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 255 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -2212,7 +2328,7 @@
       "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (350k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -2230,7 +2346,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 1529 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 1.529 minuti ponderati",
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-29",
@@ -2277,7 +2393,7 @@
       "recommendation": "Esperienza (29 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (2800k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -2295,7 +2411,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -2342,7 +2458,7 @@
       "recommendation": "Età ideale (24 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (300k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -2360,7 +2476,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -2407,7 +2523,7 @@
       "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (400k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -2425,7 +2541,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -2530,7 +2646,7 @@
       "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (400k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -2548,7 +2664,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -2595,7 +2711,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (250k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -2613,7 +2729,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -2718,7 +2834,7 @@
       "recommendation": "Piena maturità (28 anni), pronto per impatto immediato. Disponibile a parametro zero. Valore di mercato interessante (4000k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -2729,7 +2845,7 @@
         "is_over": true,
         "signals": [],
         "birth_year": 2029,
-        "roi_dettaglio": "Classe 2029 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 2038 min pond.",
+        "roi_dettaglio": "Classe 2029: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.038 minuti ponderati",
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2029-06-30",
@@ -2776,7 +2892,7 @@
       "recommendation": "Profilo giovane (18 anni), potenziale di crescita. Valutabile in prestito. Valore di mercato interessante (5000k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -2787,7 +2903,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2008,
-        "roi_dettaglio": "Classe 2008 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2008: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -2834,7 +2950,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (225k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.0,
         "moltiplicatore": 1.3,
@@ -2845,7 +2961,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2004,
-        "roi_dettaglio": "Classe 2004 (x1.0) | tess. definitivo (+30%) | molt. x1.3 | proiez. stagione: 2275 min pond.",
+        "roi_dettaglio": "Classe 2004: ogni minuto giocato vale ×1.3 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.275 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -2892,7 +3008,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (300k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -2910,7 +3026,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -3015,7 +3131,7 @@
       "recommendation": "Profilo giovane (18 anni), potenziale di crescita. Disponibile a parametro zero. Valore di mercato interessante (300k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -3026,7 +3142,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2008,
-        "roi_dettaglio": "Classe 2008 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2008: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -3073,7 +3189,7 @@
       "recommendation": "Esperienza (29 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (225k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -3091,7 +3207,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.822 minuti ponderati",
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -3138,7 +3254,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Valore di mercato interessante (250k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -3162,7 +3278,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2744 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.744 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -3209,7 +3325,7 @@
       "recommendation": "Età ideale (24 anni), nel pieno della maturazione. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -3227,7 +3343,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -3274,7 +3390,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -3292,7 +3408,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -3339,7 +3455,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -3350,7 +3466,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2006,
-        "roi_dettaglio": "Classe 2006 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -3397,7 +3513,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -3415,7 +3531,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -3462,7 +3578,7 @@
       "recommendation": "Piena maturità (26 anni), pronto per impatto immediato. In uscita dal club, costo contenuto.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -3480,7 +3596,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -3527,7 +3643,7 @@
       "recommendation": "Esperienza (29 anni), può portare leadership. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -3545,7 +3661,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
@@ -3650,7 +3766,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Valore di mercato interessante (250k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -3661,7 +3777,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2030,
-        "roi_dettaglio": "Classe 2030 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2030: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2030-06-30",
@@ -3708,7 +3824,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Valutabile in prestito.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -3726,7 +3842,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 588 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 588 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -3773,7 +3889,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -3784,7 +3900,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2028,
-        "roi_dettaglio": "Classe 2028 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2028: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "2028-06-30",
@@ -3831,7 +3947,7 @@
       "recommendation": "Piena maturità (26 anni), pronto per impatto immediato. Disponibile a parametro zero. Valore di mercato interessante (300k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -3849,7 +3965,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -3896,7 +4012,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Valore di mercato interessante (3000k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.0,
         "moltiplicatore": 1.0,
@@ -3907,7 +4023,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2004,
-        "roi_dettaglio": "Classe 2004 (x1.0) | molt. x1.0 | proiez. stagione: 2100 min pond.",
+        "roi_dettaglio": "Classe 2004: ogni minuto giocato vale ×1.0 per i contributi FIGC — stima su una stagione: 2.100 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -3954,7 +4070,7 @@
       "recommendation": "Profilo giovane (18 anni), potenziale di crescita. Valore di mercato interessante (800k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -3972,7 +4088,7 @@
           }
         ],
         "birth_year": 2029,
-        "roi_dettaglio": "Classe 2029 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2029: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
       },
       "contract_expires": "2029-06-30",
@@ -4019,7 +4135,7 @@
       "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (200k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -4037,7 +4153,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.822 minuti ponderati",
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
@@ -4084,7 +4200,7 @@
       "recommendation": "Età ideale (24 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (250k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -4102,7 +4218,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -4149,7 +4265,7 @@
       "recommendation": "Età ideale (24 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (300k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -4167,7 +4283,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -4214,7 +4330,7 @@
       "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -4232,7 +4348,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -4395,7 +4511,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Valore di mercato interessante (600k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -4413,7 +4529,7 @@
           }
         ],
         "birth_year": 2029,
-        "roi_dettaglio": "Classe 2029 (x1.4) | molt. x1.4 | proiez. stagione: 2842 min pond.",
+        "roi_dettaglio": "Classe 2029: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.842 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2029-06-30",
@@ -4460,7 +4576,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Valutabile in prestito.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -4478,7 +4594,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -4525,7 +4641,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Valore di mercato interessante (800k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -4536,7 +4652,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2030,
-        "roi_dettaglio": "Classe 2030 (x1.4) | molt. x1.4 | proiez. stagione: 588 min pond.",
+        "roi_dettaglio": "Classe 2030: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 588 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2030-06-30",
@@ -4583,7 +4699,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Valore di mercato interessante (900k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.2,
         "moltiplicatore": 1.2,
@@ -4594,7 +4710,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2005,
-        "roi_dettaglio": "Classe 2005 (x1.2) | molt. x1.2 | proiez. stagione: 2100 min pond.",
+        "roi_dettaglio": "Classe 2005: ogni minuto giocato vale ×1.2 per i contributi FIGC — stima su una stagione: 2.100 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -4699,7 +4815,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Valutabile in prestito.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.0,
         "moltiplicatore": 1.0,
@@ -4710,7 +4826,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2004,
-        "roi_dettaglio": "Classe 2004 (x1.0) | prestito (no bonus tess.) | molt. x1.0 | proiez. stagione: 1750 min pond.",
+        "roi_dettaglio": "Classe 2004: ogni minuto giocato vale ×1.0 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 1.750 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -4757,7 +4873,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Valore di mercato interessante (700k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -4768,7 +4884,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2006,
-        "roi_dettaglio": "Classe 2006 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -4815,7 +4931,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Valutabile in prestito.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -4833,7 +4949,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 882 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 882 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-29",
@@ -4880,7 +4996,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -4898,7 +5014,7 @@
           }
         ],
         "birth_year": 2007,
-        "roi_dettaglio": "Classe 2007 (x1.4) | molt. x1.4 | proiez. stagione: 2940 min pond.",
+        "roi_dettaglio": "Classe 2007: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.940 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -4945,7 +5061,7 @@
       "recommendation": "Esperienza (29 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (300k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -4963,7 +5079,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.822 minuti ponderati",
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -5010,7 +5126,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Valore di mercato interessante (800k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -5021,7 +5137,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2030,
-        "roi_dettaglio": "Classe 2030 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2030: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2030-06-30",
@@ -5126,7 +5242,7 @@
       "recommendation": "Piena maturità (26 anni), pronto per impatto immediato. In uscita dal club, costo contenuto. Valore di mercato interessante (250k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -5144,7 +5260,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
@@ -5191,7 +5307,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valore di mercato interessante (250k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -5202,7 +5318,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2007,
-        "roi_dettaglio": "Classe 2007 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2007: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -5249,7 +5365,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -5267,7 +5383,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -5314,7 +5430,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -5332,7 +5448,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -5495,7 +5611,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Valore di mercato interessante (350k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.0,
         "moltiplicatore": 1.0,
@@ -5506,7 +5622,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2004,
-        "roi_dettaglio": "Classe 2004 (x1.0) | molt. x1.0 | proiez. stagione: 1750 min pond.",
+        "roi_dettaglio": "Classe 2004: ogni minuto giocato vale ×1.0 per i contributi FIGC — stima su una stagione: 1.750 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -5553,7 +5669,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -5571,7 +5687,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 637 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 637 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -5618,7 +5734,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 0.8,
         "moltiplicatore": 1.04,
@@ -5629,7 +5745,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2003,
-        "roi_dettaglio": "Classe 2003 (x0.8) | tess. definitivo (+30%) | molt. x1.04 | proiez. stagione: 1820 min pond.",
+        "roi_dettaglio": "Classe 2003: ogni minuto giocato vale ×1.04 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 1.820 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -5676,7 +5792,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (200k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -5694,7 +5810,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -5741,7 +5857,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Valore di mercato interessante (2300k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -5752,7 +5868,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2030,
-        "roi_dettaglio": "Classe 2030 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2030: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2030-06-30",
@@ -5799,7 +5915,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Valutabile in prestito. Valore di mercato interessante (250k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -5817,7 +5933,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -5864,7 +5980,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.2,
         "moltiplicatore": 1.56,
@@ -5875,7 +5991,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2005,
-        "roi_dettaglio": "Classe 2005 (x1.2) | tess. definitivo (+30%) | molt. x1.56 | proiez. stagione: 2730 min pond.",
+        "roi_dettaglio": "Classe 2005: ogni minuto giocato vale ×1.56 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.730 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -5922,7 +6038,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Valore di mercato interessante (20000k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -5933,7 +6049,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2028,
-        "roi_dettaglio": "Classe 2028 (x1.4) | molt. x1.4 | proiez. stagione: 2254 min pond.",
+        "roi_dettaglio": "Classe 2028: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.254 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2028-06-30",
@@ -5980,7 +6096,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Valore di mercato interessante (1000k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -5991,7 +6107,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2029,
-        "roi_dettaglio": "Classe 2029 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2029: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2029-06-30",
@@ -6038,7 +6154,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Valore di mercato interessante (1000k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -6049,7 +6165,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2029,
-        "roi_dettaglio": "Classe 2029 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2029: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2029-06-30",
@@ -6096,7 +6212,7 @@
       "recommendation": "Giocatore esperto (32 anni). Disponibile a parametro zero. 53 presenze, 3 gol, 5 assist.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -6114,7 +6230,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.822 minuti ponderati",
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -6161,7 +6277,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Valore di mercato interessante (35000k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -6179,7 +6295,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 784 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 784 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-08-28",
@@ -6226,7 +6342,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Valore di mercato interessante (400k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -6250,7 +6366,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2940 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.940 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -6297,7 +6413,7 @@
       "recommendation": "Piena maturità (27 anni), pronto per impatto immediato. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -6315,7 +6431,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 2548 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.548 minuti ponderati",
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -6362,7 +6478,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valore di mercato interessante (2000k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -6373,7 +6489,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2007,
-        "roi_dettaglio": "Classe 2007 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2007: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -6420,7 +6536,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Valore di mercato interessante (3800k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -6431,7 +6547,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2028,
-        "roi_dettaglio": "Classe 2028 (x1.4) | molt. x1.4 | proiez. stagione: 2058 min pond.",
+        "roi_dettaglio": "Classe 2028: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.058 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2028-06-30",
@@ -6478,7 +6594,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Valore di mercato interessante (500k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 0.8,
         "moltiplicatore": 0.8,
@@ -6489,7 +6605,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2003,
-        "roi_dettaglio": "Classe 2003 (x0.8) | molt. x0.8 | proiez. stagione: 1680 min pond.",
+        "roi_dettaglio": "Classe 2003: ogni minuto giocato vale ×0.8 per i contributi FIGC — stima su una stagione: 1.680 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -6536,7 +6652,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -6554,7 +6670,7 @@
           }
         ],
         "birth_year": 2028,
-        "roi_dettaglio": "Classe 2028 (x1.4) | molt. x1.4 | proiez. stagione: 2646 min pond.",
+        "roi_dettaglio": "Classe 2028: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.646 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2028-06-30",
@@ -6659,7 +6775,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.2,
         "moltiplicatore": 1.2,
@@ -6670,7 +6786,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2005,
-        "roi_dettaglio": "Classe 2005 (x1.2) | molt. x1.2 | proiez. stagione: 2100 min pond.",
+        "roi_dettaglio": "Classe 2005: ogni minuto giocato vale ×1.2 per i contributi FIGC — stima su una stagione: 2.100 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -6717,7 +6833,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Valore di mercato interessante (275k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -6735,10 +6851,126 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
+      "days_without_contract": 0,
+      "stale_free_agent": false
+    },
+    {
+      "id": "befd00b55d165d023c5211668cc260e3",
+      "player_name": "Giulio Favale",
+      "age": 28,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-29",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPVsTS_HLLtUKqbL-kuPwuZZx0oUrkrEJ2vabEDtTjZut3HnPkWQ3eT9g5Sfd7t7Odvb4YEeBv6Utz97Q5qHZ_cF5Bt6BXMmMJfZTt6xZG0VOqPx8fKNGBdAAK8amDyBpDECWNqYz-tlHbMGmVADAhrIoaGyby8-L9xLfNZ5lH2VnK18-6ilqTIuqCgC5MFA0Fc_3LVrE=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 250000,
+      "market_value_formatted": "250 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-29T11:10:21.252060",
+      "ob1_score": 62,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 75,
+        "market_value": 90,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Piena maturità (28 anni), pronto per impatto immediato. Valore di mercato interessante (250k€).",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1998,
+        "roi_dettaglio": "Classe 1998 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false
+    },
+    {
+      "id": "1049d3a310d6af346bb3cc2f66acdb57",
+      "player_name": "Pierpaolo Longo",
+      "age": 23,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-29",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHiIMdlEF8kHejKX7PwsscxIqQTy4jleY_zpsULFzpI6fuSm7fSO3csv1R7zxsXh_zcXcw28OmF0cLhOLtIlZdzsfsQGee7IrkbfqM9E5bDn4sEQo_RXSDjZLKBrz8HhlFtA0-sXxqbrptUbi6BwnFuBApbxMRr6jm95RAkgyEVkUCVhNwxlHIAIjWcFGHe7eR6aQg=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 10,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 150000,
+      "market_value_formatted": "150 mila €",
+      "player_image_url": null,
+      "agent": "MVP Agency",
+      "discovered_at": "2026-06-29T11:10:21.252707",
+      "ob1_score": 62,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 90,
+        "market_value": 80,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Età ideale (23 anni), nel pieno della maturazione.",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "CONTRIBUTO BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 0.8,
+        "moltiplicatore": 0.8,
+        "proiezione_stagionale": 560,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2003,
+        "roi_dettaglio": "Classe 2003: ogni minuto giocato vale ×0.8 per i contributi FIGC — stima su una stagione: 560 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
+      },
+      "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false
     },
@@ -6782,7 +7014,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. In uscita dal club, costo contenuto.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -6800,7 +7032,7 @@
           }
         ],
         "birth_year": 2025,
-        "roi_dettaglio": "Classe 2025 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2025: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2025-07-01",
@@ -6905,7 +7137,7 @@
       "recommendation": "Piena maturità (28 anni), pronto per impatto immediato. Disponibile a parametro zero. Valore di mercato interessante (325k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -6923,7 +7155,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -6970,7 +7202,7 @@
       "recommendation": "Esperienza (29 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (400k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -6988,7 +7220,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
@@ -7035,7 +7267,7 @@
       "recommendation": "Giocatore esperto (32 anni). Disponibile a parametro zero. Valore di mercato interessante (3000k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -7053,7 +7285,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 1019 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 1.019 minuti ponderati",
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -7158,7 +7390,7 @@
       "recommendation": "Piena maturità (26 anni), pronto per impatto immediato. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -7176,7 +7408,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 127 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 127 minuti ponderati",
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -7223,7 +7455,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Valutabile in prestito.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 0.8,
         "moltiplicatore": 0.8,
@@ -7234,7 +7466,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2003,
-        "roi_dettaglio": "Classe 2003 (x0.8) | prestito (no bonus tess.) | molt. x0.8 | proiez. stagione: 280 min pond.",
+        "roi_dettaglio": "Classe 2003: ogni minuto giocato vale ×0.8 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 280 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -7339,7 +7571,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -7350,7 +7582,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2007,
-        "roi_dettaglio": "Classe 2007 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2007: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -7397,7 +7629,7 @@
       "recommendation": "Esperienza (31 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (800k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -7415,7 +7647,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -7462,7 +7694,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -7473,7 +7705,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2007,
-        "roi_dettaglio": "Classe 2007 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2007: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -7520,7 +7752,7 @@
       "recommendation": "Esperienza (29 anni), può portare leadership. Valutabile in prestito. Valore di mercato interessante (750k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -7538,7 +7770,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
@@ -7643,7 +7875,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Valutabile in prestito.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -7661,7 +7893,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -7708,7 +7940,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Valore di mercato interessante (900k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -7726,7 +7958,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026-07-31",
@@ -7773,7 +8005,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Valore di mercato interessante (300k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -7784,7 +8016,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2028,
-        "roi_dettaglio": "Classe 2028 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2028: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2028-06-30",
@@ -7831,7 +8063,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Valore di mercato interessante (8000k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -7842,7 +8074,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2029,
-        "roi_dettaglio": "Classe 2029 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2029: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2029-06-30",
@@ -7889,7 +8121,7 @@
       "recommendation": "Esperienza (30 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (275k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -7907,7 +8139,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -7954,7 +8186,7 @@
       "recommendation": "Profilo giovane (18 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -7965,7 +8197,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2008,
-        "roi_dettaglio": "Classe 2008 (x1.4) | molt. x1.4 | proiez. stagione: 392 min pond.",
+        "roi_dettaglio": "Classe 2008: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 392 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -8012,7 +8244,7 @@
       "recommendation": "Esperienza (30 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (300k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -8030,7 +8262,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 255 minuti ponderati",
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -8077,7 +8309,7 @@
       "recommendation": "Esperienza (30 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (275k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -8095,7 +8327,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -8142,7 +8374,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -8166,7 +8398,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2940 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.940 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -8213,7 +8445,7 @@
       "recommendation": "Giocatore esperto (32 anni). Disponibile a parametro zero. Valore di mercato interessante (400k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -8231,7 +8463,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 255 minuti ponderati",
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -8278,7 +8510,7 @@
       "recommendation": "Esperienza (30 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (300k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -8296,7 +8528,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -8343,7 +8575,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -8354,7 +8586,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2006,
-        "roi_dettaglio": "Classe 2006 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 1019 min pond.",
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 1.019 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -8401,7 +8633,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -8412,7 +8644,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2006,
-        "roi_dettaglio": "Classe 2006 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 127 min pond.",
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 127 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -8459,7 +8691,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -8470,7 +8702,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2006,
-        "roi_dettaglio": "Classe 2006 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -8517,7 +8749,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Valutabile in prestito.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -8535,7 +8767,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 98 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 98 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -8582,7 +8814,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Valutabile in prestito.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -8600,7 +8832,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -8647,7 +8879,7 @@
       "recommendation": "Giocatore esperto (32 anni). Disponibile a parametro zero. Valore di mercato interessante (250k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -8665,7 +8897,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -8712,7 +8944,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -8730,7 +8962,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -8777,7 +9009,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -8795,7 +9027,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -8842,7 +9074,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.2,
         "moltiplicatore": 1.56,
@@ -8853,7 +9085,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2005,
-        "roi_dettaglio": "Classe 2005 (x1.2) | tess. definitivo (+30%) | molt. x1.56 | proiez. stagione: 2730 min pond.",
+        "roi_dettaglio": "Classe 2005: ogni minuto giocato vale ×1.56 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.730 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -8958,7 +9190,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Valutabile in prestito.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 0.8,
         "moltiplicatore": 0.8,
@@ -8969,7 +9201,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2003,
-        "roi_dettaglio": "Classe 2003 (x0.8) | prestito (no bonus tess.) | molt. x0.8 | proiez. stagione: 1400 min pond.",
+        "roi_dettaglio": "Classe 2003: ogni minuto giocato vale ×0.8 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 1.400 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -9016,7 +9248,7 @@
       "recommendation": "Esperienza (30 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (450k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -9034,7 +9266,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.822 minuti ponderati",
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -9139,7 +9371,7 @@
       "recommendation": "Piena maturità (27 anni), pronto per impatto immediato. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -9157,7 +9389,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 764 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 764 minuti ponderati",
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
@@ -9262,7 +9494,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -9286,7 +9518,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | molt. x1.4 | proiez. stagione: 2156 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.156 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "2027-06-30",
@@ -9333,7 +9565,7 @@
       "recommendation": "Giocatore esperto (35 anni). Disponibile a parametro zero. Valore di mercato interessante (275k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -9351,7 +9583,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.822 minuti ponderati",
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -9398,7 +9630,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -9409,7 +9641,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "2026",
@@ -9456,7 +9688,7 @@
       "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -9474,7 +9706,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 255 minuti ponderati",
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -9637,7 +9869,7 @@
       "recommendation": "Esperienza (29 anni), può portare leadership.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -9655,7 +9887,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
@@ -9702,7 +9934,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -9720,7 +9952,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -9767,7 +9999,7 @@
       "recommendation": "Giocatore esperto (34 anni). Disponibile a parametro zero. Valore di mercato interessante (250k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -9785,7 +10017,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3312 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.312 minuti ponderati",
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -9832,7 +10064,7 @@
       "recommendation": "Esperienza (31 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (600k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -9850,7 +10082,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -9897,7 +10129,7 @@
       "recommendation": "Profilo giovane (21 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -9915,7 +10147,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -9939,7 +10171,7 @@
       "assists": 0,
       "minutes_played": 0,
       "summary": "",
-      "nationality": "France",
+      "nationality": "Francia",
       "second_nationality": null,
       "foot": null,
       "market_value": null,
@@ -9962,7 +10194,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.0,
         "moltiplicatore": 1.3,
@@ -9973,7 +10205,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2004,
-        "roi_dettaglio": "Classe 2004 (x1.0) | tess. definitivo (+30%) | molt. x1.3 | proiez. stagione: 2275 min pond.",
+        "roi_dettaglio": "Classe 2004: ogni minuto giocato vale ×1.3 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.275 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -10020,7 +10252,7 @@
       "recommendation": "Giocatore esperto (32 anni). Disponibile a parametro zero. Valore di mercato interessante (22000k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -10038,7 +10270,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -10143,7 +10375,7 @@
       "recommendation": "Profilo giovane (18 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -10167,7 +10399,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2940 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.940 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -10214,7 +10446,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -10232,7 +10464,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 510 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 510 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -10279,7 +10511,7 @@
       "recommendation": "Profilo giovane (18 anni), potenziale di crescita. Valore di mercato interessante (200k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -10290,7 +10522,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2008,
-        "roi_dettaglio": "Classe 2008 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2008: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -10337,7 +10569,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Valutabile in prestito.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -10355,7 +10587,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -10402,7 +10634,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -10426,7 +10658,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | molt. x1.4 | proiez. stagione: 1568 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 1.568 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2027-06-30",
@@ -10473,7 +10705,7 @@
       "recommendation": "Giocatore esperto (35 anni). Disponibile a parametro zero. Valore di mercato interessante (3000k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -10484,7 +10716,7 @@
         "is_over": true,
         "signals": [],
         "birth_year": 2028,
-        "roi_dettaglio": "Classe 2028 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2028: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2028-06-30",
@@ -10531,7 +10763,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -10555,7 +10787,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | molt. x1.4 | proiez. stagione: 2156 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.156 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "2027-06-30",
@@ -10602,7 +10834,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -10620,7 +10852,7 @@
           }
         ],
         "birth_year": 2007,
-        "roi_dettaglio": "Classe 2007 (x1.4) | molt. x1.4 | proiez. stagione: 2744 min pond.",
+        "roi_dettaglio": "Classe 2007: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.744 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -10667,7 +10899,7 @@
       "recommendation": "Esperienza (30 anni), può portare leadership. Disponibile a parametro zero. Valore di mercato interessante (300k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -10685,7 +10917,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 255 minuti ponderati",
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -10732,7 +10964,7 @@
       "recommendation": "Giocatore esperto (34 anni). Disponibile a parametro zero. Valore di mercato interessante (300k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -10750,7 +10982,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -10797,7 +11029,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.0,
         "moltiplicatore": 1.3,
@@ -10808,7 +11040,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2004,
-        "roi_dettaglio": "Classe 2004 (x1.0) | tess. definitivo (+30%) | molt. x1.3 | proiez. stagione: 2275 min pond.",
+        "roi_dettaglio": "Classe 2004: ogni minuto giocato vale ×1.3 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.275 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -10855,7 +11087,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -10866,7 +11098,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2006,
-        "roi_dettaglio": "Classe 2006 (x1.4) | molt. x1.4 | proiez. stagione: 392 min pond.",
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 392 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -10913,7 +11145,7 @@
       "recommendation": "Esperienza (30 anni), può portare leadership. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -10931,7 +11163,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3822 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.822 minuti ponderati",
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -11036,7 +11268,7 @@
       "recommendation": "Giocatore esperto (33 anni). Disponibile a parametro zero. Valore di mercato interessante (250k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -11054,7 +11286,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 2293 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.293 minuti ponderati",
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -11391,7 +11623,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valutabile in prestito.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -11402,8 +11634,66 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2007,
-        "roi_dettaglio": "Classe 2007 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2007: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false
+    },
+    {
+      "id": "c7040f0921350ce78ccc895c9771e95f",
+      "player_name": "Di Mariano",
+      "age": 30,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-29",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPVsTS_HLLtUKqbL-kuPwuZZx0oUrkrEJ2vabEDtTjZut3HnPkWQ3eT9g5Sfd7t7Odvb4YEeBv6Utz97Q5qHZ_cF5Bt6BXMmMJfZTt6xZG0VOqPx8fKNGBdAAK8amDyBpDECWNqYz-tlHbMGmVADAhrIoaGyby8-L9xLfNZ5lH2VnK18-6ilqTIuqCgC5MFA0Fc_3LVrE=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 2,
+      "assists": 3,
+      "minutes_played": 1709,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 400000,
+      "market_value_formatted": "400 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-29T11:10:21.252391",
+      "ob1_score": 57,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 45,
+        "market_value": 90,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Esperienza (30 anni), può portare leadership. Valore di mercato interessante (400k€).",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1996,
+        "roi_dettaglio": "Classe 1996 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
       "days_without_contract": 0,
@@ -11623,7 +11913,7 @@
       "recommendation": "Piena maturità (26 anni), pronto per impatto immediato. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -11641,7 +11931,7 @@
           }
         ],
         "birth_year": 2025,
-        "roi_dettaglio": "Classe 2025 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2025: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2025-06-30",
@@ -11688,7 +11978,7 @@
       "recommendation": "Profilo giovane (18 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -11706,7 +11996,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 686 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 686 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -11753,7 +12043,7 @@
       "recommendation": "Esperienza (29 anni), può portare leadership. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -11771,7 +12061,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
@@ -11818,7 +12108,7 @@
       "recommendation": "Età ideale (23 anni), nel pieno della maturazione. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 0.8,
         "moltiplicatore": 1.04,
@@ -11829,7 +12119,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2003,
-        "roi_dettaglio": "Classe 2003 (x0.8) | tess. definitivo (+30%) | molt. x1.04 | proiez. stagione: 291 min pond.",
+        "roi_dettaglio": "Classe 2003: ogni minuto giocato vale ×1.04 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 291 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -11992,7 +12282,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -12010,7 +12300,7 @@
           }
         ],
         "birth_year": 2006,
-        "roi_dettaglio": "Classe 2006 (x1.4) | molt. x1.4 | proiez. stagione: 1862 min pond.",
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 1.862 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -12057,7 +12347,7 @@
       "recommendation": "Profilo giovane (18 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -12075,7 +12365,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -12152,14 +12442,14 @@
       "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHcGbDjzDDuAWobcxYEuVlF3NVXTJZigna42L9rmOBESsLvCsmT-hbvQqqXC-gXUVMlXrGLHHVAddcpMwkA5aJantm-AGwZAdsQBxz4QAa7SmOqTaTI03aRtoCjvVSP-ZyEHXA63WpjpPbO_DhZ7QJC-hgPiCm6nE9CcKEvW9DwjnqCkZJMZzC5gUNHpZ4o5AgyjxL8tGvzfToj7LaE8GieSHSv3MPLOXp0so2mw8_KHo4R0m_PPpo4GSI-15cUUrWjm9EzQNwHGOt2EsaaKBj810gE1g7bdgFOUSA=",
       "previous_clubs": [],
       "current_club": "",
-      "appearances": 0,
+      "appearances": 2,
       "goals": 0,
       "assists": 0,
-      "minutes_played": 0,
+      "minutes_played": 15,
       "summary": "",
       "nationality": "Italia",
       "second_nationality": null,
-      "foot": null,
+      "foot": "destro",
       "market_value": null,
       "market_value_formatted": null,
       "player_image_url": null,
@@ -12180,18 +12470,18 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
-        "proiezione_stagionale": 2450,
+        "proiezione_stagionale": 196,
         "traffic_light": "green",
         "traffic_label": "UNDER",
         "traffic_icon": "🟢",
         "is_over": false,
         "signals": [],
         "birth_year": 2006,
-        "roi_dettaglio": "Classe 2006 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 196 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -12238,7 +12528,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -12256,7 +12546,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -12303,7 +12593,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -12314,8 +12604,124 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2007,
-        "roi_dettaglio": "Classe 2007 (x1.4) | molt. x1.4 | proiez. stagione: 784 min pond.",
+        "roi_dettaglio": "Classe 2007: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 784 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false
+    },
+    {
+      "id": "7cb871116c967551a1ab636b70022b98",
+      "player_name": "Vincenzo Potenza",
+      "age": 24,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-29",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHiIMdlEF8kHejKX7PwsscxIqQTy4jleY_zpsULFzpI6fuSm7fSO3csv1R7zxsXh_zcXcw28OmF0cLhOLtIlZdzsfsQGee7IrkbfqM9E5bDn4sEQo_RXSDjZLKBrz8HhlFtA0-sXxqbrptUbi6BwnFuBApbxMRr6jm95RAkgyEVkUCVhNwxlHIAIjWcFGHe7eR6aQg=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-29T11:10:21.252788",
+      "ob1_score": 56,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 90,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Età ideale (24 anni), nel pieno della maturazione.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2002,
+        "roi_dettaglio": "Classe 2002 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false
+    },
+    {
+      "id": "a13bb57bb12e07897c9c95daa4515adf",
+      "player_name": "Tennyson Omoregie",
+      "age": 25,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-29",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHiIMdlEF8kHejKX7PwsscxIqQTy4jleY_zpsULFzpI6fuSm7fSO3csv1R7zxsXh_zcXcw28OmF0cLhOLtIlZdzsfsQGee7IrkbfqM9E5bDn4sEQo_RXSDjZLKBrz8HhlFtA0-sXxqbrptUbi6BwnFuBApbxMRr6jm95RAkgyEVkUCVhNwxlHIAIjWcFGHe7eR6aQg=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Nigeria",
+      "second_nationality": "Italy",
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-29T11:10:21.252869",
+      "ob1_score": 56,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 90,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Età ideale (25 anni), nel pieno della maturazione.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 2001,
+        "roi_dettaglio": "Classe 2001 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
       "days_without_contract": 0,
@@ -12419,7 +12825,7 @@
       "recommendation": "Giocatore esperto (32 anni). Disponibile a parametro zero. Valore di mercato interessante (225k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -12437,7 +12843,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -12484,7 +12890,7 @@
       "recommendation": "Esperienza (30 anni), può portare leadership. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -12502,7 +12908,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -12549,7 +12955,7 @@
       "recommendation": "Profilo giovane (18 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -12560,7 +12966,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2008,
-        "roi_dettaglio": "Classe 2008 (x1.4) | molt. x1.4 | proiez. stagione: 294 min pond.",
+        "roi_dettaglio": "Classe 2008: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 294 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -12607,7 +13013,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -12618,7 +13024,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2006,
-        "roi_dettaglio": "Classe 2006 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -12781,7 +13187,7 @@
       "recommendation": "Giocatore esperto (36 anni). Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -12799,7 +13205,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -12846,7 +13252,7 @@
       "recommendation": "Giocatore esperto (36 anni). Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -12864,7 +13270,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 510 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 510 minuti ponderati",
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
@@ -12969,7 +13375,7 @@
       "recommendation": "Giocatore esperto (33 anni). Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -12987,7 +13393,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -13034,7 +13440,7 @@
       "recommendation": "Giocatore esperto (37 anni). Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -13052,7 +13458,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1989 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-29",
@@ -13099,7 +13505,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -13123,7 +13529,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2940 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.940 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -13170,7 +13576,7 @@
       "recommendation": "Esperienza (29 anni), può portare leadership. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -13188,7 +13594,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -13235,7 +13641,7 @@
       "recommendation": "Giocatore esperto (36 anni). Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -13253,7 +13659,7 @@
           }
         ],
         "birth_year": 2025,
-        "roi_dettaglio": "Classe 2025 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 255 min pond.",
+        "roi_dettaglio": "Classe 2025: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 255 minuti ponderati",
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2025-01-31",
@@ -13300,7 +13706,7 @@
       "recommendation": "Giocatore esperto (36 anni). Disponibile a parametro zero. Valore di mercato interessante (225k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -13318,7 +13724,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -13365,7 +13771,7 @@
       "recommendation": "Profilo giovane (17 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -13376,7 +13782,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2009,
-        "roi_dettaglio": "Classe 2009 (x1.4) | molt. x1.4 | proiez. stagione: 588 min pond.",
+        "roi_dettaglio": "Classe 2009: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 588 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2009 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -13481,7 +13887,7 @@
       "recommendation": "Profilo giovane (20 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -13505,7 +13911,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | molt. x1.4 | proiez. stagione: 2940 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.940 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2027-06-30",
@@ -13552,7 +13958,7 @@
       "recommendation": "Giocatore esperto (38 anni). Disponibile a parametro zero. Valore di mercato interessante (350k€).",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -13570,7 +13976,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1988 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -13791,7 +14197,7 @@
       "recommendation": "Profilo giovane (16 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -13802,11 +14208,192 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2010,
-        "roi_dettaglio": "Classe 2010 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2010: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2010 (cutoff: 2002)"
       },
       "contract_expires": "",
       "days_without_contract": 22,
+      "stale_free_agent": false
+    },
+    {
+      "id": "88ad7f35c27fde8417653e91c4ed2a16",
+      "player_name": "Cristian Buonaiuto",
+      "age": 34,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-29",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPVsTS_HLLtUKqbL-kuPwuZZx0oUrkrEJ2vabEDtTjZut3HnPkWQ3eT9g5Sfd7t7Odvb4YEeBv6Utz97Q5qHZ_cF5Bt6BXMmMJfZTt6xZG0VOqPx8fKNGBdAAK8amDyBpDECWNqYz-tlHbMGmVADAhrIoaGyby8-L9xLfNZ5lH2VnK18-6ilqTIuqCgC5MFA0Fc_3LVrE=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 250000,
+      "market_value_formatted": "250k",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-06-29T11:10:21.252144",
+      "ob1_score": 54,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 25,
+        "market_value": 90,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Giocatore esperto (34 anni). Valore di mercato interessante (250k€).",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1992,
+        "roi_dettaglio": "Classe 1992 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false
+    },
+    {
+      "id": "41a864376d9703d0856ffb41242fb967",
+      "player_name": "Kevin Lasagna",
+      "age": 34,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-29",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPVsTS_HLLtUKqbL-kuPwuZZx0oUrkrEJ2vabEDtTjZut3HnPkWQ3eT9g5Sfd7t7Odvb4YEeBv6Utz97Q5qHZ_cF5Bt6BXMmMJfZTt6xZG0VOqPx8fKNGBdAAK8amDyBpDECWNqYz-tlHbMGmVADAhrIoaGyby8-L9xLfNZ5lH2VnK18-6ilqTIuqCgC5MFA0Fc_3LVrE=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 6,
+      "assists": 1,
+      "minutes_played": 1458,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": "sinistro",
+      "market_value": 400000,
+      "market_value_formatted": "€400k",
+      "player_image_url": null,
+      "agent": "P&P Sport Management S.A.M.",
+      "discovered_at": "2026-06-29T11:10:21.252227",
+      "ob1_score": 54,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 25,
+        "market_value": 90,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Giocatore esperto (34 anni). Valore di mercato interessante (400k€).",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "CONTRIBUTO BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.4,
+        "proiezione_stagionale": 2450,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "yellow",
+            "label": "SCADE 352gg",
+            "detail": "Contratto: 2027-06-30 (352 giorni)"
+          }
+        ],
+        "birth_year": 2027,
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
+        "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "2027-06-30",
+      "days_without_contract": 0,
+      "stale_free_agent": false
+    },
+    {
+      "id": "91d875ba357d1d4658135d1bd093a75d",
+      "player_name": "Kevin Varas",
+      "age": 33,
+      "role": "",
+      "role_name": "N/D",
+      "opportunity_type": "talento",
+      "reported_date": "2026-06-29",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPVsTS_HLLtUKqbL-kuPwuZZx0oUrkrEJ2vabEDtTjZut3HnPkWQ3eT9g5Sfd7t7Odvb4YEeBv6Utz97Q5qHZ_cF5Bt6BXMmMJfZTt6xZG0VOqPx8fKNGBdAAK8amDyBpDECWNqYz-tlHbMGmVADAhrIoaGyby8-L9xLfNZ5lH2VnK18-6ilqTIuqCgC5MFA0Fc_3LVrE=",
+      "previous_clubs": [],
+      "current_club": "",
+      "appearances": 0,
+      "goals": 2,
+      "assists": 4,
+      "minutes_played": 2469,
+      "summary": "",
+      "nationality": "Ecuador",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 288100,
+      "market_value_formatted": "€288.1K",
+      "player_image_url": null,
+      "agent": "BC Group Agency",
+      "discovered_at": "2026-06-29T11:10:21.252309",
+      "ob1_score": 54,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 25,
+        "market_value": 90,
+        "league_fit": 50,
+        "source": 50,
+        "completeness": 55
+      },
+      "recommendation": "Giocatore esperto (33 anni). Valore di mercato interessante (288k€).",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1993,
+        "roi_dettaglio": "Classe 1993 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
       "stale_free_agent": false
     },
     {
@@ -14081,7 +14668,7 @@
       "recommendation": "Età ideale (22 anni), nel pieno della maturazione.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.0,
         "moltiplicatore": 1.0,
@@ -14092,7 +14679,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2004,
-        "roi_dettaglio": "Classe 2004 (x1.0) | molt. x1.0 | proiez. stagione: 1750 min pond.",
+        "roi_dettaglio": "Classe 2004: ogni minuto giocato vale ×1.0 per i contributi FIGC — stima su una stagione: 1.750 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -14139,7 +14726,7 @@
       "recommendation": "Profilo giovane (16 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -14157,7 +14744,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 637 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 637 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2010 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
@@ -14204,7 +14791,7 @@
       "recommendation": "Esperienza (30 anni), può portare leadership. Valore di mercato interessante (350k€).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -14222,7 +14809,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -14269,7 +14856,7 @@
       "recommendation": "Giocatore esperto (36 anni). Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -14287,7 +14874,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 1656 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 1.656 minuti ponderati",
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -14334,7 +14921,7 @@
       "recommendation": "Profilo giovane (17 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -14345,7 +14932,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2009,
-        "roi_dettaglio": "Classe 2009 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2009: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2009 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -14392,7 +14979,7 @@
       "recommendation": "Profilo giovane (19 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -14410,7 +14997,7 @@
           }
         ],
         "birth_year": 2024,
-        "roi_dettaglio": "Classe 2024 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2024: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "2024-07-01",
@@ -14434,9 +15021,9 @@
       "assists": 0,
       "minutes_played": 0,
       "summary": "",
-      "nationality": "Italy",
+      "nationality": "Italia",
       "second_nationality": null,
-      "foot": "right",
+      "foot": "destro",
       "market_value": null,
       "market_value_formatted": "-",
       "player_image_url": null,
@@ -14457,7 +15044,7 @@
       "recommendation": "Profilo giovane (17 anni), potenziale di crescita. Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -14468,7 +15055,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2009,
-        "roi_dettaglio": "Classe 2009 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2009: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2009 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -14751,7 +15338,7 @@
       "recommendation": "Piena maturità (28 anni), pronto per impatto immediato.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -14769,7 +15356,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2058 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.058 minuti ponderati",
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -14932,7 +15519,7 @@
       "recommendation": "Profilo giovane (17 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -14943,7 +15530,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2009,
-        "roi_dettaglio": "Classe 2009 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2009: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2009 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -15048,7 +15635,7 @@
       "recommendation": "Profilo giovane (17 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -15059,7 +15646,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2009,
-        "roi_dettaglio": "Classe 2009 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2009: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2009 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -15106,7 +15693,7 @@
       "recommendation": "Esperienza (31 anni), può portare leadership.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -15124,7 +15711,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -15287,7 +15874,7 @@
       "recommendation": "Giocatore esperto (33 anni). Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -15305,7 +15892,7 @@
           }
         ],
         "birth_year": 2025,
-        "roi_dettaglio": "Classe 2025 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2025: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2025-07-01",
@@ -15468,7 +16055,7 @@
       "recommendation": "Giocatore esperto (39 anni). Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -15486,7 +16073,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1987 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -15533,7 +16120,7 @@
       "recommendation": "Giocatore esperto (36 anni). Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -15551,7 +16138,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 3185 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -15714,7 +16301,7 @@
       "recommendation": "Giocatore esperto (39 anni). Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -15732,7 +16319,7 @@
           }
         ],
         "birth_year": 2020,
-        "roi_dettaglio": "Classe 2020 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 127 min pond.",
+        "roi_dettaglio": "Classe 2020: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 127 minuti ponderati",
         "lista_dettaglio": "Over classe 1987 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2020-02-14",
@@ -15779,7 +16366,7 @@
       "recommendation": "Giocatore esperto (38 anni). Disponibile a parametro zero.",
       "intel": {
         "roi_class": "medium",
-        "roi_label": "ROI MEDIO",
+        "roi_label": "CONTRIBUTO MEDIO",
         "roi_color": "#3b82f6",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.82,
@@ -15797,7 +16384,7 @@
           }
         ],
         "birth_year": 2025,
-        "roi_dettaglio": "Classe 2025 (x1.4) | tess. definitivo (+30%) | molt. x1.82 | proiez. stagione: 764 min pond.",
+        "roi_dettaglio": "Classe 2025: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 764 minuti ponderati",
         "lista_dettaglio": "Over classe 1988 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2025-09-13",
@@ -15844,7 +16431,7 @@
       "recommendation": "Profilo giovane (17 anni), potenziale di crescita.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -15855,7 +16442,7 @@
         "is_over": false,
         "signals": [],
         "birth_year": 2009,
-        "roi_dettaglio": "Classe 2009 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2009: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Non occupa slot Over — classe 2009 (cutoff: 2002)"
       },
       "contract_expires": "",
@@ -16018,7 +16605,7 @@
       "recommendation": "Esperienza (30 anni), può portare leadership.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -16036,7 +16623,7 @@
           }
         ],
         "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
@@ -16141,7 +16728,7 @@
       "recommendation": "Giocatore esperto (36 anni).",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -16159,7 +16746,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -16264,7 +16851,7 @@
       "recommendation": "Giocatore esperto (34 anni). Valutabile in prestito.",
       "intel": {
         "roi_class": "low",
-        "roi_label": "ROI BASSO",
+        "roi_label": "CONTRIBUTO BASSO",
         "roi_color": "#94a3b8",
         "coefficiente_eta": 1.4,
         "moltiplicatore": 1.4,
@@ -16282,7 +16869,7 @@
           }
         ],
         "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026 (x1.4) | prestito (no bonus tess.) | molt. x1.4 | proiez. stagione: 2450 min pond.",
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
@@ -16349,22 +16936,22 @@
     }
   ],
   "stats": {
-    "total": 265,
+    "total": 275,
     "hot": 7,
-    "warm": 177,
-    "cold": 81,
+    "warm": 182,
+    "cold": 86,
     "today": 0,
-    "svincolati": 151,
+    "svincolati": 153,
     "stale_free_agents": 20,
     "intel_roi": {
       "elite": 0,
       "high": 0,
-      "medium": 111,
-      "low": 84,
-      "none": 69
+      "medium": 112,
+      "low": 87,
+      "none": 75
     }
   },
-  "last_update": "2026-07-12T03:23:01.294497",
+  "last_update": "2026-07-12T08:29:22.948149",
   "scoring_version": "SCORE-002",
   "intel_version": "INTEL-001"
 }
