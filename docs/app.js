@@ -466,23 +466,24 @@ function openDrawer(o){
     </details>
   `;
 
+  // Links that ALWAYS resolve. A direct URL is used only when it's a real,
+  // durable link; otherwise we fall back to a Google search, which never 404s.
+  const google = (terms) => `https://www.google.com/search?q=${encodeURIComponent(terms)}`;
+  const isRealUrl = (u) => typeof u === 'string' && u.startsWith('http')
+    && !u.includes('vertexaisearch') && !u.includes('grounding-api');
+
   const srcLink = el('#sourceLink');
-  const isGrounding = o.source_url && (o.source_url.includes('vertexaisearch') || o.source_url.includes('grounding-api'));
-  if (o.source_url && !isGrounding){
+  if (isRealUrl(o.source_url)){
     srcLink.href = o.source_url;
-    srcLink.textContent = `Leggi la notizia — ${o.source_name||'fonte'} ↗`;
-    srcLink.style.display = '';
+    srcLink.textContent = 'Leggi la notizia ↗';
   } else {
-    const q = encodeURIComponent((o.player_name||'') + ' Serie C calciatore');
-    srcLink.href = `https://www.google.com/search?q=${q}`;
-    srcLink.textContent = 'Cerca su Google ↗';
-    srcLink.style.display = '';
+    srcLink.href = google(`${o.player_name||''} ${o.current_club||'Serie C'} calcio`);
+    srcLink.textContent = 'Cerca notizie ↗';
   }
 
   const tmLink = el('#tmLink');
-  tmLink.href = o.tm_url
-    ? o.tm_url
-    : `https://www.transfermarkt.it/schnellsuche/ergebnis/schnellsuche?query=${encodeURIComponent(o.player_name||'')}`;
+  tmLink.href = isRealUrl(o.tm_url) ? o.tm_url : google(`${o.player_name||''} transfermarkt`);
+  tmLink.textContent = 'Transfermarkt ↗';
 
   el('#ov').classList.add('open');
   document.body.style.overflow = 'hidden';
