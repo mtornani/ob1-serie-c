@@ -325,12 +325,12 @@ function openDrawer(o){
 
   el('#breadName').textContent = o.player_name || '';
 
-  let urgencyLine = '', urgencyDate = '', urgencyBadge = 'CONTRATTO';
+  let urgencyLine = '', urgencyDate = '', urgencyBadge = 'Contratto';
   if (o._isFree){
     const dwc = o.days_without_contract||0;
-    urgencyLine  = dwc === 0 ? 'Appena svincolato' : `${dwc} giorni senza squadra`;
-    urgencyDate  = o._stale_free_agent ? 'da verificare' : 'attivo';
-    urgencyBadge = 'SVINCOLATO';
+    urgencyLine  = dwc === 0 ? 'Appena svincolato' : 'Attualmente svincolato';
+    urgencyDate  = o._stale_free_agent ? 'da verificare' : 'disponibile subito';
+    urgencyBadge = 'Svincolato';
   } else if (o._days != null){
     const exp = new Date(o.contract_expires);
     urgencyDate = exp.toLocaleDateString('it-IT', { day:'2-digit', month:'short', year:'numeric' });
