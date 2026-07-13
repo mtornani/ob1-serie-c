@@ -9123,12 +9123,12 @@
     "second_nationality": "Italy",
     "height_cm": 183,
     "birth_date": "2010-05-02",
-    "tm_url": "https://www.transfermarkt.com/kevin-rroci/profil/spieler/...",
+    "tm_url": "https://www.transfermarkt.com/kevin-rroci/profil/spieler/935000",
     "player_profile": {
       "nationality": "Albania",
       "second_nationality": "Italy",
       "height_cm": 183,
-      "tm_url": "https://www.transfermarkt.com/kevin-rroci/profil/spieler/...",
+      "tm_url": "https://www.transfermarkt.com/kevin-rroci/profil/spieler/935000",
       "birth_date": "2010-05-02"
     },
     "age": 16,
@@ -9869,12 +9869,12 @@
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHiIMdlEF8kHejKX7PwsscxIqQTy4jleY_zpsULFzpI6fuSm7fSO3csv1R7zxsXh_zcXcw28OmF0cLhOLtIlZdzsfsQGee7IrkbfqM9E5bDn4sEQo_RXSDjZLKBrz8HhlFtA0-sXxqbrptUbi6BwnFuBApbxMRr6jm95RAkgyEVkUCVhNwxlHIAIjWcFGHe7eR6aQg=",
     "discovered_at": "2026-06-29T11:10:21.252788",
     "league_id": "italy_serie_c_d",
-    "nationality": "Italia",
+    "nationality": "Italy",
     "foot": "destro",
     "birth_date": "2002-04-17",
     "tm_url": "https://www.transfermarkt.com/vincenzo-potenza/profil/spieler/...",
     "player_profile": {
-      "nationality": "Italia",
+      "nationality": "Italy",
       "foot": "destro",
       "birth_date": "2002-04-17",
       "tm_url": "https://www.transfermarkt.com/vincenzo-potenza/profil/spieler/..."
@@ -13072,18 +13072,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "57cef3022af6b94638e91e136aa7ecdc",
-    "player_name": "Cristian Cuzzarella",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Attaccante esterno, svincolatosi dalla S.S. Lazio (settore giovanile).",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGKxGy8YhZQw3_yLcp0bnofEovkV6sGFRc37sNYGS7v9FgSCoE918MIss_GwSjZ6qX0XKX6OR5P1zhvazA5fATWJ5g6tjlvrVpX0x5GApZiNeUF1rXdqhwPmG4eG-BTtW9PAZf8ctoLYD7LwEoRLV5lNHVQxzuroXtlCFoMciGtDGzSZNujq_4317TD",
-    "discovered_at": "2026-07-13T14:44:06.687131",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "0aee726308aa7eb982c989c9d961c1f2",
     "player_name": "Mattia Sala",
     "region": "ITALY",
@@ -13093,6 +13081,54 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEZb533R7atHNqoDTCyWewvJFx8AesoXIprwv2pFlJdCyL3KHQ4x_rx4qitTHOE0HEknEzIgU0J0X9SYjb9yYCYbljMj3fb51rmvTXrqjUu5-yozIr8QOmiiQBgQu85mmSLo5A1iD-Yy1NQ_EXTtkuSojy54duTnaocT2lEjTce4JLPeurPAHIW9pVm5CzJToyXBZNnPY6kJEY==",
     "discovered_at": "2026-07-13T14:44:06.687356",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "b58bc18f47800410704aeec6742a74a3",
+    "player_name": "Cristian Cuzzarella",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Svincolatosi dalla S.S. Lazio e acquisito dal Casarano (Serie C).",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEWWGWaS7pw9bWqs9b6miTLZCycWIPoql2K49nHVJVsEyM5ElMxxHPYqALT4NNbwyJ8vwAX2Euj71pvGBoU0lGBBCrG3_xAMBI85n4qNuO54DM3l64ZCBrzb692IxLKAGXxU9IXOxGCPAkunyeelaGQsHsAkGH4m4yDdk_Ba06Abuy6g_nPrVgawKyE",
+    "discovered_at": "2026-07-13T19:28:08.347773",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d02b84d556a44a10680dbd8bc05ca67f",
+    "player_name": "Alessio Luciani",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Contratto con la Cavese in scadenza il 30 giugno 2026.",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHq5L1-S46joglCvhaBBJz7bc-0d657SLLttreHw-HSVA5kUoUKlikaRRvZQuM4NslcG3gfWrP2hICtJn3JmECL3OxRx_6hbuvnIWaXnzmarNeh1OFsb1PcoDtzcuOHgrVDYKy84WvSZnk_o5l60vv7kExkb-R5zpbT4hxYz38E2V-oaYWxjTW50JW1AYQ9X1VkC7gybgqTeX92OIupAw==",
+    "discovered_at": "2026-07-13T19:28:08.347994",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "38278819531e161fdfe19e5c3279f212",
+    "player_name": "Cristian Riggio",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Ex Potenza (Serie C), ha firmato un pluriennale con il Guidonia Montecelio.",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE4D5R-lQkVoADNra2vZvh_xYPyZ7kzgwaJ30PGKXjtiHlbrM4ep7AEfK29Q0wm7TJPwgDywCXz06A2sTRxauxiiX6zmrimQRsF0pK7Ts2W4h17WMSJgqXeK63M6SnYKQTPBHRm2IGxpiUBiyCIrGDH-4-iC_waWpYFrmn46UiSrk_a_ogyiTzAdbvPcZ8LV5BXSy-uMvtlj9bEqIZukGAw==",
+    "discovered_at": "2026-07-13T19:28:08.348078",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "39dbfceedcd3e89dad51a586adad2616",
+    "player_name": "Paolo Virgilio",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Accordo con il Picerno dopo risoluzione contrattuale con il Monopoli (Serie C).",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE4D5R-lQkVoADNra2vZvh_xYPyZ7kzgwaJ30PGKXjtiHlbrM4ep7AEfK29Q0wm7TJPwgDywCXz06A2sTRxauxiiX6zmrimQRsF0pK7Ts2W4h17WMSJgqXeK63M6SnYKQTPBHRm2IGxpiUBiyCIrGDH-4-iC_waWpYFrmn46UiSrk_a_ogyiTzAdbvPcZ8LV5BXSy-uMvtlj9bEqIZukGAw==",
+    "discovered_at": "2026-07-13T19:28:08.348170",
     "league_id": "italy_serie_c_d"
   }
 ]
