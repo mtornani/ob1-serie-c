@@ -16,6 +16,22 @@ from scoring import OB1Scorer
 from minutaggio import genera_intel_badge
 
 
+def _first(*vals):
+    """First value that is not None (keeps a real 0), else None. No 0-coercion."""
+    for v in vals:
+        if v is not None:
+            return v
+    return None
+
+
+def _tm_url(url):
+    """Return the url only if it's a real Transfermarkt link (verifiable),
+    not a Gemini grounding redirect or junk. Otherwise None."""
+    if isinstance(url, str) and 'transfermarkt' in url.lower() and url.startswith('http'):
+        return url
+    return None
+
+
 def is_generic_tm_page(url: str) -> bool:
     """Detect generic Transfermarkt league/transfer pages (not player profiles)"""
     if not url:
@@ -186,10 +202,12 @@ def main():
             'source_url': opp.get('source_url', ''),
             'previous_clubs': opp.get('previous_clubs', []),
             'current_club': opp.get('current_club', ''),
-            'appearances': opp.get('appearances') or profile.get('appearances') or 0,
-            'goals': opp.get('goals') or profile.get('goals') or 0,
-            'assists': opp.get('assists') or profile.get('assists') or 0,
-            'minutes_played': opp.get('minutes_played') or profile.get('minutes_played') or 0,
+            # Trust: keep unknown stats as null — never coerce to 0. A fake "0
+            # presenze" reads as "never played" and destroys credibility.
+            'appearances': _first(opp.get('appearances'), profile.get('appearances')),
+            'goals': _first(opp.get('goals'), profile.get('goals')),
+            'assists': _first(opp.get('assists'), profile.get('assists')),
+            'minutes_played': _first(opp.get('minutes_played'), profile.get('minutes_played')),
             'summary': opp.get('summary', ''),
             
             # DATA-001: New enriched fields
@@ -202,6 +220,11 @@ def main():
 
             # DATA-003 QW-1: Agent field
             'agent': opp.get('agent') or profile.get('agent'),
+
+            # Verifiable Transfermarkt link (only a real TM url counts) + a
+            # trust flag the UI uses to separate verified data from estimates.
+            'tm_url': _tm_url(opp.get('tm_url') or profile.get('tm_url')),
+            'data_verified': bool(_tm_url(opp.get('tm_url') or profile.get('tm_url'))),
 
             # Discovered timestamp (for stale detection)
             'discovered_at': opp.get('discovered_at', ''),

@@ -857,6 +857,11 @@ body::before{
 .score-details .dim{ color: var(--ink-mute); margin-left:4px; font-size:10px; }
 .score-details .score-body{ margin-top: 10px; }
 
+/* trust line under stats */
+.trust{ font-size: 11px; margin-top: 8px; padding: 7px 10px; border-radius: 2px; }
+.trust.ok{ color: var(--acc); background: var(--acc-bg); border-left: 3px solid var(--acc); }
+.trust.todo{ color: var(--ink-dim); background: var(--bg-1); border-left: 3px solid var(--line-2); }
+
 /* stats strip empty state */
 .strip-empty{
   padding: 12px 14px;
@@ -982,7 +987,7 @@ body::before{
 </div>
 
 
-<script src="app.js?v=14"></script>
+<script src="app.js?v=15"></script>
 <script src="tracker.js" data-track-url="https://white-cherry-07a3.mirkotornani.workers.dev/"></script>
 </body>
 </html>

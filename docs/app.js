@@ -116,7 +116,7 @@ function applyFilter(){
   if (STATE.filter === 'hot')    list = list.filter(o=>o.ob1_score>=70);
   else if (STATE.filter === 'under')  list = list.filter(o=>o.age!=null && o.age<=22);
   else if (STATE.filter === 'free')   list = list.filter(o=>o._isFree);
-  else if (STATE.filter === 'verified') list = list.filter(o => o.market_value != null || o.appearances != null);
+  else if (STATE.filter === 'verified') list = list.filter(o => o.data_verified === true);
   else if (STATE.filter === 'urgent') list = list.filter(o=>o._urgency==='critical'||o._urgency==='high');
   else if (STATE.filter === 'new'){
     const cutoff = Date.now() - 30 * 86400000;
@@ -157,7 +157,7 @@ function paintCounters(){
   const free   = all.filter(o=>o._isFree).length;
   const u21    = all.filter(o=>o.age!=null && o.age<=22).length;
   const urgent   = all.filter(o=>o._urgency==='critical'||o._urgency==='high').length;
-  const verified = all.filter(o => o.market_value != null || o.appearances != null).length;
+  const verified = all.filter(o => o.data_verified === true).length;
   const cutoff30 = Date.now() - 30 * 86400000;
   const newCt  = all.filter(o => o.discovered_at && new Date(o.discovered_at).getTime() >= cutoff30).length;
 
@@ -205,7 +205,7 @@ function card(o){
   const typeTag = type ? `<span class="tag type-${type}">${type.toUpperCase()}</span>` : '';
   const daysOld = o.discovered_at ? Math.round((Date.now() - new Date(o.discovered_at)) / 86400000) : null;
   const newTag  = (daysOld !== null && daysOld <= 3) ? `<span class="tag new-signal">NUOVO</span>` : '';
-  const tmTag   = o.tm_enriched === true ? `<span class="tag tm-ok">Verificato</span>` : '';
+  const tmTag   = o.data_verified === true ? `<span class="tag tm-ok">Verificato</span>` : '';
 
   let daysText, daysUnit;
   if (o._isFree){
@@ -418,9 +418,13 @@ function openDrawer(o){
   // Stats strip: only render if at least one stat has real data
   const hasStats = o.appearances != null || o.goals != null || o.assists != null || o.market_value_formatted;
   const seasonNote = o.season ? `<div style="font-size:10px;color:var(--ink-mute);letter-spacing:.08em;margin-top:4px">stagione ${esc(o.season)}</div>` : '';
+  // Honest trust line: say plainly whether the numbers are verifiable.
+  const trustNote = o.data_verified
+    ? `<div class="trust ok">✓ Dati verificati su Transfermarkt</div>`
+    : (hasStats ? `<div class="trust todo">Dati da confermare — apri il profilo Transfermarkt qui sotto</div>` : '');
   const stripHtml = hasStats
-    ? `<div class="strip">${stats.map(s=>`<div class="cell"><span class="v">${s.v}</span><span class="l">${s.l}</span></div>`).join('')}</div>${seasonNote}`
-    : `<div class="strip-empty">Statistiche in arrivo — verifica su Transfermarkt in corso</div>`;
+    ? `<div class="strip">${stats.map(s=>`<div class="cell"><span class="v">${s.v}</span><span class="l">${s.l}</span></div>`).join('')}</div>${seasonNote}${trustNote}`
+    : `<div class="strip-empty">Statistiche non ancora disponibili — controlla su Transfermarkt</div>`;
 
   // Minutaggio FIGC — una sola riga in linguaggio piano. I dettagli
   // (moltiplicatori, proiezioni) restano nei report privati, non qui.
