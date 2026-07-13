@@ -16,6 +16,71 @@ const el  = (s, r=document) => r.querySelector(s);
 const els = (s, r=document) => [...r.querySelectorAll(s)];
 const safe = (v, f='—') => (v===null||v===undefined||v===''||v==='null') ? f : v;
 
+/* ============ SHORTLIST (localStorage) ============ */
+const SHORTLIST_KEY = 'ob1_shortlist';
+let CURRENT = null; // player shown in the open drawer
+
+function getShortlist(){
+  try { const a = JSON.parse(localStorage.getItem(SHORTLIST_KEY) || '[]'); return Array.isArray(a) ? a : []; }
+  catch(_){ return []; }
+}
+function isSaved(id){ return getShortlist().includes(id); }
+function toggleSave(id){
+  const a = getShortlist(); const i = a.indexOf(id);
+  if (i >= 0) a.splice(i,1); else a.push(id);
+  try { localStorage.setItem(SHORTLIST_KEY, JSON.stringify(a)); } catch(_){}
+  return i < 0; // true = now saved
+}
+
+function toast(msg){
+  const t = el('#toast'); if (!t) return;
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._t); t._t = setTimeout(()=>t.classList.remove('show'), 1800);
+}
+
+/* ============ SHARE / EXPORT candidate ============ */
+function shareUrl(o){ return location.origin + location.pathname + '?player=' + encodeURIComponent(o.id); }
+
+function dossierText(o){
+  const L = [];
+  L.push(`⚽ ${(o.player_name||'').toUpperCase()}`);
+  const meta = [o.role_name||o.role, o.age!=null?`${o.age} anni`:'', o.current_club||'Svincolato'].filter(Boolean).join(' · ');
+  if (meta) L.push(meta);
+  L.push('');
+  L.push(`OB1 ${o.ob1_score}/100 — ${TIER_LABEL[o._tier]||''}`);
+  const stats = [];
+  if (o.appearances!=null) stats.push(`${o.appearances} presenze`);
+  if (o.goals!=null) stats.push(`${o.goals} gol`);
+  if (o.market_value_formatted) stats.push(`valore ${o.market_value_formatted}`);
+  if (stats.length) L.push(stats.join(' · '));
+  L.push(o.data_verified ? 'Dati verificati su Transfermarkt' : 'Dati da confermare su Transfermarkt');
+  if (o.tm_url) L.push(o.tm_url);
+  L.push('');
+  L.push(`Scheda: ${shareUrl(o)}`);
+  L.push('— via OB1 Scout');
+  return L.join('\n');
+}
+
+function shareCurrent(){
+  if (!CURRENT) return;
+  const text = dossierText(CURRENT), url = shareUrl(CURRENT);
+  if (navigator.share){
+    navigator.share({ title: CURRENT.player_name, text, url }).catch(()=>{});
+  } else if (navigator.clipboard){
+    navigator.clipboard.writeText(text).then(()=>toast('Scheda copiata negli appunti')).catch(()=>toast('Copia non riuscita'));
+  } else {
+    toast('Condivisione non supportata');
+  }
+}
+
+function refreshSaveBtn(){
+  const b = el('#saveBtn'); if (!b || !CURRENT) return;
+  const on = isSaved(CURRENT.id);
+  b.classList.toggle('on', on);
+  b.setAttribute('aria-pressed', String(on));
+  b.innerHTML = `${on?'★':'☆'} <span class="lbl">${on?'Salvato':'Salva'}</span>`;
+}
+
 document.addEventListener('DOMContentLoaded', init);
 
 async function init(){
@@ -48,6 +113,15 @@ async function init(){
   trackSession();
   paintCounters();
   applyFilter();
+  openFromUrl();
+}
+
+/* Deep link ?player=<id> → open that player's card directly (shared links) */
+function openFromUrl(){
+  const id = new URLSearchParams(location.search).get('player');
+  if (!id) return;
+  const o = STATE.all.find(x => String(x.id) === String(id));
+  if (o) openDrawer(o);
 }
 
 /* Deep-link / PWA shortcut: ?filter=hot|free|under|verified|new */
@@ -117,6 +191,7 @@ function applyFilter(){
   else if (STATE.filter === 'under')  list = list.filter(o=>o.age!=null && o.age<=22);
   else if (STATE.filter === 'free')   list = list.filter(o=>o._isFree);
   else if (STATE.filter === 'verified') list = list.filter(o => o.data_verified === true);
+  else if (STATE.filter === 'saved'){ const sl = getShortlist(); list = list.filter(o => sl.includes(o.id)); }
   else if (STATE.filter === 'urgent') list = list.filter(o=>o._urgency==='critical'||o._urgency==='high');
   else if (STATE.filter === 'new'){
     const cutoff = Date.now() - 30 * 86400000;
@@ -166,7 +241,8 @@ function paintCounters(){
   el('#ctU21').textContent  = u21;
   el('#ctAll').textContent  = all.length;
 
-  const map = { all:all.length, hot, free, under:u21, verified, urgent, new:newCt };
+  const saved = getShortlist().length;
+  const map = { all:all.length, hot, free, under:u21, verified, urgent, new:newCt, saved };
   els('.chip .num').forEach(n=>{
     const k = n.dataset.ct;
     n.textContent = map[k] ?? 0;
@@ -223,9 +299,11 @@ function card(o){
     else               { daysText = o._days;                 daysUnit = o._days === 1 ? 'giorno alla scadenza' : 'giorni alla scadenza'; }
   }
 
+  const savedCls = isSaved(o.id) ? ' is-saved' : '';
   return `
-<article class="card" data-id="${o.id}" data-urgency="${o._urgency}" data-tier="${o._tier}" tabindex="0" role="button" aria-label="${esc(o.player_name)}, punteggio ${o.ob1_score}">
+<article class="card${savedCls}" data-id="${o.id}" data-urgency="${o._urgency}" data-tier="${o._tier}" tabindex="0" role="button" aria-label="${esc(o.player_name)}, punteggio ${o.ob1_score}">
   <span class="urgency"></span>
+  <span class="saved-star" aria-hidden="true">★</span>
   <div class="card-head">
     <div class="name-block">
       <div class="name">${esc(o.player_name)}</div>
@@ -334,6 +412,8 @@ function scoreVerdict(o) {
 
 function openDrawer(o){
   trackDrawerOpen(o.player_name);
+  CURRENT = o;
+  refreshSaveBtn();
 
   const brief = el('#brief');
   const type  = (o.opportunity_type||'').toLowerCase();
@@ -604,6 +684,20 @@ function wireDrawer(){
   el('#closeBtn').addEventListener('click', closeDrawer);
   el('#ov').addEventListener('click', e=>{ if (e.target.id === 'ov') closeDrawer(); });
   document.addEventListener('keydown', e=>{ if (e.key === 'Escape') closeDrawer(); });
+
+  el('#saveBtn').addEventListener('click', ()=>{
+    if (!CURRENT) return;
+    const now = toggleSave(CURRENT.id);
+    refreshSaveBtn();
+    toast(now ? 'Aggiunto alla shortlist' : 'Rimosso dalla shortlist');
+    // reflect the change without closing the drawer
+    const c = el(`.card[data-id="${CSS.escape(String(CURRENT.id))}"]`);
+    if (c) c.classList.toggle('is-saved', now);
+    paintCounters();
+    if (STATE.filter === 'saved') applyFilter();
+  });
+
+  el('#shareBtn').addEventListener('click', shareCurrent);
 }
 
 function wireKeyShortcuts(){
