@@ -2614,10 +2614,10 @@
       }
     },
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/elia-guidotti/profil/spieler/169000",
+    "tm_url": "https://www.transfermarkt.it/elia-guidotti/profil/spieler/",
     "player_profile": {
       "nationality": "Italia",
-      "tm_url": "https://www.transfermarkt.it/elia-guidotti/profil/spieler/169000",
+      "tm_url": "https://www.transfermarkt.it/elia-guidotti/profil/spieler/",
       "market_value_formatted": "-",
       "birth_date": "1990-07-27"
     },
@@ -4434,11 +4434,11 @@
     "nationality": "Italia",
     "height_cm": 186,
     "birth_date": "1996-02-12",
-    "tm_url": "https://www.transfermarkt.it/riccardo-bertozzi/profil/spieler/460000",
+    "tm_url": "https://www.transfermarkt.it/riccardo-bertozzi/profil/spieler/",
     "player_profile": {
       "nationality": "Italia",
       "height_cm": 186,
-      "tm_url": "https://www.transfermarkt.it/riccardo-bertozzi/profil/spieler/460000",
+      "tm_url": "https://www.transfermarkt.it/riccardo-bertozzi/profil/spieler/",
       "foot": "destro",
       "market_value_formatted": "-",
       "birth_date": "1996-02-12"
@@ -4488,10 +4488,10 @@
     "league_id": "italy_serie_c_d",
     "nationality": "Francia",
     "birth_date": "2004-01-01",
-    "tm_url": "https://www.transfermarkt.fr/aimen-aroussi/profil/spieler/1000000",
+    "tm_url": "https://www.transfermarkt.it/aimen-arroussi/profil/spieler/",
     "player_profile": {
       "nationality": "Francia",
-      "tm_url": "https://www.transfermarkt.fr/aimen-aroussi/profil/spieler/1000000",
+      "tm_url": "https://www.transfermarkt.it/aimen-arroussi/profil/spieler/",
       "birth_date": "2004-01-01"
     },
     "age": 22,
@@ -10226,7 +10226,23 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPVS67E6lZT22JHFDzWq3DHDU1ONQznR6CikcxaneehqCyLOS8x1y7GJ0U7zconu9bFRbfcOvkSBbrvkTTqqEEBZUMhKNI5KAGs5VBRKNUemXINL0dMDKeyFmmsKj4WnNgcViCnI5dSnc0zOPL8SNKFQN2pBaXRxBKZMBStjIdqvdMbSU7jQpZ",
     "discovered_at": "2026-06-30T04:01:55.657169",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italia",
+    "market_value": 225000,
+    "market_value_formatted": "225 mila €",
+    "height_cm": 197,
+    "birth_date": "1995-02-09",
+    "tm_url": "https://www.transfermarkt.it/filippo-lorenzini/profil/spieler/0",
+    "player_profile": {
+      "nationality": "Italia",
+      "market_value": 225000,
+      "market_value_formatted": "225 mila €",
+      "height_cm": 197,
+      "birth_date": "1995-02-09",
+      "tm_url": "https://www.transfermarkt.it/filippo-lorenzini/profil/spieler/0"
+    },
+    "age": 31,
+    "tm_enriched": true
   },
   {
     "id": "80edd079ffd05aea1cadc4ab2e1b5f8c",
@@ -10238,7 +10254,23 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFMYDutrKmsT9HgcX1T8p9mmKgVA-weRpmOqFpDRLuPDFD0hLLdWkZ8uFHrKYNcL75DVAhulpilaUjzgpFvI_GsVwuE2Wf3CtiMyLYh-jZBuwuvl680Al3TRFFkcA2Al2tVWqRIuwrYErja07_VOeO918_IpuhjCWbNboN-F6766NMqX58_xkS9NmSkrA6udSmwsc_JeCUVf9_-BzuatfLG14meGY9HI9FJszRE1OWoW7QaRYGKqMzWY7qJvyl3nFEk9sCeP0eneCNQOJg177UHJieLPJpgYLa9rtEzEmg6qw==",
     "discovered_at": "2026-06-30T09:48:53.990332",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italy",
+    "market_value": 600000,
+    "market_value_formatted": "€600k",
+    "height_cm": 194,
+    "birth_date": "2003-01-05",
+    "tm_url": "https://www.transfermarkt.it/alessandro-pietrelli/profil/spieler/0",
+    "player_profile": {
+      "nationality": "Italy",
+      "market_value": 600000,
+      "market_value_formatted": "€600k",
+      "height_cm": 194,
+      "birth_date": "2003-01-05",
+      "tm_url": "https://www.transfermarkt.it/alessandro-pietrelli/profil/spieler/0"
+    },
+    "age": 23,
+    "tm_enriched": true
   },
   {
     "id": "20dcc4affb44909df4a1af2e56666417",
@@ -10250,7 +10282,23 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFMYDutrKmsT9HgcX1T8p9mmKgVA-weRpmOqFpDRLuPDFD0hLLdWkZ8uFHrKYNcL75DVAhulpilaUjzgpFvI_GsVwuE2Wf3CtiMyLYh-jZBuwuvl680Al3TRFFkcA2Al2tVWqRIuwrYErja07_VOeO918_IpuhjCWbNboN-F6766NMqX58_xkS9NmSkrA6udSmwsc_JeCUVf9_-BzuatfLG14meGY9HI9FJszRE1OWoW7QaRYGKqMzWY7qJvyl3nFEk9sCeP0eneCNQOJg177UHJieLPJpgYLa9rtEzEmg6qw==",
     "discovered_at": "2026-06-30T09:48:53.990516",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Canada",
+    "market_value": 100000,
+    "market_value_formatted": "€100k",
+    "height_cm": 198,
+    "birth_date": "1998-06-05",
+    "tm_url": "https://www.transfermarkt.com/easton-ongaro/profil/spieler/0",
+    "player_profile": {
+      "nationality": "Canada",
+      "market_value": 100000,
+      "market_value_formatted": "€100k",
+      "height_cm": 198,
+      "birth_date": "1998-06-05",
+      "tm_url": "https://www.transfermarkt.com/easton-ongaro/profil/spieler/0"
+    },
+    "age": 28,
+    "tm_enriched": true
   },
   {
     "id": "373efafd756d05968a8a9d0834179b3a",
@@ -10262,7 +10310,25 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFMYDutrKmsT9HgcX1T8p9mmKgVA-weRpmOqFpDRLuPDFD0hLLdWkZ8uFHrKYNcL75DVAhulpilaUjzgpFvI_GsVwuE2Wf3CtiMyLYh-jZBuwuvl680Al3TRFFkcA2Al2tVWqRIuwrYErja07_VOeO918_IpuhjCWbNboN-F6766NMqX58_xkS9NmSkrA6udSmwsc_JeCUVf9_-BzuatfLG14meGY9HI9FJszRE1OWoW7QaRYGKqMzWY7qJvyl3nFEk9sCeP0eneCNQOJg177UHJieLPJpgYLa9rtEzEmg6qw==",
     "discovered_at": "2026-06-30T09:48:53.990621",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italy",
+    "market_value": 50000,
+    "market_value_formatted": "€50k",
+    "height_cm": 186,
+    "birth_date": "1994-04-25",
+    "tm_url": "https://www.transfermarkt.it/simone-emmanuello/profil/spieler/0",
+    "agent": "Mp Management",
+    "player_profile": {
+      "nationality": "Italy",
+      "market_value": 50000,
+      "market_value_formatted": "€50k",
+      "height_cm": 186,
+      "birth_date": "1994-04-25",
+      "tm_url": "https://www.transfermarkt.it/simone-emmanuello/profil/spieler/0",
+      "agent": "Mp Management"
+    },
+    "age": 32,
+    "tm_enriched": true
   },
   {
     "id": "12236cdaa32f02fb382802c93d0cc459",
@@ -12850,15 +12916,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "c279c652095ba117bc3ca66907d64e2f",
+    "id": "411363ad8aa152633670ebede530440a",
     "player_name": "Mattia Sangalli",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Ingaggiato a titolo definitivo dal Cittadella (Serie C).",
+    "description": "Centrocampista, ingaggiato a titolo definitivo dal Cittadella (Serie C).",
     "ob1_score": 60,
     "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEFpi7FASX6heoWpHVa7cA3oMyz-Eqp9XtQM-ZJELGJcwKI3umCCiyx9ltuzx999xI76YZ1YYiRSEJpRWijMsexYiYZyr1WI517fD9tckh--8CpP_pQUgQ6845XBxSYM0UbEJmWcpwatSQoGXYiVwZPf6IaVJk23-KDMydqg62DG4ZznX60ma-sgMSwU8B2XkjJkQ",
-    "discovered_at": "2026-07-12T19:11:47.857296",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRxq2vftx-eet2QvMiWj1lcB2VKaAJDuV9EQhG-utyM4tYuiScuEp1zY33nyXId6o2oJOKrv-rAp0Rk2Pl3uyZ_KYqBs-uJ_9vMctTRX4WgfkTffTLGLRYrsyKsYGeAt26ghoXC5CWCiaCoer2N0783l2WJe3usV9mOdT32lzq9xptVwlfidDYWfCgDrl67t24yxQ",
+    "discovered_at": "2026-07-13T09:36:44.521788",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -12970,162 +13036,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "3a40adfd1b1a00aed927ca94d33218c0",
-    "player_name": "Cristian Cuzzarella",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Attaccante esterno, svincolatosi dalla S.S.Lazio e acquisito dal Casarano (Serie C).",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRxq2vftx-eet2QvMiWj1lcB2VKaAJDuV9EQhG-utyM4tYuiScuEp1zY33nyXId6o2oJOKrv-rAp0Rk2Pl3uyZ_KYqBs-uJ_9vMctTRX4WgfkTffTLGLRYrsyKsYGeAt26ghoXC5CWCiaCoer2N0783l2WJe3usV9mOdT32lzq9xptVwlfidDYWfCgDrl67t24yxQ",
-    "discovered_at": "2026-07-13T09:36:44.521339",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "2ea6fb6d11324557d3ed4fe0f238efa4",
-    "player_name": "Michael Fabbro",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Attaccante, ingaggiato a titolo definitivo dal Cittadella (Serie C).",
-    "ob1_score": 60,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRxq2vftx-eet2QvMiWj1lcB2VKaAJDuV9EQhG-utyM4tYuiScuEp1zY33nyXId6o2oJOKrv-rAp0Rk2Pl3uyZ_KYqBs-uJ_9vMctTRX4WgfkTffTLGLRYrsyKsYGeAt26ghoXC5CWCiaCoer2N0783l2WJe3usV9mOdT32lzq9xptVwlfidDYWfCgDrl67t24yxQ",
-    "discovered_at": "2026-07-13T09:36:44.521583",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "e7fa670b81ad96641738bc528de52c87",
-    "player_name": "Angelo Ndrecka",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Difensore, ingaggiato a titolo definitivo dal Cittadella (Serie C).",
-    "ob1_score": 60,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRxq2vftx-eet2QvMiWj1lcB2VKaAJDuV9EQhG-utyM4tYuiScuEp1zY33nyXId6o2oJOKrv-rAp0Rk2Pl3uyZ_KYqBs-uJ_9vMctTRX4WgfkTffTLGLRYrsyKsYGeAt26ghoXC5CWCiaCoer2N0783l2WJe3usV9mOdT32lzq9xptVwlfidDYWfCgDrl67t24yxQ",
-    "discovered_at": "2026-07-13T09:36:44.521691",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "411363ad8aa152633670ebede530440a",
-    "player_name": "Mattia Sangalli",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Centrocampista, ingaggiato a titolo definitivo dal Cittadella (Serie C).",
-    "ob1_score": 60,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRxq2vftx-eet2QvMiWj1lcB2VKaAJDuV9EQhG-utyM4tYuiScuEp1zY33nyXId6o2oJOKrv-rAp0Rk2Pl3uyZ_KYqBs-uJ_9vMctTRX4WgfkTffTLGLRYrsyKsYGeAt26ghoXC5CWCiaCoer2N0783l2WJe3usV9mOdT32lzq9xptVwlfidDYWfCgDrl67t24yxQ",
-    "discovered_at": "2026-07-13T09:36:44.521788",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "b7bfb0026f142bc611157d4ea6672c4d",
-    "player_name": "Francesco Toffanin",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Difensore centrale, ingaggiato a titolo definitivo dal Cittadella (Serie C).",
-    "ob1_score": 60,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRxq2vftx-eet2QvMiWj1lcB2VKaAJDuV9EQhG-utyM4tYuiScuEp1zY33nyXId6o2oJOKrv-rAp0Rk2Pl3uyZ_KYqBs-uJ_9vMctTRX4WgfkTffTLGLRYrsYGeAt26ghoXC5CWCiaCoer2N0783l2WJe3usV9mOdT32lzq9xptVwlfidDYWfCgDrl67t24yxQ",
-    "discovered_at": "2026-07-13T09:36:44.521908",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "789d90a121fff368c930aa893184a70e",
-    "player_name": "Matteo Sorzi",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Portiere, acquisito a titolo definitivo dalla Reggiana (Serie C).",
-    "ob1_score": 60,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRxq2vftx-eet2QvMiWj1lcB2VKaAJDuV9EQhG-utyM4tYuiScuEp1zY33nyXId6o2oJOKrv-rAp0Rk2Pl3uyZ_KYqBs-uJ_9vMctTRX4WgfkTffTLGLRYrsyKsYGeAt26ghoXC5CWCiaCoer2N0783l2WJe3usV9mOdT32lzq9xptVwlfidDYWfCgDrl67t24yxQ",
-    "discovered_at": "2026-07-13T09:36:44.522011",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "4eb6bf762ccae98cf00b5cfd57b5b700",
-    "player_name": "Marco Olivieri",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Attaccante, ex Triestina, squadra retrocessa dalla Serie C 2025-26.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQENGlWfaIrXvfaemujFb0ntrOIa7gxcnGupAUGTXi8JHINybMdwCOU1xPHyI01XS6uSJ8eRLfNi4OQiSGmbOsdv8RXY02p5sx8Znv-8-eEfIsMKEfsnhuMQon8Dm8bXRTJwydC30wyefvd7dNTPQccBYPYucB4Z4LR8o621IJQntNJHC8pp_ozroqVUdtqkXdha73VqoGkbSJ8=",
-    "discovered_at": "2026-07-13T09:36:44.522103",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "dae054aa38ab9970ea24cdc8e9b1a05b",
-    "player_name": "Pietro Perina",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Portiere, ex Foggia, squadra retrocessa dalla Serie C 2025-26.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQENGlWfaIrXvfaemujFb0ntrOIa7gxcnGupAUGTXi8JHINybMdwCOU1xPHyI01XS6uSJ8eRLfNi4OQiSGmbOsdv8RXY02p5sx8Znv-8-eEfIsMKEfsnhuMQon8Dm8bXRTJwydC30wyefvd7dNTPQccBYPYucB4Z4LR8o621IJQntNJHC8pp_ozroqVUdtqkXdha73VqoGkbSJ8=",
-    "discovered_at": "2026-07-13T09:36:44.522191",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "92090c3b66681916d2a9992d36d64fa7",
-    "player_name": "Ryder Matos",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Attaccante, ex FC Trapani 1905, squadra retrocessa dalla Serie C 2025-26.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFpW2bO5k3hYBMzalsuSiCM8e9HZpph_b2AlBm20111wUDbu9KG_SV1sZJ72LBdt16x0ng49V6qf59dxmkhCN8aSszSwQdp6l0a9NMVlHerWutvyB4xK2XysevZgo2_lzVWA4orF_pmo4daTFsQ6__17PO0emd_uUpZCK3Pjdo61Tp_CBhxxCygrWEnVw==",
-    "discovered_at": "2026-07-13T09:36:44.522278",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "c6704750ef58ea35c4f3efd60fd4a75e",
-    "player_name": "Amedeo Benedetti",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Difensore, ex FC Trapani 1905, squadra retrocessa dalla Serie C 2025-26.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFpW2bO5k3hYBMzalsuSiCM8e9HZpph_b2AlBm20111wUDbu9KG_SV1sZJ72LBdt16x0ng49V6qf59dxmkhCN8aSszSwQdp6l0a9NMVlHerWutvyB4xK2XysevZgo2_lzVWA4orF_pmo4daTFsQ6__17PO0emd_uUpZCK3Pjdo61Tp_CBhxxCygrWEnVw==",
-    "discovered_at": "2026-07-13T09:36:44.522368",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "394ecb05a2c7d72d7a42617484f059a0",
-    "player_name": "Roberto Pirrello",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Difensore, ex FC Trapani 1905, squadra retrocessa dalla Serie C 2025-26.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFpW2bO5k3hYBMzalsuSiCM8e9HZpph_b2AlBm20111wUDbu9KG_SV1sZJ72LBdt16x0ng49V6qf59dxmkhCN8aSszSwQdp6l0a9NMVlHerWutvyB4xK2XysevZgo2_lzVWA4orF_pmo4daTFsQ6__17PO0emd_uUpZCK3Pjdo61Tp_CBhxxCygrWEnVw==",
-    "discovered_at": "2026-07-13T09:36:44.522456",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "23d6ebc4f7a8c27fea2f34194e1685f4",
-    "player_name": "Matteo Zanini",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Centrocampista, ex Siracusa Calcio, squadra retrocessa dalla Serie C 2025-26.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFpW2bO5k3hYBMzalsuSiCM8e9HZpph_b2AlBm20111wUDbu9KG_SV1sZJ72LBdt16x0ng49V6qf59dxmkhCN8aSszSwQdp6l0a9NMVlHerWutvyB4xK2XysevZgo2_lzVWA4orF_pmo4daTFsQ6__17PO0emd_uUpZCK3Pjdo61Tp_CBhxxCygrWEnVw==",
-    "discovered_at": "2026-07-13T09:36:44.522545",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "78a6acb9bfdfa6cce6a5bb6d61c40e81",
-    "player_name": "Alessandro Farroni",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Portiere, ex Siracusa Calcio, squadra retrocessa dalla Serie C 2025-26.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFpW2bO5k3hYBMzalsuSiCM8e9HZpph_b2AlBm20111wUDbu9KG_SV1sZJ72LBdt16x0ng49V6qf59dxmkhCN8aSszSwQdp6l0a9NMVlHerWutvyB4xK2XysevZgo2_lzVWA4orF_pmo4daTFsQ6__17PO0emd_uUpZCK3Pjdo61Tp_CBhxxCygrWEnVw==",
-    "discovered_at": "2026-07-13T09:36:44.522632",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "0305a913196f2761a455ba3892faf983",
     "player_name": "Filippo Atzori",
     "region": "ITALY",
@@ -13150,18 +13060,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "2f5dbc6c6f8277189c023fa62baee6db",
-    "player_name": "Alessandro Micai",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Portiere svincolato, ex Serie B con Reggiana, ora sul mercato.",
-    "ob1_score": 69,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_HNERS49COt1h-B4KqlAQbPssINTMrTnG5Rnit5DxMwxG2dL6qO_fNdV_O6eN_XHVxLnzF0s0CqYPlrq-jz3qlxO9psFDx000S99aJ_Wpn_hZP-Hw_VNUeW1Ol39-VM2ZBT3CNKhskxuU5jtKcTNxBddzqyImgM6QZx8-FZ6b5A7_1WbW1cUgHRFNX5c_uL8=",
-    "discovered_at": "2026-07-13T09:36:44.522916",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "2316559817d5718bb48c59f04730c08e",
     "player_name": "Franck Tchaouna",
     "region": "ITALY",
@@ -13174,87 +13072,27 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "6a229fa814c323fa08c18f44392b23e8",
-    "player_name": "Ludovico Di Nella",
+    "id": "57cef3022af6b94638e91e136aa7ecdc",
+    "player_name": "Cristian Cuzzarella",
     "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Attaccante 2008 del Club Milano nel radar del Milan Futuro.",
-    "ob1_score": 57,
+    "opportunity_type": "svincolato",
+    "description": "Attaccante esterno, svincolatosi dalla S.S. Lazio (settore giovanile).",
+    "ob1_score": 62,
     "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAVmCITxbhIPvf0vB9i6IuqsUJpGKhbycbTLKlMsFXAmS3PQR0AEWoQ5OnPqRZVr7cQa1KjzIwF5HFqOCJg4UnFNGENcWwGBcaPAUWFTvIYceZR0pXHrdNReHX5UhrAuQ7Yhw-cPPhpYETi-npWZogpBCGELPtYvtL1uwNxh_qQdcD2qKTfdO9PdDTAuRc_ygu6hZzLOM1kxKlROTF_4iok81qQrbXhT9Iaz0CorOku-fbPTwt30Q9ik1NXG3QKG0CkbQTykab8l3LS4PQuTARkfMU",
-    "discovered_at": "2026-07-13T09:36:44.523104",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGKxGy8YhZQw3_yLcp0bnofEovkV6sGFRc37sNYGS7v9FgSCoE918MIss_GwSjZ6qX0XKX6OR5P1zhvazA5fATWJ5g6tjlvrVpX0x5GApZiNeUF1rXdqhwPmG4eG-BTtW9PAZf8ctoLYD7LwEoRLV5lNHVQxzuroXtlCFoMciGtDGzSZNujq_4317TD",
+    "discovered_at": "2026-07-13T14:44:06.687131",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "4a87e6f204ab6f24f23a3313c268025b",
-    "player_name": "Omar Nenci",
+    "id": "0aee726308aa7eb982c989c9d961c1f2",
+    "player_name": "Mattia Sala",
     "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Difensore centrale 2004, obiettivo del Millesimo (Serie D).",
-    "ob1_score": 57,
+    "opportunity_type": "svincolato",
+    "description": "Lasciato libero dal Pisa alla scadenza naturale del contratto dopo due stagioni in Lega Pro.",
+    "ob1_score": 64,
     "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6uD1_9Q7Ed9cohR_ytBQsqYB0B-1mTrn85BUzk1XiBO0kC-20ikY0-vKc4E8hie80uK0RRWWzVq6XujIsXXstoVNFmcWmLCkEVXDuxRnqAWycE8yI3bGwdxRCDRQFG5FN88Q4U8F82t3NoHqh4eAZFb-SVA6CHddPK9-5lGRg8qaPEUs4z7dmCh4NSDIF0ZrrXiR1wa_1UYnDcn_6ekqYFpo1cs4=",
-    "discovered_at": "2026-07-13T09:36:44.523190",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "c11cf120f59b393af922c6772ad3d712",
-    "player_name": "Joshua Malagrida",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Esterno offensivo 2008, vicino al Millesimo (Serie D).",
-    "ob1_score": 57,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6uD1_9Q7Ed9cohR_ytBQsqYB0B-1mTrn85BUzk1XiBO0kC-20ikY0-vKc4E8hie80uK0RRWWzVq6XujIsXXstoVNFmcWmLCkEVXDuxRnqAWycE8yI3bGwdxRCDRQFG5FN88Q4U8F82t3NoHqh4eAZFb-SVA6CHddPK9-5lGRg8qaPEUs4z7dmCh4NSDIF0ZrrXiR1wa_1UYnDcn_6ekqYFpo1cs4=",
-    "discovered_at": "2026-07-13T09:36:44.523276",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "245f730271e53c1585fc2cd29821890d",
-    "player_name": "Lorenzo Ghibaudo",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Centrocampista 2007 dal Cuneo, molto apprezzato.",
-    "ob1_score": 57,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6uD1_9Q7Ed9cohR_ytBQsqYB0B-1mTrn85BUzk1XiBO0kC-20ikY0-vKc4E8hie80uK0RRWWzVq6XujIsXXstoVNFmcWmLCkEVXDuxRnqAWycE8yI3bGwdxRCDRQFG5FN88Q4U8F82t3NoHqh4eAZFb-SVA6CHddPK9-5lGRg8qaPEUs4z7dmCh4NSDIF0ZrrXiR1wa_1UYnDcn_6ekqYFpo1cs4=",
-    "discovered_at": "2026-07-13T09:36:44.523360",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "ef22d4102c61b7f27d6c9f3154175b23",
-    "player_name": "Castiglia",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Giovane 2008 dal Vado, vicino al Millesimo (Serie D).",
-    "ob1_score": 57,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6uD1_9Q7Ed9cohR_ytBQsqYB0B-1mTrn85BUzk1XiBO0kC-20ikY0-vKc4E8hie80uK0RRWWzVq6XujIsXXstoVNFmcWmLCkEVXDuxRnqAWycE8yI3bGwdxRCDRQFG5FN88Q4U8F82t3NoHqh4eAZFb-SVA6CHddPK9-5lGRg8qaPEUs4z7dmCh4NSDIF0ZrrXiR1wa_1UYnDcn_6ekqYFpo1cs4=",
-    "discovered_at": "2026-07-13T09:36:44.523444",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "a478171dbaa11943c90a1d3f3bd160ab",
-    "player_name": "Alessandro Cesari",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Difensore 2004, potrebbe arrivare al Millesimo (Serie D).",
-    "ob1_score": 57,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6uD1_9Q7Ed9cohR_ytBQsqYB0B-1mTrn85BUzk1XiBO0kC-20ikY0-vKc4E8hie80uK0RRWWzVq6XujIsXXstoVNFmcWmLCkEVXDuxRnqAWycE8yI3bGwdxRCDRQFG5FN88Q4U8F82t3NoHqh4eAZFb-SVA6CHddPK9-5lGRg8qaPEUs4z7dmCh4NSDIF0ZrrXiR1wa_1UYnDcn_6ekqYFpo1cs4=",
-    "discovered_at": "2026-07-13T09:36:44.523530",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "abce5d8c131249b1f17d7eec22c861a3",
-    "player_name": "Stefano Mazzaroppi",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Centrocampista offensivo 2003, dal Heraclea al Legnago Salus (Serie D).",
-    "ob1_score": 57,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQErNJHTmmH18rRNT7_zhpy8hY-ayrkQayctGqYClKn9idsOVgnWxESwFRYc6RFC_YHLXmc0YS1bZ9jLkM9T6LYYaurdHJbgeVo60xFtGGvOVzFCTIYH0-tDMO3yj3XionzcA0rZhs3mELeDsVlN4L4NiGDc5vWPZLIVG54ijG4pzzG73EmEJACOOafjNWRWE3cdxKEweVjNbiYef29yOF6QYRv",
-    "discovered_at": "2026-07-13T09:36:44.523619",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEZb533R7atHNqoDTCyWewvJFx8AesoXIprwv2pFlJdCyL3KHQ4x_rx4qitTHOE0HEknEzIgU0J0X9SYjb9yYCYbljMj3fb51rmvTXrqjUu5-yozIr8QOmiiQBgQu85mmSLo5A1iD-Yy1NQ_EXTtkuSojy54duTnaocT2lEjTce4JLPeurPAHIW9pVm5CzJToyXBZNnPY6kJEY==",
+    "discovered_at": "2026-07-13T14:44:06.687356",
     "league_id": "italy_serie_c_d"
   }
 ]
