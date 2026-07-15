@@ -10592,7 +10592,21 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHZvWld0x2AF_TLNCrHjj6uOYL04JHr-hkj9dGguUxUss69a6ygbmO8ixPVeDpHwymWfBaV1hcIUO0t44cYWNz6BKxHppvSW5X3gNGOEnxIDbJH583Gak30AB2vGsbmcO8a_hxw8eCJCay90b7LSrQUuTd8BLzZPwrLZYSWNMkA3frTPApa7nA6ahWsWIpctJxqI97MOV_cLB3S4fqWoF9b",
     "discovered_at": "2026-06-30T09:48:53.992165",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italia",
+    "market_value": 250000,
+    "market_value_formatted": "250 mila €",
+    "height_cm": 190,
+    "birth_date": "2000-07-03",
+    "player_profile": {
+      "nationality": "Italia",
+      "market_value": 250000,
+      "market_value_formatted": "250 mila €",
+      "height_cm": 190,
+      "birth_date": "2000-07-03"
+    },
+    "age": 26,
+    "tm_enriched": true
   },
   {
     "id": "ace398a0f520ec41eaff14959441b75b",
@@ -10604,7 +10618,25 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG9bSFbOj-Bvpv6xic0Ld01RBQIsfyGfw02KPgQiospwTxvepgNWcOvd4qUrbPRXcvl6H9Biyuv2hhocQivFV8yoFcUqelK8NCk5LN2mrkUpIZ3EKpt9USjs8-ZjsS7BLG_QYLl5SgjI8FWnKnWOSRgADe9HWn1ZCZvVdxKYcmPUU0JtVyCK7GZNO1Zig1gcV_HgLENfkAebg==",
     "discovered_at": "2026-06-30T14:28:47.546424",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italia",
+    "foot": "sinistro",
+    "market_value": 1300000,
+    "market_value_formatted": "1,30 mln €",
+    "height_cm": 184,
+    "birth_date": "2004-07-20",
+    "agent": "P&P Sport Management S.A.M.",
+    "player_profile": {
+      "nationality": "Italia",
+      "foot": "sinistro",
+      "market_value": 1300000,
+      "market_value_formatted": "1,30 mln €",
+      "height_cm": 184,
+      "birth_date": "2004-07-20",
+      "agent": "P&P Sport Management S.A.M."
+    },
+    "age": 22,
+    "tm_enriched": true
   },
   {
     "id": "b3efc5b41688171685ee4fb7e86f5d38",
@@ -10616,7 +10648,23 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG9bSFbOj-Bvpv6xic0Ld01RBQIsfyGfw02KPgQiospwTxvepgNWcOvd4qUrbPRXcvl6H9Biyuv2hhocQivFV8yoFcUqelK8NCk5LN2mrkUpIZ3EKpt9USjs8-ZjsS7BLG_QYLl5SgjI8FWnKnWOSRgADe9HWn1ZCZvVdxKYcmPUU0JtVyCK7GZNO1Zig1gcV_HgLENfkAebg==",
     "discovered_at": "2026-06-30T14:28:47.546777",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Paesi Bassi",
+    "market_value": 225000,
+    "market_value_formatted": "225 mila €",
+    "height_cm": 186,
+    "birth_date": "2000-05-16",
+    "agent": "Team Raiola",
+    "player_profile": {
+      "nationality": "Paesi Bassi",
+      "market_value": 225000,
+      "market_value_formatted": "225 mila €",
+      "height_cm": 186,
+      "birth_date": "2000-05-16",
+      "agent": "Team Raiola"
+    },
+    "age": 26,
+    "tm_enriched": true
   },
   {
     "id": "8d1ded8b079b11731a814842af8018e4",
@@ -13492,15 +13540,27 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "c7228de62eaec0c756d63b76272cebc1",
+    "id": "07f67d95c2ff1479b41e5b046b1d27bb",
+    "player_name": "Giacomo Faticanti",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Giocatore più prezioso tra gli svincolati di Serie C - Girone A.",
+    "ob1_score": 66,
+    "source_name": "www.transfermarkt.it",
+    "source_url": "https://www.transfermarkt.it/serie-c-girone-a/vereinslose/wettbewerb/IT3A",
+    "discovered_at": "2026-07-15T19:18:16.666163",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "12ce1a492043ffff811ceac54a86d199",
     "player_name": "Cristian Cuzzarella",
     "region": "ITALY",
     "opportunity_type": "svincolato",
-    "description": "Svincolatosi dalla S.S. Lazio, acquisito dal Casarano (Serie C).",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFcj4LcvyTJavG6vItAJvPa_TmF_asjwmU90hycFW0UI0L_ZQrwiup52RHAjOhrvaBNmGMJ6kE48FmR0bsQ8p2KNj7qT7dQHYVNM-4aTOX5zbgCybb1VuRWmXj359wHYLDH3Ppnb-_2wE62Cx-gDY6a7nI1mbX6aogwzNlVDp6XNYdhjRZixHfUwMXFQ==",
-    "discovered_at": "2026-07-15T13:51:27.987271",
+    "description": "Svincolato dalla S.S. Lazio, acquisito dal Casarano (Serie C).",
+    "ob1_score": 67,
+    "source_name": "www.tuttocampo.it",
+    "source_url": "https://www.tuttocampo.it/Italia/SerieC/News/1679000/calciomercato-serie-c-gli-ultimi-movimenti",
+    "discovered_at": "2026-07-15T19:18:16.666418",
     "league_id": "italy_serie_c_d"
   }
 ]
