@@ -9897,13 +9897,13 @@
     "second_nationality": "Italy",
     "height_cm": 192,
     "birth_date": "2001-07-12",
-    "tm_url": "https://www.transfermarkt.it/tennyson-omoregie/profil/spieler/909090",
+    "tm_url": "https://www.transfermarkt.com/tennyson-omoregie/profil/spieler/939000",
     "player_profile": {
       "nationality": "Nigeria",
       "second_nationality": "Italy",
       "height_cm": 192,
       "birth_date": "2001-07-12",
-      "tm_url": "https://www.transfermarkt.it/tennyson-omoregie/profil/spieler/909090"
+      "tm_url": "https://www.transfermarkt.com/tennyson-omoregie/profil/spieler/939000"
     },
     "age": 25,
     "tm_enriched": false
@@ -9962,11 +9962,11 @@
     "player_profile": {
       "nationality": "Italy",
       "birth_date": "2008-04-16",
-      "tm_url": "https://www.transfermarkt.it/andrea-michieletto/profil/spieler/1070707"
+      "tm_url": "https://www.transfermarkt.com/andrea-michieletto/profil/spieler/1000000"
     },
     "age": 18,
     "tm_enriched": false,
-    "tm_url": "https://www.transfermarkt.it/andrea-michieletto/profil/spieler/1070707"
+    "tm_url": "https://www.transfermarkt.com/andrea-michieletto/profil/spieler/1000000"
   },
   {
     "id": "ccab6bc102d3f8ea75da4c8e8bb61c42",
@@ -13308,123 +13308,63 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "e9c2dfb76f32cadafd951775061e701a",
+    "id": "46013870926afbcd6a915782adb4311b",
     "player_name": "Cristian Cuzzarella",
     "region": "ITALY",
     "opportunity_type": "svincolato",
-    "description": "Attaccante esterno, svincolatosi dalla S.S. Lazio, acquisito dal Casarano.",
-    "ob1_score": 62,
+    "description": "attaccante esterno svincolatosi dalla Lazio, acquisito dal Casarano (Serie C)",
+    "ob1_score": 64,
     "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE-3RKIVbeRJLNG31xykh6dcHDxj_0cxzn1r2bdCsyTAogdka75Qs2ujoO1DJE3S_lBkeCTAPh3ehTp56hUevokJddRaGe4sc_f8qVXkTmN7KNNFPr4mKs7i3LbCfvK1X7xTu47JlDGnNWnIl2UhsgJ56br2cIFVtNmN4aO6JPN7wnnXePndh2aWb1gTWJ2_IkR0A==",
-    "discovered_at": "2026-07-14T19:25:57.447047",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHj3xuN_n3yBXVZX8epDr_tv5n3rjetuUON9VXJ1c6lUEUzBATjMo4ymvkWqTWOyjcr6NDLPZ3ZxJL3XPqf-kXyz3lcL3V2FDh0oQKIS_-ye2isVtNgMvveppDgrIwyupZM0i4vtQdyfS856fSMUAVXdwmISCefuNhW3COEVCQr62qhg_qZxUXgjSM8Ng==",
+    "discovered_at": "2026-07-15T02:47:33.738531",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "f87540d6020a3721ba39092ea1c47839",
+    "id": "474ab4f3e9ddf08501df1b70fc02494c",
     "player_name": "Michael Fabbro",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Attaccante, acquisito a titolo definitivo dal Cittadella.",
-    "ob1_score": 57,
+    "description": "attaccante acquisito a titolo definitivo dal Cittadella (Serie C)",
+    "ob1_score": 60,
     "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE-3RKIVbeRJLNG31xykh6dcHDxj_0cxzn1r2bdCsyTAogdka75Qs2ujoO1DJE3S_lBkeCTAPh3ehTp56hUevokJddRaGe4sc_f8qVXkTmN7KNNFPr4mKs7i3LbCfvK1X7xTu47JlDGnNWnIl2UhsgJ56br2cIFVtNmN4aO6JPN7wnnXePndh2aWb1gTWJ2_IkR0A==",
-    "discovered_at": "2026-07-14T19:25:57.447326",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHj3xuN_n3yBXVZX8epDr_tv5n3rjetuUON9VXJ1c6lUEUzBATjMo4ymvkWqTWOyjcr6NDLPZ3ZxJL3XPqf-kXyz3lcL3V2FDh0oQKIS_-ye2isVtNgMvveppDgrIwyupZM0i4vtQdyfS856fSMUAVXdwmISCefuNhW3COEVCQr62qhg_qZxUXgjSM8Ng==",
+    "discovered_at": "2026-07-15T02:47:33.738782",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "39812433527ddbb99fc75df09e23b0c6",
+    "id": "e2942637e4bfa000a6e00d48d6daee71",
     "player_name": "Angelo Ndrecka",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Difensore, acquisito a titolo definitivo dal Cittadella.",
-    "ob1_score": 57,
+    "description": "difensore acquisito a titolo definitivo dal Cittadella (Serie C)",
+    "ob1_score": 60,
     "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE-3RKIVbeRJLNG31xykh6dcHDxj_0cxzn1r2bdCsyTAogdka75Qs2ujoO1DJE3S_lBkeCTAPh3ehTp56hUevokJddRaGe4sc_f8qVXkTmN7KNNFPr4mKs7i3LbCfvK1X7xTu47JlDGnNWnIl2UhsgJ56br2cIFVtNmN4aO6JPN7wnnXePndh2aWb1gTWJ2_IkR0A==",
-    "discovered_at": "2026-07-14T19:25:57.447442",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHj3xuN_n3yBXVZX8epDr_tv5n3rjetuUON9VXJ1c6lUEUzBATjMo4ymvkWqTWOyjcr6NDLPZ3ZxJL3XPqf-kXyz3lcL3V2FDh0oQKIS_-ye2isVtNgMvveppDgrIwyupZM0i4vtQdyfS856fSMUAVXdwmISCefuNhW3COEVCQr62qhg_qZxUXgjSM8Ng==",
+    "discovered_at": "2026-07-15T02:47:33.738889",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "4f685be4dccb73881d9021281db16fa9",
+    "id": "760fd6ff09281d6917e7efcbe8565bc8",
     "player_name": "Mattia Sangalli",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Centrocampista, acquisito a titolo definitivo dal Cittadella.",
-    "ob1_score": 57,
+    "description": "centrocampista acquisito a titolo definitivo dal Cittadella (Serie C)",
+    "ob1_score": 60,
     "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE-3RKIVbeRJLNG31xykh6dcHDxj_0cxzn1r2bdCsyTAogdka75Qs2ujoO1DJE3S_lBkeCTAPh3ehTp56hUevokJddRaGe4sc_f8qVXkTmN7KNNFPr4mKs7i3LbCfvK1X7xTu47JlDGnNWnIl2UhsgJ56br2cIFVtNmN4aO6JPN7wnnXePndh2aWb1gTWJ2_IkR0A==",
-    "discovered_at": "2026-07-14T19:25:57.447540",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHj3xuN_n3yBXVZX8epDr_tv5n3rjetuUON9VXJ1c6lUEUzBATjMo4ymvkWqTWOyjcr6NDLPZ3ZxJL3XPqf-kXyz3lcL3V2FDh0oQKIS_-ye2isVtNgMvveppDgrIwyupZM0i4vtQdyfS856fSMUAVXdwmISCefuNhW3COEVCQr62qhg_qZxUXgjSM8Ng==",
+    "discovered_at": "2026-07-15T02:47:33.738988",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ceaa6915212952f8da271404603e5e14",
+    "id": "b2fa68fcc1f4a0a8fdc6c5053dcaf78f",
     "player_name": "Francesco Toffanin",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Difensore centrale, acquisito a titolo definitivo dal Cittadella.",
-    "ob1_score": 57,
+    "description": "difensore centrale acquisito a titolo definitivo dal Cittadella (Serie C)",
+    "ob1_score": 60,
     "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE-3RKIVbeRJLNG31xykh6dcHDxj_0cxzn1r2bdCsyTAogdka75Qs2ujoO1DJE3S_lBkeCTAPh3ehTp56hUevokJddRaGe4sc_f8qVXkTmN7KNNFPr4mKs7i3LbCfvK1X7xTu47JlDGnNWnIl2UhsgJ56br2cIFVtNmN4aO6JPN7wnnXePndh2aWb1gTWJ2_IkR0A==",
-    "discovered_at": "2026-07-14T19:25:57.447638",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "d5bba4479894e9084397b51c5a88052f",
-    "player_name": "Daniel Cappelletti",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Difensore, ex LR Vicenza, attualmente senza squadra.",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEPNKP7uK_ogZm52orwqKdWCen22VqM8RB12XMHdPVVdpVFzrVWEouFJop9yuG0WTaeYh-2fetGtLWsnLqfQI9gC-fL1ICV07yjDlaLxxEM24TFFvV1fNSTf5hFF0Dol6gHTDyfm-CphdVspSLkQB7xKFAjS_qOC4Dub0gpVQOHAXOwHz9PbGKKuF9A",
-    "discovered_at": "2026-07-14T19:25:57.447741",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "8a84f0eb5631375ac80a3c7bb1602726",
-    "player_name": "Domen Crnigoj",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Centrocampista, ex FC Südtirol, attualmente senza squadra.",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEPNKP7uK_ogZm52orwqKdWCen22VqM8RB12XMHdPVVdpVFzrVWEouFJop9yuG0WTaeYh-2fetGtLWsnLqfQI9gC-fL1ICV07yjDlaLxxEM24TFFvV1fNSTf5hFF0Dol6gHTDyfm-CphdVspSLkQB7xKFAjS_qOC4Dub0gpVQOHAXOwHz9PbGKKuF9A",
-    "discovered_at": "2026-07-14T19:25:57.447835",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "a8ead6821bba43f1021a63110e02b892",
-    "player_name": "Alberto Rizzo",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Difensore, ex Union Brescia, attualmente senza squadra.",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEPNKP7uK_ogZm52orwqKdWCen22VqM8RB12XMHdPVVdpVFzrVWEouFJop9yuG0WTaeYh-2fetGtLWsnLqfQI9gC-fL1ICV07yjDlaLxxEM24TFFvV1fNSTf5hFF0Dol6gHTDyfm-CphdVspSLkQB7xKFAjS_qOC4Dub0gpVQOHAXOwHz9PbGKKuF9A",
-    "discovered_at": "2026-07-14T19:25:57.447925",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "861855d2aaa0ce0468b6596808901ed3",
-    "player_name": "Gianluca Esposito",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Centrocampista, ex AC Renate, attualmente senza squadra.",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEPNKP7uK_ogZm52orwqKdWCen22VqM8RB12XMHdPVVdpVFzrVWEouFJop9yuG0WTaeYh-2fetGtLWsnLqfQI9gC-fL1ICV07yjDlaLxxEM24TFFvV1fNSTf5hFF0Dol6gHTDyfm-CphdVspSLkQB7xKFAjS_qOC4Dub0gpVQOHAXOwHz9PbGKKuF9A",
-    "discovered_at": "2026-07-14T19:25:57.448014",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "8755242f760a43e9133fc22fea5f65f6",
-    "player_name": "Aristidi Kolaj",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Attaccante, ex KF Teuta, attualmente senza squadra.",
-    "ob1_score": 62,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEPNKP7uK_ogZm52orwqKdWCen22VqM8RB12XMHdPVVdpVFzrVWEouFJop9yuG0WTaeYh-2fetGtLWsnLqfQI9gC-fL1ICV07yjDlaLxxEM24TFFvV1fNSTf5hFF0Dol6gHTDyfm-CphdVspSLkQB7xKFAjS_qOC4Dub0gpVQOHAXOwHz9PbGKKuF9A",
-    "discovered_at": "2026-07-14T19:25:57.448103",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHj3xuN_n3yBXVZX8epDr_tv5n3rjetuUON9VXJ1c6lUEUzBATjMo4ymvkWqTWOyjcr6NDLPZ3ZxJL3XPqf-kXyz3lcL3V2FDh0oQKIS_-ye2isVtNgMvveppDgrIwyupZM0i4vtQdyfS856fSMUAVXdwmISCefuNhW3COEVCQr62qhg_qZxUXgjSM8Ng==",
+    "discovered_at": "2026-07-15T02:47:33.739093",
     "league_id": "italy_serie_c_d"
   }
 ]
