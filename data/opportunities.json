@@ -4439,13 +4439,13 @@
       "nationality": "Italy",
       "height_cm": 186,
       "tm_url": "https://www.transfermarkt.com/riccardo-bertozzi/profil/spieler/429090",
-      "foot": "destro",
+      "foot": "right",
       "market_value_formatted": "-",
       "birth_date": "1996-02-12"
     },
     "age": 30,
     "tm_enriched": false,
-    "foot": "destro",
+    "foot": "right",
     "market_value_formatted": "-"
   },
   {
@@ -6197,11 +6197,11 @@
     "nationality": "Italia",
     "height_cm": 191,
     "birth_date": "1998-07-08",
-    "tm_url": "https://www.transfermarkt.it/diego-faccioli/profil/spieler/529790",
+    "tm_url": "https://www.transfermarkt.it/diego-faccioli/profil/spieler/",
     "player_profile": {
       "nationality": "Italia",
       "height_cm": 191,
-      "tm_url": "https://www.transfermarkt.it/diego-faccioli/profil/spieler/529790",
+      "tm_url": "https://www.transfermarkt.it/diego-faccioli/profil/spieler/",
       "foot": "destro",
       "market_value_formatted": "-",
       "birth_date": "1998-07-08"
@@ -6280,11 +6280,11 @@
     "nationality": "Italia",
     "foot": "destro",
     "birth_date": "2009-09-11",
-    "tm_url": "https://www.transfermarkt.it/roberto-alborino/profil/spieler/1200000",
+    "tm_url": "https://www.transfermarkt.it/roberto-alborino/profil/spieler/",
     "player_profile": {
       "nationality": "Italia",
       "foot": "destro",
-      "tm_url": "https://www.transfermarkt.it/roberto-alborino/profil/spieler/1200000",
+      "tm_url": "https://www.transfermarkt.it/roberto-alborino/profil/spieler/",
       "market_value_formatted": "-",
       "birth_date": "2009-09-11"
     },
@@ -13679,6 +13679,66 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHi6NCDfCuJXxCzvTpRx_VpA1QnUw2ECU47lFQAZytU01MJoftF4nu2SjIbLvpCVZv6YpN65FisfZZlC1LUNXeA0bUmuIva1x9gR27fL9svysbCewLWo6N6iHZI9ynTBHOMAeoY5_uLInF64e8CUpF66apLRUSSujGZF-U2c6VOv_anB85gh0JGbfGKGENIGBvELOew9ymdZVFy9-2iUlsmag==",
     "discovered_at": "2026-07-16T08:22:34.428280",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "9ad235f18de221af5c838e529ceb568c",
+    "player_name": "Danilo Russo",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Portiere svincolato dalla Serie C - Girone C",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFZlJe088KA0sX5spd6P9NfyrtizoTnpcKqpCoE6K8xcGPNqj-e8867BbHNc155aaHhiO2KFac4dF4Rj-Ey2dmVxO5DjUPI8xyINpaElkuRmYLoBgoTgKq9usNNKOIMrxRuE9PaL4fV4wI181uon-hXENoXZoW1KCialM6HpAt-ln3BAXBnNhof1TFlzQ==",
+    "discovered_at": "2026-07-16T19:18:59.513000",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "c7c6123c686d85521837a4527da02236",
+    "player_name": "Antonio Donnarumma",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Portiere svincolato dalla Serie C - Girone C",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFZlJe088KA0sX5spd6P9NfyrtizoTnpcKqpCoE6K8xcGPNqj-e8867BbHNc155aaHhiO2KFac4dF4Rj-Ey2dmVxO5DjUPI8xyINpaElkuRmYLoBgoTgKq9usNNKOIMrxRuE9PaL4fV4wI181uon-hXENoXZoW1KCialM6HpAt-ln3BAXBnNhof1TFlzQ==",
+    "discovered_at": "2026-07-16T19:18:59.513230",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "7d36dc06fa1c9054a6930e40be48fdb3",
+    "player_name": "Giacomo Beretta",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Attaccante svincolato dalla Serie C - Girone C",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFZlJe088KA0sX5spd6P9NfyrtizoTnpcKqpCoE6K8xcGPNqj-e8867BbHNc155aaHhiO2KFac4dF4Rj-Ey2dmVxO5DjUPI8xyINpaElkuRmYLoBgoTgKq9usNNKOIMrxRuE9PaL4fV4wI181uon-hXENoXZoW1KCialM6HpAt-ln3BAXBnNhof1TFlzQ==",
+    "discovered_at": "2026-07-16T19:18:59.513347",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "acffe2ede7b5c28adf0b9482cbac67d7",
+    "player_name": "Amedeo Benedetti",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Difensore svincolato dalla Serie C - Girone C",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFZlJe088KA0sX5spd6P9NfyrtizoTnpcKqpCoE6K8xcGPNqj-e8867BbHNc155aaHhiO2KFac4dF4Rj-Ey2dmVxO5DjUPI8xyINpaElkuRmYLoBgoTgKq9usNNKOIMrxRuE9PaL4fV4wI181uon-hXENoXZoW1KCialM6HpAt-ln3BAXBnNhof1TFlzQ==",
+    "discovered_at": "2026-07-16T19:18:59.513456",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "1cec02ea9952c8109582b9e6586e7665",
+    "player_name": "Roberto Inglese",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Attaccante svincolato dalla Serie C - Girone C",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFZlJe088KA0sX5spd6P9NfyrtizoTnpcKqpCoE6K8xcGPNqj-e8867BbHNc155aaHhiO2KFac4dF4Rj-Ey2dmVxO5DjUPI8xyINpaElkuRmYLoBgoTgKq9usNNKOIMrxRuE9PaL4fV4wI181uon-hXENoXZoW1KCialM6HpAt-ln3BAXBnNhof1TFlzQ==",
+    "discovered_at": "2026-07-16T19:18:59.513565",
     "league_id": "italy_serie_c_d"
   }
 ]
