@@ -10712,7 +10712,23 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQErQPJP_5y8gpN7_lYXFn4_nUgmqsuuZyRHIPzVLsD8riq0voF5CSRXPbVl33Ur1VlzkuO0hXO9HkB2-QCnFBimPP0w685o9BGzs18uyMh7w-Mpqtu_AdCVozMowgWaD9r_9YJW-ZCVHyTOlWokc-EUKFgmZ9ud1QNZw1q-TUizUrlTvMHjSmoUTYR6UseD5eoh74cVLMTj32vEVejH5h15LARZqkfNezUhJUcwztuJXg=",
     "discovered_at": "2026-07-01T04:18:43.516887",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italia",
+    "market_value": 2500000,
+    "market_value_formatted": "2,50 mln €",
+    "height_cm": 179,
+    "birth_date": "2007-02-01",
+    "tm_url": "https://www.transfermarkt.it/matteo-cocchi/profil/spieler/935000",
+    "player_profile": {
+      "nationality": "Italia",
+      "market_value": 2500000,
+      "market_value_formatted": "2,50 mln €",
+      "height_cm": 179,
+      "birth_date": "2007-02-01",
+      "tm_url": "https://www.transfermarkt.it/matteo-cocchi/profil/spieler/935000"
+    },
+    "age": 19,
+    "tm_enriched": true
   },
   {
     "id": "22b7ffdf0f90f1f3211aaa77c9428db4",
@@ -10724,7 +10740,21 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQErQPJP_5y8gpN7_lYXFn4_nUgmqsuuZyRHIPzVLsD8riq0voF5CSRXPbVl33Ur1VlzkuO0hXO9HkB2-QCnFBimPP0w685o9BGzs18uyMh7w-Mpqtu_AdCVozMowgWaD9r_9YJW-ZCVHyTOlWokc-EUKFgmZ9ud1QNZw1q-TUizUrlTvMHjSmoUTYR6UseD5eoh74cVLMTj32vEVejH5h15LARZqkfNezUhJUcwztuJXg=",
     "discovered_at": "2026-07-01T04:18:43.516960",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italia",
+    "height_cm": 187,
+    "birth_date": "2008-02-04",
+    "tm_url": "https://www.transfermarkt.it/leonardo-bovio/profil/spieler/",
+    "agent": "CAA Stellar",
+    "player_profile": {
+      "nationality": "Italia",
+      "height_cm": 187,
+      "birth_date": "2008-02-04",
+      "tm_url": "https://www.transfermarkt.it/leonardo-bovio/profil/spieler/",
+      "agent": "CAA Stellar"
+    },
+    "age": 18,
+    "tm_enriched": false
   },
   {
     "id": "0499640e4019c6f9cc024e6ddac9434f",
@@ -10736,7 +10766,19 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHnvUFAGV68da0sANR_MmKkWhDoIeUcNsVk1OY2sOLCfRSTpYe564nfCv9Jgp8b9kVaZBQkvoY9A_-LfHfmoR0w2NRQioNU5bCAWeCelIqIlim0Jzjyhq53dhjqldTkgPv3XixuJBlppKHRyTUYPyKs7b0zEnStVfe6GHRAA6JpJJbxZlprY7pWw402tap3Kz6sDLaX99khyX5DT8HH",
     "discovered_at": "2026-07-01T04:18:43.517106",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italia",
+    "height_cm": 172,
+    "birth_date": "2006-07-17",
+    "tm_url": "https://www.transfermarkt.it/tommaso-della-mora/profil/spieler/",
+    "player_profile": {
+      "nationality": "Italia",
+      "height_cm": 172,
+      "birth_date": "2006-07-17",
+      "tm_url": "https://www.transfermarkt.it/tommaso-della-mora/profil/spieler/"
+    },
+    "age": 20,
+    "tm_enriched": false
   },
   {
     "id": "6fb1a7c6ed190083a61e653cf5e5d333",
@@ -13540,27 +13582,87 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "07f67d95c2ff1479b41e5b046b1d27bb",
-    "player_name": "Giacomo Faticanti",
+    "id": "9fca193275c9859f8cfbda05a17f48f1",
+    "player_name": "Danilo Russo",
     "region": "ITALY",
     "opportunity_type": "svincolato",
-    "description": "Giocatore più prezioso tra gli svincolati di Serie C - Girone A.",
-    "ob1_score": 66,
-    "source_name": "www.transfermarkt.it",
-    "source_url": "https://www.transfermarkt.it/serie-c-girone-a/vereinslose/wettbewerb/IT3A",
-    "discovered_at": "2026-07-15T19:18:16.666163",
+    "description": "Portiere, contratto scaduto dopo esperienza al Benevento Calcio.",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGb2Pwv0XuZPBr5AQl_ElpOSJdaLxNuyhX4Za55Vk0wpYxQhzM0m2yQmFnl3gjoFp6sEtq3DtK2BpZyKrjrHXc5kiGArp0vQw0rYlSeeIVyFN3JgYXcSlwZOpNQm_m6HgPW4YlqxqnOnoeUDuefU7yVnGppHgrD3e0mfdfArE1o3OB9jZ6s8jIBF4j1",
+    "discovered_at": "2026-07-16T02:54:17.964418",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "12ce1a492043ffff811ceac54a86d199",
-    "player_name": "Cristian Cuzzarella",
+    "id": "1455ac8c3ffc43245f41cedb9cb7ad96",
+    "player_name": "Antonio Donnarumma",
     "region": "ITALY",
     "opportunity_type": "svincolato",
-    "description": "Svincolato dalla S.S. Lazio, acquisito dal Casarano (Serie C).",
-    "ob1_score": 67,
-    "source_name": "www.tuttocampo.it",
-    "source_url": "https://www.tuttocampo.it/Italia/SerieC/News/1679000/calciomercato-serie-c-gli-ultimi-movimenti",
-    "discovered_at": "2026-07-15T19:18:16.666418",
+    "description": "Portiere, contratto scaduto dopo esperienza all'US Salernitana.",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGb2Pwv0XuZPBr5AQl_ElpOSJdaLxNuyhX4Za55Vk0wpYxQhzM0m2yQmFnl3gjoFp6sEtq3DtK2BpZyKrjrHXc5kiGArp0vQw0rYlSeeIVyFN3JgYXcSlwZOpNQm_m6HgPW4YlqxqnOnoeUDuefU7yVnGppHgrD3e0mfdfArE1o3OB9jZ6s8jIBF4j1",
+    "discovered_at": "2026-07-16T02:54:17.964649",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ab8d29cb2bc953f36c25e3d7fd158195",
+    "player_name": "Giacomo Beretta",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Attaccante, contratto scaduto dopo esperienza al Cosenza Calcio.",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGb2Pwv0XuZPBr5AQl_ElpOSJdaLxNuyhX4Za55Vk0wpYxQhzM0m2yQmFnl3gjoFp6sEtq3DtK2BpZyKrjrHXc5kiGArp0vQw0rYlSeeIVyFN3JgYXcSlwZOpNQm_m6HgPW4YlqxqnOnoeUDuefU7yVnGppHgrD3e0mfdfArE1o3OB9jZ6s8jIBF4j1",
+    "discovered_at": "2026-07-16T02:54:17.964737",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ec4ac052848b88885da43e8c48261911",
+    "player_name": "Amedeo Benedetti",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Difensore, contratto scaduto dopo esperienza al FC Trapani 1905.",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGb2Pwv0XuZPBr5AQl_ElpOSJdaLxNuyhX4Za55Vk0wpYxQhzM0m2yQmFnl3gjoFp6sEtq3DtK2BpZyKrjrHXc5kiGArp0vQw0rYlSeeIVyFN3JgYXcSlwZOpNQm_m6HgPW4YlqxqnOnoeUDuefX-VWF5H8Yyso8LS3wpB5c-zEn59vfUnGD7PpG5khuTvwJoAFMq52l7Py0SS4QAe7s3c2vDwTxek2E2ttcRvkSvJ8lqJmydACqHL6IShzx1I",
+    "discovered_at": "2026-07-16T02:54:17.964819",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "f8b679bbdc4e16f32a4057431b695d53",
+    "player_name": "Roberto Inglese",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Attaccante, contratto scaduto dopo esperienza all'US Salernitana.",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGb2Pwv0XuZPBr5AQl_ElpOSJdaLxNuyhX4Za55Vk0wpYxQhzM0m2yQmFnl3gjoFp6sEtq3DtK2BpZyKrjrHXc5kiGArp0vQw0rYlSeeIVyFN3JgYXcSlwZOpNQm_m6HgPW4YlqxqnOnoeUDuefU7yVnGppHgrD3e0mfdfArE1o3OB9jZ6s8jIBF4j1",
+    "discovered_at": "2026-07-16T02:54:17.964898",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "c9dd9a7a3aca9d6de7989eb7f14b27fa",
+    "player_name": "Emanuele Santaniello",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Attaccante, contratto scaduto dopo esperienza all'AZ Picerno.",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGb2Pwv0XuZPBr5AQl_ElpOSJdaLxNuyhX4Za55Vk0wpYxQhzM0m2yQmFnl3gjoFp6sEtq3DtK2BpZyKrjrHXc5kiGArp0vQw0rYlSeeIVyFN3JgYXcSlwZOpNQm_m6HgPW4YlqxqnOnoeUDuefU7yVnGppHgrD3e0mfdfArE1o3OB9jZ6s8jIBF4j1",
+    "discovered_at": "2026-07-16T02:54:17.964972",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ee0403f597cc09dd97b4519648fbb116",
+    "player_name": "Alessio Vita",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Saluta il Cittadella dopo sette stagioni in Serie C.",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEXelZf6vq3ZR3xJjNtZk_ZVnTBojvgLGkzoehtnGtFzwEwSNLlqm5-K_9f9tEMpGE-bX6_7EWaWl5TbFS7v-_-IuV5nK35bmXoFQn1cxGMfxBrTA2_KZttCQeHLM1VQQMO",
+    "discovered_at": "2026-07-16T02:54:17.965044",
     "league_id": "italy_serie_c_d"
   }
 ]
