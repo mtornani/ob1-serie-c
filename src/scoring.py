@@ -11,16 +11,16 @@ from typing import Dict, Any, Optional
 class OB1Scorer:
     """Sistema di scoring avanzato per opportunita di mercato"""
 
-    # Pesi per ogni componente (SCORE-002: rebalanced for differentiation)
+    # SCORE-003: after publish gate, completeness is always high → drop it.
+    # Redistribute 5% to type + age (what a DS actually filters on).
     WEIGHTS = {
         'freshness': 0.15,
-        'opportunity_type': 0.10,
+        'opportunity_type': 0.12,
         'experience': 0.20,
-        'age': 0.15,
+        'age': 0.18,
         'market_value': 0.15,
         'league_fit': 0.15,
         'source': 0.05,
-        'completeness': 0.05,
     }
 
     # Club noti Serie C 2025/26 (subset per matching)
@@ -65,31 +65,28 @@ class OB1Scorer:
 
     def score(self, opportunity: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Calcola score per una singola opportunita
+        Calcola score per una singola opportunita (SCORE-003).
 
         Returns:
             Dict con ob1_score, classification, score_breakdown
         """
+        opp_type = (opportunity.get('opportunity_type') or 'altro').lower()
+        date_str = opportunity.get('reported_date') or opportunity.get('discovered_at', '')
+
         breakdown = {
-            'freshness': self._calc_freshness(opportunity.get('reported_date') or opportunity.get('discovered_at', '')),
-            'opportunity_type': self._calc_type_score(opportunity.get('opportunity_type', 'altro')),
+            'freshness': self._calc_freshness(date_str, opp_type),
+            'opportunity_type': self._calc_type_score(opp_type),
             'experience': self._calc_experience(opportunity),
             'age': self._calc_age(opportunity.get('age')),
             'market_value': self._calc_market_value(opportunity.get('market_value')),
             'league_fit': self._calc_league_fit(opportunity),
             'source': self._calc_source(opportunity.get('source_name', '')),
-            'completeness': self._calc_completeness(opportunity),
         }
 
-        # Weighted sum
-        total = sum(
-            breakdown[key] * self.WEIGHTS[key]
-            for key in self.WEIGHTS
-        )
-
+        total = sum(breakdown[key] * self.WEIGHTS[key] for key in self.WEIGHTS)
         ob1_score = int(round(total))
 
-        # Classification (SCORE-002: calibrated for ~15% hot, ~50% warm, ~35% cold)
+        # HOT ≥70 / WARM ≥57 / COLD — same dials as SCORE-002
         if ob1_score >= 70:
             classification = 'hot'
         elif ob1_score >= 57:
@@ -103,34 +100,35 @@ class OB1Scorer:
             'score_breakdown': breakdown,
         }
 
-    def _calc_freshness(self, date_str: str) -> int:
-        """Score basato su quanto e' recente la notizia"""
+    def _calc_freshness(self, date_str: str, opp_type: str = '') -> int:
+        """Quanto e' recente la notizia. Svincolati/rescissioni restano utili piu' a lungo."""
         if not date_str:
             return 50
 
         try:
-            # Handle ISO format
             if 'T' in date_str:
                 date_str = date_str.split('T')[0]
 
             reported = datetime.strptime(date_str, '%Y-%m-%d').date()
-            today = datetime.now().date()
-            days_ago = (today - reported).days
+            days_ago = (datetime.now().date() - reported).days
+            free = opp_type in ('svincolato', 'rescissione', 'scadenza')
 
             if days_ago <= 0:
-                return 100  # Oggi
-            elif days_ago == 1:
-                return 95   # Ieri
-            elif days_ago <= 3:
-                return 85   # Ultimi 3 giorni
-            elif days_ago <= 7:
-                return 70   # Ultima settimana
-            elif days_ago <= 14:
-                return 60   # Ultime 2 settimane (ancora rilevante per mercato)
-            elif days_ago <= 30:
-                return 45   # Ultimo mese
-            else:
-                return 25   # Piu vecchio
+                return 100
+            if days_ago == 1:
+                return 95
+            if days_ago <= 3:
+                return 85
+            if days_ago <= 7:
+                return 70
+            if days_ago <= 14:
+                return 60
+            if days_ago <= 30:
+                return 50 if free else 45
+            # Old news: free agents still available → floor 55; rumors die hard
+            if free:
+                return 55
+            return 25
 
         except (ValueError, TypeError):
             return 50
@@ -208,37 +206,6 @@ class OB1Scorer:
                 return score
 
         return 50  # Fonte sconosciuta
-
-    def _calc_completeness(self, opportunity: Dict[str, Any]) -> int:
-        """Score basato su quanti dati abbiamo"""
-        score = 0
-
-        # Nome giocatore valido
-        player_name = opportunity.get('player_name', '')
-        if player_name and player_name not in ['N/D', 'Nome da verificare', '']:
-            score += 25
-
-        # Ha info sul club
-        if opportunity.get('current_club') or opportunity.get('previous_clubs'):
-            score += 20
-
-        # Ha eta
-        if opportunity.get('age'):
-            score += 20
-
-        # Ha ruolo
-        if opportunity.get('role') or opportunity.get('role_name'):
-            score += 15
-
-        # Ha summary/descrizione
-        if opportunity.get('summary') and len(opportunity.get('summary', '')) > 20:
-            score += 10
-
-        # Ha URL fonte
-        if opportunity.get('source_url'):
-            score += 10
-
-        return min(100, score)
 
     def _calc_market_value(self, market_value: Optional[int]) -> int:
         """Score basato sul valore di mercato (indicatore qualita giocatore)"""

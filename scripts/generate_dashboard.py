@@ -95,7 +95,7 @@ def generate_recommendation(opp: dict) -> str:
 
 
 def main():
-    print("Generating dashboard data with SCORE-002 scoring...")
+    print("Generating dashboard data with SCORE-003 scoring...")
 
     base_dir = Path(__file__).parent.parent
     data_dir = base_dir / 'data'
@@ -323,7 +323,7 @@ def main():
             'corroborated': corroborated_count,
         },
         'last_update': datetime.now().isoformat(),
-        'scoring_version': 'SCORE-002',
+        'scoring_version': 'SCORE-003',
         'intel_version': 'INTEL-001',
         'quality_gate': 'identity_complete',
     }
