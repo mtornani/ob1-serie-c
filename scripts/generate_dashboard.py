@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
 OB1 Scout - Generate Dashboard Data
-Genera data.json con scoring avanzato SCORE-001
+Genera data.json con scoring SCORE-002 + quality gate (identity_complete).
+
+Pubblica solo profili publishable (nome+età+club+fonte). Tracking in stats.
 """
 
 import json
@@ -14,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
 
 from scoring import OB1Scorer
 from minutaggio import genera_intel_badge
+from quality_gate import apply_gate, normalize_age
 
 
 def is_generic_tm_page(url: str) -> bool:
@@ -136,9 +139,17 @@ def main():
             skipped_foreign += 1
             continue
 
-        # --- FIX: Entity validation (structural) ---
-        # A real player MUST have at least age OR a real role.
-        # Entries with neither are page titles / generic articles, not players.
+        # Normalize age early (birth year dumped as age → real age)
+        norm_age = normalize_age(
+            opp.get('age'),
+            birth_date=opp.get('birth_date'),
+            birth_year=opp.get('birth_year'),
+        )
+        if norm_age is not None:
+            opp = dict(opp)
+            opp['age'] = norm_age
+
+        # Entity: need age OR real role (page titles die here)
         has_age = opp.get('age') is not None
         role_raw = (opp.get('role_name') or opp.get('role') or '').strip()
         has_role = role_raw not in ('', 'N/D', 'Non specificato')
@@ -165,15 +176,15 @@ def main():
     # Initialize scorer
     scorer = OB1Scorer()
 
-    # Transform opportunities for dashboard format with advanced scoring
-    dashboard_opportunities = []
+    # Transform + score + quality gate
+    all_scored = []
     for opp in opportunities:
-        # Apply SCORE-001 advanced scoring
+        opp = apply_gate(opp)
         score_result = scorer.score(opp)
 
         # Helper to get data from root or player_profile
         profile = opp.get('player_profile', {}) or {}
-        
+
         dashboard_opp = {
             'id': opp.get('id', f"opp_{hash(opp.get('player_name', '')) % 10000:04d}"),
             'player_name': opp.get('player_name', 'N/D'),
@@ -191,7 +202,7 @@ def main():
             'assists': opp.get('assists') or profile.get('assists') or 0,
             'minutes_played': opp.get('minutes_played') or profile.get('minutes_played') or 0,
             'summary': opp.get('summary', ''),
-            
+
             # DATA-001: New enriched fields
             'nationality': opp.get('nationality') or profile.get('nationality'),
             'second_nationality': opp.get('second_nationality') or profile.get('second_nationality'),
@@ -210,6 +221,13 @@ def main():
             'ob1_score': score_result['ob1_score'],
             'classification': score_result['classification'],
             'score_breakdown': score_result['score_breakdown'],
+
+            # Quality gate
+            'identity_complete': opp.get('identity_complete', False),
+            'corroborated': opp.get('corroborated', False),
+            'publishable': opp.get('publishable', False),
+            'review_flags': opp.get('review_flags', ''),
+            'n_sources': opp.get('n_sources', 1),
 
             # Auto-generated recommendation
             'recommendation': generate_recommendation(opp),
@@ -260,12 +278,17 @@ def main():
             dashboard_opp['days_without_contract'] = 0
             dashboard_opp['stale_free_agent'] = False
 
-        dashboard_opportunities.append(dashboard_opp)
+        all_scored.append(dashboard_opp)
 
-    # Sort by score (highest first)
+    tracking_total = len(all_scored)
+    publishable_list = [o for o in all_scored if o.get('publishable')]
+    tracking_only = tracking_total - len(publishable_list)
+
+    # Public feed = only publishable
+    dashboard_opportunities = publishable_list
     dashboard_opportunities.sort(key=lambda x: x['ob1_score'], reverse=True)
 
-    # Calculate stats
+    # Calculate stats (public list)
     hot_count = sum(1 for o in dashboard_opportunities if o['classification'] == 'hot')
     warm_count = sum(1 for o in dashboard_opportunities if o['classification'] == 'warm')
     cold_count = sum(1 for o in dashboard_opportunities if o['classification'] == 'cold')
@@ -273,6 +296,7 @@ def main():
     today_count = sum(1 for o in dashboard_opportunities if o['reported_date'] == today)
     stale_count = sum(1 for o in dashboard_opportunities if o.get('stale_free_agent'))
     svincolati_count = sum(1 for o in dashboard_opportunities if o['opportunity_type'] in ('svincolato', 'rescissione'))
+    corroborated_count = sum(1 for o in dashboard_opportunities if o.get('corroborated'))
 
     # ── INTEL Stats ──
     intel_stats = {'elite': 0, 'high': 0, 'medium': 0, 'low': 0, 'none': 0}
@@ -293,17 +317,24 @@ def main():
             'svincolati': svincolati_count,
             'stale_free_agents': stale_count,
             'intel_roi': intel_stats,
+            'tracking_total': tracking_total,
+            'tracking_only': tracking_only,
+            'publishable': len(dashboard_opportunities),
+            'corroborated': corroborated_count,
         },
         'last_update': datetime.now().isoformat(),
         'scoring_version': 'SCORE-002',
         'intel_version': 'INTEL-001',
+        'quality_gate': 'identity_complete',
     }
 
     # Write data.json to docs folder
     data_json_path = docs_dir / 'data.json'
     data_json_path.write_text(json.dumps(dashboard_data, indent=2, ensure_ascii=False), encoding='utf-8')
     print(f"Dashboard data generated: {data_json_path}")
-    print(f"   Total: {len(dashboard_opportunities)}, HOT: {hot_count}, WARM: {warm_count}, COLD: {cold_count}")
+    print(f"   Tracking: {tracking_total} | Publishable: {len(dashboard_opportunities)} "
+          f"(gated {tracking_only}) | Corroborated: {corroborated_count}")
+    print(f"   Public: HOT {hot_count}, WARM {warm_count}, COLD {cold_count}")
     if stale_count:
         print(f"   ⚠️ Stale free agents (>30gg senza contratto, >=10 presenze): {stale_count}")
 
@@ -313,12 +344,15 @@ def main():
 
     # Print top 5 for verification
     if dashboard_opportunities:
-        print("\nTop 5 opportunities:")
+        print("\nTop 5 publishable:")
         for i, opp in enumerate(dashboard_opportunities[:5], 1):
             tag = 'HOT' if opp['classification'] == 'hot' else 'WARM' if opp['classification'] == 'warm' else 'COLD'
             intel = opp.get('intel', {})
             roi_lbl = intel.get('roi_label', '—')
-            print(f"  {i}. [{tag}] {opp['player_name']} - {opp['ob1_score']}/100 ({opp['opportunity_type']}) | ROI: {roi_lbl}")
+            print(f"  {i}. [{tag}] {opp['player_name']} ({opp.get('age')}a) "
+                  f"- {opp['ob1_score']}/100 ({opp['opportunity_type']}) | ROI: {roi_lbl}")
+    else:
+        print("\n⚠️ Nessun profilo publishable — arricchire età/club.")
 
 
 def calculate_age(birth_year):

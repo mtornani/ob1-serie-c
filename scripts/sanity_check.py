@@ -101,6 +101,28 @@ def main() -> int:
         else:
             print(f"  ✅ {total} opportunità scored")
 
+        # Quality gate metrics (optional fields — present after gate rollout)
+        tracking = stats.get('tracking_total')
+        publishable = stats.get('publishable', total)
+        if tracking is not None:
+            print(f"  Gate: publishable={publishable} / tracking={tracking} "
+                  f"(gated {stats.get('tracking_only', '?')})")
+            if publishable == 0 and tracking > 0:
+                errors.append(f"0 publishable su {tracking} tracking — gate/enrichment broken")
+                print(f"  ❌ CRITICAL: 0 publishable")
+
+        # Public rows must have valid age if gate is active
+        ops = dash.get('opportunities') or []
+        bad_age = [
+            o.get('player_name') for o in ops
+            if o.get('age') is None or not (15 <= int(o.get('age') or 0) <= 42)
+        ]
+        if bad_age:
+            errors.append(f"{len(bad_age)} publishable senza età valida: {bad_age[:3]}")
+            print(f"  ❌ CRITICAL: età invalida su {len(bad_age)} row pubbliche")
+        elif ops:
+            print(f"  ✅ tutte le {len(ops)} row pubbliche con età valida")
+
         # All-COLD warning (scoring regression risk)
         if total > 20 and hot == 0 and warm == 0:
             warnings.append(f"100% COLD su {total} entries — possibile regressione scoring")

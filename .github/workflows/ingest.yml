@@ -56,6 +56,8 @@ jobs:
         SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_OFFICE_CHAT_ID: ${{ secrets.TELEGRAM_OFFICE_CHAT_ID }}
+        # Leave free-tier RPD for enrichment (age fills publish gate)
+        GEMINI_DISCOVERY_BUDGET: "4"
       run: python scripts/ouroboros_run.py
 
     - name: Enrich with Transfermarkt data
@@ -63,6 +65,7 @@ jobs:
       env:
         TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        MAX_ENRICH_BATCHES: "4"
       run: python scripts/run_enrichment.py
 
     - name: Generate dashboard

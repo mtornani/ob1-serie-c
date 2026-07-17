@@ -6,6 +6,7 @@ One grounded Gemini call enriches BATCH_SIZE players at once (the cost
 lever: N players -> ceil(N/BATCH_SIZE) calls instead of N). Players the
 model can't find stay unlocked and retry on the next run.
 """
+import os
 import sys
 import json
 import time
@@ -21,7 +22,8 @@ DELAY_BETWEEN_BATCHES = 5  # seconds
 
 # Cap Gemini calls per run: backlog spikes (e.g. a big discovery day) get
 # spread over multiple runs instead of burning quota in one.
-MAX_BATCHES_PER_RUN = 8
+# Free tier ≈20 RPD shared with discovery — keep enrichment lean.
+MAX_BATCHES_PER_RUN = int(os.getenv("MAX_ENRICH_BATCHES", "4"))
 
 _JUNK_TERMS = [
     'transfermarkt', 'calciomercato', 'svincolati', 'la casa di c',
@@ -40,7 +42,8 @@ _JUNK_TERMS = [
 
 _TM_KEYS = ['nationality', 'second_nationality', 'foot', 'market_value',
             'market_value_formatted', 'height_cm', 'birth_date', 'contract_expires',
-            'tm_url', 'agent', 'appearances', 'goals', 'assists', 'minutes_played']
+            'tm_url', 'agent', 'appearances', 'goals', 'assists', 'minutes_played',
+            'current_club']
 
 
 def _is_enrichable(name) -> bool:
@@ -77,8 +80,15 @@ def apply_tm_data(opp: dict, tm: dict) -> bool:
         except (ValueError, TypeError):
             pass
 
+    # Role from TM main_position if missing
+    if tm.get('main_position') and not (opp.get('role_name') or opp.get('role')):
+        opp['role_name'] = tm['main_position']
+        opp['role'] = tm['main_position']
+
     # Lock only when substantive data arrived; otherwise retry next run.
-    has_substance = any(tm.get(k) for k in ['market_value', 'appearances', 'contract_expires', 'goals'])
+    has_substance = any(tm.get(k) for k in [
+        'market_value', 'appearances', 'contract_expires', 'goals', 'birth_date', 'current_club',
+    ])
     opp['tm_enriched'] = has_substance
     return has_substance
 
@@ -94,7 +104,14 @@ def main():
 
     pending = [o for o in opportunities
                if _is_enrichable(o.get('player_name')) and o.get('tm_enriched') is not True]
-    print(f"Da arricchire: {len(pending)}")
+    # Priority: missing age first (blocks publish gate), then missing club
+    pending.sort(key=lambda o: (
+        0 if o.get('age') in (None, '') else 1,
+        0 if not (o.get('current_club') or '').strip() else 1,
+        o.get('player_name') or '',
+    ))
+    no_age = sum(1 for o in pending if o.get('age') in (None, ''))
+    print(f"Da arricchire: {len(pending)} (senza età: {no_age})")
     if not pending:
         print("Niente da fare.")
         return
@@ -108,6 +125,9 @@ def main():
         batches = batches[:MAX_BATCHES_PER_RUN]
 
     for bi, batch in enumerate(batches, 1):
+        if enricher.gemini_disabled:
+            print(f"  [STOP] Gemini off — batch {bi}/{len(batches)}+ rinviati")
+            break
         names = [o['player_name'] for o in batch]
         print(f"\n[batch {bi}/{len(batches)}] {', '.join(names)}")
         results = enricher.enrich_players_batch(names)
@@ -116,10 +136,11 @@ def main():
             if tm and apply_tm_data(opp, tm):
                 enriched += 1
                 print(f"  ✅ {opp['player_name']}: "
-                      f"{tm.get('market_value_text') or '?'} | apps={tm.get('appearances', '?')}")
+                      f"{tm.get('market_value_text') or '?'} | age={opp.get('age')} "
+                      f"| apps={tm.get('appearances', '?')}")
         # Save after every batch so a crash never loses completed work.
         DATA_FILE.write_text(json.dumps(opportunities, ensure_ascii=False, indent=2), encoding='utf-8')
-        if bi < len(batches):
+        if bi < len(batches) and not enricher.gemini_disabled:
             time.sleep(DELAY_BETWEEN_BATCHES)
 
     if enriched and DATA_FILE_DOCS.exists():

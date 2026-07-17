@@ -23,6 +23,16 @@ BATCH_SIZE = 5
 _MAX_RETRIES = 3
 _BACKOFF_BASE = 2  # seconds
 
+
+def _is_daily_quota_error(msg: str) -> bool:
+    m = (msg or "").lower()
+    return (
+        "free_tier" in m
+        or "perday" in m
+        or "per_day" in m
+        or "generaterequestsperday" in m
+    )
+
 _GROUNDING_PROMPT = """Cerca su Transfermarkt il profilo del calciatore "{name}".
 Estrai i dati reali dalla pagina profilo Transfermarkt (transfermarkt.it o transfermarkt.com).
 
@@ -93,6 +103,7 @@ class TransfermarktEnricher:
 
         self.session = requests.Session()
         self.gemini_client = genai.Client(api_key=self.gemini_key)
+        self.gemini_disabled = False  # daily quota circuit breaker
 
     def _parse_json_response(self, text: str) -> Dict[str, Any]:
         """Extract and parse JSON from Gemini response text."""
@@ -194,8 +205,12 @@ class TransfermarktEnricher:
         Returns {input_name: tm_data} — players the model couldn't find map
         to {} and stay eligible for the next run. Retries transient 429/503
         with backoff before giving up on the whole batch.
+        Daily free-tier exhaustion → circuit open, no more retries this process.
         """
         if not names:
+            return {}
+        if self.gemini_disabled:
+            print("  [BATCH SKIP] Gemini daily quota already exhausted")
             return {}
         prompt = _BATCH_PROMPT.format(names="\n".join(f"- {n}" for n in names))
 
@@ -212,8 +227,13 @@ class TransfermarktEnricher:
                 )
                 break
             except Exception as e:
-                msg = str(e).lower()
-                transient = any(k in msg for k in (
+                msg = str(e)
+                if _is_daily_quota_error(msg):
+                    self.gemini_disabled = True
+                    print(f"  [BATCH QUOTA] daily free tier dead — stop enrichment this run")
+                    return {}
+                msg_l = msg.lower()
+                transient = any(k in msg_l for k in (
                     '429', '503', 'resource_exhausted', 'unavailable', 'overloaded'))
                 if transient and attempt < _MAX_RETRIES - 1:
                     wait = _BACKOFF_BASE * (2 ** attempt)
