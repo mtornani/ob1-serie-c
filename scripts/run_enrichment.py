@@ -125,11 +125,9 @@ def main():
         batches = batches[:MAX_BATCHES_PER_RUN]
 
     for bi, batch in enumerate(batches, 1):
-        if enricher.gemini_disabled:
-            print(f"  [STOP] Gemini off — batch {bi}/{len(batches)}+ rinviati")
-            break
         names = [o['player_name'] for o in batch]
-        print(f"\n[batch {bi}/{len(batches)}] {', '.join(names)}")
+        mode = "gemini" if not enricher.gemini_disabled else "fallback"
+        print(f"\n[batch {bi}/{len(batches)} {mode}] {', '.join(names)}")
         results = enricher.enrich_players_batch(names)
         for opp in batch:
             tm = results.get(opp['player_name']) or {}
@@ -140,8 +138,10 @@ def main():
                       f"| apps={tm.get('appearances', '?')}")
         # Save after every batch so a crash never loses completed work.
         DATA_FILE.write_text(json.dumps(opportunities, ensure_ascii=False, indent=2), encoding='utf-8')
-        if bi < len(batches) and not enricher.gemini_disabled:
-            time.sleep(DELAY_BETWEEN_BATCHES)
+        if bi < len(batches):
+            # Fallback path is slower (per-player Tavily); slightly longer pause
+            delay = DELAY_BETWEEN_BATCHES if mode == "gemini" else 3
+            time.sleep(delay)
 
     if enriched and DATA_FILE_DOCS.exists():
         DATA_FILE_DOCS.write_text(json.dumps(opportunities, ensure_ascii=False, indent=2), encoding='utf-8')

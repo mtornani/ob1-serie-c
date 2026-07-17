@@ -14,6 +14,8 @@ import requests
 from dotenv import load_dotenv
 from google import genai
 
+from src.llm_fallback import resolve_fallback, chat_json
+
 load_dotenv()
 
 # Batch size for grounded enrichment. One Gemini call covers this many
@@ -104,6 +106,9 @@ class TransfermarktEnricher:
         self.session = requests.Session()
         self.gemini_client = genai.Client(api_key=self.gemini_key)
         self.gemini_disabled = False  # daily quota circuit breaker
+        self.fallback_cfg = resolve_fallback()
+        if self.fallback_cfg:
+            print(f"  [LLM] fallback pronto: {self.fallback_cfg['label']}")
 
     def _parse_json_response(self, text: str) -> Dict[str, Any]:
         """Extract and parse JSON from Gemini response text."""
@@ -139,8 +144,19 @@ class TransfermarktEnricher:
             print(f"  [GROUNDED ERROR] {player_name}: {e}")
             return {}
 
+    def _parse_prompt_for_player(self, player_name: str, url: str, raw_content: str) -> str:
+        return (
+            f"Estrai dati strutturati da questa pagina Transfermarkt per {player_name}.\n"
+            f"URL: {url}\n\n"
+            "Rispondi SOLO con JSON con campi: nationality, birth_date (YYYY-MM-DD), "
+            "current_club, contract_expires, market_value_eur, market_value_text, "
+            "appearances, goals, assists, minutes_played, foot, agent, tm_url, main_position.\n"
+            "Null se assente. Non inventare.\n\n"
+            f"CONTENUTO:\n{raw_content[:12000]}"
+        )
+
     def enrich_player_tavily(self, player_name: str) -> Dict[str, Any]:
-        """Fallback: Tavily search + Gemini parse (original approach)."""
+        """Tavily fetch TM page + parse (Gemini se vivo, altrimenti Groq/OpenRouter)."""
         if not self.tavily_key:
             return {}
 
@@ -167,24 +183,37 @@ class TransfermarktEnricher:
             if not raw_content:
                 return {}
 
-            prompt = (
-                f"Estrai dati strutturati da questa pagina Transfermarkt per {player_name}.\n"
-                f"URL: {url}\n\n"
-                "Rispondi SOLO con JSON (stessi campi del profilo TM standard — "
-                "nationality, birth_date, current_club, contract_expires, market_value_eur, "
-                "market_value_text, appearances, goals, assists, minutes_played, foot, agent, tm_url).\n\n"
-                f"CONTENUTO:\n{raw_content[:15000]}"
-            )
-            response = self.gemini_client.models.generate_content(
-                model="gemini-2.5-flash",
-                contents=prompt,
-                config=genai.types.GenerateContentConfig(
-                    temperature=0.0,
-                    response_mime_type="application/json",
-                ),
-            )
-            data = self._parse_json_response(response.text or "")
-            if url and not data.get("tm_url"):
+            prompt = self._parse_prompt_for_player(player_name, url, raw_content)
+            data = {}
+
+            if not self.gemini_disabled:
+                try:
+                    response = self.gemini_client.models.generate_content(
+                        model="gemini-2.5-flash",
+                        contents=prompt,
+                        config=genai.types.GenerateContentConfig(
+                            temperature=0.0,
+                            response_mime_type="application/json",
+                        ),
+                    )
+                    data = self._parse_json_response(response.text or "")
+                except Exception as e:
+                    if _is_daily_quota_error(str(e)):
+                        self.gemini_disabled = True
+                        print(f"  [GEMINI OFF] daily quota during tavily-parse")
+                    else:
+                        print(f"  [GEMINI PARSE] {player_name}: {e}")
+
+            if not data and self.fallback_cfg:
+                try:
+                    text = chat_json(prompt)
+                    data = self._parse_json_response(text)
+                    if data:
+                        print(f"  [FALLBACK {self.fallback_cfg['label']}] {player_name} ok")
+                except Exception as e:
+                    print(f"  [FALLBACK ERROR] {player_name}: {e}")
+
+            if url and data and not data.get("tm_url"):
                 data["tm_url"] = url
             return data
         except Exception as e:
@@ -192,26 +221,26 @@ class TransfermarktEnricher:
             return {}
 
     def enrich_player(self, player_name: str) -> Dict[str, Any]:
-        """Main entry: grounding first, Tavily fallback."""
-        data = self.enrich_player_grounded(player_name)
-        if data:
-            return data
-        print(f"  [FALLBACK] Trying Tavily for {player_name}...")
+        """Main entry: grounding first (se Gemini vivo), poi Tavily+parse."""
+        if not self.gemini_disabled:
+            data = self.enrich_player_grounded(player_name)
+            if data:
+                return data
+        print(f"  [FALLBACK] Tavily path for {player_name}...")
         return self.enrich_player_tavily(player_name)
 
     def enrich_players_batch(self, names: List[str]) -> Dict[str, Dict[str, Any]]:
-        """Enrich up to BATCH_SIZE players with ONE grounded call.
+        """Enrich batch: Gemini grounding se vivo, altrimenti Tavily+fallback per nome.
 
-        Returns {input_name: tm_data} — players the model couldn't find map
-        to {} and stay eligible for the next run. Retries transient 429/503
-        with backoff before giving up on the whole batch.
-        Daily free-tier exhaustion → circuit open, no more retries this process.
+        Returns {input_name: tm_data}. Empty {} = retry next run.
         """
         if not names:
             return {}
+
+        # Gemini morto → path Tavily+Groq/OpenRouter (no grounding, ma sblocca età)
         if self.gemini_disabled:
-            print("  [BATCH SKIP] Gemini daily quota already exhausted")
-            return {}
+            return self._enrich_batch_fallback(names)
+
         prompt = _BATCH_PROMPT.format(names="\n".join(f"- {n}" for n in names))
 
         response = None
@@ -230,8 +259,8 @@ class TransfermarktEnricher:
                 msg = str(e)
                 if _is_daily_quota_error(msg):
                     self.gemini_disabled = True
-                    print(f"  [BATCH QUOTA] daily free tier dead — stop enrichment this run")
-                    return {}
+                    print("  [BATCH QUOTA] Gemini daily dead → fallback Tavily/Groq")
+                    return self._enrich_batch_fallback(names)
                 msg_l = msg.lower()
                 transient = any(k in msg_l for k in (
                     '429', '503', 'resource_exhausted', 'unavailable', 'overloaded'))
@@ -247,7 +276,6 @@ class TransfermarktEnricher:
         if not isinstance(raw, dict):
             return {}
 
-        # Match model keys back to input names (tolerant to case/spacing drift).
         def _norm(s: str) -> str:
             return re.sub(r'\s+', ' ', s).strip().lower()
         by_norm = {_norm(k): v for k, v in raw.items() if isinstance(v, dict)}
@@ -256,6 +284,20 @@ class TransfermarktEnricher:
             out[name] = by_norm.get(_norm(name), {})
         found = sum(1 for v in out.values() if v)
         print(f"  [BATCH] {found}/{len(names)} profili trovati in 1 chiamata")
+        return out
+
+    def _enrich_batch_fallback(self, names: List[str]) -> Dict[str, Dict[str, Any]]:
+        """One-by-one Tavily + secondary LLM. Slower, works without Gemini."""
+        if not self.tavily_key and not self.fallback_cfg:
+            print("  [FALLBACK SKIP] serve TAVILY + GROQ/OPENROUTER")
+            return {n: {} for n in names}
+        out = {}
+        for name in names:
+            data = self.enrich_player_tavily(name)
+            out[name] = data or {}
+            time.sleep(1.5)
+        found = sum(1 for v in out.values() if v)
+        print(f"  [FALLBACK BATCH] {found}/{len(names)} via Tavily+LLM")
         return out
 
 

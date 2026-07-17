@@ -10,7 +10,17 @@ const STATE = {
   lastUpdate: null,
 };
 
-const TIER_LABEL = { hot: 'occasione', warm: 'da seguire', cold: 'archivio' };
+const TIER_LABEL = { hot: 'da chiamare', warm: 'da seguire', cold: 'bassa priorità' };
+
+// Tipo opportunità → etichetta da campo (no gergo interno)
+const TYPE_LABEL = {
+  svincolato: 'Senza contratto',
+  rescissione: 'Ha rescisso',
+  prestito: 'Prestito',
+  mercato: 'Sul mercato',
+  scadenza: 'In scadenza',
+  talento: 'Giovane',
+};
 
 const el  = (s, r=document) => r.querySelector(s);
 const els = (s, r=document) => [...r.querySelectorAll(s)];
@@ -98,10 +108,8 @@ function applyFilter(){
   if (STATE.filter === 'hot')    list = list.filter(o=>o.ob1_score>=70);
   else if (STATE.filter === 'under')  list = list.filter(o=>o.age!=null && o.age<=22);
   else if (STATE.filter === 'free')   list = list.filter(o=>o._isFree);
-  else if (STATE.filter === 'verified') list = list.filter(o => o.market_value != null || o.appearances != null);
-  else if (STATE.filter === 'urgent') list = list.filter(o=>o._urgency==='critical'||o._urgency==='high');
   else if (STATE.filter === 'new'){
-    const cutoff = Date.now() - 30 * 86400000;
+    const cutoff = Date.now() - 14 * 86400000; // ultimi 14 giorni
     list = list.filter(o => o.discovered_at && new Date(o.discovered_at).getTime() >= cutoff);
     list.sort((a,b)=>(b.discovered_at||'').localeCompare(a.discovered_at||''));
   }
@@ -138,17 +146,15 @@ function paintCounters(){
   const hot    = all.filter(o=>o.ob1_score>=70).length;
   const free   = all.filter(o=>o._isFree).length;
   const u21    = all.filter(o=>o.age!=null && o.age<=22).length;
-  const urgent   = all.filter(o=>o._urgency==='critical'||o._urgency==='high').length;
-  const verified = all.filter(o => o.market_value != null || o.appearances != null).length;
-  const cutoff30 = Date.now() - 30 * 86400000;
-  const newCt  = all.filter(o => o.discovered_at && new Date(o.discovered_at).getTime() >= cutoff30).length;
+  const cutoff14 = Date.now() - 14 * 86400000;
+  const newCt  = all.filter(o => o.discovered_at && new Date(o.discovered_at).getTime() >= cutoff14).length;
 
   el('#ctHot').textContent  = hot;
   el('#ctFree').textContent = free;
   el('#ctU21').textContent  = u21;
   el('#ctAll').textContent  = all.length;
 
-  const map = { all:all.length, hot, free, under:u21, verified, urgent, new:newCt };
+  const map = { all:all.length, hot, free, under:u21, new:newCt };
   els('.chip .num').forEach(n=>{
     const k = n.dataset.ct;
     n.textContent = map[k] ?? 0;
@@ -184,16 +190,16 @@ function card(o){
   const role  = /^(n\/d|n\/a|none|—|-)?$/i.test(roleRaw.trim()) ? '' : roleRaw;
   const club  = safe(o.current_club, 'Svincolato');
   const age   = o.age!=null ? `${o.age} anni` : '';
-  const typeTag = type ? `<span class="tag type-${type}">${type.toUpperCase()}</span>` : '';
+  const typeLabel = TYPE_LABEL[type] || (type ? type : '');
+  const typeTag = typeLabel ? `<span class="tag type-${type}">${esc(typeLabel)}</span>` : '';
   const daysOld = o.discovered_at ? Math.round((Date.now() - new Date(o.discovered_at)) / 86400000) : null;
-  const newTag  = (daysOld !== null && daysOld <= 3) ? `<span class="tag new-signal">NUOVO</span>` : '';
-  const tmTag   = o.tm_enriched === true ? `<span class="tag tm-ok">Verificato</span>` : '';
+  const newTag  = (daysOld !== null && daysOld <= 3) ? `<span class="tag new-signal">Nuovo</span>` : '';
 
   let daysText, daysUnit;
   if (o._isFree){
     const dwc = o.days_without_contract || 0;
     daysText = dwc === 0 ? 'oggi' : dwc;
-    daysUnit = dwc === 0 ? 'appena svincolato' : (dwc === 1 ? 'giorno da svincolato' : 'giorni da svincolato');
+    daysUnit = dwc === 0 ? 'appena libero' : (dwc === 1 ? 'giorno senza club' : 'giorni senza club');
   } else if (o._days == null){
     daysText = '—';
     daysUnit = '';
@@ -218,7 +224,7 @@ function card(o){
     <div class="score">${o.ob1_score}<span class="dlabel">${TIER_LABEL[o._tier]||''}</span></div>
   </div>
   <div class="card-body">
-    <div class="tag-row">${typeTag}${tmTag}${newTag}</div>
+    <div class="tag-row">${typeTag}${newTag}</div>
     <div class="timer">
       <div class="days">${daysText}</div>
       <span class="unit">${daysUnit}</span>
@@ -231,8 +237,6 @@ function card(o){
 function esc(s){ return String(s ?? '').replace(/[<>&"']/g, c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":"&#39;"}[c])); }
 
 /* ============ DRAWER ============ */
-
-const SCORE_WEIGHTS = { freshness:15, opportunity_type:10, experience:20, age:15, market_value:15, league_fit:15, source:5, completeness:5 };
 
 function scoreReason(k, v, o) {
   switch (k) {
@@ -261,30 +265,30 @@ function scoreReason(k, v, o) {
     case 'age':
       if (o.age != null) {
         const a = o.age;
-        return a <= 22 ? `${a} anni — profilo U23, ideale per minutaggio FIGC`
-             : a <= 26 ? `${a} anni — picco della carriera`
+        return a <= 22 ? `${a} anni — giovane, non occupa posto Over`
+             : a <= 26 ? `${a} anni — nel pieno`
              : a <= 29 ? `${a} anni — esperienza matura`
-             : a <= 32 ? `${a} anni — esperienza ma futuribilità limitata`
-             : `${a} anni — profilo senior`;
+             : a <= 32 ? `${a} anni — esperienza, poco margine di crescita`
+             : `${a} anni — senior`;
       }
       return 'Età non disponibile';
     case 'market_value':
-      if (o.market_value_formatted) return `Valore TM: ${o.market_value_formatted}`;
+      if (o.market_value_formatted) return `Valore di mercato: ${o.market_value_formatted}`;
       if (o.market_value) return `Valore stimato: ${Math.round(o.market_value/1000)}k€`;
-      return 'Valore di mercato non ancora verificato su TM';
+      return 'Valore di mercato da verificare';
     case 'league_fit':
-      return v >= 80 ? 'Profilo nella fascia giusta per la Lega Pro'
-           : v >= 50 ? 'Pertinenza Lega Pro da confermare'
-           : 'Profilo fuori categoria target';
+      return v >= 80 ? 'Profilo adatto alla Lega Pro'
+           : v >= 50 ? 'Categoria da confermare'
+           : 'Forse fuori fascia per la C';
     case 'source':
-      return v >= 80 ? `Fonte specializzata: ${o.source_name||''}`
-           : v >= 60 ? `Fonte verificata: ${o.source_name||''}`
-           : 'Trovato dalla ricerca automatica — da confermare su fonte diretta';
+      return v >= 80 ? `Fonte solida: ${o.source_name||''}`
+           : v >= 60 ? `Fonte: ${o.source_name||''}`
+           : 'Fonte generica — meglio ricontrollare';
     case 'completeness': {
       const have = ['nationality','foot','agent','appearances','market_value'].filter(f=>o[f]!=null).length;
-      return have >= 4 ? `Profilo completo — ${have}/5 dati verificati su TM`
-           : have >= 2 ? `Profilo parziale — ${have}/5 dati verificati (arricchimento in corso)`
-           : `Profilo quasi vuoto — ${have}/5 campi, arricchimento necessario`;
+      return have >= 4 ? 'Scheda quasi completa'
+           : have >= 2 ? 'Scheda parziale'
+           : 'Pochi dati — da completare';
     }
     default: return '';
   }
@@ -295,21 +299,33 @@ function scoreVerdict(o) {
   const s  = o.ob1_score || 0;
 
   const plusFn = {
-    opportunity_type: () => { const t=(o.opportunity_type||'').toLowerCase(); return t==='svincolato'?'parametro zero':t==='rescissione'?'in uscita dal club':t==='prestito'?'disponibile in prestito':null; },
-    age:              () => o.age ? (o.age<=22?`U23 (${o.age}a)`:`${o.age} anni`) : null,
+    opportunity_type: () => {
+      const t=(o.opportunity_type||'').toLowerCase();
+      return t==='svincolato'?'libero a zero'
+           : t==='rescissione'?'ha rescisso'
+           : t==='prestito'?'in prestito'
+           : null;
+    },
+    age:              () => o.age ? (o.age<=22?`giovane (${o.age} anni)`:`${o.age} anni`) : null,
     experience:       () => o.appearances!=null ? `${o.appearances} presenze` : null,
     freshness:        () => 'notizia fresca',
     market_value:     () => o.market_value_formatted || null,
   };
-  const minusLabel = { experience:'presenze da verificare', market_value:'valore non confermato', league_fit:'categoria da confermare', source:'fonte non specializzata', completeness:'profilo incompleto' };
+  const minusLabel = {
+    experience: 'presenze da verificare',
+    market_value: 'valore non chiaro',
+    league_fit: 'categoria da confermare',
+    source: 'fonte debole',
+    completeness: 'scheda incompleta',
+  };
 
   const strong = Object.entries(bd).filter(([k,v])=>v>=75&&plusFn[k]).map(([k])=>plusFn[k]?.()).filter(Boolean).slice(0,3);
   const weak   = Object.entries(bd).filter(([k,v])=>v<50&&minusLabel[k]).map(([k])=>minusLabel[k]).filter(Boolean).slice(0,2);
-  const action = s>=70 ? 'Contattare subito.' : s>=57 ? 'Tenere d\'occhio.' : 'Bassa priorità.';
+  const action = s>=70 ? 'Da chiamare ora.' : s>=57 ? 'Da tenere d\'occhio.' : 'Bassa priorità.';
 
   const parts = [];
-  if (strong.length) parts.push(strong.join(' + '));
-  if (weak.length)   parts.push(`Penalizza: ${weak.join(', ')}`);
+  if (strong.length) parts.push(strong.join(' · '));
+  if (weak.length)   parts.push(`Attenzione: ${weak.join(', ')}`);
   parts.push(action);
   return parts.join(' — ');
 }
@@ -325,22 +341,22 @@ function openDrawer(o){
 
   el('#breadName').textContent = o.player_name || '';
 
-  let urgencyLine = '', urgencyDate = '', urgencyBadge = 'CONTRATTO';
+  let urgencyLine = '', urgencyDate = '', urgencyBadge = 'Contratto';
   if (o._isFree){
     const dwc = o.days_without_contract||0;
-    urgencyLine  = dwc === 0 ? 'Appena svincolato' : `${dwc} giorni senza squadra`;
-    urgencyDate  = o._stale_free_agent ? 'da verificare' : 'attivo';
-    urgencyBadge = 'SVINCOLATO';
+    urgencyLine  = dwc === 0 ? 'Appena libero' : `${dwc} giorni senza club`;
+    urgencyDate  = o.stale_free_agent ? 'da verificare' : 'disponibile';
+    urgencyBadge = 'Senza club';
   } else if (o._days != null){
     const exp = new Date(o.contract_expires);
     urgencyDate = exp.toLocaleDateString('it-IT', { day:'2-digit', month:'short', year:'numeric' });
     if (o._days < 0)       urgencyLine = 'Contratto scaduto';
     else if (o._days === 0) urgencyLine = 'Scade oggi';
-    else if (o._days <= 30) urgencyLine = `Scade tra meno di ${o._days} giorni`;
+    else if (o._days <= 30) urgencyLine = `Scade tra ${o._days} giorni`;
     else if (o._days <= 365) urgencyLine = `Scade tra circa ${Math.round(o._days/30)} mesi`;
     else urgencyLine = `Scade tra ${Math.round(o._days/365*10)/10} anni`;
   } else {
-    urgencyLine = 'Scadenza non disponibile';
+    urgencyLine = 'Scadenza non nota';
     urgencyDate = '—';
   }
 
@@ -362,34 +378,35 @@ function openDrawer(o){
   const ageCell       = o.age!=null ? `<div class="cell"><span class="k">ETÀ</span><span class="v">${o.age} anni</span></div>`:'';
   const agentCell     = o.agent ? `<div class="cell"><span class="k">AGENTE</span><span class="v">${esc(o.agent)}</span></div>`:'';
   const clubCell      = `<div class="cell"><span class="k">CLUB ATTUALE</span><span class="v">${esc(club)}</span></div>`;
-  const typeCell      = `<div class="cell"><span class="k">TIPO</span><span class="v" style="text-transform:uppercase;">${esc(type||'—')}</span></div>`;
+  const typeLabel = TYPE_LABEL[type] || type || '—';
+  const typeCell  = `<div class="cell"><span class="k">SITUAZIONE</span><span class="v">${esc(typeLabel)}</span></div>`;
   const discoveredCell = o.discovered_at ? (()=>{
     const d = new Date(o.discovered_at);
     if (isNaN(d.getTime())) return '';
-    return `<div class="cell"><span class="k">SEGNALATO IL</span><span class="v">${d.toLocaleDateString('it-IT')}</span></div>`;
+    return `<div class="cell"><span class="k">VISTO IL</span><span class="v">${d.toLocaleDateString('it-IT')}</span></div>`;
   })() : '';
 
   const metaCells = [clubCell, typeCell, ageCell, natCell, footCell, mvCell, agentCell, discoveredCell].filter(Boolean);
   if (metaCells.length % 2) metaCells.push('<div class="cell"></div>');
 
+  // Breakdown: no pesi % in UI (gergo da sistema). Solo perché sì/no in italiano.
   const bdLabels = {
-    freshness:       'Notizia recente',
-    opportunity_type:'Tipo opportunità',
-    experience:      'Esperienza in carriera',
-    age:             'Fascia d\'età ideale',
-    market_value:    'Valore di mercato',
-    league_fit:      'Adatto alla categoria',
-    source:          'Fonte affidabile',
-    completeness:    'Dati disponibili',
+    freshness:       'Notizia',
+    opportunity_type:'Situazione',
+    experience:      'Esperienza',
+    age:             'Età',
+    market_value:    'Valore',
+    league_fit:      'Categoria',
+    source:          'Fonte',
+    completeness:    'Scheda',
   };
   const bd = o.score_breakdown || {};
   const bdHtml = Object.entries(bd).map(([k,v])=>{
-    const icon = v>=75?'✅':v>=45?'⚡':'❌';
+    const icon = v>=75?'✓':v>=45?'·':'–';
     const cls  = v>=75?'good':v>=45?'mid':'low';
     const lbl  = bdLabels[k]||k;
-    const wt   = SCORE_WEIGHTS[k] ? `<span class="reason-weight"> ${SCORE_WEIGHTS[k]}%</span>` : '';
     const why  = esc(scoreReason(k, v, o));
-    return `<div class="reason-row"><span class="reason-icon">${icon}</span><div class="reason-body"><span class="reason-label">${lbl}${wt}</span><span class="reason-text">${why}</span></div><span class="reason-score ${cls}">${v}</span></div>`;
+    return `<div class="reason-row"><span class="reason-icon">${icon}</span><div class="reason-body"><span class="reason-label">${lbl}</span><span class="reason-text">${why}</span></div><span class="reason-score ${cls}">${v}</span></div>`;
   }).join('');
   const verdict = scoreVerdict(o);
 
@@ -397,30 +414,27 @@ function openDrawer(o){
   const prevClubs   = Array.isArray(o.previous_clubs) && o.previous_clubs.length ? o.previous_clubs.join(' → ') : '';
   const intel       = o.intel || {};
 
-  // Stats strip: only render if at least one stat has real data
   const hasStats = o.appearances != null || o.goals != null || o.assists != null || o.market_value_formatted;
-  const seasonNote = o.season ? `<div style="font-size:10px;color:var(--ink-mute);letter-spacing:.08em;margin-top:4px">stagione ${esc(o.season)}</div>` : '';
+  const seasonNote = o.season ? `<div style="font-size:10px;color:var(--ink-mute);margin-top:4px">stagione ${esc(o.season)}</div>` : '';
   const stripHtml = hasStats
     ? `<div class="strip">${stats.map(s=>`<div class="cell"><span class="v">${s.v}</span><span class="l">${s.l}</span></div>`).join('')}</div>${seasonNote}`
-    : `<div class="strip-empty">Statistiche in arrivo — verifica su Transfermarkt in corso</div>`;
+    : `<div class="strip-empty">Numeri in arrivo — apri Transfermarkt per verificare</div>`;
 
-  // Minutaggio FIGC — una sola riga in linguaggio piano. I dettagli
-  // (moltiplicatori, proiezioni) restano nei report privati, non qui.
-  let minutaggioHtml = '';
+  // Lista: una riga chiara, zero ROI/moltiplicatori
+  let listaHtml = '';
   if (intel.traffic_light === 'green') {
-    const bonus = ['elite','high','medium'].includes(intel.roi_class)
-      ? ' e porta contributi minutaggio giovani' : '';
-    minutaggioHtml = `<div class="intel-note" style="border-left:3px solid var(--acc);padding-left:10px;">✓ Under per le liste FIGC${bonus}</div>`;
+    listaHtml = `<div class="intel-note" style="border-left:3px solid var(--acc);padding-left:10px;">Giovane: non occupa un posto Over in lista</div>`;
   } else if (intel.traffic_light === 'red') {
-    minutaggioHtml = `<div class="intel-note" style="border-left:3px solid var(--ink-mute);padding-left:10px;">Occupa un posto Over in lista</div>`;
+    listaHtml = `<div class="intel-note" style="border-left:3px solid var(--ink-mute);padding-left:10px;">Over: occupa un posto in lista</div>`;
   }
 
-  // Segnali contrattuali
-  const signalsHtml = (intel.signals && intel.signals.length) ? `
+  // Segnali: max 3, plain language se già presente
+  const signals = (intel.signals || []).slice(0, 3);
+  const signalsHtml = signals.length ? `
     <div class="sect">
-      <div class="sect-title">SEGNALI</div>
+      <div class="sect-title">DA SAPERE</div>
       <div class="signals">
-        ${intel.signals.map(s=>`<div class="signal ${s.severity}"><div class="sl">${esc(s.label)}</div><div class="sd">${esc(s.detail)}</div></div>`).join('')}
+        ${signals.map(s=>`<div class="signal ${s.severity}"><div class="sl">${esc(s.label)}</div><div class="sd">${esc(s.detail)}</div></div>`).join('')}
       </div>
     </div>` : '';
 
@@ -451,10 +465,10 @@ function openDrawer(o){
     <div class="sect">
       <div class="sect-title">SCHEDA</div>
       <div class="meta-grid">${metaCells.join('')}</div>
-      ${prevClubs ? `<div class="intel-note"><span style="color:var(--ink-mute);letter-spacing:.12em;font-size:10px;">STORICO CLUB </span>${esc(prevClubs)}</div>` : ''}
+      ${prevClubs ? `<div class="intel-note"><span style="color:var(--ink-mute);font-size:10px;">CLUB PRECEDENTI </span>${esc(prevClubs)}</div>` : ''}
     </div>
 
-    ${minutaggioHtml}
+    ${listaHtml}
     ${signalsHtml}
 
     <details class="score-details sect">

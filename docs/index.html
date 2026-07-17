@@ -892,56 +892,55 @@ body::before{
     <div class="cmd-row">
       <div>
         <h1>Scout <span class="green">Lega Pro</span></h1>
-        <p class="blurb">Le occasioni di mercato della Serie C, aggiornate ogni 6 ore.</p>
+        <p class="blurb">Nomi da chiamare oggi: svincolati, prestiti e giovani della C e D. Aggiornato ogni 6 ore.</p>
       </div>
       <div class="counters">
         <div class="counter hot">
-          <div class="n" id="ctHot">—</div><div class="l">Occasioni</div>
+          <div class="n" id="ctHot">—</div><div class="l">Da chiamare</div>
         </div>
         <div class="counter">
-          <div class="n" id="ctFree">—</div><div class="l">Svincolati</div>
+          <div class="n" id="ctFree">—</div><div class="l">Senza club</div>
         </div>
         <div class="counter">
-          <div class="n" id="ctU21">—</div><div class="l">Under 23</div>
+          <div class="n" id="ctU21">—</div><div class="l">Giovani</div>
         </div>
         <div class="counter">
-          <div class="n" id="ctAll">—</div><div class="l">Giocatori</div>
+          <div class="n" id="ctAll">—</div><div class="l">In lista</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTROLS -->
+  <!-- CONTROLS — filtri minimi, linguaggio da campo -->
   <section class="controls">
     <div class="search">
-      <input id="q" type="search" placeholder="Cerca giocatore, club o ruolo…" autocomplete="off" />
+      <input id="q" type="search" placeholder="Cerca nome, club o ruolo…" autocomplete="off" />
     </div>
     <div class="filterbar" id="filters">
       <button class="chip on" data-f="all">Tutti<span class="num" data-ct="all">0</span></button>
-      <button class="chip" data-f="hot">Occasioni<span class="num" data-ct="hot">0</span></button>
-      <button class="chip" data-f="under">Under 23<span class="num" data-ct="under">0</span></button>
-      <button class="chip" data-f="free">Svincolati<span class="num" data-ct="free">0</span></button>
-      <button class="chip" data-f="verified">Dati verificati<span class="num" data-ct="verified">0</span></button>
-      <button class="chip" data-f="new">Novità<span class="num" data-ct="new">0</span></button>
+      <button class="chip" data-f="hot">Da chiamare<span class="num" data-ct="hot">0</span></button>
+      <button class="chip" data-f="free">Senza club<span class="num" data-ct="free">0</span></button>
+      <button class="chip" data-f="under">Giovani<span class="num" data-ct="under">0</span></button>
+      <button class="chip" data-f="new">Nuovi<span class="num" data-ct="new">0</span></button>
     </div>
     <div class="sub-row">
       <div class="results">
-        <span class="n" id="rcount">0</span> / <span id="rtotal">0</span> risultati
+        <span class="n" id="rcount">0</span> / <span id="rtotal">0</span>
       </div>
       <div class="sort-group">
         <select id="typeF">
           <option value="">Tutte le situazioni</option>
-          <option value="svincolato">Svincolato</option>
-          <option value="rescissione">Rescissione</option>
-          <option value="prestito">Prestito</option>
-          <option value="mercato">Voce di mercato</option>
+          <option value="svincolato">Senza contratto</option>
+          <option value="rescissione">Ha rescisso</option>
+          <option value="prestito">In prestito</option>
+          <option value="mercato">Sul mercato</option>
           <option value="scadenza">Contratto in scadenza</option>
         </select>
         <select id="sortBy">
-          <option value="score">Punteggio</option>
-          <option value="urgency">Urgenza</option>
-          <option value="name">Nome</option>
+          <option value="score">Priorità</option>
+          <option value="urgency">Più urgenti</option>
           <option value="date">Più recenti</option>
+          <option value="name">A–Z</option>
         </select>
       </div>
     </div>
@@ -979,7 +978,7 @@ body::before{
 </div>
 
 
-<script src="app.js?v=11"></script>
+<script src="app.js?v=12"></script>
 <script src="tracker.js" data-track-url="https://white-cherry-07a3.mirkotornani.workers.dev/"></script>
 </body>
 </html>
