@@ -33,6 +33,13 @@ async function init(){
   wireControls();
   wireDrawer();
 
+  // Deep-link from PWA shortcuts: ?filter=hot|free|under|new
+  const params = new URLSearchParams(location.search);
+  const f = params.get('filter');
+  if (f && ['all','hot','free','under','new'].includes(f)) {
+    STATE.filter = f;
+  }
+
   el('#grid').innerHTML = '<div class="empty" style="display:block"><div class="big" style="font-size:16px;color:var(--ink-mute)">caricamento…</div></div>';
 
   try {
@@ -56,6 +63,10 @@ async function init(){
   setInterval(updateCycle, 30000);
   trackSession();
   paintCounters();
+  // Sync chip UI with deep-link filter
+  els('.chip').forEach((c) => {
+    c.classList.toggle('on', c.dataset.f === STATE.filter);
+  });
   applyFilter();
 }
 
