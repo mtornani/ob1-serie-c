@@ -14,7 +14,7 @@ from datetime import datetime
 # Add src to path for scoring module
 sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
 
-from scoring import OB1Scorer
+from scoring import OB1Scorer, assess_follow
 from minutaggio import genera_intel_badge
 from quality_gate import apply_gate, normalize_age
 
@@ -217,7 +217,7 @@ def main():
             # Discovered timestamp (for stale detection)
             'discovered_at': opp.get('discovered_at', ''),
 
-            # SCORE-002 results
+            # SCORE-003
             'ob1_score': score_result['ob1_score'],
             'classification': score_result['classification'],
             'score_breakdown': score_result['score_breakdown'],
@@ -234,7 +234,6 @@ def main():
         }
 
         # ── INTEL Engine: ROI Minutaggio + Traffic Light FIGC + Signals ──
-        # Pass contract_expires from enrichment data for signal calculation
         intel_input = dict(dashboard_opp)
         intel_input['contract_expires'] = opp.get('contract_expires') or profile.get('contract_expires', '')
         intel = genera_intel_badge(intel_input, league='serie_c')
@@ -277,6 +276,9 @@ def main():
         else:
             dashboard_opp['days_without_contract'] = 0
             dashboard_opp['stale_free_agent'] = False
+
+        # Perché sì / no — after days_without_contract is known (no LLM)
+        dashboard_opp['assessment'] = assess_follow(dashboard_opp, score_result)
 
         all_scored.append(dashboard_opp)
 

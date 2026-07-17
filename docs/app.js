@@ -225,34 +225,7 @@ function card(o){
 
 function esc(s){ return String(s ?? '').replace(/[<>&"']/g, c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":"&#39;"}[c])); }
 
-/* ============ DRAWER (minimo: verdetto + 3 perché + numeri + link) ============ */
-
-function whyBullets(o){
-  // Max 3 plain reasons from breakdown + facts — no factor labels / weights
-  const bd = o.score_breakdown || {};
-  const out = [];
-  const t = (o.opportunity_type||'').toLowerCase();
-  if (t === 'svincolato') out.push('Libero a zero');
-  else if (t === 'rescissione') out.push('Ha rescisso');
-  else if (t === 'prestito') out.push('Valutabile in prestito');
-  else if (t === 'scadenza') out.push('Contratto in scadenza');
-
-  if (o.age != null && o.age <= 22) out.push(`Giovane (${o.age} anni) — non occupa posto Over`);
-  else if (o.age != null && o.age <= 26) out.push(`${o.age} anni — nel pieno`);
-
-  if (o.appearances != null && o.appearances > 0)
-    out.push(`${o.appearances} presenze` + (o.goals ? `, ${o.goals} gol` : ''));
-  if (o.market_value_formatted && out.length < 3)
-    out.push(`Valore ${o.market_value_formatted}`);
-  if ((bd.freshness||0) >= 70 && out.length < 3) out.push('Segnalazione fresca');
-  if ((bd.league_fit||0) >= 80 && out.length < 3) out.push('Fascia Lega Pro');
-
-  // weak note only if room
-  if (out.length < 3 && (bd.experience||50) < 55 && o.appearances == null)
-    out.push('Presenze da verificare');
-
-  return out.slice(0, 3);
-}
+/* ============ DRAWER: assessment from backend (no LLM) ============ */
 
 function openDrawer(o){
   trackDrawerOpen(o.player_name);
@@ -266,15 +239,19 @@ function openDrawer(o){
 
   el('#breadName').textContent = o.player_name || '';
 
-  const bullets = whyBullets(o);
-  const action = o.ob1_score >= 70 ? 'Da chiamare ora.'
-               : o.ob1_score >= 57 ? 'Da tenere d\'occhio.'
-               : 'Bassa priorità.';
+  // Prefer server-side assessment (code from scoring.assess_follow)
+  const a = o.assessment || {};
+  const yes = a.yes || [];
+  const no  = a.no || [];
+  const action = a.action
+    || (o.ob1_score >= 70 ? 'Da chiamare ora'
+       : o.ob1_score >= 57 ? "Da tenere d'occhio"
+       : 'Bassa priorità');
 
   const nums = [
-    o.appearances != null && { v: o.appearances, l: 'Presenze' },
-    o.goals != null && { v: o.goals, l: 'Gol' },
-    o.assists != null && { v: o.assists, l: 'Assist' },
+    o.appearances != null && o.appearances > 0 && { v: o.appearances, l: 'Presenze' },
+    o.goals != null && o.goals > 0 && { v: o.goals, l: 'Gol' },
+    o.assists != null && o.assists > 0 && { v: o.assists, l: 'Assist' },
     o.market_value_formatted && { v: shortMoney(o.market_value_formatted), l: 'Valore' },
   ].filter(Boolean);
 
@@ -292,6 +269,13 @@ function openDrawer(o){
     o.agent && ['Agente', o.agent],
   ].filter(Boolean);
 
+  const yesHtml = yes.length
+    ? `<div class="assess yes"><div class="assess-h">Perché sì</div><ul class="why-list">${yes.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></div>`
+    : '';
+  const noHtml = no.length
+    ? `<div class="assess no"><div class="assess-h">Perché no / attenzione</div><ul class="why-list">${no.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></div>`
+    : '';
+
   brief.innerHTML = `
     <div class="brief-head">
       <div>
@@ -303,10 +287,11 @@ function openDrawer(o){
       <div class="big-score ${o._tier}">${o.ob1_score}<div class="pct">/100</div></div>
     </div>
 
-    <div class="verdict-note" style="margin:12px 0 14px">
+    <div class="verdict-note" style="margin:12px 0 10px">
       <strong>${esc(action)}</strong>
-      ${bullets.length ? `<ul class="why-list">${bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>` : ''}
     </div>
+    ${yesHtml}
+    ${noHtml}
 
     ${stripHtml}
 

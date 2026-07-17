@@ -259,6 +259,128 @@ class OB1Scorer:
         return max(0, min(100, score))
 
 
+def assess_follow(opportunity: Dict[str, Any], score_result: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Perché sì / perché no — solo CODICE dagli stessi segnali dello score.
+    Zero LLM, zero costi, non può contraddire ob1_score.
+    """
+    yes, no = [], []
+    bd = score_result.get("score_breakdown") or {}
+    t = (opportunity.get("opportunity_type") or "").lower()
+    age = opportunity.get("age")
+    apps = opportunity.get("appearances") or 0
+    goals = opportunity.get("goals") or 0
+    assists = opportunity.get("assists") or 0
+    mv = opportunity.get("market_value") or 0
+    club = (opportunity.get("current_club") or "").strip()
+    flags = {
+        f for f in (opportunity.get("review_flags") or "").split(",") if f
+    }
+    n_src = opportunity.get("n_sources") or 1
+    dwc = opportunity.get("days_without_contract") or 0
+    score = score_result.get("ob1_score") or 0
+
+    # --- Perché sì ---
+    if t == "svincolato":
+        yes.append("Libero a zero — nessun costo di cartellino")
+    elif t == "rescissione":
+        yes.append("Ha rescisso — in uscita, trattativa possibile")
+    elif t == "prestito":
+        yes.append("Disponibile in prestito — investimento contenuto")
+    elif t == "scadenza":
+        yes.append("Contratto in scadenza — finestra per muoversi")
+
+    if age is not None and age <= 22:
+        yes.append(f"Giovane ({age} anni) — non occupa posto Over in lista")
+    elif age is not None and 23 <= age <= 26:
+        yes.append(f"{age} anni — nel pieno della carriera")
+
+    if apps >= 20:
+        bit = f"{apps} presenze"
+        if goals:
+            bit += f", {goals} gol"
+        if assists:
+            bit += f", {assists} assist"
+        yes.append(bit)
+    elif goals or assists:
+        parts = []
+        if goals:
+            parts.append(f"{goals} gol")
+        if assists:
+            parts.append(f"{assists} assist")
+        yes.append(" · ".join(parts))
+
+    if mv and mv >= 150_000:
+        fmt = opportunity.get("market_value_formatted")
+        yes.append(f"Valore di mercato interessante{f' ({fmt})' if fmt else ''}")
+
+    if (bd.get("league_fit") or 0) >= 80:
+        yes.append("Profilo in fascia Lega Pro")
+    if (bd.get("freshness") or 0) >= 70:
+        yes.append("Segnalazione fresca")
+    if (bd.get("source") or 0) >= 85:
+        yes.append("Fonte specializzata")
+    if opportunity.get("corroborated") or n_src >= 2:
+        yes.append("Confermato da più fonti / profilo TM")
+
+    # --- Perché no / cautele ---
+    if not apps:
+        no.append("Presenze non verificate — controllare Transfermarkt")
+    if age is not None and age >= 30:
+        no.append(f"{age} anni — poco margine, nessun bonus lista giovani")
+    if age is not None and age < 18:
+        no.append("Molto giovane — continuità in C da verificare")
+    if t == "mercato" and (bd.get("opportunity_type") or 0) <= 50:
+        no.append("Solo voce di mercato — non è libero")
+    if (bd.get("freshness") or 50) <= 30 and t not in (
+        "svincolato",
+        "rescissione",
+        "scadenza",
+    ):
+        no.append("Notizia datata — disponibilità da ricontrollare")
+    if t in ("svincolato", "rescissione") and dwc > 60:
+        no.append(f"{dwc} giorni senza club — perché non è stato preso?")
+    if opportunity.get("stale_free_agent"):
+        no.append("Svincolato da tempo con esperienza — attenzione al profilo")
+    if (bd.get("league_fit") or 50) < 45:
+        no.append("Fascia categoria dubbia (forse sotto/sopra la C)")
+    if (bd.get("market_value") or 50) <= 40 and not mv:
+        no.append("Valore di mercato assente o molto basso")
+    if "fonte_singola" in flags and not opportunity.get("corroborated"):
+        no.append("Una sola fonte — da corroborare")
+    if (bd.get("source") or 50) < 55:
+        no.append("Fonte debole o generica")
+    if club.lower() in ("", "n/d", "senza club") and t not in (
+        "svincolato",
+        "rescissione",
+    ):
+        no.append("Club attuale non chiaro")
+
+    # Action from score (same dials as scorer)
+    if score >= 70:
+        action = "Da chiamare ora"
+    elif score >= 57:
+        action = "Da tenere d'occhio"
+    else:
+        action = "Bassa priorità"
+
+    # Dedupe while preserving order
+    def _uniq(xs):
+        seen = set()
+        out = []
+        for x in xs:
+            if x not in seen:
+                seen.add(x)
+                out.append(x)
+        return out
+
+    return {
+        "yes": _uniq(yes)[:4],
+        "no": _uniq(no)[:4],
+        "action": action,
+    }
+
+
 def score_opportunities(opportunities: list) -> list:
     """
     Applica scoring a lista di opportunita
