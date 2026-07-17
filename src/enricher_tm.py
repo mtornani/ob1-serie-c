@@ -235,6 +235,7 @@ class TransfermarktEnricher:
 
     def __init__(self):
         self.tavily_key = os.getenv("TAVILY_API_KEY")
+        self.serper_key = os.getenv("SERPER_API_KEY")
         self.gemini_key = os.getenv("GEMINI_API_KEY")
 
         if not self.gemini_key:
@@ -243,6 +244,7 @@ class TransfermarktEnricher:
         self.session = requests.Session()
         self.gemini_client = genai.Client(api_key=self.gemini_key)
         self.gemini_disabled = False  # daily quota circuit breaker
+        self.tavily_disabled = False  # 432 rate limit
         self.fallback_cfg = resolve_fallback()
         if self.fallback_cfg:
             print(f"  [LLM] fallback pronto: {self.fallback_cfg['label']}")
@@ -294,96 +296,152 @@ class TransfermarktEnricher:
             f"CONTENUTO:\n{raw_content[:12000]}"
         )
 
+    def _fetch_tm_page(self, player_name: str) -> tuple:
+        """Return (url, raw_text) from Tavily, or Serper+Jina if Tavily 432/down."""
+        url, raw = "", ""
+
+        # 1) Tavily (primary)
+        if self.tavily_key and not self.tavily_disabled:
+            try:
+                payload = {
+                    "api_key": self.tavily_key,
+                    "query": f"site:transfermarkt.it {player_name} profilo giocatore",
+                    "search_depth": "basic",
+                    "max_results": 3,
+                    "include_domains": ["transfermarkt.it"],
+                    "include_raw_content": True,
+                }
+                res = self.session.post(
+                    "https://api.tavily.com/search", json=payload, timeout=30
+                )
+                if res.status_code == 432:
+                    self.tavily_disabled = True
+                    print("  [TAVILY OFF] 432 rate limit — resto run Serper+Jina")
+                else:
+                    res.raise_for_status()
+                    results = res.json().get("results") or []
+                    for r in results:
+                        u = (r.get("url") or "")
+                        if "/profil/spieler/" in u.lower():
+                            url = u
+                            raw = r.get("raw_content") or r.get("content") or ""
+                            break
+                    if not url and results:
+                        url = results[0].get("url") or ""
+                        raw = results[0].get("raw_content") or results[0].get("content") or ""
+            except Exception as e:
+                if "432" in str(e):
+                    self.tavily_disabled = True
+                print(f"  [TAVILY ERROR] {player_name}: {e}")
+
+        # 2) Serper find URL + Jina reader for text (no Gemini needed)
+        if (not raw or "/profil/spieler/" not in (url or "").lower()) and self.serper_key:
+            try:
+                sres = self.session.post(
+                    "https://google.serper.dev/search",
+                    headers={
+                        "X-API-KEY": self.serper_key,
+                        "Content-Type": "application/json",
+                    },
+                    json={
+                        "q": f"site:transfermarkt.it {player_name} profilo",
+                        "num": 5,
+                        "gl": "it",
+                        "hl": "it",
+                    },
+                    timeout=20,
+                )
+                sres.raise_for_status()
+                organic = sres.json().get("organic") or []
+                for hit in organic:
+                    u = hit.get("link") or ""
+                    if "/profil/spieler/" in u:
+                        url = u
+                        break
+                if not url and organic:
+                    url = organic[0].get("link") or url
+            except Exception as e:
+                print(f"  [SERPER ERROR] {player_name}: {e}")
+
+        if url and (not raw or len(raw) < 400):
+            try:
+                # Jina reader: plain text of page, bypasses a lot of bot walls
+                jurl = "https://r.jina.ai/" + url
+                jres = self.session.get(
+                    jurl,
+                    headers={"Accept": "text/plain"},
+                    timeout=45,
+                )
+                if jres.status_code == 200 and len(jres.text) > 200:
+                    raw = jres.text
+                    print(f"  [JINA] {player_name}: {len(raw)} chars")
+            except Exception as e:
+                print(f"  [JINA ERROR] {player_name}: {e}")
+
+        return url, raw
+
+    def _parse_page(self, player_name: str, url: str, raw_content: str) -> Dict[str, Any]:
+        """Regex first, then Groq/OpenRouter, then Gemini if still alive."""
+        if not raw_content:
+            return {}
+
+        data = parse_tm_text(raw_content, url)
+        if data.get("birth_date") or data.get("current_club") or data.get("market_value"):
+            print(
+                f"  [REGEX] {player_name}: age-src={data.get('birth_date')} "
+                f"club={data.get('current_club')} mv={data.get('market_value_eur')}"
+            )
+
+        thin = not (data.get("birth_date") and data.get("current_club"))
+        if thin and self.fallback_cfg:
+            prompt = self._parse_prompt_for_player(player_name, url, raw_content)
+            try:
+                text = chat_json(prompt)
+                llm = self._parse_json_response(text)
+                for k, v in (llm or {}).items():
+                    if v is not None and not data.get(k):
+                        data[k] = v
+                if llm:
+                    print(f"  [FALLBACK {self.fallback_cfg['label']}] {player_name} ok")
+            except Exception as e:
+                print(f"  [FALLBACK ERROR] {player_name}: {e}")
+
+        thin = not (data.get("birth_date") and data.get("current_club"))
+        if thin and not self.gemini_disabled:
+            prompt = self._parse_prompt_for_player(player_name, url, raw_content)
+            try:
+                response = self.gemini_client.models.generate_content(
+                    model="gemini-2.5-flash",
+                    contents=prompt,
+                    config=genai.types.GenerateContentConfig(
+                        temperature=0.0,
+                        response_mime_type="application/json",
+                    ),
+                )
+                llm = self._parse_json_response(response.text or "")
+                for k, v in (llm or {}).items():
+                    if v is not None and not data.get(k):
+                        data[k] = v
+            except Exception as e:
+                if _is_daily_quota_error(str(e)):
+                    self.gemini_disabled = True
+                    print("  [GEMINI OFF] quota/credits during parse")
+                else:
+                    print(f"  [GEMINI PARSE] {player_name}: {e}")
+
+        if url and data and not data.get("tm_url"):
+            data["tm_url"] = url
+        return data if data else {}
+
     def enrich_player_tavily(self, player_name: str) -> Dict[str, Any]:
-        """Tavily fetch TM page + parse (Gemini se vivo, altrimenti Groq/OpenRouter)."""
-        if not self.tavily_key:
+        """Web fetch (Tavily or Serper+Jina) + regex/LLM parse."""
+        url, raw = self._fetch_tm_page(player_name)
+        if not raw:
             return {}
-
-        query = f"site:transfermarkt.it {player_name} profilo giocatore"
-        payload = {
-            "api_key": self.tavily_key,
-            "query": query,
-            "search_depth": "basic",
-            "max_results": 3,
-            "include_domains": ["transfermarkt.it"],
-            "include_raw_content": True,
-        }
-
-        try:
-            res = self.session.post("https://api.tavily.com/search", json=payload, timeout=30)
-            res.raise_for_status()
-            results = res.json().get("results", [])
-            if not results:
-                return {}
-
-            # Prefer real player profile URL, not club/league pages
-            result = None
-            for r in results:
-                u = (r.get("url") or "").lower()
-                if "/profil/spieler/" in u:
-                    result = r
-                    break
-            if result is None:
-                result = results[0]
-            raw_content = result.get("raw_content", "") or result.get("content", "")
-            url = result.get("url", "")
-            if not raw_content:
-                return {}
-
-            # 1) zero-LLM regex (always free)
-            data = parse_tm_text(raw_content, url)
-            if data.get("birth_date") or data.get("current_club") or data.get("market_value"):
-                print(f"  [REGEX] {player_name}: age-src={data.get('birth_date')} "
-                      f"club={data.get('current_club')} mv={data.get('market_value_eur')}")
-
-            # 2) Gemini parse if still alive and regex thin
-            thin = not (data.get("birth_date") and data.get("current_club"))
-            if thin and not self.gemini_disabled:
-                prompt = self._parse_prompt_for_player(player_name, url, raw_content)
-                try:
-                    response = self.gemini_client.models.generate_content(
-                        model="gemini-2.5-flash",
-                        contents=prompt,
-                        config=genai.types.GenerateContentConfig(
-                            temperature=0.0,
-                            response_mime_type="application/json",
-                        ),
-                    )
-                    llm = self._parse_json_response(response.text or "")
-                    for k, v in (llm or {}).items():
-                        if v is not None and not data.get(k):
-                            data[k] = v
-                except Exception as e:
-                    if _is_daily_quota_error(str(e)):
-                        self.gemini_disabled = True
-                        print("  [GEMINI OFF] quota/credits during tavily-parse")
-                    else:
-                        print(f"  [GEMINI PARSE] {player_name}: {e}")
-
-            # 3) Groq/OpenRouter if still thin
-            thin = not (data.get("birth_date") and data.get("current_club"))
-            if thin and self.fallback_cfg:
-                prompt = self._parse_prompt_for_player(player_name, url, raw_content)
-                try:
-                    text = chat_json(prompt)
-                    llm = self._parse_json_response(text)
-                    for k, v in (llm or {}).items():
-                        if v is not None and not data.get(k):
-                            data[k] = v
-                    if llm:
-                        print(f"  [FALLBACK {self.fallback_cfg['label']}] {player_name} ok")
-                except Exception as e:
-                    print(f"  [FALLBACK ERROR] {player_name}: {e}")
-
-            if url and data and not data.get("tm_url"):
-                data["tm_url"] = url
-            return data if data else {}
-        except Exception as e:
-            print(f"  [TAVILY ERROR] {player_name}: {e}")
-            return {}
+        return self._parse_page(player_name, url, raw)
 
     def enrich_player(self, player_name: str) -> Dict[str, Any]:
-        """Main entry: Gemini grounding se vivo, altrimenti Tavily+regex(+LLM)."""
+        """Main entry: Gemini grounding se vivo, altrimenti web+regex(+Groq)."""
         if not self.gemini_disabled:
             try:
                 data = self.enrich_player_grounded(player_name)
@@ -393,7 +451,7 @@ class TransfermarktEnricher:
                 if _is_daily_quota_error(str(e)):
                     self.gemini_disabled = True
                 print(f"  [GROUNDED ERROR] {player_name}: {e}")
-        print(f"  [TAVILY+REGEX] {player_name}...")
+        print(f"  [WEB+PARSE] {player_name}...")
         return self.enrich_player_tavily(player_name)
 
     def enrich_players_batch(self, names: List[str]) -> Dict[str, Dict[str, Any]]:

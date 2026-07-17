@@ -64,10 +64,11 @@ jobs:
       continue-on-error: true
       env:
         TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        MAX_ENRICH_BATCHES: "4"
+        MAX_ENRICH_BATCHES: "6"
       run: python scripts/run_enrichment.py
 
     - name: Generate dashboard
