@@ -11121,7 +11121,27 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH8y8HFDORXRj2-M1MLNZeoYP3av10Num0Ifxa1Wbvz0j4IJCr2y-eQ1xoAN7a-mMTN3qPoM6aJbBLN_nKaIsTrf8azsBQO2Bwo4i4lRFyyd1JFUU0qxXi4MI62JtJe-s9_7RhuOm1je2S5sRR5UF4m9lfSo2C6DMSaG_odv6laEpr7kctA3dKm_BXhCkK9DsLtDyk34GmKlW56T6w3kT_7AkpmLw==",
     "discovered_at": "2026-07-01T14:47:10.427265",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Netherlands",
+    "market_value": 300000,
+    "market_value_formatted": "300 mila €",
+    "height_cm": 179,
+    "birth_date": "2000-01-12",
+    "tm_url": "https://www.transfermarkt.com/achraf-el-bouchataoui/profil/spieler/412942",
+    "current_club": "FC Pro Vercelli 1892",
+    "player_profile": {
+      "nationality": "Netherlands",
+      "market_value": 300000,
+      "market_value_formatted": "300 mila €",
+      "height_cm": 179,
+      "birth_date": "2000-01-12",
+      "tm_url": "https://www.transfermarkt.com/achraf-el-bouchataoui/profil/spieler/412942",
+      "current_club": "FC Pro Vercelli 1892"
+    },
+    "age": 26,
+    "role_name": "Centrocampista difensivo",
+    "role": "Centrocampista difensivo",
+    "tm_enriched": true
   },
   {
     "id": "390eaedaf49997a5a778e44ce96e4890",
@@ -11565,7 +11585,23 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFERzY0Ik41XjaS4mHECVAQyL869pHkJQOUhwDSfuT_jU4RSQ8xlLWXkM_E5DWbVxRoDMJMERLx5_lXyMflIO8i_g9mHddDTSOPpIonUaTwcaO2UQzzEG7aJysXmMLphBuxylC4MSr3gn_0EpavSmP550ExpVDdo8520FAY-PZTjU-hofvajJW483HF4FCdJPgGa5zvZwpH5xYOQRzUtpQYDbBr5PyDifrFuwBC0S5MEAwEWYk=",
     "discovered_at": "2026-07-04T08:46:59.883952",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italia",
+    "height_cm": 185,
+    "birth_date": "1993-05-23",
+    "tm_url": "https://www.transfermarkt.it/ciro-amelio/profil/spieler/527400",
+    "current_club": "Football Club Ercolanese",
+    "player_profile": {
+      "nationality": "Italia",
+      "height_cm": 185,
+      "birth_date": "1993-05-23",
+      "tm_url": "https://www.transfermarkt.it/ciro-amelio/profil/spieler/527400",
+      "current_club": "Football Club Ercolanese"
+    },
+    "age": 33,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "3c3234e6c9e2132973b235e6464a7ef9",
@@ -12405,7 +12441,33 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE514ijWtz9Vf976MHQ6hN8ygF3yDuqUSms-aEELlIo4eJPTRKhFdUA84RnK8kXaD8SaRFJYdMJfR24h5jQKXw2KJFdXF3enKyVYLKCg2yNngMmTMN5jA5wQ-DUIwDnyBi_Nx0iNsS10J3tGCQ-V5RiYFXIrzK5og==",
     "discovered_at": "2026-07-10T09:45:00.317562",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Bulgaria",
+    "foot": "destro",
+    "market_value": 175000,
+    "market_value_formatted": "175 mila €",
+    "height_cm": 183,
+    "birth_date": "2006-04-19",
+    "contract_expires": "2027-06-30",
+    "tm_url": "https://www.transfermarkt.com/adrian-raychev/profil/spieler/939000",
+    "agent": "Sport Agency Futura",
+    "current_club": "Levski Sofia",
+    "player_profile": {
+      "nationality": "Bulgaria",
+      "foot": "destro",
+      "market_value": 175000,
+      "market_value_formatted": "175 mila €",
+      "height_cm": 183,
+      "birth_date": "2006-04-19",
+      "contract_expires": "2027-06-30",
+      "tm_url": "https://www.transfermarkt.com/adrian-raychev/profil/spieler/939000",
+      "agent": "Sport Agency Futura",
+      "current_club": "Levski Sofia"
+    },
+    "age": 20,
+    "role_name": "Ala destra",
+    "role": "Ala destra",
+    "tm_enriched": true
   },
   {
     "id": "614807964b845712bfecb13663d50a72",
@@ -13509,7 +13571,19 @@
     "source_name": "www.zonacalciofaidate.it",
     "source_url": "https://vertexaisearch.google.com/grounding/extract?url=https://www.zonacalciofaidate.it/fc-26-i-migliori-giovani-esordienti-in-serie-c-2025-2026-i-talenti-da-tenere-docchio/",
     "discovered_at": "2026-07-14T08:16:49.562419",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italy",
+    "birth_date": "2008-06-06",
+    "current_club": "Cosenza Primavera",
+    "player_profile": {
+      "nationality": "Italy",
+      "birth_date": "2008-06-06",
+      "current_club": "Cosenza Primavera"
+    },
+    "age": 18,
+    "role_name": "Trequartista",
+    "role": "Trequartista",
+    "tm_enriched": true
   },
   {
     "id": "0a862226bdee8779abd6cb765ada1520",
@@ -13809,7 +13883,19 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGVk3y6GtL0PSGry_2QiRPoF0enYLfKGQWOyH2i881S2rtPBIsoIA1CnKl4pveibNhIExN3nNbYUhKvMte8gCqIusJqNgV9KCydgFn1Hv_TV_zGy-j4lWd3sYetHaxRuKFVjX0Zs81kHBifLPUCw-jnUfJoMTsN-L_tEdRQhLi5kQbDVBW-wS647duJ-IvFNEH2QAmEmeUUaMaPgJld52Zsd-zY90lSe_wQYDH8vWWHi_2mYASvMV--YOuykeTgv_AMK8-QBZPOhIGQ7bCnqm_-wBGLni9jVKl-tPl_Ifb_sg==",
     "discovered_at": "2026-07-17T08:18:47.605958",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italia",
+    "birth_date": "1990-07-18",
+    "current_club": "AC Lesmo",
+    "player_profile": {
+      "nationality": "Italia",
+      "birth_date": "1990-07-18",
+      "current_club": "AC Lesmo"
+    },
+    "age": 36,
+    "role_name": "Centrocampista",
+    "role": "Centrocampista",
+    "tm_enriched": true
   },
   {
     "id": "a87e8aa508464df086cfb3ff0484f954",
@@ -13929,6 +14015,198 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF8GyJ8eiv2756D7ib4_26aClPqGIzE-HyRHBp07GIXTPXg2C5EHLfcdhvwJtTkj79LoHT2kSrfnHmGRnL01xmxt6ys1vVqeFMYlb9kRUcgYAnDC_wYh1Tt0PG4VeTmHg3P6rG36wAEEzOiWlwKYqvtq6MkwMT-Kx67mrT4DDWspEcbhcXC1MQGZ7lyvHI-ti26j-hlZjzP",
     "discovered_at": "2026-07-17T08:18:47.607776",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "c4fc60a58698ceaaa04a6be493e5ad79",
+    "player_name": "Romano Samuel",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Giovane svincolato da Alcione Milano (Serie C)",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGwcPK2xtR9z8kP4HSNc15Rhw_DxV_GIIai8DmRkMEEebtAA_RCg7u08R-g88O8_18rUyC86FClJJpQk5XYRP89qzN9ZDpTJEdSDT7_ayxJ9jQn9HxSVR57BFa5N8Wcc3QgCf_uMkApKRZalh3KBizPgRs4KarnzrZ1eQqvONtW0Ao1TuQxz7IJ8H0ROZETwgT8UsU",
+    "discovered_at": "2026-07-17T16:24:14.727364",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "da3ab5e60c69ff39508390f3e5ce5fcc",
+    "player_name": "Degennaro Francesco",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Giovane svincolato da Altamura (Serie C)",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGwcPK2xtR9z8kP4HSNc15Rhw_DxV_GIIai8DmRkMEEebtAA_RCg7u08R-g88O8_18rUyC86FClJJpQk5XYRP89qzN9ZDpTJEdSDT7_ayxJ9jQn9HxSVR57BFa5N8Wcc3QgCf_uMkApKRZalh3KBizPgRs4KarnzrZ1eQqvONtW0Ao1TuQxz7IJ8H0ROZETwgT8UsU",
+    "discovered_at": "2026-07-17T16:24:14.727616",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "81d7b1b40237ed159d6d4e8cc9c7cbdf",
+    "player_name": "Dibenedetto Christian",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Giovane svincolato da Altamura (Serie C)",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGwcPK2xtR9z8kP4HSNc15Rhw_DxV_GIIai8DmRkMEEebtAA_RCg7u08R-g88O8_18rUyC86FClJJpQk5XYRP89qzN9ZDpTJEdSDT7_ayxJ9jQn9HxSVR57BFa5N8Wcc3QgCf_uMkApKRZalh3KBizPgRs4KarnzrZ1eQqvONtW0Ao1TuQxz7IJ8H0ROZETwgT8UsU",
+    "discovered_at": "2026-07-17T16:24:14.727736",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "26306f4c48ac40b07713b9d7c489b92b",
+    "player_name": "Faccilongo Simone",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Giovane svincolato da Altamura (Serie C)",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGwcPK2xtR9z8kP4HSNc15Rhw_DxV_GIIai8DmRkMEEebtAA_RCg7u08R-g88O8_18rUyC86FClJJpQk5XYRP89qzN9ZDpTJEdSDT7_ayxJ9jQn9HxSVR57BFa5N8Wcc3QgCf_uMkApKRZalh3KBizPgRs4KarnzrZ1eQqvONtW0Ao1TuQxz7IJ8H0ROZETwgT8UsU",
+    "discovered_at": "2026-07-17T16:24:14.727873",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "68246583a7d65cc35ad6c2374bfb7b1d",
+    "player_name": "Losurdo Stefano",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Giovane svincolato da Altamura (Serie C)",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGwcPK2xtR9z8kP4HSNc15Rhw_DxV_GIIai8DmRkMEEebtAA_RCg7u08R-g88O8_18rUyC86FClJJpQk5XYRP89qzN9ZDpTJEdSDT7_ayxJ9jQn9HxSVR57BFa5N8Wcc3QgCf_uMkApKRZalh3KBizPgRs4KarnzrZ1eQqvONtW0Ao1TuQxz7IJ8H0ROZETwgT8UsU",
+    "discovered_at": "2026-07-17T16:24:14.727987",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "2b08009dcbb88143ec3e9accd2cdb181",
+    "player_name": "Victor Eletu",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "In trattativa per un trasferimento in Serie C (Pescara)",
+    "ob1_score": 60,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEPxJGtX0Vu5jaRi5E_jxDawIhC24uLSkwt-_qR3pv4qwbHu3UTZRCV7k1uwysmtY3VeWpAsxdKhi2V83lkMhL3mdYn4NM5_pGajwHkySPuSBGQUWwvekshtGeR7zceXxigE97CD-IqtGcHzsrzxP32ogzOOU_8NxgA1h6a_miBSg91",
+    "discovered_at": "2026-07-17T16:24:14.728097",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "889985c281347ca0572a98da53e08bd2",
+    "player_name": "Edoardo Calzani",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Vicino all'ingaggio con il Carpi (Serie C)",
+    "ob1_score": 60,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG5WWVukvPchGj8UEM82c8I3E4BHpJP78319T0fHBPfpID20en68AgllGcAKTmsUFXoXbdk8qFFXKwwWkPbTP0ZtCVFNTBbNnxfhSgNxAH-wRJ1mjkq_u0l0p8q3txkWQJAxkbSQG_p1iG6CLKsJwVUFZiuA2yzDmHH92k6KzSer2tLcg-8RIqQscTNhoBh5a3wA6zvcYH4oVV1ANs-X6n8Z21FZec",
+    "discovered_at": "2026-07-17T16:24:14.728205",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "6763e38980b4279087abaca7270dd72e",
+    "player_name": "Wisdom Amey",
+    "region": "ITALY",
+    "opportunity_type": "prestito",
+    "description": "Arrivato in prestito al Frosinone (Serie C)",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG5WWVukvPchGj8UEM82c8I3E4BHpJP78319T0fHBPfpID20en68AgllGcAKTmsUFXoXbdk8qFFXKwwWkPbTP0ZtCVFNTBbNnxfhSgNxAH-wRJ1mjkq_u0l0p8q3txkWQJAxkbSQG_p1iG6CLKsJwVUFZiuA2yzDmHH92k6KzSer2tLcg-8RIqQscTNhoBh5a3wA6zvcYH4oVV1ANs-X6n8Z21FZec",
+    "discovered_at": "2026-07-17T16:24:14.728312",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "cbb76a74c91aea29a845f1a55004d254",
+    "player_name": "Scaringi",
+    "region": "ITALY",
+    "opportunity_type": "prestito",
+    "description": "Vicino al prestito alla Torres (Serie C)",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG5WWVukvPchGj8UEM82c8I3E4BHpJP78319T0fHBPfpID20en68AgllGcAKTmsUFXoXbdk8qFFXKwwWkPbTP0ZtCVFNTBbNnxfhSgNxAH-wRJ1mjkq_u0l0p8q3txkWQJAxkbSQG_p1iG6CLKsJwVUFZiuA2yzDmHH92k6KzSer2tLcg-8RIqQscTNhoBh5a3wA6zvcYH4oVV1ANs-X6n8Z21FZec",
+    "discovered_at": "2026-07-17T16:24:14.728417",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "299b3d02fc44bc2971b2cbbf11c2a724",
+    "player_name": "Meconi",
+    "region": "ITALY",
+    "opportunity_type": "prestito",
+    "description": "Arrivato in prestito al Gubbio (Serie C)",
+    "ob1_score": 62,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG5WWVukvPchGj8UEM82c8I3E4BHpJP78319T0fHBPfpID20en68AgllGcAKTmsUFXoXbdk8qFFXKwwWkPbTP0ZtCVFNTBbNnxfhSgNxAH-wRJ1mjkq_u0l0p8q3txkWQJAxkbSQG_p1iG6CLKsJwVUFZiuA2yzDmHH92k6KzSer2tLcg-8RIqQscTNhoBh5a3wA6zvcYH4oVV1ANs-X6n8Z21FZec",
+    "discovered_at": "2026-07-17T16:24:14.728524",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "06a48dbac8f32a39cf3acf8908b595dc",
+    "player_name": "Anghelè",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Interesse dell'Ascoli (Serie C) per il giovane della Juventus Next Gen",
+    "ob1_score": 60,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG5WWVukvPchGj8UEM82c8I3E4BHpJP78319T0fHBPfpID20en68AgllGcAKTmsUFXoXbdk8qFFXKwwWkPbTP0ZtCVFNTBbNnxfhSgNxAH-wRJ1mjkq_u0l0p8q3txkWQJAxkbSQG_p1iG6CLKsJwVUFZiuA2yzDmHH92k6KzSer2tLcg-8RIqQscTNhoBh5a3wA6zvcYH4oVV1ANs-X6n8Z21FZec",
+    "discovered_at": "2026-07-17T16:24:14.728631",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "b658ef840987a3ebc4536cc9b59c73be",
+    "player_name": "Danilo Russo",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Senza contratto, ex Benevento Calcio (Serie C)",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAg-9rwwD0zOj92OFv1M0G3unVIPMePSD9YPscwn5YfJd8IeD7Lb-ZWc01TK35rSDX6kIhdHf9l3Hz5uySgr-J1Se9iquAEG-Ris0o3WS71QCdBHiV8SiXJCqPFog3VGZa2B57V_1eRm0_Gv0cppIJpQ2mQJpUeT4lY6nFus13VXVKUuSSomwWzCaH",
+    "discovered_at": "2026-07-17T16:24:14.728747",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "7497e71e5475dd8691a911dc3fed7a56",
+    "player_name": "Antonio Donnarumma",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Senza contratto, ex US Salernitana (Serie C)",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAg-9rwwD0zOj92OFv1M0G3unVIPMePSD9YPscwn5YfJd8IeD7Lb-ZWc01TK35rSDX6kIhdHf9l3Hz5uySgr-J1Se9iquAEG-Ris0o3WS71QCdBHiV8SiXJCqPFog3VGZa2B57V_1eRm0_Gv0cppIJpQ2mQJpUeT4lY6nFus13VXVKUuSSomwWzCaH",
+    "discovered_at": "2026-07-17T16:24:14.728879",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "27068327109f4529528884988fd63928",
+    "player_name": "Giacomo Beretta",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Senza contratto, ex Cosenza Calcio (Serie C)",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAg-9rwwD0zOj92OFv1M0G3unVIPMePSD9YPscwn5YfJd8IeD7Lb-ZWc01TK35rSDX6kIhdHf9l3Hz5uySgr-J1Se9iquAEG-Ris0o3WS71QCdBHiV8SiXJCqPFog3VGZa2B57V_1eRm0_Gv0cppIJpQ2mQJpUeT4lY6nFus13VXVKUuSSomwWzCaH",
+    "discovered_at": "2026-07-17T16:24:14.728986",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d216de08f524e7f6f9ac468da7c6674e",
+    "player_name": "Amedeo Benedetti",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Senza contratto, ex FC Trapani 1905 (Serie C)",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAg-9rwwD0zOj92OFv1M0G3unVIPMePSD9YPscwn5YfJd8IeD7Lb-ZWc01TK35rSDX6kIhdHf9l3Hz5uySgr-J1Se9iquAEG-Ris0o3WS71QCdBHiV8SiXJCqPFog3VGZa2B57V_1eRm0_Gv0cppIJpQ2mQJpUeT4lY6nFus13VXVKUuSSomwWzCaH",
+    "discovered_at": "2026-07-17T16:24:14.729093",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "447d7980012ea4193b65af31c14b55e0",
+    "player_name": "Roberto Inglese",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Senza contratto, ex US Salernitana (Serie C)",
+    "ob1_score": 64,
+    "source_name": "Gemini Search",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAg-9rwwD0zOj92OFv1M0G3unVIPMePSD9YPscwn5YfJd8IeD7Lb-ZWc01TK35rSDX6kIhdHf9l3Hz5uySgr-J1Se9iquAEG-Ris0o3WS71QCdBHiV8SiXJCqPFog3VGZa2B57V_1eRm0_Gv0cppIJpQ2mQJpUeT4lY6nFus13VXVKUuSSomwWzCaH",
+    "discovered_at": "2026-07-17T16:24:14.729200",
     "league_id": "italy_serie_c_d"
   }
 ]
