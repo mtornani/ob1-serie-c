@@ -49,6 +49,12 @@ _TM_KEYS = ['nationality', 'second_nationality', 'foot', 'market_value',
 def _is_enrichable(name) -> bool:
     if not isinstance(name, str) or len(name) < 3 or '|' in name:
         return False
+    # real person: at least 2 tokens, not ALL CAPS dump, not article title
+    tokens = name.split()
+    if len(tokens) < 2:
+        return False
+    if name.isupper() and len(tokens) >= 2:
+        return False
     n = name.lower()
     return not any(t in n for t in _JUNK_TERMS)
 

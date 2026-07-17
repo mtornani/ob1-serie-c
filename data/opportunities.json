@@ -37,7 +37,7 @@
     "role": "PC",
     "role_name": "Punta centrale",
     "opportunity_type": "prestito",
-    "current_club": "US Città di Pontedera",
+    "current_club": null,
     "previous_clubs": [
       "Juventus (giovanili)",
       "Pisa"
@@ -58,12 +58,13 @@
     "tm_enriched": true,
     "foot": "sinistro",
     "contract_expires": "2026-06-30",
-    "market_value": 1000000,
-    "market_value_formatted": "1,00 mln €",
+    "market_value": 800000,
+    "market_value_formatted": "800 mila €",
     "appearances": 9,
     "goals": 0,
     "assists": 0,
-    "minutes_played": 0
+    "minutes_played": 0,
+    "birth_date": "2007-12-28"
   },
   {
     "id": "opp_2eb1fc3d",
@@ -541,7 +542,7 @@
     "role": "DC",
     "role_name": "Difensore",
     "opportunity_type": "mercato",
-    "current_club": "Casertana",
+    "current_club": null,
     "previous_clubs": [
       "Sampdoria"
     ],
@@ -550,7 +551,7 @@
     "source_name": "Gazzetta",
     "source_title": "Mercato: tutti i colpi dell'ultima giornata | Gazzetta.it",
     "discovered_at": "2026-03-03T02:36:08.777561",
-    "tm_url": "https://www.transfermarkt.it/alessandro-di-pardo/profil/spieler/457674",
+    "tm_url": "https://www.transfermarkt.it/as-orceana-calcio/startseite/verein/36087/saison_id/1988",
     "player_profile": {
       "tm_url": "https://www.transfermarkt.it/alessandro-di-pardo/profil/spieler/457674",
       "nationality": "Italia",
@@ -1378,8 +1379,8 @@
       "agent": "Bola"
     },
     "tm_enriched": true,
-    "market_value": 800000,
-    "market_value_formatted": "800 mila €",
+    "market_value": 2800000,
+    "market_value_formatted": "2,80 mln €",
     "appearances": 30,
     "goals": 6,
     "assists": 0,
@@ -3651,7 +3652,7 @@
     "market_value": 50000,
     "market_value_formatted": "50 mila €",
     "height_cm": 174,
-    "birth_date": "1997-10-29",
+    "birth_date": null,
     "tm_url": "https://www.transfermarkt.it/luca-gazzetta/profil/spieler/312300",
     "agent": "ONEANDTEN verificato",
     "appearances": 27,
@@ -3671,8 +3672,8 @@
       "assists": 1,
       "minutes_played": 1831
     },
-    "age": 29,
-    "tm_enriched": true
+    "age": null,
+    "tm_enriched": false
   },
   {
     "id": "c83849a87ce191b7bae142ad29414dba",
@@ -3774,7 +3775,9 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFab8KtVeEk1a40tGuk5x-x-JAmKWKyu5Qi7SmCNoi-wcY4phEXVhyKhzdUItgZFP2c4wVzHRCfuEpIiUN70AioQRiTUxSqrTjkO39RmvvLrWtG5BnMkX2smy8N6EW-XkvhMnpqAfJu7wqV0DnKP0F2iqaWaW8zfn0Lrtt__ZH",
     "discovered_at": "2026-06-04T15:28:25.681217",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/francesco-antonellis/profil/spieler/1077126",
+    "tm_enriched": false
   },
   {
     "id": "48c8d9ca43539e736569a59e1b03b275",
@@ -4721,7 +4724,12 @@
     "player_profile": {
       "tm_url": "https://www.transfermarkt.it/asd-calcio-flaminia-civitacastellana/startseite/verein/23051/saison_id/2015"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "market_value": 50000,
+    "market_value_formatted": "50 mila €",
+    "birth_date": "1995-01-01",
+    "current_club": null,
+    "age": 31
   },
   {
     "id": "8e287296aa84afc6117ac7809fb93144",
@@ -5043,11 +5051,20 @@
     "source_url": "https://www.toronews.net/toro/approfondimenti/contratti-in-scadenza-nel-2026-chi-rischia-di-lasciare-il-toro",
     "discovered_at": "2026-06-08T04:26:53.728026",
     "league_id": "italy_serie_c_d",
-    "tm_url": "https://www.transfermarkt.it/torino-primavera/startseite/verein/12130",
+    "tm_url": "https://www.transfermarkt.it/giovanni-simeone/profil/spieler/282388",
     "player_profile": {
       "tm_url": "https://www.transfermarkt.it/torino-primavera/startseite/verein/12130"
     },
-    "tm_enriched": false
+    "tm_enriched": false,
+    "foot": "destro",
+    "market_value": 7200000,
+    "market_value_formatted": "7,20 mln €",
+    "height_cm": 180,
+    "birth_date": null,
+    "current_club": "Torino",
+    "role_name": "Punta centrale",
+    "role": "Punta centrale",
+    "age": null
   },
   {
     "id": "f1dffdb305843cae94d6fc29101780a2",
@@ -5175,7 +5192,7 @@
       "foot": "destro",
       "agent": "Senza procuratore"
     },
-    "tm_enriched": true,
+    "tm_enriched": false,
     "foot": "destro",
     "birth_date": "25/02/1990",
     "contract_expires": "-",
@@ -5193,7 +5210,7 @@
     "discovered_at": "2026-06-08T04:26:53.728776",
     "league_id": "italy_serie_c_d",
     "nationality": "Italia",
-    "tm_url": "https://www.transfermarkt.it/angelo-buono/profil/spieler/601623",
+    "tm_url": "https://www.transfermarkt.it/clay-di-benedetto/profil/spieler/736881",
     "player_profile": {
       "nationality": "Italia",
       "tm_url": "https://www.transfermarkt.it/angelo-buono/profil/spieler/601623"
@@ -6090,7 +6107,7 @@
       "minutes_played": 2346
     },
     "age": 26,
-    "tm_enriched": true
+    "tm_enriched": false
   },
   {
     "id": "cd55e130d821760b048d5298fb25724e",
@@ -6120,7 +6137,7 @@
       "assists": 0
     },
     "age": 22,
-    "tm_enriched": true
+    "tm_enriched": false
   },
   {
     "id": "195b2cc87d617741c33bf5bd8f3e7dc6",
@@ -6226,7 +6243,12 @@
     "player_profile": {
       "tm_url": "https://www.transfermarkt.it/as-cittadella-u19/startseite/verein/19099/saison_id/2009"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "market_value": 50000,
+    "market_value_formatted": "50 mila €",
+    "birth_date": "1991-01-01",
+    "current_club": null,
+    "age": 35
   },
   {
     "id": "8d14bd37e9bf20f6cda1d493694b268b",
@@ -6530,11 +6552,16 @@
     "source_url": "https://www.calcioweb.eu/serie-c/serie-c-o-campionato-primavera-linvasione-delle-under-23-e-la-fine-dei-gladiatori/10725952",
     "discovered_at": "2026-06-11T10:45:44.354901",
     "league_id": "italy_serie_c_d",
-    "tm_url": "https://www.transfermarkt.it/cesena-primavera/startseite/verein/20106",
+    "tm_url": "https://www.transfermarkt.it/lazio-primavera/startseite/verein/12816",
     "player_profile": {
       "tm_url": "https://www.transfermarkt.it/cesena-primavera/startseite/verein/20106"
     },
-    "tm_enriched": false
+    "tm_enriched": false,
+    "market_value": 200000,
+    "market_value_formatted": "200 mila €",
+    "birth_date": null,
+    "current_club": null,
+    "age": null
   },
   {
     "id": "289bad365a09c6f85705dc9db15d9526",
@@ -6632,7 +6659,7 @@
     "nationality": "Argentina",
     "foot": "destro",
     "birth_date": "19/09/1990",
-    "tm_url": "https://www.transfermarkt.it/cristian-gironi/profil/spieler/267682",
+    "tm_url": "https://www.transfermarkt.it/mario-gironi/profil/spieler/592254",
     "player_profile": {
       "nationality": "Argentina",
       "foot": "destro",
@@ -6651,11 +6678,13 @@
     "source_url": "https://www.linkedin.com/in/simone-calcagno-a94593147",
     "discovered_at": "2026-06-11T20:28:54.009333",
     "league_id": "italy_serie_c_d",
-    "tm_url": "https://www.transfermarkt.it/sc-ligorna-1922/startseite/verein/50100/saison_id/2021",
+    "tm_url": "https://www.transfermarkt.it/simone-di-giacomo/gemeinsameSpiele/spieler/440867/gegner/440866/kriterium/2/wettbewerb//liga/0/verein/0",
     "player_profile": {
       "tm_url": "https://www.transfermarkt.it/sc-ligorna-1922/startseite/verein/50100/saison_id/2021"
     },
-    "tm_enriched": false
+    "tm_enriched": false,
+    "role_name": "del compagno",
+    "role": "del compagno"
   },
   {
     "id": "4b6712d27e2e5dcf37802f669f76fdbe",
@@ -6904,14 +6933,16 @@
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGl3_ffrTG0pYfuy2BoF8A1261Oj026_6vxEzM04S5o00ccTH1bi0f_tr9DYieFz3FpbqeZhks_My8H6FEvC9-sxmmOXAAtXXYlPZ-bVsqI2yjU7NNP6K_8G0r8eTd5x48myO5iKhd5NIRh9x1aiqerGqL10BCrsw7l1YMbWVZmY4qWtRVSK19r",
     "discovered_at": "2026-06-12T10:22:20.718485",
     "league_id": "italy_serie_c_d",
-    "tm_url": "https://www.transfermarkt.it/roberto-carannante/profil/spieler/496980",
+    "tm_url": "https://www.transfermarkt.it/michele-pazienza/gemeinsameSpiele/spieler/17130/gegner/5884/kriterium/2/wettbewerb//liga/0/verein/0",
     "player_profile": {
       "tm_url": "https://www.transfermarkt.it/roberto-carannante/profil/spieler/496980",
       "nationality": "Italia"
     },
     "tm_enriched": false,
     "nationality": "Italia",
-    "birth_date": "23/11/1968"
+    "birth_date": "23/11/1968",
+    "role_name": "del compagno",
+    "role": "del compagno"
   },
   {
     "id": "317439401ce42179cd7644d91de24c86",
@@ -6943,7 +6974,9 @@
     "source_name": "www.romagnasport.com",
     "source_url": "https://www.romagnasport.com/news.php?id=288763",
     "discovered_at": "2026-07-02T14:11:46.740209",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/miran/profil/spieler/13202",
+    "tm_enriched": false
   },
   {
     "id": "dc0d7c8cf41ce0edf7136cd07770c8eb",
@@ -7048,7 +7081,9 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHxdMUfFmKGTBiiFuMisD62ZUAgxx79cvlIgK0Ub7Oz0hWAWt2o2vUh_K9MEqPvfySPxX0losjHrgKRoUtucQxbp9C0J0lV-kSGFMDnCewesHBMefEnhMwNBNy2V6KzUZZk2RK5nIqkSiLB0alMwZeQEkqhiua0RtRcNNCkuRve79ojxwvsOl49j8qfb3NeqK9K4QQD84Xh4PY0TZy2bNLzdGu__oUp8MXZlTSEJzcJqXamPMP0F5yVRThERR0z3i7q4YyLIG8V4aU=",
     "discovered_at": "2026-06-13T09:24:14.802674",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/nicolo-catania/profil/spieler/1313797",
+    "tm_enriched": false
   },
   {
     "id": "4e429b9623ac02deb4cdd5b472c63701",
@@ -7125,7 +7160,8 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFm_30JK0Lm8XjeCLGNLsM2M-W4evFx4PXxIFIQIC0CiEqwDqdEXy7e_134BV3l2vGIlSTMgAJK7Kv6hAMOA5WhabgfMM19vIgZphFFWeDpYp49aFnrqQ_Tu0TFN2a4sR_5KJSJ5MfLtz6QmKA3kh43FGjnc3n-wYBY8WWcCXHJeoTbPdBUHnlxlIDUeOnuthrqiuJ8CXYN8ey7Y6oNUz8oIHE=",
     "discovered_at": "2026-06-13T19:44:50.999852",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_enriched": false
   },
   {
     "id": "eb8ec2fc8af14e6bf50a2b40ff67803d",
@@ -7787,7 +7823,9 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFMX2bWmZbnLx-ZpmaBUJxpUF6ijsHzZDIxMNKrvaX6IrialXR4MtRzwKi6WhjOH7fjtsQtcL-2dzCxpwwNfAZMP8pVrHBTnlQt_L5-F--goklhgfZMvPS1P35gi2IHnN5wX8Zbh_7-wUyj4-JyI2NI3gS5I2PbKU9J3AqV_3i6",
     "discovered_at": "2026-06-16T21:00:05.118444",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/roberto/profil/spieler/641457",
+    "tm_enriched": false
   },
   {
     "id": "9ad713280bd1af20ea1122f2c5da3a21",
@@ -8359,7 +8397,16 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGj6IF5vfYl-xj7YJjgvNEM-5YJwdcN7sUUiaKjj497TVk-jRfpD7MpT1V-Ycd6CWWCav4o8WpH5NCE1cKEkkHG5pSjlpBp-d4wsrfEoHR2rLmqkm7tVvrQbdLA0zM0VpikOD65NCO8BQZkLlG2XvOAM3kTKwKHoHTB4wJRJ8ly",
     "discovered_at": "2026-06-18T04:27:13.273124",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "market_value": 50000,
+    "market_value_formatted": "50 mila €",
+    "birth_date": "2003-05-28",
+    "tm_url": "https://www.transfermarkt.it/francesco-ancora/profil/spieler/707452",
+    "current_club": "Ugento",
+    "role_name": "Punta centrale",
+    "role": "Punta centrale",
+    "age": 23,
+    "tm_enriched": true
   },
   {
     "id": "0a7458a8c915bdd0fc5cb52b25e6aeb4",
@@ -8642,7 +8689,9 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFfbjXGfuJYhYbTgyeo_5ZH6lKFkMV6R5lWhIyaTbkpbp6-ZtkKNRBOIQvIp9V4M5V4XTm1SggKKBp_XFQnchcm4lspnrM05-xItY_S4qrNaNXMVJqiLv7f-UWXSCbgELm1kmsDDTPQ3vQlPz61p9viDe1Kk8AT8aYyQbq_KSEA",
     "discovered_at": "2026-06-18T20:33:03.001889",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/cristiano/profil/spieler/729284",
+    "tm_enriched": false
   },
   {
     "id": "0659c6f8e46c46c31824fde53e0dd02b",
@@ -8923,7 +8972,9 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHnQwV4Uo3IAssnfLQ5SDdDQt1NEIxOjSJf0o7m87Q0ewIukt1nh-67aO9-PNTtWXf-iEoosqY0ABLmkflNjWo7Zi8c5ZL7omYMMRltctghJpKqyvXTkDQcL4UaLSQIJiWYFZpmHpV9TkBr-rw7BxSveqrA4_fIWw39n8Iz-uIHpv7nBAapkVaxGASrmiY9oklweF7NcXP8-ZHnaDZXbwR8oJQ7vxy35DE=",
     "discovered_at": "2026-06-19T15:31:40.966160",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/diego-caballero/profil/spieler/87835",
+    "tm_enriched": false
   },
   {
     "id": "c6a1d43f1176a2a009037790260c5d14",
@@ -9047,7 +9098,7 @@
     "foot": "destro",
     "height_cm": 180,
     "birth_date": "1964-03-07",
-    "tm_url": "https://www.transfermarkt.it/giuseppe-accardi/profil/spieler/336100",
+    "tm_url": "https://www.transfermarkt.it/giuseppe-accardi/profil/spieler/227629",
     "agent": "Giuseppe Accardi",
     "appearances": 18,
     "goals": 11,
@@ -9060,7 +9111,7 @@
       "appearances": 18,
       "goals": 11
     },
-    "tm_enriched": true
+    "tm_enriched": false
   },
   {
     "id": "f3c8662479e4a3c597a425acc59fd175",
@@ -10183,7 +10234,7 @@
       "tm_url": "https://www.transfermarkt.it/kevin-sotto/profil/spieler/970000"
     },
     "age": 20,
-    "tm_enriched": true
+    "tm_enriched": false
   },
   {
     "id": "879537d34eff842b1e2781c5ea7ef350",
@@ -10216,7 +10267,8 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHuJEW0OAgDA2n3c_KEaPl3dSWltjgl-S4EXVGUSdDM2Pzb8uGHajO4c48-ew_E-_4rL8ghrbGSlZWDLbcYlGc4nsxnw-gnJ990MRg9T1U1DJsHCa1WqGIisKiPWKbTAkdYMaftHModioykicTFDtIaPA02_GLYjvEPJ1W2uT7amMexd6turQVG",
     "discovered_at": "2026-06-29T15:55:28.501471",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_enriched": false
   },
   {
     "id": "47681fc16597058571ba6a05c132ff1e",
@@ -10228,7 +10280,8 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHuJEW0OAgDA2n3c_KEaPl3dSWltjgl-S4EXVGUSdDM2Pzb8uGHajO4c48-ew_E-_4rL8ghrbGSlZWDLbcYlGc4nsxnw-gnJ990MRg9T1U1DJsHCa1WqGIisKiPWKbTAkdYMaftHModioykicTFDtIaPA02_GLYjvEPJ1W2uT7amMexd6turQVG",
     "discovered_at": "2026-06-29T15:55:28.501539",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_enriched": false
   },
   {
     "id": "e03550e2b4ea5c4e8277354f01739b93",
@@ -10924,7 +10977,9 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF9Qw6x8BacXUbVB8uaT-_0nUywwcfmb9Z51gGRHGZ7H-pYD5bgC-CR9PgymqUtGdBeKMhUvxCcvGYjmskblu5PVJknNu6yV9bc4clk5N3s_Xg4DyvKed6LjawPlBhzQCTk3NVL4i6M6g7PQs3Nzmh_g8LXJ2PDGWABiCFux7J",
     "discovered_at": "2026-07-01T10:00:16.876957",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/ssdrl-marignanese-calcio/startseite/verein/31292/saison_id/2020",
+    "tm_enriched": false
   },
   {
     "id": "04f54357586f7ca5d321640915a31514",
@@ -11601,7 +11656,7 @@
     "age": 33,
     "role_name": "Difensore centrale",
     "role": "Difensore centrale",
-    "tm_enriched": true
+    "tm_enriched": false
   },
   {
     "id": "3c3234e6c9e2132973b235e6464a7ef9",
@@ -11613,7 +11668,8 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFERzY0Ik41XjaS4mHECVAQyL869pHkJQOUhwDSfuT_jU4RSQ8xlLWXkM_E5DWbVxRoDMJMERLx5_lXyMflIO8i_g9mHddDTSOPpIonUaTwcaO2UQzzEG7aJysXmMLphBuxylC4MSr3gn_0EpavSmP550ExpVDdo8520FAY-PZTjU-hofvajJW483HF4FCdJPgGa5zvZwpH5xYOQRzUtpQYDbBr5PyDifrFuwBC0S5MEAwEWYk=",
     "discovered_at": "2026-07-04T08:46:59.884042",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_enriched": false
   },
   {
     "id": "d54bbcadd7f12a49903430d1d2e860b6",
@@ -11625,7 +11681,8 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFERzY0Ik41XjaS4mHECVAQyL869pHkJQOUhwDSfuT_jU4RSQ8xlLWXkM_E5DWbVxRoDMJMERLx5_lXyMflIO8i_g9mHddDTSOPpIonUaTwcaO2UQzzEG7aJysXmMLphBuxylC4MSr3gn_0EpavSmP550ExpVDdo8520FAY-PZTjU-hofvajJW483HF4FCdJPgGa5zvZwpH5xYOQRzUtpQYDbBr5PyDifrFuwBC0S5MEAwEWYk=",
     "discovered_at": "2026-07-04T08:46:59.884131",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_enriched": false
   },
   {
     "id": "1941ec8281a6e1068104879ccc756fce",
@@ -11637,7 +11694,8 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFERzY0Ik41XjaS4mHECVAQyL869pHkJQOUhwDSfuT_jU4RSQ8xlLWXkM_E5DWbVxRoDMJMERLx5_lXyMflIO8i_g9mHddDTSOPpIonUaTwcaO2UQzzEG7aJysXmMLphBuxylC4MSr3gn_0EpavSmP550ExpVDdo8520FAY-PZTjU-hofvajJW483HF4FCdJPgGa5zvZwpH5xYOQRzUtpQYDbBr5PyDifrFuwBC0S5MEAwEWYk=",
     "discovered_at": "2026-07-04T08:46:59.884220",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_enriched": false
   },
   {
     "id": "bb2ba9d12409b4f134ac21467918f6b8",
@@ -12141,7 +12199,9 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHTntHO0eyx_uyr07iND6GwvBq44h9adTMGl1z0pHcQrpNLoVF6x0WMD6fnXL03Hx5uxFpixOVp3UbDePnCWdk80dSm8USgo7aHD-6uDe0-vuvWmYqTl51pxsYV92ghSa5fzssC4xwnD3j4HSny30l9HT5Um_LzOCI3Dm1cp70SVwe4KKbhaiQhs8eazRWjKshWU0MWWevvrx2lIx7Z5UeQkaFk1Q==",
     "discovered_at": "2026-07-08T08:38:28.706754",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/alessandro-cesari/profil/spieler/818857",
+    "tm_enriched": false
   },
   {
     "id": "41853bb41fd0f87f075863376694aad8",
@@ -12959,7 +13019,16 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF5CHmxQE421uQ7uQ8oe0HtEcnDLG2dd9xF2iJRmYMVlpB_yG0TyezoIveMWt5fd7Jm7ayp_vJP5Vb1Sae7zyzKBkCknZ8Mmpbnd9BGeVQvMIj50L4uOrsrbpAdm1Paq8cCiVxo_LfZMM_SIqFBzclM_0OOqKRraiigO-eYNlP-Kw==",
     "discovered_at": "2026-07-11T08:04:30.376172",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/ahmad-riad/profil/spieler/1233984",
+    "tm_enriched": true,
+    "foot": "sinistro",
+    "height_cm": 180,
+    "birth_date": "2006-02-01",
+    "current_club": null,
+    "age": 20,
+    "role_name": "Attacco",
+    "role": "Attacco"
   },
   {
     "id": "ae9a0a193847e29209003f98d99e60f3",
@@ -13295,7 +13364,17 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGzzXKewaygTARLjs6J40jQSp2OwBGtN0ajWPP4cISywCkReYLfQR5SO3it83Hg8khYxN_fRsE3LpXHoEVYGne95PRXAJK1gXANezMJfWw2SzJo1xz42izuVjSTVl8yIqJAYP6dK2plO1zGQvbcQUQP2E_OpRHkVKV-ZgTBeXVlD7kW",
     "discovered_at": "2026-07-12T08:26:17.408819",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/alessandro-cardascio/profil/spieler/1059716",
+    "tm_enriched": true,
+    "foot": "destro",
+    "market_value": 25000,
+    "market_value_formatted": "25 mila €",
+    "birth_date": "2006-11-20",
+    "current_club": null,
+    "age": 20,
+    "role_name": "Centrocampista",
+    "role": "Centrocampista"
   },
   {
     "id": "4c8eb777dc295f3ec30abe90efc922f1",
@@ -13511,7 +13590,17 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH6isIlU2cVJOBVCqpenDkbxO0q_KAv6c7CRWRov5Hs4z7Et7uurO6fsW5egLah-574lLLyp2uHaPA-Ce5Q_ol5IFphVdxymWDDEmkimT1Ir-uSpVqiSomf8_yuy9-yeQf6bADGcah5mxHYsYUTGGbBvP1VARy2UISHli-WOqU3owLDNxBODIxLl-p4bbMHsr-Kb4zlJntziQTcHxv6jN0=",
     "discovered_at": "2026-07-14T08:16:49.560687",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/alessandro-cardinali/profil/spieler/976446",
+    "tm_enriched": true,
+    "foot": "destro",
+    "market_value": 500000,
+    "market_value_formatted": "500 mila €",
+    "birth_date": "2006-03-02",
+    "current_club": "Spezia",
+    "age": 20,
+    "role_name": "Ala sinistra",
+    "role": "Ala sinistra"
   },
   {
     "id": "ac2ec0ba8dd896f1983c9c9752d67f5d",
@@ -13835,7 +13924,9 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGVk3y6GtL0PSGry_2QiRPoF0enYLfKGQWOyH2i881S2rtPBIsoIA1CnKl4pveibNhIExN3nNbYUhKvMte8gCqIusJqNgV9KCydgFn1Hv_TV_zGy-j4lWd3sYetHaxRuKFVjX0Zs81kHBifLPUCw-jnUfJoMTsN-L_tEdRQhLi5kQbDVBW-wS647duJ-IvFNEH2QAmEmeUUaMaPgJld52Zsd-zY90lSe_wQYDH8vWWHi_2mYASvMV--YOuykeTgv_AMK8-QBZPOhIGQ7bCnqm_-wBGLni9jVKl-tPl_Ifb_sg==",
     "discovered_at": "2026-07-17T08:18:47.605543",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/alessandro-colombo/profil/spieler/537118",
+    "tm_enriched": false
   },
   {
     "id": "0ad91f1bf5ccc9a10ac9d37f313fa7d2",

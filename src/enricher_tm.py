@@ -33,7 +33,144 @@ def _is_daily_quota_error(msg: str) -> bool:
         or "perday" in m
         or "per_day" in m
         or "generaterequestsperday" in m
+        or "prepayment credits" in m
+        or "resource_exhausted" in m
+        or "quota" in m
     )
+
+
+def parse_tm_text(raw: str, url: str = "") -> Dict[str, Any]:
+    """
+    Regex extract from Transfermarkt page text (Tavily raw) — zero LLM.
+    TM.it format tipico:
+      * Nato il:  03/05/2006 (20)
+      * Posizione:  Centrocampista
+      [Atalanta U23](/atalanta-u23/...)
+      2,80 mln €
+    """
+    if not raw:
+        return {}
+    text = raw
+    out: Dict[str, Any] = {}
+    if url and "/profil/spieler/" in url:
+        out["tm_url"] = url
+
+    # Birth: "Nato il: 03/05/2006 (20)" / "Date of birth/Age: May 3, 2006 (20)"
+    m = re.search(
+        r"(?:Nato il|Data di nascita|Date of birth(?:/Age)?|Born(?: on)?)\s*:?\s*"
+        r"(\d{1,2})[./](\d{1,2})[./](\d{4})",
+        text,
+        re.IGNORECASE,
+    )
+    if m:
+        d, mo, y = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        if 1980 <= y <= 2012:
+            out["birth_date"] = f"{y:04d}-{mo:02d}-{d:02d}"
+    if not out.get("birth_date"):
+        m = re.search(
+            r"(?:Nato il|Date of birth(?:/Age)?|Born(?: on)?)\s*:?\s*"
+            r"([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})",
+            text,
+            re.IGNORECASE,
+        )
+        if m:
+            months = {
+                "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+                "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
+                "gen": 1, "mag": 5, "giu": 6, "lug": 7, "ago": 8, "set": 9,
+                "ott": 10, "dic": 12,
+            }
+            mon = months.get(m.group(1)[:3].lower())
+            y = int(m.group(3))
+            if mon and 1980 <= y <= 2012:
+                out["birth_date"] = f"{y:04d}-{mon:02d}-{int(m.group(2)):02d}"
+
+    # Age in parens after birth year: "(20)"
+    m = re.search(r"\b(19\d{2}|20[01]\d)\s*\((\d{1,2})\)", text)
+    if m and not out.get("birth_date"):
+        y = int(m.group(1))
+        if 1980 <= y <= 2012:
+            out["birth_date"] = f"{y}-01-01"
+
+    _JUNK_CLUB = {
+        "giocatori", "nuovo arrivo", "nuovi arrivi", "rientro", "senza club",
+        "svincolato", "transfermarkt", "squadra", "club", "unknown", "nato il",
+        "data di nascita", "posizione", "piede", "altezza",
+    }
+
+    def _ok_club(c: str) -> bool:
+        cl = (c or "").strip().lower()
+        return bool(cl) and cl not in _JUNK_CLUB and "transfermarkt" not in cl and len(cl) > 2
+
+    # Club: markdown link near top "[Atalanta U23](/atalanta-u23/startseite/verein/..."
+    for m in re.finditer(
+        r"\[([^\]]{2,50})\]\(/[^\s\)]*startseite/verein[^\)]*\)",
+        text,
+    ):
+        club = m.group(1).strip()
+        if _ok_club(club):
+            out["current_club"] = club[:80]
+            break
+    if not out.get("current_club"):
+        m = re.search(
+            r"(?:Club attuale|Current club)\s*:?\s*([^\n\r|*]+)",
+            text,
+            re.IGNORECASE,
+        )
+        if m:
+            club = re.sub(r"\s{2,}", " ", m.group(1).strip())[:80]
+            if _ok_club(club):
+                out["current_club"] = club
+
+    # Market value: "2,80 mln €" or "150 mila €"
+    m = re.search(
+        r"([\d]+(?:[.,]\d+)?)\s*(mln|milioni|mila)\s*€",
+        text,
+        re.IGNORECASE,
+    )
+    if m:
+        try:
+            num_s = m.group(1).replace(".", "").replace(",", ".")
+            num = float(num_s)
+            unit = m.group(2).lower()
+            val = int(num * (1_000_000 if unit.startswith("ml") else 1_000))
+            if 1000 <= val <= 50_000_000:
+                out["market_value_eur"] = val
+                out["market_value"] = val
+                out["market_value_text"] = m.group(0).strip()[:40]
+        except ValueError:
+            pass
+
+    # Foot
+    m = re.search(
+        r"(?:Piede|Foot)\s*:?\s*(destro|sinistro|ambidestro|right|left|both)",
+        text,
+        re.I,
+    )
+    if m:
+        foot = m.group(1).lower()
+        out["foot"] = {
+            "right": "destro", "left": "sinistro", "both": "ambidestro",
+        }.get(foot, foot)
+
+    # Position: "* Posizione:  Centrocampista"
+    m = re.search(
+        r"(?:Posizione|Main position|Ruolo)\s*:?\s*([A-Za-zàèéìòùÀÈÉÌÒÙ /\-]{3,40})",
+        text,
+        re.IGNORECASE,
+    )
+    if m:
+        out["main_position"] = m.group(1).strip()[:40]
+
+    # Height: "1,95 m"
+    m = re.search(r"(?:Altezza|Height)\s*:?\s*(\d)[.,](\d{2})\s*m", text, re.I)
+    if m:
+        try:
+            out["height_cm"] = int(m.group(1)) * 100 + int(m.group(2))
+        except ValueError:
+            pass
+
+    return out
 
 _GROUNDING_PROMPT = """Cerca su Transfermarkt il profilo del calciatore "{name}".
 Estrai i dati reali dalla pagina profilo Transfermarkt (transfermarkt.it o transfermarkt.com).
@@ -141,6 +278,8 @@ class TransfermarktEnricher:
                 print(f"  [GROUNDED] {player_name}: mv={data.get('market_value_eur')} apps={data.get('appearances')}")
             return data
         except Exception as e:
+            if _is_daily_quota_error(str(e)):
+                self.gemini_disabled = True
             print(f"  [GROUNDED ERROR] {player_name}: {e}")
             return {}
 
@@ -165,7 +304,7 @@ class TransfermarktEnricher:
             "api_key": self.tavily_key,
             "query": query,
             "search_depth": "basic",
-            "max_results": 1,
+            "max_results": 3,
             "include_domains": ["transfermarkt.it"],
             "include_raw_content": True,
         }
@@ -177,16 +316,30 @@ class TransfermarktEnricher:
             if not results:
                 return {}
 
-            result = results[0]
-            raw_content = result.get("raw_content", "")
+            # Prefer real player profile URL, not club/league pages
+            result = None
+            for r in results:
+                u = (r.get("url") or "").lower()
+                if "/profil/spieler/" in u:
+                    result = r
+                    break
+            if result is None:
+                result = results[0]
+            raw_content = result.get("raw_content", "") or result.get("content", "")
             url = result.get("url", "")
             if not raw_content:
                 return {}
 
-            prompt = self._parse_prompt_for_player(player_name, url, raw_content)
-            data = {}
+            # 1) zero-LLM regex (always free)
+            data = parse_tm_text(raw_content, url)
+            if data.get("birth_date") or data.get("current_club") or data.get("market_value"):
+                print(f"  [REGEX] {player_name}: age-src={data.get('birth_date')} "
+                      f"club={data.get('current_club')} mv={data.get('market_value_eur')}")
 
-            if not self.gemini_disabled:
+            # 2) Gemini parse if still alive and regex thin
+            thin = not (data.get("birth_date") and data.get("current_club"))
+            if thin and not self.gemini_disabled:
+                prompt = self._parse_prompt_for_player(player_name, url, raw_content)
                 try:
                     response = self.gemini_client.models.generate_content(
                         model="gemini-2.5-flash",
@@ -196,37 +349,51 @@ class TransfermarktEnricher:
                             response_mime_type="application/json",
                         ),
                     )
-                    data = self._parse_json_response(response.text or "")
+                    llm = self._parse_json_response(response.text or "")
+                    for k, v in (llm or {}).items():
+                        if v is not None and not data.get(k):
+                            data[k] = v
                 except Exception as e:
                     if _is_daily_quota_error(str(e)):
                         self.gemini_disabled = True
-                        print(f"  [GEMINI OFF] daily quota during tavily-parse")
+                        print("  [GEMINI OFF] quota/credits during tavily-parse")
                     else:
                         print(f"  [GEMINI PARSE] {player_name}: {e}")
 
-            if not data and self.fallback_cfg:
+            # 3) Groq/OpenRouter if still thin
+            thin = not (data.get("birth_date") and data.get("current_club"))
+            if thin and self.fallback_cfg:
+                prompt = self._parse_prompt_for_player(player_name, url, raw_content)
                 try:
                     text = chat_json(prompt)
-                    data = self._parse_json_response(text)
-                    if data:
+                    llm = self._parse_json_response(text)
+                    for k, v in (llm or {}).items():
+                        if v is not None and not data.get(k):
+                            data[k] = v
+                    if llm:
                         print(f"  [FALLBACK {self.fallback_cfg['label']}] {player_name} ok")
                 except Exception as e:
                     print(f"  [FALLBACK ERROR] {player_name}: {e}")
 
             if url and data and not data.get("tm_url"):
                 data["tm_url"] = url
-            return data
+            return data if data else {}
         except Exception as e:
             print(f"  [TAVILY ERROR] {player_name}: {e}")
             return {}
 
     def enrich_player(self, player_name: str) -> Dict[str, Any]:
-        """Main entry: grounding first (se Gemini vivo), poi Tavily+parse."""
+        """Main entry: Gemini grounding se vivo, altrimenti Tavily+regex(+LLM)."""
         if not self.gemini_disabled:
-            data = self.enrich_player_grounded(player_name)
-            if data:
-                return data
-        print(f"  [FALLBACK] Tavily path for {player_name}...")
+            try:
+                data = self.enrich_player_grounded(player_name)
+                if data:
+                    return data
+            except Exception as e:
+                if _is_daily_quota_error(str(e)):
+                    self.gemini_disabled = True
+                print(f"  [GROUNDED ERROR] {player_name}: {e}")
+        print(f"  [TAVILY+REGEX] {player_name}...")
         return self.enrich_player_tavily(player_name)
 
     def enrich_players_batch(self, names: List[str]) -> Dict[str, Dict[str, Any]]:

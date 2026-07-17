@@ -16,20 +16,35 @@ import requests
 GROQ_MAX_CHARS = 2800
 
 
+def _real_key(name: str) -> Optional[str]:
+    """Reject empty / placeholder dotenv values (your_xxx)."""
+    v = (os.getenv(name) or "").strip()
+    if not v:
+        return None
+    low = v.lower()
+    if low.startswith("your_") or low in ("placeholder", "xxx", "changeme"):
+        return None
+    if len(v) < 16:
+        return None
+    return v
+
+
 def resolve_fallback() -> Optional[dict]:
     """Ordine: GROQ_API_KEY → OPENROUTER_API_KEY → None."""
-    if os.getenv("GROQ_API_KEY"):
+    groq = _real_key("GROQ_API_KEY")
+    if groq:
         return {
             "base_url": "https://api.groq.com/openai/v1",
-            "api_key": os.getenv("GROQ_API_KEY"),
+            "api_key": groq,
             "model": os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"),
             "label": "groq",
             "max_chars": GROQ_MAX_CHARS,
         }
-    if os.getenv("OPENROUTER_API_KEY"):
+    ork = _real_key("OPENROUTER_API_KEY")
+    if ork:
         return {
             "base_url": "https://openrouter.ai/api/v1",
-            "api_key": os.getenv("OPENROUTER_API_KEY"),
+            "api_key": ork,
             "model": os.getenv(
                 "OPENROUTER_MODEL", "meta-llama/llama-3.3-70b-instruct:free"
             ),
