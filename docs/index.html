@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="it" data-density="comfortable" data-card-style="brief" data-score-weight="heavy" data-urgency-mode="bar">
+<html lang="it">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -194,7 +194,9 @@ body::before{
 
 @media (max-width: 720px){
   .cmd-row{ grid-template-columns: 1fr; }
-  .counters{ gap: 14px; justify-content: space-between; }
+  /* 4 counters never fit one row on a phone (3-digit numbers + Italian
+     labels need more width than that) — 2x2 avoids forcing the page wide. */
+  .counters{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
   .counter{ align-items:flex-start; min-width: 0; }
 }
 
@@ -230,6 +232,13 @@ body::before{
   border:1px solid var(--line-2); padding:2px 6px;
 }
 @media (max-width: 720px){ .search .kbd{ display:none; } }
+@media (max-width: 480px){
+  /* Two native <select> elements next to the results count don't fit a
+     phone row — let the sort controls wrap to their own full-width line. */
+  .sub-row{ flex-wrap: wrap; gap: 8px; }
+  .sub-row .sort-group{ width: 100%; }
+  .sub-row .sort-group select{ flex: 1; min-width: 0; }
+}
 
 .filterbar{
   display:flex; gap: 0;
@@ -280,63 +289,50 @@ body::before{
 
 /* ============ CARD GRID ============ */
 .grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 10px;
-  padding: 14px 0 80px;
-}
-@media (max-width: 520px){
-  .grid{ grid-template-columns: 1fr; gap: 8px; }
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0 80px;
 }
 
 /* --- CARD --- */
 .card{
   position: relative;
-  background: var(--bg-1);
-  border: 1px solid var(--line);
-  padding: 14px 14px 12px;
+  min-width: 0;
+  padding: 13px 6px 13px 16px;
   cursor: pointer;
-  transition: border-color .12s, transform .12s, background .12s;
-  isolation: isolate;
-  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  transition: background .1s;
 }
-.card:hover{
-  border-color: var(--acc);
-  background: var(--bg-2);
-}
+.card:hover{ background: var(--bg-1); }
 .card:hover .name{ color: var(--acc); }
-.card:active{ transform: translateY(1px); }
+.card:active{ background: var(--bg-2); }
 
 /* urgency left bar */
 .card .urgency{
   position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
+  left: 0; top: 8px; bottom: 8px;
+  width: 2px;
   background: var(--ink-ghost);
 }
-.card[data-tier="hot"] .urgency{ width: 4px; }
+.card[data-tier="hot"] .urgency{ width: 3px; }
 .card[data-urgency="critical"] .urgency{ background: var(--red); }
 .card[data-urgency="high"]     .urgency{ background: var(--amber); }
 .card[data-urgency="warm"]     .urgency{ background: var(--acc); }
 .card[data-urgency="cold"]     .urgency{ background: var(--ink-ghost); }
 
-/* tier-score glow */
-.card[data-tier="hot"]{
-  background: linear-gradient(180deg, rgba(47,191,113,.05) 0%, transparent 55%), var(--bg-1);
-  border-color: color-mix(in oklab, var(--acc) 55%, var(--line));
-  border-width: 1px 1px 1px 1px;
-}
 .card[data-tier="hot"]  .dlabel{ color: var(--acc); }
 .card[data-tier="warm"] .dlabel{ color: var(--ink-dim); }
 .card[data-tier="cold"] .dlabel{ color: var(--ink-mute); }
 
 .card-head{
   display:grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0,1fr) auto;
   gap: 10px;
   align-items: flex-start;
 }
+.name-block{ min-width: 0; }
 .name-block .name{
+  overflow-wrap: break-word;
   font-family: var(--sans);
   font-size: 21px;
   font-weight: 700;
@@ -383,13 +379,14 @@ body::before{
 .card-body{
   margin-top: 12px;
   display:grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0,1fr) auto;
   gap: 10px;
   align-items: flex-end;
 }
 
 .tag-row{
   display:flex; flex-wrap:wrap; gap:4px;
+  min-width: 0;
 }
 .tag{
   font-family: var(--mono);
@@ -409,7 +406,6 @@ body::before{
 
 .tag.u21   { color: var(--acc); border-color: color-mix(in oklab, var(--acc) 40%, var(--line-2)); }
 .tag.new-signal { color: var(--acc); border-color: color-mix(in oklab, var(--acc) 45%, transparent); background: var(--acc-bg); }
-@keyframes new-pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.55; } }
 .tag.tm-ok  { color: var(--blue); border-color: color-mix(in oklab, var(--blue) 40%, transparent); background: var(--blue-bg); }
 
 /* urgency timer */
@@ -438,23 +434,6 @@ body::before{
 .card[data-urgency="warm"]     .timer .days{ color: var(--acc); }
 .card[data-urgency="cold"]     .timer .days{ color: var(--ink-mute); }
 
-/* progress bar for contract */
-.card-bar{
-  margin-top: 10px;
-  height: 2px;
-  background: var(--line);
-  position: relative;
-  overflow: hidden;
-}
-.card-bar .fill{
-  position:absolute; left:0; top:0; bottom:0;
-  width: 30%;
-  background: var(--ink-ghost);
-}
-.card[data-urgency="critical"] .card-bar .fill{ background: var(--red); }
-.card[data-urgency="high"]     .card-bar .fill{ background: var(--amber); }
-.card[data-urgency="warm"]     .card-bar .fill{ background: var(--acc); }
-.card[data-urgency="cold"]     .card-bar .fill{ background: var(--ink-ghost); }
 
 /* empty */
 .empty{
@@ -803,22 +782,6 @@ body::before{
 .foot a{ color: var(--ink-dim); }
 .foot a:hover{ color: var(--acc); }
 
-/* density */
-[data-density="compact"] .grid{ grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 6px; }
-[data-density="compact"] .card{ padding: 10px 12px 10px; }
-[data-density="compact"] .name-block .name{ font-size: 16px; }
-[data-density="compact"] .score{ font-size: 34px; }
-
-/* scoreWeight=light */
-[data-score-weight="light"] .score{ font-weight: 500; color: var(--ink); text-shadow:none; }
-[data-score-weight="light"] .card[data-tier="hot"] .score{ color: var(--acc); text-shadow: none; }
-
-/* urgencyMode=tag: hide progress bar */
-[data-urgency-mode="tag"] .card-bar{ display:none; }
-/* cardStyle=minimal: hide tags on card */
-[data-card-style="minimal"] .card .tag-row{ display:none; }
-[data-card-style="minimal"] .card-body{ grid-template-columns: 1fr auto; }
-
 /* ============ STALE BANNER ============ */
 #staleBanner{
   display: none;
@@ -1018,7 +981,7 @@ body::before{
 
 
 <div id="toast" role="status" aria-live="polite"></div>
-<script src="app.js?v=16"></script>
+<script src="app.js?v=18"></script>
 <script src="tracker.js" data-track-url="https://white-cherry-07a3.mirkotornani.workers.dev/"></script>
 </body>
 </html>
