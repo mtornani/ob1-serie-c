@@ -1573,81 +1573,6 @@
       }
     },
     {
-      "id": "7544e65eaa80def187266db93daa7f6c",
-      "player_name": "Cesare Galeotti",
-      "age": 24,
-      "role": "Portiere",
-      "role_name": "Portiere",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-07-02",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFkJPLTKn8wM6g8joJ4nb_NDpTqR_822i2OUcU1BN6q2zu2FpDlQEA6cyocYT8Oqg8x-bVcmH7Ybna_OqDFmLh-sWVNKC8kV7EG-PxkU7mSwLoHEpTlLQ9nZOIU5lNrcynIKQ9h7JLgaBZ4T55fODjXHnPnqoRV6_gB3MZoATFGOMBIGlAl",
-      "previous_clubs": [],
-      "current_club": "US Salernitana",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 350000,
-      "market_value_formatted": "350 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-07-02T09:21:19.959519",
-      "ob1_score": 69,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 50,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 90,
-        "market_value": 90,
-        "league_fit": 50,
-        "source": 50
-      },
-      "identity_complete": true,
-      "corroborated": true,
-      "publishable": true,
-      "review_flags": "",
-      "n_sources": 2,
-      "recommendation": "Età ideale (24 anni), nel pieno della maturazione. Disponibile a parametro zero. Valore di mercato interessante (350k€).",
-      "intel": {
-        "roi_class": "none",
-        "roi_label": "NO CONTRIB.",
-        "roi_color": "gray",
-        "coefficiente_eta": 0,
-        "moltiplicatore": 0,
-        "proiezione_stagionale": 0,
-        "traffic_light": "green",
-        "traffic_label": "UNDER",
-        "traffic_icon": "🟢",
-        "is_over": false,
-        "signals": [],
-        "birth_year": 2002,
-        "roi_dettaglio": "Classe 2002 — non contribuisce al minutaggio giovani",
-        "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 17,
-      "stale_free_agent": false,
-      "assessment": {
-        "yes": [
-          "Libero a zero — nessun costo di cartellino",
-          "24 anni — nel pieno della carriera",
-          "Valore di mercato interessante (350 mila €)",
-          "Confermato da più fonti / profilo TM"
-        ],
-        "no": [
-          "Presenze non verificate — controllare Transfermarkt",
-          "Fonte debole o generica"
-        ],
-        "action": "Da tenere d'occhio"
-      }
-    },
-    {
       "id": "a308c674d43afd9fc034eb521d72b770",
       "player_name": "Alessandro Lombardi",
       "age": 26,
@@ -2120,6 +2045,88 @@
           "Presenze non verificate — controllare Transfermarkt",
           "30 anni — poco margine, nessun bonus lista giovani",
           "139 giorni senza club — perché non è stato preso?"
+        ],
+        "action": "Da tenere d'occhio"
+      }
+    },
+    {
+      "id": "c70f3ddc1faa29314405ffab2f2e0dd2",
+      "player_name": "Andrea Vailati",
+      "age": 19,
+      "role": "Portiere",
+      "role_name": "Portiere",
+      "opportunity_type": "prestito",
+      "reported_date": "2026-07-19",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHtUNGB1ZLB-eNQzkbGHDY9yPW0oCY-9JiD7mGMS5MgSSRta4BOa2GhQyOhZ7cE5AOMYFyDa3gFmOfVy8ZUDAPitTz7gWJjc0nzAUhZsPd72eXYBWeqnwmSDegIcH1vaBeSB_oqS216XcDiFJVGStRMj4K9T-_QQDCck5pZIAzr2ANWUdWa-BXEfmQ8bxSAlfMOK60tTzBQZnFeHGBds7P5840",
+      "previous_clubs": [],
+      "current_club": "Monza U19",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 10000,
+      "market_value_formatted": "10 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-07-19T08:26:04.990559",
+      "ob1_score": 67,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 70,
+        "experience": 50,
+        "age": 100,
+        "market_value": 35,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valutabile in prestito.",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "CONTRIBUTO BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.4,
+        "proiezione_stagionale": 2450,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "contract_expired",
+            "severity": "red",
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
+      },
+      "contract_expires": "2026-06-30",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Disponibile in prestito — investimento contenuto",
+          "Giovane (19 anni) — non occupa posto Over in lista",
+          "Segnalazione fresca",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Fonte debole o generica"
         ],
         "action": "Da tenere d'occhio"
       }
@@ -3115,81 +3122,6 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Fonte debole o generica"
-        ],
-        "action": "Da tenere d'occhio"
-      }
-    },
-    {
-      "id": "1f1699727e429dcd69bbf6f2b235e282",
-      "player_name": "Andrea Vailati",
-      "age": 19,
-      "role": "Portiere",
-      "role_name": "Portiere",
-      "opportunity_type": "prestito",
-      "reported_date": "2026-07-16",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHi6NCDfCuJXxCzvTpRx_VpA1QnUw2ECU47lFQAZytU01MJoftF4nu2SjIbLvpCVZv6YpN65FisfZZlC1LUNXeA0bUmuIva1x9gR27fL9svysbCewLWo6N6iHZI9ynTBHOMAeoY5_uLInF64e8CUpF66apLRUSSujGZF-U2c6VOv_anB85gh0JGbfGKGENIGBvELOew9ymdZVFy9-2iUlsmag==",
-      "previous_clubs": [],
-      "current_club": "AC Monza U19",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": null,
-      "market_value": 10000,
-      "market_value_formatted": "10 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-07-16T08:22:34.428280",
-      "ob1_score": 64,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 85,
-        "opportunity_type": 70,
-        "experience": 50,
-        "age": 100,
-        "market_value": 35,
-        "league_fit": 50,
-        "source": 50
-      },
-      "identity_complete": true,
-      "corroborated": true,
-      "publishable": true,
-      "review_flags": "",
-      "n_sources": 2,
-      "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valutabile in prestito.",
-      "intel": {
-        "roi_class": "low",
-        "roi_label": "CONTRIBUTO BASSO",
-        "roi_color": "#94a3b8",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.4,
-        "proiezione_stagionale": 2450,
-        "traffic_light": "green",
-        "traffic_label": "UNDER",
-        "traffic_icon": "🟢",
-        "is_over": false,
-        "signals": [],
-        "birth_year": 2007,
-        "roi_dettaglio": "Classe 2007: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
-        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 0,
-      "stale_free_agent": false,
-      "assessment": {
-        "yes": [
-          "Disponibile in prestito — investimento contenuto",
-          "Giovane (19 anni) — non occupa posto Over in lista",
-          "Segnalazione fresca",
-          "Confermato da più fonti / profilo TM"
-        ],
-        "no": [
-          "Presenze non verificate — controllare Transfermarkt",
           "Fonte debole o generica"
         ],
         "action": "Da tenere d'occhio"
@@ -5689,26 +5621,26 @@
     }
   ],
   "stats": {
-    "total": 74,
+    "total": 73,
     "hot": 18,
-    "warm": 43,
+    "warm": 42,
     "cold": 13,
-    "today": 0,
-    "svincolati": 30,
+    "today": 1,
+    "svincolati": 29,
     "stale_free_agents": 4,
     "intel_roi": {
       "elite": 0,
       "high": 0,
       "medium": 19,
       "low": 22,
-      "none": 33
+      "none": 32
     },
-    "tracking_total": 348,
+    "tracking_total": 347,
     "tracking_only": 274,
-    "publishable": 74,
-    "corroborated": 66
+    "publishable": 73,
+    "corroborated": 65
   },
-  "last_update": "2026-07-19T08:27:41.744027",
+  "last_update": "2026-07-19T13:26:16.586953",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete"
