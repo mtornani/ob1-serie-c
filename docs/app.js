@@ -10,7 +10,17 @@ const STATE = {
   lastUpdate: null,
 };
 
-const TIER_LABEL = { hot: 'occasione', warm: 'da seguire', cold: 'archivio' };
+const TIER_LABEL = { hot: 'da chiamare', warm: 'da seguire', cold: 'bassa priorità' };
+
+// Tipo opportunità → etichetta da campo (no gergo interno)
+const TYPE_LABEL = {
+  svincolato: 'Senza contratto',
+  rescissione: 'Ha rescisso',
+  prestito: 'Prestito',
+  mercato: 'Sul mercato',
+  scadenza: 'In scadenza',
+  talento: 'Giovane',
+};
 
 const el  = (s, r=document) => r.querySelector(s);
 const els = (s, r=document) => [...r.querySelectorAll(s)];
@@ -81,12 +91,21 @@ function refreshSaveBtn(){
   b.innerHTML = `${on?'★':'☆'} <span class="lbl">${on?'Salvato':'Salva'}</span>`;
 }
 
+// Service worker registration lives in index.html (avoids double-registering).
+
 document.addEventListener('DOMContentLoaded', init);
 
 async function init(){
   wireKeyShortcuts();
   wireControls();
   wireDrawer();
+
+  // Deep-link from PWA shortcuts: ?filter=hot|free|under|new|verified|saved
+  const params = new URLSearchParams(location.search);
+  const f = params.get('filter');
+  if (f && ['all','hot','free','under','new','verified','saved'].includes(f)) {
+    STATE.filter = f;
+  }
 
   el('#grid').innerHTML = '<div class="empty" style="display:block"><div class="big" style="font-size:16px;color:var(--ink-mute)">caricamento…</div></div>';
 
@@ -106,12 +125,15 @@ async function init(){
     return;
   }
 
-  applyUrlFilter();
   updateCycle();
   checkStale();
   setInterval(updateCycle, 30000);
   trackSession();
   paintCounters();
+  // Sync chip UI with deep-link filter
+  els('.chip').forEach((c) => {
+    c.classList.toggle('on', c.dataset.f === STATE.filter);
+  });
   applyFilter();
   openFromUrl();
 }
@@ -122,23 +144,6 @@ function openFromUrl(){
   if (!id) return;
   const o = STATE.all.find(x => String(x.id) === String(id));
   if (o) openDrawer(o);
-}
-
-/* Deep-link / PWA shortcut: ?filter=hot|free|under|verified|new */
-function applyUrlFilter(){
-  const f = new URLSearchParams(location.search).get('filter');
-  const valid = ['all','hot','under','free','verified','new'];
-  if (!f || !valid.includes(f)) return;
-  STATE.filter = f;
-  const chip = el(`.chip[data-f="${f}"]`);
-  if (chip){ els('.chip').forEach(x=>x.classList.remove('on')); chip.classList.add('on'); }
-}
-
-/* Register the service worker so the app is installable + works offline */
-if ('serviceWorker' in navigator){
-  window.addEventListener('load', ()=>{
-    navigator.serviceWorker.register('sw.js').catch(err=>console.warn('[OB1] SW registration failed', err));
-  });
 }
 
 /* ============ DECORATE ============ */
@@ -172,7 +177,14 @@ function decorate(o){
   if (s >= 70) tier = 'hot';
   else if (s >= 57) tier = 'warm';
 
-  return { ...o, _days: days, _urgency: urgency, _tier: tier, _isFree: isFree };
+  let barPct = 0;
+  if (isFree) {
+    barPct = Math.max(5, Math.min(100, 100 - (o.days_without_contract||0) * 2));
+  } else if (days !== null) {
+    barPct = Math.max(4, Math.min(100, 100 - ((days/730)*100)));
+  }
+
+  return { ...o, _days: days, _urgency: urgency, _tier: tier, _isFree: isFree, _barPct: barPct };
 }
 
 /* ============ FILTER + SORT ============ */
@@ -187,7 +199,7 @@ function applyFilter(){
   else if (STATE.filter === 'saved'){ const sl = getShortlist(); list = list.filter(o => sl.includes(o.id)); }
   else if (STATE.filter === 'urgent') list = list.filter(o=>o._urgency==='critical'||o._urgency==='high');
   else if (STATE.filter === 'new'){
-    const cutoff = Date.now() - 30 * 86400000;
+    const cutoff = Date.now() - 14 * 86400000; // ultimi 14 giorni
     list = list.filter(o => o.discovered_at && new Date(o.discovered_at).getTime() >= cutoff);
     list.sort((a,b)=>(b.discovered_at||'').localeCompare(a.discovered_at||''));
   }
@@ -224,18 +236,18 @@ function paintCounters(){
   const hot    = all.filter(o=>o.ob1_score>=70).length;
   const free   = all.filter(o=>o._isFree).length;
   const u21    = all.filter(o=>o.age!=null && o.age<=22).length;
-  const urgent   = all.filter(o=>o._urgency==='critical'||o._urgency==='high').length;
   const verified = all.filter(o => o.data_verified === true).length;
-  const cutoff30 = Date.now() - 30 * 86400000;
-  const newCt  = all.filter(o => o.discovered_at && new Date(o.discovered_at).getTime() >= cutoff30).length;
+  const urgent = all.filter(o=>o._urgency==='critical'||o._urgency==='high').length;
+  const saved  = getShortlist().length;
+  const cutoff14 = Date.now() - 14 * 86400000;
+  const newCt  = all.filter(o => o.discovered_at && new Date(o.discovered_at).getTime() >= cutoff14).length;
 
   el('#ctHot').textContent  = hot;
   el('#ctFree').textContent = free;
   el('#ctU21').textContent  = u21;
   el('#ctAll').textContent  = all.length;
 
-  const saved = getShortlist().length;
-  const map = { all:all.length, hot, free, under:u21, verified, urgent, new:newCt, saved };
+  const map = { all:all.length, hot, free, under:u21, new:newCt, verified, urgent, saved };
   els('.chip .num').forEach(n=>{
     const k = n.dataset.ct;
     n.textContent = map[k] ?? 0;
@@ -265,142 +277,50 @@ function paintGrid(){
   });
 }
 
+function cardLine(o){
+  // One plain line under the name — no timer, no bar, no tag pile
+  const type = (o.opportunity_type||'').toLowerCase();
+  const sit = TYPE_LABEL[type] || '';
+  if (o._isFree) {
+    const dwc = o.days_without_contract || 0;
+    const free = dwc === 0 ? 'appena libero' : `${dwc} gg senza club`;
+    return sit ? `${sit} · ${free}` : free;
+  }
+  if (o._days != null && o._days >= 0 && o._days <= 180) {
+    return sit ? `${sit} · scade tra ${o._days} gg` : `scade tra ${o._days} gg`;
+  }
+  return sit || '—';
+}
+
 function card(o){
-  const type  = (o.opportunity_type||'').toLowerCase();
   const roleRaw = o.role_name || o.role || '';
   const role  = /^(n\/d|n\/a|none|—|-)?$/i.test(roleRaw.trim()) ? '' : roleRaw;
-  const club  = safe(o.current_club, 'Svincolato');
+  const club  = safe(o.current_club, 'Senza club');
   const age   = o.age!=null ? `${o.age} anni` : '';
-  const typeTag = type ? `<span class="tag type-${type}">${type.toUpperCase()}</span>` : '';
   const daysOld = o.discovered_at ? Math.round((Date.now() - new Date(o.discovered_at)) / 86400000) : null;
-  const newTag  = (daysOld !== null && daysOld <= 3) ? `<span class="tag new-signal">NUOVO</span>` : '';
-  const tmTag   = o.data_verified === true ? `<span class="tag tm-ok">Verificato</span>` : '';
-
-  let daysText, daysUnit;
-  if (o._isFree){
-    const dwc = o.days_without_contract || 0;
-    daysText = dwc === 0 ? 'oggi' : dwc;
-    daysUnit = dwc === 0 ? 'appena svincolato' : (dwc === 1 ? 'giorno da svincolato' : 'giorni da svincolato');
-  } else if (o._days == null){
-    daysText = '—';
-    daysUnit = '';
-  } else if (o._days < 0){
-    daysText = '—';
-    daysUnit = 'contratto scaduto';
-  } else {
-    if (o._days > 730) { daysText = Math.round(o._days/30); daysUnit = 'mesi alla scadenza'; }
-    else               { daysText = o._days;                 daysUnit = o._days === 1 ? 'giorno alla scadenza' : 'giorni alla scadenza'; }
-  }
+  const isNew = daysOld !== null && daysOld <= 3;
 
   const savedCls = isSaved(o.id) ? ' is-saved' : '';
   return `
-<article class="card${savedCls}" data-id="${o.id}" data-urgency="${o._urgency}" data-tier="${o._tier}" tabindex="0" role="button" aria-label="${esc(o.player_name)}, punteggio ${o.ob1_score}">
+<article class="card${savedCls}" data-id="${o.id}" data-urgency="${o._urgency}" data-tier="${o._tier}" tabindex="0" role="button" aria-label="${esc(o.player_name)}, ${o.ob1_score}">
   <span class="urgency"></span>
   <span class="saved-star" aria-hidden="true">★</span>
   <div class="card-head">
     <div class="name-block">
-      <div class="name">${esc(o.player_name)}</div>
+      <div class="name">${esc(o.player_name)}${isNew ? ' <span class="tag new-signal">Nuovo</span>' : ''}</div>
       <div class="meta">
         ${[role && `<span class="role">${esc(role)}</span>`, age && `<span class="age">${age}</span>`, `<span class="club">${esc(club)}</span>`].filter(Boolean).join('<span class="sep">·</span>')}
       </div>
+      <div class="meta card-line">${esc(cardLine(o))}</div>
     </div>
     <div class="score">${o.ob1_score}<span class="dlabel">${TIER_LABEL[o._tier]||''}</span></div>
-  </div>
-  <div class="card-body">
-    <div class="tag-row">${typeTag}${tmTag}${newTag}</div>
-    <div class="timer">
-      <div class="days">${daysText}</div>
-      <span class="unit">${daysUnit}</span>
-    </div>
   </div>
 </article>`;
 }
 
 function esc(s){ return String(s ?? '').replace(/[<>&"']/g, c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":"&#39;"}[c])); }
 
-/* ============ DRAWER ============ */
-
-const SCORE_WEIGHTS = { freshness:15, opportunity_type:10, experience:20, age:15, market_value:15, league_fit:15, source:5, completeness:5 };
-
-function scoreReason(k, v, o) {
-  switch (k) {
-    case 'freshness':
-      return v >= 90 ? 'Segnalato oggi o ieri'
-           : v >= 70 ? 'Notizia di questa settimana'
-           : v >= 40 ? 'Notizia recente (meno di 30 giorni)'
-           : 'Notizia datata — verificare disponibilità';
-    case 'opportunity_type': {
-      const t = (o.opportunity_type||'').toLowerCase();
-      if (t === 'svincolato')  return 'Svincolato — zero costi di cartellino';
-      if (t === 'rescissione') return 'Rescissione — in uscita dal club';
-      if (t === 'prestito')    return 'Prestito — investimento contenuto';
-      if (t === 'scadenza')    return 'Contratto in scadenza — da muovere subito';
-      return 'Opportunità generica di mercato';
-    }
-    case 'experience':
-      if (o.appearances != null) {
-        const a = o.appearances;
-        return a >= 150 ? `${a} presenze — veterano di categoria`
-             : a >= 80  ? `${a} presenze — esperienza solida`
-             : a >= 30  ? `${a} presenze — profilo emergente`
-             : `${a} presenze — ancora poca esperienza`;
-      }
-      return 'Presenze non ancora verificate su Transfermarkt';
-    case 'age':
-      if (o.age != null) {
-        const a = o.age;
-        return a <= 22 ? `${a} anni — profilo U23, ideale per minutaggio FIGC`
-             : a <= 26 ? `${a} anni — picco della carriera`
-             : a <= 29 ? `${a} anni — esperienza matura`
-             : a <= 32 ? `${a} anni — esperienza ma futuribilità limitata`
-             : `${a} anni — profilo senior`;
-      }
-      return 'Età non disponibile';
-    case 'market_value':
-      if (o.market_value_formatted) return `Valore TM: ${o.market_value_formatted}`;
-      if (o.market_value) return `Valore stimato: ${Math.round(o.market_value/1000)}k€`;
-      return 'Valore di mercato non ancora verificato su TM';
-    case 'league_fit':
-      return v >= 80 ? 'Profilo nella fascia giusta per la Lega Pro'
-           : v >= 50 ? 'Pertinenza Lega Pro da confermare'
-           : 'Profilo fuori categoria target';
-    case 'source':
-      return v >= 80 ? `Fonte specializzata: ${o.source_name||''}`
-           : v >= 60 ? `Fonte verificata: ${o.source_name||''}`
-           : 'Trovato dalla ricerca automatica — da confermare su fonte diretta';
-    case 'completeness': {
-      const have = ['nationality','foot','agent','appearances','market_value'].filter(f=>o[f]!=null).length;
-      return have >= 4 ? `Profilo completo — ${have}/5 dati verificati su TM`
-           : have >= 2 ? `Profilo parziale — ${have}/5 dati verificati (arricchimento in corso)`
-           : `Profilo quasi vuoto — ${have}/5 campi, arricchimento necessario`;
-    }
-    default: return '';
-  }
-}
-
-function scoreVerdict(o) {
-  const bd = o.score_breakdown || {};
-  const s  = o.ob1_score || 0;
-
-  const plusFn = {
-    opportunity_type: () => { const t=(o.opportunity_type||'').toLowerCase(); return t==='svincolato'?'parametro zero':t==='rescissione'?'in uscita dal club':t==='prestito'?'disponibile in prestito':null; },
-    age:              () => o.age ? (o.age<=22?`U23 (${o.age}a)`:`${o.age} anni`) : null,
-    experience:       () => o.appearances!=null ? `${o.appearances} presenze` : null,
-    freshness:        () => 'notizia fresca',
-    market_value:     () => o.market_value_formatted || null,
-  };
-  const minusLabel = { experience:'presenze da verificare', market_value:'valore non confermato', league_fit:'categoria da confermare', source:'fonte non specializzata', completeness:'profilo incompleto' };
-
-  const strong = Object.entries(bd).filter(([k,v])=>v>=75&&plusFn[k]).map(([k])=>plusFn[k]?.()).filter(Boolean).slice(0,3);
-  const weak   = Object.entries(bd).filter(([k,v])=>v<50&&minusLabel[k]).map(([k])=>minusLabel[k]).filter(Boolean).slice(0,2);
-  const action = s>=70 ? 'Contattare subito.' : s>=57 ? 'Tenere d\'occhio.' : 'Bassa priorità.';
-
-  const parts = [];
-  if (strong.length) parts.push(strong.join(' + '));
-  if (weak.length)   parts.push(`Penalizza: ${weak.join(', ')}`);
-  parts.push(action);
-  return parts.join(' — ');
-}
+/* ============ DRAWER: assessment from backend (no LLM) ============ */
 
 function openDrawer(o){
   trackDrawerOpen(o.player_name);
@@ -411,153 +331,78 @@ function openDrawer(o){
   const type  = (o.opportunity_type||'').toLowerCase();
   const roleRaw = o.role_name || o.role || '';
   const role  = /^(n\/d|n\/a|none|—|-)?$/i.test(roleRaw.trim()) ? '' : roleRaw;
-  const club  = safe(o.current_club, 'Svincolato');
+  const club  = safe(o.current_club, 'Senza club');
+  const sit   = TYPE_LABEL[type] || type || '—';
 
   el('#breadName').textContent = o.player_name || '';
 
-  let urgencyLine = '', urgencyDate = '', urgencyBadge = 'Contratto';
-  if (o._isFree){
-    const dwc = o.days_without_contract||0;
-    urgencyLine  = dwc === 0 ? 'Appena svincolato' : 'Attualmente svincolato';
-    urgencyDate  = o._stale_free_agent ? 'da verificare' : 'disponibile subito';
-    urgencyBadge = 'Svincolato';
-  } else if (o._days != null){
-    const exp = new Date(o.contract_expires);
-    urgencyDate = exp.toLocaleDateString('it-IT', { day:'2-digit', month:'short', year:'numeric' });
-    if (o._days < 0)       urgencyLine = 'Contratto scaduto';
-    else if (o._days === 0) urgencyLine = 'Scade oggi';
-    else if (o._days <= 30) urgencyLine = `Scade tra meno di ${o._days} giorni`;
-    else if (o._days <= 365) urgencyLine = `Scade tra circa ${Math.round(o._days/30)} mesi`;
-    else urgencyLine = `Scade tra ${Math.round(o._days/365*10)/10} anni`;
-  } else {
-    urgencyLine = 'Scadenza non disponibile';
-    urgencyDate = '—';
-  }
+  // Prefer server-side assessment (code from scoring.assess_follow)
+  const a = o.assessment || {};
+  const yes = a.yes || [];
+  const no  = a.no || [];
+  const action = a.action
+    || (o.ob1_score >= 70 ? 'Da chiamare ora'
+       : o.ob1_score >= 57 ? "Da tenere d'occhio"
+       : 'Bassa priorità');
 
-  const daysHeadline = o._isFree
-    ? ((o.days_without_contract||0) === 0 ? 'oggi' : `${o.days_without_contract} gg`)
-    : (o._days == null ? '—' : (o._days < 0 ? 'scaduto' : (o._days > 999 ? `${Math.round(o._days/30)} mesi` : `${o._days} gg`)));
+  const nums = [
+    o.appearances != null && o.appearances > 0 && { v: o.appearances, l: 'Presenze' },
+    o.goals != null && o.goals > 0 && { v: o.goals, l: 'Gol' },
+    o.assists != null && o.assists > 0 && { v: o.assists, l: 'Assist' },
+    o.market_value_formatted && { v: shortMoney(o.market_value_formatted), l: 'Valore' },
+  ].filter(Boolean);
 
-  const stats = [
-    { v: safe(o.appearances, '—'), l: 'PRESENZE' },
-    { v: safe(o.goals, '—'),       l: 'GOL' },
-    { v: safe(o.assists, '—'),     l: 'ASSIST' },
-    { v: o.market_value_formatted ? shortMoney(o.market_value_formatted) : (o.age!=null?o.age:'—'),
-      l: o.market_value_formatted ? 'VALORE' : 'ETÀ' },
-  ];
-
-  const mvCell        = o.market_value_formatted ? `<div class="cell"><span class="k">VALORE</span><span class="v">${esc(o.market_value_formatted)}</span></div>`:'';
-  const natCell       = o.nationality ? `<div class="cell"><span class="k">NAZIONALITÀ</span><span class="v">${esc(o.nationality)}${o.second_nationality?` / ${esc(o.second_nationality)}`:''}</span></div>`:'';
-  const footCell      = o.foot ? `<div class="cell"><span class="k">PIEDE</span><span class="v">${esc(o.foot)}</span></div>`:'';
-  const ageCell       = o.age!=null ? `<div class="cell"><span class="k">ETÀ</span><span class="v">${o.age} anni</span></div>`:'';
-  const agentCell     = o.agent ? `<div class="cell"><span class="k">AGENTE</span><span class="v">${esc(o.agent)}</span></div>`:'';
-  const clubCell      = `<div class="cell"><span class="k">CLUB ATTUALE</span><span class="v">${esc(club)}</span></div>`;
-  const typeCell      = `<div class="cell"><span class="k">TIPO</span><span class="v" style="text-transform:uppercase;">${esc(type||'—')}</span></div>`;
-  const discoveredCell = o.discovered_at ? (()=>{
-    const d = new Date(o.discovered_at);
-    if (isNaN(d.getTime())) return '';
-    return `<div class="cell"><span class="k">SEGNALATO IL</span><span class="v">${d.toLocaleDateString('it-IT')}</span></div>`;
-  })() : '';
-
-  const metaCells = [clubCell, typeCell, ageCell, natCell, footCell, mvCell, agentCell, discoveredCell].filter(Boolean);
-  if (metaCells.length % 2) metaCells.push('<div class="cell"></div>');
-
-  const bdLabels = {
-    freshness:       'Notizia recente',
-    opportunity_type:'Tipo opportunità',
-    experience:      'Esperienza in carriera',
-    age:             'Fascia d\'età ideale',
-    market_value:    'Valore di mercato',
-    league_fit:      'Adatto alla categoria',
-    source:          'Fonte affidabile',
-    completeness:    'Dati disponibili',
-  };
-  const bd = o.score_breakdown || {};
-  const bdHtml = Object.entries(bd).map(([k,v])=>{
-    const icon = v>=75?'✅':v>=45?'⚡':'❌';
-    const cls  = v>=75?'good':v>=45?'mid':'low';
-    const lbl  = bdLabels[k]||k;
-    const wt   = SCORE_WEIGHTS[k] ? `<span class="reason-weight"> ${SCORE_WEIGHTS[k]}%</span>` : '';
-    const why  = esc(scoreReason(k, v, o));
-    return `<div class="reason-row"><span class="reason-icon">${icon}</span><div class="reason-body"><span class="reason-label">${lbl}${wt}</span><span class="reason-text">${why}</span></div><span class="reason-score ${cls}">${v}</span></div>`;
-  }).join('');
-  const verdict = scoreVerdict(o);
-
-  const summaryText = o.recommendation || o.summary || '';
-  const prevClubs   = Array.isArray(o.previous_clubs) && o.previous_clubs.length ? o.previous_clubs.join(' → ') : '';
-  const intel       = o.intel || {};
-
-  // Stats strip: only render if at least one stat has real data
-  const hasStats = o.appearances != null || o.goals != null || o.assists != null || o.market_value_formatted;
-  const seasonNote = o.season ? `<div style="font-size:10px;color:var(--ink-mute);letter-spacing:.08em;margin-top:4px">stagione ${esc(o.season)}</div>` : '';
   // Honest trust line: say plainly whether the numbers are verifiable.
   const trustNote = o.data_verified
     ? `<div class="trust ok">✓ Dati verificati su Transfermarkt</div>`
-    : (hasStats ? `<div class="trust todo">Dati da confermare — apri il profilo Transfermarkt qui sotto</div>` : '');
-  const stripHtml = hasStats
-    ? `<div class="strip">${stats.map(s=>`<div class="cell"><span class="v">${s.v}</span><span class="l">${s.l}</span></div>`).join('')}</div>${seasonNote}${trustNote}`
-    : `<div class="strip-empty">Statistiche non ancora disponibili — controlla su Transfermarkt</div>`;
+    : (nums.length ? `<div class="trust todo">Dati da confermare — apri il profilo Transfermarkt qui sotto</div>` : '');
 
-  // Minutaggio FIGC — una sola riga in linguaggio piano. I dettagli
-  // (moltiplicatori, proiezioni) restano nei report privati, non qui.
-  let minutaggioHtml = '';
-  if (intel.traffic_light === 'green') {
-    const bonus = ['elite','high','medium'].includes(intel.roi_class)
-      ? ' e porta contributi minutaggio giovani' : '';
-    minutaggioHtml = `<div class="intel-note" style="border-left:3px solid var(--acc);padding-left:10px;">✓ Under per le liste FIGC${bonus}</div>`;
-  } else if (intel.traffic_light === 'red') {
-    minutaggioHtml = `<div class="intel-note" style="border-left:3px solid var(--ink-mute);padding-left:10px;">Occupa un posto Over in lista</div>`;
-  }
+  const stripHtml = nums.length
+    ? `<div class="strip">${nums.map(s=>`<div class="cell"><span class="v">${s.v}</span><span class="l">${s.l}</span></div>`).join('')}</div>${trustNote}`
+    : '';
 
-  // Segnali contrattuali
-  const signalsHtml = (intel.signals && intel.signals.length) ? `
-    <div class="sect">
-      <div class="sect-title">SEGNALI</div>
-      <div class="signals">
-        ${intel.signals.map(s=>`<div class="signal ${s.severity}"><div class="sl">${esc(s.label)}</div><div class="sd">${esc(s.detail)}</div></div>`).join('')}
-      </div>
-    </div>` : '';
+  const facts = [
+    ['Situazione', sit],
+    ['Club', club],
+    o.age!=null && ['Età', `${o.age} anni`],
+    role && ['Ruolo', role],
+    o.nationality && ['Nazionalità', o.nationality + (o.second_nationality ? ` / ${o.second_nationality}` : '')],
+    o.foot && ['Piede', o.foot],
+    o.agent && ['Agente', o.agent],
+  ].filter(Boolean);
+
+  const yesHtml = yes.length
+    ? `<div class="assess yes"><div class="assess-h">Perché sì</div><ul class="why-list">${yes.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></div>`
+    : '';
+  const noHtml = no.length
+    ? `<div class="assess no"><div class="assess-h">Perché no / attenzione</div><ul class="why-list">${no.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></div>`
+    : '';
 
   brief.innerHTML = `
     <div class="brief-head">
       <div>
         <div class="name">${esc(o.player_name)}</div>
         <div class="sub">
-          ${[role && `<span class="role">${esc(role)}</span>`, o.age!=null && `<span>${o.age} anni</span>`, `<span>${esc(club)}</span>`, o.nationality && `<span>${esc(o.nationality)}</span>`].filter(Boolean).join('<span class="sep">·</span>')}
+          ${[role && esc(role), o.age!=null && `${o.age} anni`, esc(club)].filter(Boolean).join(' · ')}
         </div>
       </div>
       <div class="big-score ${o._tier}">${o.ob1_score}<div class="pct">/100</div></div>
     </div>
 
-    <div class="urgency-bloc" data-urgency="${o._urgency}">
-      <span class="badge">${urgencyBadge}</span>
-      <div class="line">
-        <span class="strong">${esc(urgencyLine)}</span>
-        <span>${esc(urgencyDate)}</span>
-      </div>
-      <div class="countdown">${daysHeadline}</div>
+    <div class="verdict-note" style="margin:12px 0 10px">
+      <strong>${esc(action)}</strong>
     </div>
-
-    ${summaryText ? `<div class="summary">${esc(summaryText)}</div>` : ''}
+    ${yesHtml}
+    ${noHtml}
 
     ${stripHtml}
 
     <div class="sect">
       <div class="sect-title">SCHEDA</div>
-      <div class="meta-grid">${metaCells.join('')}</div>
-      ${prevClubs ? `<div class="intel-note"><span style="color:var(--ink-mute);letter-spacing:.12em;font-size:10px;">STORICO CLUB </span>${esc(prevClubs)}</div>` : ''}
-    </div>
-
-    ${minutaggioHtml}
-    ${signalsHtml}
-
-    <details class="score-details sect">
-      <summary>Perché questo punteggio<span class="dim">${TIER_LABEL[o._tier]||''}</span></summary>
-      <div class="score-body">
-        <div class="verdict-note">${esc(verdict)}</div>
-        <div>${bdHtml}</div>
+      <div class="meta-grid">
+        ${facts.map(([k,v])=>`<div class="cell"><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span></div>`).join('')}
       </div>
-    </details>
+    </div>
   `;
 
   // Links that ALWAYS resolve. A direct URL is used only when it's a real,
@@ -677,19 +522,20 @@ function wireDrawer(){
   el('#ov').addEventListener('click', e=>{ if (e.target.id === 'ov') closeDrawer(); });
   document.addEventListener('keydown', e=>{ if (e.key === 'Escape') closeDrawer(); });
 
-  el('#saveBtn').addEventListener('click', ()=>{
+  const saveBtn = el('#saveBtn');
+  if (saveBtn) saveBtn.addEventListener('click', ()=>{
     if (!CURRENT) return;
     const now = toggleSave(CURRENT.id);
     refreshSaveBtn();
     toast(now ? 'Aggiunto alla shortlist' : 'Rimosso dalla shortlist');
-    // reflect the change without closing the drawer
     const c = el(`.card[data-id="${CSS.escape(String(CURRENT.id))}"]`);
     if (c) c.classList.toggle('is-saved', now);
     paintCounters();
     if (STATE.filter === 'saved') applyFilter();
   });
 
-  el('#shareBtn').addEventListener('click', shareCurrent);
+  const shareBtn = el('#shareBtn');
+  if (shareBtn) shareBtn.addEventListener('click', shareCurrent);
 }
 
 function wireKeyShortcuts(){

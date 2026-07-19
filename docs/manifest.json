@@ -1,22 +1,51 @@
 {
-  "name": "OB1 — Scout Lega Pro",
-  "short_name": "OB1 Scout",
-  "description": "Il radar di mercato per la Lega Pro: svincolati, prestiti e occasioni, aggiornati ogni 6 ore.",
-  "start_url": "./?src=pwa",
+  "id": "/",
+  "name": "OB1 Scout Lega Pro",
+  "short_name": "OB1 Lega Pro",
+  "description": "Radar mercato Serie C e D: svincolati, prestiti e occasioni da chiamare.",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#0c0c0c",
-  "theme_color": "#0c0c0c",
-  "categories": ["sports", "business"],
+  "orientation": "any",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
   "lang": "it",
+  "dir": "ltr",
+  "categories": ["sports", "business"],
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ],
   "shortcuts": [
-    { "name": "Occasioni", "short_name": "Occasioni", "description": "Giocatori ad alta priorità", "url": "./?filter=hot" },
-    { "name": "Svincolati", "short_name": "Svincolati", "description": "Solo svincolati", "url": "./?filter=free" }
+    {
+      "name": "Da chiamare",
+      "short_name": "Hot",
+      "description": "Occasioni ad alta priorità",
+      "url": "./?filter=hot",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Senza club",
+      "short_name": "Svincolati",
+      "description": "Giocatori senza contratto",
+      "url": "./?filter=free",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    }
   ]
 }

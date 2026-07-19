@@ -3,18 +3,23 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#0c0c0c" />
-<meta name="description" content="OB1: il radar di mercato per la Lega Pro. Svincolati, prestiti e occasioni, aggiornati ogni 6 ore.">
-<meta property="og:title" content="OB1 — Scout Lega Pro">
-<meta property="og:description" content="Il radar di mercato per la Lega Pro: svincolati, prestiti e occasioni, aggiornati ogni 6 ore.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://mtornani.github.io/ob1-serie-c/">
-<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#0a0a0a" />
+<meta name="description" content="OB1: radar mercato Lega Pro e Serie D. Svincolati, prestiti e occasioni da chiamare.">
+<meta name="application-name" content="OB1 Lega Pro">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="OB1 Lega Pro">
+<meta property="og:title" content="OB1 — Scout Lega Pro">
+<meta property="og:description" content="Radar mercato Serie C e D: svincolati, prestiti e occasioni da chiamare.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ob1legapro.matchanalysispro.online/">
+<meta name="twitter:card" content="summary">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%232fbf71' stroke-width='4'/><circle cx='50' cy='15' r='5' fill='%232fbf71'/></svg>">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
 <title>OB1 — Scout Lega Pro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -850,6 +855,29 @@ body::before{
 .trust.ok{ color: var(--acc); background: var(--acc-bg); border-left: 3px solid var(--acc); }
 .trust.todo{ color: var(--ink-dim); background: var(--bg-1); border-left: 3px solid var(--line-2); }
 
+/* compact card line (situation under meta) */
+.card-line{ margin-top: 6px; color: var(--ink-mute); font-size: 11.5px; }
+.card .name .tag{ font-size: 9px; vertical-align: middle; margin-left: 6px; }
+
+/* assessment: perché sì / no */
+.assess{ margin: 0 0 12px; padding: 10px 12px; border: 1px solid var(--line-2); border-radius: 8px; }
+.assess.yes{ border-left: 3px solid var(--acc); background: var(--acc-bg); }
+.assess.no{ border-left: 3px solid var(--amber); background: var(--amber-bg); }
+.assess-h{
+  font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase;
+  font-weight: 600; color: var(--ink-mute); margin-bottom: 6px;
+}
+.assess.yes .assess-h{ color: var(--acc); }
+.assess.no .assess-h{ color: var(--amber); }
+.why-list{
+  margin: 0 0 0 1.1em;
+  padding: 0;
+  font-size: 13px;
+  color: var(--ink-dim);
+  line-height: 1.5;
+}
+.why-list li{ margin: 2px 0; }
+
 /* stats strip empty state */
 .strip-empty{
   padding: 12px 14px;
@@ -888,57 +916,57 @@ body::before{
     <div class="cmd-row">
       <div>
         <h1>Scout <span class="green">Lega Pro</span></h1>
-        <p class="blurb">Le occasioni di mercato della Serie C, aggiornate ogni 6 ore.</p>
+        <p class="blurb">Nomi da chiamare oggi: svincolati, prestiti e giovani della C e D. Aggiornato ogni 6 ore.</p>
       </div>
       <div class="counters">
         <div class="counter hot">
-          <div class="n" id="ctHot">—</div><div class="l">Occasioni</div>
+          <div class="n" id="ctHot">—</div><div class="l">Da chiamare</div>
         </div>
         <div class="counter">
-          <div class="n" id="ctFree">—</div><div class="l">Svincolati</div>
+          <div class="n" id="ctFree">—</div><div class="l">Senza club</div>
         </div>
         <div class="counter">
-          <div class="n" id="ctU21">—</div><div class="l">Under 23</div>
+          <div class="n" id="ctU21">—</div><div class="l">Giovani</div>
         </div>
         <div class="counter">
-          <div class="n" id="ctAll">—</div><div class="l">Giocatori</div>
+          <div class="n" id="ctAll">—</div><div class="l">In lista</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTROLS -->
+  <!-- CONTROLS — filtri minimi, linguaggio da campo -->
   <section class="controls">
     <div class="search">
-      <input id="q" type="search" placeholder="Cerca giocatore, club o ruolo…" autocomplete="off" />
+      <input id="q" type="search" placeholder="Cerca nome, club o ruolo…" autocomplete="off" />
     </div>
     <div class="filterbar" id="filters">
       <button class="chip on" data-f="all">Tutti<span class="num" data-ct="all">0</span></button>
-      <button class="chip" data-f="hot">Occasioni<span class="num" data-ct="hot">0</span></button>
-      <button class="chip" data-f="under">Under 23<span class="num" data-ct="under">0</span></button>
-      <button class="chip" data-f="free">Svincolati<span class="num" data-ct="free">0</span></button>
+      <button class="chip" data-f="hot">Da chiamare<span class="num" data-ct="hot">0</span></button>
+      <button class="chip" data-f="free">Senza club<span class="num" data-ct="free">0</span></button>
+      <button class="chip" data-f="under">Giovani<span class="num" data-ct="under">0</span></button>
+      <button class="chip" data-f="new">Nuovi<span class="num" data-ct="new">0</span></button>
       <button class="chip" data-f="verified">Dati verificati<span class="num" data-ct="verified">0</span></button>
-      <button class="chip" data-f="new">Novità<span class="num" data-ct="new">0</span></button>
       <button class="chip" data-f="saved">★ Shortlist<span class="num" data-ct="saved">0</span></button>
     </div>
     <div class="sub-row">
       <div class="results">
-        <span class="n" id="rcount">0</span> / <span id="rtotal">0</span> risultati
+        <span class="n" id="rcount">0</span> / <span id="rtotal">0</span>
       </div>
       <div class="sort-group">
         <select id="typeF">
           <option value="">Tutte le situazioni</option>
-          <option value="svincolato">Svincolato</option>
-          <option value="rescissione">Rescissione</option>
-          <option value="prestito">Prestito</option>
-          <option value="mercato">Voce di mercato</option>
+          <option value="svincolato">Senza contratto</option>
+          <option value="rescissione">Ha rescisso</option>
+          <option value="prestito">In prestito</option>
+          <option value="mercato">Sul mercato</option>
           <option value="scadenza">Contratto in scadenza</option>
         </select>
         <select id="sortBy">
-          <option value="score">Punteggio</option>
-          <option value="urgency">Urgenza</option>
-          <option value="name">Nome</option>
+          <option value="score">Priorità</option>
+          <option value="urgency">Più urgenti</option>
           <option value="date">Più recenti</option>
+          <option value="name">A–Z</option>
         </select>
       </div>
     </div>
@@ -981,7 +1009,17 @@ body::before{
 
 
 <div id="toast" role="status" aria-live="polite"></div>
-<script src="app.js?v=18"></script>
+<script src="app.js?v=19"></script>
 <script src="tracker.js" data-track-url="https://white-cherry-07a3.mirkotornani.workers.dev/"></script>
+<script>
+// PWA: register service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch((err) => {
+      console.warn('[OB1] SW register failed', err);
+    });
+  });
+}
+</script>
 </body>
 </html>

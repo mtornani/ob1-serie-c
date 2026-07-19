@@ -23,6 +23,21 @@ GROUNDING_BACKOFF_BASE = 2  # seconds: waits 2s, then 4s between attempts
 # responses (one listing → dozens of names) WITHOUT judging the league.
 # A real transfer article names a handful of players; a dump names 50+.
 MAX_PLAYERS_PER_SOURCE = 5
+# Free tier gemini-2.5-flash ≈ 20 RPD. Discovery must leave budget for enrichment.
+# Override with env GEMINI_DISCOVERY_BUDGET.
+DEFAULT_DISCOVERY_BUDGET = 4
+
+
+def _is_daily_quota_error(msg: str) -> bool:
+    """True when free-tier *daily* quota is dead — retry is waste."""
+    m = (msg or "").lower()
+    return (
+        "free_tier" in m
+        or "perday" in m
+        or "per_day" in m
+        or "generaterequestsperday" in m
+        or "quota value\": \"20\"" in m
+    )
 
 # Scrapling Integration
 try:
@@ -67,14 +82,29 @@ class GlobalScraper:
         self.tavily_key = os.getenv('TAVILY_API_KEY')
         self.gemini_key = os.getenv('GEMINI_API_KEY')
         self.gemini_client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
+        self.gemini_disabled = False  # circuit breaker: daily quota dead
+        self.gemini_calls = 0
+        try:
+            self.discovery_budget = max(0, int(os.getenv(
+                "GEMINI_DISCOVERY_BUDGET", str(DEFAULT_DISCOVERY_BUDGET))))
+        except (ValueError, TypeError):
+            self.discovery_budget = DEFAULT_DISCOVERY_BUDGET
 
         with open(config_path, 'r', encoding='utf-8') as f:
             self.config = yaml.safe_load(f)
         self.leagues = self.config.get('leagues', {})
 
+    def _disable_gemini(self, reason: str):
+        if not self.gemini_disabled:
+            self.gemini_disabled = True
+            print(f"    [GEMINI OFF] {reason} — resto run su Tavily only")
+
     def search_grounded(self, query: str) -> List[Dict]:
         """Gemini Search Grounding — one call: searches Google + extracts player names."""
-        if not self.gemini_client:
+        if not self.gemini_client or self.gemini_disabled:
+            return []
+        if self.gemini_calls >= self.discovery_budget:
+            print(f"    [GEMINI BUDGET] discovery cap {self.discovery_budget} raggiunto → Tavily")
             return []
 
         prompt = (
@@ -105,12 +135,15 @@ class GlobalScraper:
                         temperature=0.0,
                     ),
                 )
+                self.gemini_calls += 1
                 break
             except Exception as e:
                 msg = str(e)
-                # Transient: rate limit (429) or model overload (503). Retry these.
-                # Lowercase so mixed-case gRPC status strings still match.
                 msg_lower = msg.lower()
+                if _is_daily_quota_error(msg):
+                    self._disable_gemini(f"daily quota: {msg[:80]}")
+                    return []
+                # Transient: rate limit (429) or model overload (503). Retry these.
                 transient = any(k in msg_lower for k in (
                     '429', '503', 'resource_exhausted', 'unavailable', 'overloaded'))
                 if transient and attempt < GROUNDING_MAX_RETRIES - 1:
@@ -139,9 +172,10 @@ class GlobalScraper:
             print(f"    [GROUNDED PARSE ERROR] {e}")
             return []
 
-    def search_tavily(self, query: str) -> List[Dict]:
-        """High-quality discovery phase. Open search intentionally — no domain filter."""
-        if not self.tavily_key: return []
+    def search_tavily(self, query: str, include_domains: Optional[List[str]] = None) -> List[Dict]:
+        """Discovery via Tavily. Optional source-first domain bias for nicchia IT."""
+        if not self.tavily_key:
+            return []
 
         url = "https://api.tavily.com/search"
         payload = {
@@ -150,12 +184,15 @@ class GlobalScraper:
             "search_depth": "advanced",
             "max_results": 10,
         }
-        
+        if include_domains:
+            payload["include_domains"] = include_domains
+
         try:
             res = requests.post(url, json=payload, timeout=20)
             res.raise_for_status()
             results = res.json().get('results', [])
-            print(f"    [TAVILY] Found {len(results)} raw results for query: {query[:40]}...")
+            tag = f"domains={len(include_domains)}" if include_domains else "open"
+            print(f"    [TAVILY/{tag}] Found {len(results)} raw for: {query[:40]}...")
             return results
         except Exception:
             return []
@@ -193,8 +230,10 @@ class GlobalScraper:
         seen_names = set()
         per_source = {}  # source_url -> accepted count (cap roster dumps)
 
+        trusted = conf.get('trusted_sources') or []
+
         for query in conf.get('queries', []):
-            # Primary: Gemini Search Grounding (understands football context, no regex needed)
+            # Primary: Gemini Search Grounding (budget-capped; falls to Tavily on quota)
             grounded = self.search_grounded(query)
             if grounded:
                 for item in grounded:
@@ -246,8 +285,10 @@ class GlobalScraper:
                     opportunities.append(opp)
                 continue  # grounding succeeded — skip Tavily for this query
 
-            # Fallback: Tavily + regex extraction
-            results = self.search_tavily(query)
+            # Fallback / primary-when-gemini-off: Tavily, source-first then open
+            results = self.search_tavily(query, include_domains=trusted or None)
+            if not results and trusted:
+                results = self.search_tavily(query)  # open fallback
 
             for item in results:
                 url = item.get('url', '')

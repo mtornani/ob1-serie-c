@@ -1,4 +1,7 @@
 # OB1 Lega Pro - LEAGUES CONFIGURATION
+# Source-first: trusted_sources bias Tavily quando Gemini off/budget.
+# Discovery Gemini capped via GEMINI_DISCOVERY_BUDGET (default 4) per lasciare
+# RPD free-tier all'enrichment età.
 leagues:
   italy_serie_c_d:
     name: "Serie C, D & Eccellenza Italiana"
@@ -8,7 +11,7 @@ leagues:
     serper_hl: it
     queries:
       # Finestra estiva 2026 — contratti scaduti / svincolati ora
-      - 'svincolato Serie C giugno 2026 calciomercato disponibile'
+      - 'svincolato Serie C luglio 2026 calciomercato disponibile'
       - 'contratto scade 2026 Lega Pro parametro zero estate'
       - 'retrocessa Serie C 2025-26 giocatori svincolati disponibili'
       # Ruoli prioritari — ricerca mirata per posizione
@@ -19,4 +22,15 @@ leagues:
       - 'Serie D Under 23 interesse Lega Pro estate 2026'
       # Eccellenza — vantaggio asimmetrico (zero coverage su altri tool)
       - 'Eccellenza Under 23 talento svincolato Serie C 2026'
-    trusted_sources: [tuttoc.com, calciomercato.com, lacasadic.com, mister-x.it, calciodilettanti.it]
+    # Source-first registry (nicchia IT) — usato da Tavily include_domains
+    trusted_sources:
+      - tuttoc.com
+      - tuttolegapro.com
+      - calciomercato.com
+      - lacasadic.com
+      - mister-x.it
+      - calciodilettanti.it
+      - tuttosport.com
+      - corrieredellosport.it
+      - gazzetta.it
+      - transfermarkt.it
