@@ -31,13 +31,13 @@ const SHORTLIST_KEY = 'ob1_shortlist';
 let CURRENT = null; // player shown in the open drawer
 
 function getShortlist(){
-  try { const a = JSON.parse(localStorage.getItem(SHORTLIST_KEY) || '[]'); return Array.isArray(a) ? a : []; }
+  try { const a = JSON.parse(localStorage.getItem(SHORTLIST_KEY) || '[]'); return Array.isArray(a) ? a.map(String) : []; }
   catch(_){ return []; }
 }
-function isSaved(id){ return getShortlist().includes(id); }
+function isSaved(id){ return getShortlist().includes(String(id)); }
 function toggleSave(id){
-  const a = getShortlist(); const i = a.indexOf(id);
-  if (i >= 0) a.splice(i,1); else a.push(id);
+  const a = getShortlist(); const i = a.indexOf(String(id));
+  if (i >= 0) a.splice(i,1); else a.push(String(id));
   try { localStorage.setItem(SHORTLIST_KEY, JSON.stringify(a)); } catch(_){}
   return i < 0; // true = now saved
 }
@@ -76,7 +76,7 @@ function shareCurrent(){
   const text = dossierText(CURRENT), url = shareUrl(CURRENT);
   if (navigator.share){
     navigator.share({ title: CURRENT.player_name, text, url }).catch(()=>{});
-  } else if (navigator.clipboard){
+  } else if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function'){
     navigator.clipboard.writeText(text).then(()=>toast('Scheda copiata negli appunti')).catch(()=>toast('Copia non riuscita'));
   } else {
     toast('Condivisione non supportata');
@@ -196,7 +196,7 @@ function applyFilter(){
   else if (STATE.filter === 'under')  list = list.filter(o=>o.age!=null && o.age<=22);
   else if (STATE.filter === 'free')   list = list.filter(o=>o._isFree);
   else if (STATE.filter === 'verified') list = list.filter(o => o.data_verified === true);
-  else if (STATE.filter === 'saved'){ const sl = getShortlist(); list = list.filter(o => sl.includes(o.id)); }
+  else if (STATE.filter === 'saved'){ const sl = getShortlist(); list = list.filter(o => sl.includes(String(o.id))); }
   else if (STATE.filter === 'urgent') list = list.filter(o=>o._urgency==='critical'||o._urgency==='high');
   else if (STATE.filter === 'new'){
     const cutoff = Date.now() - 14 * 86400000; // ultimi 14 giorni

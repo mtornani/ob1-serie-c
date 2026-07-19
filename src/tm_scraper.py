@@ -48,12 +48,22 @@ def _clean(s: str) -> str:
     return re.sub(r'\s+', ' ', s).strip()
 
 
+_IT_MONTHS = {
+    'gen': '01', 'feb': '02', 'mar': '03', 'apr': '04', 'mag': '05', 'giu': '06',
+    'lug': '07', 'ago': '08', 'set': '09', 'ott': '10', 'nov': '11', 'dic': '12',
+}
+
+
 def _date_it_to_iso(s: str) -> Optional[str]:
-    m = re.search(r'(\d{2})/(\d{2})/(\d{4})', s)
+    """Parse dd/mm/yyyy or dd/<mese abbreviato>/yyyy (TM uses both formats)."""
+    m = re.search(r'(\d{2})/([a-zA-Z]{3}|\d{2})/(\d{4})', s)
     if not m:
         return None
     d, mo, y = m.groups()
-    return f"{y}-{mo}-{d}"
+    mo_num = _IT_MONTHS.get(mo.lower(), mo if mo.isdigit() else None)
+    if not mo_num:
+        return None
+    return f"{y}-{mo_num}-{d}"
 
 
 def search_profile_url(name: str) -> Optional[str]:
@@ -62,6 +72,15 @@ def search_profile_url(name: str) -> Optional[str]:
     html = _get(f"{_BASE}/schnellsuche/ergebnis/schnellsuche?query={q}")
     if not html:
         return None
+    # A single exact match makes TM redirect straight to the profile page —
+    # _get() follows it, so `html` here is already a profile, not a results
+    # list. The old regex would then grab the FIRST profile link on that page
+    # (e.g. a teammate), silently enriching the wrong player. Detect that case
+    # via the canonical link, which always points to the page we're actually on.
+    if 'info-table__content' in html:
+        canon = re.search(r'<link rel="canonical" href="([^"]+)"', html)
+        if canon:
+            return canon.group(1)
     m = re.search(r'href="(/[^"]+/profil/spieler/\d+)"', html)
     return _BASE + m.group(1) if m else None
 
@@ -76,7 +95,8 @@ def parse_profile(html: str, tm_url: str) -> Dict[str, Any]:
         num = re.search(r'([\d.,]+)\s*(mln|mila)?\s*€', txt)
         if num:
             raw, unit = num.group(1), num.group(2)
-            data['market_value_text'] = f"{raw} {unit} €".replace('  ', ' ').strip()
+            unit_str = f" {unit}" if unit else ""
+            data['market_value_text'] = f"{raw}{unit_str} €".strip()
             try:
                 val = float(raw.replace('.', '').replace(',', '.'))
                 if unit == 'mln':
