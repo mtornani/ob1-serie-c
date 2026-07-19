@@ -133,6 +133,13 @@ def parse_profile(html: str, tm_url: str) -> Dict[str, Any]:
         data['agent'] = kv['procuratore'] or None
     if 'squadra attuale' in kv:
         data['current_club'] = kv['squadra attuale'] or None
+    if not data.get('current_club'):
+        # La riga "Squadra attuale" della info-table a volte si fonde con quella
+        # del procuratore (span annidati) e sfugge alle coppie chiave/valore.
+        # L'header della pagina riporta sempre il club — usalo come fallback.
+        hdr = re.search(r'data-header__club[^>]*>(.*?)</span>', html, re.DOTALL)
+        if hdr:
+            data['current_club'] = _clean(hdr.group(1)) or None
     if 'scadenza' in kv:
         exp = _date_it_to_iso(kv['scadenza'])
         if exp:
