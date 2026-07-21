@@ -88,6 +88,15 @@ def search_profile_url(name: str) -> Optional[str]:
 def parse_profile(html: str, tm_url: str) -> Dict[str, Any]:
     data: Dict[str, Any] = {'tm_url': tm_url}
 
+    # Nome reale del profilo (per rilevare un omonimo preso per sbaglio: il
+    # nome cercato e quello effettivamente in pagina possono differire quando
+    # un vecchio tm_url salvato punta a un'altra persona).
+    h1 = re.search(r'data-header__headline-wrapper[^>]*>(.*?)</h1>', html, re.DOTALL)
+    if h1:
+        name = _clean(h1.group(1))
+        name = re.sub(r'^#\d+\s*', '', name)  # numero di maglia iniziale, es. "#19 Cristian Spini"
+        data['profile_name'] = name
+
     # Market value: "2,80 mln €" / "150 mila €"
     mv = re.search(r'data-header__market-value-wrapper[^>]*>(.*?)</a>', html, re.DOTALL)
     if mv:
