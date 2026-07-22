@@ -42,3 +42,7 @@ logs/
 htmlcov/
 node_modules/
 data/snapshots/
+
+# Output di scripts/find_players.py --sample: istantanee di mercato,
+# invecchiano in fretta — non committare, si rigenerano in un paio di minuti
+/out/

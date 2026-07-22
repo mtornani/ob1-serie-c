@@ -1,10 +1,19 @@
 #!/usr/bin/env python3
 """
-Enrichment Transfermarkt — batched.
+Enrichment Transfermarkt — free direct read first, Gemini-batch as fallback.
 
-One grounded Gemini call enriches BATCH_SIZE players at once (the cost
-lever: N players -> ceil(N/BATCH_SIZE) calls instead of N). Players the
-model can't find stay unlocked and retry on the next run.
+Two engines, tried in order per player:
+  1. src/tm_scraper — direct HTTP read of the Transfermarkt profile page.
+     Free, no LLM, no daily cap. Primary path whenever it can find the player.
+  2. src/enricher_tm.TransfermarktEnricher — Gemini-grounded batch enrichment
+     (Grok's circuit-breaker: stops cleanly the moment the daily quota dies,
+     no wasted retries). Fallback only for players the free path can't find —
+     e.g. if a datacenter IP gets blocked by Transfermarkt's anti-bot, or the
+     player genuinely isn't indexed under that name.
+
+This keeps the pipeline's steady-state cost near zero (most players resolve
+via #1) while keeping a proven, production-tested safety net (#2) instead of
+depending entirely on an unverified-in-CI direct-fetch path.
 """
 import os
 import sys
@@ -14,11 +23,15 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent))
+from src import tm_scraper
 from src.enricher_tm import TransfermarktEnricher, BATCH_SIZE
 
 DATA_FILE = Path("data/opportunities.json")
 DATA_FILE_DOCS = Path("docs/data.json")
-DELAY_BETWEEN_BATCHES = 5  # seconds
+
+POLITE_DELAY = 0.6         # seconds between direct-TM requests — be a good citizen
+SAVE_EVERY = 10            # checkpoint during the direct-TM pass
+DELAY_BETWEEN_BATCHES = 5  # seconds between Gemini fallback batches
 
 # Cap Gemini calls per run: backlog spikes (e.g. a big discovery day) get
 # spread over multiple runs instead of burning quota in one.
@@ -57,6 +70,21 @@ def _is_enrichable(name) -> bool:
         return False
     n = name.lower()
     return not any(t in n for t in _JUNK_TERMS)
+
+
+def _is_implausible_namesake(tm: dict) -> bool:
+    """A Serie C radar never targets a 40+/retired player, so a TM match
+    that old or retired is almost certainly the wrong person (namesake)."""
+    if not tm:
+        return False
+    age = None
+    if tm.get('birth_date'):
+        try:
+            age = datetime.now().year - int(str(tm['birth_date'])[:4])
+        except (ValueError, TypeError):
+            age = None
+    club = (tm.get('current_club') or '').lower()
+    return bool((age is not None and age > 39) or 'ritir' in club or 'retired' in club)
 
 
 def apply_tm_data(opp: dict, tm: dict) -> bool:
@@ -99,6 +127,86 @@ def apply_tm_data(opp: dict, tm: dict) -> bool:
     return has_substance
 
 
+def enrich_direct(pending: list, all_opps: list) -> list:
+    """Pass 1: free direct Transfermarkt read. Returns the players still
+    unenriched afterwards (to hand off to the Gemini fallback)."""
+    still_pending = []
+    found = enriched = 0
+    for i, opp in enumerate(pending, 1):
+        name = opp['player_name']
+        tm = {}
+        try:
+            tm = tm_scraper.enrich(name, opp.get('tm_url'))
+        except Exception as e:
+            print(f"  [{i}/{len(pending)}] {name}: errore direct-TM {e}")
+
+        if _is_implausible_namesake(tm):
+            print(f"  [{i}/{len(pending)}] ⚠ {name}: match implausibile su TM "
+                  f"({tm.get('current_club')}) — scartato")
+            tm = {}
+
+        if tm:
+            found += 1
+            if apply_tm_data(opp, tm):
+                enriched += 1
+                print(f"  [{i}/{len(pending)}] ✅ {name}: {tm.get('market_value_text') or '?'} · "
+                      f"{tm.get('main_position') or '?'} · scad. {tm.get('contract_expires') or '?'}")
+            else:
+                print(f"  [{i}/{len(pending)}] ~ {name}: trovato ma dati insufficienti")
+                still_pending.append(opp)
+        else:
+            still_pending.append(opp)
+
+        if i % SAVE_EVERY == 0:
+            _save(all_opps)
+        time.sleep(POLITE_DELAY)
+
+    print(f"\nDirect-TM: {found}/{len(pending)} trovati, {enriched} arricchiti (costo: 0)")
+    return still_pending
+
+
+def enrich_gemini_fallback(pending: list, all_opps: list) -> int:
+    """Pass 2: Gemini-grounded batch enrichment for whatever pass 1 missed."""
+    if not pending:
+        return 0
+    enricher = TransfermarktEnricher()
+    enriched = 0
+    batches = [pending[i:i + BATCH_SIZE] for i in range(0, len(pending), BATCH_SIZE)]
+    if len(batches) > MAX_BATCHES_PER_RUN:
+        skipped = len(batches) - MAX_BATCHES_PER_RUN
+        print(f"Backlog alto: {skipped} batch rinviati alla prossima run.")
+        batches = batches[:MAX_BATCHES_PER_RUN]
+
+    for bi, batch in enumerate(batches, 1):
+        if enricher.gemini_disabled:
+            print(f"  [STOP] Gemini off — batch {bi}–{len(batches)} rinviati (niente thrash)")
+            break
+        names = [o['player_name'] for o in batch]
+        print(f"\n[batch {bi}/{len(batches)}] {', '.join(names)}")
+        results = enricher.enrich_players_batch(names)
+        for opp in batch:
+            tm = results.get(opp['player_name']) or {}
+            if _is_implausible_namesake(tm):
+                print(f"  ⚠ {opp['player_name']}: match implausibile — scartato")
+                continue
+            if tm and apply_tm_data(opp, tm):
+                enriched += 1
+                print(f"  ✅ {opp['player_name']}: "
+                      f"{tm.get('market_value_text') or '?'} | age={opp.get('age')} "
+                      f"| apps={tm.get('appearances', '?')}")
+        _save(all_opps)
+        if bi < len(batches) and not enricher.gemini_disabled:
+            time.sleep(DELAY_BETWEEN_BATCHES)
+
+    print(f"\nGemini fallback: {enriched}/{len(pending)} arricchiti "
+          f"({len(batches)} chiamate batch)")
+    return enriched
+
+
+def _save(opportunities):
+    DATA_FILE.write_text(json.dumps(opportunities, ensure_ascii=False, indent=2), encoding='utf-8')
+
+
 def main():
     if not DATA_FILE.exists():
         print(f"File {DATA_FILE} non trovato!")
@@ -122,36 +230,17 @@ def main():
         print("Niente da fare.")
         return
 
-    enricher = TransfermarktEnricher()
-    enriched = 0
-    batches = [pending[i:i + BATCH_SIZE] for i in range(0, len(pending), BATCH_SIZE)]
-    if len(batches) > MAX_BATCHES_PER_RUN:
-        skipped = len(batches) - MAX_BATCHES_PER_RUN
-        print(f"Backlog alto: {skipped} batch rinviati alla prossima run.")
-        batches = batches[:MAX_BATCHES_PER_RUN]
+    still_pending = enrich_direct(pending, opportunities)
+    _save(opportunities)
 
-    for bi, batch in enumerate(batches, 1):
-        if enricher.gemini_disabled:
-            print(f"  [STOP] Gemini off — batch {bi}–{len(batches)} rinviati (niente thrash)")
-            break
-        names = [o['player_name'] for o in batch]
-        print(f"\n[batch {bi}/{len(batches)}] {', '.join(names)}")
-        results = enricher.enrich_players_batch(names)
-        for opp in batch:
-            tm = results.get(opp['player_name']) or {}
-            if tm and apply_tm_data(opp, tm):
-                enriched += 1
-                print(f"  ✅ {opp['player_name']}: "
-                      f"{tm.get('market_value_text') or '?'} | age={opp.get('age')} "
-                      f"| apps={tm.get('appearances', '?')}")
-        DATA_FILE.write_text(json.dumps(opportunities, ensure_ascii=False, indent=2), encoding='utf-8')
-        if bi < len(batches) and not enricher.gemini_disabled:
-            time.sleep(DELAY_BETWEEN_BATCHES)
+    gemini_enriched = enrich_gemini_fallback(still_pending, opportunities)
+    _save(opportunities)
 
-    if enriched and DATA_FILE_DOCS.exists():
+    total_enriched = sum(1 for o in pending if o.get('tm_enriched') is True)
+    if total_enriched and DATA_FILE_DOCS.exists():
         DATA_FILE_DOCS.write_text(json.dumps(opportunities, ensure_ascii=False, indent=2), encoding='utf-8')
-    print(f"\nTotale: {len(pending)} candidati | Arricchiti: {enriched} | "
-          f"Chiamate Gemini: {len(batches)} (era {len(pending)} prima del batching)")
+    print(f"\nTotale: {len(pending)} candidati | Arricchiti: {total_enriched} "
+          f"(di cui {gemini_enriched} via Gemini fallback)")
 
 
 if __name__ == "__main__":
