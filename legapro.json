@@ -1,71 +1,8 @@
 {
   "source": "legapro",
-  "generated_at": "2026-07-22T12:58:58Z",
-  "findings": [
-    {
-      "player_name": "Alessandro Di Munno",
-      "age": 26,
-      "role": "Mediano",
-      "club": "Aurora Pro Patria",
-      "previous_clubs": [],
-      "nationality": "Italy",
-      "opportunity_type": "svincolato",
-      "summary": "Svincolato dopo retrocessione da Serie C 2025-26.",
-      "source_name": "Gemini Search",
-      "source_url": null,
-      "discovered_at": "2026-07-21T08:37:54.405664"
-    },
-    {
-      "player_name": "Andrea Marafini",
-      "age": 26,
-      "role": "Centre-Back",
-      "club": "Siracusa Calcio",
-      "previous_clubs": [],
-      "nationality": "Italy",
-      "opportunity_type": "talento",
-      "summary": "Difensore, ex Siracusa (relegata), disponibile sul mercato.",
-      "source_name": "Gemini Search",
-      "source_url": null,
-      "discovered_at": "2026-07-21T08:37:54.405571"
-    },
-    {
-      "player_name": "Alessandro Bassoli",
-      "age": 36,
-      "role": "Difensore centrale",
-      "club": "AZ Picerno",
-      "previous_clubs": [],
-      "nationality": "Italia",
-      "opportunity_type": "svincolato",
-      "summary": "Svincolato a seguito esclusione Rimini da Serie C 2025-26.",
-      "source_name": "Gemini Search",
-      "source_url": null,
-      "discovered_at": "2026-07-21T08:37:54.405174"
-    },
-    {
-      "player_name": "Andrea Vailati",
-      "age": 19,
-      "role": "Portiere",
-      "club": "Monza U19",
-      "previous_clubs": [],
-      "nationality": "Italia",
-      "opportunity_type": "prestito",
-      "summary": "Arriva in prestito all'Audace Cerignola (Serie C) dal Monza",
-      "source_name": "Gemini Search",
-      "source_url": null,
-      "discovered_at": "2026-07-19T08:26:04.990559"
-    },
-    {
-      "player_name": "Capriotti Stefano",
-      "age": 31,
-      "role": "Centre-Forward",
-      "club": "Olimpia Spinetoli",
-      "previous_clubs": [],
-      "nationality": "Italy",
-      "opportunity_type": "svincolato",
-      "summary": "Svincolato dalla stagione 2025/2026",
-      "source_name": "Gemini Search",
-      "source_url": null,
-      "discovered_at": "2026-07-18T08:03:45.325350"
-    }
-  ]
+  "timestamp": "2026-07-22T14:14:47Z",
+  "audit_scope": "Ciclo scraping Serie C 8-22 luglio 2026 (237 segnalazioni grezze + dataset arricchito con statistiche stagionali)",
+  "recipient_context": "Wasserman / Global Football Insights — early-signal su prospetti pre-mainstream",
+  "findings": [],
+  "audit_result": "0 segnali sopra soglia in questo ciclo. Il flusso e' dominato (>90% delle 237 voci) da movimento contrattuale post fine-stagione (svincolati da club retrocessi/esclusi, rescissioni, rientri/fine prestito) - per costruzione non rilevante per un mandato di rappresentanza pre-Wyscout/Instat. Le uniche voci con linguaggio da prestazione reale (es. 'si distingue per l'alta media voto', 'reduce da un'annata di alto livello', 'una delle migliori quote della categoria') provengono da un'unica query di grounding non corroborata, mancano di eta', club e persino del livello di campionato verificato (l'id lega raggruppa Serie C, D ed Eccellenza), quindi non superano la soglia di un segnale azionabile. Tra i profili U23 con statistiche arricchite nello stesso periodo, nessuno mostra un output per presenza fuori scala rispetto al livello (nessuna serie tipo gol/presenze anomala); il caso piu' vicino (prestito a club greco) e' inoltre esterno al perimetro Serie C. Nessun profilo di questo ciclo soddisfa il criterio di segnale di crescita/prestazione richiesto."
 }
