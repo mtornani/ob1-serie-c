@@ -68,7 +68,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2030-06-30",
-      "days_without_contract": 143,
+      "days_without_contract": 144,
       "stale_free_agent": true,
       "assessment": {
         "yes": [
@@ -78,7 +78,7 @@
           "Valore di mercato interessante (2,80 mln €)"
         ],
         "no": [
-          "143 giorni senza club — perché non è stato preso?",
+          "144 giorni senza club — perché non è stato preso?",
           "Svincolato da tempo con esperienza — attenzione al profilo"
         ],
         "action": "Da chiamare ora"
@@ -109,10 +109,10 @@
       "player_image_url": null,
       "agent": "P&P Sport Management S.A.M.",
       "discovered_at": "2026-07-21T08:37:54.405664",
-      "ob1_score": 81,
+      "ob1_score": 79,
       "classification": "hot",
       "score_breakdown": {
-        "freshness": 95,
+        "freshness": 85,
         "opportunity_type": 100,
         "experience": 60,
         "age": 90,
@@ -143,7 +143,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 1,
+      "days_without_contract": 2,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -217,7 +217,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 4,
+      "days_without_contract": 5,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -369,7 +369,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 21,
+      "days_without_contract": 22,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -449,8 +449,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 251gg",
-            "detail": "Contratto: 2027-03-31 (251 giorni)"
+            "label": "SCADE 250gg",
+            "detail": "Contratto: 2027-03-31 (250 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -458,7 +458,7 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-03-31",
-      "days_without_contract": 141,
+      "days_without_contract": 142,
       "stale_free_agent": true,
       "assessment": {
         "yes": [
@@ -468,7 +468,7 @@
           "Profilo in fascia Lega Pro"
         ],
         "no": [
-          "141 giorni senza club — perché non è stato preso?",
+          "142 giorni senza club — perché non è stato preso?",
           "Svincolato da tempo con esperienza — attenzione al profilo",
           "Valore di mercato assente o molto basso"
         ],
@@ -534,7 +534,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 142,
+      "days_without_contract": 143,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -545,7 +545,7 @@
         ],
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
-          "142 giorni senza club — perché non è stato preso?"
+          "143 giorni senza club — perché non è stato preso?"
         ],
         "action": "Da chiamare ora"
       }
@@ -616,7 +616,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 142,
+      "days_without_contract": 143,
       "stale_free_agent": true,
       "assessment": {
         "yes": [
@@ -626,7 +626,7 @@
           "Profilo in fascia Lega Pro"
         ],
         "no": [
-          "142 giorni senza club — perché non è stato preso?",
+          "143 giorni senza club — perché non è stato preso?",
           "Svincolato da tempo con esperienza — attenzione al profilo"
         ],
         "action": "Da chiamare ora"
@@ -691,7 +691,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 142,
+      "days_without_contract": 143,
       "stale_free_agent": true,
       "assessment": {
         "yes": [
@@ -701,7 +701,7 @@
           "Valore di mercato interessante (200 mila €)"
         ],
         "no": [
-          "142 giorni senza club — perché non è stato preso?",
+          "143 giorni senza club — perché non è stato preso?",
           "Svincolato da tempo con esperienza — attenzione al profilo"
         ],
         "action": "Da chiamare ora"
@@ -940,7 +940,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 120,
+      "days_without_contract": 121,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -951,7 +951,7 @@
         ],
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
-          "120 giorni senza club — perché non è stato preso?"
+          "121 giorni senza club — perché non è stato preso?"
         ],
         "action": "Da chiamare ora"
       }
@@ -1013,8 +1013,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 342gg",
-            "detail": "Contratto: 2027-06-30 (342 giorni)"
+            "label": "SCADE 341gg",
+            "detail": "Contratto: 2027-06-30 (341 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -1022,87 +1022,13 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
           "Giovane (20 anni) — non occupa posto Over in lista",
           "Valore di mercato interessante (175 mila €)",
-          "Confermato da più fonti / profilo TM"
-        ],
-        "no": [
-          "Presenze non verificate — controllare Transfermarkt",
-          "Fonte debole o generica"
-        ],
-        "action": "Da chiamare ora"
-      }
-    },
-    {
-      "id": "c3efba5205ed3dde02d44738345b31be",
-      "player_name": "Andrea Spurio",
-      "age": 28,
-      "role": "Portiere",
-      "role_name": "Portiere",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-07-22",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJgwS4-zOCQIlj8r-iPtlDBvNBuBl5CzL4w0LjhnhG9S45TRCFYWMERIgr6sNLVdWncQuIit-8kUOyGnHbZNpKIRK1qhLqAkHYz00Eh9BA4QreKstxldF3AS4bK86jBV2uQXOkWOsI_nB3T2-KHk3kEy0IfSlzVqJvTsy0TKmDigZwEUBT3eSpyxAboWS7jBUa-vHT0HMKih7JOhkBhYGwLzyDPjY_eftyDxCQ4uhjZCCYoLr4ev-ZQ83EJAGVjSERRloL6N8p9f2tX6UG_uFc",
-      "previous_clubs": [],
-      "current_club": "Real Aversa 1925",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": null,
-      "market_value": 125000,
-      "market_value_formatted": "125 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-07-22T08:36:24.074751",
-      "ob1_score": 71,
-      "classification": "hot",
-      "score_breakdown": {
-        "freshness": 100,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 75,
-        "market_value": 70,
-        "league_fit": 50,
-        "source": 50
-      },
-      "identity_complete": true,
-      "corroborated": true,
-      "publishable": true,
-      "review_flags": "",
-      "n_sources": 2,
-      "recommendation": "Piena maturità (28 anni), pronto per impatto immediato. Disponibile a parametro zero.",
-      "intel": {
-        "roi_class": "none",
-        "roi_label": "NO CONTRIB.",
-        "roi_color": "gray",
-        "coefficiente_eta": 0,
-        "moltiplicatore": 0,
-        "proiezione_stagionale": 0,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [],
-        "birth_year": 1998,
-        "roi_dettaglio": "Classe 1998 — non contribuisce al minutaggio giovani",
-        "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 0,
-      "stale_free_agent": false,
-      "assessment": {
-        "yes": [
-          "Libero a zero — nessun costo di cartellino",
-          "Segnalazione fresca",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
@@ -1171,7 +1097,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 142,
+      "days_without_contract": 143,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -1181,7 +1107,7 @@
         ],
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
-          "142 giorni senza club — perché non è stato preso?"
+          "143 giorni senza club — perché non è stato preso?"
         ],
         "action": "Da chiamare ora"
       }
@@ -1245,7 +1171,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 142,
+      "days_without_contract": 143,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -1255,7 +1181,7 @@
         ],
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
-          "142 giorni senza club — perché non è stato preso?"
+          "143 giorni senza club — perché non è stato preso?"
         ],
         "action": "Da chiamare ora"
       }
@@ -1319,7 +1245,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 13,
+      "days_without_contract": 14,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -1476,6 +1402,80 @@
           "Giovane (18 anni) — non occupa posto Over in lista",
           "Valore di mercato interessante (150 mila €)",
           "Profilo in fascia Lega Pro",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Fonte debole o generica"
+        ],
+        "action": "Da chiamare ora"
+      }
+    },
+    {
+      "id": "c3efba5205ed3dde02d44738345b31be",
+      "player_name": "Andrea Spurio",
+      "age": 28,
+      "role": "Portiere",
+      "role_name": "Portiere",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-07-22",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJgwS4-zOCQIlj8r-iPtlDBvNBuBl5CzL4w0LjhnhG9S45TRCFYWMERIgr6sNLVdWncQuIit-8kUOyGnHbZNpKIRK1qhLqAkHYz00Eh9BA4QreKstxldF3AS4bK86jBV2uQXOkWOsI_nB3T2-KHk3kEy0IfSlzVqJvTsy0TKmDigZwEUBT3eSpyxAboWS7jBUa-vHT0HMKih7JOhkBhYGwLzyDPjY_eftyDxCQ4uhjZCCYoLr4ev-ZQ83EJAGVjSERRloL6N8p9f2tX6UG_uFc",
+      "previous_clubs": [],
+      "current_club": "Real Aversa 1925",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 125000,
+      "market_value_formatted": "125 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-07-22T08:36:24.074751",
+      "ob1_score": 70,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 95,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 75,
+        "market_value": 70,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "recommendation": "Piena maturità (28 anni), pronto per impatto immediato. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1998,
+        "roi_dettaglio": "Classe 1998 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 1,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Libero a zero — nessun costo di cartellino",
+          "Segnalazione fresca",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
@@ -1770,8 +1770,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 342gg",
-            "detail": "Contratto: 2027-06-30 (342 giorni)"
+            "label": "SCADE 341gg",
+            "detail": "Contratto: 2027-06-30 (341 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -1779,7 +1779,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 142,
+      "days_without_contract": 143,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -1789,7 +1789,7 @@
         ],
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
-          "142 giorni senza club — perché non è stato preso?",
+          "143 giorni senza club — perché non è stato preso?",
           "Valore di mercato assente o molto basso"
         ],
         "action": "Da tenere d'occhio"
@@ -1854,7 +1854,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "2028-06-30",
-      "days_without_contract": 21,
+      "days_without_contract": 22,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -1929,7 +1929,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -2003,8 +2003,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 342gg",
-            "detail": "Contratto: 2027-06-30 (342 giorni)"
+            "label": "SCADE 341gg",
+            "detail": "Contratto: 2027-06-30 (341 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -2175,7 +2175,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 142,
+      "days_without_contract": 143,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -2186,7 +2186,7 @@
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
           "30 anni — poco margine, nessun bonus lista giovani",
-          "142 giorni senza club — perché non è stato preso?"
+          "143 giorni senza club — perché non è stato preso?"
         ],
         "action": "Da tenere d'occhio"
       }
@@ -2250,7 +2250,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 10,
+      "days_without_contract": 11,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -2322,8 +2322,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 342gg",
-            "detail": "Contratto: 2027-06-30 (342 giorni)"
+            "label": "SCADE 341gg",
+            "detail": "Contratto: 2027-06-30 (341 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -2415,6 +2415,82 @@
           "Valore di mercato interessante (200 mila €)"
         ],
         "no": [
+          "Fonte debole o generica"
+        ],
+        "action": "Da tenere d'occhio"
+      }
+    },
+    {
+      "id": "cef407645fb688fc819fe5d91d41cb91",
+      "player_name": "Antonio Iorio",
+      "age": 20,
+      "role": "Centrocampista",
+      "role_name": "Centrocampista",
+      "opportunity_type": "prestito",
+      "reported_date": "2026-07-22",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFESBXuoVUBhzLbKvKkTlfKwmVyVez74G8_jB3txP3fCw32KlQyrENWaiHrQcHZNXjrWfjgTiZpz1AL8cScVa8_ge18NrdbxK3C38KlE41Og3kAXVexYG6hMI5RmB_YK3Y4d25ZwGnd9TyBpK2muXjiSXnUF25ltDn9OEeiQ4R3wh8w68AoVSJ-a8kv4Ui0tRiyVohceRVKW78ToWiUtghEXenRLc=",
+      "previous_clubs": [],
+      "current_club": "Lazio U19",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-07-22T19:26:47.495277",
+      "ob1_score": 67,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 95,
+        "opportunity_type": 70,
+        "experience": 50,
+        "age": 100,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Valutabile in prestito.",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "CONTRIBUTO BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.4,
+        "proiezione_stagionale": 2450,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2006,
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Disponibile in prestito — investimento contenuto",
+          "Giovane (20 anni) — non occupa posto Over in lista",
+          "Segnalazione fresca",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Valore di mercato assente o molto basso",
           "Fonte debole o generica"
         ],
         "action": "Da tenere d'occhio"
@@ -2635,7 +2711,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 141,
+      "days_without_contract": 142,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -2644,7 +2720,7 @@
         ],
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
-          "141 giorni senza club — perché non è stato preso?"
+          "142 giorni senza club — perché non è stato preso?"
         ],
         "action": "Da tenere d'occhio"
       }
@@ -2715,7 +2791,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "2025-07-01",
-      "days_without_contract": 141,
+      "days_without_contract": 142,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -2725,7 +2801,7 @@
         ],
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
-          "141 giorni senza club — perché non è stato preso?",
+          "142 giorni senza club — perché non è stato preso?",
           "Valore di mercato assente o molto basso"
         ],
         "action": "Da tenere d'occhio"
@@ -2866,7 +2942,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 34,
+      "days_without_contract": 35,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -2947,7 +3023,7 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 15,
+      "days_without_contract": 16,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -3021,7 +3097,7 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -3101,7 +3177,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 12,
+      "days_without_contract": 13,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -3414,7 +3490,7 @@
         "lista_dettaglio": "Over classe 1996 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 9,
+      "days_without_contract": 10,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -3425,88 +3501,6 @@
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
           "30 anni — poco margine, nessun bonus lista giovani",
-          "Fonte debole o generica"
-        ],
-        "action": "Da tenere d'occhio"
-      }
-    },
-    {
-      "id": "c70f3ddc1faa29314405ffab2f2e0dd2",
-      "player_name": "Andrea Vailati",
-      "age": 19,
-      "role": "Portiere",
-      "role_name": "Portiere",
-      "opportunity_type": "prestito",
-      "reported_date": "2026-07-19",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHtUNGB1ZLB-eNQzkbGHDY9yPW0oCY-9JiD7mGMS5MgSSRta4BOa2GhQyOhZ7cE5AOMYFyDa3gFmOfVy8ZUDAPitTz7gWJjc0nzAUhZsPd72eXYBWeqnwmSDegIcH1vaBeSB_oqS216XcDiFJVGStRMj4K9T-_QQDCck5pZIAzr2ANWUdWa-BXEfmQ8bxSAlfMOK60tTzBQZnFeHGBds7P5840",
-      "previous_clubs": [],
-      "current_club": "Monza U19",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 10000,
-      "market_value_formatted": "10 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-07-19T08:26:04.990559",
-      "ob1_score": 64,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 85,
-        "opportunity_type": 70,
-        "experience": 50,
-        "age": 100,
-        "market_value": 35,
-        "league_fit": 50,
-        "source": 50
-      },
-      "identity_complete": true,
-      "corroborated": true,
-      "publishable": true,
-      "review_flags": "",
-      "n_sources": 2,
-      "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valutabile in prestito.",
-      "intel": {
-        "roi_class": "low",
-        "roi_label": "CONTRIBUTO BASSO",
-        "roi_color": "#94a3b8",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.4,
-        "proiezione_stagionale": 2450,
-        "traffic_light": "green",
-        "traffic_label": "UNDER",
-        "traffic_icon": "🟢",
-        "is_over": false,
-        "signals": [
-          {
-            "type": "contract_expired",
-            "severity": "red",
-            "label": "SCADUTO",
-            "detail": "Contratto scaduto (2026-06-30)"
-          }
-        ],
-        "birth_year": 2026,
-        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
-        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
-      },
-      "contract_expires": "2026-06-30",
-      "days_without_contract": 0,
-      "stale_free_agent": false,
-      "assessment": {
-        "yes": [
-          "Disponibile in prestito — investimento contenuto",
-          "Giovane (19 anni) — non occupa posto Over in lista",
-          "Segnalazione fresca",
-          "Confermato da più fonti / profilo TM"
-        ],
-        "no": [
-          "Presenze non verificate — controllare Transfermarkt",
           "Fonte debole o generica"
         ],
         "action": "Da tenere d'occhio"
@@ -3648,7 +3642,7 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 142,
+      "days_without_contract": 143,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -3657,7 +3651,7 @@
         ],
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
-          "142 giorni senza club — perché non è stato preso?"
+          "143 giorni senza club — perché non è stato preso?"
         ],
         "action": "Da tenere d'occhio"
       }
@@ -3721,7 +3715,7 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 142,
+      "days_without_contract": 143,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -3731,7 +3725,7 @@
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
           "31 anni — poco margine, nessun bonus lista giovani",
-          "142 giorni senza club — perché non è stato preso?"
+          "143 giorni senza club — perché non è stato preso?"
         ],
         "action": "Da tenere d'occhio"
       }
@@ -3795,7 +3789,7 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 21,
+      "days_without_contract": 22,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -3812,38 +3806,38 @@
       }
     },
     {
-      "id": "e277ecb3ffe9960f4288ab149dab81f2",
-      "player_name": "Andrea Marafini",
-      "age": 26,
-      "role": "Centre-Back",
-      "role_name": "Centre-Back",
-      "opportunity_type": "talento",
-      "reported_date": "2026-07-21",
+      "id": "c70f3ddc1faa29314405ffab2f2e0dd2",
+      "player_name": "Andrea Vailati",
+      "age": 19,
+      "role": "Portiere",
+      "role_name": "Portiere",
+      "opportunity_type": "prestito",
+      "reported_date": "2026-07-19",
       "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHnwltUF6G6MATIOQVJLnphGRPwu7JMW7esz8XL5BKESfmStq0FClizCWgsF1OQjc8gtsOtrlMtm1WcxmZ9P-UCEPY9QLn2QJD8NEsMNPVRQNHJgCD1oWhe6WBVVUm_MaQ5O2EsAzMF5AVlw_kyMzgEODeXQcHFYcEpPsX-pQRahHQZbA28FUZ5zeQY3ctY",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHtUNGB1ZLB-eNQzkbGHDY9yPW0oCY-9JiD7mGMS5MgSSRta4BOa2GhQyOhZ7cE5AOMYFyDa3gFmOfVy8ZUDAPitTz7gWJjc0nzAUhZsPd72eXYBWeqnwmSDegIcH1vaBeSB_oqS216XcDiFJVGStRMj4K9T-_QQDCck5pZIAzr2ANWUdWa-BXEfmQ8bxSAlfMOK60tTzBQZnFeHGBds7P5840",
       "previous_clubs": [],
-      "current_club": "Siracusa Calcio",
+      "current_club": "Monza U19",
       "appearances": 0,
       "goals": 0,
       "assists": 0,
       "minutes_played": 0,
       "summary": "",
-      "nationality": "Italy",
+      "nationality": "Italia",
       "second_nationality": null,
-      "foot": null,
-      "market_value": null,
-      "market_value_formatted": null,
+      "foot": "destro",
+      "market_value": 10000,
+      "market_value_formatted": "10 mila €",
       "player_image_url": null,
       "agent": null,
-      "discovered_at": "2026-07-21T08:37:54.405571",
+      "discovered_at": "2026-07-19T08:26:04.990559",
       "ob1_score": 62,
       "classification": "warm",
       "score_breakdown": {
-        "freshness": 95,
-        "opportunity_type": 50,
+        "freshness": 70,
+        "opportunity_type": 70,
         "experience": 50,
-        "age": 90,
-        "market_value": 40,
+        "age": 100,
+        "market_value": 35,
         "league_fit": 50,
         "source": 50
       },
@@ -3852,35 +3846,42 @@
       "publishable": true,
       "review_flags": "",
       "n_sources": 2,
-      "recommendation": "Piena maturità (26 anni), pronto per impatto immediato.",
+      "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valutabile in prestito.",
       "intel": {
-        "roi_class": "none",
-        "roi_label": "NO CONTRIB.",
-        "roi_color": "gray",
-        "coefficiente_eta": 0,
-        "moltiplicatore": 0,
-        "proiezione_stagionale": 0,
+        "roi_class": "low",
+        "roi_label": "CONTRIBUTO BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.4,
+        "proiezione_stagionale": 2450,
         "traffic_light": "green",
-        "traffic_label": "OK",
+        "traffic_label": "UNDER",
         "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [],
-        "birth_year": 2000,
-        "roi_dettaglio": "Classe 2000 — non contribuisce al minutaggio giovani",
-        "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
+        "is_over": false,
+        "signals": [
+          {
+            "type": "contract_expired",
+            "severity": "red",
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
-      "contract_expires": "",
+      "contract_expires": "2026-06-30",
       "days_without_contract": 0,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
-          "26 anni — nel pieno della carriera",
+          "Disponibile in prestito — investimento contenuto",
+          "Giovane (19 anni) — non occupa posto Over in lista",
           "Segnalazione fresca",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
-          "Valore di mercato assente o molto basso",
           "Fonte debole o generica"
         ],
         "action": "Da tenere d'occhio"
@@ -4239,7 +4240,7 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 4,
+      "days_without_contract": 5,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -4251,6 +4252,81 @@
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
           "31 anni — poco margine, nessun bonus lista giovani",
+          "Valore di mercato assente o molto basso",
+          "Fonte debole o generica"
+        ],
+        "action": "Da tenere d'occhio"
+      }
+    },
+    {
+      "id": "e277ecb3ffe9960f4288ab149dab81f2",
+      "player_name": "Andrea Marafini",
+      "age": 26,
+      "role": "Centre-Back",
+      "role_name": "Centre-Back",
+      "opportunity_type": "talento",
+      "reported_date": "2026-07-21",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHnwltUF6G6MATIOQVJLnphGRPwu7JMW7esz8XL5BKESfmStq0FClizCWgsF1OQjc8gtsOtrlMtm1WcxmZ9P-UCEPY9QLn2QJD8NEsMNPVRQNHJgCD1oWhe6WBVVUm_MaQ5O2EsAzMF5AVlw_kyMzgEODeXQcHFYcEpPsX-pQRahHQZbA28FUZ5zeQY3ctY",
+      "previous_clubs": [],
+      "current_club": "Siracusa Calcio",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-07-21T08:37:54.405571",
+      "ob1_score": 61,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 85,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 90,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "recommendation": "Piena maturità (26 anni), pronto per impatto immediato.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 2000,
+        "roi_dettaglio": "Classe 2000 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "26 anni — nel pieno della carriera",
+          "Segnalazione fresca",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
           "Valore di mercato assente o molto basso",
           "Fonte debole o generica"
         ],
@@ -4472,7 +4548,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 13,
+      "days_without_contract": 14,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -4712,81 +4788,6 @@
       }
     },
     {
-      "id": "4759fec426445c4196425ab5c2478f47",
-      "player_name": "Alessandro Bassoli",
-      "age": 36,
-      "role": "Difensore centrale",
-      "role_name": "Difensore centrale",
-      "opportunity_type": "svincolato",
-      "reported_date": "2026-07-21",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8XbjSEWAWOnVWaw7pm9UjL5Ux2ADPIG2Rf61FYCpuqQzjUJzVVANhRHsd6MqdkEbiHWrZOhsY_-iKP3k3Ch1dtjvV3BuswaWcqER9vUcer3zeMvyEiiqQ5nB3tv0-TvF7oNqhh2-saw26Uh8uqRJCCRzdzfuKXWw6REWdHlHGLwQdp5hMKFzb3I803adATXOp5GpWxscalvfv2uk-BIu5R8WJr9Nh1ceps28nNfVaTlm0QSpAgVya4PEUDDxnV5L7hBIjTb1Qjw==",
-      "previous_clubs": [],
-      "current_club": "AZ Picerno",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": null,
-      "market_value": 75000,
-      "market_value_formatted": "75 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-07-21T08:37:54.405174",
-      "ob1_score": 59,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 95,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 25,
-        "market_value": 55,
-        "league_fit": 50,
-        "source": 50
-      },
-      "identity_complete": true,
-      "corroborated": true,
-      "publishable": true,
-      "review_flags": "",
-      "n_sources": 2,
-      "recommendation": "Giocatore esperto (36 anni). Disponibile a parametro zero.",
-      "intel": {
-        "roi_class": "none",
-        "roi_label": "NO CONTRIB.",
-        "roi_color": "gray",
-        "coefficiente_eta": 0,
-        "moltiplicatore": 0,
-        "proiezione_stagionale": 0,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [],
-        "birth_year": 1990,
-        "roi_dettaglio": "Classe 1990 — non contribuisce al minutaggio giovani",
-        "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 1,
-      "stale_free_agent": false,
-      "assessment": {
-        "yes": [
-          "Libero a zero — nessun costo di cartellino",
-          "Segnalazione fresca",
-          "Confermato da più fonti / profilo TM"
-        ],
-        "no": [
-          "Presenze non verificate — controllare Transfermarkt",
-          "36 anni — poco margine, nessun bonus lista giovani",
-          "Fonte debole o generica"
-        ],
-        "action": "Da tenere d'occhio"
-      }
-    },
-    {
       "id": "opp_2eb1fc3d",
       "player_name": "Francesco Di Paolo",
       "age": 21,
@@ -5014,6 +5015,81 @@
       }
     },
     {
+      "id": "4759fec426445c4196425ab5c2478f47",
+      "player_name": "Alessandro Bassoli",
+      "age": 36,
+      "role": "Difensore centrale",
+      "role_name": "Difensore centrale",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-07-21",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8XbjSEWAWOnVWaw7pm9UjL5Ux2ADPIG2Rf61FYCpuqQzjUJzVVANhRHsd6MqdkEbiHWrZOhsY_-iKP3k3Ch1dtjvV3BuswaWcqER9vUcer3zeMvyEiiqQ5nB3tv0-TvF7oNqhh2-saw26Uh8uqRJCCRzdzfuKXWw6REWdHlHGLwQdp5hMKFzb3I803adATXOp5GpWxscalvfv2uk-BIu5R8WJr9Nh1ceps28nNfVaTlm0QSpAgVya4PEUDDxnV5L7hBIjTb1Qjw==",
+      "previous_clubs": [],
+      "current_club": "AZ Picerno",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 75000,
+      "market_value_formatted": "75 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-07-21T08:37:54.405174",
+      "ob1_score": 58,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 85,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 25,
+        "market_value": 55,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "recommendation": "Giocatore esperto (36 anni). Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1990,
+        "roi_dettaglio": "Classe 1990 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 2,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Libero a zero — nessun costo di cartellino",
+          "Segnalazione fresca",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "36 anni — poco margine, nessun bonus lista giovani",
+          "Fonte debole o generica"
+        ],
+        "action": "Da tenere d'occhio"
+      }
+    },
+    {
       "id": "opp_c623d8f2",
       "player_name": "Nicola Falasco",
       "age": 33,
@@ -5079,7 +5155,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-30",
-      "days_without_contract": 142,
+      "days_without_contract": 143,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -5089,7 +5165,7 @@
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
           "33 anni — poco margine, nessun bonus lista giovani",
-          "142 giorni senza club — perché non è stato preso?"
+          "143 giorni senza club — perché non è stato preso?"
         ],
         "action": "Da tenere d'occhio"
       }
@@ -5160,7 +5236,7 @@
         "lista_dettaglio": "Over classe 1989 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2026-06-29",
-      "days_without_contract": 142,
+      "days_without_contract": 143,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -5170,7 +5246,7 @@
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
           "37 anni — poco margine, nessun bonus lista giovani",
-          "142 giorni senza club — perché non è stato preso?"
+          "143 giorni senza club — perché non è stato preso?"
         ],
         "action": "Da tenere d'occhio"
       }
@@ -5383,7 +5459,7 @@
         "lista_dettaglio": "Over classe 1989 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 142,
+      "days_without_contract": 143,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -5393,7 +5469,7 @@
         ],
         "no": [
           "37 anni — poco margine, nessun bonus lista giovani",
-          "142 giorni senza club — perché non è stato preso?",
+          "143 giorni senza club — perché non è stato preso?",
           "Valore di mercato assente o molto basso"
         ],
         "action": "Bassa priorità"
@@ -5456,8 +5532,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 342gg",
-            "detail": "Contratto: 2027-06-30 (342 giorni)"
+            "label": "SCADE 341gg",
+            "detail": "Contratto: 2027-06-30 (341 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -5537,8 +5613,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 342gg",
-            "detail": "Contratto: 2027-06-30 (342 giorni)"
+            "label": "SCADE 341gg",
+            "detail": "Contratto: 2027-06-30 (341 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -5546,7 +5622,7 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "2027-06-30",
-      "days_without_contract": 11,
+      "days_without_contract": 12,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -5769,7 +5845,7 @@
         "lista_dettaglio": "Over classe 1990 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 5,
+      "days_without_contract": 6,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -6064,7 +6140,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 21,
+      "days_without_contract": 22,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -6139,7 +6215,7 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 18,
+      "days_without_contract": 19,
       "stale_free_agent": false,
       "assessment": {
         "yes": [
@@ -6369,8 +6445,8 @@
           {
             "type": "contract_expiry",
             "severity": "yellow",
-            "label": "SCADE 342gg",
-            "detail": "Contratto: 2027-06-30 (342 giorni)"
+            "label": "SCADE 341gg",
+            "detail": "Contratto: 2027-06-30 (341 giorni)"
           }
         ],
         "birth_year": 2027,
@@ -6540,26 +6616,26 @@
     }
   ],
   "stats": {
-    "total": 85,
+    "total": 86,
     "hot": 19,
-    "warm": 49,
+    "warm": 50,
     "cold": 17,
-    "today": 1,
+    "today": 0,
     "svincolati": 39,
     "stale_free_agents": 4,
     "intel_roi": {
       "elite": 0,
       "high": 0,
       "medium": 24,
-      "low": 24,
+      "low": 25,
       "none": 37
     },
-    "tracking_total": 359,
+    "tracking_total": 360,
     "tracking_only": 274,
-    "publishable": 85,
-    "corroborated": 76
+    "publishable": 86,
+    "corroborated": 77
   },
-  "last_update": "2026-07-22T19:26:49.419739",
+  "last_update": "2026-07-23T03:18:54.266302",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete"
