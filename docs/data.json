@@ -2958,6 +2958,89 @@
       }
     },
     {
+      "id": "a8ac10ac8402ee8b454de6860b65773a",
+      "player_name": "Amedeo Benedetti",
+      "age": 35,
+      "role": "Terzino sinistro",
+      "role_name": "Terzino sinistro",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-07-23",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQELf6jULb1Vme4zypTv6F8YDzMXXXogv1Jvfz9Q0Jd8jVZ1DatiR2oCQ1nRzqkGk3-BSjuzD0pXuKocc_qy44l2x0lnuKR2lfEH_7VguRw_hrv_Xb2bZMzYCvkrkqJ1YeVXNp4yRdZMrnJCAV6nIockmkJU5w5JzLj_Lo5sWCdLuCqr5kGZY4FMQftxHQ==",
+      "previous_clubs": [],
+      "current_club": "Svincolato",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 250000,
+      "market_value_formatted": "250 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-07-23T08:37:25.966869",
+      "ob1_score": 65,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 25,
+        "market_value": 90,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "recommendation": "Giocatore esperto (35 anni). Disponibile a parametro zero. Valore di mercato interessante (250k€).",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "CONTRIBUTO MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3185,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [
+          {
+            "type": "contract_expired",
+            "severity": "red",
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-07-01)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
+        "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "2026-07-01",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Libero a zero — nessun costo di cartellino",
+          "Valore di mercato interessante (250 mila €)",
+          "Segnalazione fresca",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "35 anni — poco margine, nessun bonus lista giovani",
+          "Fonte debole o generica"
+        ],
+        "action": "Da tenere d'occhio"
+      }
+    },
+    {
       "id": "c1b199fca80b106b1fe2577f62a0b98c",
       "player_name": "Balianelli Francesco",
       "age": 23,
@@ -6921,26 +7004,26 @@
     }
   ],
   "stats": {
-    "total": 90,
+    "total": 91,
     "hot": 19,
-    "warm": 54,
+    "warm": 55,
     "cold": 17,
-    "today": 0,
-    "svincolati": 40,
+    "today": 1,
+    "svincolati": 41,
     "stale_free_agents": 4,
     "intel_roi": {
       "elite": 0,
       "high": 0,
-      "medium": 24,
+      "medium": 25,
       "low": 29,
       "none": 37
     },
     "tracking_total": 364,
-    "tracking_only": 274,
-    "publishable": 90,
-    "corroborated": 77
+    "tracking_only": 273,
+    "publishable": 91,
+    "corroborated": 78
   },
-  "last_update": "2026-07-23T08:38:42.660621",
+  "last_update": "2026-07-23T14:11:15.451655",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete"
