@@ -2421,6 +2421,81 @@
       }
     },
     {
+      "id": "47bc178b37d13fd9848872131b67335e",
+      "player_name": "Dario Daka",
+      "age": 22,
+      "role": "Right Winger",
+      "role_name": "Right Winger",
+      "opportunity_type": "prestito",
+      "reported_date": "2026-07-10",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFHVaMDK_vHvuD65k85MsnV8vTtSBmcZamF8-QvSjGyY-PvJD0NWfMgc7kCgr_60-fsnyix68lK7Kge2eeTV4xRWATaT_TcNv8i101itjsc5ZPK1JH4InUf47tEPqzOR3yCDitH_cD3X9OKrOg777lC7Odd0RF6DxDcFHFG",
+      "previous_clubs": [],
+      "current_club": "KF Vora",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Albania",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 200000,
+      "market_value_formatted": "€200k",
+      "player_image_url": null,
+      "agent": "Team Raiola",
+      "discovered_at": "2026-07-10T09:45:00.319255",
+      "ob1_score": 67,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 70,
+        "experience": 50,
+        "age": 100,
+        "market_value": 80,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "recommendation": "Età ideale (22 anni), nel pieno della maturazione. Valutabile in prestito. Valore di mercato interessante (200k€).",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "CONTRIBUTO BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.0,
+        "moltiplicatore": 1.0,
+        "proiezione_stagionale": 1750,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2004,
+        "roi_dettaglio": "Classe 2004: ogni minuto giocato vale ×1.0 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 1.750 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Disponibile in prestito — investimento contenuto",
+          "Giovane (22 anni) — non occupa posto Over in lista",
+          "Valore di mercato interessante (€200k)",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Fonte debole o generica"
+        ],
+        "action": "Da tenere d'occhio"
+      }
+    },
+    {
       "id": "4c8eb777dc295f3ec30abe90efc922f1",
       "player_name": "Candas Fiogbe",
       "age": 21,
@@ -2565,6 +2640,80 @@
         "no": [
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
+        ],
+        "action": "Da tenere d'occhio"
+      }
+    },
+    {
+      "id": "e0c2023b78264716af375bcba3a35a12",
+      "player_name": "David Puczka",
+      "age": 21,
+      "role": "Left-Back",
+      "role_name": "Left-Back",
+      "opportunity_type": "talento",
+      "reported_date": "2026-07-04",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH-cBUdTYwx3vwbJA9uFRCu_sbcKF1su7GadtwwLDd8Lf_wwybNIX5bm5Afgol3RIvdYr1YNy8g_iRf4H6evPAxLaeZWigwUnPyJ9xi91vHJg2znl24gDX6vLTINFqRlqu-mY9nRc-GbNIjqMs8jlK-XjvPHRZ2OfRNuFXain45aejdaef_I0OjRM6znS8a1SAA6U4xGfHdH9AGZRqQLaFvEH4XI6pVcwX7UY3uZfoEZlFAVTA==",
+      "previous_clubs": [],
+      "current_club": "Genoa",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Austria",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 2500000,
+      "market_value_formatted": "€2.50m",
+      "player_image_url": null,
+      "agent": "ROGON",
+      "discovered_at": "2026-07-04T08:46:59.883278",
+      "ob1_score": 66,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 100,
+        "market_value": 100,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Valore di mercato interessante (2500k€).",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "CONTRIBUTO BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.2,
+        "moltiplicatore": 1.2,
+        "proiezione_stagionale": 2100,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2005,
+        "roi_dettaglio": "Classe 2005: ogni minuto giocato vale ×1.2 per i contributi FIGC — stima su una stagione: 2.100 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Giovane (21 anni) — non occupa posto Over in lista",
+          "Valore di mercato interessante (€2.50m)",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Fonte debole o generica"
         ],
         "action": "Da tenere d'occhio"
       }
@@ -5945,6 +6094,81 @@
       }
     },
     {
+      "id": "9f60d3277ed72153669df21d82e58625",
+      "player_name": "Davide Bertoncini",
+      "age": 35,
+      "role": "Centre-Back",
+      "role_name": "Centre-Back",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-07-05",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGCza7BqtoxepizwtyIwXRaHoLfDdgtIRa77WEDniwL3-S_xdXOiGERYe5EABNvhg5P2s4D5YSTMDLt7lnkUJM11dlwgFb_ZIl04Y_CJNFlvzHKhnuMWbFb9k1GhGf1-u03FziKrSmpUkzL4kZaiCUlPVFueWdZ7sKxdzBonA07uM0UCVU-8mgOiwtqFYkwkk9ux7Jts-YwaIsnT-aCdcf0cSW2wO2otss09y9sOUOF_BullYcLjUTN3f-aD4_kMFXrwED0kk0fUpmh2nsoWeNh9R01B03UXtz-mHxHawsPGy06pfUmuy6IWdBn_yd4p-17ieUQMfwvZAok5Q_4tAM=",
+      "previous_clubs": [],
+      "current_club": "Svincolato",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 175000,
+      "market_value_formatted": "175 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-07-05T13:49:59.215621",
+      "ob1_score": 56,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 50,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 25,
+        "market_value": 80,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "recommendation": "Giocatore esperto (35 anni). Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1991,
+        "roi_dettaglio": "Classe 1991 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 19,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Libero a zero — nessun costo di cartellino",
+          "Valore di mercato interessante (175 mila €)",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "35 anni — poco margine, nessun bonus lista giovani",
+          "Fonte debole o generica"
+        ],
+        "action": "Bassa priorità"
+      }
+    },
+    {
       "id": "7525436b3b23c8662618141e6a7d3442",
       "player_name": "Daniel Cappelletti",
       "age": 35,
@@ -6391,6 +6615,80 @@
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
           "Valore di mercato assente o molto basso",
+          "Fonte debole o generica"
+        ],
+        "action": "Bassa priorità"
+      }
+    },
+    {
+      "id": "3b1abffeb32d2efb8b3b5db71449a9b7",
+      "player_name": "Danilo Russo",
+      "age": 39,
+      "role": "Goalkeeper",
+      "role_name": "Goalkeeper",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-07-11",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAY16p2nJ3Qs3wSHm7rmqx9-czDOvCnlmNHsIWVGG5Eke7HKqPeRLVmcS_SCkWB68aUlVtUc5ezfqulhUugNuuTocWlTvQO_tgcNLTtMqypL4OriensWSY7RmBRDuOE5ncyjLS7KGZjIyMj6MljxgBV3o3EKlh8VsehBf1bOTl--d1B9fzgTwI4URs8Q",
+      "previous_clubs": [],
+      "current_club": "Svincolato",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 25000,
+      "market_value_formatted": "€25k",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-07-11T02:57:23.977663",
+      "ob1_score": 51,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 25,
+        "market_value": 35,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "recommendation": "Giocatore esperto (39 anni). Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1987,
+        "roi_dettaglio": "Classe 1987 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1987 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 13,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Libero a zero — nessun costo di cartellino",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "39 anni — poco margine, nessun bonus lista giovani",
           "Fonte debole o generica"
         ],
         "action": "Bassa priorità"
@@ -7004,26 +7302,26 @@
     }
   ],
   "stats": {
-    "total": 91,
+    "total": 95,
     "hot": 17,
-    "warm": 57,
-    "cold": 17,
+    "warm": 59,
+    "cold": 19,
     "today": 0,
-    "svincolati": 41,
+    "svincolati": 43,
     "stale_free_agents": 4,
     "intel_roi": {
       "elite": 0,
       "high": 0,
       "medium": 25,
-      "low": 29,
-      "none": 37
+      "low": 31,
+      "none": 39
     },
-    "tracking_total": 364,
+    "tracking_total": 368,
     "tracking_only": 273,
-    "publishable": 91,
-    "corroborated": 78
+    "publishable": 95,
+    "corroborated": 82
   },
-  "last_update": "2026-07-24T02:57:35.643842",
+  "last_update": "2026-07-24T08:35:05.415780",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete"
