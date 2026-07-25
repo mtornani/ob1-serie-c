@@ -2643,6 +2643,82 @@
       }
     },
     {
+      "id": "d9e644012a1d6d9abe6f8e2b56508549",
+      "player_name": "Antonio Iorio",
+      "age": 20,
+      "role": "Centrocampista",
+      "role_name": "Centrocampista",
+      "opportunity_type": "prestito",
+      "reported_date": "2026-07-25",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEBP5_aoHlGZQrqUewsLcYUUveZnkLwVfFh43JBr6ebGhTuk0xigGt_fOOQMDAFwLsuPHOowWlSlmpoN9kRRwGWcpq5-Ql1TJhZowuz2vRs52-9yNhw_OnmtX0MZ-eRbmtHymk3KBR2DFlvebOw_M_UHxBgXHpN3Al7vNlwz1bChmZI5tj1oWzZCwUFVQkphaObA63Su53R3iJ9Tz3TvtasWaKV0fw==",
+      "previous_clubs": [],
+      "current_club": "Lazio U20",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-07-25T13:44:10.117435",
+      "ob1_score": 67,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 70,
+        "experience": 50,
+        "age": 100,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Valutabile in prestito.",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "CONTRIBUTO BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.4,
+        "proiezione_stagionale": 2450,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2006,
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.4 per i contributi FIGC — in prestito: senza bonus tesseramento — stima su una stagione: 2.450 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Disponibile in prestito — investimento contenuto",
+          "Giovane (20 anni) — non occupa posto Over in lista",
+          "Segnalazione fresca",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Valore di mercato assente o molto basso",
+          "Fonte debole o generica"
+        ],
+        "action": "Da tenere d'occhio"
+      }
+    },
+    {
       "id": "opp_635be7d8",
       "player_name": "Raffaele Russo",
       "age": 27,
@@ -7597,26 +7673,26 @@
     }
   ],
   "stats": {
-    "total": 99,
+    "total": 100,
     "hot": 18,
-    "warm": 60,
+    "warm": 61,
     "cold": 21,
-    "today": 0,
+    "today": 1,
     "svincolati": 44,
     "stale_free_agents": 4,
     "intel_roi": {
       "elite": 0,
       "high": 0,
       "medium": 25,
-      "low": 33,
+      "low": 34,
       "none": 41
     },
-    "tracking_total": 372,
+    "tracking_total": 373,
     "tracking_only": 273,
-    "publishable": 99,
-    "corroborated": 85
+    "publishable": 100,
+    "corroborated": 86
   },
-  "last_update": "2026-07-25T08:14:20.979340",
+  "last_update": "2026-07-25T13:44:33.036303",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete"
