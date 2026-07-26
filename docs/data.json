@@ -791,6 +791,81 @@
       }
     },
     {
+      "id": "9a4b410bf9ff244efcb19d5f4c04ac95",
+      "player_name": "Denis Portanova",
+      "age": 25,
+      "role": "Centre-Back",
+      "role_name": "Centre-Back",
+      "opportunity_type": "rescissione",
+      "reported_date": "2026-07-18",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG__GF5BdA7ZgNSI4EwiWvI13WfUC-wq5ENvwKth5TfNg0ZLICMII0vQeTk35gMV8x4oBYWOf-YiLZ5bwo0_YG5jbs57LCOImZUZDPotkfMqUXWzpTy-xCXjUlQ00DA8FPkkVwhNzoeLOe_JhFJZ2oxBMQHcMfgcNprloomzrNX9F_8LwsETQ5blDayRTsjSHYlm64Tovau73LHGFF7XZ8fni7fMUlYnunF7j08HeDfyKF5ur3UAjjnDi_IT6Y1a6pYS4H64vV4yVO7kvUxDSog_8M=",
+      "previous_clubs": [],
+      "current_club": "Sorrento 1945",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 125000,
+      "market_value_formatted": "125 mila €",
+      "player_image_url": null,
+      "agent": "no agent",
+      "discovered_at": "2026-07-18T08:03:45.323188",
+      "ob1_score": 72,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 95,
+        "experience": 50,
+        "age": 90,
+        "market_value": 70,
+        "league_fit": 80,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "stats_mancanti",
+      "n_sources": 2,
+      "recommendation": "Età ideale (25 anni), nel pieno della maturazione. In uscita dal club, costo contenuto.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 2001,
+        "roi_dettaglio": "Classe 2001 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 8,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Ha rescisso — in uscita, trattativa possibile",
+          "25 anni — nel pieno della carriera",
+          "Profilo in fascia Lega Pro",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Fonte debole o generica"
+        ],
+        "action": "Da chiamare ora"
+      }
+    },
+    {
       "id": "opp_e32967c0",
       "player_name": "Chec Benelli Doumbia",
       "age": 19,
@@ -952,6 +1027,89 @@
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
           "124 giorni senza club — perché non è stato preso?"
+        ],
+        "action": "Da chiamare ora"
+      }
+    },
+    {
+      "id": "f0e7e781c467f00d6ba2bfe4b46baa1b",
+      "player_name": "Degennaro Francesco",
+      "age": 20,
+      "role": "Midfield",
+      "role_name": "Midfield",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-07-26",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGRfM527rRt-zHsLhrXd-4hrI-z-xo-29ib7OXkA8mdGQMctLsB9UMBts-L3yiLPYMbN4DOe0ZrC67AZ8YPNpV0CNQXIHWPeS6YUtAypcR5t185kY5clIAXeC3zh0_tu32fNscldtkh9CsiSlYX2Be7N3sYWDb5QQ2jUqJ-2y6l-wGfv5Ho57eOPSbACOBUI3-o0zs=",
+      "previous_clubs": [],
+      "current_club": "Rende Calcio 1968",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-07-26T08:33:00.508977",
+      "ob1_score": 71,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 100,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "stats_mancanti",
+      "n_sources": 2,
+      "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "CONTRIBUTO MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3185,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "contract_expired",
+            "severity": "red",
+            "label": "SCADUTO",
+            "detail": "Contratto scaduto (2026-06-30)"
+          }
+        ],
+        "birth_year": 2026,
+        "roi_dettaglio": "Classe 2026: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
+      },
+      "contract_expires": "2026-06-30",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Libero a zero — nessun costo di cartellino",
+          "Giovane (20 anni) — non occupa posto Over in lista",
+          "Segnalazione fresca",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Valore di mercato assente o molto basso",
+          "Fonte debole o generica"
         ],
         "action": "Da chiamare ora"
       }
@@ -3706,6 +3864,87 @@
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Fonte debole o generica"
+        ],
+        "action": "Da tenere d'occhio"
+      }
+    },
+    {
+      "id": "5945613a15a705f31a812d3f5a9c5383",
+      "player_name": "Di Vico",
+      "age": 19,
+      "role": "Central Midfield",
+      "role_name": "Central Midfield",
+      "opportunity_type": "talento",
+      "reported_date": "2026-07-08",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFzeQMM61JLOVAvoMi-nIlAVWg9XTmfwegbF21t76CFaMYsotEU5birn0ScA5opj_bHveiuNo6aurqtifZ8dU0NHo7Yy801jO-ZAAKGdOacrf8_NwqUGjTK3edZGIgheKzqW2C60Woyl9P-UimmAUUVnmsxLFPmrgP4uDC14U-imd8Dx2y2WrwzE4aO7Uvx",
+      "previous_clubs": [],
+      "current_club": "US Salernitana 1919",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 250000,
+      "market_value_formatted": "250 mila €",
+      "player_image_url": null,
+      "agent": "MM-Management",
+      "discovered_at": "2026-07-08T14:25:40.688115",
+      "ob1_score": 64,
+      "classification": "warm",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 100,
+        "market_value": 90,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "stats_mancanti",
+      "n_sources": 2,
+      "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valore di mercato interessante (250k€).",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "CONTRIBUTO BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.4,
+        "proiezione_stagionale": 2450,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [
+          {
+            "type": "contract_expiry",
+            "severity": "yellow",
+            "label": "SCADE 338gg",
+            "detail": "Contratto: 2027-06-30 (338 giorni)"
+          }
+        ],
+        "birth_year": 2027,
+        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
+      },
+      "contract_expires": "2027-06-30",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Giovane (19 anni) — non occupa posto Over in lista",
+          "Valore di mercato interessante (250 mila €)",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
@@ -7140,6 +7379,81 @@
       }
     },
     {
+      "id": "f9bc2aa012ce28cc2cab1a94953cfd50",
+      "player_name": "Dennis Beldenti",
+      "age": 16,
+      "role": "Centre-Back",
+      "role_name": "Centre-Back",
+      "opportunity_type": "talento",
+      "reported_date": "2026-07-07",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHBB19llN8v7AMiX9d-6Xqv5QCwlmm8lc6sWSZZ57oalu7kKxzpLQKhZbd9lZCINlLt4SAxexNIToaaSY_q3f1I9wXGr4M0BW2cnAH-2DMRd8Kf_9VXFLT6ct6EcwtT0OwqHtdRmUPM5zqCeIBIGsAQ2IeFqOE3fXVjPeSqdu9jeQtY3mTe0K2I_3JG4vjIcMu3I38uRQH01zgSVB-hRsvqIaZEicFzXR9IGuLHNRQTUzwiELFPKaKqiHD_S73J5kPLMyelfvarBIAzZbGIoD9gYKdWCJ7lk__ovTcgTljlq1OQcgYaV90dYe_yxo42O1KGYQNP7rh4T7xyIy34UNk=",
+      "previous_clubs": [],
+      "current_club": "Fiorentina Primavera",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-07-07T14:47:25.635875",
+      "ob1_score": 50,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 45,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 60,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "stats_mancanti",
+      "n_sources": 2,
+      "recommendation": "Profilo giovane (16 anni), potenziale di crescita.",
+      "intel": {
+        "roi_class": "low",
+        "roi_label": "CONTRIBUTO BASSO",
+        "roi_color": "#94a3b8",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.4,
+        "proiezione_stagionale": 2450,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2010,
+        "roi_dettaglio": "Classe 2010: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2010 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Giovane (16 anni) — non occupa posto Over in lista",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Molto giovane — continuità in C da verificare",
+          "Valore di mercato assente o molto basso",
+          "Fonte debole o generica"
+        ],
+        "action": "Bassa priorità"
+      }
+    },
+    {
       "id": "opp_48df769b",
       "player_name": "Bruno Vicente",
       "age": 37,
@@ -7671,26 +7985,26 @@
     }
   ],
   "stats": {
-    "total": 100,
-    "hot": 18,
-    "warm": 60,
-    "cold": 22,
-    "today": 0,
-    "svincolati": 44,
+    "total": 104,
+    "hot": 20,
+    "warm": 61,
+    "cold": 23,
+    "today": 1,
+    "svincolati": 46,
     "stale_free_agents": 4,
     "intel_roi": {
       "elite": 0,
       "high": 0,
-      "medium": 25,
-      "low": 34,
-      "none": 41
+      "medium": 26,
+      "low": 36,
+      "none": 42
     },
-    "tracking_total": 373,
+    "tracking_total": 377,
     "tracking_only": 273,
-    "publishable": 100,
-    "corroborated": 86
+    "publishable": 104,
+    "corroborated": 90
   },
-  "last_update": "2026-07-26T03:23:47.955496",
+  "last_update": "2026-07-26T08:34:34.102286",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete"
