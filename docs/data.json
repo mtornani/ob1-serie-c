@@ -3874,87 +3874,6 @@
       }
     },
     {
-      "id": "5945613a15a705f31a812d3f5a9c5383",
-      "player_name": "Di Vico",
-      "age": 19,
-      "role": "Central Midfield",
-      "role_name": "Central Midfield",
-      "opportunity_type": "talento",
-      "reported_date": "2026-07-08",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFzeQMM61JLOVAvoMi-nIlAVWg9XTmfwegbF21t76CFaMYsotEU5birn0ScA5opj_bHveiuNo6aurqtifZ8dU0NHo7Yy801jO-ZAAKGdOacrf8_NwqUGjTK3edZGIgheKzqW2C60Woyl9P-UimmAUUVnmsxLFPmrgP4uDC14U-imd8Dx2y2WrwzE4aO7Uvx",
-      "previous_clubs": [],
-      "current_club": "US Salernitana 1919",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italy",
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 250000,
-      "market_value_formatted": "250 mila €",
-      "player_image_url": null,
-      "agent": "MM-Management",
-      "discovered_at": "2026-07-08T14:25:40.688115",
-      "ob1_score": 64,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 45,
-        "opportunity_type": 50,
-        "experience": 50,
-        "age": 100,
-        "market_value": 90,
-        "league_fit": 50,
-        "source": 50
-      },
-      "identity_complete": true,
-      "corroborated": true,
-      "publishable": true,
-      "review_flags": "stats_mancanti",
-      "n_sources": 2,
-      "recommendation": "Profilo giovane (19 anni), potenziale di crescita. Valore di mercato interessante (250k€).",
-      "intel": {
-        "roi_class": "low",
-        "roi_label": "CONTRIBUTO BASSO",
-        "roi_color": "#94a3b8",
-        "coefficiente_eta": 1.4,
-        "moltiplicatore": 1.4,
-        "proiezione_stagionale": 2450,
-        "traffic_light": "green",
-        "traffic_label": "UNDER",
-        "traffic_icon": "🟢",
-        "is_over": false,
-        "signals": [
-          {
-            "type": "contract_expiry",
-            "severity": "yellow",
-            "label": "SCADE 338gg",
-            "detail": "Contratto: 2027-06-30 (338 giorni)"
-          }
-        ],
-        "birth_year": 2027,
-        "roi_dettaglio": "Classe 2027: ogni minuto giocato vale ×1.4 per i contributi FIGC — stima su una stagione: 2.450 minuti ponderati",
-        "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
-      },
-      "contract_expires": "2027-06-30",
-      "days_without_contract": 0,
-      "stale_free_agent": false,
-      "assessment": {
-        "yes": [
-          "Giovane (19 anni) — non occupa posto Over in lista",
-          "Valore di mercato interessante (250 mila €)",
-          "Confermato da più fonti / profilo TM"
-        ],
-        "no": [
-          "Presenze non verificate — controllare Transfermarkt",
-          "Fonte debole o generica"
-        ],
-        "action": "Da tenere d'occhio"
-      }
-    },
-    {
       "id": "7addfb574554119195118b9e5b1562a1",
       "player_name": "Alessandro Faggioli",
       "age": 26,
@@ -7985,9 +7904,9 @@
     }
   ],
   "stats": {
-    "total": 104,
+    "total": 103,
     "hot": 20,
-    "warm": 61,
+    "warm": 60,
     "cold": 23,
     "today": 1,
     "svincolati": 46,
@@ -7996,15 +7915,15 @@
       "elite": 0,
       "high": 0,
       "medium": 26,
-      "low": 36,
+      "low": 35,
       "none": 42
     },
-    "tracking_total": 377,
+    "tracking_total": 376,
     "tracking_only": 273,
-    "publishable": 104,
-    "corroborated": 90
+    "publishable": 103,
+    "corroborated": 89
   },
-  "last_update": "2026-07-26T08:34:34.102286",
+  "last_update": "2026-07-26T13:39:04.843637",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete"
