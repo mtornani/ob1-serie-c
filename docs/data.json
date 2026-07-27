@@ -1570,6 +1570,81 @@
       }
     },
     {
+      "id": "8ff8175ecee49b1ee93de68e65990d7c",
+      "player_name": "Denis Franchi",
+      "age": 24,
+      "role": "Goalkeeper",
+      "role_name": "Goalkeeper",
+      "opportunity_type": "talento",
+      "reported_date": "2026-07-27",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFObkw4xwy54q7Xs7C3PavjK3K4Zkv79TeKmLqniq_O2PmEGFkqGzjbSkv6TaIZqg0h4AcTAHALz7Kp3Xfcynq65hlfxyZr0kJmnWDBTBgLA9e9Z8vTe5lrqLR5JAmFazkvROJgMGPYlphbC2gCg3B9R-axNezV7xyqnsl1Y6A8pxEmpx9Fo2KWFkyODHNabzwKPyhONoGY3sdotebrQKMMsNZrIpE=",
+      "previous_clubs": [],
+      "current_club": "Ternana Calcio",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italy",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 75000,
+      "market_value_formatted": "€75k",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-07-27T03:34:14.862288",
+      "ob1_score": 70,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 90,
+        "market_value": 55,
+        "league_fit": 80,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": false,
+      "publishable": true,
+      "review_flags": "fonte_singola,stats_mancanti",
+      "n_sources": 1,
+      "recommendation": "Età ideale (24 anni), nel pieno della maturazione.",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2002,
+        "roi_dettaglio": "Classe 2002 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "24 anni — nel pieno della carriera",
+          "Profilo in fascia Lega Pro",
+          "Segnalazione fresca"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Una sola fonte — da corroborare",
+          "Fonte debole o generica"
+        ],
+        "action": "Da chiamare ora"
+      }
+    },
+    {
       "id": "opp_6d5dc502",
       "player_name": "Adin Licina",
       "age": 19,
@@ -8052,11 +8127,11 @@
     }
   ],
   "stats": {
-    "total": 105,
-    "hot": 20,
+    "total": 106,
+    "hot": 21,
     "warm": 62,
     "cold": 23,
-    "today": 2,
+    "today": 3,
     "svincolati": 46,
     "stale_free_agents": 4,
     "intel_roi": {
@@ -8064,14 +8139,14 @@
       "high": 0,
       "medium": 26,
       "low": 36,
-      "none": 43
+      "none": 44
     },
-    "tracking_total": 378,
+    "tracking_total": 379,
     "tracking_only": 273,
-    "publishable": 105,
+    "publishable": 106,
     "corroborated": 91
   },
-  "last_update": "2026-07-27T03:34:53.859500",
+  "last_update": "2026-07-27T10:01:48.509219",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete"
