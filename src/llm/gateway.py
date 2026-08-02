@@ -26,7 +26,7 @@ import re
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Callable, Dict, Iterable, List, Optional
 
 from .cache import ResponseCache
 from .ledger import QuotaLedger
@@ -107,6 +107,8 @@ class LLMGateway:
         cache_key_extra: str = "",
         use_cache: bool = True,
         max_routes: int = 4,
+        exclude_providers: Optional[Iterable[str]] = None,
+        only_providers: Optional[Iterable[str]] = None,
     ) -> LLMResult:
         """Una risposta JSON per `task`, dal primo provider che ce la fa."""
         tc = self.registry.task_class(task)
@@ -125,7 +127,7 @@ class LLMGateway:
                     return LLMResult(True, data, hit["raw"], hit.get("route", "cache"),
                                      cached=True)
 
-        routes = self._pick_routes(task)
+        routes = self._pick_routes(task, exclude_providers, only_providers)
         if not routes:
             return LLMResult(False, errors=[f"nessuna rotta disponibile per task '{task}'"])
 
@@ -189,12 +191,18 @@ class LLMGateway:
         )
 
     # -------------------------------------------------------------- interni
-    def _pick_routes(self, task: str) -> List[Route]:
+    def _pick_routes(
+        self, task: str,
+        exclude_providers: Optional[Iterable[str]] = None,
+        only_providers: Optional[Iterable[str]] = None,
+    ) -> List[Route]:
         return self.registry.routes_for(
             task,
             allow_paid=self.allow_paid,
             commercial_only=self.commercial_only,
             allow_training=self.allow_training,
+            exclude_providers=exclude_providers,
+            only_providers=only_providers,
         )
 
     def _default(self, key: str, fallback: Any) -> Any:

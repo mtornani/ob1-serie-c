@@ -1,6 +1,6 @@
 # ARCH-001 — Architettura di produzione: LLM a costo zero
 
-**Stato**: proposta implementata in parte (Fase 1 done)
+**Stato**: Fasi 1-3 implementate (grounding fuori dal percorso caldo), Fase 4 da fare
 **Data**: 2026-08-02
 **Obiettivo**: portare OB1 da pipeline di sviluppo (single-tenant, free tier Gemini,
 throughput 30 chiamate/giorno) a pipeline di produzione multi-lega, con costo di
@@ -219,35 +219,45 @@ reali/giorno contro ~5.000 di capacità free disponibile. Margine ~8×.
 
 ---
 
-## 6. Sostituire il grounding (Fase 2)
+## 6. Sostituire il grounding (Fasi 2-3 — implementate)
 
-Il pezzo che resta da fare, e quello che azzera davvero la voce di costo.
+Il pezzo che azzera davvero la voce di costo. Vive in `src/free_stack.py`:
 
-**Discovery** (`scraper_global.search_grounded`):
 ```
-oggi:    Gemini grounded  →  nomi giocatori          [$14–35/1k prompt]
-domani:  Tavily/Serper/RSS → HTML  →  gateway.complete_json("triage", …)
-                                       [$0–1 / 1.000 + €0 di inferenza]
+free_web_search(query, include_domains=...)   cache 7g -> DDG -> SearXNG -> Tavily* -> Serper*
+llm_complete_json(system, user, ...)          gateway free -> Gemini in coda
+has_any_llm()                                 c'è almeno una via per fare inferenza?
 ```
-Il codice Tavily esiste già (`search_tavily`, con `include_domains` sulle
-`trusted_sources`). Serve solo invertire la gerarchia: Tavily/RSS primario,
-grounding rimosso.
+`*` = solo se la chiave esiste. Con **zero** chiavi configurate la ricerca funziona
+comunque (DuckDuckGo non richiede registrazione), e l'inferenza richiede una sola
+chiave qualsiasi — `GROQ_API_KEY` da sola basta per l'intero enrichment.
 
-**Enrichment** (`enricher_tm.enrich_players_batch`):
+**Discovery** (`GlobalScraper.discover_players`):
 ```
-oggi:    Gemini grounded su TM  →  JSON profilo
-domani:  ricerca URL TM (cache permanente per giocatore: l'URL non cambia mai)
-         → fetch pagina (Scrapling, ETag)
-         → parse_tm_text() regex                    ← risolve la maggioranza dei campi
-         → gateway.complete_json("extract", …)      ← solo sui campi mancanti
+prima:  Gemini grounded  →  nomi giocatori                    [$14–35/1k prompt]
+ora:    free_web_search (DDG/SearXNG, source-first sulle       [$0 + €0 inferenza]
+        trusted_sources) → llm_complete_json("triage") → stessa forma di output
 ```
-La cache dell'URL TM per giocatore è quasi gratis e toglie la parte di ricerca dal
-99% delle chiamate: un giocatore ha un solo profilo TM, per sempre.
+Il grounding resta raggiungibile con `OB1_LLM_MODE=gemini_first`; su risultato
+vuoto la pipeline ricade sul percorso Tavily preesistente, invariato.
 
-Criterio di uscita della fase: su un campione di 50 giocatori già arricchiti via
-grounding, la nuova catena deve produrre gli stessi valori su `birth_date`,
-`current_club`, `market_value` in ≥95% dei casi. Il confronto va fatto con
-`scripts/verify_enrichment.py` esteso a modalità A/B.
+**Enrichment** (`enricher_tm.enrich_player_free`):
+```
+prima:  Gemini grounded su TM  →  JSON profilo
+ora:    URL TM da cache permanente (data/tm_urls.json) o ricerca free
+        → fetch pagina
+        → parse_tm_text() regex          ← risolve la maggioranza dei campi
+        → llm_complete_json("extract")   ← SOLO sui campi rimasti vuoti
+```
+La cache dell'URL TM toglie la ricerca dal 99% delle chiamate: un giocatore ha un
+solo profilo TM, per sempre. Verifica su dato reale (Cosimo Patierno, nessuna
+chiave a pagamento): DDG trova l'URL corretto, la pagina scarica, il regex estrae
+data di nascita, valore di mercato, piede, ruolo e altezza — l'LLM interviene solo
+sul residuo (nel caso specifico: il club).
+
+Il merge è **deterministic-first**: `if v is not None and not data.get(k)`.
+Un valore estratto dal regex non viene mai sovrascritto dall'LLM (test
+`test_deterministic_data_is_never_overwritten_by_the_llm`).
 
 ---
 
@@ -323,9 +333,14 @@ Con ~5.000 chiamate/giorno di capacità free → **~100 leghe** prima di dover p
 | Fase | Contenuto | Rischio | Stato |
 |---|---|---|---|
 | **1** | Layer LLM (gateway, ledger, cache, registry) + test offline. `llm_fallback.chat_json` delega al gateway, path legacy come via di fuga | basso — tocca solo il fallback | **fatto** |
-| **2** | Enrichment senza grounding: URL cache + Scrapling + regex-first + gateway. A/B su 50 giocatori | medio — è il cuore del dato | da fare |
-| **3** | Discovery senza grounding: Tavily/RSS primario + `triage` sul gateway. Gemini rimosso dal path caldo | medio | da fare |
+| **2** | Enrichment senza grounding: `src/free_stack.py` (ricerca senza chiavi) + cache URL TM + fetch + regex-first + gateway sul residuo | medio — è il cuore del dato | **fatto**, A/B da eseguire |
+| **3** | Discovery senza grounding: `GlobalScraper.discover_players` free-first, grounding solo con `OB1_LLM_MODE=gemini_first` | medio | **fatto** |
 | **4** | Multi-lega (matrix o Workers) + consenso 2 modelli sui campi critici | alto — nuovo carico | da fare |
+
+**A/B ancora da eseguire prima di considerare chiusa la Fase 2**: su 50 giocatori
+già arricchiti via grounding, la catena free deve concordare su `birth_date`,
+`current_club` e `market_value` in ≥95% dei casi. Finché il confronto non è fatto,
+`OB1_LLM_MODE=gemini_first` resta la via per tornare al comportamento noto.
 
 Ogni fase è indipendente e reversibile: `OB1_LLM_GATEWAY=0` riporta al comportamento
 precedente senza rollback di codice.

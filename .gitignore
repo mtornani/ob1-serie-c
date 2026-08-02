@@ -45,3 +45,6 @@ data/snapshots/
 
 # LLM response cache (persistita via artifact CI, non nel repo)
 data/llm_cache/
+
+# Cache ricerche web free (TTL 7 giorni)
+data/search_cache/

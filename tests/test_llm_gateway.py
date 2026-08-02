@@ -310,7 +310,37 @@ class TestRegistry(GatewayTestCase):
         # Nessuna chiave in env di test => nessuna rotta, ma il parsing regge
         for prov in reg.config["providers"]:
             self.assertTrue(prov.get("models"), f"{prov['id']} senza modelli")
-            self.assertTrue(prov.get("base_url", "").startswith("https://"))
+            # base_url statica (https) oppure presa da env (endpoint locali)
+            if not prov.get("base_url_env"):
+                self.assertTrue(prov.get("base_url", "").startswith("https://"),
+                                f"{prov['id']}: base_url non https")
+
+    def test_env_driven_provider_needs_its_env_var(self):
+        """COMPARE_*: senza COMPARE_BASE_URL il provider non produce rotte."""
+        cfg = {"version": 1, "task_classes": {"extract": {"min_tier": "small"}},
+               "providers": [{"id": "compare", "base_url_env": "TEST_COMPARE_URL",
+                              "api_key_env": "TEST_COMPARE_KEY", "requires_key": False,
+                              "limits": {}, "models": [{"name": "local-model",
+                                                        "name_env": "TEST_COMPARE_MODEL",
+                                                        "tier": "frontier",
+                                                        "tasks": ["extract"]}]}]}
+        os.environ.pop("TEST_COMPARE_URL", None)
+        self.assertEqual(Registry(cfg).routes, [])
+
+        os.environ["TEST_COMPARE_URL"] = "http://localhost:20128/v1"
+        os.environ["TEST_COMPARE_MODEL"] = "qwen-local"
+        self.addCleanup(lambda: os.environ.pop("TEST_COMPARE_URL", None))
+        self.addCleanup(lambda: os.environ.pop("TEST_COMPARE_MODEL", None))
+        routes = Registry(cfg).routes
+        self.assertEqual(len(routes), 1)  # nessuna chiave richiesta
+        self.assertEqual(routes[0].model, "qwen-local")
+        self.assertEqual(routes[0].base_url, "http://localhost:20128/v1")
+
+    def test_provider_can_be_excluded_from_routing(self):
+        reg = Registry(CONFIG)
+        without = reg.routes_for("extract", exclude_providers={"primary"})
+        self.assertNotIn("primary", [r.provider for r in without])
+        self.assertTrue(without)
 
 
 class TestJsonParsing(unittest.TestCase):

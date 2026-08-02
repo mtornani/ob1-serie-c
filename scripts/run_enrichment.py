@@ -41,6 +41,7 @@ _JUNK_TERMS = [
 ]
 
 _TM_KEYS = ['nationality', 'second_nationality', 'foot', 'market_value',
+            'enrichment_source',
             'market_value_formatted', 'height_cm', 'birth_date', 'contract_expires',
             'tm_url', 'agent', 'appearances', 'goals', 'assists', 'minutes_played',
             'current_club']
@@ -131,8 +132,8 @@ def main():
         batches = batches[:MAX_BATCHES_PER_RUN]
 
     for bi, batch in enumerate(batches, 1):
-        if enricher.gemini_disabled:
-            print(f"  [STOP] Gemini off — batch {bi}–{len(batches)} rinviati (niente thrash)")
+        if enricher.stalled:
+            print(f"  [STOP] nessuna rotta LLM — batch {bi}–{len(batches)} rinviati")
             break
         names = [o['player_name'] for o in batch]
         print(f"\n[batch {bi}/{len(batches)}] {', '.join(names)}")
@@ -145,13 +146,18 @@ def main():
                       f"{tm.get('market_value_text') or '?'} | age={opp.get('age')} "
                       f"| apps={tm.get('appearances', '?')}")
         DATA_FILE.write_text(json.dumps(opportunities, ensure_ascii=False, indent=2), encoding='utf-8')
-        if bi < len(batches) and not enricher.gemini_disabled:
+        if bi < len(batches) and not enricher.stalled:
             time.sleep(DELAY_BETWEEN_BATCHES)
 
     if enriched and DATA_FILE_DOCS.exists():
         DATA_FILE_DOCS.write_text(json.dumps(opportunities, ensure_ascii=False, indent=2), encoding='utf-8')
     print(f"\nTotale: {len(pending)} candidati | Arricchiti: {enriched} | "
-          f"Chiamate Gemini: {len(batches)} (era {len(pending)} prima del batching)")
+          f"Batch elaborati: {len(batches)}")
+    try:
+        from src.llm import get_gateway
+        print(get_gateway().run_summary())
+    except Exception:
+        pass
 
 
 if __name__ == "__main__":

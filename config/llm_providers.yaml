@@ -67,7 +67,7 @@ providers:
         context: 128000
         json_mode: true
         tasks: [triage, extract]
-        priority: 10
+        priority: 12
       - name: qwen-3-235b-a22b-instruct
         tier: frontier
         context: 128000
@@ -91,7 +91,7 @@ providers:
         context: 128000
         json_mode: true
         tasks: [triage, extract]
-        priority: 15
+        priority: 10
         # TPM stretto: prompt lunghi vanno altrove
         max_input_chars: 12000
 
@@ -174,6 +174,8 @@ providers:
       rpd: 180
     models:
       - name: gemini-2.5-flash
+        # gemini-2.0-flash è deprecato (404): il default resta 2.5
+        name_env: GEMINI_MODEL
         tier: mid
         context: 1000000
         json_mode: true
@@ -185,6 +187,25 @@ providers:
         json_mode: true
         tasks: [triage, extract]
         priority: 85
+
+  # --- Endpoint OpenAI-compatible self-hosted (COMPARE / LM Studio / Ollama).
+  #     Attivo solo se COMPARE_BASE_URL è impostata. Nessuna chiave richiesta.
+  - id: compare
+    base_url_env: COMPARE_BASE_URL
+    api_key_env: COMPARE_API_KEY
+    requires_key: false
+    commercial_use: true
+    trains_on_data: false
+    limits:
+      rpm: 60
+    models:
+      - name: local-model
+        name_env: COMPARE_MODEL
+        tier: frontier
+        context: 32000
+        json_mode: false
+        tasks: [triage, extract, reason]
+        priority: 50
 
   # --- Ultimo anello: a pagamento, spento di default. Si accende solo con
   #     OB1_LLM_ALLOW_PAID=1 e serve a non far cadere la pipeline in un giorno nero.

@@ -137,8 +137,25 @@ GitHub repo (public)
 - `src/llm_fallback.py` è ora uno shim sul gateway; `OB1_LLM_GATEWAY=0` torna al legacy
 - Kill switch costi: `OB1_LLM_ALLOW_PAID=0` di default → nessuna chiamata fatturabile
 - 30 test offline (`tests/test_llm_gateway.py`) + workflow `tests.yml`
-- **Ancora da fare (Fase 2-3)**: rimuovere Gemini Search Grounding da discovery ed
-  enrichment — è lì che sta il costo vero ($14–35 per 1.000 prompt groundizzati)
+- **Ancora da fare (Fase 4)**: multi-lega (matrix/Workers) + consenso 2 modelli
+
+### 2026-08-02 — ARCH-001 Fasi 2-3: free search + free LLM (grounding fuori)
+- `src/free_stack.py`: catena ricerca senza chiavi obbligatorie
+  (cache 7g → DuckDuckGo → SearXNG → Tavily* → Serper*) e `llm_complete_json` /
+  `has_any_llm` sopra il gateway. `OB1_SEARCH_MODE=serper` torna al legacy
+- `OB1_LLM_MODE`: `free_first` (default) | `free_only` | `gemini_first`
+- Enricher: **non solleva più** senza GEMINI_API_KEY/SERPER_API_KEY — l'unico
+  requisito è `has_any_llm()`. La sola `GROQ_API_KEY` basta per arricchire
+- `enrich_player_free`: URL TM cachato (`data/tm_urls.json`, la ricerca si paga
+  una volta per giocatore) → fetch → `parse_tm_text` regex → LLM solo sul residuo.
+  Deterministic-first: il regex non viene mai sovrascritto dall'LLM
+- Discovery: `GlobalScraper.discover_players` free-first; grounding Gemini solo con
+  `OB1_LLM_MODE=gemini_first`. Su vuoto ricade sul percorso Tavily preesistente
+- `run_enrichment.py`: lo stop non è più `gemini_disabled` ma `enricher.stalled`
+  (altrimenti il percorso free si fermava subito). Campo `enrichment_source` persistito
+- Registry: `base_url_env`/`name_env`/`requires_key` → supporto COMPARE_BASE_URL
+  (endpoint OpenAI-compatible locale) e GEMINI_MODEL configurabile
+- 62 test offline (gateway + free_stack + enricher), zero rete
 
 ### 2026-06-01 — Backend robustness (K-Sport pilot prep)
 - Fix 1: html.escape su tutti i campi dinamici Telegram, rimossa troncatura summary

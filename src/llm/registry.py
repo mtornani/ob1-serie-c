@@ -12,7 +12,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Iterable, List, Optional
 
 import yaml
 
@@ -100,16 +100,29 @@ class Registry:
     def _build_routes(self) -> List[Route]:
         routes: List[Route] = []
         for prov in self.config.get("providers") or []:
+            # base_url può venire da env (endpoint locali tipo COMPARE_BASE_URL)
+            base_url = prov.get("base_url") or ""
+            if prov.get("base_url_env"):
+                base_url = (os.getenv(prov["base_url_env"]) or "").strip() or base_url
+            if not base_url:
+                continue
             keys = _real_keys(prov.get("api_key_env", ""))
+            if not keys and prov.get("requires_key", True) is False:
+                keys = ["local"]  # endpoint senza autenticazione
             if not keys:
                 continue  # provider non configurato: si salta in silenzio
             limits = prov.get("limits") or {}
             for model in prov.get("models") or []:
+                name = model.get("name") or ""
+                if model.get("name_env"):
+                    name = (os.getenv(model["name_env"]) or "").strip() or name
+                if not name:
+                    continue
                 for idx, key in enumerate(keys):
                     routes.append(Route(
                         provider=prov["id"],
-                        base_url=prov["base_url"].rstrip("/"),
-                        model=model["name"],
+                        base_url=base_url.rstrip("/"),
+                        model=name,
                         api_key=key,
                         key_index=idx,
                         tier=model.get("tier", "small"),
@@ -133,12 +146,20 @@ class Registry:
     def routes_for(
         self, task: str, allow_paid: bool = False,
         commercial_only: bool = False, allow_training: bool = True,
+        exclude_providers: Optional[Iterable[str]] = None,
+        only_providers: Optional[Iterable[str]] = None,
     ) -> List[Route]:
         tc = self.task_class(task)
         floor = TIER_ORDER.get(tc.min_tier, 1)
+        excluded = set(exclude_providers or ())
+        included = set(only_providers or ())
         out = []
         for r in self.routes:
             if task not in r.tasks:
+                continue
+            if r.provider in excluded:
+                continue
+            if included and r.provider not in included:
                 continue
             if TIER_ORDER.get(r.tier, 0) < floor:
                 continue

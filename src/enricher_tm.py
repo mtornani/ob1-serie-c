@@ -1,22 +1,56 @@
 #!/usr/bin/env python3
 """
-OB1 Serie C - Transfermarkt Enricher v2
-Uses Gemini Search Grounding for TM data extraction — bypasses Cloudflare/JS rendering.
-Fallback: Tavily advanced search.
+OB1 Serie C - Transfermarkt Enricher v3
+
+Free-first: l'arricchimento funziona con la sola GROQ_API_KEY (o qualunque
+altra rotta free del gateway). Nessuna chiave è obbligatoria di per sé —
+l'unico requisito è che esista *una* via per fare inferenza (has_any_llm()).
+
+Percorsi, in ordine:
+  1. free: ricerca senza chiave (DDG/SearXNG) -> fetch pagina -> regex -> LLM sul residuo
+  2. gemini grounded: solo se GEMINI_API_KEY c'è e OB1_LLM_MODE lo consente
 """
 
 import os
 import re
 import json
+import html
 import time
+from pathlib import Path
 from typing import Dict, Any, List, Optional
 import requests
-from dotenv import load_dotenv
-from google import genai
 
-from src.llm_fallback import resolve_fallback, chat_json
+try:
+    from dotenv import load_dotenv
+except ImportError:  # dotenv è opzionale: senza, si usano le env vars reali
+    def load_dotenv(*_a, **_kw):
+        return False
+
+try:
+    from google import genai
+except ImportError:  # google-genai non installato: si gira solo free
+    genai = None
+
+try:
+    from src.llm_fallback import resolve_fallback, chat_json
+    from src.free_stack import (free_web_search, has_any_llm, llm_complete_json,
+                                llm_mode, llm_source_label, describe_stack)
+except ImportError:  # layout PYTHONPATH=src
+    from llm_fallback import resolve_fallback, chat_json
+    from free_stack import (free_web_search, has_any_llm, llm_complete_json,
+                            llm_mode, llm_source_label, describe_stack)
 
 load_dotenv()
+
+# Cache URL Transfermarkt per giocatore: un profilo TM non cambia mai indirizzo,
+# quindi la ricerca si paga una volta sola nella vita del giocatore.
+TM_URL_CACHE = Path("data/tm_urls.json")
+
+_TM_HEADERS = {
+    "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                   "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"),
+    "Accept-Language": "it-IT,it;q=0.9",
+}
 
 # Batch size for grounded enrichment. One Gemini call covers this many
 # players — the main cost lever (N players -> N/BATCH calls instead of N).
@@ -229,23 +263,54 @@ Se un calciatore non è trovato su Transfermarkt, usa {{}} come suo valore. Non 
 
 class TransfermarktEnricher:
     """
-    Arricchisce profili giocatori con dati TM via Gemini Search Grounding.
-    Fallback Tavily per casi dove grounding non trova risultati.
+    Arricchisce profili giocatori con dati Transfermarkt.
+
+    Nessuna singola chiave è obbligatoria: serve solo che esista una rotta LLM
+    (Groq da solo basta). Gemini e Serper, se ci sono, si aggiungono; se non
+    ci sono, non bloccano niente.
     """
 
     def __init__(self):
         self.tavily_key = os.getenv("TAVILY_API_KEY")
         self.gemini_key = os.getenv("GEMINI_API_KEY")
 
-        if not self.gemini_key:
-            raise ValueError("GEMINI_API_KEY mancante")
+        # L'unico requisito reale: poter fare inferenza da qualche parte.
+        if not has_any_llm():
+            raise ValueError(
+                "Nessuna rotta LLM configurata. Basta una tra GROQ_API_KEY, "
+                "CEREBRAS_API_KEY, OPENROUTER_API_KEY, MISTRAL_API_KEY, "
+                "NVIDIA_API_KEY, COMPARE_BASE_URL o GEMINI_API_KEY."
+            )
 
         self.session = requests.Session()
-        self.gemini_client = genai.Client(api_key=self.gemini_key)
-        self.gemini_disabled = False  # daily quota / credits circuit breaker
+        self.mode = llm_mode()
+        self.gemini_client = None
+        if self.gemini_key and genai is not None and self.mode != "free_only":
+            try:
+                self.gemini_client = genai.Client(api_key=self.gemini_key)
+            except Exception as e:
+                print(f"  [GEMINI] client non inizializzato ({str(e)[:80]}) — si prosegue free")
+        self.gemini_disabled = self.gemini_client is None
         self.fallback_cfg = resolve_fallback()
-        if self.fallback_cfg:
-            print(f"  [LLM] fallback pronto: {self.fallback_cfg['label']} (solo single-player)")
+        self._tm_urls = self._load_tm_urls()
+        print(f"  [LLM] {describe_stack()}")
+
+    # ------------------------------------------------------------ cache URL TM
+    def _load_tm_urls(self) -> Dict[str, str]:
+        try:
+            data = json.loads(TM_URL_CACHE.read_text(encoding="utf-8"))
+            return data if isinstance(data, dict) else {}
+        except (OSError, ValueError):
+            return {}
+
+    def _save_tm_urls(self) -> None:
+        try:
+            TM_URL_CACHE.parent.mkdir(parents=True, exist_ok=True)
+            TM_URL_CACHE.write_text(
+                json.dumps(self._tm_urls, ensure_ascii=False, indent=2, sort_keys=True),
+                encoding="utf-8")
+        except OSError:
+            pass
 
     def _parse_json_response(self, text: str) -> Dict[str, Any]:
         """Extract and parse JSON from Gemini response text."""
@@ -263,10 +328,12 @@ class TransfermarktEnricher:
             return {}
 
     def enrich_player_grounded(self, player_name: str) -> Dict[str, Any]:
-        """Primary enrichment: Gemini Search Grounding on Transfermarkt."""
+        """Gemini Search Grounding su TM. Disponibile solo se il client c'è."""
+        if not self.gemini_client:
+            return {}
         try:
             response = self.gemini_client.models.generate_content(
-                model="gemini-2.5-flash",
+                model=os.getenv("GEMINI_MODEL") or "gemini-2.5-flash",
                 contents=_GROUNDING_PROMPT.format(name=player_name),
                 config=genai.types.GenerateContentConfig(
                     tools=[genai.types.Tool(google_search=genai.types.GoogleSearch())],
@@ -294,80 +361,138 @@ class TransfermarktEnricher:
             f"CONTENUTO:\n{raw_content[:12000]}"
         )
 
-    def enrich_player_tavily(self, player_name: str) -> Dict[str, Any]:
-        """Single-player: Tavily page + regex (opz. Groq se thin). Non usato in batch CI."""
-        if not self.tavily_key:
-            return {}
+    # ------------------------------------------------------------ percorso free
+    def _tm_url_for(self, player_name: str) -> tuple:
+        """
+        (url TM, testo dallo snippet). Ricerca senza chiavi obbligatorie.
+        L'URL viene cachato per sempre: un giocatore ha un solo profilo TM.
+        """
+        cached = self._tm_urls.get(player_name.lower())
+        if cached:
+            return cached, ""
+        source, results = free_web_search(
+            f"{player_name} profilo giocatore",
+            max_results=5,
+            include_domains=["transfermarkt.it", "transfermarkt.com"],
+        )
+        url, content = "", ""
+        for r in results:
+            if "/profil/spieler/" in (r.get("url") or "").lower():
+                url, content = r["url"], r.get("content") or ""
+                break
+        if not url and results:
+            url = results[0].get("url") or ""
+            content = results[0].get("content") or ""
+        if url:
+            self._tm_urls[player_name.lower()] = url
+            self._save_tm_urls()
+            print(f"  [TM URL/{source}] {player_name}: {url[:70]}")
+        return url, content
+
+    def _fetch_page_text(self, url: str) -> str:
+        """Scarica la pagina e la riduce a testo. TM a volte risponde 403: ok."""
+        if not url:
+            return ""
         try:
-            res = self.session.post(
-                "https://api.tavily.com/search",
-                json={
-                    "api_key": self.tavily_key,
-                    "query": f"site:transfermarkt.it {player_name} profilo giocatore",
-                    "search_depth": "basic",
-                    "max_results": 3,
-                    "include_domains": ["transfermarkt.it"],
-                    "include_raw_content": True,
-                },
-                timeout=30,
-            )
-            if res.status_code == 432:
-                print(f"  [TAVILY] 432 rate limit — skip {player_name}")
-                return {}
-            res.raise_for_status()
-            results = res.json().get("results") or []
-            url, raw = "", ""
-            for r in results:
-                u = r.get("url") or ""
-                if "/profil/spieler/" in u.lower():
-                    url, raw = u, (r.get("raw_content") or r.get("content") or "")
-                    break
-            if not url and results:
-                url = results[0].get("url") or ""
-                raw = results[0].get("raw_content") or results[0].get("content") or ""
-            if not raw:
-                return {}
-            data = parse_tm_text(raw, url)
-            if data.get("birth_date") or data.get("current_club"):
-                print(
-                    f"  [REGEX] {player_name}: {data.get('birth_date')} / {data.get('current_club')}"
-                )
-            # Groq only if regex thin and configured
-            thin = not (data.get("birth_date") and data.get("current_club"))
-            if thin and self.fallback_cfg:
-                try:
-                    text = chat_json(self._parse_prompt_for_player(player_name, url, raw))
-                    llm = self._parse_json_response(text)
-                    for k, v in (llm or {}).items():
-                        if v is not None and not data.get(k):
-                            data[k] = v
-                except Exception as e:
-                    print(f"  [FALLBACK ERROR] {player_name}: {e}")
-            if url and data and not data.get("tm_url"):
-                data["tm_url"] = url
-            return data or {}
-        except Exception as e:
-            print(f"  [TAVILY ERROR] {player_name}: {e}")
+            res = self.session.get(url, headers=_TM_HEADERS, timeout=25)
+            if res.status_code != 200:
+                print(f"  [FETCH] HTTP {res.status_code} su {url[:60]}")
+                return ""
+            body = res.text
+        except requests.RequestException as e:
+            print(f"  [FETCH ERROR] {type(e).__name__} su {url[:60]}")
+            return ""
+        body = re.sub(r"(?is)<(script|style)[^>]*>.*?</\1>", " ", body)
+        return re.sub(r"[ \t\r\f\v]+", " ", html.unescape(re.sub(r"(?s)<[^>]+>", " ", body)))
+
+    def enrich_player_free(self, player_name: str) -> Dict[str, Any]:
+        """
+        Percorso a costo zero: ricerca free -> fetch -> regex -> LLM sul residuo.
+        Funziona con la sola GROQ_API_KEY, senza Serper e senza Gemini.
+        """
+        url, snippet = self._tm_url_for(player_name)
+        raw = self._fetch_page_text(url)
+        # TM risponde 403 di frequente: in quel caso resta lo snippet della
+        # ricerca. Si tiene il testo più ricco tra i due, mai il più povero.
+        if snippet and len(snippet) > len(raw):
+            raw = snippet
+        if not raw:
             return {}
 
-    def enrich_player(self, player_name: str) -> Dict[str, Any]:
-        """Single: Gemini grounding, else Tavily+regex."""
+        data = parse_tm_text(raw, url)  # regex: zero costo, zero allucinazioni
+        if data.get("birth_date") or data.get("current_club"):
+            print(f"  [REGEX] {player_name}: {data.get('birth_date')} / {data.get('current_club')}")
+
+        thin = not (data.get("birth_date") and data.get("current_club"))
+        if thin:
+            llm = llm_complete_json(
+                "Sei un estrattore di dati Transfermarkt. Rispondi SOLO con JSON valido.",
+                self._parse_prompt_for_player(player_name, url, raw),
+                gemini_client=self.gemini_client,
+            )
+            if isinstance(llm, dict):
+                # Il deterministico vince: l'LLM riempie i buchi, non li corregge
+                for k, v in llm.items():
+                    if v is not None and not data.get(k):
+                        data[k] = v
+
+        if url and data and not data.get("tm_url"):
+            data["tm_url"] = url
+        if data:
+            data["enrichment_source"] = llm_source_label() if thin else "Enrichment:regex"
+        return data or {}
+
+    # Nome storico: i call site esistenti continuano a funzionare.
+    enrich_player_tavily = enrich_player_free
+
+    @property
+    def stalled(self) -> bool:
+        """True quando non resta nessuna via per arricchire in questa run."""
         if not self.gemini_disabled:
+            return False
+        return not has_any_llm(free_only=True)
+
+    def enrich_player(self, player_name: str) -> Dict[str, Any]:
+        """Single player. Ordine deciso da OB1_LLM_MODE (default: free first)."""
+        if self.mode == "gemini_first" and not self.gemini_disabled:
             data = self.enrich_player_grounded(player_name)
             if data:
+                data.setdefault("enrichment_source", "Enrichment:gemini")
                 return data
-        return self.enrich_player_tavily(player_name)
+
+        data = self.enrich_player_free(player_name)
+        if data:
+            return data
+
+        if self.mode != "free_only" and not self.gemini_disabled:
+            data = self.enrich_player_grounded(player_name)
+            if data:
+                data.setdefault("enrichment_source", "Enrichment:gemini")
+        return data or {}
 
     def enrich_players_batch(self, names: List[str]) -> Dict[str, Dict[str, Any]]:
         """
-        Path CI: SOLO Gemini grounded batch (1 call / BATCH_SIZE).
-        Se Gemini morto → stop pulito, backlog alla prossima run.
-        Niente cascata Tavily/Serper/Jina: brucia tempo e quote senza gain.
+        Batch. Con OB1_LLM_MODE=gemini_first e client attivo: 1 chiamata grounded
+        ogni BATCH_SIZE giocatori (comportamento storico). Altrimenti percorso
+        free per giocatore — nessuna chiamata fatturabile.
         """
         if not names:
             return {}
+
+        if self.mode == "gemini_first" and not self.gemini_disabled:
+            out = self._enrich_batch_grounded(names)
+            if any(out.values()):
+                return out
+
+        out = {name: self.enrich_player_free(name) for name in names}
+        found = sum(1 for v in out.values() if v)
+        print(f"  [BATCH FREE] {found}/{len(names)} profili (0 chiamate fatturabili)")
+        return out
+
+    def _enrich_batch_grounded(self, names: List[str]) -> Dict[str, Dict[str, Any]]:
+        """1 chiamata Gemini grounded per BATCH_SIZE giocatori. Costo: a consumo."""
         if self.gemini_disabled:
-            print("  [BATCH SKIP] Gemini off — rinvio enrich (no thrash fallback)")
+            print("  [BATCH SKIP] Gemini off — percorso free")
             return {}
 
         prompt = _BATCH_PROMPT.format(names="\n".join(f"- {n}" for n in names))
@@ -375,7 +500,7 @@ class TransfermarktEnricher:
         for attempt in range(_MAX_RETRIES):
             try:
                 response = self.gemini_client.models.generate_content(
-                    model="gemini-2.5-flash",
+                    model=os.getenv("GEMINI_MODEL") or "gemini-2.5-flash",
                     contents=prompt,
                     config=genai.types.GenerateContentConfig(
                         tools=[genai.types.Tool(google_search=genai.types.GoogleSearch())],
@@ -411,6 +536,9 @@ class TransfermarktEnricher:
 
         by_norm = {_norm(k): v for k, v in raw.items() if isinstance(v, dict)}
         out = {name: by_norm.get(_norm(name), {}) for name in names}
+        for prof in out.values():
+            if prof:
+                prof.setdefault("enrichment_source", "Enrichment:gemini")
         found = sum(1 for v in out.values() if v)
         print(f"  [BATCH] {found}/{len(names)} profili in 1 chiamata")
         return out
