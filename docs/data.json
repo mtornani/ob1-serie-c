@@ -312,6 +312,82 @@
       }
     },
     {
+      "id": "8aca6ec268217d2c4a356a635988650e",
+      "player_name": "Angelo Testa",
+      "age": 18,
+      "role": "Portiere",
+      "role_name": "Portiere",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-08-02",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG2zi4fbuI7_KSIof5AXi-xmQ_Lezm0ijMYOBIasbcEa993qeWl8drbwkfncxnuoUgvzX_5lWrSVJB27efi9glpIgTh-Ww5q4Cls7cbB5gBAKlfgtNTE-yBmNxFYraY1RKRXyQpkj0LQ-lascphGAe4NeNPsqsCT3xONODyhs7sJfwgEpRZYB0Vsp_xEybuud5FDWiYP3GZkbBPlMxje0ZOFMbfWmSHrrBY8k_O6IwylhqM",
+      "previous_clubs": [],
+      "current_club": "Foggia Primavera",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-08-02T08:34:05.076878",
+      "ob1_score": 76,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 100,
+        "market_value": 40,
+        "league_fit": 80,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "recommendation": "Profilo giovane (18 anni), potenziale di crescita. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "CONTRIBUTO MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3185,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2008,
+        "roi_dettaglio": "Classe 2008: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2008 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Libero a zero — nessun costo di cartellino",
+          "Giovane (18 anni) — non occupa posto Over in lista",
+          "Profilo in fascia Lega Pro",
+          "Segnalazione fresca"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Valore di mercato assente o molto basso",
+          "Fonte debole o generica"
+        ],
+        "action": "Da chiamare ora"
+      }
+    },
+    {
       "id": "ec3e9e090a39ec6602d053463914144c",
       "player_name": "Achraf El Bouchataoui",
       "age": 26,
@@ -854,6 +930,81 @@
         "no": [
           "153 giorni senza club — perché non è stato preso?",
           "Svincolato da tempo con esperienza — attenzione al profilo"
+        ],
+        "action": "Da chiamare ora"
+      }
+    },
+    {
+      "id": "0012617f1840ac8b92b57171f3e712be",
+      "player_name": "Cristian De Falco",
+      "age": 20,
+      "role": "Portiere",
+      "role_name": "Portiere",
+      "opportunity_type": "svincolato",
+      "reported_date": "2026-08-01",
+      "source_name": "Gemini Search",
+      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHk1vvFbvm1DciE6gMiYD5zQUp6ZpJsR0eTojWHZ6vVYNCrAobUPgsxPT_P12_lh-E4mw7di7VDYoKSc4v4ZqmBsBiz9t53UqB51WFrBUfu_7OwZnlUrqB9O2y8djHHSW29A7X0Vc_duQ0is69xkVye2UZjADYXbH8uia2HOoFgZqw=",
+      "previous_clubs": [],
+      "current_club": "Nuova Igea Virtus",
+      "appearances": 0,
+      "goals": 0,
+      "assists": 0,
+      "minutes_played": 0,
+      "summary": "",
+      "nationality": "Italia",
+      "second_nationality": null,
+      "foot": null,
+      "market_value": 75000,
+      "market_value_formatted": "75 mila €",
+      "player_image_url": null,
+      "agent": null,
+      "discovered_at": "2026-08-01T08:27:32.212046",
+      "ob1_score": 72,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 95,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 100,
+        "market_value": 55,
+        "league_fit": 50,
+        "source": 50
+      },
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "recommendation": "Profilo giovane (20 anni), potenziale di crescita. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "CONTRIBUTO MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.4,
+        "moltiplicatore": 1.82,
+        "proiezione_stagionale": 3185,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2006,
+        "roi_dettaglio": "Classe 2006: ogni minuto giocato vale ×1.82 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 3.185 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 1,
+      "stale_free_agent": false,
+      "assessment": {
+        "yes": [
+          "Libero a zero — nessun costo di cartellino",
+          "Giovane (20 anni) — non occupa posto Over in lista",
+          "Segnalazione fresca",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Fonte debole o generica"
         ],
         "action": "Da chiamare ora"
       }
@@ -8731,26 +8882,26 @@
     }
   ],
   "stats": {
-    "total": 114,
-    "hot": 20,
+    "total": 116,
+    "hot": 22,
     "warm": 68,
     "cold": 26,
-    "today": 0,
-    "svincolati": 51,
+    "today": 1,
+    "svincolati": 53,
     "stale_free_agents": 4,
     "intel_roi": {
       "elite": 0,
       "high": 0,
-      "medium": 26,
+      "medium": 28,
       "low": 39,
       "none": 49
     },
-    "tracking_total": 388,
+    "tracking_total": 390,
     "tracking_only": 274,
-    "publishable": 114,
-    "corroborated": 94
+    "publishable": 116,
+    "corroborated": 96
   },
-  "last_update": "2026-08-02T03:22:34.688103",
+  "last_update": "2026-08-02T08:35:05.657569",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete"
