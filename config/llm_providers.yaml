@@ -1,0 +1,205 @@
+# OB1 — Registry provider LLM (routing free-tier first)
+#
+# Il gateway (src/llm/gateway.py) parla SOLO OpenAI-compatible /chat/completions.
+# Ogni provider qui sotto espone quell'endpoint, Gemini incluso (compat layer).
+#
+# Regole:
+#   - `limits` sono i tetti del free tier: il ledger li fa rispettare PRIMA
+#     della chiamata, non dopo il 429. Metti valori conservativi (~80% del reale).
+#   - `commercial_use: false` => il modello NON entra in output cliente (K-Sport).
+#   - `trains_on_data: true` => niente dati sensibili/non pubblici nel prompt.
+#   - `priority` più basso = provato prima. Il router prende il primo bucket
+#     disponibile per la task class richiesta.
+#   - `api_key_env` può contenere più chiavi separate da virgola: ogni chiave
+#     diventa un bucket indipendente (sharding orizzontale del free tier).
+#
+# Verificare i limiti ogni ~3 mesi: i free tier cambiano spesso.
+# Ultimo check: 2026-08-02.
+
+version: 1
+
+defaults:
+  timeout_s: 90
+  max_tokens: 2048
+  temperature: 0.0
+  # Backoff quando un bucket restituisce 5xx / errore transitorio
+  cooldown_transient_s: 60
+  # Fallimenti consecutivi prima di spegnere il bucket per il resto della run
+  fail_streak_limit: 3
+
+# Classi di task: dicono al router che qualità serve e quanto costa sbagliare.
+task_classes:
+  triage:
+    # Classificazione binaria / filtro junk. Modelli piccoli bastano.
+    description: "is_player? is_junk? tipo opportunità"
+    min_tier: nano
+    max_input_chars: 6000
+    cache_ttl_h: 720
+  extract:
+    # Parsing strutturato da testo GIÀ scaricato (TM, articoli).
+    # È il 90% del volume: deve girare su tier free abbondanti.
+    description: "HTML/testo -> JSON profilo giocatore"
+    min_tier: small
+    max_input_chars: 24000
+    cache_ttl_h: 336
+  reason:
+    # Giudizio scouting, dedup semantico, sintesi report cliente.
+    # Volume basso, qualità alta: qui servono i frontier.
+    description: "sintesi scouting, dedup, valutazione"
+    min_tier: frontier
+    max_input_chars: 32000
+    cache_ttl_h: 168
+
+providers:
+  # --- Volume alto, token/giorno generosi: cavalli da soma dell'extract ---
+  - id: cerebras
+    base_url: https://api.cerebras.ai/v1
+    api_key_env: CEREBRAS_API_KEY
+    commercial_use: true
+    trains_on_data: false
+    limits:
+      rpm: 25
+      rpd: null
+      tpd: 900000
+    models:
+      - name: llama-3.3-70b
+        tier: mid
+        context: 128000
+        json_mode: true
+        tasks: [triage, extract]
+        priority: 10
+      - name: qwen-3-235b-a22b-instruct
+        tier: frontier
+        context: 128000
+        json_mode: true
+        tasks: [extract, reason]
+        priority: 20
+
+  - id: groq
+    base_url: https://api.groq.com/openai/v1
+    api_key_env: GROQ_API_KEY
+    commercial_use: true
+    trains_on_data: false
+    limits:
+      rpm: 25
+      rpd: 900
+      tpm: 12000
+      tpd: 90000
+    models:
+      - name: llama-3.3-70b-versatile
+        tier: mid
+        context: 128000
+        json_mode: true
+        tasks: [triage, extract]
+        priority: 15
+        # TPM stretto: prompt lunghi vanno altrove
+        max_input_chars: 12000
+
+  - id: mistral
+    base_url: https://api.mistral.ai/v1
+    api_key_env: MISTRAL_API_KEY
+    commercial_use: true
+    # Free tier Mistral = "Experiment": i dati possono essere usati per training
+    trains_on_data: true
+    limits:
+      rpm: 30
+      rpd: 2000
+      tpm: 500000
+    models:
+      - name: mistral-small-latest
+        tier: small
+        context: 128000
+        json_mode: true
+        tasks: [triage, extract]
+        priority: 25
+
+  # --- Frontier gratis: volume basso, usare solo per `reason` ---
+  - id: openrouter
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    commercial_use: true
+    trains_on_data: false
+    limits:
+      rpm: 18
+      # 50/giorno senza credito, 1000/giorno dopo un top-up una tantum da $10
+      rpd: 900
+    extra_headers:
+      HTTP-Referer: https://ob1-lega-pro.pages.dev
+      X-Title: OB1 Lega Pro
+    models:
+      - name: deepseek/deepseek-v3.2:free
+        tier: frontier
+        context: 163840
+        json_mode: true
+        tasks: [reason, extract]
+        priority: 30
+      - name: qwen/qwen3-235b-a22b:free
+        tier: frontier
+        context: 262144
+        json_mode: true
+        tasks: [reason, extract]
+        priority: 35
+      - name: meta-llama/llama-3.3-70b-instruct:free
+        tier: mid
+        context: 128000
+        json_mode: false
+        tasks: [triage, extract]
+        priority: 40
+
+  - id: nvidia_nim
+    base_url: https://integrate.api.nvidia.com/v1
+    api_key_env: NVIDIA_API_KEY
+    commercial_use: true
+    trains_on_data: false
+    limits:
+      rpm: 20
+      rpd: 900
+    models:
+      - name: deepseek-ai/deepseek-v3.1
+        tier: frontier
+        context: 128000
+        json_mode: true
+        tasks: [reason, extract]
+        priority: 45
+
+  # --- Gemini: da PRIMARIO a ultima spiaggia. Zero grounding (è quello che costa) ---
+  - id: gemini
+    base_url: https://generativelanguage.googleapis.com/v1beta/openai
+    api_key_env: GEMINI_API_KEY
+    commercial_use: true
+    # Free tier Google: i prompt possono finire nel training fuori UE/UK/EEA
+    trains_on_data: true
+    limits:
+      rpm: 10
+      rpd: 180
+    models:
+      - name: gemini-2.5-flash
+        tier: mid
+        context: 1000000
+        json_mode: true
+        tasks: [triage, extract, reason]
+        priority: 80
+      - name: gemini-2.5-flash-lite
+        tier: small
+        context: 1000000
+        json_mode: true
+        tasks: [triage, extract]
+        priority: 85
+
+  # --- Ultimo anello: a pagamento, spento di default. Si accende solo con
+  #     OB1_LLM_ALLOW_PAID=1 e serve a non far cadere la pipeline in un giorno nero.
+  - id: openrouter_paid
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    commercial_use: true
+    trains_on_data: false
+    paid: true
+    limits:
+      rpm: 60
+    models:
+      - name: deepseek/deepseek-v3.2
+        tier: frontier
+        context: 163840
+        json_mode: true
+        tasks: [triage, extract, reason]
+        priority: 999

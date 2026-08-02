@@ -126,6 +126,20 @@ GitHub repo (public)
 
 ## Changelog
 
+### 2026-08-02 — ARCH-001: LLM gateway multi-provider (Fase 1)
+- Spec architettura produzione: `.dev/ARCH-001_production_llm.md` (modello di costo,
+  matrice provider free-tier, piano migrazione in 4 fasi)
+- Nuovo layer `src/llm/`: registry (YAML→rotte), ledger quote persistito
+  (`data/llm_ledger.json`), cache risposte (`data/llm_cache/`, gitignorata), gateway
+  con failover automatico. Un solo protocollo: OpenAI-compatible /chat/completions
+- `config/llm_providers.yaml`: Cerebras, Groq, Mistral, OpenRouter, NVIDIA NIM, Gemini
+  (ora ultima rotta, priorità 80). Task class: triage / extract / reason
+- `src/llm_fallback.py` è ora uno shim sul gateway; `OB1_LLM_GATEWAY=0` torna al legacy
+- Kill switch costi: `OB1_LLM_ALLOW_PAID=0` di default → nessuna chiamata fatturabile
+- 30 test offline (`tests/test_llm_gateway.py`) + workflow `tests.yml`
+- **Ancora da fare (Fase 2-3)**: rimuovere Gemini Search Grounding da discovery ed
+  enrichment — è lì che sta il costo vero ($14–35 per 1.000 prompt groundizzati)
+
 ### 2026-06-01 — Backend robustness (K-Sport pilot prep)
 - Fix 1: html.escape su tutti i campi dinamici Telegram, rimossa troncatura summary
 - Fix 2: admin_alert(severity, source, message) in notifier.py + wired in ouroboros_run.py + ingest.yml failure step + TELEGRAM_CHAT_ID fix

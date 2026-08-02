@@ -42,3 +42,6 @@ logs/
 htmlcov/
 node_modules/
 data/snapshots/
+
+# LLM response cache (persistita via artifact CI, non nel repo)
+data/llm_cache/

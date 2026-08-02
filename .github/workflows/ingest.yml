@@ -58,6 +58,12 @@ jobs:
         TELEGRAM_OFFICE_CHAT_ID: ${{ secrets.TELEGRAM_OFFICE_CHAT_ID }}
         # Leave free-tier RPD for enrichment (age fills publish gate)
         GEMINI_DISCOVERY_BUDGET: "4"
+        # LLM gateway (ARCH-001) — secret assenti = rotta semplicemente assente
+        CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+        GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+        OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
       run: python scripts/ouroboros_run.py
 
     - name: Enrich with Transfermarkt data
@@ -66,6 +72,12 @@ jobs:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         # Batch CI = solo Gemini grounded. Stop se quota morta (no cascata).
         MAX_ENRICH_BATCHES: "4"
+        # LLM gateway (ARCH-001): il fallback single-player esce da qui
+        CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+        GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+        OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
       run: python scripts/run_enrichment.py
 
     - name: Generate dashboard
