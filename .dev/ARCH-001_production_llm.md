@@ -337,9 +337,46 @@ Con ~5.000 chiamate/giorno di capacità free → **~100 leghe** prima di dover p
 | **3** | Discovery senza grounding: `GlobalScraper.discover_players` free-first, grounding solo con `OB1_LLM_MODE=gemini_first` | medio | **fatto** |
 | **4** | Multi-lega (matrix o Workers) + consenso 2 modelli sui campi critici | alto — nuovo carico | da fare |
 
-**A/B ancora da eseguire prima di considerare chiusa la Fase 2**: su 50 giocatori
-già arricchiti via grounding, la catena free deve concordare su `birth_date`,
-`current_club` e `market_value` in ≥95% dei casi. Finché il confronto non è fatto,
+### Misure sul campo (2026-08-03, chiave Groq temporanea)
+
+Campione: 20 giocatori estratti dai 342 già arricchiti via grounding.
+
+| Esito | Numero |
+|---|---|
+| Profili trovati **prima** che DuckDuckGo bloccasse | 5/5 |
+| Profili trovati **dopo** il blocco (query 6-20) | 0/15 |
+| `birth_date` concordanti sui trovati | 5/5 esatti |
+| `market_value` concordanti | 2/3 esatti |
+| Chiamate LLM necessarie | 5/20 (il resto risolto dal solo regex) |
+
+Tre cose imparate, tutte finite in codice:
+
+1. **DuckDuckGo blocca dopo ~5 ricerche ravvicinate** (HTTP 202 + pagina
+   anti-bot). Il codice lo leggeva come "nessun risultato": un blocco si
+   travestiva da giocatore inesistente. Ora è riconosciuto, messo in cooldown
+   15 min, e la ricerca ritorna `blocked` invece di `none`.
+2. **Un 429 "tokens per day" di Groq spegneva la rotta fino a mezzanotte UTC**,
+   anche quando il provider dichiarava "riprova tra 23 minuti". Con una sola
+   rotta free configurata questo fermava l'arricchimento per l'intera giornata.
+   Ora il retry-after dichiarato dal provider ha la precedenza sulla congettura
+   minuto/giorno. È la dimostrazione empirica del §5: **una sola rotta free è un
+   single point of failure**, il margine 8× serve esattamente a questo.
+3. **`current_club` non veniva mai estratto**: il regex cercava "Club attuale"
+   sulla stessa riga, mentre la pagina TM ripulita dai tag scrive
+   "Squadra attuale:" con il valore su una riga successiva. Verificato dopo il
+   fix su tre profili reali: US Avellino 1912, US Cremonese, Ternana.
+
+Nota sul confronto: uno dei tre `market_value` "divergenti" era Aramu, ref
+800.000 € contro 400.000 € letti oggi dalla pagina. La pagina ha ragione — il
+riferimento era vecchio. Il baseline grounded **non è oro**: contiene anche
+entry spazzatura (un "Comunicato Ufficiale" con valore 50 mln €). Questo
+rafforza la necessità del layer L4 VERIFY (§3) con i range check.
+
+**A/B da completare prima di considerare chiusa la Fase 2**: su 50 giocatori
+già arricchiti via grounding, la catena free deve concordare su `birth_date`, `current_club` e
+`market_value` in ≥95% dei casi. Il campione utile finora è 5, troppo piccolo per
+concludere: va rifatto con `TAVILY_API_KEY` configurata, così il blocco di DDG non
+azzera la copertura a metà run. Finché il confronto non è completo,
 `OB1_LLM_MODE=gemini_first` resta la via per tornare al comportamento noto.
 
 Ogni fase è indipendente e reversibile: `OB1_LLM_GATEWAY=0` riporta al comportamento

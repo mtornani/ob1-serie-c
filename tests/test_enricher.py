@@ -173,6 +173,37 @@ class TestBatch(EnricherTestCase):
 
 
 class TestParseTmText(unittest.TestCase):
+    # Layout reale della pagina TM ripulita dai tag: label e valore su righe
+    # diverse. Prima di questo caso il club non veniva mai estratto.
+    TM_STRIPPED = """Cosimo Patierno
+ Piede:
+ destro
+ Procuratore:
+ Gio'sport
+ Squadra attuale:
+
+
+ US Avellino 1912
+
+ In rosa da:
+ 10/07/2023
+ Scadenza:
+ 30/06/2027
+"""
+
+    def test_club_on_a_following_line(self):
+        data = parse_tm_text(self.TM_STRIPPED)
+        self.assertEqual(data["current_club"], "US Avellino 1912")
+
+    def test_club_label_is_not_mistaken_for_a_value(self):
+        data = parse_tm_text("Squadra attuale:\n\nIn rosa da:\n10/07/2023")
+        self.assertIsNone(data.get("current_club"))
+
+    def test_markdown_club_still_works(self):
+        """Il formato raw markdown di Tavily non deve regredire."""
+        md = "[Atalanta U23](/atalanta-u23/startseite/verein/54365) Nato il: 03/05/2006"
+        self.assertEqual(parse_tm_text(md)["current_club"], "Atalanta U23")
+
     def test_italian_page(self):
         data = parse_tm_text(TM_PAGE, TM_URL)
         self.assertEqual(data["birth_date"], "2006-05-03")

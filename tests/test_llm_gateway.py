@@ -16,7 +16,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.llm.cache import ResponseCache
-from src.llm.gateway import LLMGateway, _parse_json
+from src.llm.gateway import LLMGateway, _parse_json, _parse_retry_after
 from src.llm.ledger import QuotaLedger
 from src.llm.registry import Registry
 
@@ -277,6 +277,52 @@ class TestLedger(GatewayTestCase):
         led = QuotaLedger(path)
         led.record_success("a:b:0", tokens=1)
         self.assertIn("buckets", json.loads(path.read_text(encoding="utf-8")))
+
+
+class TestRateLimitHandling(GatewayTestCase):
+    """Un 429 va interpretato, non indovinato: il provider dice quanto aspettare."""
+
+    GROQ_TPD = ("Rate limit reached for model `llama-3.3-70b-versatile` in organization "
+                "`org_x` service tier `on_demand` on tokens per day (TPD): Limit 100000, "
+                "Used 99000, Requested 5000. Please try again in 3m59s.")
+    GROQ_TPM = ("Rate limit reached ... on tokens per minute (TPM): Limit 12000, "
+                "Used 11000, Requested 5000. Please try again in 24.5s.")
+
+    def test_retry_after_is_parsed_from_the_body(self):
+        self.assertEqual(_parse_retry_after(self.GROQ_TPM), 25)
+        self.assertEqual(_parse_retry_after(self.GROQ_TPD), 240)
+        self.assertEqual(_parse_retry_after("no hint here"), 0)
+
+    def test_retry_after_wins_over_the_day_guess(self):
+        """
+        Il caso visto in produzione: 'tokens per day' + 'try again in 3m59s'.
+        Prima spegneva la rotta fino a mezzanotte UTC — con una sola rotta free
+        configurata, l'arricchimento si fermava per il resto della giornata.
+        """
+        gw = self.build({"primary.test": (429, {"error": {"message": self.GROQ_TPD}}),
+                         "secondary.test": (200, ok_body("{}"))})
+        gw.complete_json("extract", "p")
+        reason = gw.ledger.blocked_reason("primary:fast-1:0", {})
+        self.assertIn("cooldown", reason)
+        cd = gw.ledger.snapshot()["buckets"]["primary:fast-1:0"]["cooldown_until"]
+        delta = datetime.fromisoformat(cd) - datetime.now(timezone.utc)
+        self.assertLess(delta.total_seconds(), 300)  # minuti, non ore
+
+    def test_day_exhaustion_without_hint_waits_for_utc_midnight(self):
+        gw = self.build({"primary.test": (429, {"error": "quota exceeded, requests per day"}),
+                         "secondary.test": (200, ok_body("{}"))})
+        gw.complete_json("extract", "p")
+        cd = gw.ledger.snapshot()["buckets"]["primary:fast-1:0"]["cooldown_until"]
+        midnight = datetime.fromisoformat(cd)
+        self.assertEqual((midnight.hour, midnight.minute), (0, 0))
+
+    def test_counters_are_not_inflated_by_a_quota_stop(self):
+        """Il vecchio sentinella 10^9 falsava le metriche e i log."""
+        led = QuotaLedger(self.root / "ledger.json")
+        led.record_failure("prov:model:0", exhausted="day")
+        bucket = led.snapshot()["buckets"]["prov:model:0"]
+        self.assertLess(bucket["rpd"], 10)
+        self.assertIsNotNone(led.blocked_reason("prov:model:0", {"rpd": 900}))
 
 
 class TestRegistry(GatewayTestCase):

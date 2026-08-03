@@ -146,15 +146,25 @@ def parse_tm_text(raw: str, url: str = "") -> Dict[str, Any]:
             out["current_club"] = club[:80]
             break
     if not out.get("current_club"):
+        # La pagina TM ripulita dai tag mette il label e il valore su righe
+        # diverse ("Squadra attuale:\n\n\nUS Avellino 1912"), mentre il raw
+        # markdown di Tavily li tiene sulla stessa riga. Si gestiscono entrambi
+        # cercando il primo valore plausibile dopo il label.
         m = re.search(
-            r"(?:Club attuale|Current club)\s*:?\s*([^\n\r|*]+)",
+            r"(?:Squadra attuale|Club attuale|Current club|Squadra)\s*:?",
             text,
             re.IGNORECASE,
         )
         if m:
-            club = re.sub(r"\s{2,}", " ", m.group(1).strip())[:80]
-            if _ok_club(club):
-                out["current_club"] = club
+            for line in text[m.end():m.end() + 300].splitlines():
+                club = re.sub(r"\s{2,}", " ", line.strip())[:80]
+                if club.endswith(":"):
+                    continue  # è un altro label, non un valore
+                if re.fullmatch(r"[\d/.,\-\s€%]+", club):
+                    continue  # una data o un numero non è un nome di squadra
+                if _ok_club(club):
+                    out["current_club"] = club
+                    break
 
     # Market value: "2,80 mln €" or "150 mila €"
     m = re.search(

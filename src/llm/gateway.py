@@ -42,6 +42,23 @@ _QUOTA_DAY_MARKERS = (
     "billing", "insufficient", "credit", "free-models-per-day",
 )
 
+# I provider dicono quanto aspettare ("Please try again in 3m59s"). Fidarsi di
+# quel numero è meglio che indovinare minuto/giorno dal testo: un 429 sul budget
+# giornaliero può risolversi in secondi se la finestra è scorrevole.
+_RETRY_AFTER_RE = re.compile(
+    r"try again in\s+(?:(\d+)\s*m)?\s*(\d+(?:\.\d+)?)\s*s", re.IGNORECASE)
+_RETRY_AFTER_CAP_S = 6 * 3600
+
+
+def _parse_retry_after(body: str) -> int:
+    """Secondi di attesa suggeriti dal provider, 0 se non li dichiara."""
+    m = _RETRY_AFTER_RE.search(body or "")
+    if not m:
+        return 0
+    minutes = int(m.group(1) or 0)
+    seconds = float(m.group(2) or 0)
+    return min(int(minutes * 60 + seconds) + 1, _RETRY_AFTER_CAP_S)
+
 
 def _requests_transport(url, headers, payload, timeout):
     import requests  # import locale: i test girano senza rete
@@ -246,6 +263,16 @@ class LLMGateway:
             self._log(f"[LLM] {route.label} auth fallita -> bucket spento 24h")
             return
         if status == 429:
+            # Prima si guarda cosa dice il provider: "try again in 24.5s" è un
+            # dato, "sembra un limite giornaliero" è una congettura. Senza il
+            # retry-after un 429 sul budget a finestra scorrevole spegnerebbe la
+            # rotta fino a mezzanotte UTC — che su una sola rotta libera vuol
+            # dire fermare la pipeline per un giorno intero.
+            wait = _parse_retry_after(body)
+            if wait:
+                self.ledger.record_failure(route.bucket, cooldown_s=wait)
+                self._log(f"[LLM] {route.label} 429, riprovabile tra {wait}s -> rotta successiva")
+                return
             exhausted = "day" if any(m in low for m in _QUOTA_DAY_MARKERS) else "minute"
             self.ledger.record_failure(route.bucket, exhausted=exhausted)
             self._log(f"[LLM] {route.label} 429 ({exhausted}) -> rotta successiva")

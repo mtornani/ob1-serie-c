@@ -16,7 +16,7 @@ import json
 import os
 import tempfile
 import threading
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, Optional
 
@@ -144,11 +144,14 @@ class QuotaLedger:
             b["rpd"] += 1
             b["fail_streak"] = int(b.get("fail_streak", 0)) + 1
             b["last_error_at"] = now.isoformat()
+            # Un cooldown con una scadenza vera si legge nei log e non falsa i
+            # contatori usati per le metriche (gonfiarli a 10^9 faceva comparire
+            # "rpd esaurito (1000000000/900)" anche quando il limite colpito era
+            # sui token, non sulle richieste).
             if exhausted == "day":
-                # Spento fino al rollover UTC: il _bucket() lo azzera da solo.
-                b["rpd"] = max(b["rpd"], 10 ** 9)
+                b["cooldown_until"] = _next_utc_midnight(now).isoformat()
             elif exhausted == "minute":
-                b["rpm"] = max(b["rpm"], 10 ** 9)
+                b["cooldown_until"] = _next_minute(now).isoformat()
             elif cooldown_s > 0:
                 b["cooldown_until"] = _iso_plus(now, cooldown_s)
         if self.autosave:
@@ -174,3 +177,12 @@ class QuotaLedger:
 
 def _iso_plus(now: datetime, seconds: int) -> str:
     return datetime.fromtimestamp(now.timestamp() + seconds, tz=timezone.utc).isoformat()
+
+
+def _next_utc_midnight(now: datetime) -> datetime:
+    return (now.replace(hour=0, minute=0, second=0, microsecond=0)
+            + timedelta(days=1))
+
+
+def _next_minute(now: datetime) -> datetime:
+    return now.replace(second=0, microsecond=0) + timedelta(minutes=1)
