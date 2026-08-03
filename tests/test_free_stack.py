@@ -116,6 +116,56 @@ class TestSearchChain(FreeStackTestCase):
         self.assertIn(" OR ", free_stack._with_domains("q", ["a.it", "b.it"]))
 
 
+class TestDDGBlocking(FreeStackTestCase):
+    """DDG risponde 202 + pagina anti-bot sotto carico: non è "zero risultati"."""
+
+    def setUp(self):
+        super().setUp()
+        free_stack._ddg_state.update({"last_call": 0.0, "blocked_until": 0.0})
+        free_stack._searxng_dead.clear()
+        p = mock.patch.object(free_stack, "_DDG_MIN_INTERVAL_S", 0)
+        p.start()
+        self.addCleanup(p.stop)
+
+    def test_202_anomaly_is_recognised_as_a_block(self):
+        resp = mock.Mock(status_code=202, text="<html>anomaly detected</html>")
+        with mock.patch.object(free_stack.requests, "post", return_value=resp):
+            self.assertEqual(free_stack.search_duckduckgo("q"), [])
+        self.assertTrue(free_stack.ddg_blocked())
+
+    def test_blocked_ddg_is_not_called_again(self):
+        resp = mock.Mock(status_code=202, text="anomaly")
+        with mock.patch.object(free_stack.requests, "post", return_value=resp) as post:
+            free_stack.search_duckduckgo("q1")
+            free_stack.search_duckduckgo("q2")
+        self.assertEqual(post.call_count, 1)  # niente martellamento su un blocco noto
+
+    def test_block_is_reported_as_blocked_not_as_empty(self):
+        resp = mock.Mock(status_code=202, text="anomaly")
+        with mock.patch.object(free_stack.requests, "post", return_value=resp), \
+             mock.patch.object(free_stack, "search_searxng", return_value=[]):
+            source, results = free_stack.free_web_search("q")
+        self.assertEqual(source, "blocked")  # non "none": la ricerca non è avvenuta
+        self.assertEqual(results, [])
+
+    def test_block_falls_through_to_the_next_provider(self):
+        resp = mock.Mock(status_code=202, text="anomaly")
+        with mock.patch.object(free_stack.requests, "post", return_value=resp), \
+             mock.patch.object(free_stack, "search_searxng",
+                               return_value=[{"title": "t", "url": "https://x.it",
+                                              "content": "", "source": "searxng"}]):
+            source, _ = free_stack.free_web_search("q")
+        self.assertEqual(source, "searxng")
+
+    def test_dead_searxng_instance_is_dropped_for_the_run(self):
+        resp = mock.Mock(status_code=403, headers={"content-type": "text/html"})
+        os.environ["SEARXNG_INSTANCES"] = "https://a.test,https://b.test"
+        with mock.patch.object(free_stack.requests, "get", return_value=resp) as get:
+            free_stack.search_searxng("q1")
+            free_stack.search_searxng("q2")
+        self.assertEqual(get.call_count, 2)  # 2 istanze provate una volta, poi escluse
+
+
 class TestLLMChain(FreeStackTestCase):
     def test_has_any_llm_true_with_groq_only(self):
         """Il caso del memo: solo GROQ_API_KEY, niente Gemini, niente Serper."""

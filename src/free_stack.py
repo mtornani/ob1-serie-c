@@ -177,24 +177,58 @@ def _with_domains(query: str, domains: Optional[List[str]]) -> str:
     return "(" + " OR ".join(f"site:{d}" for d in picked) + f") {query}"
 
 
+# DDG non ha rate limit dichiarati: risponde 202 con una pagina anti-bot
+# ("anomaly") quando le richieste arrivano troppo fitte. Va distinto da
+# "nessun risultato", altrimenti un blocco si traveste da giocatore non trovato
+# e l'entry resta silenziosamente senza dati.
+_DDG_MIN_INTERVAL_S = 2.5
+_DDG_BLOCK_COOLDOWN_S = 900
+_ddg_state = {"last_call": 0.0, "blocked_until": 0.0}
+
+
+def ddg_blocked() -> bool:
+    return time.time() < _ddg_state["blocked_until"]
+
+
+def _is_ddg_block(status: int, body: str) -> bool:
+    if status == 202:
+        return True
+    low = (body or "")[:4000].lower()
+    return "anomaly" in low or "unfortunately, bots" in low
+
+
 def search_duckduckgo(query: str, max_results: int = 8,
                       domains: Optional[List[str]] = None) -> SearchResults:
     """DDG HTML endpoint: nessuna chiave, nessuna registrazione."""
+    if ddg_blocked():
+        return []
     q = _with_domains(query, domains)
     for endpoint in ("https://html.duckduckgo.com/html/", "https://lite.duckduckgo.com/lite/"):
+        # Throttle lato nostro: le richieste fitte sono ciò che fa scattare il blocco
+        gap = time.time() - _ddg_state["last_call"]
+        if gap < _DDG_MIN_INTERVAL_S:
+            time.sleep(_DDG_MIN_INTERVAL_S - gap)
         try:
             resp = requests.post(
                 endpoint, data={"q": q, "kl": "it-it"},
                 headers={"User-Agent": _UA, "Accept-Language": "it-IT,it;q=0.9"},
                 timeout=20,
             )
-            if resp.status_code != 200:
-                continue
-            results = _parse_ddg_html(resp.text, max_results)
-            if results:
-                return results
         except requests.RequestException:
             continue
+        finally:
+            _ddg_state["last_call"] = time.time()
+
+        if _is_ddg_block(resp.status_code, resp.text):
+            _ddg_state["blocked_until"] = time.time() + _DDG_BLOCK_COOLDOWN_S
+            print(f"    [SEARCH ddg] BLOCCATO (HTTP {resp.status_code}, pagina anti-bot) "
+                  f"— fuori per {_DDG_BLOCK_COOLDOWN_S // 60} min, passo al provider dopo")
+            return []
+        if resp.status_code != 200:
+            continue
+        results = _parse_ddg_html(resp.text, max_results)
+        if results:
+            return results
     return []
 
 
@@ -225,23 +259,34 @@ def _parse_ddg_html(body: str, max_results: int) -> SearchResults:
     return out
 
 
+_searxng_dead = set()  # istanze che hanno già fallito in questa run
+
+
 def search_searxng(query: str, max_results: int = 8,
                    domains: Optional[List[str]] = None) -> SearchResults:
-    """Istanze SearXNG pubbliche. Molte bloccano il format json: si tollera."""
+    """
+    Istanze SearXNG pubbliche. La maggior parte disabilita il format json o
+    rate-limita gli anonimi: un'istanza che fallisce viene esclusa per il resto
+    della run invece di essere ritentata a ogni query.
+    """
     raw = (os.getenv("SEARXNG_INSTANCES") or "").strip()
     instances = [i.strip().rstrip("/") for i in raw.split(",") if i.strip()] or _DEFAULT_SEARXNG
     q = _with_domains(query, domains)
-    for inst in instances[:3]:
+    for inst in instances[:4]:
+        if inst in _searxng_dead:
+            continue
         try:
             resp = requests.get(
                 f"{inst}/search",
                 params={"q": q, "format": "json", "language": "it", "safesearch": 0},
                 headers={"User-Agent": _UA}, timeout=20,
             )
-            if resp.status_code != 200:
+            if resp.status_code != 200 or "json" not in resp.headers.get("content-type", ""):
+                _searxng_dead.add(inst)
                 continue
             items = (resp.json() or {}).get("results") or []
         except (requests.RequestException, ValueError):
+            _searxng_dead.add(inst)
             continue
         out = [{
             "title": str(it.get("title") or ""),
@@ -343,7 +388,10 @@ def free_web_search(
                 _cache_put(query, include_domains, name, results)
             return name, results
 
-    return "none", []
+    # "none" e "blocked" non sono la stessa cosa: il secondo dice che la ricerca
+    # non è stata fatta, non che il giocatore non esiste. Chi legge i log deve
+    # poterlo distinguere, e chi configura deve sapere che serve una fallback.
+    return ("blocked" if ddg_blocked() else "none"), []
 
 
 # =============================================================== LLM wrapper
