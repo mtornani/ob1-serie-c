@@ -785,81 +785,6 @@
       }
     },
     {
-      "id": "913c4641c578210baf05ee95c0d4ee18",
-      "player_name": "Alessandro Siano",
-      "age": 25,
-      "role": "Portiere",
-      "role_name": "Portiere",
-      "opportunity_type": "talento",
-      "reported_date": "2026-08-01",
-      "source_name": "Gemini Search",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHkoW5FhqAyx64KvmmztROCbw0iET9ksEgn7GUztPuMO1KZkiVDCmaUnYIusKhJMWzg7DXHI6f4XruIVXOhynixjhau4wB5CK4cFMJgeYcwNsEnSA1V8fEay-x1ZpP2jC-34bnrJTvPvOf0jBEc8W1vyn7FxiYjaJbEEGjaPyrJsymQvyNhN5g=",
-      "previous_clubs": [],
-      "current_club": "Cesena FC",
-      "appearances": 0,
-      "goals": 0,
-      "assists": 0,
-      "minutes_played": 0,
-      "summary": "",
-      "nationality": "Italia",
-      "second_nationality": null,
-      "foot": null,
-      "market_value": 250000,
-      "market_value_formatted": "250 mila €",
-      "player_image_url": null,
-      "agent": null,
-      "discovered_at": "2026-08-01T08:27:32.212382",
-      "ob1_score": 73,
-      "classification": "hot",
-      "score_breakdown": {
-        "freshness": 85,
-        "opportunity_type": 50,
-        "experience": 50,
-        "age": 90,
-        "market_value": 90,
-        "league_fit": 80,
-        "source": 50
-      },
-      "identity_complete": true,
-      "corroborated": true,
-      "publishable": true,
-      "review_flags": "",
-      "n_sources": 2,
-      "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Valore di mercato interessante (250k€).",
-      "intel": {
-        "roi_class": "none",
-        "roi_label": "NO CONTRIB.",
-        "roi_color": "gray",
-        "coefficiente_eta": 0,
-        "moltiplicatore": 0,
-        "proiezione_stagionale": 0,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [],
-        "birth_year": 2001,
-        "roi_dettaglio": "Classe 2001 — non contribuisce al minutaggio giovani",
-        "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 0,
-      "stale_free_agent": false,
-      "assessment": {
-        "yes": [
-          "25 anni — nel pieno della carriera",
-          "Valore di mercato interessante (250 mila €)",
-          "Profilo in fascia Lega Pro",
-          "Segnalazione fresca"
-        ],
-        "no": [
-          "Presenze non verificate — controllare Transfermarkt",
-          "Fonte debole o generica"
-        ],
-        "action": "Da chiamare ora"
-      }
-    },
-    {
       "id": "opp_e56a897a",
       "player_name": "Francesco Pio Petito",
       "age": 24,
@@ -9031,8 +8956,8 @@
     }
   ],
   "stats": {
-    "total": 118,
-    "hot": 23,
+    "total": 117,
+    "hot": 22,
     "warm": 68,
     "cold": 27,
     "today": 2,
@@ -9043,14 +8968,14 @@
       "high": 0,
       "medium": 28,
       "low": 41,
-      "none": 49
+      "none": 48
     },
-    "tracking_total": 392,
+    "tracking_total": 391,
     "tracking_only": 274,
-    "publishable": 118,
-    "corroborated": 96
+    "publishable": 117,
+    "corroborated": 95
   },
-  "last_update": "2026-08-03T03:24:08.827482",
+  "last_update": "2026-08-03T09:54:09.851691",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete"

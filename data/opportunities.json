@@ -16267,15 +16267,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "47d8462916bd084c3dd5c54673cb740e",
+    "id": "4b40410aadde780b56865462b23fbe22",
     "player_name": "Francesco Raffaelli",
     "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Vicino al ritorno tra i pali dell'Alcione Milano (Serie C).",
+    "opportunity_type": "prestito",
+    "description": "Portiere classe 2005, vicino il ritorno in prestito all'Alcione Milano.",
     "ob1_score": 60,
     "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHWvFlGEsdA8vwqMP3xC0_b03iRKBftHNT10m1HrxAC6ZKCkWHS-XtJGvssuljp8BUqEc5zfX-Zx7OArwHdMAqQCXZs5QLfG623-QAcS4DolXHog-fFCzt1vvkodTSlb4LifE_lREsDuMwg4IHnqtlEctbQ7e60zLSFw3a10UP6GzArp0Mn-A05-CXeY_lRpMhiKfLsEij-QOcG",
-    "discovered_at": "2026-07-28T08:41:49.729868",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGjoeQET2MWoz-qikpQJcpGPwh5Cflm8bkOg7weIwJ0vvdVXT1P1skTJVMzGfhxlNWJuWH58Y1DX5_8suzM3UHdXbG6nXZSqFO1YCxAfaU-30W_BuJzN-E6xiueC2rLOF7ou9iOZT14O-AjrMFJGTyUbUXqk6pSU9g20dHVT9kU0x34RuuQwJEh0CytKj8av63P1gn4UWr3lCMrc0zxzJZYYz8",
+    "discovered_at": "2026-08-03T03:23:33.430091",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -16511,38 +16511,6 @@
     "age": 36,
     "role_name": "Punta centrale",
     "role": "Punta centrale",
-    "tm_enriched": true
-  },
-  {
-    "id": "913c4641c578210baf05ee95c0d4ee18",
-    "player_name": "Alessandro Siano",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Ha un anno di contratto col Cesena (Serie C), potenziale acquisto per il Brescia.",
-    "ob1_score": 60,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHkoW5FhqAyx64KvmmztROCbw0iET9ksEgn7GUztPuMO1KZkiVDCmaUnYIusKhJMWzg7DXHI6f4XruIVXOhynixjhau4wB5CK4cFMJgeYcwNsEnSA1V8fEay-x1ZpP2jC-34bnrJTvPvOf0jBEc8W1vyn7FxiYjaJbEEGjaPyrJsymQvyNhN5g=",
-    "discovered_at": "2026-08-01T08:27:32.212382",
-    "league_id": "italy_serie_c_d",
-    "nationality": "Italia",
-    "market_value": 250000,
-    "market_value_formatted": "250 mila €",
-    "height_cm": 185,
-    "birth_date": "2001-04-28",
-    "tm_url": "https://www.transfermarkt.it/alessandro-siano/profil/spieler/538999",
-    "current_club": "Cesena FC",
-    "player_profile": {
-      "nationality": "Italia",
-      "market_value": 250000,
-      "market_value_formatted": "250 mila €",
-      "height_cm": 185,
-      "birth_date": "2001-04-28",
-      "tm_url": "https://www.transfermarkt.it/alessandro-siano/profil/spieler/538999",
-      "current_club": "Cesena FC"
-    },
-    "age": 25,
-    "role_name": "Portiere",
-    "role": "Portiere",
     "tm_enriched": true
   },
   {
@@ -17098,78 +17066,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "c7b991c4a9fdb0892b5022f13dca5799",
-    "player_name": "Romano Samuel",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Giovane svincolato da Alcione Milano.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG_YW8HeeKPLoQH8RStreNACZQpSG8B3yScBH0asgElzJEtQCQqnrdln5t6EOeTsyohVFDmawSn-rN3T77rcrraIJqGji067WxnjIeBGc5nHVxzKwOirQzP4hYy1l-YJrgcYmyEwlx3wWTgTnq6yZeIJwhNWrAMyAh_sXSWBBIEIBalC-n6L3-0gLVHhYiHiG2NKlyv",
-    "discovered_at": "2026-08-03T03:23:33.429312",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "21133a5526167a7f034c987e42186af8",
-    "player_name": "Degennaro Francesco",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Giovane svincolato da Altamura.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG_YW8HeeKPLoQH8RStreNACZQpSG8B3yScBH0asgElzJEtQCQqnrdln5t6EOeTsyohVFDmawSn-rN3T77rcrraIJqGji067WxnjIeBGc5nHVxzKwOirQzP4hYy1l-YJrgcYmyEwlx3wWTgTnq6yZeIJwhNWrAMyAh_sXSWBBIEIBalC-n6L3-0gLVHhYiHiG2NKlyv",
-    "discovered_at": "2026-08-03T03:23:33.429575",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "2481a01911cd0f355a5cae344d57c9fb",
-    "player_name": "Dibenedetto Christian",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Giovane svincolato da Altamura.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG_YW8HeeKPLoQH8RStreNACZQpSG8B3yScBH0asgElzJEtQCQqnrdln5t6EOeTsyohVFDmawSn-rN3T77rcrraIJqGji067WxnjIeBGc5nHVxzKwOirQzP4hYy1l-YJrgcYmyEwlx3wWTgTnq6yZeIJwhNWrAMyAh_sXSWBBIEIBalC-n6L3-0gLVHhYiHiG2NKlyv",
-    "discovered_at": "2026-08-03T03:23:33.429725",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "c7a4c6174a45b64aee9a9bdc321df98d",
-    "player_name": "Faccilongo Simone",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Giovane svincolato da Altamura.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG_YW8HeeKPLoQH8RStreNACZQpSG8B3yScBH0asgElzJEtQCQqnrdln5t6EOeTsyohVFDmawSn-rN3T77rcrraIJqGji067WxnjIeBGc5nHVxzKwOirQzP4hYy1l-YJrgcYmyEwlx3wWTgTnq6yZeIJwhNWrAMyAh_sXSWBBIEIBalC-n6L3-0gLVHhYiHiG2NKlyv",
-    "discovered_at": "2026-08-03T03:23:33.429850",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "9fdde2dbab8f712a8e62f5912d0912b9",
-    "player_name": "Losurdo Stefano",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Giovane svincolato da Altamura.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG_YW8HeeKPLoQH8RStreNACZQpSG8B3yScBH0asgElzJEtQCQqnrdln5t6EOeTsyohVFDmawSn-rN3T77rcrraIJqGji067WxnjIeBGc5nHVxzKwOirQzP4hYy1l-YJrgcYmyEwlx3wWTgTnq6yZeIJwhNWrAMyAh_sXSWBBIEIBalC-n6L3-0gLVHhYiHiG2NKlyv",
-    "discovered_at": "2026-08-03T03:23:33.429971",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "4b40410aadde780b56865462b23fbe22",
-    "player_name": "Francesco Raffaelli",
-    "region": "ITALY",
-    "opportunity_type": "prestito",
-    "description": "Portiere classe 2005, vicino il ritorno in prestito all'Alcione Milano.",
-    "ob1_score": 60,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGjoeQET2MWoz-qikpQJcpGPwh5Cflm8bkOg7weIwJ0vvdVXT1P1skTJVMzGfhxlNWJuWH58Y1DX5_8suzM3UHdXbG6nXZSqFO1YCxAfaU-30W_BuJzN-E6xiueC2rLOF7ou9iOZT14O-AjrMFJGTyUbUXqk6pSU9g20dHVT9kU0x34RuuQwJEh0CytKj8av63P1gn4UWr3lCMrc0zxzJZYYz8",
-    "discovered_at": "2026-08-03T03:23:33.430091",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "9986204aea54e4a6553115abb734a832",
     "player_name": "Carmelo Limonelli",
     "region": "ITALY",
@@ -17179,18 +17075,6 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGjoeQET2MWoz-qikpQJcpGPwh5Cflm8bkOg7weIwJ0vvdVXT1P1skTJVMzGfhxlNWJuWH58Y1DX5_8suzM3UHdXbG6nXZSqFO1YCxAfaU-30W_BuJzN-E6xiueC2rLOF7ou9iOZT14O-AjrMFJGTyUbUXqk6pSU9g20dHVT9kU0x34RuuQwJEh0CytKj8av63P1gn4UWr3lCMrc0zxzJZYYz8",
     "discovered_at": "2026-08-03T03:23:33.430207",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "7ece3ffc6b0726ede0c6ff209e23e870",
-    "player_name": "Simone Scaglia",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Lascia la Juventus dopo 15 anni, non trovato accordo per rinnovo.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGjoeQET2MWoz-qikpQJcpGPwh5Cflm8bkOg7weIwJ0vvdVXT1P1skTJVMzGfhxlNWJuWH58Y1DX5_8suzM3UHdXbG6nXZSqFO1YCxAfaU-30W_BuJzN-E6xiueC2rLOF7ou9iOZT14O-AjrMFJGTyUbUXqk6pSU9g20dHVT9kU0x34RuuQwJEh0CytKj8av63P1gn4UWr3lCMrc0zxzJZYYz8",
-    "discovered_at": "2026-08-03T03:23:33.430324",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -17252,18 +17136,6 @@
     "tm_enriched": true
   },
   {
-    "id": "c1be611820c4022b81930e1f99670cfc",
-    "player_name": "Simone Iob",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Esterno, arrivo a titolo definitivo al Savoia dal Siracusa.",
-    "ob1_score": 58,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGYUwaaJNR02uPdp1TaBpLYKwsydvfMxh1MzCkzEPsDlTOZIlxpeHZ5nFhSUgWASftqMXXsC4XD5ipqAJaUfLGaxR0bTc2HcDqbhg1l5im4NxIgQheHcUL-3jzT_D50bY_mRYTtKbaLg79SqAo-q1hUhG9KJfFaikiu34tcUtJblnu6lfyu5riGO0QxW5PnEjYokqH9hYx7TBkCOwAB1nXvVxTMMQ8yJFo1pm7hT-9Cm3x46DJ4rwLNAtwgLFtqL75KSzBEc-PKvx6YvvXrdp7v_k",
-    "discovered_at": "2026-08-03T03:23:33.430667",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "4f1d8dbac2ea564fe261dcd9a17d527d",
     "player_name": "Playout Serie",
     "region": "ITALY",
@@ -17321,6 +17193,66 @@
     "source_name": "www.transfermarkt.it",
     "source_url": "https://www.transfermarkt.it/valori-rose-serie-c-inter-u23-al-2-deg-posto-benevento-prima-dopo-le-squadre-b/view/news/464483",
     "discovered_at": "2026-08-03T03:23:33.431880",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "0c959924daf7cd182adfaae62318dd08",
+    "player_name": "Frieren Wiki",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Search this wiki\n\nSearch all wikis\n\n[](\n\n[](\n\n[](\n\nImage 119Image 120Image 121 [...] ## Site Navigation[]\n\n| showCharacter Navigation | [...] drawback disappeared, making the magic sufficiently practical.(",
+    "ob1_score": 58,
+    "source_name": "frieren.fandom.com",
+    "source_url": "https://frieren.fandom.com/wiki/Serie",
+    "discovered_at": "2026-08-03T09:53:52.916229",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "f76da12cc1c9df343d5369278c5c75b3",
+    "player_name": "Netflix Official Site",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "He’s Into Her\n\nDon’t Come Home\n\nWidows' War\n\nFirst Lady\n\nThe House Arrest of Us\n\nLegal Wives\n\nPlaying Adult: Pernikahan Dini Gen Z\n\nThe Inheritance Game\n\nThe Hidden Shadow\n\nDeceit\n\nKeluarga Yang Tak Dirindukan\n\nRoja\n\nBahagia Yang Tertangguh\n\nUpin&Ipin\n\nWalang Hanggang Paalam\n\nThariq Ridzuwan: His Treasure\n\nGirl from Nowhere\n\nAmo\n\nReady, Set, Love\n\n## Acclaimed Writers\n\nRick and Morty\n\nStranger Things\n\nThe Night Agent\n\nHouse, M.D.\n\nBrooklyn Nine-Nine\n\nThe Office (U.S.)\n\nDescendants of the Sun\n\nPerson of Interest\n\nGilmore Girls\n\nThe Lincoln Lawyer\n\nQueen Charlotte: A Bridgerton Story\n\nVan Helsing\n\nCommunity\n\nMonster: The Ed Gein Story\n\nHomeland\n\nShameless (U.S.)\n\nBetter Call Saul\n\nThe Crown\n\nER\n\nPrison Playbook\n\nOrange Is the New Black\n\nOzark\n\nThe Watcher\n\nThe Good Place\n\n3 Body Problem [...] Crash Landing on You\n\nThe Price of Confession\n\nCan This Love Be Translated?\n\nBoys Over Flowers\n\nTwenty Five Twenty One\n\nThe WONDERfools\n\nThe Penthouse: War in Life\n\nSold Out on You\n\nStrong Girl Nam-soon\n\nSingle’s Inferno\n\nOh My Venus\n\nAlchemy of Souls\n\nKingdom\n\nThe Trauma Code: Heroes on Call\n\nInheritors\n\nPhantom Lawyer\n\nHi Bye, Mama!\n\nSquid Game\n\nKing the Land\n\nWeightlifting Fairy Kim Bok Joo\n\nGenie, Make a Wish\n\nThe Art of Sarah\n\nWeak Hero\n\nReply 1988\n\nMercy For None\n\nQueen of Tears\n\nSweet Home\n\nBusiness Proposal\n\nMy Demon\n\nHappiness\n\nLove Next Door\n\nDr. Romantic\n\n## US TV Shows\n\nThe Cleaning Lady\n\nYoung Sheldon\n\nThe Middle\n\nWednesday\n\nSmallville\n\nBreaking Bad\n\nLucifer\n\nI Will Find You\n\nRansom Canyon\n\nLittle House on the Prairie\n\nDexter\n\nSuits\n\nGossip Girl\n\nHell's Kitchen\n\nThe Flash [...] Dexter\n\nSuits\n\nGossip Girl\n\nHell's Kitchen\n\nThe Flash\n\nRick and Morty\n\nManifest\n\nYellowstone\n\nHeroes\n\nThe Witcher\n\nCobra Kai\n\nGinny & Georgia\n\nEmily in Paris\n\nThe Night Agent\n\nBones\n\nStranger Things\n\nBet\n\nBridgerton\n\nThe Resident\n\nHouse, M.D.\n\nSuperstore\n\nSpartacus\n\nHawaii Five-0\n\nBrooklyn Nine-Nine\n\nLost in Space\n\nSweet Tooth\n\nMy Life With the Walter Boys\n\nThe Chosen\n\nLocke & Key\n\nThe Umbrella Academy\n\n## New on Netflix\n\nSomeone, Someday\n\nBleach\n\nForbidden Woman\n\nRansom Canyon\n\nLock Upp\n\nMasha and the Bear\n\nThe Idaho Murders: College Nightmare\n\nWinx Club – the Magic Is Back\n\nWrath\n\nMusafir Cafe\n\nFinal Project\n\nClass Crush Crisis\n\nThe Bombing of Pan Am 103\n\nRainbow Bubblegem\n\nBulan Henti Bicara\n\nKaulitz & Kaulitz\n\nInstadocs: The Prediction Games\n\nAgent Kim Reactivated\n\nTeach You a Lesson",
+    "ob1_score": 58,
+    "source_name": "www.netflix.com",
+    "source_url": "https://www.netflix.com/browse/genre/83",
+    "discovered_at": "2026-08-03T09:53:52.916348",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "17da525e7395e5724bf594c55cca5e11",
+    "player_name": "Massimo Oddo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Marco Pasotto\nSOLBIATE ARNO, ITALY - APRIL 19:  Massimo Oddo head coach of AC Milan Futuro looks during the Serie D match between AC Milan Futuro and Varesina Sport at Stadio Felice Chinetti on April 19, 2026 in Solbiate Arno, Italy. (Photo by Pier Marco Tacca/AC Milan via Getty Images) [...] Atalanta\nBologna\nCagliari\nComo\nFiorentina\nFrosinone\nGenoa\nInter\nJuventus\nLazio\nLecce\nMilan\nMonza\nNapoli\nParma\nRoma\nSassuolo\nTorino\nUdinese\nVenezia\n\nintervista\n\n# Oddo: \"Perché ho detto addio a Milan Futuro. Così funziona l'U23. Camarda? Gli serve una buona B\"\n\nlogo\n\n## L'ex tecnico della seconda squadra rossonera: \"Contento del percorso dei miei ragazzi. In C sarei rimasto, ora vorrei salire di livello. I campi sono il problema maggiore in D. Ibra ci dava dei principi tattici. Liberali? Dal debutto coi grandi si è ritrovato in Primavera: così è dura. Mi spiace per Allegri. Maldini dt in Figc sarebbe perfetto\"",
+    "ob1_score": 60,
+    "source_name": "www.gazzetta.it",
+    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Milan/10-07-2026/massimo-oddo-intervista-camarda-gli-serve-una-serie-b-di-alto-livello.shtml",
+    "discovered_at": "2026-08-03T09:53:52.916537",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d8249d5d01880e329358f9cc478926ca",
+    "player_name": "La Roma",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "## I giallorossi devono trovare 90 milioni entro il 30 giugno prossimo per rispettare l'accordo sul fair play finanziario. Il francese è considerato ancora un uomo chiave dai nerazzurri: il blitz mancato in estate può tornare d’attualità nel 2026\n\nFilippo Conticello  \n\nFilippo Conticello\n\nGiornalista [...] VIDEO: Dal -6 alla Champions: Chivu, quanti rischi in Juventus-Inter\n\n## kone-inter, trattativa rimandata al 2026\n\n— [...] Calcio Italiano\n Probabili Formazioni\n Calciomercato\n\n Calcio Estero\n Coppe Europee\n Competizioni per Nazionali\n\n Coppa del Mondo per Club\n Numbers\n La visione del Match\n\n Notizie\n Probabili Formazioni\n Calendario e risultati\n Classifica\n\n Tabellone\n Nazionali\n Stadi\n Marcatori\n\n FC Mondiale\n Pronostici\n Albo d'oro\n\n Notizie\n La mia auto\n La mia moto\n Automobilismo\n\n Motociclismo\n Mobilità sostenibile\n Guida con noi\n Officina Gazzetta Motori\n\n Eccellenze Automotive\n La mia barca\n Codice della Strada\n Viaggi Motorsport\n\n Notizie\n ATP\n\n WTA\n Coppa Davis\n\n Billie Jean King Cup\n\n Notizie\n Basket Italiano\n\n NBA\n Eurolega\n\n Altre Competizioni\n\n Notizie\n Calendario\n\n Classiche\n Corse a Tappe\n\n Speciali\n\n Arco\n Atletica\n Basket\n Bocce\n Esports\n Fighting",
+    "ob1_score": 60,
+    "source_name": "www.gazzetta.it",
+    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Inter/11-09-2025/inter-kone-sempre-nel-mirino-la-roma-deve-vendere-colpo-solo-rimandato.shtml",
+    "discovered_at": "2026-08-03T09:53:52.916616",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "36ed21369479988803e3024539fa351a",
+    "player_name": "Appiano Gentile",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "This ambitious project represents a €100 million investment in facilities, aimed at transforming Appiano Gentile and making it even more cutting-edge. Inter's growth extends beyond the pitch, with the club looking to the future, aware that the development of its real estate assets is crucial alongside its sporting ambitions. This is a matter of long-term strategy, vision, and philosophy – concepts equally important to the ownership and President Beppe Marotta. Inter aims to shape the future of its operations, embracing change by continually optimising the environment where players and all club members work daily.\n\n## Athlete Welfare [...] Mental well-being plays an increasingly central role in an athlete's life, and to this end, Inter launched Professor Ceccarelli's \"Mental Economy\" protocol last year, which already collaborates with elite athletes like Jannik Sinner and Formula 1 drivers. Furthermore, at Pinetina, a project for another new building will commence in October, dedicated to the Under-23 squad. This facility will feature a gym, physiotherapy area, video analysis room, and a covered stand with an internal hospitality suite that will also serve as a dining area for the team throughout the year. The entire complex will be completed with the addition of a fifth pitch, which will become the primary training ground for the U23s. The final phase of the Appiano project will be the renovation of the main building, [...] Atalanta\nBologna\nCagliari\nComo\nFiorentina\nFrosinone\nGenoa\nInter\nJuventus\nLazio\nLecce\nMilan\nMonza\nNapoli\nParma\nRoma\nSassuolo\nTorino\nUdinese\nVenezia\n\nInter\n\n# Inter's Pinetina Training Ground Set for €100m Revamp\n\n## A two-year redevelopment project at Appiano Gentile has been unveiled in Germany. The plan includes new facilities for the first team and the Under-23 squad, as well as a new building for the women's team at Interello.",
+    "ob1_score": 60,
+    "source_name": "www.gazzetta.it",
+    "source_url": "https://www.gazzetta.it/en/football/teams/inter/news/25-07-2026/inter-appiano-gentile-and-interello-training-grounds-to-receive-major-investment.shtml",
+    "discovered_at": "2026-08-03T09:53:52.916706",
     "league_id": "italy_serie_c_d"
   }
 ]
