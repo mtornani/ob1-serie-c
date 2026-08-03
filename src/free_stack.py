@@ -33,6 +33,25 @@ from urllib.parse import parse_qs, unquote, urlparse
 
 import requests
 
+try:  # le metriche non devono mai poter rompere una ricerca
+    from src.metrics import get_metrics
+except ImportError:  # layout PYTHONPATH=src
+    try:
+        from metrics import get_metrics
+    except ImportError:
+        get_metrics = None
+
+
+def _metric(name: str, *args) -> None:
+    """Contatore ARCH-002 (costo per fatto nuovo). Silenzioso se assente."""
+    if get_metrics is None:
+        return
+    try:
+        getattr(get_metrics(), name)(*args)
+    except Exception:
+        pass
+
+
 SEARCH_CACHE_DIR = Path("data/search_cache")
 SEARCH_CACHE_TTL_S = 7 * 24 * 3600
 
@@ -365,6 +384,7 @@ def free_web_search(
     if use_cache and not raw_content:
         hit = _cache_get(query, include_domains)
         if hit:
+            _metric("search_cached")
             return hit
 
     chain = [("duckduckgo", search_duckduckgo), ("searxng", search_searxng)]
@@ -384,6 +404,7 @@ def free_web_search(
             print(f"    [SEARCH {name}] errore: {type(e).__name__}: {str(e)[:80]}")
             continue
         if results:
+            _metric("search", name)
             if use_cache and not raw_content:
                 _cache_put(query, include_domains, name, results)
             return name, results
@@ -391,6 +412,12 @@ def free_web_search(
     # "none" e "blocked" non sono la stessa cosa: il secondo dice che la ricerca
     # non è stata fatta, non che il giocatore non esiste. Chi legge i log deve
     # poterlo distinguere, e chi configura deve sapere che serve una fallback.
+    if ddg_blocked():
+        _metric("search_blocked")
+    else:
+        # I motori sono stati interrogati e non hanno risposto niente: la
+        # ricerca è stata pagata comunque, va contata.
+        _metric("search", "duckduckgo")
     return ("blocked" if ddg_blocked() else "none"), []
 
 

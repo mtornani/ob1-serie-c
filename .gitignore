@@ -48,3 +48,6 @@ data/llm_cache/
 
 # Cache ricerche web free (TTL 7 giorni)
 data/search_cache/
+
+# Stato "cosa ho gia' visto" (ARCH-002): binario, trasportato via artifact CI
+data/ob1.db

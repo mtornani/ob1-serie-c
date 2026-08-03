@@ -15,6 +15,7 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent))
 from src.enricher_tm import TransfermarktEnricher, BATCH_SIZE
+from src.metrics import METRICS_FILE, get_metrics
 
 DATA_FILE = Path("data/opportunities.json")
 DATA_FILE_DOCS = Path("docs/data.json")
@@ -61,7 +62,15 @@ def _is_enrichable(name) -> bool:
 
 
 def apply_tm_data(opp: dict, tm: dict) -> bool:
-    """Merge TM data into an opportunity. Returns True if locked as enriched."""
+    """
+    Merge TM data into an opportunity. Returns True if locked as enriched.
+
+    Conta anche i FATTI NUOVI (ARCH-002 Fase 1): un campo che prima era vuoto e
+    ora ha un valore. Non si contano le riscritture dello stesso dato — quelle
+    sono lavoro rifatto, non informazione nuova, ed è proprio la differenza che
+    il costo per fatto deve rendere visibile.
+    """
+    metrics = get_metrics()
     if tm.get('market_value_eur') and not tm.get('market_value'):
         tm['market_value'] = tm['market_value_eur']
     if tm.get('market_value_text') and not tm.get('market_value_formatted'):
@@ -69,6 +78,8 @@ def apply_tm_data(opp: dict, tm: dict) -> bool:
 
     for key in _TM_KEYS:
         if tm.get(key) is not None:
+            if not opp.get(key):
+                metrics.fact(key)
             opp[key] = tm[key]
     # setdefault would return an existing null value; guard for that.
     profile = opp.get('player_profile')
@@ -84,6 +95,7 @@ def apply_tm_data(opp: dict, tm: dict) -> bool:
             age = datetime.now().year - int(str(tm['birth_date'])[:4])
             if 10 <= age <= 60:
                 opp['age'] = age
+                metrics.fact('age')
         except (ValueError, TypeError):
             pass
 
@@ -91,6 +103,7 @@ def apply_tm_data(opp: dict, tm: dict) -> bool:
     if tm.get('main_position') and not (opp.get('role_name') or opp.get('role')):
         opp['role_name'] = tm['main_position']
         opp['role'] = tm['main_position']
+        metrics.fact('role_name')
 
     # Lock only when substantive data arrived; otherwise retry next run.
     has_substance = any(tm.get(k) for k in [
@@ -100,9 +113,27 @@ def apply_tm_data(opp: dict, tm: dict) -> bool:
     return has_substance
 
 
+def _report_metrics() -> None:
+    """
+    Riga di metriche di fine run (ARCH-002 Fase 1). Va emessa anche quando non
+    c'è stato niente da fare: una run a vuoto è essa stessa un'informazione
+    (coda vuota), e i buchi nella serie storica non si possono ricostruire.
+    """
+    try:
+        from src.llm import get_gateway
+        print(get_gateway().run_summary())
+    except Exception:
+        pass
+    metrics = get_metrics()
+    print(metrics.summary())
+    if metrics.write(METRICS_FILE):
+        print(f"  [METRICS] riga aggiunta a {METRICS_FILE}")
+
+
 def main():
     if not DATA_FILE.exists():
         print(f"File {DATA_FILE} non trovato!")
+        _report_metrics()
         return
     with open(DATA_FILE, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -121,6 +152,7 @@ def main():
     print(f"Da arricchire: {len(pending)} (senza età: {no_age})")
     if not pending:
         print("Niente da fare.")
+        _report_metrics()
         return
 
     enricher = TransfermarktEnricher()
@@ -136,6 +168,7 @@ def main():
             print(f"  [STOP] nessuna rotta LLM — batch {bi}–{len(batches)} rinviati")
             break
         names = [o['player_name'] for o in batch]
+        get_metrics().player_touched(len(names))
         print(f"\n[batch {bi}/{len(batches)}] {', '.join(names)}")
         results = enricher.enrich_players_batch(names)
         for opp in batch:
@@ -153,11 +186,8 @@ def main():
         DATA_FILE_DOCS.write_text(json.dumps(opportunities, ensure_ascii=False, indent=2), encoding='utf-8')
     print(f"\nTotale: {len(pending)} candidati | Arricchiti: {enriched} | "
           f"Batch elaborati: {len(batches)}")
-    try:
-        from src.llm import get_gateway
-        print(get_gateway().run_summary())
-    except Exception:
-        pass
+    # ARCH-002 Fase 1: il numero che dice se le ottimizzazioni funzionano.
+    _report_metrics()
 
 
 if __name__ == "__main__":

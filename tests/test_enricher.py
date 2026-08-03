@@ -19,7 +19,15 @@ from unittest import mock
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src import enricher_tm
-from src.enricher_tm import TransfermarktEnricher, parse_tm_text
+from src.enricher_tm import FetchResult, TransfermarktEnricher, parse_tm_text
+
+
+def fetched(text: str = "", status: int = 200, unchanged: bool = False) -> mock.Mock:
+    """
+    Il fetch ora dice anche COM'È andata (200 / 304 / errore), perché un 304 non
+    è un fetch vuoto: è contenuto invariato. I test mockano quel livello.
+    """
+    return mock.Mock(return_value=FetchResult(text, status, unchanged))
 
 TM_PAGE = """
 Cosimo Patierno - Profilo giocatore
@@ -42,10 +50,12 @@ class EnricherTestCase(unittest.TestCase):
 
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
-        p = mock.patch.object(enricher_tm, "TM_URL_CACHE",
-                              Path(self.tmp.name) / "tm_urls.json")
-        p.start()
-        self.addCleanup(p.stop)
+        # Nessun test deve poter scrivere dentro data/ del repo.
+        for _name, _file in (("TM_URL_CACHE", "tm_urls.json"),
+                             ("TM_ETAG_CACHE", "tm_etags.json")):
+            p = mock.patch.object(enricher_tm, _name, Path(self.tmp.name) / _file)
+            p.start()
+            self.addCleanup(p.stop)
 
         # Il gateway reale non deve essere interrogato nei test
         p2 = mock.patch.object(enricher_tm, "has_any_llm", return_value=True)
@@ -65,7 +75,7 @@ class EnricherTestCase(unittest.TestCase):
 
     def build(self, page_text=TM_PAGE, search_url=TM_URL):
         enricher = TransfermarktEnricher()
-        enricher._fetch_page_text = mock.Mock(return_value=page_text)
+        enricher.fetch_page = fetched(page_text)
         self.search = mock.Mock(return_value=("duckduckgo", [
             {"title": "Patierno", "url": search_url, "content": "snippet", "source": "duckduckgo"},
         ]))
@@ -137,20 +147,37 @@ class TestFreeEnrichment(EnricherTestCase):
 
     def test_no_results_returns_empty_without_crashing(self):
         enricher = TransfermarktEnricher()
-        enricher._fetch_page_text = mock.Mock(return_value="")
+        enricher.fetch_page = fetched("", status=403)
         enricher_tm.free_web_search = mock.Mock(return_value=("none", []))
         self.assertEqual(enricher.enrich_player_free("Ignoto"), {})
 
     def test_snippet_used_when_page_fetch_is_blocked(self):
         """TM risponde 403: si ripiega sullo snippet della ricerca."""
         enricher = TransfermarktEnricher()
-        enricher._fetch_page_text = mock.Mock(return_value="")
+        enricher.fetch_page = fetched("", status=403)
         enricher_tm.free_web_search = mock.Mock(return_value=("duckduckgo", [
             {"title": "Patierno", "url": TM_URL, "content": TM_PAGE, "source": "duckduckgo"},
         ]))
         with mock.patch.object(enricher_tm, "llm_complete_json", return_value=None):
             data = enricher.enrich_player_free("Cosimo Patierno")
         self.assertEqual(data["current_club"], "Avellino")
+
+
+class TestConditionalFetch(EnricherTestCase):
+    def test_304_skips_both_parsing_and_the_llm(self):
+        """
+        Contenuto invariato: niente regex, niente inferenza, niente scrittura.
+        È il risparmio della Fase 2 espresso come comportamento, non come numero.
+        """
+        enricher = self.build()
+        enricher.fetch_page = fetched("", status=304, unchanged=True)
+        with mock.patch.object(enricher_tm, "parse_tm_text") as parse, \
+             mock.patch.object(enricher_tm, "llm_complete_json") as llm:
+            data = enricher.enrich_player_free("Cosimo Patierno")
+        self.assertEqual(data, {})
+        self.assertTrue(enricher.last_unchanged)
+        parse.assert_not_called()
+        llm.assert_not_called()
 
 
 class TestBatch(EnricherTestCase):

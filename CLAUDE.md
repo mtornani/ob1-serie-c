@@ -126,6 +126,32 @@ GitHub repo (public)
 
 ## Changelog
 
+### 2026-08-03 — ARCH-002 Fasi 1-2: la metrica, poi il 304
+- **Fase 1 — `src/metrics.py`**: `costo_per_fatto = (ricerche + chiamate_llm +
+  fetch) / campi_nuovi_verificati`. Contatori alimentati dove i costi nascono
+  (gateway, free_stack, enricher) e una riga per run in `data/metrics.jsonl` —
+  scritta *sempre*, anche quando non c'è stato lavoro: un buco nella serie
+  storica non si ricostruisce. Zero fatti ⇒ costo **indefinito**, non infinito
+- `scripts/sanity_check.py`: nuovo blocco efficienza. Se il costo per fatto
+  supera 1,5× la mediana delle run precedenti è un **warning**, non un errore —
+  la pipeline ha prodotto dati validi, sta solo pagando di più per ottenerli
+- **Fase 2 — ETag/304**: `enricher_tm.fetch_page()` manda `If-None-Match` /
+  `If-Modified-Since` (validatori in `data/tm_etags.json`). Un 304 salta parse,
+  LLM **e** il fallback grounded: contenuto invariato non è "profilo non
+  trovato", e chiamare il percorso a consumo lì sarebbe pagare per gli stessi dati
+- **Fase 2 — `src/watch/seen.py`**: memoria "cosa ho già visto" su SQLite
+  (`data/ob1.db`, gitignorato, via artifact). Chiave = `sha256(url +
+  contenuto_normalizzato)`: un articolo ripubblicato identico, o con `?utm_source=`
+  diverso, non è un evento. Prune a 60 giorni
+- Interruttori (vincolo ARCH-002 §7): `OB1_METRICS=0`, `OB1_ETAG=0`, `OB1_WATCH=0`
+  riportano al comportamento precedente senza rollback di codice
+- 121 test offline (erano 74): `tests/test_metrics.py`, `tests/test_watch.py`,
+  più il 304 in `tests/test_enricher.py`. I criteri di uscita delle due fasi sono
+  test, non promesse: la seconda run consecutiva fa ≥80% di 304 e 0 chiamate LLM
+- **Ancora da fare**: Fase 3 (poller RSS/sitemap + coda), e il *corollario zero* —
+  irrigidire il gate deterministico sui non-giocatori, che è indipendente da tutte
+  le fasi ed è il miglior rapporto risparmio/sforzo del documento
+
 ### 2026-08-02 — ARCH-001: LLM gateway multi-provider (Fase 1)
 - Spec architettura produzione: `.dev/ARCH-001_production_llm.md` (modello di costo,
   matrice provider free-tier, piano migrazione in 4 fasi)

@@ -32,6 +32,14 @@ from .cache import ResponseCache
 from .ledger import QuotaLedger
 from .registry import Registry, Route
 
+try:  # le metriche non devono mai poter rompere il gateway
+    from src.metrics import get_metrics
+except ImportError:  # layout PYTHONPATH=src
+    try:
+        from metrics import get_metrics
+    except ImportError:
+        get_metrics = None
+
 DEFAULT_SYSTEM = "Sei un estrattore di dati. Rispondi SOLO con JSON valido, nessun testo attorno."
 
 # Firma trasporto: (url, headers, payload, timeout) -> (status_code, body)
@@ -141,6 +149,7 @@ class LLMGateway:
                 self.stats["cache_hits"] += 1
                 data = _parse_json(hit["raw"])
                 if data is not None:
+                    _metric("llm_cache_hit")
                     return LLMResult(True, data, hit["raw"], hit.get("route", "cache"),
                                      cached=True)
 
@@ -187,6 +196,7 @@ class LLMGateway:
                              tokens=tokens, latency_ms=latency, errors=errors)
 
         self.stats["failures"] += 1
+        _metric("llm_failure")
         self._log(f"[LLM] {task} FALLITO dopo {attempts} rotte: {'; '.join(errors[-3:])}")
         return LLMResult(False, attempts=attempts, errors=errors)
 
@@ -284,6 +294,7 @@ class LLMGateway:
             self._log(f"[LLM] {route.label} fail streak -> bucket spento 1h")
 
     def _bump(self, route: Route, tokens: int) -> None:
+        _metric("llm_call", route.label, tokens)
         self.stats["calls"] += 1
         self.stats["tokens"] += tokens
         self.stats["by_route"][route.label] = self.stats["by_route"].get(route.label, 0) + 1
@@ -294,6 +305,16 @@ class LLMGateway:
 
 
 # ------------------------------------------------------------------ helpers
+def _metric(name: str, *args) -> None:
+    """Contatore ARCH-002. Silenzioso se il modulo metriche non c'è."""
+    if get_metrics is None:
+        return
+    try:
+        getattr(get_metrics(), name)(*args)
+    except Exception:  # una metrica rotta non ferma un'inferenza riuscita
+        pass
+
+
 def _clamp(text: str, max_chars: Optional[int]) -> str:
     if max_chars and len(text) > max_chars:
         return text[:max_chars] + "\n…[troncato]"

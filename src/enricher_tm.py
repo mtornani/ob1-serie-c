@@ -16,6 +16,8 @@ import re
 import json
 import html
 import time
+from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Any, List, Optional
 import requests
@@ -42,9 +44,35 @@ except ImportError:  # layout PYTHONPATH=src
 
 load_dotenv()
 
+try:
+    from src.metrics import get_metrics
+except ImportError:  # layout PYTHONPATH=src
+    try:
+        from metrics import get_metrics
+    except ImportError:
+        get_metrics = None
+
+
+def _metric(name: str, *args) -> None:
+    """Contatore ARCH-002. Una metrica rotta non deve fermare un arricchimento."""
+    if get_metrics is None:
+        return
+    try:
+        getattr(get_metrics(), name)(*args)
+    except Exception:
+        pass
+
+
 # Cache URL Transfermarkt per giocatore: un profilo TM non cambia mai indirizzo,
 # quindi la ricerca si paga una volta sola nella vita del giocatore.
 TM_URL_CACHE = Path("data/tm_urls.json")
+
+# ARCH-002 Fase 2 — validatori HTTP per pagina: ETag e Last-Modified.
+# Una pagina TM cambia circa una volta a settimana, ma la pipeline gira ogni 6
+# ore: senza richiesta condizionale si riscarica e si ri-parsifica lo stesso
+# identico contenuto ~28 volte a settimana. Con il 304 quel lavoro sparisce, e
+# con lui la chiamata LLM sul residuo.
+TM_ETAG_CACHE = Path("data/tm_etags.json")
 
 _TM_HEADERS = {
     "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -58,6 +86,14 @@ _TM_HEADERS = {
 BATCH_SIZE = 5
 _MAX_RETRIES = 3
 _BACKOFF_BASE = 2  # seconds
+
+
+@dataclass
+class FetchResult:
+    """Esito di un fetch. `unchanged` = 304: contenuto identico a quello noto."""
+    text: str = ""
+    status: int = 0
+    unchanged: bool = False
 
 
 def _is_daily_quota_error(msg: str) -> bool:
@@ -303,6 +339,12 @@ class TransfermarktEnricher:
         self.gemini_disabled = self.gemini_client is None
         self.fallback_cfg = resolve_fallback()
         self._tm_urls = self._load_tm_urls()
+        # Fase 2 disattivabile senza rollback di codice (vincolo ARCH-002 §7)
+        self._etag_enabled = os.getenv("OB1_ETAG", "1") != "0"
+        self._etags = self._load_etags() if self._etag_enabled else {}
+        # Ultimo giocatore risolto da un 304: niente parse, niente LLM, e
+        # soprattutto niente fallback grounded (che sarebbe una spesa).
+        self.last_unchanged = False
         print(f"  [LLM] {describe_stack()}")
 
     # ------------------------------------------------------------ cache URL TM
@@ -399,29 +441,105 @@ class TransfermarktEnricher:
             print(f"  [TM URL/{source}] {player_name}: {url[:70]}")
         return url, content
 
-    def _fetch_page_text(self, url: str) -> str:
-        """Scarica la pagina e la riduce a testo. TM a volte risponde 403: ok."""
-        if not url:
-            return ""
+    # -------------------------------------------------------- cache condizionale
+    def _load_etags(self) -> Dict[str, Dict[str, str]]:
         try:
-            res = self.session.get(url, headers=_TM_HEADERS, timeout=25)
-            if res.status_code != 200:
-                print(f"  [FETCH] HTTP {res.status_code} su {url[:60]}")
-                return ""
-            body = res.text
+            data = json.loads(TM_ETAG_CACHE.read_text(encoding="utf-8"))
+            return data if isinstance(data, dict) else {}
+        except (OSError, ValueError):
+            return {}
+
+    def _save_etags(self) -> None:
+        try:
+            TM_ETAG_CACHE.parent.mkdir(parents=True, exist_ok=True)
+            TM_ETAG_CACHE.write_text(
+                json.dumps(self._etags, ensure_ascii=False, indent=2, sort_keys=True),
+                encoding="utf-8")
+        except OSError:
+            pass
+
+    def _conditional_headers(self, url: str) -> Dict[str, str]:
+        """If-None-Match / If-Modified-Since, se sappiamo com'era la pagina."""
+        if not self._etag_enabled:
+            return {}
+        known = self._etags.get(url) or {}
+        headers = {}
+        if known.get("etag"):
+            headers["If-None-Match"] = known["etag"]
+        if known.get("last_modified"):
+            headers["If-Modified-Since"] = known["last_modified"]
+        return headers
+
+    def _remember_validators(self, url: str, res) -> None:
+        etag = (res.headers or {}).get("ETag") or ""
+        last_mod = (res.headers or {}).get("Last-Modified") or ""
+        if not (etag or last_mod):
+            self._etags.pop(url, None)   # la pagina non è più validabile
+            return
+        self._etags[url] = {
+            "etag": etag,
+            "last_modified": last_mod,
+            "seen_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        }
+        self._save_etags()
+
+    def fetch_page(self, url: str) -> FetchResult:
+        """
+        Scarica la pagina con richiesta condizionale.
+
+        - 200 → testo ripulito, validatori memorizzati
+        - 304 → `unchanged=True` e nessun testo: il chiamante NON deve
+          parsificare né chiamare l'LLM, perché il contenuto è quello di prima
+        - altro/errore → testo vuoto, `unchanged=False`: si riprova più avanti
+
+        Distinguere 304 da errore è il punto: entrambi non danno testo, ma il
+        primo è un successo (contenuto già noto) e il secondo è un buco.
+        """
+        if not url:
+            return FetchResult("", 0, False)
+        headers = dict(_TM_HEADERS)
+        headers.update(self._conditional_headers(url))
+        try:
+            res = self.session.get(url, headers=headers, timeout=25)
         except requests.RequestException as e:
             print(f"  [FETCH ERROR] {type(e).__name__} su {url[:60]}")
-            return ""
-        body = re.sub(r"(?is)<(script|style)[^>]*>.*?</\1>", " ", body)
-        return re.sub(r"[ \t\r\f\v]+", " ", html.unescape(re.sub(r"(?s)<[^>]+>", " ", body)))
+            _metric("fetch", 0)
+            return FetchResult("", 0, False)
+
+        status = res.status_code
+        _metric("fetch", status)
+        if status == 304:
+            print(f"  [FETCH 304] invariata: {url[:60]}")
+            return FetchResult("", 304, True)
+        if status != 200:
+            print(f"  [FETCH] HTTP {status} su {url[:60]}")
+            return FetchResult("", status, False)
+
+        self._remember_validators(url, res)
+        body = re.sub(r"(?is)<(script|style)[^>]*>.*?</\1>", " ", res.text)
+        text = re.sub(r"[ \t\r\f\v]+", " ",
+                      html.unescape(re.sub(r"(?s)<[^>]+>", " ", body)))
+        return FetchResult(text, 200, False)
+
+    def _fetch_page_text(self, url: str) -> str:
+        """Solo il testo. Nome storico: i call site esistenti non cambiano."""
+        return self.fetch_page(url).text
 
     def enrich_player_free(self, player_name: str) -> Dict[str, Any]:
         """
         Percorso a costo zero: ricerca free -> fetch -> regex -> LLM sul residuo.
         Funziona con la sola GROQ_API_KEY, senza Serper e senza Gemini.
         """
+        self.last_unchanged = False
         url, snippet = self._tm_url_for(player_name)
-        raw = self._fetch_page_text(url)
+        fetched = self.fetch_page(url)
+        if fetched.unchanged:
+            # 304: la pagina è identica a quella già letta. Non c'è niente da
+            # estrarre e niente da chiedere a un modello — è esattamente il
+            # lavoro che ARCH-002 vuole smettere di rifare ogni 6 ore.
+            self.last_unchanged = True
+            return {}
+        raw = fetched.text
         # TM risponde 403 di frequente: in quel caso resta lo snippet della
         # ricerca. Si tiene il testo più ricco tra i due, mai il più povero.
         if snippet and len(snippet) > len(raw):
@@ -473,6 +591,10 @@ class TransfermarktEnricher:
         data = self.enrich_player_free(player_name)
         if data:
             return data
+        if self.last_unchanged:
+            # Contenuto invariato non è "profilo non trovato": chiamare il
+            # grounding qui vorrebbe dire pagare per riavere gli stessi dati.
+            return {}
 
         if self.mode != "free_only" and not self.gemini_disabled:
             data = self.enrich_player_grounded(player_name)
@@ -494,9 +616,14 @@ class TransfermarktEnricher:
             if any(out.values()):
                 return out
 
-        out = {name: self.enrich_player_free(name) for name in names}
+        out, unchanged = {}, 0
+        for name in names:
+            out[name] = self.enrich_player_free(name)
+            unchanged += 1 if self.last_unchanged else 0
         found = sum(1 for v in out.values() if v)
-        print(f"  [BATCH FREE] {found}/{len(names)} profili (0 chiamate fatturabili)")
+        note = f", {unchanged} invariati (304)" if unchanged else ""
+        print(f"  [BATCH FREE] {found}/{len(names)} profili{note} "
+              f"(0 chiamate fatturabili)")
         return out
 
     def _enrich_batch_grounded(self, names: List[str]) -> Dict[str, Dict[str, Any]]:
