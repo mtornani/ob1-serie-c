@@ -14,6 +14,7 @@ from pathlib import Path
 # Add project root to path for notifier import
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from src.notifier import TelegramNotifier
+from src.metrics import METRICS_FILE, load_history, regression_check
 
 # ── Thresholds ────────────────────────────────────────────────────────────────
 MIN_OPPS_DB        = 10    # opportunities.json must have at least this many entries
@@ -41,7 +42,7 @@ def main() -> int:
     print("=" * 55)
 
     # ── 1. File existence ──────────────────────────────────────────────────
-    print("\n[1/4] File existence")
+    print("\n[1/5] File existence")
     if not OPPS_FILE.exists():
         errors.append(f"data/opportunities.json non trovato")
         print(f"  ❌ CRITICAL: {OPPS_FILE} mancante")
@@ -59,7 +60,7 @@ def main() -> int:
         return 1
 
     # ── 2. opportunities.json content ─────────────────────────────────────
-    print("\n[2/4] opportunities.json content")
+    print("\n[2/5] opportunities.json content")
     try:
         opps = json.loads(OPPS_FILE.read_text(encoding='utf-8'))
         n_opps = len(opps)
@@ -83,7 +84,7 @@ def main() -> int:
         print(f"  ❌ CRITICAL: JSON parse error: {e}")
 
     # ── 3. docs/data.json scoring sanity ──────────────────────────────────
-    print("\n[3/4] docs/data.json scoring sanity")
+    print("\n[3/5] docs/data.json scoring sanity")
     try:
         dash = json.loads(DASH_FILE.read_text(encoding='utf-8'))
         stats = dash.get('stats', {})
@@ -151,8 +152,29 @@ def main() -> int:
         errors.append(f"docs/data.json JSON invalido: {e}")
         print(f"  ❌ CRITICAL: JSON parse error: {e}")
 
-    # ── 4. Summary ────────────────────────────────────────────────────────
-    print("\n[4/4] Summary")
+    # ── 4. Efficienza: costo per fatto nuovo (ARCH-002) ───────────────────
+    print("\n[4/5] Efficienza (costo per fatto nuovo)")
+    history = load_history(BASE_DIR / METRICS_FILE)
+    if not history:
+        print("  ℹ️  nessuna metrica ancora registrata (data/metrics.jsonl)")
+    else:
+        last = history[-1]
+        cpf = last.get("cost_per_fact")
+        print(f"  Ultima run: fatti={last.get('facts')} "
+              f"operazioni={last.get('operations')} "
+              f"costo_per_fatto={cpf if cpf is not None else 'n/d'} "
+              f"304={last.get('fetches_304')}/{last.get('fetches')}")
+        regression = regression_check(history)
+        if regression:
+            # Warning, non errore: la pipeline ha prodotto dati validi, sta solo
+            # pagando di più per ottenerli. Bloccare la CI qui sarebbe sbagliato.
+            warnings.append(regression)
+            print(f"  ⚠️  WARNING: {regression}")
+        else:
+            print("  ✅ costo per fatto in linea con lo storico")
+
+    # ── 5. Summary ────────────────────────────────────────────────────────
+    print("\n[5/5] Summary")
     if not errors and not warnings:
         print("  ✅ All checks passed — pipeline output is sane")
     elif not errors:

@@ -126,6 +126,75 @@ GitHub repo (public)
 
 ## Changelog
 
+### 2026-08-03 — ARCH-002 Fasi 1-2: la metrica, poi il 304
+- **Fase 1 — `src/metrics.py`**: `costo_per_fatto = (ricerche + chiamate_llm +
+  fetch) / campi_nuovi_verificati`. Contatori alimentati dove i costi nascono
+  (gateway, free_stack, enricher) e una riga per run in `data/metrics.jsonl` —
+  scritta *sempre*, anche quando non c'è stato lavoro: un buco nella serie
+  storica non si ricostruisce. Zero fatti ⇒ costo **indefinito**, non infinito
+- `scripts/sanity_check.py`: nuovo blocco efficienza. Se il costo per fatto
+  supera 1,5× la mediana delle run precedenti è un **warning**, non un errore —
+  la pipeline ha prodotto dati validi, sta solo pagando di più per ottenerli
+- **Fase 2 — ETag/304**: `enricher_tm.fetch_page()` manda `If-None-Match` /
+  `If-Modified-Since` (validatori in `data/tm_etags.json`). Un 304 salta parse,
+  LLM **e** il fallback grounded: contenuto invariato non è "profilo non
+  trovato", e chiamare il percorso a consumo lì sarebbe pagare per gli stessi dati
+- **Fase 2 — `src/watch/seen.py`**: memoria "cosa ho già visto" su SQLite
+  (`data/ob1.db`, gitignorato, via artifact). Chiave = `sha256(url +
+  contenuto_normalizzato)`: un articolo ripubblicato identico, o con `?utm_source=`
+  diverso, non è un evento. Prune a 60 giorni
+- Interruttori (vincolo ARCH-002 §7): `OB1_METRICS=0`, `OB1_ETAG=0`, `OB1_WATCH=0`
+  riportano al comportamento precedente senza rollback di codice
+- 121 test offline (erano 74): `tests/test_metrics.py`, `tests/test_watch.py`,
+  più il 304 in `tests/test_enricher.py`. I criteri di uscita delle due fasi sono
+  test, non promesse: la seconda run consecutiva fa ≥80% di 304 e 0 chiamate LLM
+- **Ancora da fare**: Fase 3 (poller RSS/sitemap + coda), e il *corollario zero* —
+  irrigidire il gate deterministico sui non-giocatori, che è indipendente da tutte
+  le fasi ed è il miglior rapporto risparmio/sforzo del documento
+
+### 2026-08-02 — ARCH-001: LLM gateway multi-provider (Fase 1)
+- Spec architettura produzione: `.dev/ARCH-001_production_llm.md` (modello di costo,
+  matrice provider free-tier, piano migrazione in 4 fasi)
+- Nuovo layer `src/llm/`: registry (YAML→rotte), ledger quote persistito
+  (`data/llm_ledger.json`), cache risposte (`data/llm_cache/`, gitignorata), gateway
+  con failover automatico. Un solo protocollo: OpenAI-compatible /chat/completions
+- `config/llm_providers.yaml`: Cerebras, Groq, Mistral, OpenRouter, NVIDIA NIM, Gemini
+  (ora ultima rotta, priorità 80). Task class: triage / extract / reason
+- `src/llm_fallback.py` è ora uno shim sul gateway; `OB1_LLM_GATEWAY=0` torna al legacy
+- Kill switch costi: `OB1_LLM_ALLOW_PAID=0` di default → nessuna chiamata fatturabile
+- 30 test offline (`tests/test_llm_gateway.py`) + workflow `tests.yml`
+- **Ancora da fare (Fase 4)**: multi-lega (matrix/Workers) + consenso 2 modelli
+
+### 2026-08-03 — ARCH-002: spec quantizzazione (lavoro a evento, non a orologio)
+- `.dev/ARCH-002_quantization.md`: principio del "quanto minimo", 4 corollari,
+  metrica costo-per-fatto-nuovo, piano in 5 fasi con percorsi repo
+- Diagnosi: enrichment è già O(giocatori nuovi) grazie alla cache URL TM, ma
+  discovery è O(leghe × query × run) e il refresh è a timer → ~86k operazioni/mese
+  a 30 leghe, quasi tutte su contenuto identico al giorno prima
+- Verificato dal vivo: tuttoc/tuttolegapro/lacasadic hanno `/rss`, tuttomercatoweb
+  ha sitemap, sportitalia ha `/rss`. 5 fonti su 6 pollabili a costo zero
+- Da sviluppare: `src/watch/` (poller, seen-store, coda), `config/sources.yaml`,
+  `src/metrics.py`, ETag/304 nel fetch TM
+- **Non implementata**: è una spec
+
+### 2026-08-02 — ARCH-001 Fasi 2-3: free search + free LLM (grounding fuori)
+- `src/free_stack.py`: catena ricerca senza chiavi obbligatorie
+  (cache 7g → DuckDuckGo → SearXNG → Tavily* → Serper*) e `llm_complete_json` /
+  `has_any_llm` sopra il gateway. `OB1_SEARCH_MODE=serper` torna al legacy
+- `OB1_LLM_MODE`: `free_first` (default) | `free_only` | `gemini_first`
+- Enricher: **non solleva più** senza GEMINI_API_KEY/SERPER_API_KEY — l'unico
+  requisito è `has_any_llm()`. La sola `GROQ_API_KEY` basta per arricchire
+- `enrich_player_free`: URL TM cachato (`data/tm_urls.json`, la ricerca si paga
+  una volta per giocatore) → fetch → `parse_tm_text` regex → LLM solo sul residuo.
+  Deterministic-first: il regex non viene mai sovrascritto dall'LLM
+- Discovery: `GlobalScraper.discover_players` free-first; grounding Gemini solo con
+  `OB1_LLM_MODE=gemini_first`. Su vuoto ricade sul percorso Tavily preesistente
+- `run_enrichment.py`: lo stop non è più `gemini_disabled` ma `enricher.stalled`
+  (altrimenti il percorso free si fermava subito). Campo `enrichment_source` persistito
+- Registry: `base_url_env`/`name_env`/`requires_key` → supporto COMPARE_BASE_URL
+  (endpoint OpenAI-compatible locale) e GEMINI_MODEL configurabile
+- 62 test offline (gateway + free_stack + enricher), zero rete
+
 ### 2026-06-01 — Backend robustness (K-Sport pilot prep)
 - Fix 1: html.escape su tutti i campi dinamici Telegram, rimossa troncatura summary
 - Fix 2: admin_alert(severity, source, message) in notifier.py + wired in ouroboros_run.py + ingest.yml failure step + TELEGRAM_CHAT_ID fix

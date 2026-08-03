@@ -11,8 +11,22 @@ import yaml
 import json
 import requests
 from typing import List, Dict, Any, Optional, Tuple
-from dotenv import load_dotenv
-from google import genai
+
+try:
+    from dotenv import load_dotenv
+except ImportError:  # dotenv opzionale
+    def load_dotenv(*_a, **_kw):
+        return False
+
+try:
+    from google import genai
+except ImportError:  # google-genai non installato: discovery gira free
+    genai = None
+
+try:
+    from src.free_stack import free_web_search, llm_complete_json, llm_mode, has_any_llm
+except ImportError:  # layout PYTHONPATH=src
+    from free_stack import free_web_search, llm_complete_json, llm_mode, has_any_llm
 
 # --- Tunable guard-rails (knobs, not editorial policy) ----------------------
 # Retry transient Gemini failures (429 rate / 503 overload) with backoff.
@@ -81,7 +95,13 @@ class GlobalScraper:
         self.serper_key = os.getenv('SERPER_API_KEY')
         self.tavily_key = os.getenv('TAVILY_API_KEY')
         self.gemini_key = os.getenv('GEMINI_API_KEY')
-        self.gemini_client = genai.Client(api_key=self.gemini_key) if self.gemini_key else None
+        self.mode = llm_mode()
+        self.gemini_client = None
+        if self.gemini_key and genai is not None and self.mode != "free_only":
+            try:
+                self.gemini_client = genai.Client(api_key=self.gemini_key)
+            except Exception as e:
+                print(f"    [GEMINI] client non inizializzato ({str(e)[:80]})")
         self.gemini_disabled = False  # circuit breaker: daily quota dead
         self.gemini_calls = 0
         try:
@@ -172,6 +192,64 @@ class GlobalScraper:
             print(f"    [GROUNDED PARSE ERROR] {e}")
             return []
 
+    _EXTRACT_RULES = (
+        "Identifica SOLO nomi di calciatori INDIVIDUALI (persone fisiche).\n\n"
+        "ESCLUDI assolutamente:\n"
+        "- Giornalisti o opinionisti (es. Gianluca Di Marzio, Fabrizio Romano)\n"
+        "- Nomi di siti web, media, radio (es. Sky Sport, Calciomercato.com)\n"
+        "- Organizzazioni, federazioni, squadre, campionati\n"
+        "- Concetti generici (es. Parametro Zero, Giovani Talenti)\n"
+        "- Qualsiasi nome che non sia 'Nome Cognome' di un calciatore reale\n\n"
+        "Rispondi ESCLUSIVAMENTE con un JSON array, nessun testo aggiuntivo:\n"
+        '[{"player_name": "Nome Cognome", "source_url": "url articolo", '
+        '"opportunity_type": "svincolato|prestito|rescissione|mercato", '
+        '"description": "max 80 caratteri sul motivo"}]\n\n'
+        "Se non trovi calciatori individuali reali, rispondi esattamente: []"
+    )
+
+    def search_free(self, query: str, trusted: Optional[List[str]] = None) -> List[Dict]:
+        """
+        Discovery a costo zero: ricerca senza chiavi + estrazione nomi via LLM free.
+        Stessa forma di output di search_grounded, così scrape_league non cambia.
+        """
+        source, results = free_web_search(query, max_results=10,
+                                          include_domains=trusted or None)
+        if not results and trusted:
+            source, results = free_web_search(query, max_results=10)
+        if not results:
+            return []
+        print(f"    [FREE SEARCH/{source}] {len(results)} risultati per: {query[:40]}...")
+
+        if not has_any_llm():
+            return []  # senza LLM si ricade sull'euristica sui titoli in scrape_league
+
+        corpus = "\n\n".join(
+            f"TITOLO: {r.get('title', '')}\nURL: {r.get('url', '')}\n"
+            f"ESTRATTO: {(r.get('content') or '')[:400]}"
+            for r in results[:10]
+        )
+        items = llm_complete_json(
+            "Sei un analista di calciomercato. Rispondi SOLO con JSON valido.",
+            f"Da questi risultati di ricerca su: {query}\n\n{self._EXTRACT_RULES}\n\n{corpus}",
+            gemini_client=self.gemini_client,
+            task="triage",
+        )
+        if not isinstance(items, list):
+            return []
+        print(f"    [FREE EXTRACT] {len(items)} giocatori estratti")
+        return items
+
+    def discover_players(self, query: str, trusted: Optional[List[str]] = None) -> List[Dict]:
+        """
+        Punto d'ingresso discovery. Free first salvo OB1_LLM_MODE=gemini_first:
+        il grounding Gemini è l'unica voce fatturabile della pipeline.
+        """
+        if self.mode == "gemini_first":
+            grounded = self.search_grounded(query)
+            if grounded:
+                return grounded
+        return self.search_free(query, trusted)
+
     def search_tavily(self, query: str, include_domains: Optional[List[str]] = None) -> List[Dict]:
         """Discovery via Tavily. Optional source-first domain bias for nicchia IT."""
         if not self.tavily_key:
@@ -233,8 +311,9 @@ class GlobalScraper:
         trusted = conf.get('trusted_sources') or []
 
         for query in conf.get('queries', []):
-            # Primary: Gemini Search Grounding (budget-capped; falls to Tavily on quota)
-            grounded = self.search_grounded(query)
+            # Primary: discovery free (DDG/SearXNG + LLM free). Gemini grounded
+            # solo con OB1_LLM_MODE=gemini_first. Su vuoto si passa a Tavily.
+            grounded = self.discover_players(query, trusted)
             if grounded:
                 for item in grounded:
                     if not isinstance(item, dict):
