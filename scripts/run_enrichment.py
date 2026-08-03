@@ -15,6 +15,7 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent))
 from src.enricher_tm import TransfermarktEnricher, BATCH_SIZE
+from src.entity_gate import classify
 from src.metrics import METRICS_FILE, get_metrics
 
 DATA_FILE = Path("data/opportunities.json")
@@ -48,17 +49,15 @@ _TM_KEYS = ['nationality', 'second_nationality', 'foot', 'market_value',
             'current_club']
 
 
-def _is_enrichable(name) -> bool:
-    if not isinstance(name, str) or len(name) < 3 or '|' in name:
-        return False
-    # real person: at least 2 tokens, not ALL CAPS dump, not article title
-    tokens = name.split()
-    if len(tokens) < 2:
-        return False
-    if name.isupper() and len(tokens) >= 2:
-        return False
-    n = name.lower()
-    return not any(t in n for t in _JUNK_TERMS)
+def _is_enrichable(opp) -> bool:
+    """
+    Si spende su questo record? Il gate è condiviso con la discovery
+    (src/entity_gate.py): una sola fonte di verità invece di tre liste
+    divergenti. Accetta un dict o, per compatibilità, un nome.
+    """
+    if isinstance(opp, str):
+        opp = {"player_name": opp}
+    return classify(opp).spend_allowed
 
 
 def apply_tm_data(opp: dict, tm: dict) -> bool:
@@ -141,7 +140,11 @@ def main():
     print(f"Trovate {len(opportunities)} opportunità.")
 
     pending = [o for o in opportunities
-               if _is_enrichable(o.get('player_name')) and o.get('tm_enriched') is not True]
+               if _is_enrichable(o) and o.get('tm_enriched') is not True]
+    skipped = len(opportunities) - len(pending) - sum(
+        1 for o in opportunities if o.get('tm_enriched') is True)
+    if skipped > 0:
+        print(f"Scartati dal gate (nessuna spesa): {skipped}")
     # Priority: missing age first (blocks publish gate), then missing club
     pending.sort(key=lambda o: (
         0 if o.get('age') in (None, '') else 1,
@@ -182,8 +185,9 @@ def main():
         if bi < len(batches) and not enricher.stalled:
             time.sleep(DELAY_BETWEEN_BATCHES)
 
-    if enriched and DATA_FILE_DOCS.exists():
-        DATA_FILE_DOCS.write_text(json.dumps(opportunities, ensure_ascii=False, indent=2), encoding='utf-8')
+    # NB: docs/data.json ha il formato dashboard (dict con opportunities/stats),
+    # non la lista grezza. Scriverci la lista lo corrompe finché
+    # generate_dashboard.py non gira. Lo rigenera lui, subito dopo in ingest.yml.
     print(f"\nTotale: {len(pending)} candidati | Arricchiti: {enriched} | "
           f"Batch elaborati: {len(batches)}")
     # ARCH-002 Fase 1: il numero che dice se le ottimizzazioni funzionano.

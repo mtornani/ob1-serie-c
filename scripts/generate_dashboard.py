@@ -228,6 +228,8 @@ def main():
             'publishable': opp.get('publishable', False),
             'review_flags': opp.get('review_flags', ''),
             'n_sources': opp.get('n_sources', 1),
+            'out_of_scope': opp.get('out_of_scope', False),
+            'out_of_scope_reason': opp.get('out_of_scope_reason', ''),
 
             # Auto-generated recommendation
             'recommendation': generate_recommendation(opp),
@@ -283,8 +285,14 @@ def main():
         all_scored.append(dashboard_opp)
 
     tracking_total = len(all_scored)
-    publishable_list = [o for o in all_scored if o.get('publishable')]
+    # out_of_scope: giocatore vero ma fuori fascia Serie C (es. valore 35 mln €).
+    # Non è un'opportunità per questo radar, quindi non entra nel feed pubblico.
+    out_of_scope_n = sum(1 for o in all_scored if o.get('out_of_scope'))
+    publishable_list = [o for o in all_scored
+                        if o.get('publishable') and not o.get('out_of_scope')]
     tracking_only = tracking_total - len(publishable_list)
+    if out_of_scope_n:
+        print(f"   Esclusi fuori fascia Serie C: {out_of_scope_n}")
 
     # Public feed = only publishable
     dashboard_opportunities = publishable_list
