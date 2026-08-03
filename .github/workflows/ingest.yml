@@ -56,6 +56,12 @@ jobs:
         SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_OFFICE_CHAT_ID: ${{ secrets.TELEGRAM_OFFICE_CHAT_ID }}
+        # Zero-cost per costruzione: free_only = Gemini non viene MAI chiamato,
+        # né per il grounding né come rete. I progetti Google dietro la chiave
+        # sono stati eliminati il 3 ago 2026: questa riga rende esplicito ciò
+        # che oggi è già vero di fatto, e impedisce che una chiave nuova
+        # riaccenda per sbaglio il percorso a consumo.
+        OB1_LLM_MODE: free_only
         # Leave free-tier RPD for enrichment (age fills publish gate)
         GEMINI_DISCOVERY_BUDGET: "4"
         # LLM gateway (ARCH-001) — secret assenti = rotta semplicemente assente
@@ -70,7 +76,9 @@ jobs:
       continue-on-error: true
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        # Batch CI = solo Gemini grounded. Stop se quota morta (no cascata).
+        OB1_LLM_MODE: free_only
+        # Tetto batch per run: il backlog si smaltisce su più run invece di
+        # bruciare la quota free di un provider in una sola volta.
         MAX_ENRICH_BATCHES: "4"
         # LLM gateway (ARCH-001): il fallback single-player esce da qui
         CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
