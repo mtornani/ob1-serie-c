@@ -139,6 +139,18 @@ GitHub repo (public)
 - 30 test offline (`tests/test_llm_gateway.py`) + workflow `tests.yml`
 - **Ancora da fare (Fase 4)**: multi-lega (matrix/Workers) + consenso 2 modelli
 
+### 2026-08-03 — ARCH-002: spec quantizzazione (lavoro a evento, non a orologio)
+- `.dev/ARCH-002_quantization.md`: principio del "quanto minimo", 4 corollari,
+  metrica costo-per-fatto-nuovo, piano in 5 fasi con percorsi repo
+- Diagnosi: enrichment è già O(giocatori nuovi) grazie alla cache URL TM, ma
+  discovery è O(leghe × query × run) e il refresh è a timer → ~86k operazioni/mese
+  a 30 leghe, quasi tutte su contenuto identico al giorno prima
+- Verificato dal vivo: tuttoc/tuttolegapro/lacasadic hanno `/rss`, tuttomercatoweb
+  ha sitemap, sportitalia ha `/rss`. 5 fonti su 6 pollabili a costo zero
+- Da sviluppare: `src/watch/` (poller, seen-store, coda), `config/sources.yaml`,
+  `src/metrics.py`, ETag/304 nel fetch TM
+- **Non implementata**: è una spec
+
 ### 2026-08-02 — ARCH-001 Fasi 2-3: free search + free LLM (grounding fuori)
 - `src/free_stack.py`: catena ricerca senza chiavi obbligatorie
   (cache 7g → DuckDuckGo → SearXNG → Tavily* → Serper*) e `llm_complete_json` /
