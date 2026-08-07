@@ -345,6 +345,11 @@ class TransfermarktEnricher:
         # Ultimo giocatore risolto da un 304: niente parse, niente LLM, e
         # soprattutto niente fallback grounded (che sarebbe una spesa).
         self.last_unchanged = False
+        # La ricerca interna di TM può essere bloccata sugli IP dei datacenter.
+        # Non lo sappiamo prima di provare, quindi si prova una volta sola:
+        # al primo rifiuto la rotta si spegne per il resto della run.
+        # OB1_TM_SITE_SEARCH=0 la disattiva del tutto, senza toccare il codice.
+        self._tm_search_dead = os.getenv("OB1_TM_SITE_SEARCH", "1") == "0"
         print(f"  [LLM] {describe_stack()}")
 
     # ------------------------------------------------------------ cache URL TM
@@ -414,6 +419,64 @@ class TransfermarktEnricher:
         )
 
     # ------------------------------------------------------------ percorso free
+    def _tm_url_from_site_search(self, player_name: str) -> str:
+        """
+        Chiede l'URL del profilo alla ricerca INTERNA di Transfermarkt.
+
+        Il motore terzo (DDG/SearXNG) è il punto della catena che si blocca —
+        è quello che produce la metrica search_blocked. Per trovare una pagina
+        di Transfermarkt però il motore terzo non serve: TM ha la sua ricerca.
+        Un salto in meno, e uno in meno che può essere bloccato.
+
+        Resta un fallback e non una sostituzione: se anche TM blocca l'IP del
+        runner, il percorso vecchio deve poter ancora provare.
+        """
+        # Se TM ha bloccato l'IP del runner, blocca TUTTE le richieste: insistere
+        # per ogni giocatore costa un timeout a testa e non trova mai niente.
+        # Un fallimento e la rotta si spegne per il resto della run.
+        if self._tm_search_dead:
+            return ""
+
+        # Non passa da fetch_page: quella ripulisce i tag, e qui servono gli
+        # href. Nemmeno serve la cache condizionale — l'URL trovato finisce in
+        # _tm_urls e la ricerca non si rifà mai per lo stesso giocatore.
+        try:
+            import urllib.parse
+            q = urllib.parse.quote(player_name)
+            res = self.session.get(
+                f"https://www.transfermarkt.it/schnellsuche/ergebnis/"
+                f"schnellsuche?query={q}", headers=_TM_HEADERS, timeout=12)
+            # Metrica separata di proposito: "fetch" conta le pagine profilo ed
+            # è la base della misura dei 304 (ARCH-002). Contarci dentro anche
+            # le query di ricerca falserebbe il risparmio del fetch condizionale.
+            _metric("tm_site_search", res.status_code)
+            if res.status_code != 200:
+                if res.status_code in (403, 429, 503):
+                    self._tm_search_dead = True
+                    print(f"  [TM SEARCH] HTTP {res.status_code}: rotta spenta "
+                          f"per questa run, si torna alla ricerca web")
+                return ""
+            page = res.text or ""
+            if not page:
+                return ""
+            # Con un solo risultato esatto TM rimanda direttamente al profilo:
+            # la pagina che abbiamo in mano è già un profilo, non un elenco.
+            # La regex sui link prenderebbe allora il PRIMO profilo presente
+            # (un compagno di squadra), arricchendo in silenzio il giocatore
+            # sbagliato. Il canonical dice sempre su che pagina siamo davvero.
+            if "info-table__content" in page:
+                canon = re.search(r'<link rel="canonical" href="([^"]+)"', page)
+                if canon and "/profil/spieler/" in canon.group(1):
+                    return canon.group(1)
+            m = re.search(r'href="(/[^"]+/profil/spieler/\d+)"', page)
+            return f"https://www.transfermarkt.it{m.group(1)}" if m else ""
+        except Exception as exc:
+            _metric("tm_site_search_failed")
+            self._tm_search_dead = True
+            print(f"  [TM SEARCH] rotta spenta per questa run "
+                  f"({type(exc).__name__}), si torna alla ricerca web")
+            return ""
+
     def _tm_url_for(self, player_name: str) -> tuple:
         """
         (url TM, testo dallo snippet). Ricerca senza chiavi obbligatorie.
@@ -422,6 +485,15 @@ class TransfermarktEnricher:
         cached = self._tm_urls.get(player_name.lower())
         if cached:
             return cached, ""
+
+        # Prima la ricerca interna di TM: nessun motore terzo da farsi bloccare.
+        direct = self._tm_url_from_site_search(player_name)
+        if direct:
+            self._tm_urls[player_name.lower()] = direct
+            self._save_tm_urls()
+            print(f"  [TM URL/tm-search] {player_name}: {direct[:70]}")
+            return direct, ""
+
         source, results = free_web_search(
             f"{player_name} profilo giocatore",
             max_results=5,
