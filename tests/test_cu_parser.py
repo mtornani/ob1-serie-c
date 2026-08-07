@@ -9,7 +9,9 @@ Un parser che passa su un formato pulito e cade su quello vero non serve.
     PYTHONIOENCODING=utf-8 python -m unittest tests.test_cu_parser -v
 """
 
+import shutil
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -194,6 +196,63 @@ class StoreTestCase(unittest.TestCase):
         row = next(r for r in self.store.presence_index()
                    if r["person"] == "PELLEGRI FILIPPO")
         self.assertEqual(row["giornate_distinte"], 2)
+
+
+class PersistenceTestCase(unittest.TestCase):
+    """
+    Su CI il .db non sopravvive al runner: la memoria della stagione sta nel
+    JSON versionato. Se questo giro non regge, la lista dei diffidati torna a
+    valere solo per l'ultimo comunicato letto — sbagliata senza sembrarlo.
+    """
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp()
+        self.facts = Path(self.tmp) / "cu_facts.json"
+        self.parsed = parse_cu_text(CU_REALE)
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_i_fatti_sopravvivono_alla_perdita_del_database(self):
+        first = CUStore(":memory:")
+        first.ingest(self.parsed)
+        atteso = first.export_facts(self.facts)
+        diffidati_prima = first.diffidati()
+        first.close()
+
+        rebuilt = CUStore(":memory:")          # database nuovo, vuoto
+        self.assertEqual(rebuilt.import_facts(self.facts), atteso)
+        self.assertEqual(rebuilt.diffidati(), diffidati_prima)
+        rebuilt.close()
+
+    def test_reimportare_non_duplica(self):
+        store = CUStore(":memory:")
+        store.ingest(self.parsed)
+        store.export_facts(self.facts)
+        store.import_facts(self.facts)
+        self.assertEqual(store.import_facts(self.facts),
+                         {"sanctions": 0, "results": 0})
+        store.close()
+
+    def test_memoria_assente_non_e_un_errore(self):
+        """Il primo giro parte senza file: deve valere zero, non esplodere."""
+        store = CUStore(":memory:")
+        self.assertEqual(store.import_facts(Path(self.tmp) / "mai_scritto.json"),
+                         {"sanctions": 0, "results": 0})
+        store.close()
+
+    def test_la_memoria_si_accumula_su_piu_comunicati(self):
+        store = CUStore(":memory:")
+        store.ingest(self.parsed)
+        store.export_facts(self.facts)
+        store.ingest(parse_cu_text(
+            CU_REALE.replace("N. 146 DEL 13/4/2026", "N. 152 DEL 20/4/2026")))
+        totale = store.export_facts(self.facts)
+        store.close()
+
+        rebuilt = CUStore(":memory:")
+        self.assertEqual(rebuilt.import_facts(self.facts), totale)
+        rebuilt.close()
 
 
 if __name__ == "__main__":

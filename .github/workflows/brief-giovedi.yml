@@ -1,0 +1,60 @@
+name: Brief del giovedi
+
+# Giovedi mattina: il giorno in cui il DS decide la formazione.
+# 06:00 UTC = 08:00 in Italia (ora legale), 07:00 in inverno.
+on:
+  schedule:
+    - cron: '0 6 * * 4'
+  workflow_dispatch:
+    inputs:
+      club:
+        description: 'Societa (lascia vuoto per usare la variabile OB1_CLUB)'
+        required: false
+      dry_run:
+        description: 'Solo anteprima, non invia'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  brief:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # data/ob1.db e' nel .gitignore e non sopravvive al runner: la memoria
+      # della stagione sta in data/cu_facts.json, versionato. Lo script lo
+      # ricarica da solo all'avvio — qui non serve fare nulla.
+      - name: Genera e invia il brief
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          OB1_CLUB: ${{ inputs.club || vars.OB1_CLUB }}
+          OB1_AVVERSARIO: ${{ vars.OB1_AVVERSARIO }}
+          OB1_CU_CHANNEL: ${{ vars.OB1_CU_CHANNEL }}
+        run: |
+          python scripts/brief_giovedi.py \
+            ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      # I fatti nuovi diventano la memoria del prossimo giovedi. Se il commit
+      # non parte, la settimana dopo la lista dei diffidati e' incompleta:
+      # per questo il passo non e' continue-on-error.
+      - name: Versiona i fatti estratti
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "OB1 Brief Bot"
+          git add data/cu_facts.json
+          git diff --staged --quiet && echo "nessun fatto nuovo" && exit 0
+          git commit -m "Comunicati ufficiali: fatti al $(date -u +'%Y-%m-%d')"
+          git push

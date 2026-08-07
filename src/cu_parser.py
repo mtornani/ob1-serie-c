@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import re
 import sqlite3
+from datetime import datetime, timezone
 from pathlib import Path
 
 DEFAULT_DB = Path("data/ob1.db")
@@ -314,6 +315,59 @@ class CUStore:
             args.append(club)
         q += "GROUP BY person, club ORDER BY giornate_distinte DESC, provvedimenti DESC"
         return [dict(r) for r in self.conn.execute(q, args)]
+
+    # --------------------------------------------------------- persistenza
+    # Il database sta nel .gitignore, e giustamente: è un contenitore, si
+    # rigenera. I FATTI estratti no — sono la memoria disciplinare di una
+    # stagione, e se si perdono la lista dei diffidati torna a valere solo per
+    # l'ultimo comunicato letto, cioè diventa sbagliata senza sembrarlo.
+    # Quindi si versiona il JSON, non il .db: si legge in un diff, comprime
+    # bene in git, e non dipende dalla versione di SQLite che lo ha scritto.
+
+    def export_facts(self, path: Path | str) -> dict:
+        import json
+
+        data = {
+            "_meta": {
+                "purpose": ("Fatti estratti dai Comunicati Ufficiali LND. "
+                            "Rigenerabile con scripts/brief_giovedi.py; "
+                            "versionato perché e' memoria, non cache."),
+                "exported_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            },
+            "sanctions": [dict(r) for r in self.conn.execute(
+                "SELECT * FROM cu_sanctions ORDER BY cu_number, club, person")],
+            "results": [dict(r) for r in self.conn.execute(
+                "SELECT * FROM cu_results ORDER BY cu_number, match_date, home")],
+        }
+        p = Path(path)
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n",
+                     encoding="utf-8")
+        return {"sanctions": len(data["sanctions"]), "results": len(data["results"])}
+
+    def import_facts(self, path: Path | str) -> dict:
+        """Ricostruisce il db dai fatti versionati. Idempotente come l'ingest."""
+        import json
+
+        p = Path(path)
+        if not p.exists():
+            return {"sanctions": 0, "results": 0}
+        data = json.loads(p.read_text(encoding="utf-8"))
+        cols_s = ("cu_number", "cu_date", "category", "match_date", "role",
+                  "kind", "detail", "person", "club", "reason")
+        cols_r = ("cu_number", "cu_date", "category", "match_date", "girone",
+                  "giornata", "home", "away", "home_goals", "away_goals", "note")
+        n_s = n_r = 0
+        with self.conn:
+            for row in data.get("sanctions", []):
+                n_s += self.conn.execute(
+                    f"INSERT OR IGNORE INTO cu_sanctions VALUES ({','.join('?' * 10)})",
+                    tuple(row.get(c) for c in cols_s)).rowcount
+            for row in data.get("results", []):
+                n_r += self.conn.execute(
+                    f"INSERT OR IGNORE INTO cu_results VALUES ({','.join('?' * 11)})",
+                    tuple(row.get(c) for c in cols_r)).rowcount
+        return {"sanctions": n_s, "results": n_r}
 
     def close(self):
         self.conn.close()

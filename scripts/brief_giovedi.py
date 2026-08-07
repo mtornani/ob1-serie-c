@@ -91,6 +91,8 @@ def main() -> int:
     ap.add_argument("--data", default=date.today().isoformat(),
                     help="data del brief (default: oggi)")
     ap.add_argument("--db", default="data/ob1.db")
+    ap.add_argument("--facts", default="data/cu_facts.json",
+                    help="memoria versionata: si legge all'avvio, si riscrive alla fine")
     ap.add_argument("--dry-run", action="store_true",
                     help="stampa il messaggio invece di inviarlo")
     ap.add_argument("--no-fetch", action="store_true",
@@ -101,9 +103,20 @@ def main() -> int:
 
     store = CUStore(args.db)
 
+    # Il .db è nel .gitignore e su CI parte vuoto a ogni run: la stagione vive
+    # nel JSON versionato. Ricaricarlo per primo è ciò che rende attendibile la
+    # lista dei diffidati, che per definizione guarda tutta la storia.
+    restored = store.import_facts(args.facts)
+    if restored["sanctions"] or restored["results"]:
+        print(f"memoria: +{restored['sanctions']} sanzioni, "
+              f"+{restored['results']} risultati da {args.facts}")
+
     if not args.no_fetch:
         with SeenStore(args.db) as seen:
             ingest_new(store, seen, args.canale)
+        totals = store.export_facts(args.facts)
+        print(f"memoria aggiornata: {totals['sanctions']} sanzioni, "
+              f"{totals['results']} risultati in {args.facts}")
 
     if args.solo_ingest:
         store.close()
