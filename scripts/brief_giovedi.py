@@ -129,14 +129,53 @@ def main() -> int:
         store.close()
         return 2
 
-    brief = build_brief(store, args.data, args.club, opponent=args.avversario)
+    known = store.clubs()
+    if not known:
+        # Pre-stagione (solo calendari, niente sezione disciplinare): non è
+        # un errore di configurazione, è la normalità di luglio-agosto. Non
+        # possiamo nemmeno provare a risolvere il nome — non c'è ancora
+        # niente con cui confrontarlo.
+        print(f"Nessuna società ancora nei CU ingeriti (pre-stagione): "
+              f"brief non inviato per {args.club!r}.")
+        store.close()
+        return 0
+
+    club, candidates = store.resolve_club(args.club)
+    if club is None:
+        # Qui invece i CU parlano, e OB1_CLUB no: è la configurazione
+        # sbagliata che va segnalata forte, non un "nessuna squalifica" che
+        # sembra tutto ok e nasconde il problema per un'intera stagione.
+        print(f"'{args.club}' non corrisponde a nessuna società vista nei CU.")
+        print("Occhio a sigle societarie (SSDARL, 1907, ecc.) che il "
+              "comitato può aggiungere o omettere. Più vicine:")
+        for c in candidates:
+            print(f"  {c}")
+        store.close()
+        return 2
+    if club != args.club:
+        print(f"  [match] '{args.club}' -> '{club}'")
+
+    opponent = None
+    if args.avversario:
+        opponent, opp_candidates = store.resolve_club(args.avversario)
+        if opponent is None:
+            print(f"Avversario '{args.avversario}' non corrisponde a "
+                  f"nessuna società vista nei CU. Più vicine:")
+            for c in opp_candidates:
+                print(f"  {c}")
+            store.close()
+            return 2
+        if opponent != args.avversario:
+            print(f"  [match] avversario '{args.avversario}' -> '{opponent}'")
+
+    brief = build_brief(store, args.data, club, opponent=opponent)
     message = format_telegram(brief)
     store.close()
 
     if not brief["has_content"]:
         # Non è un errore: a inizio stagione, o dopo una sosta, non c'è nulla.
         # Lo diciamo invece di mandare un messaggio vuoto ogni settimana.
-        print(f"Nessun provvedimento per {args.club}: brief non inviato.")
+        print(f"Nessun provvedimento per {club}: brief non inviato.")
         return 0
 
     if args.dry_run:
