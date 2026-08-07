@@ -262,6 +262,47 @@ allo stato attuale della ricerca, nessuna fonte pubblica gratuita — né su
 Telegram né altrove. Va trattato come un limite del prodotto, non come un
 compito di scraping non ancora risolto.
 
+### Convalida indipendente e correzione di rigore (Deep Research, 3/8 sera)
+
+Un secondo giro di ricerca (Google Deep Research), condotto senza vedere questo
+documento, converge sugli stessi fatti: CU grado A senza formazioni, tuttocampo
+403 con `@tuttocampoit` morto dal 2023, stampa locale con distinte solo sulle
+finali, delegazioni provinciali senza URL prevedibile. **Due percorsi
+indipendenti sugli stessi fatti è una conferma reale**, non una ridondanza.
+
+Due cose prese da quel documento, dopo verifica:
+
+- **pipeline a 4 fasi** (ingestion CU → scraping stampa → calcolo indice →
+  consolidamento brief) — adottata come struttura, vedi §6;
+- **estrazione marcatori: regex prima, LLM gratuito solo sul residuo** — non
+  serve un modello NER, la prosa sportiva italiana ha pattern fissi
+  (`"il gol di NOME al MIN'"`). Stesso principio deterministic-first già in
+  `enricher_tm.py` dell'altro repo, zero dipendenze nuove.
+
+Una cosa **non adottata**, e va detto perché è la stessa disciplina che regge
+tutto questo documento: quel report assegna percentuali di copertura precise
+(0%, 40-70%, 75-90%, 95-100%) a fonti che **nessuno ha misurato** — il campione
+reale qui è due articoli letti a mano, non uno studio statistico. In
+particolare il 40-70% sulle grafiche social dei club presuppone di sapere
+quanti club le pubblichino davvero: non verificato da nessuno dei due
+percorsi di ricerca. Stesso discorso per i "pesi di calibrazione stabili"
+nella formula dell'indice disciplinare (§ sopra): sembra rigorosa perché ha
+notazione matematica, ma quei pesi non sono mai stati calibrati su un ground
+truth reale (non l'abbiamo, e costruirlo richiederebbe sapere chi ha giocato
+davvero — il problema che stiamo cercando di aggirare). Resta un'ipotesi di
+lavoro da tarare in Fase 4, non un numero da pubblicare.
+
+Verificata anche una terza affermazione nuova di quel report — Transfermarkt.it
+con copertura parziale su Serie D: **non verificabile**, transfermarkt.it non ha
+risposto da questo ambiente (timeout di connessione, non un 403 netto). Non
+entra nel registro finché non si ricontrolla.
+
+**Regola pratica per questo documento d'ora in poi**: ogni percentuale di
+copertura pubblicata deve avere accanto la data e il campione su cui è stata
+misurata (es. "62% su 40 articoli letti il gg/mm"), o va scritta come "da
+misurare" — mai come stima piovuta dal nulla, indipendentemente da quanto
+autorevole sembri la fonte che la propone.
+
 ---
 
 ## 4. Il framework: catena di custodia del dato
