@@ -196,6 +196,72 @@ fisso vs. chi è marginale, usando solo la fonte A che il sistema legge già.
 Non sostituisce il tabellino: è il meglio disponibile finché non se ne trova uno
 vero.
 
+### Altri canali Telegram e portali — giro di ricognizione del 3/8 (sera)
+
+Domanda dell'utente: esistono altri canali Telegram (oltre a quello del
+comitato) che possono dare dati? Cinque piste verificate:
+
+**A. Canale Telegram del comitato — già coperto sopra.** Resta la fonte di
+grado A migliore: ufficiale, gratis, strutturata.
+
+**B. Il canale Telegram dei portali aggregatori (es. `@tuttocampoit`) —
+vicolo cieco.** Risponde HTTP 200 ma è **inattivo dal 2023** e non ha mai
+pubblicato dati: solo clip di gol virali e contest Instagram. Chi ha il dato
+strutturato (tuttocampo.it) non lo mette su Telegram; lo tiene dietro al sito
+bloccato.
+
+**C. Portali di cronaca dilettantistica regionale — parzialmente utili, e non
+sono Telegram.** `emiliagol.it` risponde **HTTP 200** (a differenza di
+tuttocampo) e ha una categoria editoriale attiva da anni ("Tutti i tabellini di
+Eccellenza..."). Letti due articoli veri:
+
+- una **finale di Coppa Italia di Promozione** (aprile 2026): cronaca con
+  **formazione completa di entrambe le squadre, sostituzioni al minuto,
+  marcatori con il minuto del gol**. Esattamente il dato che manca dal CU.
+- una **giornata di campionato ordinaria** (Eccellenza, settembre 2024): solo
+  prosa narrativa con la dichiarazione del mister e la menzione di un
+  marcatore. **Nessuna formazione completa.**
+
+Pattern chiaro, e non è specifico di questo sito: la stampa dilettantistica
+tratta le finali come evento (formazione integrale) e il campionato come
+routine (cronaca breve). Conseguenza pratica:
+
+  - i **marcatori per gara di campionato ordinaria sono recuperabili**, ma
+    dalla prosa della stampa locale, non dal CU (che non li riporta) — serve
+    NLP leggero, non regex pura, e la copertura non è sistematica;
+  - le **formazioni complete restano riservate a finali e playoff**, non alla
+    routine settimanale. L'indice di presenza disciplinare (sopra) resta
+    l'unico segnale sistematico per il campionato ordinario.
+
+`romagnasport.com` — citato da un articolo di emiliagol come editore
+concorrente specifico sull'Eccellenza romagnola (quindi geograficamente il più
+vicino al cliente guida) — **risponde 403 in modo stabile** (verificato 3 volte):
+stessa categoria di tuttocampo, non un varco.
+
+**D. Canali Telegram di singoli club o tifoserie.** Plausibili in teoria (prassi
+diffusa nel dilettantismo pubblicare la formazione su Facebook/Instagram/gruppi
+Telegram di tifosi prima della gara) ma **non verificati**: richiederebbero
+scoperta manuale club per club, copertura probabilmente incompleta e
+irregolare, e mescolano dato con commento da tifoso. Non è la prossima cosa da
+inseguire: il rapporto sforzo/dato è ignoto e probabilmente sfavorevole rispetto
+a B/C.
+
+**E. Canali dei comitati provinciali (delegazioni) anziché regionali.**
+Provati 5 nomi plausibili (`figcrimini`, `lndrimini`, ecc.): tutti 302, nessuno
+trovato con URL intuibile. Se esistono, non hanno un pattern di nome prevedibile
+— stessa conclusione già scritta per i comitati regionali (§ sopra): registro da
+scoprire a mano, non da indovinare.
+
+### Conclusione della ricognizione
+
+Non emerge un secondo canale Telegram strutturato equivalente a quello del
+comitato. Emerge invece un'informazione più utile: **il canale del comitato +
+la stampa locale coprono insieme quasi tutto tranne il tabellino di routine**,
+e quel buco specifico (undici titolari, ogni settimana, ogni gara) non ha,
+allo stato attuale della ricerca, nessuna fonte pubblica gratuita — né su
+Telegram né altrove. Va trattato come un limite del prodotto, non come un
+compito di scraping non ancora risolto.
+
 ---
 
 ## 4. Il framework: catena di custodia del dato
