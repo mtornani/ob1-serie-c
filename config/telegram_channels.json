@@ -1,0 +1,228 @@
+{
+  "_meta": {
+    "purpose": "Censimento canali Telegram del dilettantismo. Ogni riga porta le prove (ultimo messaggio, migrazione, segnali di contenuto) e il verdetto e' ricalcolabile con scripts/telegram_census.py. 'Risponde 200' NON significa 'vivo': vedi @lndlombardia.",
+    "updated_at": "2026-08-07T15:10:29+00:00",
+    "coverage": {
+      "attivo": 5,
+      "migrato": 3,
+      "morto": 3
+    }
+  },
+  "channels": {
+    "crtoscanalndsgs": {
+      "handle": "crtoscanalndsgs",
+      "verdict": "attivo",
+      "content_type": "news_generiche",
+      "verified_at": "2026-08-07T15:10:26+00:00",
+      "title": "CR Toscana LND-SGS",
+      "subscribers": "632",
+      "visible_messages": 20,
+      "last_message_at": "2026-07-31T11:42:32+00:00",
+      "migrated": false,
+      "migration_targets": [],
+      "content_signals": {
+        "comunicati_pdf": 0,
+        "comunicato_kw": 0,
+        "giustizia_kw": 0,
+        "formazioni_kw": 0,
+        "mercato_kw": 0
+      }
+    },
+    "lndemiliaromagna": {
+      "handle": "lndemiliaromagna",
+      "verdict": "attivo",
+      "content_type": "feed_comunicati",
+      "verified_at": "2026-08-07T15:09:38+00:00",
+      "title": "@lndemiliaromagna",
+      "subscribers": "839",
+      "visible_messages": 20,
+      "last_message_at": "2026-08-07T12:44:04+00:00",
+      "migrated": false,
+      "migration_targets": [],
+      "content_signals": {
+        "comunicati_pdf": 34,
+        "comunicato_kw": 66,
+        "giustizia_kw": 0,
+        "formazioni_kw": 0,
+        "mercato_kw": 0
+      }
+    },
+    "lndlazio": {
+      "handle": "lndlazio",
+      "verdict": "attivo",
+      "content_type": "feed_comunicati",
+      "verified_at": "2026-08-07T15:09:38+00:00",
+      "title": "LND Lazio",
+      "subscribers": "",
+      "visible_messages": 20,
+      "last_message_at": "2026-08-05T14:47:00+00:00",
+      "migrated": false,
+      "migration_targets": [],
+      "content_signals": {
+        "comunicati_pdf": 17,
+        "comunicato_kw": 2,
+        "giustizia_kw": 0,
+        "formazioni_kw": 1,
+        "mercato_kw": 0
+      }
+    },
+    "lndlombardia": {
+      "handle": "lndlombardia",
+      "verdict": "migrato",
+      "content_type": null,
+      "verified_at": "2026-08-07T15:09:38+00:00",
+      "title": "LND Lombardia",
+      "subscribers": "",
+      "visible_messages": 20,
+      "last_message_at": "2024-09-10T06:20:36+00:00",
+      "migrated": true,
+      "migration_targets": [
+        "t.me/+bRyCbWCtxlliZTNk"
+      ],
+      "content_signals": {
+        "comunicati_pdf": 0,
+        "comunicato_kw": 2,
+        "giustizia_kw": 0,
+        "formazioni_kw": 0,
+        "mercato_kw": 3
+      }
+    },
+    "lndmilano": {
+      "handle": "lndmilano",
+      "verdict": "migrato",
+      "content_type": null,
+      "verified_at": "2026-08-07T15:09:38+00:00",
+      "title": "LND Milano",
+      "subscribers": "804",
+      "visible_messages": 20,
+      "last_message_at": "2024-08-03T11:15:22+00:00",
+      "migrated": true,
+      "migration_targets": [
+        "t.me/+Xk1fYZo7s5swOTNk"
+      ],
+      "content_signals": {
+        "comunicati_pdf": 0,
+        "comunicato_kw": 5,
+        "giustizia_kw": 0,
+        "formazioni_kw": 0,
+        "mercato_kw": 6
+      }
+    },
+    "lndtoscana": {
+      "handle": "lndtoscana",
+      "verdict": "morto",
+      "content_type": "news_generiche",
+      "verified_at": "2026-08-07T15:09:38+00:00",
+      "title": "LND Toscana - Comunicati",
+      "subscribers": null,
+      "visible_messages": 1,
+      "last_message_at": "2025-03-04T14:00:30+00:00",
+      "migrated": false,
+      "migration_targets": [],
+      "content_signals": {
+        "comunicati_pdf": 0,
+        "comunicato_kw": 0,
+        "giustizia_kw": 0,
+        "formazioni_kw": 0,
+        "mercato_kw": 0
+      }
+    },
+    "lndvarese": {
+      "handle": "lndvarese",
+      "verdict": "migrato",
+      "content_type": null,
+      "verified_at": "2026-08-07T15:10:26+00:00",
+      "title": "LND Varese",
+      "subscribers": "432",
+      "visible_messages": 20,
+      "last_message_at": "2024-08-21T14:38:46+00:00",
+      "migrated": true,
+      "migration_targets": [
+        "t.me/+ufzOdUNwh1YxN2Q8"
+      ],
+      "content_signals": {
+        "comunicati_pdf": 0,
+        "comunicato_kw": 8,
+        "giustizia_kw": 0,
+        "formazioni_kw": 0,
+        "mercato_kw": 3
+      }
+    },
+    "renategiovanili": {
+      "handle": "renategiovanili",
+      "verdict": "morto",
+      "content_type": "formazioni",
+      "verified_at": "2026-08-07T15:09:38+00:00",
+      "title": "Settore Giovanile A.C. Renate",
+      "subscribers": "80",
+      "visible_messages": 18,
+      "last_message_at": "2023-07-10T18:47:21+00:00",
+      "migrated": false,
+      "migration_targets": [],
+      "content_signals": {
+        "comunicati_pdf": 0,
+        "comunicato_kw": 0,
+        "giustizia_kw": 0,
+        "formazioni_kw": 9,
+        "mercato_kw": 0
+      }
+    },
+    "salentosport_telegram": {
+      "handle": "salentosport_telegram",
+      "verdict": "attivo",
+      "content_type": "news_generiche",
+      "verified_at": "2026-08-07T15:10:26+00:00",
+      "title": "🏃SalentoSport ⚽️",
+      "subscribers": "116",
+      "visible_messages": 20,
+      "last_message_at": "2026-08-07T08:32:32+00:00",
+      "migrated": false,
+      "migration_targets": [],
+      "content_signals": {
+        "comunicati_pdf": 0,
+        "comunicato_kw": 0,
+        "giustizia_kw": 0,
+        "formazioni_kw": 0,
+        "mercato_kw": 0
+      }
+    },
+    "serieDofficial": {
+      "handle": "serieDofficial",
+      "verdict": "attivo",
+      "content_type": "news_generiche",
+      "verified_at": "2026-08-07T15:09:38+00:00",
+      "title": "Serie D Official",
+      "subscribers": "800",
+      "visible_messages": 20,
+      "last_message_at": "2026-08-06T12:25:56+00:00",
+      "migrated": false,
+      "migration_targets": [],
+      "content_signals": {
+        "comunicati_pdf": 0,
+        "comunicato_kw": 0,
+        "giustizia_kw": 0,
+        "formazioni_kw": 2,
+        "mercato_kw": 0
+      }
+    },
+    "tuttocampoit": {
+      "handle": "tuttocampoit",
+      "verdict": "morto",
+      "content_type": "news_generiche",
+      "verified_at": "2026-08-07T15:09:38+00:00",
+      "title": "Tuttocampo",
+      "subscribers": "490",
+      "visible_messages": 16,
+      "last_message_at": "2023-07-26T14:32:04+00:00",
+      "migrated": false,
+      "migration_targets": [],
+      "content_signals": {
+        "comunicati_pdf": 0,
+        "comunicato_kw": 0,
+        "giustizia_kw": 0,
+        "formazioni_kw": 2,
+        "mercato_kw": 0
+      }
+    }
+  }
+}

@@ -171,6 +171,57 @@ regione**, come già `config/sources.json` per le fonti attuali — non un
 interruttore che copre l'Italia. Priorità di scoperta: Emilia-Romagna (dove
 gioca il cliente guida), poi Marche (confine), poi a scalare.
 
+### Il censimento con prove — `scripts/telegram_census.py` (7/8/2026)
+
+Sette handle in più trovati a mano dall'utente hanno **falsificato due
+conclusioni del primo censimento**, e ne è nato lo strumento che rende il
+registro scientifico invece che aneddotico.
+
+**Errore corretto n.1 — "risponde 200" non significa "vivo".**
+`@lndlombardia` risponde 200 con 20 messaggi visibili; ma sono dell'agosto
+2024, e l'ultimo annuncia la migrazione a un canale privato (`t.me/+...`).
+Il primo censimento lo contava attivo perché contava i messaggi senza
+guardarne la data. Lo stesso vale per `@lndmilano` e `@lndvarese`: la
+**Lombardia è migrata sistematicamente su canali privati a invito**
+nell'agosto 2024 — pattern regionale, non coincidenza. I canali privati non si
+leggono via `t.me/s/`: servirebbe un account utente iscritto (Telethon/MTProto,
+uso normale di Telegram, gratis) — livello di accesso diverso, da decidere
+esplicitamente, non da scivolarci dentro.
+
+**Errore corretto n.2 — le delegazioni provinciali i canali li hanno.**
+`@lndmilano` e `@lndvarese` esistono (il primo censimento aveva solo sbagliato
+i nomi da provare). Sono migrate, ma esistono.
+
+**Lo strumento**: `scripts/telegram_census.py` legge l'anteprima pubblica di
+ogni handle e registra PROVE (data ultimo messaggio, segnali di migrazione in
+coda, segnali di contenuto, iscritti) in `config/telegram_channels.json`. Il
+verdetto — attivo / migrato / morto / inesistente — è derivato con regole
+esplicite e ricalcolabili (`verdict()`), con soglia di staleness a 45 giorni
+per non dichiarare morto un comitato in pausa estiva. 11 test offline in
+`tests/test_telegram_census.py`, incluso il caso @lndlombardia come regressione.
+
+**Stato del registro al 7/8/2026** (11 canali censiti, verdetti calcolati):
+
+| verdetto | canali |
+|---|---|
+| attivo | `@lndemiliaromagna` (feed CU), `@lndlazio` (feed CU), `@serieDofficial` (**Serie D nazionale** — Dipartimento Interregionale, grado A), `@crtoscanalndsgs` (SGS Toscana), `@salentosport_telegram` (stampa locale Puglia, grado C) |
+| migrato su privato | `@lndlombardia`, `@lndmilano`, `@lndvarese` (tutta la Lombardia, ago 2024) |
+| morto | `@lndtoscana` (marzo 2025), `@renategiovanili` (2023), `@tuttocampoit` (2023) |
+
+**Come si scoprono i canali, visto che il web li indicizza male** (osservazione
+dell'utente, confermata: nessuno dei 7 handle era emerso dalle ricerche web):
+
+1. **segnalazione umana** — finora la via più produttiva: 7 su 11;
+2. **crawl dei siti ufficiali** dei comitati/delegazioni a caccia di link
+   `t.me/` (i comitati linkano il proprio canale, il web search no);
+3. **riferimenti incrociati dentro i canali** — i canali si linkano tra loro
+   (es. @lndmilano linka il suo successore privato);
+4. **riverifica periodica** del registro con lo script: la scoperta è manuale,
+   la manutenzione è automatica.
+
+La copertura si dichiara SOLO come numero calcolato dal registro (oggi: 2
+comitati regionali attivi in chiaro su 20), mai come stima.
+
 ### Undici titolari — il buco resta aperto, con tre strade sporche e una pulita
 
 Nessuna fonte pubblica strutturata trovata. Verificato anche se dietro il 403 di
