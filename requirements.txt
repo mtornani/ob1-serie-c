@@ -16,6 +16,9 @@ python-telegram-bot>=21.0
 # PDF Report
 fpdf2>=2.8.0
 
+# Lettura dei Comunicati Ufficiali LND (testo nativo, nessun OCR)
+pypdf>=4.0.0
+
 # Utils
 pyyaml>=6.0
 
