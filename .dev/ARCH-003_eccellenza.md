@@ -68,21 +68,78 @@ rivelato falso alla misura. Quindi la Fase 0 qui sotto **non è opzionale**.
 
 ---
 
-## 3. Fase 0 — Il dato esiste? (blocca tutto il resto)
+## 3. Fase 0 — Il dato esiste? **RISOLTA il 3 agosto 2026**
 
-Tre domande, una settimana di lavoro, nessuna riga di prodotto:
+La via d'accesso non era il sito: **è il canale Telegram del comitato**.
 
-1. Qual è l'endpoint reale dietro l'iframe di calendari/classifiche di
-   `figccrer.it`? (ispezione del traffico di rete, poi fetch diretto)
-2. I comunicati di giustizia sportiva sono PDF testuali o scansioni? Un PDF
-   testuale è parsabile a costo zero; una scansione richiede OCR e cambia il
-   preventivo.
-3. **Esiste una fonte pubblica con le formazioni per partita?** Se sì, i minuti
-   si derivano (titolare = 90 meno la sostituzione). Se no, il prodotto per
-   l'Eccellenza non può contenere minutaggi, e va detto al cliente.
+### `t.me/lndemiliaromagna` — canale pubblico, leggibile senza autenticazione
 
-**Criterio di uscita**: un documento di due pagine con, per ciascuna delle tre
-domande, la risposta e un esempio scaricato a mano. Poi si decide.
+`https://t.me/s/lndemiliaromagna` restituisce HTML statico con gli ultimi 20
+messaggi, paginabile all'indietro con `?before=<message_id>`. Storico attivo dal
+2019, ultimo id ~4784. Nessuna API key, nessun bot da registrare, nessun 403.
+
+Ogni comunicato è **un messaggio** con questa forma:
+
+```
+[2026-08-05T14:32]  Cu 11 del 05.08.26
+                    https://www.figccrer.it/files/comunicati/2026/7504/cu11.pdf
+```
+
+Cioè: numero del CU, data, e **link diretto al PDF** con path prevedibile
+`figccrer.it/files/comunicati/{anno}/{announcement_id}/cu{n}.pdf`.
+
+### Le tre domande, con la risposta
+
+**1. Endpoint dietro l'iframe?** Non serve più cercarlo. Il canale Telegram è una
+fonte migliore di quella che stavamo inseguendo: è push invece che pull, ha id
+di messaggio stabili (dedup immediato con `src/watch/seen.py`) e non richiede
+rendering JS.
+
+**2. PDF testuali o scansioni?** **Testo nativo.** Verificato su due comunicati:
+CU 11 del 05/08/2026 (3 pagine, 3.920 caratteri estratti) e CU 146 del
+13/04/2026 (8 pagine, 12.576 caratteri). `pypdf` basta, niente OCR, costo zero.
+
+**3. Formazioni e minuti per partita?** **NO.** Il comunicato porta i risultati
+ufficiali e i provvedimenti disciplinari, non le distinte. Quindi il Piano B
+descritto sotto non è più un'ipotesi: **è il piano.**
+
+### Cosa contiene davvero un CU in stagione (CU 146, verificato)
+
+```
+2.2 Risultati delle Giornate di Campionato
+    RISULTATI UFFICIALI GARE DEL 11/04/2026
+
+3. GIUSTIZIA SPORTIVA DILETTANTI
+   IL GIUDICE SPORTIVO ... HA ADOTTATO LE DECISIONI ...
+   [CATEGORIA]
+   GARE DEL 11/4/2026
+   PROVVEDIMENTI DISCIPLINARI
+   DIRIGENTI
+   I AMMONIZIONE DIFFIDA
+     VIGHI ALESSIO (NOCETO)    VIGHI MATTEO (NOCETO)
+   GIRONE A - 12 Giornata - R
+   SORAGNA 1921 - PONTENURESE - D
+```
+
+Nome tesserato, società fra parentesi, tipo di provvedimento, girone, giornata,
+gara. Formato ripetuto e regolare: **parsabile con espressioni regolari, senza
+LLM**. È la fonte di grado A del framework (§4).
+
+### Cosa si ottiene e cosa no
+
+| dato | disponibile | da dove |
+|---|---|---|
+| risultati ufficiali per giornata | sì | sezione 2.2 del CU |
+| squalifiche, ammonizioni, diffide, ammende | sì, con nome e società | sezione 3, Giudice Sportivo |
+| calendario e gironi | sì | comunicati di inizio stagione |
+| chi ha giocato | **parziale**: un ammonito era in campo | inferenza dai provvedimenti |
+| minuti per giocatore | **no** | nessuna fonte pubblica trovata |
+| formazioni | **no** | `tuttocampo.it` le ha ma risponde 403 |
+
+**Conseguenza sul prodotto**: niente statistiche per giocatore in Eccellenza. Il
+valore sta nella preparazione avversario, nella memoria disciplinare e nel
+tempismo — non nel minutaggio. Va scritto nel materiale commerciale, non
+scoperto dal cliente.
 
 ### Piano B, se i minuti non esistono
 
@@ -172,10 +229,10 @@ più da imparare per meno strada. **Decide l'uomo, il sistema alloca l'attenzion
 
 | Fase | Contenuto | Criterio di uscita |
 |---|---|---|
-| **0** | Verifica accessibilità (§3) | tre risposte documentate + un esempio scaricato per fonte |
+| **0** | Verifica accessibilità (§3) | ✅ **fatta il 3/8/2026**: canale Telegram, PDF testuali, niente minuti |
 | **1** | Grading fonti nel gate (vale anche per Scout) | il gate distingue A/B da D; si misura quanti profili oggi "corroborati" reggono la regola severa |
 | **2** | `italy_eccellenza_emilia` come lega separata, fonti CRER + stampa locale | una run raccoglie ≥20 fatti verificati dalle sole fonti regionali |
-| **3** | Parser comunicati (squalifiche, svincoli) | dal comunicato settimanale si estrae l'elenco squalificati senza intervento umano |
+| **3** | Poller Telegram + parser CU | dal canale si scaricano i CU nuovi (dedup per message id) e se ne estraggono risultati e provvedimenti senza intervento umano |
 | **4** | `Fixture` + `SquadState` nel modello dati | il calendario della propria squadra è in DB e si aggiorna da solo |
 | **5** | Brief del giovedì su Telegram | il DS riceve il messaggio e non deve aprire nient'altro |
 | **6** | IGI | il piano settimanale propone 3 partite ordinate, con la motivazione in chiaro |
@@ -196,7 +253,11 @@ Le Fasi 5 e 6 hanno senso solo dopo la 4; la 4 solo se la 0 dà esito positivo.
   un rischio legale.
 - **Rispetto delle fonti**: `tuttocampo.it` risponde 403 allo scraping. Un 403 è
   una risposta, non un ostacolo da aggirare: o si trova un accordo, o quella
-  fonte non si usa.
+  fonte non si usa. Il canale Telegram del comitato è invece pubblico e pensato
+  per essere letto: si rispettano ritmo e attribuzione.
+- **I CU contengono nomi di tesserati minorenni** (categorie giovanili). Si
+  trattano solo i fatti sportivi dell'atto pubblico — provvedimento, società,
+  gara — e nulla di più. Nessun arricchimento social su quei nomi.
 - **Non si inventano minutaggi.** Se il dato non è pubblico, il campo resta
   vuoto e il prodotto lo dichiara.
 
