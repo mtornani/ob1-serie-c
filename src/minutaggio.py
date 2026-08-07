@@ -420,22 +420,22 @@ def check_contract_signals(player: Dict[str, Any], league: str = 'serie_c') -> D
                 signals.append({
                     'type': 'contract_expired',
                     'severity': 'red',
-                    'label': 'SCADUTO',
-                    'detail': f'Contratto scaduto ({contract_expires[:10]})',
+                    'label': 'Contratto scaduto',
+                    'detail': f'Scaduto il {contract_expires[:10]}',
                 })
             elif days_left <= 180:
                 signals.append({
                     'type': 'contract_expiry',
                     'severity': 'red',
-                    'label': f'SCADE {days_left}gg',
-                    'detail': f'Contratto in scadenza: {contract_expires[:10]} ({days_left} giorni)',
+                    'label': 'In scadenza',
+                    'detail': f'Contratto in scadenza tra {days_left} giorni ({contract_expires[:10]})',
                 })
             elif days_left <= 365:
                 signals.append({
                     'type': 'contract_expiry',
                     'severity': 'yellow',
-                    'label': f'SCADE {days_left}gg',
-                    'detail': f'Contratto: {contract_expires[:10]} ({days_left} giorni)',
+                    'label': 'Scade entro l’anno',
+                    'detail': f'Contratto in scadenza tra {days_left} giorni ({contract_expires[:10]})',
                 })
         except (ValueError, TypeError):
             pass
@@ -451,15 +451,15 @@ def check_contract_signals(player: Dict[str, Any], league: str = 'serie_c') -> D
             signals.append({
                 'type': 'apprentice_reached',
                 'severity': 'green',
-                'label': f'ART.99bis OK',
-                'detail': f'{appearances} presenze — soglia {soglia} raggiunta, blindaggio contrattuale possibile',
+                'label': 'Blindaggio possibile',
+                'detail': f'{appearances} presenze: soglia raggiunta per il primo contratto professionistico',
             })
         elif remaining <= 5:
             signals.append({
                 'type': 'apprentice_near',
                 'severity': 'yellow',
-                'label': f'ART.99bis -{remaining}',
-                'detail': f'{appearances}/{soglia} presenze — mancano {remaining} per primo contratto pro',
+                'label': 'Vicino alla soglia',
+                'detail': f'{appearances} presenze su {soglia}: ne mancano {remaining} per il primo contratto professionistico',
             })
 
     return {'signals': signals}
