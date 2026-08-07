@@ -300,6 +300,39 @@ class CUStore:
         return [r[0] for r in self.conn.execute(
             "SELECT DISTINCT club FROM cu_sanctions ORDER BY club")]
 
+    def resolve_club(self, name: str) -> tuple:
+        """
+        Nome digitato a mano -> nome ESATTO come compare nei CU ingeriti.
+
+        squalificati()/diffidati() restano un confronto SQL esatto di
+        proposito: è prevedibile e si testa facile. Ma un CU può aggiungere o
+        omettere una sigla societaria in modo non deducibile a priori — sul
+        CU 146 vero "CASTENASO CALCIO" resta pulito ovunque, mentre "VIANESE
+        CALCIO SSDARL" porta sempre la sigla. Chi configura un club a mano
+        non ha modo di saperlo in anticipo. La tolleranza sta qui, in un
+        punto solo, prima della query esatta — non dentro ogni query.
+
+        Ritorna (nome_esatto, candidati):
+          - match univoco (esatto a meno di maiuscole/spazi, o per
+            contenimento in una direzione o nell'altra) -> (nome, [])
+          - nessun match o match ambiguo -> (None, candidati) — candidati è
+            ciò che si avvicina, o l'intera lista se non si avvicina niente.
+            Serve a dire "non trovato" invece di restituire in silenzio
+            uno squalificati() vuoto che sembra un "tutto ok".
+        """
+        if not name:
+            return None, []
+        target = " ".join(name.split()).upper()
+        clubs = self.clubs()
+        exact = [c for c in clubs if " ".join(c.split()).upper() == target]
+        if len(exact) == 1:
+            return exact[0], []
+        contains = [c for c in clubs
+                    if target in c.upper() or c.upper() in target]
+        if len(contains) == 1:
+            return contains[0], []
+        return None, sorted(set(contains) or clubs)
+
     def presence_index(self, club: str = None) -> list:
         """
         Provvedimenti accumulati per tesserato: un ammonito era in campo.

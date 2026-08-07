@@ -198,6 +198,65 @@ class StoreTestCase(unittest.TestCase):
         self.assertEqual(row["giornate_distinte"], 2)
 
 
+class ResolveClubTestCase(unittest.TestCase):
+    """
+    La tolleranza sta tutta qui, in un punto solo: squalificati()/diffidati()
+    restano un confronto SQL esatto (vedi ResolveClubTestCase vs il resto).
+    Caso guida: chi configura OB1_CLUB a mano non può sapere in anticipo se
+    il comitato scriverà 'RIMINI CALCIO' o 'RIMINI CALCIO SSDARL'.
+    """
+
+    def setUp(self):
+        self.store = CUStore(":memory:")
+        self.store.ingest(parse_cu_text(CU_REALE))
+
+    def tearDown(self):
+        self.store.close()
+
+    def test_match_esatto(self):
+        self.assertEqual(self.store.resolve_club("NOCETO"), ("NOCETO", []))
+
+    def test_case_e_spazi_non_contano(self):
+        self.assertEqual(self.store.resolve_club("  noceto  "), ("NOCETO", []))
+        self.assertEqual(self.store.resolve_club("Castenaso   Calcio"),
+                         ("CASTENASO CALCIO", []))
+
+    def test_sigla_societaria_mancante_si_risolve_comunque(self):
+        """Il caso reale: 'VIANESE CALCIO' senza sigla deve trovare quella con."""
+        club, candidati = self.store.resolve_club("VIANESE CALCIO")
+        self.assertEqual(club, "VIANESE CALCIO SSDARL")
+        self.assertEqual(candidati, [])
+
+    def test_sigla_in_piu_rispetto_al_dato_si_risolve_comunque(self):
+        """Direzione opposta: se uno mette la sigla ma il CU non ce l'ha."""
+        club, _ = self.store.resolve_club("CASTENASO CALCIO SRL")
+        self.assertEqual(club, "CASTENASO CALCIO")
+
+    def test_match_ambiguo_ritorna_solo_i_candidati_che_si_avvicinano(self):
+        """'CALCIO' sta sia in CASTENASO CALCIO sia in VIANESE CALCIO SSDARL:
+        non è deducibile quale intendesse chi l'ha scritto, quindi niente
+        scelta automatica — solo i due, non l'elenco intero."""
+        club, candidati = self.store.resolve_club("CALCIO")
+        self.assertIsNone(club)
+        self.assertEqual(set(candidati),
+                         {"CASTENASO CALCIO", "VIANESE CALCIO SSDARL"})
+
+    def test_nome_del_tutto_estraneo_elenca_tutte_le_societa_note(self):
+        """Nessuna somiglianza: meglio l'elenco intero che niente."""
+        club, candidati = self.store.resolve_club("RIMINI CALCIO")
+        self.assertIsNone(club)
+        self.assertIn("NOCETO", candidati)
+        self.assertIn("CASTENASO CALCIO", candidati)
+
+    def test_nome_vuoto(self):
+        self.assertEqual(self.store.resolve_club(""), (None, []))
+
+    def test_db_senza_societa_non_esplode(self):
+        vuoto = CUStore(":memory:")
+        self.assertEqual(vuoto.resolve_club("RIMINI CALCIO"), (None, []))
+        vuoto.close()
+
+
 class PersistenceTestCase(unittest.TestCase):
     """
     Su CI il .db non sopravvive al runner: la memoria della stagione sta nel
