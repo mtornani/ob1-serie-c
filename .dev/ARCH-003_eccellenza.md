@@ -143,11 +143,58 @@ scoperto dal cliente.
 
 ### Piano B, se i minuti non esistono
 
-Il prodotto non muore, si restringe: preparazione avversario (rosa, marcatori,
+Il prodotto non muore, si restringe: preparazione avversario (rosa,
 squalificati, modulo ricorrente), memoria disciplinare della propria rosa,
 radar svincolati di zona. Tutto derivabile da comunicati e classifiche. Sparisce
 solo la parte statistica per giocatore — e sparisce **detto**, non nascosto
 dietro una stima.
+
+**Correzione del 3/8, dopo lettura integrale di CU 146**: la sezione risultati
+è solo `SQUADRA A - SQUADRA B  N-N`, **zero marcatori**. Niente classifica
+cannonieri derivabile dal CU — chiude anche quella via, non solo i minuti.
+
+### Il registro dei canali Telegram — non è uno scanner universale
+
+Idea nata da un'osservazione dell'utente (Wylab, 3/8): se il canale Telegram
+funziona per l'Emilia-Romagna, funziona per tutti i comitati regionali? **Verificato
+subito, risposta parziale.**
+
+Provati 12 comitati con nome intuibile (`lnd<regione>`): **3 rispondono** (Emilia-
+Romagna e Lombardia attivi, Lazio attivo, Toscana esiste ma quasi vuoto — 1
+messaggio), gli altri 302. Cercato un elenco ufficiale centralizzato dei canali:
+**non esiste** — ogni comitato ha aperto il suo canale in autonomia, senza
+convenzione di nome né directory.
+
+Conclusione: il canale Telegram resta la miglior fonte trovata finora (gratis,
+push, dedup per id, zero JS), ma **è un registro da costruire regione per
+regione**, come già `config/sources.json` per le fonti attuali — non un
+interruttore che copre l'Italia. Priorità di scoperta: Emilia-Romagna (dove
+gioca il cliente guida), poi Marche (confine), poi a scalare.
+
+### Undici titolari — il buco resta aperto, con tre strade sporche e una pulita
+
+Nessuna fonte pubblica strutturata trovata. Verificato anche se dietro il 403 di
+`tuttocampo.it` ci fosse un varco legittimo: **anche `robots.txt` risponde 403**,
+segno di blocco a livello di WAF e non di policy selettiva — coerente col
+principio del §7 («un 403 è una risposta, non un ostacolo da aggirare»). L'unica
+via lì è una conversazione commerciale di partnership, non tecnica.
+
+Le uniche fonti reali sulle formazioni:
+
+1. **post social dei club** (grafiche "l'undici titolare"): segnale vero ma
+   incompleto, richiede scoperta per-club e OCR sulla grafica — costo alto,
+   copertura incerta;
+2. **cronaca di stampa locale**: nomina marcatori e qualche prestazione, mai la
+   formazione intera;
+3. distinte ufficiali di gara: **non pubbliche** a questo livello.
+
+**L'unica cosa costruibile a costo zero, dai dati che già arrivano**: un indice
+di presenza derivato dai provvedimenti disciplinari accumulati in stagione. Un
+giocatore ammonito 4 volte per lo stesso club in 4 giornate diverse era in campo
+quelle 4 volte — non dà l'undici di una singola gara, ma dice chi è titolare
+fisso vs. chi è marginale, usando solo la fonte A che il sistema legge già.
+Non sostituisce il tabellino: è il meglio disponibile finché non se ne trova uno
+vero.
 
 ---
 
@@ -233,6 +280,7 @@ più da imparare per meno strada. **Decide l'uomo, il sistema alloca l'attenzion
 | **1** | Grading fonti nel gate (vale anche per Scout) | il gate distingue A/B da D; si misura quanti profili oggi "corroborati" reggono la regola severa |
 | **2** | `italy_eccellenza_emilia` come lega separata, fonti CRER + stampa locale | una run raccoglie ≥20 fatti verificati dalle sole fonti regionali |
 | **3** | Poller Telegram + parser CU | dal canale si scaricano i CU nuovi (dedup per message id) e se ne estraggono risultati e provvedimenti senza intervento umano |
+| **3bis** | Registro canali Telegram per comitato | ogni comitato regionale aggiunto al registro ha un canale verificato a mano (nessuno scanner automatico: i nomi non sono standard) |
 | **4** | `Fixture` + `SquadState` nel modello dati | il calendario della propria squadra è in DB e si aggiorna da solo |
 | **5** | Brief del giovedì su Telegram | il DS riceve il messaggio e non deve aprire nient'altro |
 | **6** | IGI | il piano settimanale propone 3 partite ordinate, con la motivazione in chiaro |
