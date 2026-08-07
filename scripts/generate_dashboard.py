@@ -19,6 +19,24 @@ from minutaggio import genera_intel_badge
 from quality_gate import apply_gate, normalize_age
 
 
+def _first(*vals):
+    """Primo valore non-None, lo zero VERO compreso. Nessuna coercizione."""
+    for v in vals:
+        if v is not None:
+            return v
+    return None
+
+
+def _tm_url(url):
+    """
+    L'url solo se è un link Transfermarkt vero, quindi verificabile da chi
+    legge — non un redirect di grounding né spazzatura. Altrimenti None.
+    """
+    if isinstance(url, str) and 'transfermarkt' in url.lower() and url.startswith('http'):
+        return url
+    return None
+
+
 def is_generic_tm_page(url: str) -> bool:
     """Detect generic Transfermarkt league/transfer pages (not player profiles)"""
     if not url:
@@ -197,10 +215,13 @@ def main():
             'source_url': opp.get('source_url', ''),
             'previous_clubs': opp.get('previous_clubs', []),
             'current_club': opp.get('current_club', ''),
-            'appearances': opp.get('appearances') or profile.get('appearances') or 0,
-            'goals': opp.get('goals') or profile.get('goals') or 0,
-            'assists': opp.get('assists') or profile.get('assists') or 0,
-            'minutes_played': opp.get('minutes_played') or profile.get('minutes_played') or 0,
+            # Fiducia: una statistica ignota resta null, non diventa 0. Un "0
+            # presenze" inventato si legge come "non ha mai giocato" — e chi
+            # scopre una volta che il numero era finto non torna più.
+            'appearances': _first(opp.get('appearances'), profile.get('appearances')),
+            'goals': _first(opp.get('goals'), profile.get('goals')),
+            'assists': _first(opp.get('assists'), profile.get('assists')),
+            'minutes_played': _first(opp.get('minutes_played'), profile.get('minutes_played')),
             'summary': opp.get('summary', ''),
 
             # DATA-001: New enriched fields
@@ -213,6 +234,12 @@ def main():
 
             # DATA-003 QW-1: Agent field
             'agent': opp.get('agent') or profile.get('agent'),
+
+            # Link Transfermarkt verificabile (vale solo un url TM vero) e il
+            # flag che la UI usa per separare i dati controllabili dalle stime.
+            # È il gate delle due fonti reso visibile sulla singola scheda.
+            'tm_url': _tm_url(opp.get('tm_url') or profile.get('tm_url')),
+            'data_verified': bool(_tm_url(opp.get('tm_url') or profile.get('tm_url'))),
 
             # Discovered timestamp (for stale detection)
             'discovered_at': opp.get('discovered_at', ''),
@@ -228,6 +255,8 @@ def main():
             'publishable': opp.get('publishable', False),
             'review_flags': opp.get('review_flags', ''),
             'n_sources': opp.get('n_sources', 1),
+            'out_of_scope': opp.get('out_of_scope', False),
+            'out_of_scope_reason': opp.get('out_of_scope_reason', ''),
 
             # Auto-generated recommendation
             'recommendation': generate_recommendation(opp),
@@ -283,8 +312,14 @@ def main():
         all_scored.append(dashboard_opp)
 
     tracking_total = len(all_scored)
-    publishable_list = [o for o in all_scored if o.get('publishable')]
+    # out_of_scope: giocatore vero ma fuori fascia Serie C (es. valore 35 mln €).
+    # Non è un'opportunità per questo radar, quindi non entra nel feed pubblico.
+    out_of_scope_n = sum(1 for o in all_scored if o.get('out_of_scope'))
+    publishable_list = [o for o in all_scored
+                        if o.get('publishable') and not o.get('out_of_scope')]
     tracking_only = tracking_total - len(publishable_list)
+    if out_of_scope_n:
+        print(f"   Esclusi fuori fascia Serie C: {out_of_scope_n}")
 
     # Public feed = only publishable
     dashboard_opportunities = publishable_list

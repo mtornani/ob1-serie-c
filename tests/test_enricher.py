@@ -47,6 +47,11 @@ class EnricherTestCase(unittest.TestCase):
         for var in ("GEMINI_API_KEY", "SERPER_API_KEY", "TAVILY_API_KEY", "OB1_LLM_MODE"):
             os.environ.pop(var, None)
         os.environ["GROQ_API_KEY"] = "gsk_" + "x" * 24  # unica chiave configurata
+        # La ricerca interna di TM è l'unico percorso che apre una connessione
+        # vera. Spenta qui con l'interruttore di produzione: senza, ogni test
+        # che costruisce l'enricher da sé pagherebbe un timeout di rete.
+        os.environ["OB1_TM_SITE_SEARCH"] = "0"
+        self.addCleanup(os.environ.pop, "OB1_TM_SITE_SEARCH", None)
 
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
@@ -73,9 +78,13 @@ class EnricherTestCase(unittest.TestCase):
         p5.start()
         self.addCleanup(p5.stop)
 
-    def build(self, page_text=TM_PAGE, search_url=TM_URL):
+    def build(self, page_text=TM_PAGE, search_url=TM_URL, site_search=""):
         enricher = TransfermarktEnricher()
         enricher.fetch_page = fetched(page_text)
+        # La ricerca interna di TM parla con la rete vera: spenta di default,
+        # così i test restano offline e quello che si esercita qui resta il
+        # percorso del motore di ricerca. Chi la testa la riaccende da sé.
+        enricher._tm_url_from_site_search = mock.Mock(return_value=site_search)
         self.search = mock.Mock(return_value=("duckduckgo", [
             {"title": "Patierno", "url": search_url, "content": "snippet", "source": "duckduckgo"},
         ]))
@@ -239,6 +248,79 @@ class TestParseTmText(unittest.TestCase):
 
     def test_empty_input(self):
         self.assertEqual(parse_tm_text(""), {})
+
+
+class SiteSearchTestCase(EnricherTestCase):
+    """
+    Ricerca interna di Transfermarkt: toglie di mezzo il motore terzo, che è il
+    punto della catena che si fa bloccare. Due comportamenti non ovvi da fissare.
+    """
+
+    def _enricher(self, response):
+        os.environ.pop("OB1_TM_SITE_SEARCH", None)   # rotta accesa
+        enricher = TransfermarktEnricher()
+        enricher.session = mock.Mock()
+        enricher.session.get = mock.Mock(return_value=response)
+        return enricher
+
+    @staticmethod
+    def _resp(status=200, text=""):
+        return mock.Mock(status_code=status, text=text)
+
+    def test_usa_il_canonical_quando_tm_reindirizza_al_profilo(self):
+        """
+        Con un solo risultato esatto TM salta l'elenco e serve il profilo. La
+        pagina contiene i link ai compagni di squadra: prendere il primo href
+        arricchirebbe in silenzio il giocatore sbagliato — il caso peggiore,
+        perché il dato sembra buono.
+        """
+        page = (f'<link rel="canonical" href="{TM_URL}">'
+                '<div class="info-table__content">Nato il: 03/05/2006</div>'
+                '<a href="/altro-giocatore/profil/spieler/999999">compagno</a>')
+        enricher = self._enricher(self._resp(text=page))
+        self.assertEqual(enricher._tm_url_from_site_search("Cosimo Patierno"), TM_URL)
+
+    def test_usa_il_primo_risultato_quando_e_un_elenco(self):
+        page = ('<table class="items">'
+                f'<a href="/cosimo-patierno/profil/spieler/340000">Patierno</a>'
+                '<a href="/altro/profil/spieler/999999">Altro</a></table>')
+        self.assertEqual(
+            self._enricher(self._resp(text=page))._tm_url_from_site_search("Patierno"),
+            TM_URL)
+
+    def test_un_blocco_spegne_la_rotta_per_tutta_la_run(self):
+        """Se TM blocca l'IP li blocca tutti: insistere costa un timeout a testa."""
+        enricher = self._enricher(self._resp(status=403))
+        self.assertEqual(enricher._tm_url_from_site_search("Tizio"), "")
+        self.assertTrue(enricher._tm_search_dead)
+        self.assertEqual(enricher._tm_url_from_site_search("Caio"), "")
+        self.assertEqual(enricher.session.get.call_count, 1)   # non ha riprovato
+
+    def test_un_errore_di_rete_spegne_la_rotta_ma_non_esplode(self):
+        enricher = self._enricher(None)
+        enricher.session.get = mock.Mock(side_effect=OSError("timed out"))
+        self.assertEqual(enricher._tm_url_from_site_search("Tizio"), "")
+        self.assertTrue(enricher._tm_search_dead)
+
+    def test_linterruttore_di_produzione_la_tiene_spenta(self):
+        os.environ["OB1_TM_SITE_SEARCH"] = "0"
+        enricher = TransfermarktEnricher()
+        enricher.session = mock.Mock()
+        self.assertEqual(enricher._tm_url_from_site_search("Tizio"), "")
+        enricher.session.get.assert_not_called()
+
+    def test_il_motore_di_ricerca_resta_il_ripiego(self):
+        """Se TM non risolve, il percorso vecchio deve ancora provarci."""
+        enricher = self.build(site_search="")
+        enricher.enrich_player_free("Cosimo Patierno")
+        self.assertEqual(self.search.call_count, 1)
+
+    def test_se_tm_risolve_il_motore_di_ricerca_non_si_chiama(self):
+        enricher = self.build(site_search=TM_URL)
+        with mock.patch.object(enricher_tm, "llm_complete_json", return_value=None):
+            enricher.enrich_player_free("Cosimo Patierno")
+        self.search.assert_not_called()
+        self.assertEqual(enricher._tm_urls["cosimo patierno"], TM_URL)
 
 
 if __name__ == "__main__":

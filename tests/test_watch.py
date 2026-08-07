@@ -132,6 +132,11 @@ class ConditionalFetchTestCase(unittest.TestCase):
                     "OB1_LLM_MODE", "OB1_ETAG"):
             os.environ.pop(var, None)
         os.environ["GROQ_API_KEY"] = "gsk_" + "x" * 24
+        # La ricerca interna di TM parla con la rete: spenta con l'interruttore
+        # di produzione, così questi test misurano i fetch delle PAGINE e non
+        # si portano dentro una query di ricerca.
+        os.environ["OB1_TM_SITE_SEARCH"] = "0"
+        self.addCleanup(os.environ.pop, "OB1_TM_SITE_SEARCH", None)
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
 

@@ -148,9 +148,27 @@ GitHub repo (public)
 - 121 test offline (erano 74): `tests/test_metrics.py`, `tests/test_watch.py`,
   più il 304 in `tests/test_enricher.py`. I criteri di uscita delle due fasi sono
   test, non promesse: la seconda run consecutiva fa ≥80% di 304 e 0 chiamate LLM
-- **Ancora da fare**: Fase 3 (poller RSS/sitemap + coda), e il *corollario zero* —
-  irrigidire il gate deterministico sui non-giocatori, che è indipendente da tutte
-  le fasi ed è il miglior rapporto risparmio/sforzo del documento
+- **Ancora da fare**: Fase 3 (poller RSS/sitemap + coda)
+
+### 2026-08-03 — ARCH-002 corollario zero: gate entità (la spazzatura costa per sempre)
+- `src/entity_gate.py`: una sola fonte di verità al posto di tre liste divergenti
+  (`ouroboros_run`, `run_enrichment`, `quality_gate`). Regole **su token**, non su
+  sottostringa: cadono "La Serie" e "Summer Transfer Big Board", restano "La Gumina",
+  "Da Riva", "Della Morte" — cognomi veri che una blacklist per sottostringa uccide
+- Tre verdetti: `player` / `junk` (non è una persona → si rimuove) / `out_of_scope`
+  (giocatore vero ma 35 mln € non è un'opportunità di Serie C → si marca, non si
+  butta: è una decisione di chi gestisce il radar, non del filtro)
+- Agganciato dove si spende: `ouroboros_run.is_valid_player_name`,
+  `run_enrichment._is_enrichable`, e la dashboard non pubblica più i fuori fascia
+  (Camara Mohamed, 9 mln €, era nella top 5 pubblica)
+- `scripts/purge_junk.py`: report di default, `--apply` per scrivere, snapshot prima
+- DB ripulito: 739 → 723 entry, 16 rimosse ("Comunicato Ufficiale", "Beach Soccer",
+  "Saudi Pro League", "Frieren Wiki" — 4 già arricchite), 8 marcate fuori fascia.
+  ~416 operazioni/anno risparmiate
+- Fix di un bug latente trovato applicando la purga: `run_enrichment` scriveva la
+  lista grezza su `docs/data.json`, che ha il formato dashboard. In CI era mascherato
+  perché `generate_dashboard.py` gira subito dopo, ma l'enrichment da solo lasciava
+  la dashboard pubblica corrotta
 
 ### 2026-08-02 — ARCH-001: LLM gateway multi-provider (Fase 1)
 - Spec architettura produzione: `.dev/ARCH-001_production_llm.md` (modello di costo,

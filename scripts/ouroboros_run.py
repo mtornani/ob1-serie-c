@@ -32,6 +32,7 @@ _root = str(Path(__file__).parent.parent)
 sys.path.insert(0, _root)
 sys.path.insert(0, os.path.join(_root, 'src'))
 
+from src.entity_gate import classify_name
 from src.scraper_global import GlobalScraper
 from src.scoring import OB1Scorer
 from src.models import MarketOpportunity
@@ -57,7 +58,13 @@ def save_opps(opps):
     OPPS_FILE.write_text(json.dumps(opps, indent=2, ensure_ascii=False), encoding='utf-8')
 
 def is_valid_player_name(name: str) -> bool:
-    """Validate that a name looks like a real person, not a page title."""
+    """
+    Valida che il nome sia una persona, non il titolo di una pagina.
+    Regole strutturali condivise in src/entity_gate.py; la lista storica di
+    termini resta sotto come rete supplementare per i casi già visti.
+    """
+    if not classify_name(name).spend_allowed:
+        return False
     if not name or len(name) < 3:
         return False
     if '|' in name:

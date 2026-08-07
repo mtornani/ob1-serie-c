@@ -1,0 +1,33 @@
+name: Telegram - verifica configurazione
+
+# Serve a rispondere a una domanda sola: "il bot e' configurato bene e a chi
+# manderebbe il brief?". Gira qui invece che sul portatile perche' i secret
+# stanno gia' su GitHub e perche' cosi' si lancia dal telefono: Actions ->
+# questo workflow -> Run workflow. Nessuna installazione, nessun terminale.
+#
+# Non invia niente a nessuno e non modifica niente: legge e stampa.
+# In particolare NON tocca il webhook del bot di scouting Lega Pro.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verifica:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests python-dotenv
+
+      - name: Verifica bot e destinatari
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_IDS: ${{ secrets.TELEGRAM_CHAT_IDS }}
+        run: python scripts/telegram_setup.py
