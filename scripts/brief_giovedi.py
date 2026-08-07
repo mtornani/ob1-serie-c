@@ -61,6 +61,15 @@ def ingest_new(store: CUStore, seen: SeenStore, channel: str, limit: int = 5) ->
     tutti insieme è inutile (il brief guarda le ultime settimane) e maleducato
     verso il sito del comitato.
     """
+    if not channel:
+        # Non dovrebbe più accadere (vedi il commento su --canale in main()),
+        # ma se accade di nuovo per un'altra via va gridato, non stampato
+        # come "nessun comunicato nuovo" — quello sembra un canale pulito,
+        # questo è un canale che non è mai stato interrogato.
+        print("[ERRORE] canale vuoto: nessun fetch tentato, controlla "
+              "OB1_CU_CHANNEL o --canale")
+        return {"cu": 0, "new_sanctions": 0, "new_results": 0}
+
     links = new_cu_links(channel, seen=seen)
     if not links:
         print(f"@{channel}: nessun comunicato nuovo")
@@ -87,7 +96,14 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Brief del giovedì per il DS")
     ap.add_argument("--club", default=os.getenv("OB1_CLUB"))
     ap.add_argument("--avversario", default=os.getenv("OB1_AVVERSARIO"))
-    ap.add_argument("--canale", default=os.getenv("OB1_CU_CHANNEL", DEFAULT_CHANNEL))
+    # `or`, non il default a due argomenti di getenv: il workflow imposta
+    # SEMPRE OB1_CU_CHANNEL nell'ambiente (${{ vars.OB1_CU_CHANNEL }}), anche
+    # a stringa vuota quando la variabile non è configurata su GitHub. Una
+    # chiave presente-ma-vuota non fa scattare il default di getenv(k, d) —
+    # solo l'assenza totale della chiave lo fa. Bug vero, trovato dal primo
+    # run reale: canale="" -> fetch di "t.me/s/" -> 404 silenzioso -> "nessun
+    # comunicato nuovo", indistinguibile da un canale controllato e pulito.
+    ap.add_argument("--canale", default=os.getenv("OB1_CU_CHANNEL") or DEFAULT_CHANNEL)
     ap.add_argument("--data", default=date.today().isoformat(),
                     help="data del brief (default: oggi)")
     ap.add_argument("--db", default="data/ob1.db")
