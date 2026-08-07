@@ -30,6 +30,12 @@ from pathlib import Path
 
 DEFAULT_DB = Path("data/ob1.db")
 
+# Oltre questa età di una squalifica a giornate la consideriamo scontata: il CU
+# dice "due gare effettive" ma non quali gare siano state giocate, e a tre
+# settimane di distanza tenerla in lista produce falsi positivi. Vedi
+# CUStore.squalificati().
+GARE_WINDOW_DAYS = 21
+
 # --- riconoscitori di riga (dal formato reale) -----------------------------
 
 RE_META = re.compile(r"COMUNICATO\s+UFFICIALE\s+N\.?\s*(\d+)\s+DEL\s+([\d/\s.]+\d)", re.I)
@@ -235,13 +241,63 @@ class CUStore:
                 new_r += cur.rowcount
         return {"new_sanctions": new_s, "new_results": new_r}
 
-    def squalificati(self, on_date: str) -> list:
-        """Chi non può giocare alla data data: per il brief del giovedì."""
-        rows = self.conn.execute(
-            "SELECT person, club, kind, detail, reason FROM cu_sanctions "
-            "WHERE (kind='SQUALIFICA_FINO_AL' AND detail >= ?) "
-            "   OR kind='SQUALIFICA_GARE' ORDER BY club, person", (on_date,))
-        return [dict(r) for r in rows]
+    def squalificati(self, on_date: str, club: str = None) -> list:
+        """
+        Chi non può giocare alla data data: per il brief del giovedì.
+
+        Due tipi di squalifica, con due livelli di certezza diversi, e il
+        brief deve dirlo perché il DS possa fidarsi in modo calibrato:
+
+        - SQUALIFICA_FINO_AL porta una data: sappiamo con certezza se è
+          ancora in corso, basta confrontarla.
+        - SQUALIFICA_GARE conta giornate, e il CU non dice quali gare siano
+          state effettivamente giocate. Non possiamo saperlo con certezza,
+          quindi la teniamo solo se irrogata negli ultimi GARE_WINDOW_DAYS:
+          oltre quella finestra una squalifica di una o due giornate è quasi
+          sempre già scontata, e mostrarla renderebbe il brief rumoroso.
+          Il campo 'certezza' porta la distinzione fino al messaggio.
+        """
+        args = [on_date, on_date, str(GARE_WINDOW_DAYS)]
+        q = ("SELECT person, club, kind, detail, reason, match_date, cu_number, role, "
+             "  CASE WHEN kind='SQUALIFICA_FINO_AL' THEN 'certa' ELSE 'stimata' END "
+             "  AS certezza "
+             "FROM cu_sanctions WHERE ("
+             "  (kind='SQUALIFICA_FINO_AL' AND detail >= ?) OR "
+             "  (kind='SQUALIFICA_GARE' AND match_date != '' "
+             "     AND julianday(?) - julianday(match_date) <= CAST(? AS INTEGER))) ")
+        if club:
+            q += "AND club = ? "
+            args.append(club)
+        q += "ORDER BY club, person"
+        return [dict(r) for r in self.conn.execute(q, args)]
+
+    def diffidati(self, club: str = None) -> list:
+        """
+        Chi salta la prossima al primo cartellino. È l'informazione che il DS
+        non ha da nessun'altra parte e che cambia una scelta di formazione.
+
+        Vale solo l'ULTIMO provvedimento di un tesserato: chi è stato diffidato
+        e poi squalificato ha già scontato la diffida, e continuare a
+        elencarlo sarebbe un falso positivo — quello che distrugge la fiducia
+        in un alert automatico.
+        """
+        q = ("SELECT person, club, detail, match_date, cu_number FROM ("
+             "  SELECT *, ROW_NUMBER() OVER ("
+             "    PARTITION BY person, club ORDER BY match_date DESC, cu_number DESC"
+             "  ) AS rn FROM cu_sanctions"
+             "  WHERE role='CALCIATORI' OR role IS NULL"
+             ") WHERE rn = 1 AND kind='AMMONIZIONE' AND detail LIKE '%DIFFIDA' ")
+        args = []
+        if club:
+            q += "AND club = ? "
+            args.append(club)
+        q += "ORDER BY club, person"
+        return [dict(r) for r in self.conn.execute(q, args)]
+
+    def clubs(self) -> list:
+        """Società viste nei CU ingeriti — per validare un nome digitato a mano."""
+        return [r[0] for r in self.conn.execute(
+            "SELECT DISTINCT club FROM cu_sanctions ORDER BY club")]
 
     def presence_index(self, club: str = None) -> list:
         """
