@@ -264,8 +264,9 @@ class SiteSearchTestCase(EnricherTestCase):
         return enricher
 
     @staticmethod
-    def _resp(status=200, text=""):
-        return mock.Mock(status_code=status, text=text)
+    def _resp(status=200, text="", content_type="text/html"):
+        return mock.Mock(status_code=status, text=text,
+                         headers={"content-type": content_type})
 
     def test_usa_il_canonical_quando_tm_reindirizza_al_profilo(self):
         """
@@ -299,6 +300,21 @@ class SiteSearchTestCase(EnricherTestCase):
             result = self._enricher(self._resp(text=page))._tm_url_from_site_search("Tizio")
         self.assertEqual(result, "")
         self.assertTrue(any("[TM SEARCH]" in str(c) for c in p.call_args_list))
+
+    def test_200_con_corpo_vuoto_lo_dice_anche_lui(self):
+        """
+        Il ramo che il primo giro di diagnostica aveva dimenticato: 'if not
+        page: return \"\"' restituiva muto ESATTAMENTE come il caso sopra, e
+        in produzione — verificato su un run reale dopo aver mergiato il
+        primo fix — è rimasto silenzioso lo stesso. Un 200 con corpo vuoto è
+        la forma più leggera di blocco anti-bot: rispondere presto e non dare
+        niente, verosimile verso un IP di datacenter come quello dei runner.
+        """
+        with mock.patch("builtins.print") as p:
+            result = self._enricher(self._resp(text=""))._tm_url_from_site_search("Tizio")
+        self.assertEqual(result, "")
+        self.assertTrue(any("[TM SEARCH]" in str(c) and "VUOTO" in str(c)
+                            for c in p.call_args_list))
 
     def test_un_blocco_spegne_la_rotta_per_tutta_la_run(self):
         """Se TM blocca l'IP li blocca tutti: insistere costa un timeout a testa."""
