@@ -458,10 +458,19 @@ class TransfermarktEnricher:
             # le query di ricerca falserebbe il risparmio del fetch condizionale.
             _metric("tm_site_search", res.status_code)
             if res.status_code != 200:
-                if res.status_code in (403, 429, 503):
-                    self._tm_search_dead = True
-                    print(f"  [TM SEARCH] HTTP {res.status_code}: rotta spenta "
-                          f"per questa run, si torna alla ricerca web")
+                # La causa vera del silenzio in produzione: qui dentro c'era
+                # una tupla chiusa (403, 429, 503) — qualunque altro status
+                # (un 500, un 520 di Cloudflare, un codice di rate-limit non
+                # standard) usciva senza stampare e senza spegnere il
+                # circuito. Risultato osservato su tre run reali: la traccia
+                # d'ingresso compariva, "dead" restava sempre False, e non
+                # usciva nient'altro — 20 tentativi su 20, zero visibilità.
+                # Qualunque cosa non sia 200 ora si vede e ferma il circuito:
+                # insistere contro un errore che non conosciamo in anticipo
+                # non ha senso quanto insistere contro uno che conosciamo.
+                self._tm_search_dead = True
+                print(f"  [TM SEARCH] HTTP {res.status_code}: rotta spenta "
+                      f"per questa run, si torna alla ricerca web")
                 return ""
             page = res.text or ""
             if page:
