@@ -1,0 +1,45 @@
+# OB1 — Fonti pollabili (ARCH-002 Fase 3)
+#
+# NON è config/sources.yaml, che contiene le *query* di ricerca. Qui stanno i
+# feed: la discovery li interroga con richiesta condizionale e paga solo quando
+# è uscito qualcosa. Un giro a vuoto costa un 304 per fonte, senza chiavi.
+#
+# Perché conta: la discovery a ricerca bruciava ~1900 crediti Tavily al mese
+# (8 query × 4 run/giorno) per riavere quasi sempre gli articoli del giorno
+# prima. Il free tier è 1000.
+#
+# Eccellenza / Serie D NON stanno qui: i Comunicati Ufficiali dei comitati LND
+# hanno una superficie diversa (canale Telegram -> PDF) e li gestisce
+# src/cu_feed.py, stesso principio e stesso SeenStore.
+#
+# Verificato dal vivo il 2026-08-03. Da ricontrollare se una fonte va a zero
+# articoli nuovi per più di una settimana: i CMS cambiano gli endpoint.
+
+leagues:
+  italy_serie_c_d:
+    # Un articolo più vecchio di così non è una segnalazione di mercato utile
+    max_age_days: 7
+    feeds:
+      - id: tuttoc
+        url: https://www.tuttoc.com/rss
+        kind: rss          # 21 item al controllo
+
+      - id: tuttolegapro
+        url: https://www.tuttolegapro.com/rss
+        kind: rss          # 21 item
+
+      - id: lacasadic
+        url: https://www.lacasadic.com/rss
+        kind: rss          # 21 item
+
+      - id: sportitalia
+        url: https://www.sportitalia.com/rss
+        kind: rss          # 51 item
+
+      - id: tuttomercatoweb
+        url: https://www.tuttomercatoweb.com/sitemap.xml
+        kind: sitemap      # 91 URL — nessun RSS esposto
+
+      # calciomercato.com non espone né RSS né sitemap utilizzabile: resta
+      # raggiungibile solo dal percorso a ricerca, che è il motivo per cui
+      # quel percorso non viene rimosso ma solo declassato a rete.

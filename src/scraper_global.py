@@ -28,6 +28,34 @@ try:
 except ImportError:  # layout PYTHONPATH=src
     from free_stack import free_web_search, llm_complete_json, llm_mode, has_any_llm
 
+try:
+    from src.watch.poller import feeds_enabled, load_sources, poll_new_items
+except ImportError:  # layout PYTHONPATH=src
+    try:
+        from watch.poller import feeds_enabled, load_sources, poll_new_items
+    except ImportError:  # watch assente: la discovery resta a ricerca
+        def feeds_enabled(): return False
+        def load_sources(**_kw): return []
+        def poll_new_items(*_a, **_kw): return []
+
+try:
+    from src.metrics import get_metrics
+except ImportError:  # layout PYTHONPATH=src
+    try:
+        from metrics import get_metrics
+    except ImportError:
+        get_metrics = None
+
+
+def _metric(name: str, *args) -> None:
+    """Contatore ARCH-002. Una metrica rotta non deve fermare una discovery."""
+    if get_metrics is None:
+        return
+    try:
+        getattr(get_metrics(), name)(*args)
+    except Exception:
+        pass
+
 # --- Tunable guard-rails (knobs, not editorial policy) ----------------------
 # Retry transient Gemini failures (429 rate / 503 overload) with backoff.
 # On the free tier a 429 under load is the expected failure; backoff absorbs it.
@@ -40,6 +68,8 @@ MAX_PLAYERS_PER_SOURCE = 5
 # Free tier gemini-2.5-flash ≈ 20 RPD. Discovery must leave budget for enrichment.
 # Override with env GEMINI_DISCOVERY_BUDGET.
 DEFAULT_DISCOVERY_BUDGET = 4
+# Articoli per prompt di triage: cento in un colpo non li regge nessun free tier.
+FEED_TRIAGE_CHUNK = 8
 
 
 def _is_daily_quota_error(msg: str) -> bool:
@@ -207,6 +237,52 @@ class GlobalScraper:
         "Se non trovi calciatori individuali reali, rispondi esattamente: []"
     )
 
+    def _extract_players(self, results: List[Dict], context: str) -> List[Dict]:
+        """
+        Da risultati (ricerca o feed) ai nomi dei giocatori, via LLM free.
+        Unico punto di estrazione: ricerca e feed non devono divergere.
+        """
+        if not results or not has_any_llm():
+            return []
+        corpus = "\n\n".join(
+            f"TITOLO: {r.get('title', '')}\nURL: {r.get('url', '')}\n"
+            f"ESTRATTO: {(r.get('content') or '')[:400]}"
+            for r in results
+        )
+        items = llm_complete_json(
+            "Sei un analista di calciomercato. Rispondi SOLO con JSON valido.",
+            f"Da questi articoli su: {context}\n\n{self._EXTRACT_RULES}\n\n{corpus}",
+            gemini_client=self.gemini_client,
+            task="triage",
+        )
+        return items if isinstance(items, list) else []
+
+    def discover_from_feeds(self, league_id: str,
+                            trusted: Optional[List[str]] = None) -> List[Dict]:
+        """
+        Discovery dagli articoli **nuovi** dei feed. Zero ricerche, zero chiavi.
+        Un giro senza notizie costa un 304 per fonte e nessuna chiamata LLM.
+        """
+        if not feeds_enabled():
+            return []
+        sources = load_sources(league_id=league_id)
+        if not sources:
+            return []
+        items = poll_new_items(sources)
+        if not items:
+            return []
+
+        # A blocchi: un prompt con cento articoli non lo regge nessun tier free.
+        out: List[Dict] = []
+        for i in range(0, len(items), FEED_TRIAGE_CHUNK):
+            chunk = items[i:i + FEED_TRIAGE_CHUNK]
+            out.extend(self._extract_players(
+                [it.as_search_result() for it in chunk],
+                f"mercato {league_id} (articoli nuovi dai feed)",
+            ))
+        print(f"    [FEED DISCOVERY] {len(out)} giocatori da {len(items)} articoli nuovi")
+        return out
+
     def search_free(self, query: str, trusted: Optional[List[str]] = None) -> List[Dict]:
         """
         Discovery a costo zero: ricerca senza chiavi + estrazione nomi via LLM free.
@@ -220,23 +296,9 @@ class GlobalScraper:
             return []
         print(f"    [FREE SEARCH/{source}] {len(results)} risultati per: {query[:40]}...")
 
-        if not has_any_llm():
-            return []  # senza LLM si ricade sull'euristica sui titoli in scrape_league
-
-        corpus = "\n\n".join(
-            f"TITOLO: {r.get('title', '')}\nURL: {r.get('url', '')}\n"
-            f"ESTRATTO: {(r.get('content') or '')[:400]}"
-            for r in results[:10]
-        )
-        items = llm_complete_json(
-            "Sei un analista di calciomercato. Rispondi SOLO con JSON valido.",
-            f"Da questi risultati di ricerca su: {query}\n\n{self._EXTRACT_RULES}\n\n{corpus}",
-            gemini_client=self.gemini_client,
-            task="triage",
-        )
-        if not isinstance(items, list):
-            return []
-        print(f"    [FREE EXTRACT] {len(items)} giocatori estratti")
+        items = self._extract_players(results[:10], query)
+        if items:
+            print(f"    [FREE EXTRACT] {len(items)} giocatori estratti")
         return items
 
     def discover_players(self, query: str, trusted: Optional[List[str]] = None) -> List[Dict]:
@@ -267,6 +329,11 @@ class GlobalScraper:
 
         try:
             res = requests.post(url, json=payload, timeout=20)
+            # Il credito si consuma alla chiamata, non al successo: si conta qui,
+            # prima di sapere com'è andata. Questo percorso è rimasto per mesi
+            # fuori dalle metriche, che segnavano `searches=0` mentre il free tier
+            # Tavily si esauriva sulla discovery.
+            _metric("search", "tavily")
             res.raise_for_status()
             results = res.json().get('results', [])
             tag = f"domains={len(include_domains)}" if include_domains else "open"
@@ -310,10 +377,19 @@ class GlobalScraper:
 
         trusted = conf.get('trusted_sources') or []
 
-        for query in conf.get('queries', []):
-            # Primary: discovery free (DDG/SearXNG + LLM free). Gemini grounded
-            # solo con OB1_LLM_MODE=gemini_first. Su vuoto si passa a Tavily.
-            grounded = self.discover_players(query, trusted)
+        # ARCH-002 Fase 3 — prima i feed: dicono cosa è cambiato senza costare
+        # ricerche. Se hanno prodotto, le query NON girano: restituirebbero gli
+        # stessi articoli, stavolta a pagamento. Se non è uscito niente dai feed,
+        # la ricerca resta la rete per le fonti che un feed non ce l'hanno.
+        feed_batch = self.discover_from_feeds(league_id, trusted)
+        queries = [] if feed_batch else conf.get('queries', [])
+        if feed_batch:
+            print(f"  [DISCOVERY] dai feed: 0 ricerche questo giro")
+        work = ([(None, feed_batch)] if feed_batch else []) + [(q, None) for q in queries]
+
+        for query, grounded in work:
+            if grounded is None:
+                grounded = self.discover_players(query, trusted)
             if grounded:
                 for item in grounded:
                     if not isinstance(item, dict):
@@ -363,6 +439,9 @@ class GlobalScraper:
                     )
                     opportunities.append(opp)
                 continue  # grounding succeeded — skip Tavily for this query
+
+            if query is None:
+                continue  # ramo feed: non esiste una query da ricercare
 
             # Fallback / primary-when-gemini-off: Tavily, source-first then open
             results = self.search_tavily(query, include_domains=trusted or None)
