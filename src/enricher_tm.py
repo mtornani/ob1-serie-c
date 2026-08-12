@@ -431,6 +431,13 @@ class TransfermarktEnricher:
         Resta un fallback e non una sostituzione: se anche TM blocca l'IP del
         runner, il percorso vecchio deve poter ancora provare.
         """
+        # Traccia d'ingresso incondizionata — l'ultima cosa che poteva mancare
+        # dopo due giri di diagnostica sui rami interni: se in produzione non
+        # compare NEMMENO questa, la funzione non viene proprio raggiunta, e
+        # il problema sta a monte (_tm_url_for o chi lo chiama), non qui dentro.
+        print(f"  [TM SEARCH] tentativo per {player_name!r} "
+              f"(dead={self._tm_search_dead})")
+
         # Se TM ha bloccato l'IP del runner, blocca TUTTE le richieste: insistere
         # per ogni giocatore costa un timeout a testa e non trova mai niente.
         # Un fallimento e la rotta si spegne per il resto della run.
@@ -500,6 +507,10 @@ class TransfermarktEnricher:
         """
         cached = self._tm_urls.get(player_name.lower())
         if cached:
+            # Ramo che salterebbe la ricerca del tutto — se in produzione
+            # tutti i 20 giocatori passano da qui, il file cache è la causa
+            # del silenzio, non la ricerca stessa.
+            print(f"  [TM URL/cache] {player_name}: {cached[:70]}")
             return cached, ""
 
         # Prima la ricerca interna di TM: nessun motore terzo da farsi bloccare.
