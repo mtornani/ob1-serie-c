@@ -469,7 +469,19 @@ class TransfermarktEnricher:
                 if canon and "/profil/spieler/" in canon.group(1):
                     return canon.group(1)
             m = re.search(r'href="(/[^"]+/profil/spieler/\d+)"', page)
-            return f"https://www.transfermarkt.it{m.group(1)}" if m else ""
+            if m:
+                return f"https://www.transfermarkt.it{m.group(1)}"
+            # 200 senza un link di profilo da nessuna parte: prima di questa
+            # riga era un ritorno muto, indistinguibile nel log da "provato e
+            # non trovato" — e in produzione è successo 20 volte su 20 senza
+            # lasciare traccia. Non si sa ancora SE sia un blocco anti-bot che
+            # restituisce 200 (verosimile: i runner CI sono IP di datacenter,
+            # spesso trattati diversamente) o un cambio di formato della
+            # pagina — questa riga è quello che manca per scoprirlo dal
+            # prossimo run reale, invece di continuare a indovinare.
+            print(f"  [TM SEARCH] 200 ma nessun profilo nella pagina "
+                  f"({len(page)} char, consent={'cookie' in page.lower()})")
+            return ""
         except Exception as exc:
             _metric("tm_site_search_failed")
             self._tm_search_dead = True

@@ -288,6 +288,18 @@ class SiteSearchTestCase(EnricherTestCase):
             self._enricher(self._resp(text=page))._tm_url_from_site_search("Patierno"),
             TM_URL)
 
+    def test_200_senza_profilo_lo_dice_invece_di_tornare_muto(self):
+        """
+        Il bug reale: in produzione questo caso tornava '' senza una riga di
+        log, indistinguibile da "provato e non trovato per davvero" — 20
+        giocatori su 20, zero traccia. Ora almeno si vede.
+        """
+        page = '<html><body>pagina di consenso cookie, nessun risultato</body></html>'
+        with mock.patch("builtins.print") as p:
+            result = self._enricher(self._resp(text=page))._tm_url_from_site_search("Tizio")
+        self.assertEqual(result, "")
+        self.assertTrue(any("[TM SEARCH]" in str(c) for c in p.call_args_list))
+
     def test_un_blocco_spegne_la_rotta_per_tutta_la_run(self):
         """Se TM blocca l'IP li blocca tutti: insistere costa un timeout a testa."""
         enricher = self._enricher(self._resp(status=403))
