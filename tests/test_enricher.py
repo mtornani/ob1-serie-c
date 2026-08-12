@@ -324,6 +324,23 @@ class SiteSearchTestCase(EnricherTestCase):
         self.assertEqual(enricher._tm_url_from_site_search("Caio"), "")
         self.assertEqual(enricher.session.get.call_count, 1)   # non ha riprovato
 
+    def test_qualunque_status_non_200_spegne_il_circuito(self):
+        """
+        Il bug reale, in produzione: una tupla chiusa (403, 429, 503) lasciava
+        passare in silenzio qualunque altro status — un 500, un 520 di
+        Cloudflare, un rate-limit non standard. Tre run reali hanno mostrato
+        "dead=False" su tutti e 20 i giocatori e nessun'altra riga: il codice
+        veniva raggiunto, uno status sconosciuto usciva senza stampare e
+        senza fermare niente, 20 volte su 20. Ora qualunque non-200 ferma
+        il circuito, non solo i tre codici che avevo previsto io.
+        """
+        with mock.patch("builtins.print") as p:
+            enricher = self._enricher(self._resp(status=520))
+            result = enricher._tm_url_from_site_search("Tizio")
+        self.assertEqual(result, "")
+        self.assertTrue(enricher._tm_search_dead)
+        self.assertTrue(any("HTTP 520" in str(c) for c in p.call_args_list))
+
     def test_un_errore_di_rete_spegne_la_rotta_ma_non_esplode(self):
         enricher = self._enricher(None)
         enricher.session.get = mock.Mock(side_effect=OSError("timed out"))
