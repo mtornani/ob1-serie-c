@@ -392,6 +392,21 @@ class SportsSkillsTestCase(EnricherTestCase):
         self.addCleanup(self.patched.stop)
         return enricher
 
+    def test_traccia_dingresso_incondizionata(self):
+        """
+        La lezione della saga TM_SEARCH (PR #38-41): un ramo silenzioso è
+        indistinguibile da un ramo mai raggiunto. Verificato in produzione
+        il 2026-08-17 - zero righe [SPORTS-SKILLS] nel log di un run reale,
+        nessun modo di sapere se la funzione girava e non trovava nulla o
+        se non veniva proprio chiamata. Ora stampa sempre, anche a vuoto.
+        """
+        with mock.patch("builtins.print") as p:
+            enricher = self._enricher_with()
+            enricher.enrich_player_sports_skills("Chiunque")
+        self.assertTrue(any("[SPORTS-SKILLS] tentativo per" in str(c)
+                            for c in p.call_args_list))
+        self.assertTrue(any("nessun risultato" in str(c) for c in p.call_args_list))
+
     def test_pacchetto_non_installato_non_rompe_niente(self):
         """Import fallito -> sports_skills_football è None -> ramo spento."""
         with mock.patch.object(enricher_tm, "sports_skills_football", None):
