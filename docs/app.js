@@ -301,12 +301,22 @@ function card(o){
   const isNew = daysOld !== null && daysOld <= 3;
 
   const savedCls = isSaved(o.id) ? ' is-saved' : '';
+  // Il claim va letto prima del punteggio: OB1 Lega Pro esiste per
+  // l'operazione di mercato, non per il numero. Le classi .tag.type-* e
+  // .tag.tm-ok esistevano già in CSS ma non erano mai state disegnate
+  // sulla card compatta (dossier identità: §06).
+  const type = (o.opportunity_type || '').toLowerCase();
+  const typeTag = type
+    ? `<span class="tag type-${esc(type)}">${esc(TYPE_LABEL[type] || type)}</span>` : '';
+  const tmTag = (o.market_publishable || o.tm_url)
+    ? `<span class="tag tm-ok">✓ Transfermarkt</span>` : '';
   return `
 <article class="card${savedCls}" data-id="${o.id}" data-urgency="${o._urgency}" data-tier="${o._tier}" tabindex="0" role="button" aria-label="${esc(o.player_name)}, ${o.ob1_score}">
   <span class="urgency"></span>
   <span class="saved-star" aria-hidden="true">★</span>
   <div class="card-head">
     <div class="name-block">
+      ${(typeTag || tmTag) ? `<div class="tag-row">${typeTag}${tmTag}</div>` : ''}
       <div class="name">${esc(o.player_name)}${isNew ? ' <span class="tag new-signal">Nuovo</span>' : ''}</div>
       <div class="meta">
         ${[role && `<span class="role">${esc(role)}</span>`, age && `<span class="age">${age}</span>`, `<span class="club">${esc(club)}</span>`].filter(Boolean).join('<span class="sep">·</span>')}
