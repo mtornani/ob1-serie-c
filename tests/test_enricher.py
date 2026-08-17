@@ -52,6 +52,10 @@ class EnricherTestCase(unittest.TestCase):
         # che costruisce l'enricher da sé pagherebbe un timeout di rete.
         os.environ["OB1_TM_SITE_SEARCH"] = "0"
         self.addCleanup(os.environ.pop, "OB1_TM_SITE_SEARCH", None)
+        # Stesso motivo: sports-skills parla con un backend vero. Spento di
+        # default, chi lo testa lo riaccende e mocka sports_skills_football.
+        os.environ["OB1_SPORTS_SKILLS"] = "0"
+        self.addCleanup(os.environ.pop, "OB1_SPORTS_SKILLS", None)
 
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
@@ -366,6 +370,106 @@ class SiteSearchTestCase(EnricherTestCase):
             enricher.enrich_player_free("Cosimo Patierno")
         self.search.assert_not_called()
         self.assertEqual(enricher._tm_urls["cosimo patierno"], TM_URL)
+
+
+class SportsSkillsTestCase(EnricherTestCase):
+    """
+    Percorso via il pacchetto community sports-skills — riempi-buchi
+    facoltativo, non deve mai far fallire l'arricchimento se manca, se non
+    trova il giocatore, o se il cognome non combacia.
+    """
+
+    def _enricher_with(self, search_result=None, profile_result=None):
+        os.environ.pop("OB1_SPORTS_SKILLS", None)  # rotta accesa
+        enricher = TransfermarktEnricher()
+        fake = mock.Mock()
+        fake.search_player = mock.Mock(return_value=search_result or {
+            "status": True, "data": {"results": []}, "message": "",
+        })
+        fake.get_player_profile = mock.Mock(return_value=profile_result or {})
+        self.patched = mock.patch.object(enricher_tm, "sports_skills_football", fake)
+        self.patched.start()
+        self.addCleanup(self.patched.stop)
+        return enricher
+
+    def test_pacchetto_non_installato_non_rompe_niente(self):
+        """Import fallito -> sports_skills_football è None -> ramo spento."""
+        with mock.patch.object(enricher_tm, "sports_skills_football", None):
+            enricher = TransfermarktEnricher()
+            self.assertTrue(enricher._sports_skills_dead)
+            self.assertEqual(enricher.enrich_player_sports_skills("Cosimo Patierno"), {})
+
+    def test_linterruttore_di_produzione_la_tiene_spenta(self):
+        enricher = TransfermarktEnricher()  # OB1_SPORTS_SKILLS=0 da setUp
+        self.assertTrue(enricher._sports_skills_dead)
+
+    def test_nessun_risultato_torna_vuoto(self):
+        enricher = self._enricher_with()
+        self.assertEqual(enricher.enrich_player_sports_skills("Cosimo Patierno"), {})
+
+    def test_cognome_diverso_viene_scartato(self):
+        """
+        Stesso principio del fix in ob1-scout/corroborate_v2.py: un nome di
+        battesimo condiviso non basta a confermare la persona.
+        """
+        enricher = self._enricher_with(search_result={
+            "status": True, "message": "",
+            "data": {"results": [
+                {"name": "Cosimo Bianchi", "tm_player_id": "1"},
+            ]},
+        })
+        self.assertEqual(enricher.enrich_player_sports_skills("Cosimo Patierno"), {})
+
+    def test_match_buono_restituisce_valore_di_mercato_e_club(self):
+        enricher = self._enricher_with(
+            search_result={"status": True, "message": "", "data": {"results": [
+                {"name": "Sergej Levak", "tm_player_id": "892165"},
+            ]}},
+            profile_result={"status": True, "message": "", "data": {"player": {
+                "market_value": {"value": 2800000, "formatted": "€2.80m",
+                                  "club": "Atalanta U23"},
+            }}},
+        )
+        data = enricher.enrich_player_sports_skills("Sergej Levak")
+        self.assertEqual(data["market_value_eur"], 2800000)
+        self.assertEqual(data["current_club"], "Atalanta U23")
+        self.assertEqual(data["tm_player_id"], "892165")
+        self.assertEqual(data["enrichment_source"], "Enrichment:sports-skills")
+        self.assertIn("892165", data["tm_url"])
+
+    def test_eccezione_spegne_la_rotta_ma_non_esplode(self):
+        os.environ.pop("OB1_SPORTS_SKILLS", None)
+        enricher = TransfermarktEnricher()
+        fake = mock.Mock()
+        fake.search_player = mock.Mock(side_effect=OSError("timed out"))
+        with mock.patch.object(enricher_tm, "sports_skills_football", fake):
+            self.assertEqual(enricher.enrich_player_sports_skills("Tizio"), {})
+        self.assertTrue(enricher._sports_skills_dead)
+
+    def test_riempie_i_buchi_ma_non_sovrascrive_il_regex(self):
+        """Il dato dalla pagina TM vera vince sempre su quello di terzi."""
+        enricher = self.build(site_search="")  # rotta TM diretta trova la pagina vera
+        enricher.enrich_player_sports_skills = mock.Mock(return_value={
+            "market_value_eur": 999, "current_club": "Club Sbagliato",
+            "enrichment_source": "Enrichment:sports-skills",
+        })
+        with mock.patch.object(enricher_tm, "llm_complete_json", return_value=None):
+            data = enricher.enrich_player_free("Cosimo Patierno")
+        # TM_PAGE ha "Club attuale: Avellino" — il regex deve vincere
+        self.assertEqual(data.get("current_club"), "Avellino")
+
+    def test_riempie_quando_la_pagina_tm_non_ha_niente(self):
+        enricher = self.build(site_search="", page_text="")
+        enricher._tm_url_from_site_search = mock.Mock(return_value="")
+        enricher_tm.free_web_search = mock.Mock(return_value=("duckduckgo", []))
+        enricher.enrich_player_sports_skills = mock.Mock(return_value={
+            "market_value_eur": 2800000, "current_club": "Atalanta U23",
+            "tm_url": "https://www.transfermarkt.it/x/profil/spieler/892165",
+            "enrichment_source": "Enrichment:sports-skills",
+        })
+        data = enricher.enrich_player_free("Sergej Levak")
+        self.assertEqual(data.get("market_value_eur"), 2800000)
+        self.assertEqual(data.get("enrichment_source"), "Enrichment:sports-skills")
 
 
 if __name__ == "__main__":

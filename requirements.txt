@@ -7,6 +7,12 @@ python-dotenv>=1.0.0
 # Gemini API
 google-genai>=1.0.0
 
+# Fallback enrichment TM via backend terzo (Machina Sports) - non fa una
+# richiesta diretta a transfermarkt.it, quindi non condivide il blocco
+# anti-bot verso gli IP datacenter dei runner. Zero chiave richiesta.
+# Facoltativo per design: src/enricher_tm.py funziona anche senza.
+sports-skills>=0.32.0
+
 # Tavily Search API (advanced scraping)
 tavily-python>=0.3.0
 

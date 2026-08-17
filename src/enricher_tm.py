@@ -34,6 +34,11 @@ except ImportError:  # google-genai non installato: si gira solo free
     genai = None
 
 try:
+    from sports_skills import football as sports_skills_football
+except ImportError:  # sports-skills non installato: si salta questo ramo
+    sports_skills_football = None
+
+try:
     from src.llm_fallback import resolve_fallback, chat_json
     from src.free_stack import (free_web_search, has_any_llm, llm_complete_json,
                                 llm_mode, llm_source_label, describe_stack)
@@ -350,6 +355,16 @@ class TransfermarktEnricher:
         # al primo rifiuto la rotta si spegne per il resto della run.
         # OB1_TM_SITE_SEARCH=0 la disattiva del tutto, senza toccare il codice.
         self._tm_search_dead = os.getenv("OB1_TM_SITE_SEARCH", "1") == "0"
+        # sports-skills passa dal backend di terzi (Machina Sports), non da
+        # una richiesta diretta a transfermarkt.it: non condivide il blocco
+        # anti-bot diagnosticato in PR #41. Stesso principio della rotta TM
+        # sopra: un fallimento vero (non "nessun risultato per il giocatore",
+        # quello è normale) spegne la rotta per il resto della run.
+        # OB1_SPORTS_SKILLS=0 la disattiva senza toccare il codice.
+        self._sports_skills_dead = (
+            sports_skills_football is None
+            or os.getenv("OB1_SPORTS_SKILLS", "1") == "0"
+        )
         print(f"  [LLM] {describe_stack()}")
 
     # ------------------------------------------------------------ cache URL TM
@@ -509,6 +524,87 @@ class TransfermarktEnricher:
                   f"({type(exc).__name__}), si torna alla ricerca web")
             return ""
 
+    @staticmethod
+    def _slugify(name: str) -> str:
+        s = re.sub(r"[^a-z0-9]+", "-", (name or "").lower()).strip("-")
+        return s or "giocatore"
+
+    def enrich_player_sports_skills(self, player_name: str) -> Dict[str, Any]:
+        """
+        Percorso alternativo via il pacchetto community `sports-skills`
+        (Machina Sports, npm/PyPI, zero chiave). Passa dal LORO backend,
+        non da una richiesta diretta a transfermarkt.it: non condivide il
+        blocco anti-bot verso gli IP datacenter dei runner GitHub Actions
+        diagnosticato in PR #41 (HTTP 202, circuito TM_SEARCH spento).
+
+        Copertura NON garantita per svincolati di Serie C/D oscuri —
+        verificato dal vivo solo su un caso passato da un'academy di club
+        grande (Roma -> Atalanta U23, tm_player_id 892165, market_value
+        coincidente con quello già in dashboard). Per questo resta un
+        riempi-buchi che affianca la catena esistente, non una sostituzione:
+        se non trova nulla o il pacchetto non è installato, il resto della
+        catena (ricerca TM diretta -> fetch -> regex -> LLM) prosegue
+        identico a prima.
+        """
+        if self._sports_skills_dead:
+            return {}
+        try:
+            res = sports_skills_football.search_player(query=player_name)
+        except Exception as exc:
+            self._sports_skills_dead = True
+            print(f"  [SPORTS-SKILLS] rotta spenta per questa run ({type(exc).__name__})")
+            return {}
+        if not isinstance(res, dict) or not res.get("status"):
+            return {}
+        results = ((res.get("data") or {}).get("results")) or []
+
+        # Stesso principio del fix appena fatto in ob1-scout/corroborate_v2.py:
+        # un nome di battesimo condiviso non basta, serve il cognome. Qui la
+        # ricerca è per nome intero quindi il rischio è più basso, ma costa
+        # niente essere coerenti con lo stesso guardrail.
+        target_tokens = [t for t in player_name.lower().split() if len(t) > 2]
+        if not target_tokens:
+            return {}
+        surname = target_tokens[-1]
+
+        tm_id, matched_name = None, ""
+        for r in results:
+            rname = (r.get("name") or "").lower()
+            if r.get("tm_player_id") and surname in rname:
+                tm_id, matched_name = r["tm_player_id"], r.get("name") or player_name
+                break
+        if not tm_id:
+            return {}
+
+        try:
+            profile = sports_skills_football.get_player_profile(tm_player_id=tm_id)
+        except Exception as exc:
+            print(f"  [SPORTS-SKILLS] profilo fallito per {player_name} ({type(exc).__name__})")
+            return {}
+        if not isinstance(profile, dict) or not profile.get("status"):
+            return {}
+        player = ((profile.get("data") or {}).get("player")) or {}
+        mv = player.get("market_value") or {}
+
+        out: Dict[str, Any] = {}
+        if mv.get("value"):
+            out["market_value_eur"] = mv["value"]
+            out["market_value"] = mv["value"]
+            out["market_value_text"] = mv.get("formatted") or ""
+        if mv.get("club"):
+            out["current_club"] = mv["club"]
+        if out:
+            # Slug indicativo: TM risolve sull'id numerico, lo slug è
+            # cosmetico. Se sbagliato il link è comunque valido, solo meno
+            # bello — non blocca né falsifica il dato.
+            out["tm_url"] = (f"https://www.transfermarkt.it/"
+                              f"{self._slugify(matched_name)}/profil/spieler/{tm_id}")
+            out["tm_player_id"] = tm_id
+            out["enrichment_source"] = "Enrichment:sports-skills"
+            print(f"  [SPORTS-SKILLS] {player_name}: "
+                  f"mv={out.get('market_value_eur')} club={out.get('current_club')}")
+        return out
+
     def _tm_url_for(self, player_name: str) -> tuple:
         """
         (url TM, testo dallo snippet). Ricerca senza chiavi obbligatorie.
@@ -635,29 +731,41 @@ class TransfermarktEnricher:
 
     def enrich_player_free(self, player_name: str) -> Dict[str, Any]:
         """
-        Percorso a costo zero: ricerca free -> fetch -> regex -> LLM sul residuo.
-        Funziona con la sola GROQ_API_KEY, senza Serper e senza Gemini.
+        Percorso a costo zero: sports-skills (se disponibile) + ricerca free
+        -> fetch -> regex -> LLM sul residuo. Funziona con la sola
+        GROQ_API_KEY, senza Serper, senza Gemini e senza sports-skills
+        installato — ogni pezzo è un riempi-buchi per quello dopo, non un
+        requisito.
         """
         self.last_unchanged = False
+        sports_skills_data = self.enrich_player_sports_skills(player_name)
+
         url, snippet = self._tm_url_for(player_name)
         fetched = self.fetch_page(url)
         if fetched.unchanged:
             # 304: la pagina è identica a quella già letta. Non c'è niente da
-            # estrarre e niente da chiedere a un modello — è esattamente il
-            # lavoro che ARCH-002 vuole smettere di rifare ogni 6 ore.
+            # ri-estrarre da lì — ma quello che sports-skills ha dato resta
+            # buono, non dipende dalla pagina TM diretta.
             self.last_unchanged = True
-            return {}
+            return sports_skills_data
         raw = fetched.text
         # TM risponde 403 di frequente: in quel caso resta lo snippet della
         # ricerca. Si tiene il testo più ricco tra i due, mai il più povero.
         if snippet and len(snippet) > len(raw):
             raw = snippet
         if not raw:
-            return {}
+            return sports_skills_data
 
         data = parse_tm_text(raw, url)  # regex: zero costo, zero allucinazioni
         if data.get("birth_date") or data.get("current_club"):
             print(f"  [REGEX] {player_name}: {data.get('birth_date')} / {data.get('current_club')}")
+
+        # sports-skills riempie i buchi lasciati dalla pagina TM diretta
+        # (spesso bloccata) — non li sovrascrive: la pagina vera, quando
+        # arriva, vince sempre su un dato di terzi.
+        for k, v in sports_skills_data.items():
+            if v is not None and not data.get(k):
+                data[k] = v
 
         thin = not (data.get("birth_date") and data.get("current_club"))
         if thin:
@@ -674,7 +782,7 @@ class TransfermarktEnricher:
 
         if url and data and not data.get("tm_url"):
             data["tm_url"] = url
-        if data:
+        if data and not data.get("enrichment_source"):
             data["enrichment_source"] = llm_source_label() if thin else "Enrichment:regex"
         return data or {}
 
