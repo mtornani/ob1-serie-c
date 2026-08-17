@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """
-OB1 Scout - Generate Dashboard Data
-Genera data.json con scoring SCORE-002 + quality gate (identity_complete).
+OB1 Lega Pro - Generate Dashboard Data
+Genera data.json con scoring SCORE-003 + quality gate (identity_complete,
+src/quality_gate.py, "allineato a global-scout v2" ma con soglia più morbida:
+qui publishable = identity_complete, la corroborazione è bonus non hard-gate.
+Vedi i campi market_* sotto: stesso gate, nome che non richiede di aprire
+quality_gate.py per sapere che la soglia è diversa da OB1 Global).
 
 Pubblica solo profili publishable (nome+età+club+fonte). Tracking in stats.
 """
@@ -249,7 +253,14 @@ def main():
             'classification': score_result['classification'],
             'score_breakdown': score_result['score_breakdown'],
 
-            # Quality gate
+            # Quality gate — nomi storici, mantenuti per compatibilità con
+            # chi legge già data.json così com'è (nessun consumer in docs/
+            # li usa oggi, verificato, ma restano per chi guarda il JSON
+            # a mano). Stesso nome di campo di OB1 Global, soglia diversa:
+            # qui publishable = identity_complete, non richiede corroborated
+            # (vedi src/quality_gate.py). I market_* sotto sono lo stesso
+            # dato con un nome che lo dice da solo, senza dover aprire
+            # quality_gate.py per scoprirlo.
             'identity_complete': opp.get('identity_complete', False),
             'corroborated': opp.get('corroborated', False),
             'publishable': opp.get('publishable', False),
@@ -257,6 +268,14 @@ def main():
             'n_sources': opp.get('n_sources', 1),
             'out_of_scope': opp.get('out_of_scope', False),
             'out_of_scope_reason': opp.get('out_of_scope_reason', ''),
+
+            # Stessi valori, nome che porta il significato (dossier
+            # "identità distinte": non toglie i campi storici sopra, li
+            # affianca)
+            'market_identity_complete': opp.get('identity_complete', False),
+            'market_corroborated': opp.get('corroborated', False),
+            'market_publishable': opp.get('publishable', False),
+            'market_n_sources': opp.get('n_sources', 1),
 
             # Auto-generated recommendation
             'recommendation': generate_recommendation(opp),
