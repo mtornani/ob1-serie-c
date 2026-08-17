@@ -2,10 +2,8 @@
 """
 OB1 Lega Pro - Generate Dashboard Data
 Genera data.json con scoring SCORE-003 + quality gate (identity_complete,
-src/quality_gate.py, "allineato a global-scout v2" ma con soglia più morbida:
-qui publishable = identity_complete, la corroborazione è bonus non hard-gate.
-Vedi i campi market_* sotto: stesso gate, nome che non richiede di aprire
-quality_gate.py per sapere che la soglia è diversa da OB1 Global).
+src/quality_gate.py, allineato a global-scout v2: publishable richiede
+identity_complete AND corroborated, hard-gate).
 
 Pubblica solo profili publishable (nome+età+club+fonte). Tracking in stats.
 """
@@ -256,9 +254,9 @@ def main():
             # Quality gate — nomi storici, mantenuti per compatibilità con
             # chi legge già data.json così com'è (nessun consumer in docs/
             # li usa oggi, verificato, ma restano per chi guarda il JSON
-            # a mano). Stesso nome di campo di OB1 Global, soglia diversa:
-            # qui publishable = identity_complete, non richiede corroborated
-            # (vedi src/quality_gate.py). I market_* sotto sono lo stesso
+            # a mano). Stesso nome di campo e stessa soglia di OB1 Global:
+            # publishable = identity_complete AND corroborated (hard-gate,
+            # vedi src/quality_gate.py). I market_* sotto sono lo stesso
             # dato con un nome che lo dice da solo, senza dover aprire
             # quality_gate.py per scoprirlo.
             'identity_complete': opp.get('identity_complete', False),

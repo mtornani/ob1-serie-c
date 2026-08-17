@@ -6,8 +6,8 @@ Promessa: ogni nome in dashboard regge una telefonata di verifica.
 Gate in CODICE, non LLM. Per nicchia C/D:
   - identity_complete = nome completo + età valida + club + fonte
   - corroborated     = profilo TM giocatore OPPURE ≥2 domini
-  - publishable      = identity_complete (corroboration = bonus, non hard yet
-                       finché store non accumula prove multi-fonte)
+  - publishable      = identity_complete AND corroborated (hard-gate,
+                       allineato a global-scout v2)
 
 Non richiede SQLite v2: lavora su dict opportunity esistenti.
 """
@@ -164,9 +164,12 @@ def assess_identity(opp: dict) -> dict:
     )
     # Nicchia C/D: profilo TM giocatore conta come seconda prova forte
     corroborated = n_sources >= 2 or tm_ok
-    # Publishable: identità completa. Corroboration preferita ma non hard-gate
-    # finché pipeline non accumula multi-fonte (altrimenti dashboard vuota).
-    publishable = identity_complete
+    # Publishable: identità completa E corroborata (hard-gate, allineato a
+    # global-scout v2). Misurato sui dati reali del 2026-08-17 prima di
+    # attivarlo: 119 → 99 publishable (-17%), non uno svuotamento della
+    # dashboard — la previsione "aspetta più storia multi-fonte" che
+    # giustificava il gate morbido non reggeva più i dati che ha oggi.
+    publishable = identity_complete and corroborated
 
     return {
         "age_normalized": age,
