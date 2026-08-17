@@ -545,7 +545,14 @@ class TransfermarktEnricher:
         se non trova nulla o il pacchetto non è installato, il resto della
         catena (ricerca TM diretta -> fetch -> regex -> LLM) prosegue
         identico a prima.
+
+        Traccia d'ingresso incondizionata + un log su OGNI uscita, non solo
+        sul successo: la lezione della saga TM_SEARCH in PR #38-41 di questa
+        stessa run era esattamente "un ramo silenzioso è indistinguibile da
+        un ramo mai raggiunto". Non ripetere lo stesso buco qui.
         """
+        print(f"  [SPORTS-SKILLS] tentativo per {player_name!r} "
+              f"(dead={self._sports_skills_dead})")
         if self._sports_skills_dead:
             return {}
         try:
@@ -555,8 +562,13 @@ class TransfermarktEnricher:
             print(f"  [SPORTS-SKILLS] rotta spenta per questa run ({type(exc).__name__})")
             return {}
         if not isinstance(res, dict) or not res.get("status"):
+            print(f"  [SPORTS-SKILLS] risposta senza status per {player_name}: "
+                  f"{str(res)[:120]}")
             return {}
         results = ((res.get("data") or {}).get("results")) or []
+        if not results:
+            print(f"  [SPORTS-SKILLS] nessun risultato per {player_name}")
+            return {}
 
         # Stesso principio del fix appena fatto in ob1-scout/corroborate_v2.py:
         # un nome di battesimo condiviso non basta, serve il cognome. Qui la
@@ -574,6 +586,8 @@ class TransfermarktEnricher:
                 tm_id, matched_name = r["tm_player_id"], r.get("name") or player_name
                 break
         if not tm_id:
+            print(f"  [SPORTS-SKILLS] {len(results)} risultato/i per {player_name} "
+                  f"ma nessuno col cognome giusto (o senza tm_player_id)")
             return {}
 
         try:
@@ -582,6 +596,8 @@ class TransfermarktEnricher:
             print(f"  [SPORTS-SKILLS] profilo fallito per {player_name} ({type(exc).__name__})")
             return {}
         if not isinstance(profile, dict) or not profile.get("status"):
+            print(f"  [SPORTS-SKILLS] profilo senza status per {player_name} "
+                  f"(tm_player_id={tm_id})")
             return {}
         player = ((profile.get("data") or {}).get("player")) or {}
         mv = player.get("market_value") or {}
@@ -593,6 +609,9 @@ class TransfermarktEnricher:
             out["market_value_text"] = mv.get("formatted") or ""
         if mv.get("club"):
             out["current_club"] = mv["club"]
+        if not out:
+            print(f"  [SPORTS-SKILLS] profilo trovato per {player_name} "
+                  f"(tm_player_id={tm_id}) ma senza market_value utilizzabile")
         if out:
             # Slug indicativo: TM risolve sull'id numerico, lo slug è
             # cosmetico. Se sbagliato il link è comunque valido, solo meno
