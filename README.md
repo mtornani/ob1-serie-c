@@ -1,196 +1,128 @@
-# 🎯 OB1 Serie C Radar v2
+# 🎯 OB1 Lega Pro
 
-**Scout AI per Serie C e Serie D italiana** - Powered by Gemini File Search RAG
+**Radar di opportunità di mercato per la Serie C italiana** — svincolati, prestiti, rescissioni, con verifica su Transfermarkt e lettura dei Comunicati Ufficiali di giustizia sportiva.
 
-A differenza di un semplice aggregatore di notizie, OB1 v2 è un **agente conversazionale** che:
-- Accumula conoscenza nel tempo (RAG su Gemini File Search)
-- Risponde in linguaggio naturale
-- Impara dai tuoi criteri di ricerca
-- Costa quasi nulla (~$5/mese)
-
-## 🚀 Quick Start
-
-### 1. Clona e configura
-
-```bash
-git clone https://github.com/tuousername/ob1-serie-c.git
-cd ob1-serie-c
-cp .env.example .env
-```
-
-### 2. Ottieni le API keys
-
-| Servizio | Link | Costo |
-|----------|------|-------|
-| Serper.dev | [serper.dev](https://serper.dev) | 2500 query gratis, poi $50/50k |
-| Gemini API | [aistudio.google.com](https://aistudio.google.com/apikey) | Gratis (limiti generosi) |
-| Telegram Bot | [@BotFather](https://t.me/BotFather) | Gratis |
-
-Inserisci le key nel file `.env`
-
-### 3. Installa e testa
-
-```bash
-pip install -r requirements.txt
-
-# Test scraper
-cd src
-python scraper.py
-
-# Prima ingest (popola il database)
-python ingest.py
-
-# Test agent interattivo
-python agent.py
-```
-
-### 4. Avvia Telegram Bot (opzionale)
-
-```bash
-cd bot
-python telegram_bot.py
-```
-
-## 📱 Come usarlo
-
-### Via Terminale
-
-```
-Tu: Chi sono i centrocampisti svincolati under 25?
-
-🤖 OB1: Ecco i centrocampisti svincolati under 25 disponibili:
-
-1. **Marco Rossi** (23 anni)
-   - Ruolo: Centrocampista centrale
-   - Ex club: Pescara
-   - Presenze 2024/25: 12
-   - Note: Rescissione consensuale il 15/01
-   - Fonte: Calciomercato.com
-
-2. **Luca Bianchi** (24 anni)
-   ...
-```
-
-### Via Telegram
-
-```
-/svincolati centrocampista
-/player Nicolas Viola
-/cerca difensore mancino under 28
-/summary
-```
-
-Oppure scrivi liberamente:
-> "Ci sono esterni sinistri con esperienza Serie B?"
-
-## 🏗️ Architettura
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                    SCRAPER (ogni 6h)                    │
-│  • Serper API → notizie mercato                         │
-│  • Parsing strutturato → MarketOpportunity             │
-└─────────────────────────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────┐
-│                 GEMINI FILE SEARCH                       │
-│  • Auto-chunking dei documenti                          │
-│  • Embedding semantici                                   │
-│  • Storage persistente (~$0.15/MB una tantum)           │
-└─────────────────────────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────┐
-│                      AGENT                               │
-│  • Query in linguaggio naturale                         │
-│  • Retrieval semantico dal knowledge base               │
-│  • Risposte con citazioni                               │
-│  • Memoria conversazionale                               │
-└─────────────────────────────────────────────────────────┘
-                           ↓
-┌─────────────────────────────────────────────────────────┐
-│                    INTERFACES                            │
-│  • CLI interattiva                                       │
-│  • Telegram Bot                                          │
-│  • (futuro) Web UI                                       │
-└─────────────────────────────────────────────────────────┘
-```
-
-## 💰 Costi reali
-
-| Componente | Costo mensile stimato |
-|------------|----------------------|
-| Serper (search) | ~$0-5 (2500 gratis) |
-| Gemini File Search (storage) | $0 |
-| Gemini File Search (indexing) | ~$0.50 una tantum |
-| Gemini Flash (query) | ~$1-3 |
-| **Totale** | **~$5/mese** |
-
-Confronto: un setup RAG tradizionale (Pinecone + OpenAI) costa $50-100+/mese.
-
-## 📂 Struttura progetto
-
-```
-ob1-serie-c/
-├── .github/workflows/
-│   ├── ingest.yml       # Cron ogni 6h
-│   └── cleanup.yml      # Pulizia settimanale
-├── src/
-│   ├── models.py        # Data structures
-│   ├── scraper.py       # News collection
-│   ├── ingest.py        # Upload to Gemini
-│   └── agent.py         # Query interface
-├── bot/
-│   └── telegram_bot.py  # Mobile interface
-├── requirements.txt
-├── .env.example
-└── README.md
-```
-
-## 🔧 Configurazione avanzata
-
-### Aggiungere fonti di scraping
-
-Modifica `QUERIES` in `src/scraper.py`:
-
-```python
-QUERIES = {
-    OpportunityType.SVINCOLATO: [
-        '"Serie C" "parametro zero"',
-        # Aggiungi nuove query qui
-    ],
-}
-```
-
-### Personalizzare il comportamento dell'agent
-
-Modifica `SYSTEM_PROMPT` in `src/agent.py`:
-
-```python
-SYSTEM_PROMPT = """Sei OB1, assistente scouting...
-# Aggiungi istruzioni specifiche per il tuo club
-"""
-```
-
-### Limitare accesso Telegram
-
-Nel `.env`:
-```
-ALLOWED_TELEGRAM_USERS=123456789,987654321
-```
-
-## 🚧 Roadmap
-
-- [ ] Integrazione Transfermarkt per valutazioni
-- [ ] Export PDF report settimanale  
-- [ ] Web UI con React
-- [ ] Notifiche push per opportunità top
-- [ ] Tracking storico giocatori
-- [ ] Comparazione profili
-
-## 📄 License
-
-MIT - Usa come vuoi, citami se ti va.
+**Live:** [ob1legapro.matchanalysispro.online](https://ob1legapro.matchanalysispro.online)
+**Bot Telegram:** [@Ob1LegaPro_bot](https://t.me/Ob1LegaPro_bot)
 
 ---
 
-Made with ⚽ for Serie C scouting by [Mirko]
+## Cosa fa
+
+Non è uno scanner di notizie di calciomercato: è un radar che traccia **operazioni di mercato reali** per un direttore sportivo di Serie C, e le mette in regola con la giustizia sportiva prima di consegnarle.
+
+1. **Scraping** (`scripts/ouroboros_run.py`) — Tavily/Serper su fonti di calciomercato, estrazione LLM (catena free-first: Groq → Cerebras → OpenRouter → NVIDIA, Gemini solo come fallback a pagamento)
+2. **Enrichment** (`scripts/run_enrichment.py`) — verifica su Transfermarkt (profilo, presenze, valore di mercato); quando il profilo non arriva, il dato resta dichiaratamente incompleto, mai stimato
+3. **Scoring** (`scripts/generate_dashboard.py`, SCORE-002) — 7 fattori pesati in codice, zero AI nel punteggio:
+
+   | Fattore | Peso |
+   |---|---|
+   | Esperienza verificata (presenze) | 20% |
+   | Profilo anagrafico (età target U23) | 18% |
+   | Attualità della segnalazione | 15% |
+   | Valore di mercato (fascia Serie C) | 15% |
+   | Pertinenza Serie C | 15% |
+   | Tipo di opportunità (svincolato > prestito > mercato) | 12% |
+   | Affidabilità della fonte | 5% |
+
+   Classificazione: **HOT** ≥ 70 · **WARM** ≥ 57 · **COLD** < 57
+4. **Giustizia sportiva** (`src/cu_parser.py`, `src/brief.py`) — legge i Comunicati Ufficiali dei comitati regionali (regex, **zero LLM**), traccia squalificati/diffidati, e genera il brief del giovedì per il DS: chi è fermo, chi rischia, prima della partita
+5. **Sanity check** (`scripts/sanity_check.py`) — verifica automatica di ogni run prima di pubblicare (file presenti, struttura dati, freschezza, costo per fatto nuovo)
+6. **Delivery** — dashboard pubblica + notifiche broadcast su Telegram (`scripts/send_notification.py`) a una lista di iscritti reali
+
+Costo per run: **zero AI a pagamento** in condizioni normali — la catena free-first copre estrazione ed enrichment; Gemini entra solo se esplicitamente configurato come fallback.
+
+---
+
+## Architettura
+
+```
+Scraping (Tavily/Serper + LLM free-first)
+        ↓
+Enrichment Transfermarkt (profilo, presenze, valore)
+        ↓
+Scoring SCORE-002 (7 fattori, in codice)
+        ↓
+Dashboard pubblica (docs/data.json → Cloudflare Pages)
+        ↓
+Sanity check → Notifica Telegram (broadcast abbonati)
+
+Giustizia sportiva (in parallelo, indipendente):
+Comunicati Ufficiali → parser regex → brief del giovedì (Telegram, al DS)
+```
+
+Pipeline automatica ogni 6h (`.github/workflows/ingest.yml`). Il brief del giovedì gira separatamente (`.github/workflows/brief-giovedi.yml`).
+
+> Limite noto: l'enrichment Transfermarkt viene talvolta bloccato dagli IP datacenter dei runner GitHub Actions (risposta HTTP non-200 anti-bot) — quando succede, il circuito si spegne per la run e si torna alla ricerca web, in log senza falsi silenzi (vedi commenti in `src/enricher_tm.py`).
+
+---
+
+## Run locale
+
+```bash
+git clone https://github.com/mtornani/ob1-serie-c.git
+cd ob1-serie-c
+cp .env.example .env   # API keys: vedi sezione sotto
+pip install -r requirements.txt
+
+python scripts/ouroboros_run.py       # scraping
+python scripts/run_enrichment.py      # enrichment Transfermarkt + LLM
+python scripts/generate_dashboard.py  # scoring + export docs/data.json
+python scripts/sanity_check.py        # verifica prima di pubblicare
+
+# brief del giovedì (solo, senza il giro completo)
+python scripts/brief_giovedi.py --club "NOME CLUB" --dry-run
+```
+
+### API keys (`.env`)
+
+| Servizio | Obbligatoria | Note |
+|---|:---:|---|
+| `TAVILY_API_KEY` | ✅ | ricerca notizie di mercato |
+| `SERPER_API_KEY` | ⬜ | ricerca alternativa |
+| `GROQ_API_KEY` / `OPENROUTER_API_KEY` | ✅ (almeno una) | catena LLM free-first |
+| `GEMINI_API_KEY` | ⬜ | fallback a pagamento, non necessario in condizioni normali |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID(S)` | ⬜ | notifiche broadcast |
+
+---
+
+## Struttura del repo
+
+```
+src/
+  scraper_global.py    # scraping fonti di mercato
+  enricher_tm.py        # enrichment Transfermarkt
+  entity_gate.py         # filtro strutturale anti-junk
+  scoring.py              # SCORE-002
+  cu_parser.py             # parser Comunicati Ufficiali (giustizia sportiva)
+  brief.py                  # formattazione brief del giovedì
+  cu_feed.py                 # scoperta CU da canale Telegram del comitato
+  notifier.py                 # invio Telegram
+  free_stack.py, llm_fallback.py  # catena LLM free-first
+scripts/
+  ouroboros_run.py        # orchestratore scraping
+  run_enrichment.py        # orchestratore enrichment
+  generate_dashboard.py     # scoring + export dashboard
+  sanity_check.py            # verifica pre-pubblicazione
+  send_notification.py        # notifiche Telegram
+  brief_giovedi.py             # CLI brief del giovedì
+data/
+  opportunities.json     # database principale
+  cu_facts.json           # memoria versionata giustizia sportiva (il .db è gitignored)
+docs/                    # dashboard pubblica (Cloudflare Pages)
+workers/telegram-bot/    # bot Telegram (Cloudflare Worker, l'unico bot attivo)
+.github/workflows/
+  ingest.yml              # pipeline principale, ogni 6h
+  brief-giovedi.yml         # brief del giovedì
+  weekly-report.yml          # report settimanale
+  verify-enrichment.yml       # controllo enrichment
+  tests.yml                    # CI
+```
+
+---
+
+## Test
+
+```bash
+PYTHONIOENCODING=utf-8 python -m unittest discover tests -v
+```
