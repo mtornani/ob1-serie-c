@@ -185,6 +185,17 @@ body::before{
   max-width: 46ch;
   line-height: 1.5;
 }
+/* Cosa NON è, non solo cosa fa - chi apre solo questa dashboard deve
+   capire da sola che è mercato vero, non scouting predittivo. */
+.cmd .positioning{
+  margin-top: 10px;
+  font-size: 11.5px; color: var(--ink-dim);
+  max-width: 46ch;
+  line-height: 1.5;
+  border-left: 2px solid var(--acc);
+  padding-left: 10px;
+}
+.cmd .positioning b{ color: var(--ink); }
 
 .counters{
   display:flex; gap: 22px; align-items: baseline;
@@ -918,6 +929,7 @@ body::before{
       <div>
         <h1>Scout <span class="green">Lega Pro</span></h1>
         <p class="blurb">Nomi da chiamare oggi: svincolati, prestiti e giovani della C e D. Aggiornato ogni 6 ore.</p>
+        <p class="positioning">Non scopre talenti, <b>traccia operazioni di mercato vere</b> — e se sono in regola con la giustizia sportiva.</p>
       </div>
       <div class="counters">
         <div class="counter hot">
