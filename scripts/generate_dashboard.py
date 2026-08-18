@@ -9,16 +9,46 @@ Pubblica solo profili publishable (nome+età+club+fonte). Tracking in stats.
 """
 
 import json
+import subprocess
 import sys
 from pathlib import Path
 from datetime import datetime
 
+REPO_ROOT = Path(__file__).parent.parent
+
 # Add src to path for scoring module
-sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
+sys.path.insert(0, str(REPO_ROOT / 'src'))
 
 from scoring import OB1Scorer, assess_follow
 from minutaggio import genera_intel_badge
 from quality_gate import apply_gate, normalize_age
+
+
+def _version_and_build() -> tuple:
+    """
+    (version, build) per il footer "e' aggiornato al deploy giusto?" — stesso
+    pattern di OB1 Global (vedi export_dashboard_v2.py). Deploy statico via
+    commit della pipeline: niente revision iniettata da una piattaforma,
+    quindi build = short SHA del commit che ha girato questo export.
+    Non deve mai poter rompere l'export: qualunque errore ripiega su
+    "0.0.0"/"dev" invece di sollevare.
+    """
+    version = "0.0.0"
+    try:
+        version = (REPO_ROOT / "VERSION").read_text(encoding="utf-8").strip() or version
+    except OSError:
+        pass
+    build = "dev"
+    try:
+        sha = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=str(REPO_ROOT), capture_output=True, text=True, timeout=5,
+        )
+        if sha.returncode == 0 and sha.stdout.strip():
+            build = sha.stdout.strip()
+    except Exception:
+        pass
+    return version, build
 
 
 def _first(*vals):
@@ -360,6 +390,7 @@ def main():
             intel_stats[roi_class] += 1
 
     # Create data.json for the dashboard
+    version, build = _version_and_build()
     dashboard_data = {
         'opportunities': dashboard_opportunities,
         'stats': {
@@ -377,9 +408,11 @@ def main():
             'corroborated': corroborated_count,
         },
         'last_update': datetime.now().isoformat(),
+        'version': version,
+        'build': build,
         'scoring_version': 'SCORE-003',
         'intel_version': 'INTEL-001',
-        'quality_gate': 'identity_complete',
+        'quality_gate': 'identity_complete+corroborated',
     }
 
     # Write data.json to docs folder

@@ -115,6 +115,10 @@ async function init(){
     const data = await r.json();
     STATE.all = (data.opportunities||[]).map(decorate);
     STATE.lastUpdate = data.last_update;
+    if (data.version && data.build) {
+      const fb = document.getElementById('footBuild');
+      if (fb) fb.textContent = ` · v${data.version} · ${data.build}`;
+    }
   } catch(err) {
     el('#grid').innerHTML = `
       <div class="empty" style="display:block">
