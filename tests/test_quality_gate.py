@@ -16,7 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.quality_gate import assess_identity, normalize_age
+from src.quality_gate import apply_gate, assess_identity, normalize_age, reconcile_opportunity_type
 
 
 def opp(**kw):
@@ -102,6 +102,58 @@ class TestPublishableHardGate(unittest.TestCase):
         self.assertTrue(g["corroborated"])
         self.assertFalse(g["identity_complete"])
         self.assertFalse(g["publishable"])
+
+
+class TestReconcileOpportunityType(unittest.TestCase):
+    """
+    Caso vero, trovato dall'utente su Transfermarkt: Sergej Levak segnato
+    'svincolato' (da un thread di forum) ma con contract_expires 2030-06-30
+    arrivato dopo dall'enrichment TM, mai riconciliato prima di questo fix.
+    """
+
+    def test_svincolato_con_contratto_futuro_riclassificato_a_mercato(self):
+        o = opp(opportunity_type="svincolato", contract_expires="2030-06-30",
+                 current_club="Atalanta U23")
+        out = reconcile_opportunity_type(o)
+        self.assertEqual(out["opportunity_type"], "mercato")
+        self.assertEqual(out["type_reconciled_from"], "svincolato")
+
+    def test_rescissione_con_contratto_futuro_riclassificata_anche_lei(self):
+        o = opp(opportunity_type="rescissione", contract_expires="2027-06-30")
+        out = reconcile_opportunity_type(o)
+        self.assertEqual(out["opportunity_type"], "mercato")
+
+    def test_svincolato_senza_contratto_non_tocco(self):
+        o = opp(opportunity_type="svincolato")
+        out = reconcile_opportunity_type(o)
+        self.assertEqual(out["opportunity_type"], "svincolato")
+        self.assertNotIn("type_reconciled_from", out)
+
+    def test_svincolato_con_contratto_gia_scaduto_resta_svincolato(self):
+        o = opp(opportunity_type="svincolato", contract_expires="2020-06-30")
+        out = reconcile_opportunity_type(o)
+        self.assertEqual(out["opportunity_type"], "svincolato")
+
+    def test_prestito_non_e_toccato_dalla_riconciliazione(self):
+        # la riconciliazione riguarda solo affermazioni di "libero" — un
+        # prestito con contratto futuro col club di prestito non è una
+        # contraddizione, è normale
+        o = opp(opportunity_type="prestito", contract_expires="2027-06-30")
+        out = reconcile_opportunity_type(o)
+        self.assertEqual(out["opportunity_type"], "prestito")
+
+    def test_data_non_valida_non_esplode(self):
+        o = opp(opportunity_type="svincolato", contract_expires="chissà")
+        out = reconcile_opportunity_type(o)
+        self.assertEqual(out["opportunity_type"], "svincolato")
+
+    def test_apply_gate_usa_il_tipo_riconciliato(self):
+        o = opp(opportunity_type="svincolato", contract_expires="2030-06-30",
+                 current_club="Atalanta U23", tm_url=
+                 "https://www.transfermarkt.it/sergej-levak/profil/spieler/892165")
+        out = apply_gate(o)
+        self.assertEqual(out["opportunity_type"], "mercato")
+        self.assertTrue(out["publishable"])  # il fix non deve rompere il gate
 
 
 class TestNormalizeAge(unittest.TestCase):
