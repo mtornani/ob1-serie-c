@@ -124,7 +124,7 @@ workers/telegram-bot/    # bot Telegram (Cloudflare Worker, l'unico bot attivo)
 ## Limiti onesti
 
 - **L'enrichment Transfermarkt è spesso bloccato in produzione.** I runner GitHub Actions vengono a volte respinti dal sistema anti-bot di TM (HTTP non-200 verso IP datacenter). Il circuito ora lo dice in log invece di restare muto, e da poco c'è un fallback via `sports-skills` (backend di terzi), ma la copertura su svincolati di Serie C/D oscuri non è garantita — verificata solo su un caso passato da un'academy di club grande.
-- **`publishable` non richiede corroborazione.** Il gate è `identity_complete` da solo — la seconda fonte (o il profilo TM) è un bonus nello score, non un requisito, finché la pipeline non accumula abbastanza storia multi-fonte per renderlo un hard-gate senza svuotare la dashboard.
+- **`publishable` richiede corroborazione** (`identity_complete` AND `corroborated`: profilo TM giocatore o ≥2 domini distinti), allineato a OB1 Global. Attivato il 2026-08-17 dopo aver misurato l'impatto sui dati reali: 119 → 99 profili pubblici (-17%), non uno svuotamento della dashboard.
 - **La giustizia sportiva copre un solo comitato regionale per ora** (Emilia-Romagna, `DEFAULT_CHANNEL`). Un DS fuori regione riceve correttamente "nessuna società nei CU" — non è un bug, ma la copertura reale è quella.
 - **Nessun tabellone.** Non tracciamo se un'opportunità segnalata "HOT" è stata poi davvero chiamata, provata o firmata — il DS riceve il suggerimento, il sistema non chiude il cerchio con l'esito.
 - **Il valore di mercato viene da una sola fonte** (Transfermarkt, diretto o via sports-skills) — nessun incrocio con una seconda valutazione quando quella prima è stale o sbagliata.
