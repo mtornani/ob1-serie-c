@@ -332,9 +332,15 @@ def search_tavily(query: str, max_results: int = 8, domains: Optional[List[str]]
     try:
         resp = requests.post("https://api.tavily.com/search", json=payload, timeout=30)
         if resp.status_code != 200:
+            # Prima restava un return [] muto: un errore diverso da "chiave
+            # assente" (scaduta, quota, API cambiata) finiva indistinguibile
+            # da "nessun risultato", e il chiamante (free_web_search) non
+            # vede questo ramo per loggarlo — non solleva un'eccezione.
+            print(f"    [SEARCH tavily] HTTP {resp.status_code}: {resp.text[:120]}")
             return []
         items = (resp.json() or {}).get("results") or []
-    except (requests.RequestException, ValueError):
+    except (requests.RequestException, ValueError) as e:
+        print(f"    [SEARCH tavily] {type(e).__name__}: {str(e)[:120]}")
         return []
     return [{
         "title": str(it.get("title") or ""),
@@ -358,9 +364,11 @@ def search_serper(query: str, max_results: int = 8,
             timeout=20,
         )
         if resp.status_code != 200:
+            print(f"    [SEARCH serper] HTTP {resp.status_code}: {resp.text[:120]}")
             return []
         items = (resp.json() or {}).get("organic") or []
-    except (requests.RequestException, ValueError):
+    except (requests.RequestException, ValueError) as e:
+        print(f"    [SEARCH serper] {type(e).__name__}: {str(e)[:120]}")
         return []
     return [{
         "title": str(it.get("title") or ""),
