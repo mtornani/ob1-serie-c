@@ -8,6 +8,8 @@ const STATE = {
   sort: 'score',
   q: '',
   lastUpdate: null,
+  version: null,
+  build: null,
 };
 
 const TIER_LABEL = { hot: 'da chiamare', warm: 'da seguire', cold: 'bassa priorità' };
@@ -115,10 +117,8 @@ async function init(){
     const data = await r.json();
     STATE.all = (data.opportunities||[]).map(decorate);
     STATE.lastUpdate = data.last_update;
-    if (data.version && data.build) {
-      const fb = document.getElementById('footBuild');
-      if (fb) fb.textContent = ` · v${data.version} · ${data.build}`;
-    }
+    STATE.version = data.version || null;
+    STATE.build = data.build || null;
   } catch(err) {
     el('#grid').innerHTML = `
       <div class="empty" style="display:block">
@@ -471,7 +471,8 @@ function updateCycle(){
   const mm = String(last.getMinutes()).padStart(2,'0');
   const ago  = diffH > 0 ? `${diffH} h fa` : `${diffM} min fa`;
   const next = nextMs > 0 ? `prossimo tra ${nH > 0 ? nH + ' h' : nM + ' min'}` : 'aggiornamento in corso…';
-  el('#cycleStatus').textContent = `Aggiornato ${ago} · ${next}`;
+  const ver  = STATE.version ? ` · v${STATE.version} · ${STATE.build}` : '';
+  el('#cycleStatus').textContent = `Aggiornato ${ago} · ${next}${ver}`;
 }
 
 /* ============ STALE WARNING ============ */
