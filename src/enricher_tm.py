@@ -50,6 +50,11 @@ except ImportError:  # layout PYTHONPATH=src
 load_dotenv()
 
 try:
+    from src.tm_url import clean as clean_tm_url, diagnose as tm_url_diagnose
+except ImportError:  # layout PYTHONPATH=src
+    from tm_url import clean as clean_tm_url, diagnose as tm_url_diagnose
+
+try:
     from src.metrics import get_metrics
 except ImportError:  # layout PYTHONPATH=src
     try:
@@ -127,8 +132,9 @@ def parse_tm_text(raw: str, url: str = "") -> Dict[str, Any]:
         return {}
     text = raw
     out: Dict[str, Any] = {}
-    if url and "/profil/spieler/" in url:
-        out["tm_url"] = url
+    valid_url = clean_tm_url(url)
+    if valid_url:
+        out["tm_url"] = valid_url
 
     # Birth: "Nato il: 03/05/2006 (20)" / "Date of birth/Age: May 3, 2006 (20)"
     m = re.search(
@@ -274,7 +280,6 @@ Rispondi ESCLUSIVAMENTE con JSON valido, nessun testo aggiuntivo:
   "market_value_text": "es. 150 mila €" o null,
   "main_position": "Ruolo principale" o null,
   "agent": "Nome agenzia" o null,
-  "tm_url": "URL profilo Transfermarkt" o null,
   "appearances": numero presenze nell'ultima stagione disponibile (2025/26 o 2024/25) o null,
   "goals": numero gol nell'ultima stagione disponibile o null,
   "assists": numero assist nell'ultima stagione disponibile o null,
@@ -301,7 +306,6 @@ Le chiavi devono essere ESATTAMENTE i nomi come scritti sopra. Per ogni calciato
   "market_value_text": "es. 150 mila €" o null,
   "main_position": "Ruolo principale" o null,
   "agent": "Nome agenzia" o null,
-  "tm_url": "URL profilo Transfermarkt" o null,
   "appearances": presenze ultima stagione disponibile o null,
   "goals": gol ultima stagione o null,
   "assists": assist ultima stagione o null,
@@ -413,6 +417,12 @@ class TransfermarktEnricher:
                 ),
             )
             data = self._parse_json_response(response.text or "")
+            if isinstance(data, dict) and data.get("tm_url"):
+                # Il grounding restituisce redirect vertexaisearch che scadono:
+                # non sono link a Transfermarkt e non vanno in un report.
+                data["tm_url"] = clean_tm_url(data["tm_url"], player_name)
+                if not data["tm_url"]:
+                    data.pop("tm_url")
             if data:
                 print(f"  [GROUNDED] {player_name}: mv={data.get('market_value_eur')} apps={data.get('appearances')}")
             return data
@@ -428,7 +438,10 @@ class TransfermarktEnricher:
             f"URL: {url}\n\n"
             "Rispondi SOLO con JSON con campi: nationality, birth_date (YYYY-MM-DD), "
             "current_club, contract_expires, market_value_eur, market_value_text, "
-            "appearances, goals, assists, minutes_played, foot, agent, tm_url, main_position.\n"
+            # tm_url NON è tra i campi chiesti: l'ID numerico del profilo il
+            # modello non può conoscerlo, quindi lo inventerebbe. L'URL lo
+            # sappiamo già — è la pagina che gli stiamo dando in pasto.
+            "appearances, goals, assists, minutes_played, foot, agent, main_position.\n"
             "Null se assente. Non inventare.\n\n"
             f"CONTENUTO:\n{raw_content[:12000]}"
         )
@@ -631,14 +644,21 @@ class TransfermarktEnricher:
         """
         cached = self._tm_urls.get(player_name.lower())
         if cached:
-            # Ramo che salterebbe la ricerca del tutto — se in produzione
-            # tutti i 20 giocatori passano da qui, il file cache è la causa
-            # del silenzio, non la ricerca stessa.
-            print(f"  [TM URL/cache] {player_name}: {cached[:70]}")
-            return cached, ""
+            if clean_tm_url(cached, player_name):
+                # Diagnostica di main: se in produzione tutti i 20 giocatori
+                # passano da qui, il file cache è la causa del silenzio, non
+                # la ricerca stessa.
+                print(f"  [TM URL/cache] {player_name}: {cached[:70]}")
+                return cached, ""
+            # Un URL sbagliato in cache resterebbe sbagliato per sempre: la
+            # cache è permanente per progetto. Si scarta e si ricerca.
+            print(f"  [TM URL] cache scartata per {player_name}: "
+                  f"{tm_url_diagnose(cached)}")
+            self._tm_urls.pop(player_name.lower(), None)
+            self._save_tm_urls()
 
         # Prima la ricerca interna di TM: nessun motore terzo da farsi bloccare.
-        direct = self._tm_url_from_site_search(player_name)
+        direct = clean_tm_url(self._tm_url_from_site_search(player_name), player_name)
         if direct:
             self._tm_urls[player_name.lower()] = direct
             self._save_tm_urls()
@@ -652,11 +672,16 @@ class TransfermarktEnricher:
         )
         url, content = "", ""
         for r in results:
-            if "/profil/spieler/" in (r.get("url") or "").lower():
-                url, content = r["url"], r.get("content") or ""
+            # Solo un profilo che è DI QUESTO giocatore. Il primo risultato
+            # qualunque, preso alla cieca, ha prodotto in passato link a pagine
+            # squadra e a omonimi — e la cache li ha resi permanenti.
+            candidate = clean_tm_url(r.get("url"), player_name)
+            if candidate:
+                url, content = candidate, r.get("content") or ""
                 break
         if not url and results:
-            url = results[0].get("url") or ""
+            # Niente profilo valido: si tiene il testo per il parsing, ma NON
+            # si spaccia l'URL per un profilo.
             content = results[0].get("content") or ""
         if url:
             self._tm_urls[player_name.lower()] = url
@@ -794,13 +819,20 @@ class TransfermarktEnricher:
                 gemini_client=self.gemini_client,
             )
             if isinstance(llm, dict):
+                # Un URL dal modello non è un dato osservato: è una stringa
+                # plausibile. Cade qui anche se un prompt tornasse a chiederlo.
+                llm.pop("tm_url", None)
                 # Il deterministico vince: l'LLM riempie i buchi, non li corregge
                 for k, v in llm.items():
                     if v is not None and not data.get(k):
                         data[k] = v
 
-        if url and data and not data.get("tm_url"):
-            data["tm_url"] = url
+        if data and not data.get("tm_url"):
+            verified = clean_tm_url(url, player_name)
+            if verified:
+                data["tm_url"] = verified
+        # Guardia di main: senza, questa riga sovrascriveva incondizionatamente
+        # "Enrichment:sports-skills" impostato più sopra con "Enrichment:regex".
         if data and not data.get("enrichment_source"):
             data["enrichment_source"] = llm_source_label() if thin else "Enrichment:regex"
         return data or {}
@@ -908,9 +940,14 @@ class TransfermarktEnricher:
 
         by_norm = {_norm(k): v for k, v in raw.items() if isinstance(v, dict)}
         out = {name: by_norm.get(_norm(name), {}) for name in names}
-        for prof in out.values():
-            if prof:
-                prof.setdefault("enrichment_source", "Enrichment:gemini")
+        for name, prof in out.items():
+            if not prof:
+                continue
+            prof.setdefault("enrichment_source", "Enrichment:gemini")
+            if prof.get("tm_url"):
+                prof["tm_url"] = clean_tm_url(prof["tm_url"], name)
+                if not prof["tm_url"]:
+                    prof.pop("tm_url")
         found = sum(1 for v in out.values() if v)
         print(f"  [BATCH] {found}/{len(names)} profili in 1 chiamata")
         return out
