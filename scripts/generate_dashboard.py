@@ -17,6 +17,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
 from scoring import OB1Scorer, assess_follow
 from minutaggio import genera_intel_badge
 from quality_gate import apply_gate, normalize_age
+from tm_url import clean as clean_tm_url
 
 
 def _first(*vals):
@@ -27,14 +28,14 @@ def _first(*vals):
     return None
 
 
-def _tm_url(url):
+def _tm_url(url, player_name=None):
     """
-    L'url solo se è un link Transfermarkt vero, quindi verificabile da chi
-    legge — non un redirect di grounding né spazzatura. Altrimenti None.
+    L'url solo se è un profilo giocatore Transfermarkt completo di ID E che
+    corrisponde a questo giocatore. "Contiene transfermarkt" non bastava:
+    lasciava passare pagine squadra, redirect di grounding e profili troncati
+    senza ID. Per chi legge un report, un link sbagliato è peggio di nessun link.
     """
-    if isinstance(url, str) and 'transfermarkt' in url.lower() and url.startswith('http'):
-        return url
-    return None
+    return clean_tm_url(url, player_name)
 
 
 def is_generic_tm_page(url: str) -> bool:
@@ -238,8 +239,10 @@ def main():
             # Link Transfermarkt verificabile (vale solo un url TM vero) e il
             # flag che la UI usa per separare i dati controllabili dalle stime.
             # È il gate delle due fonti reso visibile sulla singola scheda.
-            'tm_url': _tm_url(opp.get('tm_url') or profile.get('tm_url')),
-            'data_verified': bool(_tm_url(opp.get('tm_url') or profile.get('tm_url'))),
+            'tm_url': _tm_url(opp.get('tm_url') or profile.get('tm_url'),
+                              opp.get('player_name')),
+            'data_verified': bool(_tm_url(opp.get('tm_url') or profile.get('tm_url'),
+                                          opp.get('player_name'))),
 
             # Discovered timestamp (for stale detection)
             'discovered_at': opp.get('discovered_at', ''),
