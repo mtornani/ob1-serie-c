@@ -72,7 +72,7 @@ Fix: budget discovery, circuit breaker daily quota, Tavily fallback source-first
 1. **Quota Gemini** — se 20 RPD insufficienti: pay-as-you-go o modello alternativo  
 2. **264 tracking non publishable** — arricchire età/club (prossima run con budget)  
 3. Multi-fonte evidence store (SQLite) — solo se monofonte resta bug  
-4. Hard-gate `corroborated` (≥2 fonti) — dopo multi-fonte  
+4. ~~Hard-gate `corroborated` (≥2 fonti)~~ — fatto 2026-08-17, misurato: 119→99 publishable  
 
 ---
 

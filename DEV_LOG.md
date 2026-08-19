@@ -191,7 +191,7 @@ Aggiunto verdict sentence sopra il breakdown (es. "parametro zero + U23 (21a) �
 
 | Issue | Stato | Note |
 |---|---|---|
-| Fallback enrichment Tavily → `432 Client Error` | Aperto, non bloccante | Chiave scaduta o API cambiata. Da indagare quando si tocca l'enrichment. |
+| Fallback enrichment Tavily → `432 Client Error` | Causa non riproducibile (serve la chiave di produzione, non disponibile qui), ma non più invisibile | Trovata la vera ragione per cui è restato "mai indagato": `search_tavily`/`search_serper` in `src/free_stack.py` tornavano `[]` su qualunque non-200, e `free_web_search` logga solo sulle eccezioni — che qui non scattano mai. L'errore era strutturalmente muto. 2026-08-17: ora entrambi loggano `[SEARCH tavily/serper] HTTP <status>: <corpo>` prima di tornare `[]` (comportamento invariato, solo osservabile). La prossima volta che ricompare, il log dice se è quota, chiave scaduta o altro. |
 | Verify ranking dump-vs-real | In attesa | Rilanciare `verify_enrichment.py` con Gemini billed attivo (no cap) per il ranking pulito. |
 | Discovery fuori da Gemini (pattern ob1-scout) | Fase B | Ottimizzazione costo, non urgente. |
 

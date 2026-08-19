@@ -137,6 +137,11 @@ class ConditionalFetchTestCase(unittest.TestCase):
         # si portano dentro una query di ricerca.
         os.environ["OB1_TM_SITE_SEARCH"] = "0"
         self.addCleanup(os.environ.pop, "OB1_TM_SITE_SEARCH", None)
+        # Stesso motivo: sports-skills parla con un backend vero, non con
+        # _FakeTMServer sotto. Senza questo, questi test farebbero una
+        # richiesta di rete reale a ogni enrich_player_free().
+        os.environ["OB1_SPORTS_SKILLS"] = "0"
+        self.addCleanup(os.environ.pop, "OB1_SPORTS_SKILLS", None)
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
 

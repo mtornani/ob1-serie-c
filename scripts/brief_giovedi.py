@@ -61,6 +61,15 @@ def ingest_new(store: CUStore, seen: SeenStore, channel: str, limit: int = 5) ->
     tutti insieme è inutile (il brief guarda le ultime settimane) e maleducato
     verso il sito del comitato.
     """
+    if not channel:
+        # Non dovrebbe più accadere (vedi il commento su --canale in main()),
+        # ma se accade di nuovo per un'altra via va gridato, non stampato
+        # come "nessun comunicato nuovo" — quello sembra un canale pulito,
+        # questo è un canale che non è mai stato interrogato.
+        print("[ERRORE] canale vuoto: nessun fetch tentato, controlla "
+              "OB1_CU_CHANNEL o --canale")
+        return {"cu": 0, "new_sanctions": 0, "new_results": 0}
+
     links = new_cu_links(channel, seen=seen)
     if not links:
         print(f"@{channel}: nessun comunicato nuovo")
@@ -87,7 +96,14 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Brief del giovedì per il DS")
     ap.add_argument("--club", default=os.getenv("OB1_CLUB"))
     ap.add_argument("--avversario", default=os.getenv("OB1_AVVERSARIO"))
-    ap.add_argument("--canale", default=os.getenv("OB1_CU_CHANNEL", DEFAULT_CHANNEL))
+    # `or`, non il default a due argomenti di getenv: il workflow imposta
+    # SEMPRE OB1_CU_CHANNEL nell'ambiente (${{ vars.OB1_CU_CHANNEL }}), anche
+    # a stringa vuota quando la variabile non è configurata su GitHub. Una
+    # chiave presente-ma-vuota non fa scattare il default di getenv(k, d) —
+    # solo l'assenza totale della chiave lo fa. Bug vero, trovato dal primo
+    # run reale: canale="" -> fetch di "t.me/s/" -> 404 silenzioso -> "nessun
+    # comunicato nuovo", indistinguibile da un canale controllato e pulito.
+    ap.add_argument("--canale", default=os.getenv("OB1_CU_CHANNEL") or DEFAULT_CHANNEL)
     ap.add_argument("--data", default=date.today().isoformat(),
                     help="data del brief (default: oggi)")
     ap.add_argument("--db", default="data/ob1.db")
@@ -129,14 +145,53 @@ def main() -> int:
         store.close()
         return 2
 
-    brief = build_brief(store, args.data, args.club, opponent=args.avversario)
+    known = store.clubs()
+    if not known:
+        # Pre-stagione (solo calendari, niente sezione disciplinare): non è
+        # un errore di configurazione, è la normalità di luglio-agosto. Non
+        # possiamo nemmeno provare a risolvere il nome — non c'è ancora
+        # niente con cui confrontarlo.
+        print(f"Nessuna società ancora nei CU ingeriti (pre-stagione): "
+              f"brief non inviato per {args.club!r}.")
+        store.close()
+        return 0
+
+    club, candidates = store.resolve_club(args.club)
+    if club is None:
+        # Qui invece i CU parlano, e OB1_CLUB no: è la configurazione
+        # sbagliata che va segnalata forte, non un "nessuna squalifica" che
+        # sembra tutto ok e nasconde il problema per un'intera stagione.
+        print(f"'{args.club}' non corrisponde a nessuna società vista nei CU.")
+        print("Occhio a sigle societarie (SSDARL, 1907, ecc.) che il "
+              "comitato può aggiungere o omettere. Più vicine:")
+        for c in candidates:
+            print(f"  {c}")
+        store.close()
+        return 2
+    if club != args.club:
+        print(f"  [match] '{args.club}' -> '{club}'")
+
+    opponent = None
+    if args.avversario:
+        opponent, opp_candidates = store.resolve_club(args.avversario)
+        if opponent is None:
+            print(f"Avversario '{args.avversario}' non corrisponde a "
+                  f"nessuna società vista nei CU. Più vicine:")
+            for c in opp_candidates:
+                print(f"  {c}")
+            store.close()
+            return 2
+        if opponent != args.avversario:
+            print(f"  [match] avversario '{args.avversario}' -> '{opponent}'")
+
+    brief = build_brief(store, args.data, club, opponent=opponent)
     message = format_telegram(brief)
     store.close()
 
     if not brief["has_content"]:
         # Non è un errore: a inizio stagione, o dopo una sosta, non c'è nulla.
         # Lo diciamo invece di mandare un messaggio vuoto ogni settimana.
-        print(f"Nessun provvedimento per {args.club}: brief non inviato.")
+        print(f"Nessun provvedimento per {club}: brief non inviato.")
         return 0
 
     if args.dry_run:

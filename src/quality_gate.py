@@ -6,8 +6,8 @@ Promessa: ogni nome in dashboard regge una telefonata di verifica.
 Gate in CODICE, non LLM. Per nicchia C/D:
   - identity_complete = nome completo + età valida + club + fonte
   - corroborated     = profilo TM giocatore OPPURE ≥2 domini
-  - publishable      = identity_complete (corroboration = bonus, non hard yet
-                       finché store non accumula prove multi-fonte)
+  - publishable      = identity_complete AND corroborated (hard-gate,
+                       allineato a global-scout v2)
 
 Non richiede SQLite v2: lavora su dict opportunity esistenti.
 """
@@ -164,9 +164,12 @@ def assess_identity(opp: dict) -> dict:
     )
     # Nicchia C/D: profilo TM giocatore conta come seconda prova forte
     corroborated = n_sources >= 2 or tm_ok
-    # Publishable: identità completa. Corroboration preferita ma non hard-gate
-    # finché pipeline non accumula multi-fonte (altrimenti dashboard vuota).
-    publishable = identity_complete
+    # Publishable: identità completa E corroborata (hard-gate, allineato a
+    # global-scout v2). Misurato sui dati reali del 2026-08-17 prima di
+    # attivarlo: 119 → 99 publishable (-17%), non uno svuotamento della
+    # dashboard — la previsione "aspetta più storia multi-fonte" che
+    # giustificava il gate morbido non reggeva più i dati che ha oggi.
+    publishable = identity_complete and corroborated
 
     return {
         "age_normalized": age,
@@ -180,10 +183,51 @@ def assess_identity(opp: dict) -> dict:
     }
 
 
+def reconcile_opportunity_type(opp: dict) -> dict:
+    """
+    Un contratto futuro confermato da Transfermarkt vince su una
+    classificazione 'svincolato'/'rescissione' presa a monte da una fonte
+    più debole (spesso un forum, letta dall'LLM di discovery) e mai più
+    ricontrollata quando arriva un dato migliore.
+
+    Trovato su un caso vero (verificato dall'utente su Transfermarkt):
+    Sergej Levak — opportunity_type='svincolato' da un thread di forum
+    ("SQUADRA UNDER 23 SERIE C..."), ma contract_expires='2030-06-30'
+    arrivato dopo dall'enrichment TM. Le due cose in bocca allo stesso
+    record — 21 casi nel dataset al momento del fix, 5 già publishable.
+    Non è solo un'etichetta sbagliata: 'opportunity_type' pesa 12% nello
+    score (src/scoring.py), quindi un falso 'svincolato' gonfiava anche il
+    punteggio.
+
+    Riclassifica a 'mercato' (il tipo generico già usato come fallback
+    ovunque nel codice, non una nuova affermazione specifica che non
+    abbiamo prove per fare) invece di lasciare il dato autocontraddittorio
+    in pubblico. Il campo originale non viene toccato in data/opportunities.json
+    — questo gira sulla copia usata per dashboard e scoring, non riscrive
+    la fonte grezza.
+    """
+    opp_type = (opp.get("opportunity_type") or "").lower()
+    if opp_type not in ("svincolato", "rescissione"):
+        return opp
+    ce = opp.get("contract_expires")
+    if not ce:
+        return opp
+    try:
+        expires = datetime.fromisoformat(str(ce)[:10])
+    except ValueError:
+        return opp
+    if expires <= datetime.now():
+        return opp
+    out = dict(opp)
+    out["opportunity_type"] = "mercato"
+    out["type_reconciled_from"] = opp_type  # traccia, non un fix silenzioso
+    return out
+
+
 def apply_gate(opp: dict) -> dict:
     """Ritorna copia opportunity con età normalizzata + flag gate."""
-    out = dict(opp)
-    gate = assess_identity(opp)
+    out = reconcile_opportunity_type(opp)
+    gate = assess_identity(out)
     if gate["age_normalized"] is not None:
         out["age"] = gate["age_normalized"]
     out["identity_complete"] = gate["identity_complete"]

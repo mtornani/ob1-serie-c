@@ -34,6 +34,11 @@ except ImportError:  # google-genai non installato: si gira solo free
     genai = None
 
 try:
+    from sports_skills import football as sports_skills_football
+except ImportError:  # sports-skills non installato: si salta questo ramo
+    sports_skills_football = None
+
+try:
     from src.llm_fallback import resolve_fallback, chat_json
     from src.free_stack import (free_web_search, has_any_llm, llm_complete_json,
                                 llm_mode, llm_source_label, describe_stack)
@@ -354,6 +359,16 @@ class TransfermarktEnricher:
         # al primo rifiuto la rotta si spegne per il resto della run.
         # OB1_TM_SITE_SEARCH=0 la disattiva del tutto, senza toccare il codice.
         self._tm_search_dead = os.getenv("OB1_TM_SITE_SEARCH", "1") == "0"
+        # sports-skills passa dal backend di terzi (Machina Sports), non da
+        # una richiesta diretta a transfermarkt.it: non condivide il blocco
+        # anti-bot diagnosticato in PR #41. Stesso principio della rotta TM
+        # sopra: un fallimento vero (non "nessun risultato per il giocatore",
+        # quello è normale) spegne la rotta per il resto della run.
+        # OB1_SPORTS_SKILLS=0 la disattiva senza toccare il codice.
+        self._sports_skills_dead = (
+            sports_skills_football is None
+            or os.getenv("OB1_SPORTS_SKILLS", "1") == "0"
+        )
         print(f"  [LLM] {describe_stack()}")
 
     # ------------------------------------------------------------ cache URL TM
@@ -444,6 +459,13 @@ class TransfermarktEnricher:
         Resta un fallback e non una sostituzione: se anche TM blocca l'IP del
         runner, il percorso vecchio deve poter ancora provare.
         """
+        # Traccia d'ingresso incondizionata — l'ultima cosa che poteva mancare
+        # dopo due giri di diagnostica sui rami interni: se in produzione non
+        # compare NEMMENO questa, la funzione non viene proprio raggiunta, e
+        # il problema sta a monte (_tm_url_for o chi lo chiama), non qui dentro.
+        print(f"  [TM SEARCH] tentativo per {player_name!r} "
+              f"(dead={self._tm_search_dead})")
+
         # Se TM ha bloccato l'IP del runner, blocca TUTTE le richieste: insistere
         # per ogni giocatore costa un timeout a testa e non trova mai niente.
         # Un fallimento e la rotta si spegne per il resto della run.
@@ -464,31 +486,156 @@ class TransfermarktEnricher:
             # le query di ricerca falserebbe il risparmio del fetch condizionale.
             _metric("tm_site_search", res.status_code)
             if res.status_code != 200:
-                if res.status_code in (403, 429, 503):
-                    self._tm_search_dead = True
-                    print(f"  [TM SEARCH] HTTP {res.status_code}: rotta spenta "
-                          f"per questa run, si torna alla ricerca web")
+                # La causa vera del silenzio in produzione: qui dentro c'era
+                # una tupla chiusa (403, 429, 503) — qualunque altro status
+                # (un 500, un 520 di Cloudflare, un codice di rate-limit non
+                # standard) usciva senza stampare e senza spegnere il
+                # circuito. Risultato osservato su tre run reali: la traccia
+                # d'ingresso compariva, "dead" restava sempre False, e non
+                # usciva nient'altro — 20 tentativi su 20, zero visibilità.
+                # Qualunque cosa non sia 200 ora si vede e ferma il circuito:
+                # insistere contro un errore che non conosciamo in anticipo
+                # non ha senso quanto insistere contro uno che conosciamo.
+                self._tm_search_dead = True
+                print(f"  [TM SEARCH] HTTP {res.status_code}: rotta spenta "
+                      f"per questa run, si torna alla ricerca web")
                 return ""
             page = res.text or ""
-            if not page:
-                return ""
-            # Con un solo risultato esatto TM rimanda direttamente al profilo:
-            # la pagina che abbiamo in mano è già un profilo, non un elenco.
-            # La regex sui link prenderebbe allora il PRIMO profilo presente
-            # (un compagno di squadra), arricchendo in silenzio il giocatore
-            # sbagliato. Il canonical dice sempre su che pagina siamo davvero.
-            if "info-table__content" in page:
-                canon = re.search(r'<link rel="canonical" href="([^"]+)"', page)
-                if canon and "/profil/spieler/" in canon.group(1):
-                    return canon.group(1)
-            m = re.search(r'href="(/[^"]+/profil/spieler/\d+)"', page)
-            return f"https://www.transfermarkt.it{m.group(1)}" if m else ""
+            if page:
+                # Con un solo risultato esatto TM rimanda direttamente al
+                # profilo: la pagina che abbiamo in mano è già un profilo, non
+                # un elenco. La regex sui link prenderebbe allora il PRIMO
+                # profilo presente (un compagno di squadra), arricchendo in
+                # silenzio il giocatore sbagliato. Il canonical dice sempre
+                # su che pagina siamo davvero.
+                if "info-table__content" in page:
+                    canon = re.search(r'<link rel="canonical" href="([^"]+)"', page)
+                    if canon and "/profil/spieler/" in canon.group(1):
+                        return canon.group(1)
+                m = re.search(r'href="(/[^"]+/profil/spieler/\d+)"', page)
+                if m:
+                    return f"https://www.transfermarkt.it{m.group(1)}"
+            # 200 senza un profilo da nessuna parte — corpo vuoto o pieno ma
+            # senza match, due esiti diversi che prima di questa riga erano
+            # LO STESSO ritorno muto, indistinguibile nel log da "provato e
+            # non trovato". In produzione è successo 20 volte su 20 senza
+            # lasciare traccia: mancava la prova per distinguere un blocco
+            # anti-bot "leggero" (200 con corpo vuoto o quasi — verosimile
+            # verso IP di datacenter come i runner CI) da un cambio di
+            # formato della pagina (corpo pieno ma i marcatori non ci sono
+            # più). Questa riga è quello che serve al prossimo run reale per
+            # dirlo, invece di continuare a indovinare.
+            print(f"  [TM SEARCH] 200 ma nessun profilo ({len(page)} char"
+                  f"{', VUOTO' if not page else ''}, "
+                  f"content-type={res.headers.get('content-type', '?')}, "
+                  f"consent={'cookie' in page.lower() if page else '?'})")
+            return ""
         except Exception as exc:
             _metric("tm_site_search_failed")
             self._tm_search_dead = True
             print(f"  [TM SEARCH] rotta spenta per questa run "
                   f"({type(exc).__name__}), si torna alla ricerca web")
             return ""
+
+    @staticmethod
+    def _slugify(name: str) -> str:
+        s = re.sub(r"[^a-z0-9]+", "-", (name or "").lower()).strip("-")
+        return s or "giocatore"
+
+    def enrich_player_sports_skills(self, player_name: str) -> Dict[str, Any]:
+        """
+        Percorso alternativo via il pacchetto community `sports-skills`
+        (Machina Sports, npm/PyPI, zero chiave). Passa dal LORO backend,
+        non da una richiesta diretta a transfermarkt.it: non condivide il
+        blocco anti-bot verso gli IP datacenter dei runner GitHub Actions
+        diagnosticato in PR #41 (HTTP 202, circuito TM_SEARCH spento).
+
+        Copertura NON garantita per svincolati di Serie C/D oscuri —
+        verificato dal vivo solo su un caso passato da un'academy di club
+        grande (Roma -> Atalanta U23, tm_player_id 892165, market_value
+        coincidente con quello già in dashboard). Per questo resta un
+        riempi-buchi che affianca la catena esistente, non una sostituzione:
+        se non trova nulla o il pacchetto non è installato, il resto della
+        catena (ricerca TM diretta -> fetch -> regex -> LLM) prosegue
+        identico a prima.
+
+        Traccia d'ingresso incondizionata + un log su OGNI uscita, non solo
+        sul successo: la lezione della saga TM_SEARCH in PR #38-41 di questa
+        stessa run era esattamente "un ramo silenzioso è indistinguibile da
+        un ramo mai raggiunto". Non ripetere lo stesso buco qui.
+        """
+        print(f"  [SPORTS-SKILLS] tentativo per {player_name!r} "
+              f"(dead={self._sports_skills_dead})")
+        if self._sports_skills_dead:
+            return {}
+        try:
+            res = sports_skills_football.search_player(query=player_name)
+        except Exception as exc:
+            self._sports_skills_dead = True
+            print(f"  [SPORTS-SKILLS] rotta spenta per questa run ({type(exc).__name__})")
+            return {}
+        if not isinstance(res, dict) or not res.get("status"):
+            print(f"  [SPORTS-SKILLS] risposta senza status per {player_name}: "
+                  f"{str(res)[:120]}")
+            return {}
+        results = ((res.get("data") or {}).get("results")) or []
+        if not results:
+            print(f"  [SPORTS-SKILLS] nessun risultato per {player_name}")
+            return {}
+
+        # Stesso principio del fix appena fatto in ob1-scout/corroborate_v2.py:
+        # un nome di battesimo condiviso non basta, serve il cognome. Qui la
+        # ricerca è per nome intero quindi il rischio è più basso, ma costa
+        # niente essere coerenti con lo stesso guardrail.
+        target_tokens = [t for t in player_name.lower().split() if len(t) > 2]
+        if not target_tokens:
+            return {}
+        surname = target_tokens[-1]
+
+        tm_id, matched_name = None, ""
+        for r in results:
+            rname = (r.get("name") or "").lower()
+            if r.get("tm_player_id") and surname in rname:
+                tm_id, matched_name = r["tm_player_id"], r.get("name") or player_name
+                break
+        if not tm_id:
+            print(f"  [SPORTS-SKILLS] {len(results)} risultato/i per {player_name} "
+                  f"ma nessuno col cognome giusto (o senza tm_player_id)")
+            return {}
+
+        try:
+            profile = sports_skills_football.get_player_profile(tm_player_id=tm_id)
+        except Exception as exc:
+            print(f"  [SPORTS-SKILLS] profilo fallito per {player_name} ({type(exc).__name__})")
+            return {}
+        if not isinstance(profile, dict) or not profile.get("status"):
+            print(f"  [SPORTS-SKILLS] profilo senza status per {player_name} "
+                  f"(tm_player_id={tm_id})")
+            return {}
+        player = ((profile.get("data") or {}).get("player")) or {}
+        mv = player.get("market_value") or {}
+
+        out: Dict[str, Any] = {}
+        if mv.get("value"):
+            out["market_value_eur"] = mv["value"]
+            out["market_value"] = mv["value"]
+            out["market_value_text"] = mv.get("formatted") or ""
+        if mv.get("club"):
+            out["current_club"] = mv["club"]
+        if not out:
+            print(f"  [SPORTS-SKILLS] profilo trovato per {player_name} "
+                  f"(tm_player_id={tm_id}) ma senza market_value utilizzabile")
+        if out:
+            # Slug indicativo: TM risolve sull'id numerico, lo slug è
+            # cosmetico. Se sbagliato il link è comunque valido, solo meno
+            # bello — non blocca né falsifica il dato.
+            out["tm_url"] = (f"https://www.transfermarkt.it/"
+                              f"{self._slugify(matched_name)}/profil/spieler/{tm_id}")
+            out["tm_player_id"] = tm_id
+            out["enrichment_source"] = "Enrichment:sports-skills"
+            print(f"  [SPORTS-SKILLS] {player_name}: "
+                  f"mv={out.get('market_value_eur')} club={out.get('current_club')}")
+        return out
 
     def _tm_url_for(self, player_name: str) -> tuple:
         """
@@ -498,6 +645,10 @@ class TransfermarktEnricher:
         cached = self._tm_urls.get(player_name.lower())
         if cached:
             if clean_tm_url(cached, player_name):
+                # Diagnostica di main: se in produzione tutti i 20 giocatori
+                # passano da qui, il file cache è la causa del silenzio, non
+                # la ricerca stessa.
+                print(f"  [TM URL/cache] {player_name}: {cached[:70]}")
                 return cached, ""
             # Un URL sbagliato in cache resterebbe sbagliato per sempre: la
             # cache è permanente per progetto. Si scarta e si ricerca.
@@ -624,29 +775,41 @@ class TransfermarktEnricher:
 
     def enrich_player_free(self, player_name: str) -> Dict[str, Any]:
         """
-        Percorso a costo zero: ricerca free -> fetch -> regex -> LLM sul residuo.
-        Funziona con la sola GROQ_API_KEY, senza Serper e senza Gemini.
+        Percorso a costo zero: sports-skills (se disponibile) + ricerca free
+        -> fetch -> regex -> LLM sul residuo. Funziona con la sola
+        GROQ_API_KEY, senza Serper, senza Gemini e senza sports-skills
+        installato — ogni pezzo è un riempi-buchi per quello dopo, non un
+        requisito.
         """
         self.last_unchanged = False
+        sports_skills_data = self.enrich_player_sports_skills(player_name)
+
         url, snippet = self._tm_url_for(player_name)
         fetched = self.fetch_page(url)
         if fetched.unchanged:
             # 304: la pagina è identica a quella già letta. Non c'è niente da
-            # estrarre e niente da chiedere a un modello — è esattamente il
-            # lavoro che ARCH-002 vuole smettere di rifare ogni 6 ore.
+            # ri-estrarre da lì — ma quello che sports-skills ha dato resta
+            # buono, non dipende dalla pagina TM diretta.
             self.last_unchanged = True
-            return {}
+            return sports_skills_data
         raw = fetched.text
         # TM risponde 403 di frequente: in quel caso resta lo snippet della
         # ricerca. Si tiene il testo più ricco tra i due, mai il più povero.
         if snippet and len(snippet) > len(raw):
             raw = snippet
         if not raw:
-            return {}
+            return sports_skills_data
 
         data = parse_tm_text(raw, url)  # regex: zero costo, zero allucinazioni
         if data.get("birth_date") or data.get("current_club"):
             print(f"  [REGEX] {player_name}: {data.get('birth_date')} / {data.get('current_club')}")
+
+        # sports-skills riempie i buchi lasciati dalla pagina TM diretta
+        # (spesso bloccata) — non li sovrascrive: la pagina vera, quando
+        # arriva, vince sempre su un dato di terzi.
+        for k, v in sports_skills_data.items():
+            if v is not None and not data.get(k):
+                data[k] = v
 
         thin = not (data.get("birth_date") and data.get("current_club"))
         if thin:
@@ -668,7 +831,9 @@ class TransfermarktEnricher:
             verified = clean_tm_url(url, player_name)
             if verified:
                 data["tm_url"] = verified
-        if data:
+        # Guardia di main: senza, questa riga sovrascriveva incondizionatamente
+        # "Enrichment:sports-skills" impostato più sopra con "Enrichment:regex".
+        if data and not data.get("enrichment_source"):
             data["enrichment_source"] = llm_source_label() if thin else "Enrichment:regex"
         return data or {}
 

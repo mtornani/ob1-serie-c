@@ -52,6 +52,10 @@ class EnricherTestCase(unittest.TestCase):
         # che costruisce l'enricher da sé pagherebbe un timeout di rete.
         os.environ["OB1_TM_SITE_SEARCH"] = "0"
         self.addCleanup(os.environ.pop, "OB1_TM_SITE_SEARCH", None)
+        # Stesso motivo: sports-skills parla con un backend vero. Spento di
+        # default, chi lo testa lo riaccende e mocka sports_skills_football.
+        os.environ["OB1_SPORTS_SKILLS"] = "0"
+        self.addCleanup(os.environ.pop, "OB1_SPORTS_SKILLS", None)
 
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
@@ -264,8 +268,9 @@ class SiteSearchTestCase(EnricherTestCase):
         return enricher
 
     @staticmethod
-    def _resp(status=200, text=""):
-        return mock.Mock(status_code=status, text=text)
+    def _resp(status=200, text="", content_type="text/html"):
+        return mock.Mock(status_code=status, text=text,
+                         headers={"content-type": content_type})
 
     def test_usa_il_canonical_quando_tm_reindirizza_al_profilo(self):
         """
@@ -288,6 +293,33 @@ class SiteSearchTestCase(EnricherTestCase):
             self._enricher(self._resp(text=page))._tm_url_from_site_search("Patierno"),
             TM_URL)
 
+    def test_200_senza_profilo_lo_dice_invece_di_tornare_muto(self):
+        """
+        Il bug reale: in produzione questo caso tornava '' senza una riga di
+        log, indistinguibile da "provato e non trovato per davvero" — 20
+        giocatori su 20, zero traccia. Ora almeno si vede.
+        """
+        page = '<html><body>pagina di consenso cookie, nessun risultato</body></html>'
+        with mock.patch("builtins.print") as p:
+            result = self._enricher(self._resp(text=page))._tm_url_from_site_search("Tizio")
+        self.assertEqual(result, "")
+        self.assertTrue(any("[TM SEARCH]" in str(c) for c in p.call_args_list))
+
+    def test_200_con_corpo_vuoto_lo_dice_anche_lui(self):
+        """
+        Il ramo che il primo giro di diagnostica aveva dimenticato: 'if not
+        page: return \"\"' restituiva muto ESATTAMENTE come il caso sopra, e
+        in produzione — verificato su un run reale dopo aver mergiato il
+        primo fix — è rimasto silenzioso lo stesso. Un 200 con corpo vuoto è
+        la forma più leggera di blocco anti-bot: rispondere presto e non dare
+        niente, verosimile verso un IP di datacenter come quello dei runner.
+        """
+        with mock.patch("builtins.print") as p:
+            result = self._enricher(self._resp(text=""))._tm_url_from_site_search("Tizio")
+        self.assertEqual(result, "")
+        self.assertTrue(any("[TM SEARCH]" in str(c) and "VUOTO" in str(c)
+                            for c in p.call_args_list))
+
     def test_un_blocco_spegne_la_rotta_per_tutta_la_run(self):
         """Se TM blocca l'IP li blocca tutti: insistere costa un timeout a testa."""
         enricher = self._enricher(self._resp(status=403))
@@ -295,6 +327,23 @@ class SiteSearchTestCase(EnricherTestCase):
         self.assertTrue(enricher._tm_search_dead)
         self.assertEqual(enricher._tm_url_from_site_search("Caio"), "")
         self.assertEqual(enricher.session.get.call_count, 1)   # non ha riprovato
+
+    def test_qualunque_status_non_200_spegne_il_circuito(self):
+        """
+        Il bug reale, in produzione: una tupla chiusa (403, 429, 503) lasciava
+        passare in silenzio qualunque altro status — un 500, un 520 di
+        Cloudflare, un rate-limit non standard. Tre run reali hanno mostrato
+        "dead=False" su tutti e 20 i giocatori e nessun'altra riga: il codice
+        veniva raggiunto, uno status sconosciuto usciva senza stampare e
+        senza fermare niente, 20 volte su 20. Ora qualunque non-200 ferma
+        il circuito, non solo i tre codici che avevo previsto io.
+        """
+        with mock.patch("builtins.print") as p:
+            enricher = self._enricher(self._resp(status=520))
+            result = enricher._tm_url_from_site_search("Tizio")
+        self.assertEqual(result, "")
+        self.assertTrue(enricher._tm_search_dead)
+        self.assertTrue(any("HTTP 520" in str(c) for c in p.call_args_list))
 
     def test_un_errore_di_rete_spegne_la_rotta_ma_non_esplode(self):
         enricher = self._enricher(None)
@@ -321,6 +370,121 @@ class SiteSearchTestCase(EnricherTestCase):
             enricher.enrich_player_free("Cosimo Patierno")
         self.search.assert_not_called()
         self.assertEqual(enricher._tm_urls["cosimo patierno"], TM_URL)
+
+
+class SportsSkillsTestCase(EnricherTestCase):
+    """
+    Percorso via il pacchetto community sports-skills — riempi-buchi
+    facoltativo, non deve mai far fallire l'arricchimento se manca, se non
+    trova il giocatore, o se il cognome non combacia.
+    """
+
+    def _enricher_with(self, search_result=None, profile_result=None):
+        os.environ.pop("OB1_SPORTS_SKILLS", None)  # rotta accesa
+        enricher = TransfermarktEnricher()
+        fake = mock.Mock()
+        fake.search_player = mock.Mock(return_value=search_result or {
+            "status": True, "data": {"results": []}, "message": "",
+        })
+        fake.get_player_profile = mock.Mock(return_value=profile_result or {})
+        self.patched = mock.patch.object(enricher_tm, "sports_skills_football", fake)
+        self.patched.start()
+        self.addCleanup(self.patched.stop)
+        return enricher
+
+    def test_traccia_dingresso_incondizionata(self):
+        """
+        La lezione della saga TM_SEARCH (PR #38-41): un ramo silenzioso è
+        indistinguibile da un ramo mai raggiunto. Verificato in produzione
+        il 2026-08-17 - zero righe [SPORTS-SKILLS] nel log di un run reale,
+        nessun modo di sapere se la funzione girava e non trovava nulla o
+        se non veniva proprio chiamata. Ora stampa sempre, anche a vuoto.
+        """
+        with mock.patch("builtins.print") as p:
+            enricher = self._enricher_with()
+            enricher.enrich_player_sports_skills("Chiunque")
+        self.assertTrue(any("[SPORTS-SKILLS] tentativo per" in str(c)
+                            for c in p.call_args_list))
+        self.assertTrue(any("nessun risultato" in str(c) for c in p.call_args_list))
+
+    def test_pacchetto_non_installato_non_rompe_niente(self):
+        """Import fallito -> sports_skills_football è None -> ramo spento."""
+        with mock.patch.object(enricher_tm, "sports_skills_football", None):
+            enricher = TransfermarktEnricher()
+            self.assertTrue(enricher._sports_skills_dead)
+            self.assertEqual(enricher.enrich_player_sports_skills("Cosimo Patierno"), {})
+
+    def test_linterruttore_di_produzione_la_tiene_spenta(self):
+        enricher = TransfermarktEnricher()  # OB1_SPORTS_SKILLS=0 da setUp
+        self.assertTrue(enricher._sports_skills_dead)
+
+    def test_nessun_risultato_torna_vuoto(self):
+        enricher = self._enricher_with()
+        self.assertEqual(enricher.enrich_player_sports_skills("Cosimo Patierno"), {})
+
+    def test_cognome_diverso_viene_scartato(self):
+        """
+        Stesso principio del fix in ob1-scout/corroborate_v2.py: un nome di
+        battesimo condiviso non basta a confermare la persona.
+        """
+        enricher = self._enricher_with(search_result={
+            "status": True, "message": "",
+            "data": {"results": [
+                {"name": "Cosimo Bianchi", "tm_player_id": "1"},
+            ]},
+        })
+        self.assertEqual(enricher.enrich_player_sports_skills("Cosimo Patierno"), {})
+
+    def test_match_buono_restituisce_valore_di_mercato_e_club(self):
+        enricher = self._enricher_with(
+            search_result={"status": True, "message": "", "data": {"results": [
+                {"name": "Sergej Levak", "tm_player_id": "892165"},
+            ]}},
+            profile_result={"status": True, "message": "", "data": {"player": {
+                "market_value": {"value": 2800000, "formatted": "€2.80m",
+                                  "club": "Atalanta U23"},
+            }}},
+        )
+        data = enricher.enrich_player_sports_skills("Sergej Levak")
+        self.assertEqual(data["market_value_eur"], 2800000)
+        self.assertEqual(data["current_club"], "Atalanta U23")
+        self.assertEqual(data["tm_player_id"], "892165")
+        self.assertEqual(data["enrichment_source"], "Enrichment:sports-skills")
+        self.assertIn("892165", data["tm_url"])
+
+    def test_eccezione_spegne_la_rotta_ma_non_esplode(self):
+        os.environ.pop("OB1_SPORTS_SKILLS", None)
+        enricher = TransfermarktEnricher()
+        fake = mock.Mock()
+        fake.search_player = mock.Mock(side_effect=OSError("timed out"))
+        with mock.patch.object(enricher_tm, "sports_skills_football", fake):
+            self.assertEqual(enricher.enrich_player_sports_skills("Tizio"), {})
+        self.assertTrue(enricher._sports_skills_dead)
+
+    def test_riempie_i_buchi_ma_non_sovrascrive_il_regex(self):
+        """Il dato dalla pagina TM vera vince sempre su quello di terzi."""
+        enricher = self.build(site_search="")  # rotta TM diretta trova la pagina vera
+        enricher.enrich_player_sports_skills = mock.Mock(return_value={
+            "market_value_eur": 999, "current_club": "Club Sbagliato",
+            "enrichment_source": "Enrichment:sports-skills",
+        })
+        with mock.patch.object(enricher_tm, "llm_complete_json", return_value=None):
+            data = enricher.enrich_player_free("Cosimo Patierno")
+        # TM_PAGE ha "Club attuale: Avellino" — il regex deve vincere
+        self.assertEqual(data.get("current_club"), "Avellino")
+
+    def test_riempie_quando_la_pagina_tm_non_ha_niente(self):
+        enricher = self.build(site_search="", page_text="")
+        enricher._tm_url_from_site_search = mock.Mock(return_value="")
+        enricher_tm.free_web_search = mock.Mock(return_value=("duckduckgo", []))
+        enricher.enrich_player_sports_skills = mock.Mock(return_value={
+            "market_value_eur": 2800000, "current_club": "Atalanta U23",
+            "tm_url": "https://www.transfermarkt.it/x/profil/spieler/892165",
+            "enrichment_source": "Enrichment:sports-skills",
+        })
+        data = enricher.enrich_player_free("Sergej Levak")
+        self.assertEqual(data.get("market_value_eur"), 2800000)
+        self.assertEqual(data.get("enrichment_source"), "Enrichment:sports-skills")
 
 
 if __name__ == "__main__":

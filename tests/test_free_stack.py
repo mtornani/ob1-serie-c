@@ -6,10 +6,12 @@ sono sostituiti da fake.
     PYTHONIOENCODING=utf-8 python -m unittest tests.test_free_stack -v
 """
 
+import io
 import os
 import sys
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
 from unittest import mock
 
@@ -114,6 +116,34 @@ class TestSearchChain(FreeStackTestCase):
         self.assertEqual(free_stack._with_domains("q", ["transfermarkt.it"]),
                          "site:transfermarkt.it q")
         self.assertIn(" OR ", free_stack._with_domains("q", ["a.it", "b.it"]))
+
+    def test_tavily_non_200_is_logged_not_silent(self):
+        """
+        DEV_LOG: 'Fallback enrichment Tavily -> 432 Client Error', aperto
+        mai indagato. Causa: un non-200 tornava [] senza loggare nulla, e
+        free_web_search logga solo sulle eccezioni (che qui non scattano
+        mai) — l'errore era strutturalmente invisibile. Non riproduce il 432
+        (serve la chiave vera), ma garantisce che il prossimo non lo sia.
+        """
+        os.environ["TAVILY_API_KEY"] = "k" * 20
+        resp = mock.Mock(status_code=432, text="quota esaurita o chiave scaduta")
+        buf = io.StringIO()
+        with mock.patch.object(free_stack.requests, "post", return_value=resp), \
+             redirect_stdout(buf):
+            results = free_stack.search_tavily("query")
+        self.assertEqual(results, [])
+        self.assertIn("432", buf.getvalue())
+        self.assertIn("tavily", buf.getvalue())
+
+    def test_serper_non_200_is_logged_not_silent(self):
+        os.environ["SERPER_API_KEY"] = "k" * 20
+        resp = mock.Mock(status_code=403, text="forbidden")
+        buf = io.StringIO()
+        with mock.patch.object(free_stack.requests, "post", return_value=resp), \
+             redirect_stdout(buf):
+            results = free_stack.search_serper("query")
+        self.assertEqual(results, [])
+        self.assertIn("403", buf.getvalue())
 
 
 class TestDDGBlocking(FreeStackTestCase):

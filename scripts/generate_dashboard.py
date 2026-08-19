@@ -1,23 +1,55 @@
 #!/usr/bin/env python3
 """
-OB1 Scout - Generate Dashboard Data
-Genera data.json con scoring SCORE-002 + quality gate (identity_complete).
+OB1 Lega Pro - Generate Dashboard Data
+Genera data.json con scoring SCORE-003 + quality gate (identity_complete,
+src/quality_gate.py, allineato a global-scout v2: publishable richiede
+identity_complete AND corroborated, hard-gate).
 
 Pubblica solo profili publishable (nome+età+club+fonte). Tracking in stats.
 """
 
 import json
+import subprocess
 import sys
 from pathlib import Path
 from datetime import datetime
 
+REPO_ROOT = Path(__file__).parent.parent
+
 # Add src to path for scoring module
-sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
+sys.path.insert(0, str(REPO_ROOT / 'src'))
 
 from scoring import OB1Scorer, assess_follow
 from minutaggio import genera_intel_badge
 from quality_gate import apply_gate, normalize_age
 from tm_url import clean as clean_tm_url
+
+
+def _version_and_build() -> tuple:
+    """
+    (version, build) per il footer "e' aggiornato al deploy giusto?" — stesso
+    pattern di OB1 Global (vedi export_dashboard_v2.py). Deploy statico via
+    commit della pipeline: niente revision iniettata da una piattaforma,
+    quindi build = short SHA del commit che ha girato questo export.
+    Non deve mai poter rompere l'export: qualunque errore ripiega su
+    "0.0.0"/"dev" invece di sollevare.
+    """
+    version = "0.0.0"
+    try:
+        version = (REPO_ROOT / "VERSION").read_text(encoding="utf-8").strip() or version
+    except OSError:
+        pass
+    build = "dev"
+    try:
+        sha = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=str(REPO_ROOT), capture_output=True, text=True, timeout=5,
+        )
+        if sha.returncode == 0 and sha.stdout.strip():
+            build = sha.stdout.strip()
+    except Exception:
+        pass
+    return version, build
 
 
 def _first(*vals):
@@ -252,7 +284,14 @@ def main():
             'classification': score_result['classification'],
             'score_breakdown': score_result['score_breakdown'],
 
-            # Quality gate
+            # Quality gate — nomi storici, mantenuti per compatibilità con
+            # chi legge già data.json così com'è (nessun consumer in docs/
+            # li usa oggi, verificato, ma restano per chi guarda il JSON
+            # a mano). Stesso nome di campo e stessa soglia di OB1 Global:
+            # publishable = identity_complete AND corroborated (hard-gate,
+            # vedi src/quality_gate.py). I market_* sotto sono lo stesso
+            # dato con un nome che lo dice da solo, senza dover aprire
+            # quality_gate.py per scoprirlo.
             'identity_complete': opp.get('identity_complete', False),
             'corroborated': opp.get('corroborated', False),
             'publishable': opp.get('publishable', False),
@@ -260,6 +299,14 @@ def main():
             'n_sources': opp.get('n_sources', 1),
             'out_of_scope': opp.get('out_of_scope', False),
             'out_of_scope_reason': opp.get('out_of_scope_reason', ''),
+
+            # Stessi valori, nome che porta il significato (dossier
+            # "identità distinte": non toglie i campi storici sopra, li
+            # affianca)
+            'market_identity_complete': opp.get('identity_complete', False),
+            'market_corroborated': opp.get('corroborated', False),
+            'market_publishable': opp.get('publishable', False),
+            'market_n_sources': opp.get('n_sources', 1),
 
             # Auto-generated recommendation
             'recommendation': generate_recommendation(opp),
@@ -346,6 +393,7 @@ def main():
             intel_stats[roi_class] += 1
 
     # Create data.json for the dashboard
+    version, build = _version_and_build()
     dashboard_data = {
         'opportunities': dashboard_opportunities,
         'stats': {
@@ -363,9 +411,11 @@ def main():
             'corroborated': corroborated_count,
         },
         'last_update': datetime.now().isoformat(),
+        'version': version,
+        'build': build,
         'scoring_version': 'SCORE-003',
         'intel_version': 'INTEL-001',
-        'quality_gate': 'identity_complete',
+        'quality_gate': 'identity_complete+corroborated',
     }
 
     # Write data.json to docs folder
