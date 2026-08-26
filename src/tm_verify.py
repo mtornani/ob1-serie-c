@@ -179,6 +179,19 @@ def analizza(markdown: str, nome_cercato: str = "", id_profilo: str = "") -> Ver
     return v
 
 
+def leggi_via_jina(url: str) -> str:
+    """
+    Qualunque pagina di Transfermarkt, letta attraverso Jina Reader.
+
+    Esposta perché non serve solo ai profili: la RICERCA interna di TM
+    (`/schnellsuche/...`) si scarica allo stesso modo, ed è il modo migliore
+    che abbiamo di trovare il profilo giusto — l'indice di Transfermarkt
+    stesso, invece di un motore generico che dà cinque risultati rumorosi o
+    risponde con una pagina anti-bot.
+    """
+    return _scarica(url)
+
+
 def _scarica(url: str) -> str:
     """Markdown della pagina via Jina Reader, o stringa vuota. Non solleva mai."""
     intestazioni = {"User-Agent": "Mozilla/5.0"}
