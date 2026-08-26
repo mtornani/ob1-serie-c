@@ -397,6 +397,12 @@ function openDrawer(o){
     ? `<div class="assess no"><div class="assess-h">Perché no / attenzione</div><ul class="why-list">${no.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></div>`
     : '';
 
+  // Links that ALWAYS resolve. A direct URL is used only when it's a real,
+  // durable link; otherwise we fall back to a Google search, which never 404s.
+  const google = (terms) => `https://www.google.com/search?q=${encodeURIComponent(terms)}`;
+  const isRealUrl = (u) => typeof u === 'string' && u.startsWith('http')
+    && !u.includes('vertexaisearch') && !u.includes('grounding-api');
+
   brief.innerHTML = `
     <div class="brief-head">
       <div>
@@ -421,14 +427,13 @@ function openDrawer(o){
       <div class="meta-grid">
         ${facts.map(([k,v])=>`<div class="cell"><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span></div>`).join('')}
       </div>
+      ${o.data_verified && isRealUrl(o.tm_url) ? `
+      <div class="attrib">Agente, contratto, età e squadra letti dal profilo
+        <a href="${esc(o.tm_url)}" target="_blank" rel="noopener">Transfermarkt ↗</a>
+        il ${esc((o.tm_verified_at||'').slice(0,10))}. Verifica sempre alla fonte.</div>` : ''}
     </div>
   `;
 
-  // Links that ALWAYS resolve. A direct URL is used only when it's a real,
-  // durable link; otherwise we fall back to a Google search, which never 404s.
-  const google = (terms) => `https://www.google.com/search?q=${encodeURIComponent(terms)}`;
-  const isRealUrl = (u) => typeof u === 'string' && u.startsWith('http')
-    && !u.includes('vertexaisearch') && !u.includes('grounding-api');
 
   const srcLink = el('#sourceLink');
   if (isRealUrl(o.source_url)){

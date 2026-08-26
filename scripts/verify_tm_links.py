@@ -120,6 +120,17 @@ def main() -> int:
         if r.contratto_fino and r.contratto_fino != o.get("contract_expires"):
             cambi.append(f"contratto -> {r.contratto_fino}")
             o["contract_expires"] = r.contratto_fino
+        # Il procuratore è il dato più pesante per chi legge: sapere CHI
+        # rappresenta il giocatore è metà della trattativa. Presente sul 64%
+        # dei profili confermati (misurato su 37). Esce con la stessa regola
+        # di tutto il resto — solo se la pagina lo scrive, e la pagina è
+        # linkata sulla scheda: OB1 dice chi guardare e porta alla prova, non
+        # rivende il dato.
+        if r.procuratore and r.procuratore != o.get("agent"):
+            cambi.append(f"agente -> {r.procuratore}")
+            o["agent"] = r.procuratore
+        if r.ruolo and not o.get("role_name"):
+            o["role_name"] = r.ruolo
         if cambi:
             aggiornati.append((nome, "; ".join(cambi)))
 
