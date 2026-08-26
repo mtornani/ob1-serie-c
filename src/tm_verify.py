@@ -56,6 +56,7 @@ import os
 import re
 import time
 import unicodedata
+import urllib.parse
 import urllib.request
 from dataclasses import dataclass, asdict, field
 from datetime import datetime, timezone
@@ -148,6 +149,44 @@ def nomi_combaciano(cercato: str, trovato: str) -> bool:
     return bool(a & b)
 
 
+def nomi_combaciano_forte(cercato: str, trovato: str) -> bool:
+    """
+    Come sopra, ma per la domanda opposta — e le due domande non hanno la
+    stessa risposta.
+
+        TOLGO un link che ho già?     basta il dubbio: `nomi_combaciano`
+        ADOTTO un profilo appena
+        trovato in ricerca?           serve la prova: questa
+
+    La regola debole chiede un token lungo in comune. Va bene per togliere
+    ("Rizzo Pinna" contro "Dalgalidere" non condivide niente, via il link),
+    ma come regola di adozione è una macchina per sbagliare persona:
+
+        nomi_combaciano("Luca Rossi", "Marco Rossi")  ->  True
+
+    Su un motore che restituisce candidati per cognome, quel True diventa la
+    scheda di un altro essere umano — cioè di nuovo il difetto che stiamo
+    riparando, rientrato da una porta diversa. Misurato il 26 ago 2026 sul
+    primo giro di `scripts/apri_profili_tm.py`: il record "De Pieri" (solo
+    cognome) veniva agganciato a un Cristian De Pieri brasiliano di 29 anni.
+
+    Qui servono DUE token in comune. Un cognome uguale non basta; nome +
+    cognome sì, in qualunque ordine e con i secondi nomi che avanzano.
+
+        "Rizzo Pinna"             / "Andrea Rizzo Pinna"    ->  True
+        "CHIOETTO JHONATAN DAVID" / "Jhonatan Chioetto"     ->  True
+        "Luca Rossi"              / "Marco Rossi"           ->  False
+        "De Pieri"                / "Cristian De Pieri"     ->  False
+
+    Soglia a 3 caratteri e non 4 perché i cognomi corti sono comuni nel
+    calcio ("Nico Paz"), e a 4 quel nome non avrebbe abbastanza token per
+    provare niente su di sé.
+    """
+    a = {t for t in _norm(cercato).split() if len(t) >= 3}
+    b = {t for t in _norm(trovato).split() if len(t) >= 3}
+    return len(a & b) >= 2
+
+
 def analizza(markdown: str, nome_cercato: str = "", id_profilo: str = "") -> Verifica:
     """
     Legge il markdown di Jina Reader. Puro: nessuna rete, testabile con una
@@ -190,6 +229,35 @@ def leggi_via_jina(url: str) -> str:
     risponde con una pagina anti-bot.
     """
     return _scarica(url)
+
+
+def cerca_profili(nome: str, massimo: int = 5) -> list:
+    """
+    Gli URL dei profili che la ricerca interna di Transfermarkt propone per
+    questo nome, in ordine di risultato. Lista vuota se non risponde.
+
+    Non sceglie: restituisce i candidati. A dire quale sia la persona giusta
+    è solo `VerificatoreTM.verifica()`, che la pagina la apre. Scegliere con
+    un'euristica sul nome è il meccanismo che ha prodotto 138 schede con
+    dentro un altro essere umano.
+
+    Vive qui e non nell'enricher perché la usano in due — l'enrichment quando
+    costruisce una scheda nuova e `scripts/apri_profili_tm.py` quando ripassa
+    quelle vecchie: due copie della stessa regex sono due regex che col tempo
+    diventano diverse.
+    """
+    q = urllib.parse.quote(nome)
+    pagina = _scarica(
+        f"https://www.transfermarkt.it/schnellsuche/ergebnis/schnellsuche?query={q}")
+    if not pagina:
+        return []
+    visti, fuori = set(), []
+    for slug, pid in re.findall(r"/([a-z0-9-]+)/profil/spieler/(\d+)", pagina):
+        if pid in visti:
+            continue
+        visti.add(pid)
+        fuori.append(f"https://www.transfermarkt.it/{slug}/profil/spieler/{pid}")
+    return fuori[:massimo]
 
 
 def _scarica(url: str) -> str:

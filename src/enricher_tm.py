@@ -51,10 +51,12 @@ load_dotenv()
 
 try:
     from src.tm_url import clean as clean_tm_url, diagnose as tm_url_diagnose
-    from src.tm_verify import VerificatoreTM, leggi_via_jina as _leggi_via_jina
+    from src.tm_verify import (VerificatoreTM, leggi_via_jina as _leggi_via_jina,
+                          cerca_profili as _cerca_profili_tm)
 except ImportError:  # layout PYTHONPATH=src
     from tm_url import clean as clean_tm_url, diagnose as tm_url_diagnose
-    from tm_verify import VerificatoreTM, leggi_via_jina as _leggi_via_jina
+    from tm_verify import (VerificatoreTM, leggi_via_jina as _leggi_via_jina,
+                          cerca_profili as _cerca_profili_tm)
 
 try:
     from src.metrics import get_metrics
@@ -700,21 +702,9 @@ class TransfermarktEnricher:
         # si accendono e si spengono insieme (OB1_TM_VERIFY).
         if not getattr(self, "_verifica_attiva", True):
             return []
-        import urllib.parse
-        q = urllib.parse.quote(player_name)
-        pagina = _leggi_via_jina(
-            f"https://www.transfermarkt.it/schnellsuche/ergebnis/schnellsuche?query={q}")
-        if not pagina:
-            print(f"  [TM SEARCH/jina] {player_name}: nessuna risposta")
-            return []
-        visti, fuori = set(), []
-        for slug, pid in re.findall(r"/([a-z0-9-]+)/profil/spieler/(\d+)", pagina):
-            if pid in visti:
-                continue
-            visti.add(pid)
-            fuori.append(f"https://www.transfermarkt.it/{slug}/profil/spieler/{pid}")
+        fuori = _cerca_profili_tm(player_name)
         print(f"  [TM SEARCH/jina] {player_name}: {len(fuori)} candidati")
-        return fuori[:5]
+        return fuori
 
     def _url_verificato(self, player_name: str, url: str) -> tuple:
         """

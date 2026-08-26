@@ -95,6 +95,22 @@ jobs:
         NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
       run: python scripts/run_enrichment.py
 
+    # Apre le schede Transfermarkt di chi non ne ha ancora una aperta e ne
+    # legge i dati. È la metà che RIEMPIE: dal 26 ago 2026 età, piede,
+    # procuratore e statistiche si pubblicano solo se qualcuno ha letto la
+    # pagina (src/provenienza.py), e senza questo passo la dashboard si
+    # svuoterebbe senza mai tornare a riempirsi.
+    #
+    # Nessun LLM: ricerca nell'indice interno di TM + apertura del profilo.
+    # Il tetto per run smaltisce il backlog su più giri invece di sbattere
+    # contro il limite di richieste al minuto di Jina.
+    - name: Apri i profili Transfermarkt mancanti
+      continue-on-error: true
+      env:
+        JINA_API_KEY: ${{ secrets.JINA_API_KEY }}
+        MAX_TM_PROFILI: "60"
+      run: python scripts/apri_profili_tm.py --apply
+
     - name: Generate dashboard
       run: python scripts/generate_dashboard.py
 

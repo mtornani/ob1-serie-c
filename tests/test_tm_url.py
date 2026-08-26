@@ -272,11 +272,15 @@ class TestRicercaInternaTMViaJina(unittest.TestCase):
 
     def _enricher(self, pagina):
         from unittest import mock
-        from src import enricher_tm
+        from src import enricher_tm, tm_verify
         e = enricher_tm.TransfermarktEnricher.__new__(
             enricher_tm.TransfermarktEnricher)
         e._verifica_attiva = True
-        p = mock.patch.object(enricher_tm, "_leggi_via_jina", return_value=pagina)
+        # Si intercetta la rete al punto piu' basso (`_scarica`) e non la
+        # funzione di ricerca: cosi' il test continua a far passare davvero la
+        # pagina attraverso l'estrazione dei candidati, che e' la cosa che
+        # deve restare corretta.
+        p = mock.patch.object(tm_verify, "_scarica", return_value=pagina)
         p.start(); self.addCleanup(p.stop)
         return e
 
@@ -305,3 +309,40 @@ class TestRicercaInternaTMViaJina(unittest.TestCase):
     def test_nessuna_risposta_non_produce_candidati_inventati(self):
         e = self._enricher("")
         self.assertEqual(e._candidati_da_tm_via_jina("Tizio Caio"), [])
+
+
+class TestAdottareUnProfiloChiedePiuProvaDiToglierlo(unittest.TestCase):
+    """
+    Le due domande non hanno la stessa risposta, e confonderle rimette in
+    circolo lo stesso difetto dei 138 link a un'altra persona.
+
+        togliere un link che ho gia'  -> basta il dubbio (nomi_combaciano)
+        adottare un profilo trovato
+        da un motore per somiglianza  -> serve la prova (nomi_combaciano_forte)
+    """
+
+    def test_un_cognome_uguale_non_e_una_persona(self):
+        from src.tm_verify import nomi_combaciano, nomi_combaciano_forte
+        # La regola debole dice si', ed e' giusto cosi' per NON togliere un
+        # link buono. Ma come regola di adozione produrrebbe la scheda di un
+        # altro essere umano.
+        self.assertTrue(nomi_combaciano("Luca Rossi", "Marco Rossi"))
+        self.assertFalse(nomi_combaciano_forte("Luca Rossi", "Marco Rossi"))
+
+    def test_solo_cognome_nel_database_non_aggancia_nessuno(self):
+        # Caso reale, primo giro di scripts/apri_profili_tm.py del 26 ago
+        # 2026: il record "De Pieri" veniva agganciato a un Cristian De Pieri
+        # brasiliano di 29 anni.
+        from src.tm_verify import nomi_combaciano_forte
+        self.assertFalse(nomi_combaciano_forte("De Pieri", "Cristian De Pieri"))
+
+    def test_le_varianti_vere_del_database_passano_lo_stesso(self):
+        from src.tm_verify import nomi_combaciano_forte
+        for cercato, sul_profilo in [
+            ("Rizzo Pinna", "Andrea Rizzo Pinna"),
+            ("CHIOETTO JHONATAN DAVID", "Jhonatan Chioetto"),
+            ("Nico Paz", "Nico Paz"),            # cognome corto, 3 caratteri
+            ("Riccardo Sganzerla", "Riccardo Sganzerla"),
+        ]:
+            self.assertTrue(nomi_combaciano_forte(cercato, sul_profilo),
+                            f"{cercato} / {sul_profilo}")

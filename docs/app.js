@@ -56,7 +56,9 @@ function shareUrl(o){ return location.origin + location.pathname + '?player=' + 
 function dossierText(o){
   const L = [];
   L.push(`⚽ ${(o.player_name||'').toUpperCase()}`);
-  const meta = [o.role_name||o.role, o.age!=null?`${o.age} anni`:'', o.current_club||'Svincolato'].filter(Boolean).join(' · ');
+  // Club assente non vuol dire svincolato: vuol dire che non lo sappiamo.
+  // Questo testo finisce su WhatsApp, dove nessuno può chiedere chiarimenti.
+  const meta = [o.role_name||o.role, o.age!=null?`${o.age} anni`:'', o.current_club||''].filter(Boolean).join(' · ');
   if (meta) L.push(meta);
   L.push('');
   L.push(`OB1 ${o.ob1_score}/100 — ${TIER_LABEL[o._tier]||''}`);
@@ -371,14 +373,23 @@ function openDrawer(o){
     o.market_value_formatted && { v: shortMoney(o.market_value_formatted), l: 'Valore' },
   ].filter(Boolean);
 
-  // Honest trust line: say plainly whether the numbers are verifiable.
+  // Cosa dice questa riga, esattamente: la pagina è stata aperta e il nome
+  // sopra combacia. Non "il dato è giusto in assoluto" — "viene da lì, e il
+  // link qui sotto ci porta".
+  //
+  // Quando manca, la scheda è magra per costruzione: dal 26 ago 2026 età,
+  // piede, procuratore, presenze e gol escono solo da un profilo letto
+  // (src/provenienza.py). Prima uscivano lo stesso, presi da un modello che
+  // non aveva aperto niente: 132 procuratori su 143 erano di quella specie.
+  // Meglio una scheda con tre righe vere che sette righe di cui quattro
+  // inventate — e la riga qui sotto dice perché è corta.
   const trustNote = o.data_verified
-    ? `<div class="trust ok">✓ Dati verificati su Transfermarkt</div>`
-    : (nums.length ? `<div class="trust todo">Dati da confermare — apri il profilo Transfermarkt qui sotto</div>` : '');
+    ? `<div class="trust ok">✓ Letto dal profilo Transfermarkt${o.tm_verified_at ? ' il ' + esc((o.tm_verified_at||'').slice(0,10)) : ''}</div>`
+    : `<div class="trust todo">Profilo Transfermarkt non ancora aperto: qui sotto c'è solo quello che dice la fonte.</div>`;
 
   const stripHtml = nums.length
     ? `<div class="strip">${nums.map(s=>`<div class="cell"><span class="v">${s.v}</span><span class="l">${s.l}</span></div>`).join('')}</div>${trustNote}`
-    : '';
+    : trustNote;
 
   const facts = [
     ['Situazione', sit],

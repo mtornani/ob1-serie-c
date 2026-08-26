@@ -23,6 +23,7 @@ from scoring import OB1Scorer, assess_follow
 from minutaggio import genera_intel_badge
 from quality_gate import apply_gate, normalize_age
 from tm_url import clean as clean_tm_url
+from provenienza import solo_provato, campi_non_provati
 
 
 def _version_and_build() -> tuple:
@@ -229,7 +230,18 @@ def main():
 
     # Transform + score + quality gate
     all_scored = []
+    senza_prova = 0
     for opp in opportunities:
+        # PRIMA di tutto il resto: i campi di profilo che nessuno ha letto
+        # spariscono. Va fatto qui e non in fondo, perché lo score e il
+        # "Perché sì" si costruiscono su questi numeri — un DS che legge
+        # "24 presenze e 7 gol" come motivazione deve poter aprire la pagina
+        # da cui vengono. Vedi src/provenienza.py per la misura e la regola.
+        non_provati = campi_non_provati(opp)
+        if non_provati:
+            senza_prova += 1
+        opp = solo_provato(opp)
+
         opp = apply_gate(opp)
         score_result = scorer.score(opp)
 
@@ -456,6 +468,8 @@ def main():
     print(f"   Tracking: {tracking_total} | Publishable: {len(dashboard_opportunities)} "
           f"(gated {tracking_only}) | Corroborated: {corroborated_count}")
     print(f"   Public: HOT {hot_count}, WARM {warm_count}, COLD {cold_count}")
+    print(f"   Campi di profilo non pubblicati (nessuna pagina aperta): "
+          f"{senza_prova} record su {len(opportunities)}")
     if stale_count:
         print(f"   ⚠️ Stale free agents (>30gg senza contratto, >=10 presenze): {stale_count}")
 
