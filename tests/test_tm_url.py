@@ -260,3 +260,48 @@ class TestVerificaAllaFonte(unittest.TestCase):
         tondo = "https://www.transfermarkt.it/mario-rossi/profil/spieler/939000"
         self.assertEqual(e._url_verificato("Mario Rossi", tondo), (None, ""))
         self.assertEqual(chiamate, [], "l'ID tondo va scartato senza aprire nulla")
+
+
+class TestRicercaInternaTMViaJina(unittest.TestCase):
+    """
+    Il motore di ricerca generico e' l'anello che si blocca: da CI e da questo
+    ambiente DDG risponde "HTTP 202, pagina anti-bot", e senza candidati i
+    link finivano per essere COSTRUITI da un modello invece che trovati.
+    L'indice di Transfermarkt, letto via Jina, risponde e risponde meglio.
+    """
+
+    def _enricher(self, pagina):
+        from unittest import mock
+        from src import enricher_tm
+        e = enricher_tm.TransfermarktEnricher.__new__(
+            enricher_tm.TransfermarktEnricher)
+        e._verifica_attiva = True
+        p = mock.patch.object(enricher_tm, "_leggi_via_jina", return_value=pagina)
+        p.start(); self.addCleanup(p.stop)
+        return e
+
+    def test_estrae_i_candidati_dalla_pagina_di_ricerca(self):
+        # Forma reale: un solo risultato esatto (misurato su Alessio Cragno).
+        pagina = ("Markdown Content: [Alessio Cragno]"
+                  "(https://www.transfermarkt.it/alessio-cragno/profil/spieler/12907)")
+        e = self._enricher(pagina)
+        self.assertEqual(
+            e._candidati_da_tm_via_jina("Alessio Cragno"),
+            ["https://www.transfermarkt.it/alessio-cragno/profil/spieler/12907"])
+
+    def test_piu_omonimi_restano_tutti_candidati(self):
+        """Non si sceglie col nome: si aprono e decide la verifica."""
+        pagina = ("[Marco Rossi](https://www.transfermarkt.it/marco-rossi/profil/spieler/111)"
+                  "[Marco Rossi](https://www.transfermarkt.it/marco-rossi-ii/profil/spieler/222)")
+        e = self._enricher(pagina)
+        self.assertEqual(len(e._candidati_da_tm_via_jina("Marco Rossi")), 2)
+
+    def test_lo_stesso_profilo_ripetuto_conta_una_volta(self):
+        pagina = "".join(
+            "[X](https://www.transfermarkt.it/x/profil/spieler/999)" for _ in range(4))
+        e = self._enricher(pagina)
+        self.assertEqual(len(e._candidati_da_tm_via_jina("X")), 1)
+
+    def test_nessuna_risposta_non_produce_candidati_inventati(self):
+        e = self._enricher("")
+        self.assertEqual(e._candidati_da_tm_via_jina("Tizio Caio"), [])

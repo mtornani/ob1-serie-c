@@ -51,10 +51,10 @@ load_dotenv()
 
 try:
     from src.tm_url import clean as clean_tm_url, diagnose as tm_url_diagnose
-    from src.tm_verify import VerificatoreTM
+    from src.tm_verify import VerificatoreTM, leggi_via_jina as _leggi_via_jina
 except ImportError:  # layout PYTHONPATH=src
     from tm_url import clean as clean_tm_url, diagnose as tm_url_diagnose
-    from tm_verify import VerificatoreTM
+    from tm_verify import VerificatoreTM, leggi_via_jina as _leggi_via_jina
 
 try:
     from src.metrics import get_metrics
@@ -669,6 +669,53 @@ class TransfermarktEnricher:
                   f"mv={out.get('market_value_eur')} club={out.get('current_club')}")
         return out
 
+    def _candidati_da_tm_via_jina(self, player_name: str) -> list:
+        """
+        Profili candidati dalla ricerca INTERNA di Transfermarkt, letta
+        attraverso Jina Reader.
+
+        Perché questa strada esiste (26 ago 2026). Per trovare il profilo di
+        un giocatore stavamo chiedendo a un motore di ricerca generico — e
+        quello e' l'anello che si blocca: da questo ambiente DuckDuckGo
+        risponde "HTTP 202, pagina anti-bot", e la ricerca interna di TM
+        rifiuta gli IP dei datacenter. Risultato: nessun candidato, e i link
+        finivano per essere COSTRUITI da un modello invece che trovati.
+
+        Ma la ricerca di Transfermarkt letta via Jina funziona, e risponde
+        molto meglio di un motore terzo. Misurato sui due nomi le cui schede
+        puntavano a un'altra persona:
+
+            "Alessio Cragno"          -> 1 profilo: 12907   (giusto)
+            "Achraf El Bouchataoui"   -> 1 profilo: 361122  (giusto)
+
+        Un risultato, quello esatto, dall'indice di TM stesso — invece di
+        cinque risultati rumorosi da cui pescare alla cieca.
+
+        Ritorna una LISTA: se la ricerca propone piu' omonimi, li vaglia la
+        verifica (aprire il profilo), non un'euristica sul nome.
+        """
+        # Cercare candidati ha senso solo se poi si aprono: senza la verifica
+        # si tornerebbe a scegliere alla cieca fra i risultati, che e' il
+        # meccanismo che ha prodotto 138 link a un'altra persona. Le due cose
+        # si accendono e si spengono insieme (OB1_TM_VERIFY).
+        if not getattr(self, "_verifica_attiva", True):
+            return []
+        import urllib.parse
+        q = urllib.parse.quote(player_name)
+        pagina = _leggi_via_jina(
+            f"https://www.transfermarkt.it/schnellsuche/ergebnis/schnellsuche?query={q}")
+        if not pagina:
+            print(f"  [TM SEARCH/jina] {player_name}: nessuna risposta")
+            return []
+        visti, fuori = set(), []
+        for slug, pid in re.findall(r"/([a-z0-9-]+)/profil/spieler/(\d+)", pagina):
+            if pid in visti:
+                continue
+            visti.add(pid)
+            fuori.append(f"https://www.transfermarkt.it/{slug}/profil/spieler/{pid}")
+        print(f"  [TM SEARCH/jina] {player_name}: {len(fuori)} candidati")
+        return fuori[:5]
+
     def _url_verificato(self, player_name: str, url: str) -> tuple:
         """
         (url, quando) se il profilo è stato APERTO ed è di questa persona.
@@ -727,6 +774,19 @@ class TransfermarktEnricher:
             self._save_tm_urls()
             print(f"  [TM URL/tm-search] {player_name}: {direct[:70]}")
             return direct, ""
+
+        # Ricerca interna di TM letta via Jina, PRIMA del motore generico.
+        # L'indice di Transfermarkt sa dove sta un giocatore di Transfermarkt;
+        # un motore generico da qui risponde con una pagina anti-bot, e quando
+        # risponde dà cinque risultati fra cui pescare alla cieca.
+        # Ogni candidato viene aperto: si tiene il primo che è davvero lui.
+        for candidato in self._candidati_da_tm_via_jina(player_name):
+            ok, quando = self._url_verificato(player_name, candidato)
+            if ok:
+                self._tm_urls[player_name.lower()] = ok
+                self._save_tm_urls()
+                print(f"  [TM URL/jina-search] {player_name}: {ok[:70]}")
+                return ok, ""
 
         source, results = free_web_search(
             f"{player_name} profilo giocatore",
