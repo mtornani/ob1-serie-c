@@ -77,6 +77,13 @@ jobs:
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         OB1_LLM_MODE: free_only
+        # Jina Reader scarica Transfermarkt dalla SUA infrastruttura, quindi
+        # il blocco anti-bot sugli IP dei runner non si applica: è così che
+        # il profilo si apre davvero (src/tm_verify.py) e che la ricerca
+        # interna di TM si può interrogare (src/enricher_tm.py).
+        # Senza chiave funziona lo stesso, con un tetto di richieste al minuto
+        # più basso — secret assente = ripiego, non un errore.
+        JINA_API_KEY: ${{ secrets.JINA_API_KEY }}
         # Tetto batch per run: il backlog si smaltisce su più run invece di
         # bruciare la quota free di un provider in una sola volta.
         MAX_ENRICH_BATCHES: "4"
