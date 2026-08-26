@@ -1,29 +1,29 @@
 {
   "buckets": {
     "groq:llama-3.3-70b-versatile:0": {
-      "cooldown_until": "2026-08-26T17:43:52.234453+00:00",
+      "cooldown_until": "2026-08-26T20:39:41.310362+00:00",
       "day": "2026-08-26",
-      "fail_streak": 39,
-      "last_error_at": "2026-08-26T16:43:52.233735+00:00",
+      "fail_streak": 40,
+      "last_error_at": "2026-08-26T19:39:41.309891+00:00",
       "last_ok": "2026-08-17T07:02:11.348258+00:00",
-      "minute": "2026-08-26T16:43",
-      "rpd": 4,
+      "minute": "2026-08-26T19:39",
+      "rpd": 5,
       "rpm": 1,
       "tpd": 0,
       "tpm": 0
     },
     "openrouter:meta-llama/llama-3.3-70b-instruct:free:0": {
-      "cooldown_until": "2026-08-26T17:43:52.460417+00:00",
+      "cooldown_until": "2026-08-26T20:39:41.554491+00:00",
       "day": "2026-08-26",
-      "fail_streak": 74,
-      "last_error_at": "2026-08-26T16:43:52.459923+00:00",
-      "minute": "2026-08-26T16:43",
-      "rpd": 4,
+      "fail_streak": 75,
+      "last_error_at": "2026-08-26T19:39:41.554052+00:00",
+      "minute": "2026-08-26T19:39",
+      "rpd": 5,
       "rpm": 1,
       "tpd": 0,
       "tpm": 0
     }
   },
-  "updated_at": "2026-08-26T16:43:52.460435+00:00",
+  "updated_at": "2026-08-26T19:39:41.554502+00:00",
   "version": 1
 }
