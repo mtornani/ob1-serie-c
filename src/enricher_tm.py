@@ -51,8 +51,10 @@ load_dotenv()
 
 try:
     from src.tm_url import clean as clean_tm_url, diagnose as tm_url_diagnose
+    from src.tm_verify import VerificatoreTM
 except ImportError:  # layout PYTHONPATH=src
     from tm_url import clean as clean_tm_url, diagnose as tm_url_diagnose
+    from tm_verify import VerificatoreTM
 
 try:
     from src.metrics import get_metrics
@@ -348,6 +350,15 @@ class TransfermarktEnricher:
         self.gemini_disabled = self.gemini_client is None
         self.fallback_cfg = resolve_fallback()
         self._tm_urls = self._load_tm_urls()
+        # Verifica d'identità: aprire il profilo e guardare di chi è.
+        # 26 ago 2026, misurato su 174 link nel database: 138 (79%) portavano
+        # a un'altra persona, e avevano TUTTI superato il controllo
+        # sintattico. Nessuna regola sulla forma dell'URL può prenderli — lo
+        # slug è costruito bene dal nome, l'ID è un numero plausibile.
+        # Da qui un link diventa `tm_url` solo dopo essere stato aperto:
+        # si verifica alla FONTE invece di bonificare dopo.
+        self._verificatore = VerificatoreTM()
+        self._verifica_attiva = os.getenv("OB1_TM_VERIFY", "1") != "0"
         # Fase 2 disattivabile senza rollback di codice (vincolo ARCH-002 §7)
         self._etag_enabled = os.getenv("OB1_ETAG", "1") != "0"
         self._etags = self._load_etags() if self._etag_enabled else {}
@@ -420,9 +431,19 @@ class TransfermarktEnricher:
             if isinstance(data, dict) and data.get("tm_url"):
                 # Il grounding restituisce redirect vertexaisearch che scadono:
                 # non sono link a Transfermarkt e non vanno in un report.
-                data["tm_url"] = clean_tm_url(data["tm_url"], player_name)
-                if not data["tm_url"]:
-                    data.pop("tm_url")
+                #
+                # E soprattutto: è questa la strada da cui arrivano gli ID
+                # inventati. Il modello sa costruire lo slug dal nome, ma
+                # l'ID numerico non può conoscerlo — e lo produce comunque,
+                # plausibile e sbagliato. Qui il profilo si apre davvero.
+                verificato, quando = self._url_verificato(
+                    player_name, data["tm_url"])
+                if verificato:
+                    data["tm_url"] = verificato
+                    if quando:
+                        data["tm_verified_at"] = quando
+                else:
+                    data.pop("tm_url", None)
             if data:
                 print(f"  [GROUNDED] {player_name}: mv={data.get('market_value_eur')} apps={data.get('appearances')}")
             return data
@@ -629,13 +650,50 @@ class TransfermarktEnricher:
             # Slug indicativo: TM risolve sull'id numerico, lo slug è
             # cosmetico. Se sbagliato il link è comunque valido, solo meno
             # bello — non blocca né falsifica il dato.
-            out["tm_url"] = (f"https://www.transfermarkt.it/"
-                              f"{self._slugify(matched_name)}/profil/spieler/{tm_id}")
+            #
+            # L'ID qui viene da una ricerca dell'API, non da un modello:
+            # è più affidabile delle altre strade, ma "più affidabile" non è
+            # "verificato" — l'API può aver agganciato un omonimo. Passa
+            # dallo stesso cancello di tutti (la cache rende il controllo
+            # gratuito dopo la prima volta).
+            costruito = (f"https://www.transfermarkt.it/"
+                         f"{self._slugify(matched_name)}/profil/spieler/{tm_id}")
+            verificato, quando = self._url_verificato(player_name, costruito)
+            if verificato:
+                out["tm_url"] = verificato
+                if quando:
+                    out["tm_verified_at"] = quando
             out["tm_player_id"] = tm_id
             out["enrichment_source"] = "Enrichment:sports-skills"
             print(f"  [SPORTS-SKILLS] {player_name}: "
                   f"mv={out.get('market_value_eur')} club={out.get('current_club')}")
         return out
+
+    def _url_verificato(self, player_name: str, url: str) -> tuple:
+        """
+        (url, quando) se il profilo è stato APERTO ed è di questa persona.
+        (None, "") altrimenti — compreso il caso "non si è potuto verificare",
+        che non è un permesso implicito: un link non verificato è esattamente
+        quello che ha prodotto 138 schede con dentro un'altra persona.
+
+        Passa prima dal controllo sintattico (forma dell'URL, ID non
+        costruito): è gratis e toglie il grosso senza una richiesta di rete.
+        """
+        pulito = clean_tm_url(url, player_name)
+        if not pulito:
+            return None, ""
+        if not self._verifica_attiva:
+            return pulito, ""
+        v = self._verificatore.verifica(player_name, pulito)
+        if v is None:
+            print(f"  [TM VERIFY] {player_name}: profilo non raggiungibile, "
+                  f"link non pubblicato")
+            return None, ""
+        if not v.combacia:
+            print(f"  [TM VERIFY] {player_name}: SCARTATO — {v.motivo}")
+            return None, ""
+        print(f"  [TM VERIFY] {player_name}: confermato ({v.nome_sul_profilo})")
+        return pulito, v.verificato_il
 
     def _tm_url_for(self, player_name: str) -> tuple:
         """
@@ -644,10 +702,14 @@ class TransfermarktEnricher:
         """
         cached = self._tm_urls.get(player_name.lower())
         if cached:
-            if clean_tm_url(cached, player_name):
-                # Diagnostica di main: se in produzione tutti i 20 giocatori
-                # passano da qui, il file cache è la causa del silenzio, non
-                # la ricerca stessa.
+            # La cache è permanente: un link sbagliato lì dentro resta
+            # sbagliato per sempre. Prima bastava che fosse ben formato —
+            # ed è così che 138 link a un'altra persona ci sono rimasti per
+            # mesi. Ora anche il cachato deve reggere la verifica (che a sua
+            # volta ha una cache propria: non è una richiesta di rete in più
+            # per ogni run).
+            ok, _quando = self._url_verificato(player_name, cached)
+            if ok:
                 print(f"  [TM URL/cache] {player_name}: {cached[:70]}")
                 return cached, ""
             # Un URL sbagliato in cache resterebbe sbagliato per sempre: la
@@ -658,7 +720,8 @@ class TransfermarktEnricher:
             self._save_tm_urls()
 
         # Prima la ricerca interna di TM: nessun motore terzo da farsi bloccare.
-        direct = clean_tm_url(self._tm_url_from_site_search(player_name), player_name)
+        direct, _q = self._url_verificato(
+            player_name, self._tm_url_from_site_search(player_name))
         if direct:
             self._tm_urls[player_name.lower()] = direct
             self._save_tm_urls()
@@ -672,10 +735,12 @@ class TransfermarktEnricher:
         )
         url, content = "", ""
         for r in results:
-            # Solo un profilo che è DI QUESTO giocatore. Il primo risultato
-            # qualunque, preso alla cieca, ha prodotto in passato link a pagine
-            # squadra e a omonimi — e la cache li ha resi permanenti.
-            candidate = clean_tm_url(r.get("url"), player_name)
+            # Si provano TUTTI i risultati, non solo il primo ben formato.
+            # Prima ci si fermava al primo che superava la sintassi: se era
+            # di un'altra persona, il giocatore restava con quel link e i
+            # candidati buoni più in basso non venivano mai guardati. Ora il
+            # ciclo si ferma al primo profilo che, aperto, è davvero lui.
+            candidate, _q = self._url_verificato(player_name, r.get("url"))
             if candidate:
                 url, content = candidate, r.get("content") or ""
                 break
@@ -945,8 +1010,15 @@ class TransfermarktEnricher:
                 continue
             prof.setdefault("enrichment_source", "Enrichment:gemini")
             if prof.get("tm_url"):
-                prof["tm_url"] = clean_tm_url(prof["tm_url"], name)
-                if not prof["tm_url"]:
+                # Stessa origine degli ID inventati della strada grounded:
+                # il modello costruisce lo slug e completa col numero che non
+                # può sapere. Il profilo si apre prima di pubblicarlo.
+                verificato, quando = self._url_verificato(name, prof["tm_url"])
+                if verificato:
+                    prof["tm_url"] = verificato
+                    if quando:
+                        prof["tm_verified_at"] = quando
+                else:
                     prof.pop("tm_url")
         found = sum(1 for v in out.values() if v)
         print(f"  [BATCH] {found}/{len(names)} profili in 1 chiamata")

@@ -142,6 +142,13 @@ class ConditionalFetchTestCase(unittest.TestCase):
         # richiesta di rete reale a ogni enrich_player_free().
         os.environ["OB1_SPORTS_SKILLS"] = "0"
         self.addCleanup(os.environ.pop, "OB1_SPORTS_SKILLS", None)
+        # Stessa ragione per la verifica d'identita': apre il profilo VERO su
+        # Transfermarkt via Jina Reader. Senza spegnerla questi test farebbero
+        # una richiesta di rete reale per ogni URL (misurato: suite da 0,4s a
+        # 8s) e fallirebbero quando la rete non c'e'. Cio' che la verifica fa
+        # e' testato in src/tm_verify.py con una pagina reale salvata.
+        os.environ["OB1_TM_VERIFY"] = "0"
+        self.addCleanup(os.environ.pop, "OB1_TM_VERIFY", None)
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
 

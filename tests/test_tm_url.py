@@ -190,3 +190,73 @@ class TestDatabaseReale(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+class TestVerificaAllaFonte(unittest.TestCase):
+    """
+    26 ago 2026: 138 link su 174 nel database portavano a un'altra persona,
+    e avevano tutti superato il controllo sintattico. Bonificarli non basta —
+    la pipeline ne riscriverebbe di nuovi al primo run. Il cancello deve
+    stare al momento della CREAZIONE del link, in enricher_tm.
+
+    Qui si verifica che ogni strada che produce un tm_url passi da
+    _url_verificato(), non solo da clean(). Senza rete: il verificatore e'
+    sostituito da un finto.
+    """
+
+    def _enricher(self, esiti):
+        """Enricher con la verifica finta: esiti = {url: combacia?}."""
+        import os
+        from unittest import mock
+        os.environ["OB1_SPORTS_SKILLS"] = "0"
+        self.addCleanup(os.environ.pop, "OB1_SPORTS_SKILLS", None)
+        from src import enricher_tm
+        from src.tm_verify import Verifica
+
+        class _Finto:
+            def verifica(self, nome, url):
+                if url not in esiti:
+                    return None                      # non verificabile
+                combacia = esiti[url]
+                return Verifica(combacia=combacia, nome_cercato=nome,
+                                nome_sul_profilo=nome if combacia else "Altra Persona",
+                                motivo="ok" if combacia else "e' un altro",
+                                verificato_il="2026-08-26T12:00:00+00:00")
+
+        e = enricher_tm.TransfermarktEnricher.__new__(
+            enricher_tm.TransfermarktEnricher)
+        e._verificatore = _Finto()
+        e._verifica_attiva = True
+        return e
+
+    def test_url_di_unaltra_persona_non_diventa_mai_un_link(self):
+        url = "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/538430"
+        e = self._enricher({url: False})
+        self.assertEqual(e._url_verificato("Rizzo Pinna", url), (None, ""))
+
+    def test_url_confermato_passa_e_porta_il_timestamp(self):
+        url = "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465"
+        e = self._enricher({url: True})
+        ok, quando = e._url_verificato("Rizzo Pinna", url)
+        self.assertEqual(ok, url)
+        self.assertTrue(quando, "un link verificato deve portare quando lo e' stato")
+
+    def test_non_verificabile_non_e_un_permesso(self):
+        """Rete giu' non significa 'va bene': significa che non lo sappiamo."""
+        url = "https://www.transfermarkt.it/tizio-caio/profil/spieler/123456"
+        e = self._enricher({})        # nessun esito -> None
+        self.assertEqual(e._url_verificato("Tizio Caio", url), (None, ""))
+
+    def test_la_sintassi_resta_il_primo_filtro_e_non_costa_rete(self):
+        """Un ID tondo non deve nemmeno arrivare alla verifica."""
+        chiamate = []
+
+        class _Spia:
+            def verifica(self, nome, url):
+                chiamate.append(url); return None
+
+        e = self._enricher({})
+        e._verificatore = _Spia()
+        tondo = "https://www.transfermarkt.it/mario-rossi/profil/spieler/939000"
+        self.assertEqual(e._url_verificato("Mario Rossi", tondo), (None, ""))
+        self.assertEqual(chiamate, [], "l'ID tondo va scartato senza aprire nulla")
