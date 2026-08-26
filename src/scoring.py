@@ -7,6 +7,13 @@ Prioritizza le opportunita di mercato con scoring intelligente
 from datetime import datetime, timedelta
 from typing import Dict, Any, Optional
 
+# Soglie del contratto di freschezza (vedi assess_follow). Dichiarate qui
+# perche' sono una scelta di prodotto, non una costante tecnica: oltre
+# STALE_SOFT_DAYS non si dice piu' "chiama ora", oltre STALE_HARD_DAYS si
+# dice esplicitamente di riverificare prima di muoversi.
+STALE_SOFT_DAYS = 45
+STALE_HARD_DAYS = 90
+
 
 class OB1Scorer:
     """Sistema di scoring avanzato per opportunita di mercato"""
@@ -363,6 +370,35 @@ def assess_follow(opportunity: Dict[str, Any], score_result: Dict[str, Any]) -> 
         action = "Da tenere d'occhio"
     else:
         action = "Bassa priorità"
+
+    # --- Contratto di freschezza -------------------------------------------
+    # 26 ago 2026: 35 segnalazioni su 85 in dashboard erano piu' vecchie di 90
+    # giorni — alcune di 178, cioe' inizio marzo — e dicevano ancora "Da
+    # chiamare ora". La freschezza pesava il 15% dello score, quindi un
+    # profilo forte sugli altri sei fattori restava "da chiamare" mezzo anno
+    # dopo la notizia.
+    #
+    # Perche' e' grave per QUESTO mercato: il lettore e' un DS di Serie C/D
+    # (o San Marino, o Eccellenza) che telefona di persona a un collega che
+    # rivedra'. Se chiama per un prestito chiuso a marzo, la figura la fa lui,
+    # non noi — e non riapre piu' il messaggio dopo. Il costo di scrivergli
+    # "verifica prima" e' dieci minuti suoi; il costo di una telefonata a
+    # vuoto e' il rapporto con un collega.
+    #
+    # Una finestra di mercato di C/D dura settimane: oltre i 45 giorni una
+    # disponibilita' non e' piu' un fatto, e' un ricordo. Quindi la freschezza
+    # non puo' restare un peso tra sette — e' un CANCELLO sull'azione.
+    days_old = opportunity.get("signal_age_days")
+    if isinstance(days_old, (int, float)) and days_old > 0:
+        days_old = int(days_old)
+        if days_old > STALE_HARD_DAYS:
+            action = f"Da riverificare — segnalazione di {days_old} giorni fa"
+            no.insert(0, f"Segnalazione vecchia di {days_old} giorni: prima di "
+                         f"chiamare, verifica che sia ancora disponibile")
+        elif days_old > STALE_SOFT_DAYS and action == "Da chiamare ora":
+            action = "Da tenere d'occhio — conferma che sia ancora disponibile"
+            no.insert(0, f"Segnalazione di {days_old} giorni fa: "
+                         f"situazione probabilmente cambiata")
 
     # Dedupe while preserving order
     def _uniq(xs):

@@ -35,7 +35,7 @@ Valore di mercato: 900 mila &euro;
 </body></html>
 """
 
-TM_URL = "https://www.transfermarkt.it/cosimo-patierno/profil/spieler/340000"
+TM_URL = "https://www.transfermarkt.it/cosimo-patierno/profil/spieler/283352"
 
 
 class SeenStoreTestCase(unittest.TestCase):
@@ -284,7 +284,7 @@ class ExitCriterionPhase2TestCase(ConditionalFetchTestCase):
         squadra = ["Cosimo Patierno", "Sergej Levak", "Andrea Rossi",
                    "Marco Bianchi", "Luca Verdi"]
         urls = {n: f"https://www.transfermarkt.it/{n.lower().replace(' ', '-')}"
-                   f"/profil/spieler/{i}" for i, n in enumerate(squadra, 1)}
+                   f"/profil/spieler/{1000 + i}" for i, n in enumerate(squadra, 1)}
 
         class _MultiPlayerTM(_FakeTMServer):
             """Un ETag per URL, come farebbe il TM vero."""

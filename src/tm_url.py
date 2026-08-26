@@ -43,6 +43,31 @@ _SLUG_NOISE = {"fc", "us", "ac", "ssd", "asd", "calcio", "spa", "srl"}
 
 _MIN_TOKEN_LEN = 3
 
+# ---------------------------------------------------------------- ID inventati
+#
+# 26 agosto 2026. Un DS stava per ricevere la scheda di "Rizzo Pinna" con
+# link a /andrea-rizzo-pinna/profil/spieler/538430. Lo slug è giusto — esiste,
+# è lui. L'ID 538430 è di Emre Dalgalidere, centrocampista turco. L'ID vero
+# di Rizzo Pinna e' 411465.
+#
+# Il controllo che c'era guardava lo SLUG contro il nome. Ma su Transfermarkt
+# la pagina la decide il NUMERO: lo slug e' decorativo, il server lo ignora.
+# Verificare lo slug e' verificare la parte che l'LLM sa costruire benissimo,
+# e non verificare mai la parte che l'LLM non puo' sapere e quindi inventa.
+#
+# Come si riconosce un ID inventato: e' TONDO. Su 85 link in dashboard, 33
+# (39%) finivano per zeri — 939000, 1000000, 600000, 49000. Un ID reale e'
+# un progressivo arbitrario (411465, 283352, 659787): la probabilita' che
+# cada su un multiplo di 1000 e' 1 su 1000, non 39 su 100. Tre ID tondi
+# erano perfino condivisi da 3-4 giocatori diversi.
+#
+# Costo dei due errori, asimmetrico e gia' dichiarato in cima a questo file:
+# scartare un ID buono (1 caso su 1000) costa un link mancante, che
+# l'enrichment ritrova al giro dopo. Tenerne uno inventato costa un DS che
+# clicca davanti a un collega e vede un'altra persona.
+_ID_MIN = 1000          # sotto: nessun giocatore trovato via ricerca ha un ID cosi'
+_ID_ROUND_STEP = 1000   # multipli esatti: costruiti, non osservati
+
 
 def _norm(text: str) -> str:
     text = unicodedata.normalize("NFKD", text or "").encode("ascii", "ignore").decode()
@@ -78,6 +103,19 @@ def profile_slug(url: object) -> str:
     return m.group(1) if m else ""
 
 
+def id_is_plausible(url: object) -> bool:
+    """
+    False per un ID che non puo' venire da un'osservazione reale — tondo o
+    assurdamente basso. Non dice che l'ID sia della persona giusta (per
+    quello serve risolverlo davvero): dice che e' stato **costruito**.
+    """
+    pid = profile_id(url)
+    if pid is None:
+        return False
+    n = int(pid)
+    return n >= _ID_MIN and n % _ID_ROUND_STEP != 0
+
+
 def matches_player(url: object, player_name: object) -> bool:
     """
     Lo slug dell'URL e il nome del giocatore devono condividere almeno un
@@ -104,6 +142,8 @@ def clean(url: object, player_name: object = None) -> Optional[str]:
     if not is_profile_url(url):
         return None
     u = url.strip()
+    if not id_is_plausible(u):
+        return None
     if player_name is not None and not matches_player(u, player_name):
         return None
     return u
@@ -124,6 +164,11 @@ def diagnose(url: object, player_name: object = None) -> str:
         return "pagina squadra, non profilo giocatore"
     if not _PROFILE_RE.match(url.strip()):
         return "pagina Transfermarkt che non è un profilo giocatore"
+    if not id_is_plausible(url):
+        pid = profile_id(url)
+        return (f"ID {pid} costruito, non osservato: "
+                + ("multiplo esatto di 1000" if int(pid) % _ID_ROUND_STEP == 0
+                   else f"sotto {_ID_MIN}, implausibile"))
     if player_name is not None and not matches_player(url, player_name):
         return (f"profilo di un altro giocatore: slug '{profile_slug(url)}' "
                 f"contro '{player_name}'")
