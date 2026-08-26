@@ -346,3 +346,133 @@ class TestAdottareUnProfiloChiedePiuProvaDiToglierlo(unittest.TestCase):
         ]:
             self.assertTrue(nomi_combaciano_forte(cercato, sul_profilo),
                             f"{cercato} / {sul_profilo}")
+
+
+class TestEUnOpportunitaDiSerieC(unittest.TestCase):
+    """
+    Il gate "fuori fascia Serie C" (src/entity_gate.py, cap 5 mln €) esisteva
+    da sempre ed era giusto. Non scattava mai per due motivi sommati:
+
+      1. il valore glielo passava un LLM, quindi era quasi sempre None
+      2. la dashboard non chiamava classify(): leggeva un flag `out_of_scope`
+         che nessun codice scriveva piu'
+
+    In produzione il 26 ago 2026 questo metteva in dashboard, come opportunita'
+    di Lega Pro, Nico Paz (Como, 80 mln), John Stones (Inter) e Simone Giordano
+    (Eyupspor); piu' Alessio Rosa (41 anni) e Diego Carburi (40), che hanno
+    smesso di giocare.
+
+    Ora il valore lo legge la pagina e la domanda si fa in export.
+    """
+
+    def test_legge_il_valore_dalla_pagina(self):
+        from src.tm_verify import analizza
+        pagina = ("Title: Nico Paz - Profilo giocatore | Transfermarkt\n"
+                  "Nome in patria: Nicolas Paz\n"
+                  "Squadra attuale: [Como 1907]\n"
+                  "Valore di mercato Valore attuale: [80,00 mln €](https://x)")
+        v = analizza(pagina, "Nico Paz", "948294")
+        self.assertEqual(v.valore_eur, 80_000_000)
+
+    def test_ottanta_milioni_non_e_un_affare_di_lega_pro(self):
+        from src.entity_gate import classify, OUT_OF_SCOPE
+        fuori = classify({"player_name": "Nico Paz", "market_value": 80_000_000})
+        self.assertEqual(fuori.kind, OUT_OF_SCOPE)
+
+    def test_chi_sta_nella_fascia_resta(self):
+        # Sergej Levak, 2,80 mln letti sul profilo: e' il nostro primo HOT e
+        # deve restarci. Il cap toglie i fuori scala, non i giocatori buoni.
+        from src.entity_gate import classify, OUT_OF_SCOPE
+        dentro = classify({"player_name": "Sergej Levak", "market_value": 2_800_000})
+        self.assertNotEqual(dentro.kind, OUT_OF_SCOPE)
+
+    def test_valore_ignoto_non_scarta_nessuno(self):
+        # Cosimo Patierno: il profilo non porta un valore. Non lo si butta su
+        # un numero che nessuno ha letto — e' la stessa regola di provenienza.
+        from src.entity_gate import classify, OUT_OF_SCOPE
+        v = classify({"player_name": "Cosimo Patierno", "market_value": None})
+        self.assertNotEqual(v.kind, OUT_OF_SCOPE)
+
+    def test_chi_ha_smesso_non_e_unopportunita(self):
+        from src.tm_verify import analizza
+        pagina = ("Title: Alessio Rosa - Profilo giocatore | Transfermarkt\n"
+                  "Squadra attuale: [![Image 28: Ritiro](x)](y) Ritiro\n"
+                  "Ultima squadra: [Vis Pesaro]")
+        v = analizza(pagina, "Alessio Rosa", "511164")
+        self.assertTrue(v.ritirato)
+
+    def test_chi_gioca_non_risulta_ritirato(self):
+        from src.tm_verify import analizza
+        pagina = ("Title: Cosimo Patierno - Profilo giocatore | Transfermarkt\n"
+                  "Squadra attuale: [Casarano Calcio]")
+        self.assertFalse(analizza(pagina, "Cosimo Patierno", "283352").ritirato)
+
+    def test_una_voce_di_cache_senza_valore_va_riaperta(self):
+        # Le verifiche scritte prima di questa modifica non hanno valore_eur.
+        # La data direbbe "fresca" e terrebbe spento il gate per 30 giorni
+        # proprio sui profili che abbiamo gia' in mano.
+        from datetime import datetime, timezone
+        from src.tm_verify import VerificatoreTM
+        v = VerificatoreTM.__new__(VerificatoreTM)
+        adesso = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        # Una voce completa: nome letto dal profilo E valore (che puo' essere
+        # None — il profilo semplicemente non lo porta, vedi Patierno).
+        piena = {"verificato_il": adesso, "valore_eur": None,
+                 "nome_sul_profilo": "Cosimo Patierno"}
+        self.assertTrue(v._fresca(piena))
+        # Senza valore_eur: scritta prima che leggessimo il valore.
+        self.assertFalse(v._fresca({k: x for k, x in piena.items()
+                                    if k != "valore_eur"}))
+        # Senza nome: non e' una verifica, e' una lettura fallita.
+        self.assertFalse(v._fresca({k: x for k, x in piena.items()
+                                    if k != "nome_sul_profilo"}))
+
+
+class TestNonLoSoNonEUnVerdetto(unittest.TestCase):
+    """
+    Il principio vale in tutto il file ma mancava nel punto centrale.
+
+    Se dalla pagina non si cava nemmeno un nome, `analizza` torna
+    combacia=False — e a valle quel False si legge "e' un'altra persona" e fa
+    RIMUOVERE il link. Ma una pagina illeggibile non dice niente su quel
+    giocatore: puo' essere una schermata anti-bot, un errore temporaneo, un
+    cambio di layout.
+
+    Visto il 26 ago 2026 rileggendo i 62 profili gia' verificati: tre link
+    buoni (Alessandro Cardascio, Jordan Boli, Milos Bocic) tolti con
+    motivazione «il profilo e' di '', non di ...».
+    """
+
+    def _verificatore(self, pagina):
+        from unittest import mock
+        from src import tm_verify
+        v = tm_verify.VerificatoreTM(cache_path=Path(self.tmp) / "cache.json")
+        p = mock.patch.object(tm_verify, "_scarica", return_value=pagina)
+        p.start(); self.addCleanup(p.stop)
+        return v
+
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.mkdtemp()
+
+    URL = "https://www.transfermarkt.it/jordan-boli/profil/spieler/338261"
+
+    def test_pagina_illeggibile_non_e_un_altra_persona(self):
+        v = self._verificatore("Just a moment... Checking your browser")
+        self.assertIsNone(v.verifica("Jordan Boli", self.URL))
+        self.assertEqual(v.smascherati, 0, "non e' uno smascheramento")
+        self.assertEqual(v.falliti, 1)
+
+    def test_e_non_si_mette_in_cache_un_esito_che_non_e_un_esito(self):
+        v = self._verificatore("")
+        v.verifica("Jordan Boli", self.URL)
+        self.assertEqual(v.cache, {})
+
+    def test_una_persona_diversa_resta_uno_smascheramento(self):
+        pagina = ("Title: Tomaso Lorenzi - Profilo giocatore | Transfermarkt\n"
+                  "Squadra attuale: [Pontedera]")
+        v = self._verificatore(pagina)
+        r = v.verifica("Achraf El Bouchataoui", self.URL)
+        self.assertIsNotNone(r)
+        self.assertFalse(r.combacia)
+        self.assertEqual(v.smascherati, 1)

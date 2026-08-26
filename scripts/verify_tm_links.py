@@ -131,6 +131,17 @@ def main() -> int:
             o["agent"] = r.procuratore
         if r.ruolo and not o.get("role_name"):
             o["role_name"] = r.ruolo
+        # Stessa scrittura di scripts/apri_profili_tm.py: il valore letto sulla
+        # pagina è ciò che fa funzionare il gate "fuori fascia Serie C", e
+        # "Ritiro" come squadra attuale vuol dire che questa persona ha smesso.
+        if r.valore_eur is not None and r.valore_eur != o.get("market_value"):
+            cambi.append(f"valore -> {r.valore_eur/1e6:.1f} mln")
+            o["market_value"] = r.valore_eur
+            o["market_value_eur"] = r.valore_eur
+        if r.ritirato and not o.get("out_of_scope"):
+            cambi.append("RITIRATO")
+            o["out_of_scope"] = True
+            o["out_of_scope_reason"] = "ha smesso di giocare (Transfermarkt: Ritiro)"
         if cambi:
             aggiornati.append((nome, "; ".join(cambi)))
 

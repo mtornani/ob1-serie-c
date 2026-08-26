@@ -176,6 +176,19 @@ def main() -> int:
         if r.procuratore:
             o["agent"] = r.procuratore
             scritti.append(f"ag. {r.procuratore}")
+        # Il valore letto dalla pagina riaccende il gate "fuori fascia Serie C"
+        # (src/entity_gate.py, cap 5 mln), che esisteva già ed era giusto ma
+        # riceveva un numero inventato da un modello — quindi quasi sempre
+        # None, quindi non scattava. Senza, in dashboard finiva Nico Paz (80
+        # mln, Como) come opportunità di Lega Pro.
+        if r.valore_eur is not None:
+            o["market_value"] = r.valore_eur
+            o["market_value_eur"] = r.valore_eur
+            scritti.append(f"valore {r.valore_eur/1e6:.1f} mln")
+        if r.ritirato:
+            o["out_of_scope"] = True
+            o["out_of_scope_reason"] = "ha smesso di giocare (Transfermarkt: Ritiro)"
+            scritti.append("RITIRATO")
         trovati.append((nome, "; ".join(scritti)))
 
     print("=== esito ===")
