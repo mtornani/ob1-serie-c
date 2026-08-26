@@ -65,8 +65,13 @@ function dossierText(o){
   if (o.goals!=null) stats.push(`${o.goals} gol`);
   if (o.market_value_formatted) stats.push(`valore ${o.market_value_formatted}`);
   if (stats.length) L.push(stats.join(' · '));
-  L.push(o.data_verified ? 'Dati verificati su Transfermarkt' : 'Dati da confermare su Transfermarkt');
-  if (o.tm_url) L.push(o.tm_url);
+  // Il testo condiviso esce dal nostro perimetro: finisce su WhatsApp e lo
+  // legge qualcuno che non ha visto la scheda. Non deve dire "verificati" se
+  // nessun profilo è stato aperto, né portarsi dietro un URL non verificato.
+  L.push(o.data_verified ? 'Dati verificati su Transfermarkt'
+                         : 'Dati DA CONFERMARE — profilo Transfermarkt non verificato');
+  if (o.data_verified && o.tm_url) L.push(o.tm_url);
+  if ((o.assessment||{}).action) L.push((o.assessment||{}).action);
   L.push('');
   L.push(`Scheda: ${shareUrl(o)}`);
   L.push('— via OB1 Scout');
@@ -434,9 +439,16 @@ function openDrawer(o){
     srcLink.textContent = 'Cerca notizie ↗';
   }
 
+  // Profilo diretto SOLO se la verifica è registrata (data_verified).
+  // 26 ago 2026: "Rizzo Pinna" linkava /andrea-rizzo-pinna/profil/spieler/538430
+  // — slug giusto, ID di un centrocampista turco. Un ID inventato ma di forma
+  // plausibile non lo distingue nessun controllo sintattico da uno vero:
+  // l'unica difesa è non spacciare per profilo un link che non abbiamo aperto.
+  // La ricerca per nome costa un clic in più e atterra sempre sulla persona giusta.
   const tmLink = el('#tmLink');
-  tmLink.href = isRealUrl(o.tm_url) ? o.tm_url : google(`${o.player_name||''} transfermarkt`);
-  tmLink.textContent = 'Transfermarkt ↗';
+  const tmProfileTrusted = o.data_verified && isRealUrl(o.tm_url);
+  tmLink.href = tmProfileTrusted ? o.tm_url : google(`${o.player_name||''} transfermarkt`);
+  tmLink.textContent = tmProfileTrusted ? 'Transfermarkt ↗' : 'Cerca su Transfermarkt ↗';
 
   el('#ov').classList.add('open');
   document.body.style.overflow = 'hidden';

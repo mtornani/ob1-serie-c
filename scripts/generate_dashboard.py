@@ -268,13 +268,30 @@ def main():
             # DATA-003 QW-1: Agent field
             'agent': opp.get('agent') or profile.get('agent'),
 
-            # Link Transfermarkt verificabile (vale solo un url TM vero) e il
-            # flag che la UI usa per separare i dati controllabili dalle stime.
-            # È il gate delle due fonti reso visibile sulla singola scheda.
+            # Link Transfermarkt: `tm_link_ok` dice UNA cosa sola — il link ha
+            # una forma valida e un ID non palesemente costruito. NON dice che
+            # il profilo sia stato aperto, né che sia di questa persona.
+            #
+            # 26 ago 2026: prima questo campo si chiamava `data_verified` e la
+            # UI ci scriveva sopra "✓ Dati verificati su Transfermarkt". Ma il
+            # valore era `bool(url_ben_formato)`: nessun profilo veniva mai
+            # aperto, nessun dato confrontato. Su 85 schede, 85 dicevano
+            # "verificato" e 33 avevano un ID inventato (tondo). Il nome del
+            # campo prometteva una verifica che il codice non faceva.
+            #
+            # `data_verified` resta esposto per non rompere chi legge già il
+            # JSON, ma ora è l'AND con una verifica registrata davvero
+            # (tm_verified_at, scritto solo da chi il profilo lo ha aperto).
+            # Finché l'enrichment non lo scrive, è False — che è la verità.
             'tm_url': _tm_url(opp.get('tm_url') or profile.get('tm_url'),
                               opp.get('player_name')),
-            'data_verified': bool(_tm_url(opp.get('tm_url') or profile.get('tm_url'),
-                                          opp.get('player_name'))),
+            'tm_link_ok': bool(_tm_url(opp.get('tm_url') or profile.get('tm_url'),
+                                       opp.get('player_name'))),
+            'tm_verified_at': opp.get('tm_verified_at') or profile.get('tm_verified_at') or '',
+            'data_verified': bool(
+                _tm_url(opp.get('tm_url') or profile.get('tm_url'),
+                        opp.get('player_name'))
+                and (opp.get('tm_verified_at') or profile.get('tm_verified_at'))),
 
             # Discovered timestamp (for stale detection)
             'discovered_at': opp.get('discovered_at', ''),
@@ -355,6 +372,20 @@ def main():
         else:
             dashboard_opp['days_without_contract'] = 0
             dashboard_opp['stale_free_agent'] = False
+
+        # Età della segnalazione, per OGNI tipo di opportunità (non solo
+        # svincolati, come days_without_contract): è il campo che decide se
+        # possiamo ancora dire "chiama ora" — contratto di freschezza in
+        # src/scoring.py. Senza, quel cancello non scatterebbe mai.
+        _reported = dashboard_opp.get('reported_date') or ''
+        dashboard_opp['signal_age_days'] = None
+        if _reported:
+            try:
+                _d = datetime.strptime(_reported[:10], '%Y-%m-%d').date()
+                dashboard_opp['signal_age_days'] = max(
+                    0, (datetime.now().date() - _d).days)
+            except (ValueError, TypeError):
+                pass
 
         # Perché sì / no — after days_without_contract is known (no LLM)
         dashboard_opp['assessment'] = assess_follow(dashboard_opp, score_result)

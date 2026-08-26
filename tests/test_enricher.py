@@ -39,7 +39,7 @@ Valore di mercato: 900 mila €
 Contratto fino a: 30.06.2027
 """
 
-TM_URL = "https://www.transfermarkt.it/cosimo-patierno/profil/spieler/340000"
+TM_URL = "https://www.transfermarkt.it/cosimo-patierno/profil/spieler/283352"
 
 
 class EnricherTestCase(unittest.TestCase):
@@ -287,7 +287,7 @@ class SiteSearchTestCase(EnricherTestCase):
 
     def test_usa_il_primo_risultato_quando_e_un_elenco(self):
         page = ('<table class="items">'
-                f'<a href="/cosimo-patierno/profil/spieler/340000">Patierno</a>'
+                f'<a href="/cosimo-patierno/profil/spieler/283352">Patierno</a>'
                 '<a href="/altro/profil/spieler/999999">Altro</a></table>')
         self.assertEqual(
             self._enricher(self._resp(text=page))._tm_url_from_site_search("Patierno"),
