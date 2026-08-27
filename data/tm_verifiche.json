@@ -413,7 +413,8 @@
     "procuratore": "",
     "ruolo": "Difensore centrale",
     "squadra": "ID Vieirense",
-    "verificato_il": "2026-08-26T19:52:35+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:37:37+00:00"
   },
   "1315397|dani alves": {
     "combacia": true,
@@ -427,7 +428,8 @@
     "procuratore": "",
     "ruolo": "Terzino sinistro",
     "squadra": "GR Vigor Mocidade",
-    "verificato_il": "2026-08-26T17:10:50+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:37:48+00:00"
   },
   "134429|raheem sterling": {
     "combacia": false,
@@ -545,7 +547,8 @@
     "procuratore": "Domenica Sports ...",
     "ruolo": "Ala sinistra",
     "squadra": "svincolato",
-    "verificato_il": "2026-08-26T17:10:04+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:35:47+00:00"
   },
   "15951|dani alves": {
     "combacia": true,
@@ -559,7 +562,8 @@
     "procuratore": "",
     "ruolo": "Terzino destro",
     "squadra": "Ritiro",
-    "verificato_il": "2026-08-26T17:10:34+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:37:22+00:00"
   },
   "160300|nicola valente": {
     "combacia": false,
@@ -708,7 +712,8 @@
     "procuratore": "Bertolucci Sports",
     "ruolo": "Terzino sinistro",
     "squadra": "Olympique Marsiglia",
-    "verificato_il": "2026-08-26T19:53:24+00:00"
+    "valore_eur": 9000000,
+    "verificato_il": "2026-08-27T08:38:32+00:00"
   },
   "186590|john stones": {
     "combacia": true,
@@ -1006,7 +1011,8 @@
     "procuratore": "João Alberto Malik ...",
     "ruolo": "Punta centrale",
     "squadra": "Clube de Regatas Brasil",
-    "verificato_il": "2026-08-26T19:55:36+00:00"
+    "valore_eur": 400000,
+    "verificato_il": "2026-08-27T08:39:49+00:00"
   },
   "240999|nicola falasco": {
     "combacia": false,
@@ -1273,7 +1279,8 @@
     "procuratore": "",
     "ruolo": "Ala sinistra",
     "squadra": "Ritiro",
-    "verificato_il": "2026-08-26T17:10:38+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:37:26+00:00"
   },
   "312300|la gazzetta": {
     "combacia": false,
@@ -1452,7 +1459,8 @@
     "procuratore": "",
     "ruolo": "Ala sinistra",
     "squadra": "Justinense",
-    "verificato_il": "2026-08-26T17:07:15+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:34:53+00:00"
   },
   "340264|leonardo vitali": {
     "combacia": true,
@@ -1604,6 +1612,21 @@
     "valore_eur": 325000,
     "verificato_il": "2026-08-26T20:31:04+00:00"
   },
+  "35249|stefano okaka": {
+    "combacia": true,
+    "contratto_fino": "",
+    "data_nascita": "09/08/1989",
+    "id_profilo": "35249",
+    "motivo": "il profilo è di questa persona",
+    "nome_cercato": "Stefano Okaka",
+    "nome_sul_profilo": "Stefano Okaka",
+    "piede": "destro",
+    "procuratore": "U-Talents Management",
+    "ruolo": "Punta centrale",
+    "squadra": "svincolato",
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:43:04+00:00"
+  },
   "362990|marco varnier": {
     "combacia": false,
     "contratto_fino": "",
@@ -1646,7 +1669,8 @@
     "procuratore": "MMC Sports",
     "ruolo": "Difensore centrale",
     "squadra": "Goiás EC",
-    "verificato_il": "2026-08-26T19:55:47+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:40:01+00:00"
   },
   "379092|maxime giron": {
     "combacia": true,
@@ -1840,7 +1864,8 @@
     "procuratore": "",
     "ruolo": "Difensore centrale",
     "squadra": "Ritiro",
-    "verificato_il": "2026-08-26T16:44:17+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:24:53+00:00"
   },
   "433685|eetu vertainen": {
     "combacia": true,
@@ -1884,11 +1909,12 @@
     "procuratore": "AIS Football",
     "ruolo": "Difensore centrale",
     "squadra": "Rayo Vallecano",
-    "verificato_il": "2026-08-26T19:55:31+00:00"
+    "valore_eur": 2000000,
+    "verificato_il": "2026-08-27T08:39:44+00:00"
   },
   "466805|nico gonzalez": {
     "combacia": true,
-    "contratto_fino": "30/06/2029",
+    "contratto_fino": "",
     "data_nascita": "03/01/2002",
     "id_profilo": "466805",
     "motivo": "il profilo è di questa persona",
@@ -1897,8 +1923,9 @@
     "piede": "destro",
     "procuratore": "Gestifute",
     "ruolo": "Mediano",
-    "squadra": "Manchester City",
-    "verificato_il": "2026-08-26T17:13:31+00:00"
+    "squadra": "Newcastle United",
+    "valore_eur": 40000000,
+    "verificato_il": "2026-08-27T08:40:48+00:00"
   },
   "476100|pirola filippo": {
     "combacia": false,
@@ -1942,7 +1969,8 @@
     "procuratore": "GEA FIRST",
     "ruolo": "Ala sinistra",
     "squadra": "Juventus FC",
-    "verificato_il": "2026-08-26T17:13:35+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:40:54+00:00"
   },
   "486370|eric biasiol": {
     "combacia": false,
@@ -2061,7 +2089,8 @@
     "procuratore": "",
     "ruolo": "Portiere",
     "squadra": "FC Differdange 03",
-    "verificato_il": "2026-08-26T19:55:43+00:00"
+    "valore_eur": 25000,
+    "verificato_il": "2026-08-27T08:39:54+00:00"
   },
   "532353|nico gonzalez": {
     "combacia": true,
@@ -2075,7 +2104,8 @@
     "procuratore": "",
     "ruolo": "Ala destra",
     "squadra": "Ritiro",
-    "verificato_il": "2026-08-26T17:13:45+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:41:04+00:00"
   },
   "533738|chioetto jhonatan david": {
     "combacia": true,
@@ -2313,7 +2343,8 @@
     "procuratore": "PECBOL SPORTS",
     "ruolo": "Portiere",
     "squadra": "svincolato",
-    "verificato_il": "2026-08-26T19:55:52+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:40:05+00:00"
   },
   "590289|mattia mini": {
     "combacia": true,
@@ -2519,7 +2550,8 @@
     "procuratore": "DK",
     "ruolo": "Difensore centrale",
     "squadra": "Betim Futebol",
-    "verificato_il": "2026-08-26T17:10:45+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:37:32+00:00"
   },
   "667900|manuel llano": {
     "combacia": false,
@@ -2563,7 +2595,8 @@
     "procuratore": "",
     "ruolo": "Centrocampo",
     "squadra": "Ritiro",
-    "verificato_il": "2026-08-26T19:50:09+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:34:55+00:00"
   },
   "704505|pasquale riccardi": {
     "combacia": true,
@@ -2681,7 +2714,8 @@
     "procuratore": "",
     "ruolo": "Ala sinistra",
     "squadra": "Ritiro",
-    "verificato_il": "2026-08-26T17:13:51+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:41:07+00:00"
   },
   "729284|censi cristiano": {
     "combacia": true,
@@ -2860,7 +2894,8 @@
     "procuratore": "Anthem SSSM",
     "ruolo": "Seconda punta",
     "squadra": "Ritiro",
-    "verificato_il": "2026-08-26T17:13:40+00:00"
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:40:59+00:00"
   },
   "878337|tobias moriceau": {
     "combacia": true,
@@ -3011,6 +3046,21 @@
     "valore_eur": null,
     "verificato_il": "2026-08-26T20:28:17+00:00"
   },
+  "90853|aston villa": {
+    "combacia": false,
+    "contratto_fino": "",
+    "data_nascita": "22/01/1990",
+    "id_profilo": "90853",
+    "motivo": "il profilo è di 'Gastón Villarreal', non di 'Aston Villa'",
+    "nome_cercato": "Aston Villa",
+    "nome_sul_profilo": "Gastón Villarreal",
+    "piede": "destro",
+    "procuratore": "",
+    "ruolo": "Terzino destro",
+    "squadra": "Club Sportivo Villa Cubas",
+    "valore_eur": null,
+    "verificato_il": "2026-08-27T08:36:04+00:00"
+  },
   "930300|andrei anton": {
     "combacia": false,
     "contratto_fino": "",
@@ -3053,7 +3103,8 @@
     "procuratore": "GR Sports",
     "ruolo": "Ala destra",
     "squadra": "Ascoli Calcio",
-    "verificato_il": "2026-08-26T17:09:53+00:00"
+    "valore_eur": 1300000,
+    "verificato_il": "2026-08-27T08:34:50+00:00"
   },
   "934600|alessandro morlupo": {
     "combacia": false,
@@ -3173,6 +3224,21 @@
     "squadra": "AZ Picerno",
     "valore_eur": 75000,
     "verificato_il": "2026-08-26T20:15:45+00:00"
+  },
+  "978815|carmelo limonelli": {
+    "combacia": true,
+    "contratto_fino": "30/06/2028",
+    "data_nascita": "24/02/2003",
+    "id_profilo": "978815",
+    "motivo": "il profilo è di questa persona",
+    "nome_cercato": "Carmelo Limonelli",
+    "nome_sul_profilo": "Carmelo Limonelli",
+    "piede": "destro",
+    "procuratore": "Avv Claudio Parlato",
+    "ruolo": "Trequartista",
+    "squadra": "Spezia Calcio",
+    "valore_eur": 175000,
+    "verificato_il": "2026-08-27T08:33:54+00:00"
   },
   "98773|artur ionita": {
     "combacia": false,
