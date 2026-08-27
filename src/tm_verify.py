@@ -91,6 +91,13 @@ _RE_CONTRATTO = re.compile(
 _RE_RUOLO = re.compile(
     r"(?:Posizione|Position|Posición)\s*:\s*\[?([^\[\]\n*]{3,45})", re.IGNORECASE)
 _RE_PIEDE = re.compile(r"(?:Piede|Foot|Pie)\s*:\s*(\w+)", re.IGNORECASE)
+# "Valore attuale: [80,00 mln €](...)". Serve a una cosa sola, ed è la più
+# importante: dire se questa persona è un'opportunità di Serie C. Il gate che
+# lo decide (src/entity_gate.py, cap 5 mln) esisteva già ed era giusto — gli
+# arrivava un valore inventato da un modello, quindi quasi sempre None, quindi
+# non scattava mai. Con il numero letto dalla pagina torna a funzionare.
+_RE_VALORE = re.compile(
+    r"Valore attuale\s*:?\s*\[?\s*([\d.,]+)\s*(mln|mila|m|k)?\s*€", re.IGNORECASE)
 _RE_PROCURATORE = re.compile(
     r"(?:Procuratore|Agent|Agente)\s*:\s*\[([^\]]{2,45})\]", re.IGNORECASE)
 
@@ -117,7 +124,19 @@ class Verifica:
     ruolo: str = ""
     piede: str = ""
     procuratore: str = ""
+    valore_eur: Optional[int] = None
     verificato_il: str = ""
+
+    @property
+    def ritirato(self) -> bool:
+        """
+        Transfermarkt scrive "Ritiro" come squadra attuale di chi ha smesso.
+        Un ex calciatore non è un'opportunità di mercato: "Alessio Rosa, 41
+        anni, Ritiro" stava in dashboard come segnalazione a un direttore
+        sportivo, insieme a "Carburi Diego, 40, Ritiro".
+        """
+        return (self.squadra or "").strip().lower() in {
+            "ritiro", "carriera conclusa", "retired", "sin club activo"}
 
     def eta(self, oggi: Optional[datetime] = None) -> Optional[int]:
         """Età dalla data di nascita LETTA sul profilo. Mai stimata."""
@@ -187,6 +206,24 @@ def nomi_combaciano_forte(cercato: str, trovato: str) -> bool:
     return len(a & b) >= 2
 
 
+def _valore_in_euro(numero: str, unita: Optional[str]) -> Optional[int]:
+    """
+    "80,00" + "mln" -> 80000000. Formato italiano: il punto separa le
+    migliaia, la virgola i decimali.
+    """
+    testo = (numero or "").replace(".", "").replace(",", ".")
+    try:
+        n = float(testo)
+    except ValueError:
+        return None
+    u = (unita or "").lower()
+    if u in ("mln", "m"):
+        n *= 1_000_000
+    elif u in ("mila", "k"):
+        n *= 1_000
+    return int(n)
+
+
 def analizza(markdown: str, nome_cercato: str = "", id_profilo: str = "") -> Verifica:
     """
     Legge il markdown di Jina Reader. Puro: nessuna rete, testabile con una
@@ -208,6 +245,10 @@ def analizza(markdown: str, nome_cercato: str = "", id_profilo: str = "") -> Ver
         mm = rex.search(piatto)
         if mm:
             setattr(v, campo, mm.group(1).strip(" *: "))
+
+    mv = _RE_VALORE.search(piatto)
+    if mv:
+        v.valore_eur = _valore_in_euro(mv.group(1), mv.group(2))
 
     if not nome_cercato:
         v.motivo = "nessun nome da confrontare"
@@ -308,6 +349,20 @@ class VerificatoreTM:
             pass
 
     def _fresca(self, voce: dict) -> bool:
+        # Una voce scritta prima che leggessimo il valore di mercato è
+        # incompleta, non vecchia: la data direbbe "fresca" e continuerebbe a
+        # restituire un `valore_eur` assente per trenta giorni, cioè a tenere
+        # spento il gate "fuori fascia Serie C" proprio sui profili che
+        # abbiamo già in mano. Le si fa riaprire la pagina una volta sola.
+        if "valore_eur" not in voce:
+            return False
+        # Una voce senza nome sul profilo non è una verifica: è una lettura
+        # fallita che il codice, prima, salvava come se fosse un verdetto. Se
+        # la si tenesse per buona, quel non-verdetto continuerebbe a togliere
+        # un link buono a ogni run per trenta giorni — cioè il difetto
+        # sopravviverebbe alla sua stessa correzione.
+        if not voce.get("nome_sul_profilo"):
+            return False
         quando = voce.get("verificato_il") or ""
         try:
             t = datetime.fromisoformat(quando)
@@ -341,6 +396,23 @@ class VerificatoreTM:
             return None
 
         v = analizza(markdown, nome_cercato=nome, id_profilo=pid)
+        # Se dalla pagina non si è cavato nemmeno un nome, la verifica NON è
+        # avvenuta: la pagina può essere una schermata anti-bot, un errore
+        # temporaneo, un cambio di layout. `analizza` in quel caso torna
+        # combacia=False, che a valle si legge come "è un'altra persona" e fa
+        # RIMUOVERE il link.
+        #
+        # Visto il 26 ago 2026 rileggendo i 62 profili già verificati: tre
+        # link (Alessandro Cardascio, Jordan Boli, Miloš Bočić) sono stati
+        # tolti con motivazione «il profilo è di '', non di ...». Erano link
+        # buoni, buttati su un fallimento di lettura.
+        #
+        # È lo stesso principio che vale in tutto il resto del file, mancante
+        # proprio nel punto centrale: non lo so è diverso da non combacia. E
+        # non si mette in cache un esito che non è un esito.
+        if not v.nome_sul_profilo:
+            self.falliti += 1
+            return None
         self.aperti += 1
         if not v.combacia:
             self.smascherati += 1

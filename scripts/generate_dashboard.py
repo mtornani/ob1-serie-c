@@ -24,6 +24,7 @@ from minutaggio import genera_intel_badge
 from quality_gate import apply_gate, normalize_age
 from tm_url import clean as clean_tm_url
 from provenienza import solo_provato, campi_non_provati
+from entity_gate import classify, OUT_OF_SCOPE
 
 
 def _version_and_build() -> tuple:
@@ -241,6 +242,27 @@ def main():
         if non_provati:
             senza_prova += 1
         opp = solo_provato(opp)
+
+        # Poi: è davvero un'opportunità per un club di Serie C?
+        #
+        # `entity_gate.classify()` sa già rispondere — cap a 5 mln € — ma
+        # nessuno gliela chiedeva in fase di export: la dashboard leggeva solo
+        # un flag `out_of_scope` che nessun codice scriveva più. E il valore
+        # che avrebbe dovuto alimentare quel cap veniva da un modello, quindi
+        # era quasi sempre None, quindi il cap non scattava mai.
+        #
+        # Risultato visto in produzione il 26 ago 2026: in dashboard c'erano
+        # Nico Paz (Como, 80 mln), John Stones (Inter) e Simone Giordano
+        # (Eyüpspor) come "opportunità di Lega Pro", più Alessio Rosa (41
+        # anni) e Diego Carburi (40) che hanno smesso di giocare.
+        #
+        # Ora il valore lo legge la pagina (src/tm_verify.py) e la domanda si
+        # fa qui. Su un record senza profilo aperto il valore è None e il cap
+        # non scatta: non si scarta nessuno su un numero che nessuno ha letto.
+        verdetto = classify(opp)
+        if verdetto.kind == OUT_OF_SCOPE:
+            opp['out_of_scope'] = True
+            opp.setdefault('out_of_scope_reason', verdetto.reason)
 
         opp = apply_gate(opp)
         score_result = scorer.score(opp)
