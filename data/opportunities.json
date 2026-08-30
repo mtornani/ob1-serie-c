@@ -2837,7 +2837,31 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGHxwJNi3HqZZ0JGd-SIi8SpDGiWY1txHXgDW2xbVnsNbK_4WWYhOnqCLiT4nJbUaTtM9b3c6h1oMGeoWHtBQ8Rudrf68qWavS878VEnjZl1mnap6-bpAWM9n2nf_1_jHtL62lik2y7cdEYcLJh-U9tALq19hRyu1JDmyNrhcmPC2bTdBbHSBuQmQrAZu8Jma1ecWg",
     "discovered_at": "2026-07-29T08:48:40.531104",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Argentina",
+    "foot": "Right",
+    "market_value": 2500000,
+    "enrichment_source": "Enrichment:groq",
+    "market_value_formatted": "€2.5m",
+    "birth_date": "1986-09-16",
+    "contract_expires": "2025-06-30",
+    "tm_url": "https://www.transfermarkt.it/franco-armani/profil/spieler/119634",
+    "current_club": "Atlético Nacional",
+    "player_profile": {
+      "nationality": "Argentina",
+      "foot": "Right",
+      "market_value": 2500000,
+      "enrichment_source": "Enrichment:groq",
+      "market_value_formatted": "€2.5m",
+      "birth_date": "1986-09-16",
+      "contract_expires": "2025-06-30",
+      "tm_url": "https://www.transfermarkt.it/franco-armani/profil/spieler/119634",
+      "current_club": "Atlético Nacional"
+    },
+    "age": 40,
+    "role_name": "Goalkeeper",
+    "role": "Goalkeeper",
+    "tm_enriched": true
   },
   {
     "id": "8ee7958b61943e3c67d4fa9dc1ca3e59",
@@ -3021,7 +3045,13 @@
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFERzY0Ik41XjaS4mHECVAQyL869pHkJQOUhwDSfuT_jU4RSQ8xlLWXkM_E5DWbVxRoDMJMERLx5_lXyMflIO8i_g9mHddDTSOPpIonUaTwcaO2UQzzEG7aJysXmMLphBuxylC4MSr3gn_0EpavSmP550ExpVDdo8520FAY-PZTjU-hofvajJW483HF4FCdJPgGa5zvZwpH5xYOQRzUtpQYDbBr5PyDifrFuwBC0S5MEAwEWYk=",
     "discovered_at": "2026-07-04T08:46:59.884042",
     "league_id": "italy_serie_c_d",
-    "tm_enriched": false
+    "tm_enriched": true,
+    "enrichment_source": "Enrichment:groq",
+    "current_club": "| Costo |",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "current_club": "| Costo |"
+    }
   },
   {
     "id": "c1b199fca80b106b1fe2577f62a0b98c",
@@ -3055,7 +3085,14 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGHxwJNi3HqZZ0JGd-SIi8SpDGiWY1txHXgDW2xbVnsNbK_4WWYhOnqCLiT4nJbUaTtM9b3c6h1oMGeoWHtBQ8Rudrf68qWavS878VEnjZl1mnap6-bpAWM9n2nf_1_jHtL62lik2y7cdEYcLJh-U9tALq19hRyu1JDmyNrhcmPC2bTdBbHSBuQmQrAZu8Jma1ecWg",
     "discovered_at": "2026-07-29T08:48:40.531469",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "current_club": ", competizione ecc.",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "current_club": ", competizione ecc."
+    },
+    "tm_enriched": true
   },
   {
     "id": "4da53d9f9f806bdcd0fa076f40130fa7",
@@ -3172,7 +3209,14 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGHxwJNi3HqZZ0JGd-SIi8SpDGiWY1txHXgDW2xbVnsNbK_4WWYhOnqCLiT4nJbUaTtM9b3c6h1oMGeoWHtBQ8Rudrf68qWavS878VEnjZl1mnap6-bpAWM9n2nf_1_jHtL62lik2y7cdEYcLJh-U9tALq19hRyu1JDmyNrhcmPC2bTdBbHSBuQmQrAZu8Jma1ecWg",
     "discovered_at": "2026-07-29T08:48:40.531611",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "current_club": ", competizione ecc.",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "current_club": ", competizione ecc."
+    },
+    "tm_enriched": true
   },
   {
     "id": "52d8f3d7a2b0d34c33439d6d8cbd0b11",
@@ -3184,7 +3228,14 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGHxwJNi3HqZZ0JGd-SIi8SpDGiWY1txHXgDW2xbVnsNbK_4WWYhOnqCLiT4nJbUaTtM9b3c6h1oMGeoWHtBQ8Rudrf68qWavS878VEnjZl1mnap6-bpAWM9n2nf_1_jHtL62lik2y7cdEYcLJh-U9tALq19hRyu1JDmyNrhcmPC2bTdBbHSBuQmQrAZu8Jma1ecWg",
     "discovered_at": "2026-07-29T08:48:40.531744",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "current_club": ", competizione ecc.",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "current_club": ", competizione ecc."
+    },
+    "tm_enriched": true
   },
   {
     "id": "1398f02ae6531cfba7002bee3814df75",
@@ -3256,7 +3307,18 @@
     "source_name": "www.calciomercato.com",
     "source_url": "https://www.calciomercato.com/liste/cuadrado-fischiato-dai-tifosi-della-juventus-il-motivo-e-i-precedenti/blt71f4adddb6c4d477",
     "discovered_at": "2026-08-01T03:23:03.928854",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "market_value": 22000000,
+    "enrichment_source": "Enrichment:groq",
+    "market_value_formatted": "22,00 mln €",
+    "player_profile": {
+      "market_value": 22000000,
+      "enrichment_source": "Enrichment:groq",
+      "market_value_formatted": "22,00 mln €"
+    },
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "ace398a0f520ec41eaff14959441b75b",
@@ -3470,7 +3532,13 @@
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFERzY0Ik41XjaS4mHECVAQyL869pHkJQOUhwDSfuT_jU4RSQ8xlLWXkM_E5DWbVxRoDMJMERLx5_lXyMflIO8i_g9mHddDTSOPpIonUaTwcaO2UQzzEG7aJysXmMLphBuxylC4MSr3gn_0EpavSmP550ExpVDdo8520FAY-PZTjU-hofvajJW483HF4FCdJPgGa5zvZwpH5xYOQRzUtpQYDbBr5PyDifrFuwBC0S5MEAwEWYk=",
     "discovered_at": "2026-07-04T08:46:59.884131",
     "league_id": "italy_serie_c_d",
-    "tm_enriched": false
+    "tm_enriched": true,
+    "enrichment_source": "Enrichment:groq",
+    "current_club": ", competizione ecc.",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "current_club": ", competizione ecc."
+    }
   },
   {
     "id": "4509ef86edf49d73df905b7257095d30",
@@ -17308,7 +17376,19 @@
     "source_name": "www.calciomercato.com",
     "source_url": "https://www.calciomercato.com/liste/serie-c-2026-2027-e-il-giorno-della-compilazione-dei-calendari-esordio-a-catania-per-l-inter-under-23-contro-chi-giocano-juventus-next-gen-e-atalanta-under-23/blt64478e908ee9e2e4",
     "discovered_at": "2026-08-08T07:00:16.950751",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "market_value": 300000,
+    "enrichment_source": "Enrichment:groq",
+    "market_value_formatted": "300 mila €",
+    "birth_date": "2005-01-01",
+    "player_profile": {
+      "market_value": 300000,
+      "enrichment_source": "Enrichment:groq",
+      "market_value_formatted": "300 mila €",
+      "birth_date": "2005-01-01"
+    },
+    "age": 21,
+    "tm_enriched": true
   },
   {
     "id": "17f6a6a2a08e9ec27b224c4a2610799d",
@@ -17686,6 +17766,54 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/calciomercato/catania-christian-torre-napoli-20-luglio-2026-456503",
     "discovered_at": "2026-08-12T13:17:53.058067",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "9eda98f119efe4ccc52cfad8e1a30035",
+    "player_name": "Ciro Loreto",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "In definizione per l'arrivo al Sorrento dalla Cavese",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444418",
+    "discovered_at": "2026-08-30T11:42:12.423970",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "b712709b4f00638acf0e1f6fe9783253",
+    "player_name": "Adin Licina",
+    "region": "ITALY",
+    "opportunity_type": "prestito",
+    "description": "In prestito alla Cremonese per la stagione 2026/27",
+    "ob1_score": 62,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444415",
+    "discovered_at": "2026-08-30T11:42:12.424228",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "106e09f0e820534771275e2ba74235d9",
+    "player_name": "Ali Camara",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Arrivo in Juventus Next Gen, classe 2008, provenienza dal Genk",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444414",
+    "discovered_at": "2026-08-30T11:42:12.424347",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "de25ad8825897fe17f2eaac6c4fc9c99",
+    "player_name": "Mattia Rizzo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Acquisito a titolo definitivo dal FC Zurigo, contratto fino al 2028",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444405",
+    "discovered_at": "2026-08-30T11:42:12.424455",
     "league_id": "italy_serie_c_d"
   }
 ]
