@@ -52,6 +52,16 @@ task_classes:
 
 providers:
   # --- Volume alto, token/giorno generosi: cavalli da soma dell'extract ---
+  #
+  # SPENTO PER SCELTA, non per dimenticanza: CEREBRAS_API_KEY non e'
+  # impostata e non lo sara' (decisione del 30 ago 2026). Su OB1 Global,
+  # con la chiave, Cerebras rispondeva HTTP 402 "payment required" su ogni
+  # modello senza una carta registrata: sarebbe una rotta che sembra
+  # disponibile e non lo e'. La configurazione resta qui perche' i limiti
+  # e i nomi dei modelli sono corretti e servirebbero subito il giorno in
+  # cui si decidesse di pagarlo — ma NON contarci come riserva: senza
+  # chiave il registry non costruisce nemmeno la rotta (src/llm/registry.py,
+  # _build_routes salta in silenzio i provider senza chiave reale).
   - id: cerebras
     base_url: https://api.cerebras.ai/v1
     api_key_env: CEREBRAS_API_KEY
@@ -229,6 +239,15 @@ providers:
         priority: 56
 
   # --- Gemini: da PRIMARIO a ultima spiaggia. Zero grounding (è quello che costa) ---
+  #
+  # SPENTO PER SCELTA: GEMINI_API_KEY non e' impostata e non lo sara'
+  # (decisione del 30 ago 2026). Con il billing attivo Gemini FATTURA oltre
+  # il free tier, ed e' il motivo per cui era gia' stato retrocesso da
+  # primario a ultima spiaggia. Tenere la chiave fuori e' il modo piu'
+  # semplice di garantire che una giornata storta sulle rotte gratuite non
+  # si trasformi in una bolletta: priority 80/85 lo mette dopo tutti, ma
+  # "dopo tutti" e' esattamente dove si finisce quando le altre cadono.
+  # Se un giorno la si aggiunge, rivedere prima i limiti qui sotto.
   - id: gemini
     base_url: https://generativelanguage.googleapis.com/v1beta/openai
     api_key_env: GEMINI_API_KEY
