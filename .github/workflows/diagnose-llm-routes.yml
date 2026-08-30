@@ -1,0 +1,49 @@
+name: OB1 Lega Pro - Stato rotte LLM (manuale)
+
+# Chiede a ogni provider il proprio catalogo modelli e prova ogni rotta
+# configurata. Serve a sostituire un modello morto leggendo il catalogo vero
+# invece di indovinare il nome — l'errore che ha gia' bruciato due giri in
+# PR #48/#49. Vedi scripts/diagnose_llm_routes.py per il ragionamento.
+#
+# Qui TUTTE le chiavi vanno passate: al contrario di test-compare-model.yml
+# (dove l'isolamento e' lo scopo), qui vogliamo sapere di ogni rotta se e'
+# viva, non farne funzionare una sola.
+#
+# Nessuna scrittura: nessun database, nessun feed, nessun seen-store. Le
+# prove sono da poche decine di token per non erodere il free tier.
+# Solo workflow_dispatch: e' una diagnosi da lanciare quando una rotta cade,
+# non un secondo cron da mantenere.
+on:
+  workflow_dispatch:
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Stato reale di ogni rotta configurata
+        env:
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          COMPARE_BASE_URL: ${{ vars.COMPARE_BASE_URL }}
+          COMPARE_API_KEY: ${{ secrets.COMPARE_API_KEY }}
+          COMPARE_MODEL: ${{ vars.COMPARE_MODEL }}
+        run: python scripts/diagnose_llm_routes.py
