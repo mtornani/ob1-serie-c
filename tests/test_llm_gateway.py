@@ -413,6 +413,33 @@ class TestRegistry(GatewayTestCase):
         self.assertEqual(len(routes), 1)  # nessuna chiave richiesta
         self.assertEqual(routes[0].model, "qwen-local")
         self.assertEqual(routes[0].base_url, "http://localhost:20128/v1")
+        self.assertEqual(routes[0].api_key, "local")  # endpoint davvero senza chiave
+
+    def test_env_driven_provider_uses_a_real_key_even_if_short(self):
+        """
+        Trovato dal vivo il 30 ago 2026 (Ollama Cloud): una chiave VERA ma
+        sotto i 16 caratteri (o con un prefisso che _real_keys tratta da
+        placeholder) veniva scartata e sostituita in silenzio con "local" —
+        l'API remota la rifiutava con 401, senza che nessun log dicesse
+        perché. requires_key: false vuol dire "l'endpoint può fare a meno di
+        una chiave", non "ignora quella che gli hai dato".
+        """
+        cfg = {"version": 1, "task_classes": {"extract": {"min_tier": "small"}},
+               "providers": [{"id": "compare", "base_url_env": "TEST_COMPARE_URL",
+                              "api_key_env": "TEST_COMPARE_KEY", "requires_key": False,
+                              "limits": {}, "models": [{"name": "local-model",
+                                                        "name_env": "TEST_COMPARE_MODEL",
+                                                        "tier": "frontier",
+                                                        "tasks": ["extract"]}]}]}
+        os.environ["TEST_COMPARE_URL"] = "https://ollama.com/v1"
+        os.environ["TEST_COMPARE_MODEL"] = "gpt-oss:20b"
+        os.environ["TEST_COMPARE_KEY"] = "corta"  # 5 caratteri: sotto la soglia dei 16
+        self.addCleanup(lambda: os.environ.pop("TEST_COMPARE_URL", None))
+        self.addCleanup(lambda: os.environ.pop("TEST_COMPARE_MODEL", None))
+        self.addCleanup(lambda: os.environ.pop("TEST_COMPARE_KEY", None))
+        routes = Registry(cfg).routes
+        self.assertEqual(len(routes), 1)
+        self.assertEqual(routes[0].api_key, "corta")  # non "local"
 
     def test_provider_can_be_excluded_from_routing(self):
         reg = Registry(CONFIG)

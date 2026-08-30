@@ -106,9 +106,25 @@ class Registry:
                 base_url = (os.getenv(prov["base_url_env"]) or "").strip() or base_url
             if not base_url:
                 continue
-            keys = _real_keys(prov.get("api_key_env", ""))
+            api_key_env = prov.get("api_key_env", "")
+            keys = _real_keys(api_key_env)
             if not keys and prov.get("requires_key", True) is False:
-                keys = ["local"]  # endpoint senza autenticazione
+                # _real_keys() scarta chiavi sotto i 16 caratteri o con un
+                # prefisso-placeholder: euristica tarata sui provider che LA
+                # RICHIEDONO (dove una stringa corta è quasi certo un
+                # "your_api_key_here" dimenticato). Per un endpoint che non
+                # la richiede questa stessa euristica è troppo aggressiva —
+                # un formato di chiave più corto (es. Ollama Cloud) veniva
+                # scartato e sostituito in silenzio con "local", che l'API
+                # remota rifiuta con un 401 senza mai spiegare perché.
+                # Trovato dal vivo il 30 ago 2026: chiave reale impostata,
+                # None dei due modelli testati ha mai superato l'autenticazione.
+                #
+                # "local" resta il fallback SOLO quando la variabile non è
+                # affatto impostata — quello sì è un endpoint locale senza
+                # autenticazione (Ollama/LM Studio in loopback).
+                raw = (os.getenv(api_key_env) or "").strip() if api_key_env else ""
+                keys = [raw] if raw else ["local"]
             if not keys:
                 continue  # provider non configurato: si salta in silenzio
             limits = prov.get("limits") or {}
