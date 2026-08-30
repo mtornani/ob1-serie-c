@@ -122,8 +122,14 @@ def probe_model(base_url: str, api_key: str, model: str, json_mode: bool,
     }
     if json_mode:
         payload["response_format"] = {"type": "json_object"}
+        # La parola "json" deve comparire alla lettera nel messaggio: Groq
+        # rifiuta con 400 ("'messages' must contain the word 'json' in some
+        # form") se chiedi response_format json_object senza nominarlo. Un
+        # esempio di oggetto JSON non basta — e senza questa riga la prova
+        # dava per morta la rotta che in produzione fa il grosso del lavoro.
         payload["messages"] = [{"role": "user",
-                                "content": PROBE_PROMPT + ' (formato: {"esito":"ok"})'}]
+                                "content": PROBE_PROMPT +
+                                ' — rispondi in json: {"esito":"ok"}'}]
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
