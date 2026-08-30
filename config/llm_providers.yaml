@@ -86,14 +86,22 @@ providers:
       tpm: 12000
       tpd: 90000
     models:
-      - name: llama-3.3-70b-versatile
+      # llama-3.3-70b-versatile RITIRATO da Groq (19 ago 2026, stessa data e
+      # stesso identico HTTP 404 già diagnosticato in OB1 Global — vedi
+      # ob1-scout PR #41/#43). Qui non era mai stato aggiornato: ogni run di
+      # triage falliva su questa rotta (priority 10, la prima tentata),
+      # buttando via i 162 articoli/run che le fonti RSS portano in ingresso.
+      # gpt-oss-120b è il rimpiazzo verificato in produzione su Global da
+      # settimane (non indovinato: misurato sul catalogo Groq reale).
+      - name: openai/gpt-oss-120b
         tier: mid
         context: 128000
         json_mode: true
         tasks: [triage, extract]
         priority: 10
-        # TPM stretto: prompt lunghi vanno altrove
-        max_input_chars: 12000
+        # TPM piu' stretto del modello precedente (~8k contro ~12k, vedi
+        # ob1-scout scripts/ingest_v2.py per la misura): prompt piu' corti.
+        max_input_chars: 8000
 
   - id: mistral
     base_url: https://api.mistral.ai/v1
@@ -139,6 +147,17 @@ providers:
         json_mode: true
         tasks: [reason, extract]
         priority: 35
+      # RITIRATO dal tier free di OpenRouter (stesso schema di Cerebras/Groq
+      # altrove): torna HTTP 404 "unavailable for free" a ogni chiamata.
+      # Priorita' 40 (dopo groq/cerebras/mistral) lo rende poco costoso da
+      # tenere finche' non si trova un sostituto verificato: il gateway lo
+      # segna morto dopo fail_streak_limit e lo salta per il resto della run
+      # (vedi log reale del 30 ago 2026), non lo ritenta a ogni articolo.
+      # NON sostituito con un modello indovinato dal catalogo free attuale:
+      # stesso principio gia' applicato in OB1 Global (PR #43) — un nome
+      # sbagliato qui ripete esattamente questo errore con un'etichetta
+      # diversa. Verificare sulla lista modelli pubblica di OpenRouter prima
+      # di cambiare.
       - name: meta-llama/llama-3.3-70b-instruct:free
         tier: mid
         context: 128000
