@@ -1,29 +1,51 @@
 {
   "buckets": {
     "groq:llama-3.3-70b-versatile:0": {
-      "cooldown_until": "2026-08-29T21:41:54.039349+00:00",
-      "day": "2026-08-29",
-      "fail_streak": 47,
-      "last_error_at": "2026-08-29T20:41:54.038664+00:00",
+      "cooldown_until": "2026-08-30T05:36:21.021794+00:00",
+      "day": "2026-08-30",
+      "fail_streak": 48,
+      "last_error_at": "2026-08-30T04:36:21.021268+00:00",
       "last_ok": "2026-08-17T07:02:11.348258+00:00",
-      "minute": "2026-08-29T20:41",
-      "rpd": 3,
+      "minute": "2026-08-30T04:36",
+      "rpd": 1,
+      "rpm": 1,
+      "tpd": 0,
+      "tpm": 0
+    },
+    "openrouter:deepseek/deepseek-v3.2:free:0": {
+      "cooldown_until": "2026-08-30T04:37:41.360886+00:00",
+      "day": "2026-08-30",
+      "fail_streak": 1,
+      "last_error_at": "2026-08-30T04:36:41.360886+00:00",
+      "minute": "2026-08-30T04:36",
+      "rpd": 1,
       "rpm": 1,
       "tpd": 0,
       "tpm": 0
     },
     "openrouter:meta-llama/llama-3.3-70b-instruct:free:0": {
-      "cooldown_until": "2026-08-29T21:41:57.301078+00:00",
-      "day": "2026-08-29",
-      "fail_streak": 82,
-      "last_error_at": "2026-08-29T20:41:57.300632+00:00",
-      "minute": "2026-08-29T20:41",
-      "rpd": 3,
+      "cooldown_until": "2026-08-30T05:36:21.190091+00:00",
+      "day": "2026-08-30",
+      "fail_streak": 83,
+      "last_error_at": "2026-08-30T04:36:21.189633+00:00",
+      "minute": "2026-08-30T04:36",
+      "rpd": 1,
+      "rpm": 1,
+      "tpd": 0,
+      "tpm": 0
+    },
+    "openrouter:qwen/qwen3-235b-a22b:free:0": {
+      "cooldown_until": "2026-08-30T04:37:41.440803+00:00",
+      "day": "2026-08-30",
+      "fail_streak": 1,
+      "last_error_at": "2026-08-30T04:36:41.440803+00:00",
+      "minute": "2026-08-30T04:36",
+      "rpd": 1,
       "rpm": 1,
       "tpd": 0,
       "tpm": 0
     }
   },
-  "updated_at": "2026-08-29T20:41:57.301097+00:00",
+  "updated_at": "2026-08-30T04:36:41.441022+00:00",
   "version": 1
 }
