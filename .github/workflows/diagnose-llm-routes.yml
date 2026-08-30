@@ -15,6 +15,11 @@ name: OB1 Lega Pro - Stato rotte LLM (manuale)
 # non un secondo cron da mantenere.
 on:
   workflow_dispatch:
+    inputs:
+      candidati:
+        description: 'Modelli da provare senza metterli in config: "provider=modello,provider=modello"'
+        required: false
+        default: ""
 
 jobs:
   diagnose:
@@ -46,4 +51,5 @@ jobs:
           COMPARE_BASE_URL: ${{ vars.COMPARE_BASE_URL }}
           COMPARE_API_KEY: ${{ secrets.COMPARE_API_KEY }}
           COMPARE_MODEL: ${{ vars.COMPARE_MODEL }}
+          OB1_PROBE_EXTRA: ${{ github.event.inputs.candidati }}
         run: python scripts/diagnose_llm_routes.py

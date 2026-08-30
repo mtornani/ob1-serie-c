@@ -50,9 +50,21 @@ from src.llm.registry import Registry, Route  # noqa: E402
 
 # Prova volutamente minima: verifica che la rotta risponda, non che ragioni.
 PROBE_PROMPT = "Rispondi con la sola parola: ok"
-PROBE_MAX_TOKENS = 8
-PROBE_TIMEOUT_S = 45
+# 8 token sembravano abbondanti per una risposta di una parola, e hanno fatto
+# risultare morte due rotte che in produzione servivano decine di chiamate
+# (groq/gpt-oss-120b e compare/gpt-oss:20b, run del 30 ago 2026). I modelli
+# reasoning spendono token in ragionamento PRIMA del contenuto: con un tetto
+# basso il budget finisce lì e `content` torna vuoto. La rotta è viva, è la
+# misura a essere sbagliata — e una misura che condanna chi funziona è peggio
+# che nessuna misura. Il costo di 512 token su una prova manuale è irrilevante
+# rispetto al free tier che stiamo cercando di proteggere.
+PROBE_MAX_TOKENS = 512
+PROBE_TIMEOUT_S = 60
 CATALOG_TIMEOUT_S = 30
+# Gli errori utili sono lunghi: OpenRouter, quando un modello esce dal tier
+# free, risponde "use this slug instead: <nome>" — cioè il rimpiazzo esatto,
+# che a 120 caratteri veniva troncato via proprio mentre lo cercavamo.
+ERR_SNIPPET = 400
 
 
 def _mask(key: str) -> str:
@@ -94,37 +106,58 @@ def fetch_catalog(base_url: str, api_key: str,
     return sorted(ids), f"{len(ids)} modelli"
 
 
-def probe_route(route: Route) -> Tuple[bool, str, float]:
-    """Una chiamata vera sulla rotta. Ritorna (ok, dettaglio, secondi)."""
-    payload = {
-        "model": route.model,
+def probe_model(base_url: str, api_key: str, model: str, json_mode: bool,
+                extra_headers: Dict[str, str]) -> Tuple[bool, str, float]:
+    """
+    Una chiamata vera. Ritorna (ok, dettaglio, secondi).
+
+    `json_mode` replica quello che il gateway fa in produzione: un modello che
+    non supporta response_format va saputo QUI, non al primo run del cron.
+    """
+    payload: Dict[str, object] = {
+        "model": model,
         "temperature": 0.0,
         "max_tokens": PROBE_MAX_TOKENS,
         "messages": [{"role": "user", "content": PROBE_PROMPT}],
     }
+    if json_mode:
+        payload["response_format"] = {"type": "json_object"}
+        payload["messages"] = [{"role": "user",
+                                "content": PROBE_PROMPT + ' (formato: {"esito":"ok"})'}]
     headers = {
-        "Authorization": f"Bearer {route.api_key}",
+        "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
     }
-    headers.update(route.extra_headers)
+    headers.update(extra_headers)
     t0 = time.time()
     try:
-        r = requests.post(f"{route.base_url}/chat/completions", headers=headers,
+        r = requests.post(f"{base_url}/chat/completions", headers=headers,
                           json=payload, timeout=PROBE_TIMEOUT_S)
     except Exception as e:
         return False, f"trasporto: {type(e).__name__}", time.time() - t0
     dt = time.time() - t0
     if r.status_code != 200:
-        return False, f"HTTP {r.status_code}: {r.text[:120]}", dt
+        return False, f"HTTP {r.status_code}: {r.text[:ERR_SNIPPET]}", dt
     try:
-        content = r.json()["choices"][0]["message"]["content"]
+        msg = r.json()["choices"][0]["message"]
     except Exception:
-        return False, f"risposta illeggibile: {r.text[:120]}", dt
-    if not (content or "").strip():
-        # Non è un errore di trasporto ma in produzione conta come fallimento:
-        # il gateway la tratta come "risposta vuota" e mette la rotta in cooldown.
-        return False, "risposta vuota (200 ma nessun contenuto)", dt
-    return True, (content or "").strip()[:40], dt
+        return False, f"risposta illeggibile: {r.text[:ERR_SNIPPET]}", dt
+    content = (msg.get("content") or "").strip()
+    if content:
+        return True, content[:60].replace("\n", " "), dt
+    # Contenuto vuoto ma ragionamento presente: il modello ha risposto, il
+    # tetto di token è finito prima del testo finale. È un limite della prova,
+    # non della rotta — distinguerlo evita di condannare un modello che in
+    # produzione (con max_tokens veri) funziona benissimo.
+    reasoning = (msg.get("reasoning_content") or msg.get("reasoning") or "")
+    if str(reasoning).strip():
+        return True, "(solo reasoning: rotta viva, tetto token della prova)", dt
+    return False, "risposta vuota (200 ma nessun contenuto)", dt
+
+
+def probe_route(route: Route) -> Tuple[bool, str, float]:
+    return probe_model(route.base_url, route.api_key, route.model,
+                       route.json_mode, route.extra_headers)
 
 
 def main() -> int:
@@ -194,7 +227,41 @@ def main() -> int:
         for r in vive:
             print(f"      · {r.provider}/{r.model} (priority {r.priority})")
 
+    probe_candidates(per_provider)
     return 0
+
+
+def probe_candidates(per_provider: Dict[str, List[Route]]) -> None:
+    """
+    Prova modelli NON ancora in config, riusando la chiave del loro provider.
+
+    Serve a scegliere un rimpiazzo avendolo visto rispondere, invece di
+    metterlo in config e scoprire al prossimo cron che era sbagliato — che è
+    esattamente come sono nati i 404 di groq, openrouter e nvidia.
+
+    Formato: OB1_PROBE_EXTRA="provider=modello,provider=modello"
+    """
+    raw = (os.getenv("OB1_PROBE_EXTRA") or "").strip()
+    if not raw:
+        return
+    print("\n=== candidati (non in config) ===")
+    for chunk in raw.split(","):
+        if "=" not in chunk:
+            continue
+        provider, _, model = chunk.strip().partition("=")
+        provider, model = provider.strip(), model.strip()
+        routes = per_provider.get(provider)
+        if not routes:
+            print(f"  ??  {provider}: provider sconosciuto o senza chiave")
+            continue
+        ref = routes[0]
+        # json_mode acceso: è come lo userebbe la pipeline, e un modello che
+        # non lo supporta va scartato adesso, non in produzione.
+        ok, dettaglio, dt = probe_model(ref.base_url, ref.api_key, model,
+                                        json_mode=True,
+                                        extra_headers=ref.extra_headers)
+        print(f"  {'OK ' if ok else 'KO '} {provider}/{model} ({dt:.1f}s)")
+        print(f"       -> {dettaglio}")
 
 
 if __name__ == "__main__":
