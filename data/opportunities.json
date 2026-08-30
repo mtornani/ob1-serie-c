@@ -3603,7 +3603,13 @@
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFERzY0Ik41XjaS4mHECVAQyL869pHkJQOUhwDSfuT_jU4RSQ8xlLWXkM_E5DWbVxRoDMJMERLx5_lXyMflIO8i_g9mHddDTSOPpIonUaTwcaO2UQzzEG7aJysXmMLphBuxylC4MSr3gn_0EpavSmP550ExpVDdo8520FAY-PZTjU-hofvajJW483HF4FCdJPgGa5zvZwpH5xYOQRzUtpQYDbBr5PyDifrFuwBC0S5MEAwEWYk=",
     "discovered_at": "2026-07-04T08:46:59.884220",
     "league_id": "italy_serie_c_d",
-    "tm_enriched": false
+    "tm_enriched": true,
+    "enrichment_source": "Enrichment:groq",
+    "current_club": ", competizione ecc.",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "current_club": ", competizione ecc."
+    }
   },
   {
     "id": "aaf9eae4575916296dc58c3c474b10fd",
@@ -3823,7 +3829,15 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEVJ0JEMIwbNIOxQ9oDIt2PlDCMKzvjJcMHW4XTSEENs8mDqTG460t0bxq5xifIaezh3UrGyOvuMKWiBl8FkKIDq-Y3o_rOPdzDESxKdKvk1xFPQ0skHF0k6IV_qx0HLpqtdXYWM2cbtc-9fwjm6uDgaak5GGdCwbHw6jVpC08fDSE3H8Mjd9bY1A-3pnM=",
     "discovered_at": "2026-07-01T10:00:16.878205",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "birth_date": "1989-01-01",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "birth_date": "1989-01-01"
+    },
+    "age": 37,
+    "tm_enriched": true
   },
   {
     "id": "26ea32916e5c9ad119b29009e644986f",
@@ -4378,7 +4392,19 @@
     "source_name": "www.crlombardia.it",
     "source_url": "https://www.crlombardia.it/storage/uploads/files/31447/68d713028da72_Regolamenti%20C.R.%20Lombardia%2025_26%20SGS%20Campionato.pdf",
     "discovered_at": "2026-07-01T04:18:43.516735",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italy",
+    "enrichment_source": "Enrichment:groq",
+    "birth_date": "1969-10-22",
+    "current_club": "e ruolo | In carica da | fino al | Partite | PPP |",
+    "player_profile": {
+      "nationality": "Italy",
+      "enrichment_source": "Enrichment:groq",
+      "birth_date": "1969-10-22",
+      "current_club": "e ruolo | In carica da | fino al | Partite | PPP |"
+    },
+    "age": 57,
+    "tm_enriched": true
   },
   {
     "id": "b1bbbf89fa475c0bfb1263293391835c",
@@ -17872,15 +17898,190 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "b712709b4f00638acf0e1f6fe9783253",
-    "player_name": "Adin Licina",
+    "id": "bd4dc5fb1fcda8d9c071745b6c641d48",
+    "player_name": "Giovanni Volpe",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Acquisto definitivo da Catanzaro da Audace Cerignola",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444437",
+    "discovered_at": "2026-08-30T16:23:12.137213",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "c8aa395390eaa395c61e8d5319317a64",
+    "player_name": "Kevin Varas",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Possibile uscita dal Padova per mancato rinnovo",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444434",
+    "discovered_at": "2026-08-30T16:23:12.137534",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d7ea47a13cf68f17e7930e88753f7e98",
+    "player_name": "Orhan Džepar",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Centrocampista olandese Orhan Džepar in arrivo al Cosenza",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444433",
+    "discovered_at": "2026-08-30T16:23:12.137685",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "f9aaece9c2be28334b35e0a5db22912a",
+    "player_name": "Vincenzo Fiorillo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Vincenzo Fiorillo quasi ingaggiato dal Pescara",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444431",
+    "discovered_at": "2026-08-30T16:23:12.137823",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "b7d0d8b07505451fff2ad3ad884042c9",
+    "player_name": "Andrea Santarcagelo",
     "region": "ITALY",
     "opportunity_type": "prestito",
-    "description": "Licina in prestito alla Cremonese",
+    "description": "Andrea Santarcagelo ceduto in prestito alla Folgore Caratese",
     "ob1_score": 62,
     "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444415",
-    "discovered_at": "2026-08-30T12:37:27.405575",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444430",
+    "discovered_at": "2026-08-30T16:23:12.137983",
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/andrea-santarcangelo/profil/spieler/818422",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/andrea-santarcangelo/profil/spieler/818422"
+    },
+    "tm_enriched": false
+  },
+  {
+    "id": "f299138f2e8d6a688f8bb1c0ffa350d6",
+    "player_name": "Antonio Di Nardo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Arrivo in Campania con Juve Stabia",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457857",
+    "discovered_at": "2026-08-30T16:23:12.138386",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "29c79aa03ff554b7626c4c807ba2837f",
+    "player_name": "Simone Rabbi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ravenna ha già confermato l’arrivo di Simone Rabbi",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457849",
+    "discovered_at": "2026-08-30T16:23:12.138517",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "5bb99601ea367eaccf32a64906a460fc",
+    "player_name": "Filippo Bandinelli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Bandinelli è vicino al trasferimento all'Empoli",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457852",
+    "discovered_at": "2026-08-30T16:23:12.138648",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "5092b33815e70e057f301a58cd27ccd5",
+    "player_name": "Ciro Loreto",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Trattativa avanzata per Ciro Loreto",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457847",
+    "discovered_at": "2026-08-30T16:23:12.138774",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "5dd91679269302bde54d44ecd43bd726",
+    "player_name": "Marco Zaffaroni",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Partita di apertura per Marco Zaffaroni",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457832",
+    "discovered_at": "2026-08-30T16:23:12.138937",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "7dffa93739e4543b988b7c7234c92631",
+    "player_name": "Rafael Leao",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Transfer to Galatasaray",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/08/28/live-calciomercato-tutte-le-notizie-di-venerdi-28-agosto-galatasaray-lalternativa-a-leao-e-lang-njie-ce-anche-la-fiorentina/",
+    "discovered_at": "2026-08-30T16:23:12.139082",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "92220600c6acc9b342c8bec0daf4f672",
+    "player_name": "Gonçalo Ramos",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Sbloccato, pronto a giocare per il Milan",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/08/28/serie-a-il-milan-vince-ancora-si-sblocca-goncalo-ramos/",
+    "discovered_at": "2026-08-30T16:23:12.139215",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "30dd631d2091aece8d9a49b038ea44a5",
+    "player_name": "Rafael Leão",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Scelta tra Galatasaray e Premier League",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/08/28/leao-il-bivio-tra-galatasaray-e-premier-league-il-futuro-e-adesso/",
+    "discovered_at": "2026-08-30T16:23:12.139347",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ee14f9c91056697cec71d98112e91afe",
+    "player_name": "Moise Kean",
+    "region": "ITALY",
+    "opportunity_type": "prestito",
+    "description": "Trattative per trasferimento al Como",
+    "ob1_score": 60,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/08/28/live-calciomercato-tutte-le-notizie-di-giovedi-27-agosto-monza-doppio-colpo-dal-napoli-leao-e-lotta-galatasaray-aston-villa/",
+    "discovered_at": "2026-08-30T16:23:12.139476",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "f7fa7d0f550a4adc9dba617d00d002f3",
+    "player_name": "Noah Zirkzee",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Fiorentina sotto assedio per Zirkzee",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/08/28/live-calciomercato-tutte-le-notizie-di-giovedi-27-agosto-monza-doppio-colpo-dal-napoli-leao-e-lotta-galatasaray-aston-villa/",
+    "discovered_at": "2026-08-30T16:23:12.139602",
     "league_id": "italy_serie_c_d"
   }
 ]
