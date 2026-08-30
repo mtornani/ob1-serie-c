@@ -361,6 +361,22 @@ class TestRegistry(GatewayTestCase):
                 self.assertTrue(prov.get("base_url", "").startswith("https://"),
                                 f"{prov['id']}: base_url non https")
 
+    def test_nvidia_covers_triage_when_key_is_set(self):
+        """
+        Aggiunto il 30 ago 2026: con Groq rate-limited (429, verificato su un
+        run reale) e Cerebras/Mistral senza chiave in questo repo, NVIDIA era
+        l'unico altro provider con un secret già reale ma escluso dal task
+        'triage' — la classe di task che stava fallendo. Un modello frontier
+        per un compito 'nano' non deve essere escluso dal floor di tier: solo
+        chi sta SOTTO il minimo richiesto lo è (vedi TIER_ORDER in registry.py).
+        """
+        os.environ["NVIDIA_API_KEY"] = "n" * 20
+        self.addCleanup(os.environ.pop, "NVIDIA_API_KEY", None)
+        cfg_path = Path(__file__).resolve().parent.parent / "config" / "llm_providers.yaml"
+        reg = Registry.load(cfg_path)
+        triage_providers = {r.provider for r in reg.routes_for("triage")}
+        self.assertIn("nvidia_nim", triage_providers, triage_providers)
+
     def test_env_driven_provider_needs_its_env_var(self):
         """COMPARE_*: senza COMPARE_BASE_URL il provider non produce rotte."""
         cfg = {"version": 1, "task_classes": {"extract": {"min_tier": "small"}},

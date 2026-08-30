@@ -174,11 +174,20 @@ providers:
       rpm: 20
       rpd: 900
     models:
+      # Aggiunto a triage il 30 ago 2026: e' l'unico provider con una chiave
+      # gia' reale in questo repo oltre a groq/openrouter (verificato nel log
+      # del 30 ago: CEREBRAS_API_KEY e MISTRAL_API_KEY erano vuote nel run).
+      # Cerebras scartato di proposito qui — stesso schema gia' visto su OB1
+      # Global, HTTP 402 "payment required" su ogni modello senza carta
+      # registrata. Un frontier per un compito "nano" (classificazione
+      # binaria, vedi task_classes.triage) e' sovradimensionato ma non
+      # scartato dal router: TIER_ORDER in src/llm/registry.py esclude solo
+      # chi sta SOTTO il floor richiesto, non chi sta sopra.
       - name: deepseek-ai/deepseek-v3.1
         tier: frontier
         context: 128000
         json_mode: true
-        tasks: [reason, extract]
+        tasks: [triage, reason, extract]
         priority: 45
 
   # --- Gemini: da PRIMARIO a ultima spiaggia. Zero grounding (è quello che costa) ---
