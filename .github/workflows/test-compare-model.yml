@@ -1,0 +1,49 @@
+name: OB1 Lega Pro - Test modello COMPARE (manuale)
+
+# Confronto A/B mirato sulla route "compare" (Ollama Cloud/locale, PR #50):
+# stesso prompt di triage reale, stessi articoli reali dai feed, un modello
+# per dispatch — non un prompt di prova inventato, vedi scripts/test_compare_model.py.
+#
+# Nessuna scrittura: non tocca data/opportunities.json ne' il seen-store di
+# produzione (OB1_WATCH=0). Solo workflow_dispatch, mai schedulato — e' un
+# test da rilanciare quando serve con un candidato diverso, non un secondo
+# cron da mantenere.
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Modello da testare (sovrascrive la variabile COMPARE_MODEL solo per questo run)"
+        required: false
+        default: ""
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Test triage sulla route compare
+        env:
+          # Solo le tre variabili "compare": nessun'altra chiave LLM passata
+          # apposta, cosi' il gateway ha UNA sola rotta possibile per il task
+          # triage e il confronto non e' inquinato da un fallback silenzioso
+          # su groq/nvidia/altro.
+          COMPARE_BASE_URL: ${{ vars.COMPARE_BASE_URL }}
+          COMPARE_API_KEY: ${{ secrets.COMPARE_API_KEY }}
+          COMPARE_MODEL: ${{ github.event.inputs.model || vars.COMPARE_MODEL }}
+          OB1_LLM_MODE: free_only
+          OB1_WATCH: "0"
+        run: python scripts/test_compare_model.py
