@@ -28,13 +28,24 @@
       "cooldown_until": null,
       "day": "2026-08-30",
       "fail_streak": 0,
-      "last_error_at": "2026-08-30T16:23:12.127674+00:00",
-      "last_ok": "2026-08-30T16:32:38.192026+00:00",
-      "minute": "2026-08-30T16:32",
-      "rpd": 53,
+      "last_error_at": "2026-08-30T20:47:37.832228+00:00",
+      "last_ok": "2026-08-30T20:57:15.824883+00:00",
+      "minute": "2026-08-30T20:57",
+      "rpd": 65,
       "rpm": 1,
-      "tpd": 60577,
-      "tpm": 1216
+      "tpd": 71570,
+      "tpm": 1051
+    },
+    "mistral:mistral-small-latest:0": {
+      "cooldown_until": null,
+      "day": "2026-08-30",
+      "fail_streak": 0,
+      "last_ok": "2026-08-30T20:48:02.209637+00:00",
+      "minute": "2026-08-30T20:48",
+      "rpd": 21,
+      "rpm": 4,
+      "tpd": 23546,
+      "tpm": 2346
     },
     "nvidia_nim:deepseek-ai/deepseek-v3.1:0": {
       "cooldown_until": "2026-08-30T17:22:47.746528+00:00",
@@ -81,6 +92,6 @@
       "tpm": 0
     }
   },
-  "updated_at": "2026-08-30T16:32:38.192253+00:00",
+  "updated_at": "2026-08-30T20:57:15.825063+00:00",
   "version": 1
 }

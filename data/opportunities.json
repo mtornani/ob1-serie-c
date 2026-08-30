@@ -4572,7 +4572,14 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQECNkPHwvm2MOMuikss9h8l6Ejl_CtkspZIWsr5o-rs9BMrxP-FlOiyObQKkDOBxReRmKWk4yN4WiKXUHhvoIJDgmVIuM8YHu0CHKCfPrgvHCPs95Xre3dG6hCA57OpY5dDLcMfWCz7QtzYhOUZi188tDw9nznv5lXcZWo4lwEjX7Q3MuMDQqFweSk75g9JDSNCIOe4eqa0Du9PW-G5Es0KIYZ8zNrV8vdVLnKzhcg=",
     "discovered_at": "2026-07-14T08:16:49.562750",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "current_club": ", competizione ecc.",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "current_club": ", competizione ecc."
+    },
+    "tm_enriched": true
   },
   {
     "id": "38278819531e161fdfe19e5c3279f212",
@@ -17802,7 +17809,14 @@
     "source_name": "www.transfermarkt.it",
     "source_url": "https://www.transfermarkt.it/cosenza-calcio/transfers/verein/4031",
     "discovered_at": "2026-08-12T10:00:43.725948",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/cosimo-cosenza/profil/spieler/432500",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/cosimo-cosenza/profil/spieler/432500"
+    },
+    "tm_enriched": false
   },
   {
     "id": "4368c9aed3997a238677a23498b37776",
@@ -17910,18 +17924,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "c8aa395390eaa395c61e8d5319317a64",
-    "player_name": "Kevin Varas",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Possibile uscita dal Padova per mancato rinnovo",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444434",
-    "discovered_at": "2026-08-30T16:23:12.137534",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "d7ea47a13cf68f17e7930e88753f7e98",
     "player_name": "Orhan Džepar",
     "region": "ITALY",
@@ -18001,18 +18003,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "5092b33815e70e057f301a58cd27ccd5",
-    "player_name": "Ciro Loreto",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Trattativa avanzata per Ciro Loreto",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457847",
-    "discovered_at": "2026-08-30T16:23:12.138774",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "5dd91679269302bde54d44ecd43bd726",
     "player_name": "Marco Zaffaroni",
     "region": "ITALY",
@@ -18025,15 +18015,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "7dffa93739e4543b988b7c7234c92631",
-    "player_name": "Rafael Leao",
+    "id": "30dd631d2091aece8d9a49b038ea44a5",
+    "player_name": "Rafael Leão",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Transfer to Galatasaray",
+    "description": "Scelta tra Galatasaray e Premier League",
     "ob1_score": 58,
     "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/08/28/live-calciomercato-tutte-le-notizie-di-venerdi-28-agosto-galatasaray-lalternativa-a-leao-e-lang-njie-ce-anche-la-fiorentina/",
-    "discovered_at": "2026-08-30T16:23:12.139082",
+    "source_url": "https://www.sportitalia.it/2026/08/28/leao-il-bivio-tra-galatasaray-e-premier-league-il-futuro-e-adesso/",
+    "discovered_at": "2026-08-30T16:23:12.139347",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -18046,18 +18036,6 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/08/28/serie-a-il-milan-vince-ancora-si-sblocca-goncalo-ramos/",
     "discovered_at": "2026-08-30T16:23:12.139215",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "30dd631d2091aece8d9a49b038ea44a5",
-    "player_name": "Rafael Leão",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Scelta tra Galatasaray e Premier League",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/08/28/leao-il-bivio-tra-galatasaray-e-premier-league-il-futuro-e-adesso/",
-    "discovered_at": "2026-08-30T16:23:12.139347",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -18082,6 +18060,18 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/08/28/live-calciomercato-tutte-le-notizie-di-giovedi-27-agosto-monza-doppio-colpo-dal-napoli-leao-e-lotta-galatasaray-aston-villa/",
     "discovered_at": "2026-08-30T16:23:12.139602",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "35fea40e4263628bdf13a7b18c3737d4",
+    "player_name": "Davis Mensah",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Acquisto ufficiale come nuovo attaccante",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457861",
+    "discovered_at": "2026-08-30T20:48:02.229270",
     "league_id": "italy_serie_c_d"
   }
 ]
