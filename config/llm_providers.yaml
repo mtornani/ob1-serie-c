@@ -134,36 +134,41 @@ providers:
     extra_headers:
       HTTP-Referer: https://ob1-lega-pro.pages.dev
       X-Title: OB1 Lega Pro
+    # Tutti e tre i modelli :free che stavano qui (deepseek-v3.2, qwen3-235b,
+    # llama-3.3-70b) sono usciti dal tier gratuito di OpenRouter. Non e' una
+    # congettura: al 30 ago 2026 nessuno dei tre e' nel catalogo /models, e
+    # ognuno risponde 404 "This model is unavailable for free. The paid
+    # version is available now - use this slug instead: <nome senza :free>".
+    # Lo slug suggerito e' quello A PAGAMENTO: non e' un rimpiazzo per noi.
+    #
+    # I due qui sotto vengono dal catalogo reale (396 modelli) e sono stati
+    # PROVATI, non scelti per assonanza — scripts/diagnose_llm_routes.py,
+    # run del 30 ago 2026: entrambi hanno risposto con JSON valido in ~3s.
+    # Famiglie diverse di proposito: se una cade, l'altra non cade con lei.
+    #
+    # Provati e scartati per ora, da riconsiderare: z-ai/glm-5.2:free e
+    # google/gemma-4-31b-it:free. Esistono e sono gratuiti, ma al momento
+    # della prova rispondevano 429 "temporarily rate-limited upstream ...
+    # shared pool". E' una condizione transitoria del pool condiviso, non un
+    # modello morto — solo, non avendoli visti funzionare, non li mettiamo
+    # in produzione sulla fiducia.
     models:
-      - name: deepseek/deepseek-v3.2:free
+      - name: minimax/minimax-m3:free
         tier: frontier
-        context: 163840
-        json_mode: true
-        tasks: [reason, extract]
-        priority: 30
-      - name: qwen/qwen3-235b-a22b:free
-        tier: frontier
-        context: 262144
-        json_mode: true
-        tasks: [reason, extract]
-        priority: 35
-      # RITIRATO dal tier free di OpenRouter (stesso schema di Cerebras/Groq
-      # altrove): torna HTTP 404 "unavailable for free" a ogni chiamata.
-      # Priorita' 40 (dopo groq/cerebras/mistral) lo rende poco costoso da
-      # tenere finche' non si trova un sostituto verificato: il gateway lo
-      # segna morto dopo fail_streak_limit e lo salta per il resto della run
-      # (vedi log reale del 30 ago 2026), non lo ritenta a ogni articolo.
-      # NON sostituito con un modello indovinato dal catalogo free attuale:
-      # stesso principio gia' applicato in OB1 Global (PR #43) — un nome
-      # sbagliato qui ripete esattamente questo errore con un'etichetta
-      # diversa. Verificare sulla lista modelli pubblica di OpenRouter prima
-      # di cambiare.
-      - name: meta-llama/llama-3.3-70b-instruct:free
-        tier: mid
         context: 128000
-        json_mode: false
-        tasks: [triage, extract]
-        priority: 40
+        json_mode: true
+        # triage incluso: task_classes.triage ha min_tier nano, e TIER_ORDER
+        # esclude solo chi sta SOTTO il floor, mai chi sta sopra. Con groq
+        # rate-limited e compare come unica alternativa, tenere i frontier
+        # fuori dal triage lasciava la classificazione su due sole rotte.
+        tasks: [triage, extract, reason]
+        priority: 30
+      - name: nvidia/nemotron-3-super-120b-a12b:free
+        tier: frontier
+        context: 128000
+        json_mode: true
+        tasks: [triage, extract, reason]
+        priority: 35
 
   - id: nvidia_nim
     base_url: https://integrate.api.nvidia.com/v1
@@ -173,22 +178,38 @@ providers:
     limits:
       rpm: 20
       rpd: 900
+    # deepseek-ai/deepseek-v3.1 stava qui e rispondeva "404 page not found" —
+    # un 404 nudo, senza spiegazione, che sembrava un problema di endpoint.
+    # Non lo era: al 30 ago 2026 quel nome non esiste nel catalogo NVIDIA
+    # (83 modelli, letti da /v1/models). Su NVIDIA DeepSeek e' passato alla
+    # v4 (deepseek-v4-flash-0731, deepseek-v4-pro-0813).
+    #
+    # I due qui sotto sono presi da quel catalogo e PROVATI il 30 ago 2026
+    # (scripts/diagnose_llm_routes.py), non scelti per somiglianza di nome.
+    #
+    # Provato e scartato: openai/gpt-oss-120b. E' nel catalogo NVIDIA ed e'
+    # la stessa famiglia che gira bene su groq e su Ollama, ma qui e' andato
+    # in ReadTimeout a 60s. Stesso modello, infrastruttura diversa: e'
+    # esattamente il motivo per cui un nome va provato sul provider dove lo
+    # si vuole usare, non dedotto dal fatto che altrove funziona.
     models:
-      # Aggiunto a triage il 30 ago 2026: e' l'unico provider con una chiave
-      # gia' reale in questo repo oltre a groq/openrouter (verificato nel log
-      # del 30 ago: CEREBRAS_API_KEY e MISTRAL_API_KEY erano vuote nel run).
-      # Cerebras scartato di proposito qui — stesso schema gia' visto su OB1
-      # Global, HTTP 402 "payment required" su ogni modello senza carta
-      # registrata. Un frontier per un compito "nano" (classificazione
-      # binaria, vedi task_classes.triage) e' sovradimensionato ma non
-      # scartato dal router: TIER_ORDER in src/llm/registry.py esclude solo
-      # chi sta SOTTO il floor richiesto, non chi sta sopra.
-      - name: deepseek-ai/deepseek-v3.1
+      # 1.7s nella prova: il piu' veloce di tutti i candidati misurati.
+      - name: nvidia/nemotron-3-super-120b-a12b
         tier: frontier
         context: 128000
         json_mode: true
-        tasks: [triage, reason, extract]
+        # triage incluso: min_tier nano non esclude i tier alti (TIER_ORDER
+        # in src/llm/registry.py taglia solo verso il basso).
+        tasks: [triage, extract, reason]
         priority: 45
+      # 28.2s nella prova — troppo lento per il volume del triage (un blocco
+      # ogni 8 articoli), utile come riserva profonda su extract e reason.
+      - name: deepseek-ai/deepseek-v4-flash-0731
+        tier: frontier
+        context: 128000
+        json_mode: true
+        tasks: [extract, reason]
+        priority: 46
 
   # --- Gemini: da PRIMARIO a ultima spiaggia. Zero grounding (è quello che costa) ---
   - id: gemini
