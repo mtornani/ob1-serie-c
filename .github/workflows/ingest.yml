@@ -87,9 +87,9 @@ jobs:
         # altre senza secret — non un errore. Va raggiungibile dai runner
         # GitHub Actions: un Ollama solo su localhost non basta, serve un
         # host pubblico o un tunnel.
-        COMPARE_BASE_URL: ${{ secrets.COMPARE_BASE_URL }}
+        COMPARE_BASE_URL: ${{ vars.COMPARE_BASE_URL }}
         COMPARE_API_KEY: ${{ secrets.COMPARE_API_KEY }}
-        COMPARE_MODEL: ${{ secrets.COMPARE_MODEL }}
+        COMPARE_MODEL: ${{ vars.COMPARE_MODEL }}
       run: python scripts/ouroboros_run.py
 
     - name: Enrich with Transfermarkt data
@@ -113,9 +113,9 @@ jobs:
         MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
         OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
-        COMPARE_BASE_URL: ${{ secrets.COMPARE_BASE_URL }}
+        COMPARE_BASE_URL: ${{ vars.COMPARE_BASE_URL }}
         COMPARE_API_KEY: ${{ secrets.COMPARE_API_KEY }}
-        COMPARE_MODEL: ${{ secrets.COMPARE_MODEL }}
+        COMPARE_MODEL: ${{ vars.COMPARE_MODEL }}
       run: python scripts/run_enrichment.py
 
     # Apre le schede Transfermarkt di chi non ne ha ancora una aperta e ne
