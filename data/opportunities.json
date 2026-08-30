@@ -3104,7 +3104,14 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHjH5aW8i9qgz0BQKkRTspoOJYno2h5SrDFL9I_Y26UMa_nUBRw1YnWo10LqM2F1Ps_ph1YCwAz4Dx9YL6CSBUoT1huHpEIBGT0QwtNEIqD3uh2PegFm8AZQ2E8FhL7mif84TjjC9Gt5nsxTUYzyBYLR6mzmawaVhgu8UsiXFdBxOxS8ePFLNKfILO6jkE22FoxW2p-",
     "discovered_at": "2026-07-17T19:16:28.835684",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "current_club": ", competizione ecc.",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "current_club": ", competizione ecc."
+    },
+    "tm_enriched": true
   },
   {
     "id": "2a9ee444c78c1055ebab0dce02dda433",
@@ -3904,7 +3911,18 @@
     "source_name": "www.calciomercato.com",
     "source_url": "https://www.calciomercato.com/liste/cessioni-juventus-tutti-i-nomi-in-bilico-di-gregorio-koopmeiners-zhegrova-e-non-solo/bltac05889d31ba7f1b",
     "discovered_at": "2026-08-07T00:06:04.042282",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "market_value": 5000000,
+    "enrichment_source": "Enrichment:groq",
+    "market_value_formatted": "5,00 mln €",
+    "player_profile": {
+      "market_value": 5000000,
+      "enrichment_source": "Enrichment:groq",
+      "market_value_formatted": "5,00 mln €"
+    },
+    "role_name": "Centrocampista",
+    "role": "Centrocampista",
+    "tm_enriched": true
   },
   {
     "id": "opp_e32967c0",
@@ -17520,7 +17538,16 @@
     "source_name": "transfermarkt.it",
     "source_url": "https://transfermarkt.it/spielbericht/index/spielbericht/4694246",
     "discovered_at": "2026-08-10T19:02:58.989224",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "market_value": 500000,
+    "enrichment_source": "Enrichment:groq",
+    "market_value_formatted": "500 mila €",
+    "player_profile": {
+      "market_value": 500000,
+      "enrichment_source": "Enrichment:groq",
+      "market_value_formatted": "500 mila €"
+    },
+    "tm_enriched": true
   },
   {
     "id": "3e966bc2b4a88c920314191e1b4d3eb8",
@@ -17562,7 +17589,14 @@
     "source_name": "www.calciomercato.com",
     "source_url": "https://www.calciomercato.com/liste/l-ex-bologna-tomiyasu-riparte-dall-olanda-ufficiale-la-firma-con-l-ajax-da-svincolato/bltc363fcb75899ee41",
     "discovered_at": "2026-08-11T02:01:28.910325",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/takehiro-tomiyasu/profil/spieler/331560",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/takehiro-tomiyasu/profil/spieler/331560"
+    },
+    "tm_enriched": false
   },
   {
     "id": "c95b6ce2f8e013dabfdb43388f6fae4d",
@@ -17781,18 +17815,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "b712709b4f00638acf0e1f6fe9783253",
-    "player_name": "Adin Licina",
-    "region": "ITALY",
-    "opportunity_type": "prestito",
-    "description": "In prestito alla Cremonese per la stagione 2026/27",
-    "ob1_score": 62,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444415",
-    "discovered_at": "2026-08-30T11:42:12.424228",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "106e09f0e820534771275e2ba74235d9",
     "player_name": "Ali Camara",
     "region": "ITALY",
@@ -17814,6 +17836,51 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444405",
     "discovered_at": "2026-08-30T11:42:12.424455",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ce9b9b06fd768af7fe7f4fe4541d04db",
+    "player_name": "Emmanuele Matino",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Fu escluso dalla lista della Salernitana, fuori dal gruppo",
+    "ob1_score": 66,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444428",
+    "discovered_at": "2026-08-30T12:37:27.404970",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/emmanuele-matino/profil/spieler/395527",
+    "tm_verified_at": "2026-08-30T12:47:24+00:00",
+    "birth_date": "07/10/1998",
+    "age": 27,
+    "current_club": "US Salernitana",
+    "role_name": "Difensore centrale",
+    "foot": "destro",
+    "contract_expires": "30/06/2027",
+    "agent": "Avv Claudio Parlato"
+  },
+  {
+    "id": "a1994918357c58348fd7866565d7ad18",
+    "player_name": "Ruben Rinaldini",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Arriva al Perugia con contratto biennale dal Virtus Entella",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444426",
+    "discovered_at": "2026-08-30T12:37:27.405320",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "b712709b4f00638acf0e1f6fe9783253",
+    "player_name": "Adin Licina",
+    "region": "ITALY",
+    "opportunity_type": "prestito",
+    "description": "Licina in prestito alla Cremonese",
+    "ob1_score": 62,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444415",
+    "discovered_at": "2026-08-30T12:37:27.405575",
     "league_id": "italy_serie_c_d"
   }
 ]
