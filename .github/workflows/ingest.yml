@@ -54,6 +54,15 @@ jobs:
         TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        # Stesso secret già usato per l'enrichment/apertura profili TM più
+        # sotto in questo file: non mancava la chiave, mancava passarla qui.
+        # Aggiunta il 30 ago 2026 come rete di sicurezza per la ricerca
+        # (src/free_stack.py, search_jina): il 30 ago Tavily era su HTTP 432
+        # (quota piano esaurita) e Serper su HTTP 400 (credito esaurito) su
+        # OGNI query del run — senza questa chiave la scoperta free-tier
+        # restava solo DuckDuckGo (bloccato dagli anti-bot dei runner GitHub
+        # Actions) e SearXNG (istanze pubbliche spesso morte in silenzio).
+        JINA_API_KEY: ${{ secrets.JINA_API_KEY }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_OFFICE_CHAT_ID: ${{ secrets.TELEGRAM_OFFICE_CHAT_ID }}
         # Zero-cost per costruzione: free_only = Gemini non viene MAI chiamato,

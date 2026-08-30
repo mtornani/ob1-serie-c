@@ -36,7 +36,8 @@ DDG_HTML = """
 class FreeStackTestCase(unittest.TestCase):
     def setUp(self):
         for var in ("OB1_SEARCH_MODE", "OB1_LLM_MODE", "SERPER_API_KEY",
-                    "TAVILY_API_KEY", "GEMINI_API_KEY", "SEARXNG_INSTANCES"):
+                    "TAVILY_API_KEY", "GEMINI_API_KEY", "SEARXNG_INSTANCES",
+                    "JINA_API_KEY"):
             os.environ.pop(var, None)
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
@@ -44,6 +45,13 @@ class FreeStackTestCase(unittest.TestCase):
                                     Path(self.tmp.name) / "search_cache")
         patcher.start()
         self.addCleanup(patcher.stop)
+        # Stato di modulo che una run precedente potrebbe aver sporcato:
+        # senza reset, un test che spegne tavily/serper per "il resto della
+        # run" li lascerebbe spenti anche nei test successivi nello stesso
+        # processo (lo stesso motivo per cui TestDDGBlocking pulisce
+        # _searxng_dead, qui esteso ai due nuovi flag del 30 ago 2026).
+        free_stack._tavily_dead = False
+        free_stack._serper_dead = False
 
 
 class TestSearchChain(FreeStackTestCase):
@@ -144,6 +152,77 @@ class TestSearchChain(FreeStackTestCase):
             results = free_stack.search_serper("query")
         self.assertEqual(results, [])
         self.assertIn("403", buf.getvalue())
+
+    def test_tavily_quota_error_is_dead_for_the_rest_of_the_run(self):
+        """
+        Visto dal vivo il 30 ago 2026: Tavily HTTP 432 "usage limit" ritentato
+        su OGNI query di un intero run (15+ chiamate sprecate in 20 secondi),
+        perché search_tavily tornava [] senza ricordare che la quota era
+        esaurita. Un 432 di piano non si aggiusta aspettando il resto della
+        run — stesso principio di _searxng_dead più sopra.
+        """
+        os.environ["TAVILY_API_KEY"] = "k" * 20
+        resp = mock.Mock(status_code=432, text="This request exceeds your plan's usage limit")
+        with mock.patch.object(free_stack.requests, "post", return_value=resp) as post:
+            free_stack.search_tavily("q1")
+            free_stack.search_tavily("q2")
+        self.assertEqual(post.call_count, 1)  # niente martellamento su una quota nota morta
+
+    def test_tavily_ordinary_non_200_is_not_marked_dead(self):
+        """Un 500 transitorio non è una quota esaurita: si ritenta alla query dopo."""
+        os.environ["TAVILY_API_KEY"] = "k" * 20
+        resp = mock.Mock(status_code=500, text="internal error")
+        with mock.patch.object(free_stack.requests, "post", return_value=resp) as post:
+            free_stack.search_tavily("q1")
+            free_stack.search_tavily("q2")
+        self.assertEqual(post.call_count, 2)
+
+    def test_serper_credit_error_is_dead_for_the_rest_of_the_run(self):
+        os.environ["SERPER_API_KEY"] = "k" * 20
+        resp = mock.Mock(status_code=400, text='{"message":"Not enough credits","statusCode":400}')
+        with mock.patch.object(free_stack.requests, "post", return_value=resp) as post:
+            free_stack.search_serper("q1")
+            free_stack.search_serper("q2")
+        self.assertEqual(post.call_count, 1)
+
+    def test_jina_needs_a_key(self):
+        self.assertEqual(free_stack.search_jina("query"), [])
+
+    def test_jina_parses_results(self):
+        os.environ["JINA_API_KEY"] = "k" * 20
+        resp = mock.Mock(status_code=200)
+        resp.json.return_value = {"data": [
+            {"title": "Cosimo Patierno", "url": "https://transfermarkt.it/x",
+             "content": "Attaccante svincolato"},
+        ]}
+        with mock.patch.object(free_stack.requests, "get", return_value=resp):
+            results = free_stack.search_jina("query")
+        self.assertEqual(results, [{"title": "Cosimo Patierno",
+                                    "url": "https://transfermarkt.it/x",
+                                    "content": "Attaccante svincolato",
+                                    "source": "jina"}])
+
+    def test_jina_non_200_is_logged_not_silent(self):
+        os.environ["JINA_API_KEY"] = "k" * 20
+        resp = mock.Mock(status_code=402, text="insufficient balance")
+        buf = io.StringIO()
+        with mock.patch.object(free_stack.requests, "get", return_value=resp), \
+             redirect_stdout(buf):
+            results = free_stack.search_jina("query")
+        self.assertEqual(results, [])
+        self.assertIn("402", buf.getvalue())
+        self.assertIn("jina", buf.getvalue())
+
+    def test_jina_is_tried_before_ddg_when_key_present(self):
+        os.environ["JINA_API_KEY"] = "k" * 20
+        with mock.patch.object(free_stack, "search_jina",
+                               return_value=[{"title": "t", "url": "https://x.it",
+                                              "content": "", "source": "jina"}]) as jina, \
+             mock.patch.object(free_stack, "search_duckduckgo") as ddg:
+            source, _ = free_stack.free_web_search("query")
+        self.assertEqual(source, "jina")
+        jina.assert_called_once()
+        ddg.assert_not_called()
 
 
 class TestDDGBlocking(FreeStackTestCase):

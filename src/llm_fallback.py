@@ -65,7 +65,12 @@ def resolve_fallback() -> Optional[dict]:
         return {
             "base_url": "https://api.groq.com/openai/v1",
             "api_key": groq,
-            "model": os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"),
+            # llama-3.3-70b-versatile ritirato da Groq (19 ago 2026, HTTP 404).
+            # openai/gpt-oss-120b e' il rimpiazzo verificato in produzione su
+            # OB1 Global, non indovinato qui. Vedi la stessa nota in
+            # config/llm_providers.yaml (la rotta che il gateway usa davvero;
+            # questo default e' solo il ripiego legacy se il gateway manca).
+            "model": os.getenv("GROQ_MODEL", "openai/gpt-oss-120b"),
             "label": "groq",
             "max_chars": GROQ_MAX_CHARS,
         }
@@ -136,7 +141,12 @@ def _legacy_route() -> Optional[dict]:
         return {
             "base_url": "https://api.groq.com/openai/v1",
             "api_key": groq,
-            "model": os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"),
+            # llama-3.3-70b-versatile ritirato da Groq (19 ago 2026, HTTP 404).
+            # openai/gpt-oss-120b e' il rimpiazzo verificato in produzione su
+            # OB1 Global, non indovinato qui. Vedi la stessa nota in
+            # config/llm_providers.yaml (la rotta che il gateway usa davvero;
+            # questo default e' solo il ripiego legacy se il gateway manca).
+            "model": os.getenv("GROQ_MODEL", "openai/gpt-oss-120b"),
             "label": "groq",
             "max_chars": GROQ_MAX_CHARS,
         }

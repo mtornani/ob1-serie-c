@@ -7,10 +7,15 @@ Due regole:
   - l'inferenza NON deve richiedere Gemini (basta GROQ_API_KEY, o qualsiasi
     altra rotta free del gateway)
 
-Catena ricerca:   cache disco (7g) -> DuckDuckGo -> SearXNG -> Tavily* -> Serper*
+Catena ricerca:   cache disco (7g) -> Jina* -> DuckDuckGo -> SearXNG -> Tavily* -> Serper*
 Catena LLM:       gateway free (Cerebras/Groq/Mistral/OpenRouter/NVIDIA/COMPARE)
                   -> Gemini in coda
 (* solo se la chiave c'è: sono opzionali, non requisiti)
+
+Jina (s.jina.ai) aggiunta il 30 ago 2026, stessa implementazione già in
+produzione su OB1 Global: quando Tavily/Serper esauriscono quota/credito
+(visto dal vivo lo stesso giorno) restava solo DDG/SearXNG, entrambi inaffidabili
+sui runner GitHub Actions — zero risultati per l'intero run.
 
 Modi (env):
   OB1_SEARCH_MODE=serper       Serper per primo (legacy), free dopo
@@ -124,7 +129,10 @@ def has_any_llm(free_only: Optional[bool] = None) -> bool:
 def describe_stack() -> str:
     free = free_llm_routes()
     gem = "gemini" if _real_key("GEMINI_API_KEY") else "-"
-    search = ["ddg", "searxng"]
+    search = []
+    if _real_key("JINA_API_KEY"):
+        search.append("jina")
+    search += ["ddg", "searxng"]
     if _real_key("TAVILY_API_KEY"):
         search.append("tavily")
     if _real_key("SERPER_API_KEY"):
@@ -318,10 +326,85 @@ def search_searxng(query: str, max_results: int = 8,
     return []
 
 
+JINA_SEARCH_URL = "https://s.jina.ai/"
+# Stesso tetto usato in OB1 Global (src/scraper_global.py): Jina Search dà il
+# testo pieno della pagina, non uno snippet — senza taglio gonfierebbe la
+# lista senza motivo.
+JINA_SEARCH_CONTENT_CHARS = 2000
+
+
+def search_jina(query: str, max_results: int = 8,
+                domains: Optional[List[str]] = None) -> SearchResults:
+    """
+    Jina Search (s.jina.ai) — stesso fornitore e stessa implementazione già
+    verificata in produzione su OB1 Global (src/scraper_global.py), portata
+    qui sincrona per uniformarsi al resto di questo file.
+
+    Aggiunta il 30 ago 2026: quando Tavily/Serper esauriscono credito o quota
+    (visto dal vivo lo stesso giorno: Tavily HTTP 432 "usage limit", Serper
+    HTTP 400 "Not enough credits", entrambi su OGNI query del run), la catena
+    free restava con solo DuckDuckGo (bloccato dagli anti-bot sui runner
+    GitHub Actions) e SearXNG (istanze pubbliche spesso morte in silenzio) —
+    zero risultati per l'intero run. Jina, opzionale via chiave ma funzionante
+    anche keyless con un tetto più basso, è il ripiego reale che a Global
+    manca qui.
+    """
+    key = _real_key("JINA_API_KEY")
+    if not key:
+        return []
+    try:
+        resp = requests.get(
+            JINA_SEARCH_URL,
+            headers={"Authorization": f"Bearer {key}", "Accept": "application/json"},
+            params={"q": _with_domains(query, domains), "num": max_results},
+            timeout=25,
+        )
+        if resp.status_code != 200:
+            print(f"    [SEARCH jina] HTTP {resp.status_code}: {resp.text[:120]}")
+            return []
+        items = (resp.json() or {}).get("data") or []
+    except (requests.RequestException, ValueError) as e:
+        print(f"    [SEARCH jina] {type(e).__name__}: {str(e)[:120]}")
+        return []
+    out = []
+    for it in items[:max_results]:
+        url = it.get("url") or it.get("href") or it.get("link") or ""
+        if not url:
+            continue
+        content = it.get("content") or it.get("body") or it.get("snippet") or ""
+        out.append({
+            "title": str(it.get("title") or ""),
+            "url": str(url),
+            "content": str(content)[:JINA_SEARCH_CONTENT_CHARS],
+            "source": "jina",
+        })
+    return out
+
+
+# Tavily/Serper esauriti (quota/credito) non si aggiustano aspettando il
+# resto del run: senza questo, ogni query successiva li ritentava sullo
+# stesso identico errore — verificato dal vivo il 30 ago 2026, 15+ chiamate
+# sprecate in un run di 20 secondi. Stesso principio di _searxng_dead sopra,
+# e dello stesso schema già applicato in OB1 Global (401/403/404 = morto per
+# il resto della run, non un intoppo transitorio da ritentare).
+_tavily_dead = False
+_serper_dead = False
+
+
+def _is_tavily_quota_error(status: int, body: str) -> bool:
+    # 432 è il codice non-standard che Tavily usa per "superato il piano".
+    return status == 432 or "usage limit" in (body or "").lower()
+
+
+def _is_serper_quota_error(status: int, body: str) -> bool:
+    return status == 400 and "not enough credits" in (body or "").lower()
+
+
 def search_tavily(query: str, max_results: int = 8, domains: Optional[List[str]] = None,
                   raw_content: bool = False) -> SearchResults:
+    global _tavily_dead
     key = _real_key("TAVILY_API_KEY")
-    if not key:
+    if not key or _tavily_dead:
         return []
     payload: Dict[str, Any] = {
         "api_key": key, "query": query, "search_depth": "basic",
@@ -337,6 +420,9 @@ def search_tavily(query: str, max_results: int = 8, domains: Optional[List[str]]
             # da "nessun risultato", e il chiamante (free_web_search) non
             # vede questo ramo per loggarlo — non solleva un'eccezione.
             print(f"    [SEARCH tavily] HTTP {resp.status_code}: {resp.text[:120]}")
+            if _is_tavily_quota_error(resp.status_code, resp.text):
+                _tavily_dead = True
+                print("    [SEARCH tavily] quota esaurita — spento per il resto della run")
             return []
         items = (resp.json() or {}).get("results") or []
     except (requests.RequestException, ValueError) as e:
@@ -352,8 +438,9 @@ def search_tavily(query: str, max_results: int = 8, domains: Optional[List[str]]
 
 def search_serper(query: str, max_results: int = 8,
                   domains: Optional[List[str]] = None) -> SearchResults:
+    global _serper_dead
     key = _real_key("SERPER_API_KEY")
-    if not key:
+    if not key or _serper_dead:
         return []
     try:
         resp = requests.post(
@@ -365,6 +452,9 @@ def search_serper(query: str, max_results: int = 8,
         )
         if resp.status_code != 200:
             print(f"    [SEARCH serper] HTTP {resp.status_code}: {resp.text[:120]}")
+            if _is_serper_quota_error(resp.status_code, resp.text):
+                _serper_dead = True
+                print("    [SEARCH serper] credito esaurito — spento per il resto della run")
             return []
         items = (resp.json() or {}).get("organic") or []
     except (requests.RequestException, ValueError) as e:
@@ -395,7 +485,13 @@ def free_web_search(
             _metric("search_cached")
             return hit
 
-    chain = [("duckduckgo", search_duckduckgo), ("searxng", search_searxng)]
+    # Jina davanti a DuckDuckGo/SearXNG quando c'è una chiave, stessa priorità
+    # di OB1 Global: è la via più affidabile delle tre gratuite/quasi-gratuite
+    # (DDG si blocca sui runner GitHub Actions, SearXNG dipende da istanze
+    # pubbliche spesso morte). Se JINA_API_KEY manca, search_jina ritorna []
+    # subito e la catena scorre come prima — stesso pattern di tavily/serper.
+    chain = [("jina", search_jina), ("duckduckgo", search_duckduckgo),
+             ("searxng", search_searxng)]
     keyed = [("tavily", search_tavily), ("serper", search_serper)]
     if search_mode() == "serper":
         chain = [("serper", search_serper)] + chain + [("tavily", search_tavily)]
