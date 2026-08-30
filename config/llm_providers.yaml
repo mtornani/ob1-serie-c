@@ -193,7 +193,23 @@ providers:
     # esattamente il motivo per cui un nome va provato sul provider dove lo
     # si vuole usare, non dedotto dal fatto che altrove funziona.
     models:
-      # 1.7s nella prova: il piu' veloce di tutti i candidati misurati.
+      # PRIORITA' DOPO compare (50), non prima. Due misure a 5 minuti di
+      # distanza, stessi nomi, stesse chiavi:
+      #
+      #                                     18:59      19:04
+      #   nemotron-3-super-120b-a12b        OK 1.7s    HTTP 503 overloaded
+      #   deepseek-v4-flash-0731            OK 28.2s   ReadTimeout 60s
+      #
+      # Entrambe restano [in catalogo]: i nomi sono giusti, e' NVIDIA a
+      # essere intermittente. Il problema non e' che ogni tanto falliscano
+      # — il gateway lo gestisce — ma che a priorita' 45 fallivano PRIMA di
+      # compare, che nelle stesse tre misure ha risposto 3 volte su 3 in
+      # 1.4-1.6s. Un ReadTimeout da 60s davanti a una rotta da 1.4s costa un
+      # minuto pieno a ogni chiamata che ci passa attraverso.
+      #
+      # Restano in config perche' quando NVIDIA risponde e' velocissima
+      # (1.7s, il miglior tempo misurato di tutti i candidati) e allarga la
+      # diversita' di fornitori. Ma si prova dopo chi e' costante, non prima.
       - name: nvidia/nemotron-3-super-120b-a12b
         tier: frontier
         context: 128000
@@ -201,15 +217,16 @@ providers:
         # triage incluso: min_tier nano non esclude i tier alti (TIER_ORDER
         # in src/llm/registry.py taglia solo verso il basso).
         tasks: [triage, extract, reason]
-        priority: 45
-      # 28.2s nella prova — troppo lento per il volume del triage (un blocco
-      # ogni 8 articoli), utile come riserva profonda su extract e reason.
+        priority: 55
+      # Mai vista sotto i 28s, e al secondo giro andata in timeout a 60s:
+      # fuori dal triage (un blocco ogni 8 articoli non puo' aspettare
+      # tanto), e ultima riserva prima di Gemini su extract e reason.
       - name: deepseek-ai/deepseek-v4-flash-0731
         tier: frontier
         context: 128000
         json_mode: true
         tasks: [extract, reason]
-        priority: 46
+        priority: 56
 
   # --- Gemini: da PRIMARIO a ultima spiaggia. Zero grounding (è quello che costa) ---
   - id: gemini
