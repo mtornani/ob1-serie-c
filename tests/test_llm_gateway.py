@@ -377,6 +377,22 @@ class TestRegistry(GatewayTestCase):
         triage_providers = {r.provider for r in reg.routes_for("triage")}
         self.assertIn("nvidia_nim", triage_providers, triage_providers)
 
+    def test_compare_endpoint_reachable_via_workflow_env_names(self):
+        """
+        La route 'compare' (Ollama/LM Studio auto-ospitati) esisteva nello
+        yaml da tempo ma .github/workflows/ingest.yml non passava mai
+        COMPARE_BASE_URL/COMPARE_API_KEY/COMPARE_MODEL — collegata il 30 ago
+        2026. requires_key: false, quindi basta l'URL + il nome modello.
+        """
+        os.environ["COMPARE_BASE_URL"] = "http://example.invalid:11434/v1"
+        os.environ["COMPARE_MODEL"] = "llama3.1"
+        self.addCleanup(os.environ.pop, "COMPARE_BASE_URL", None)
+        self.addCleanup(os.environ.pop, "COMPARE_MODEL", None)
+        cfg_path = Path(__file__).resolve().parent.parent / "config" / "llm_providers.yaml"
+        reg = Registry.load(cfg_path)
+        providers = {r.provider for r in reg.routes_for("triage")}
+        self.assertIn("compare", providers, providers)
+
     def test_env_driven_provider_needs_its_env_var(self):
         """COMPARE_*: senza COMPARE_BASE_URL il provider non produce rotte."""
         cfg = {"version": 1, "task_classes": {"extract": {"min_tier": "small"}},
