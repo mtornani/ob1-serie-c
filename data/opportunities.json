@@ -4740,7 +4740,12 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFjQT_SAiK2Aex9JecIDxIyMoGfkvjrcjJDyPHKk25oaNlB8FglA--QiwV-Dbnz4dyNrOpwofivT1koo4xbl8_OCPu2nah5rIbqAl-psxhb4DEKG2Mofhr0nXpCH2rXqrH21Yi5taUBy3EFi16HZoIPJp4RqwymC26vINKmsO6TtPnLnGE9NaXfyCQCIUD3tUpDp3nm",
     "discovered_at": "2026-08-01T08:27:32.209904",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:mistral",
+    "player_profile": {
+      "enrichment_source": "Enrichment:mistral"
+    },
+    "tm_enriched": false
   },
   {
     "id": "58c6fffad65e0f9a3350838a2fbec800",
@@ -4783,7 +4788,39 @@
     "source_name": "www.calciomercato.com",
     "source_url": "https://www.calciomercato.com/liste/da-acerbi-a-vlahovic-tutti-i-giocatori-in-scadenza-di-contratto-il-30-giugno-2026-squadra-per-squadra/blt480f10469879f8b7",
     "discovered_at": "2026-08-01T08:27:32.210650",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "nationality": "Italiana",
+    "foot": "sinistro",
+    "market_value": 12000000,
+    "enrichment_source": "Enrichment:mistral",
+    "market_value_formatted": "12,00 mio €",
+    "birth_date": "1988-12-10",
+    "contract_expires": "2025-06-30",
+    "tm_url": "https://www.transfermarkt.it/francesco-acerbi/profil/spieler/131075",
+    "appearances": 28,
+    "goals": 2,
+    "assists": 1,
+    "minutes_played": 2430,
+    "current_club": "Inter",
+    "player_profile": {
+      "nationality": "Italiana",
+      "foot": "sinistro",
+      "market_value": 12000000,
+      "enrichment_source": "Enrichment:mistral",
+      "market_value_formatted": "12,00 mio €",
+      "birth_date": "1988-12-10",
+      "contract_expires": "2025-06-30",
+      "tm_url": "https://www.transfermarkt.it/francesco-acerbi/profil/spieler/131075",
+      "appearances": 28,
+      "goals": 2,
+      "assists": 1,
+      "minutes_played": 2430,
+      "current_club": "Inter"
+    },
+    "age": 38,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "aa00e87853241c41fc81321471f7e6bd",
@@ -18255,6 +18292,50 @@
     "source_name": "www.calciomercato.com",
     "source_url": "https://www.calciomercato.com/liste/ibrahima-konate-lascera-il-liverpool-quest-estate-stop-alle-trattative-per-il-rinnovo-del-contratto/blt92b54735b57afd58",
     "discovered_at": "2026-08-31T03:53:12.782032",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "4fec19c5199d82ba82f012c527d739ae",
+    "player_name": "Gregorio Morachioli",
+    "region": "ITALY",
+    "opportunity_type": "prestito",
+    "description": "Accordo Livorno-Juve Stabia per prestito in Serie C",
+    "ob1_score": 65,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444498",
+    "discovered_at": "2026-08-31T13:11:18.494345",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/gregorio-morachioli/profil/spieler/420472",
+    "tm_verified_at": "2026-08-31T13:22:52+00:00",
+    "birth_date": "27/02/2000",
+    "age": 26,
+    "current_club": "SS Juve Stabia",
+    "role_name": "Ala sinistra",
+    "foot": "destro",
+    "agent": "Gio’sport"
+  },
+  {
+    "id": "0af1808211997162e3aa0defd07e51d7",
+    "player_name": "Roberto Insigne",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "In uscita dall'Avellino, contatti di Empoli e Spezia",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444489",
+    "discovered_at": "2026-08-31T13:11:18.494653",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "a6717284e8bb2cc546614a159c296a26",
+    "player_name": "Marwane Kritta",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Terzino Lecco vicino al trasferimento alla Virtus Entella in B",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444488",
+    "discovered_at": "2026-08-31T13:11:18.494795",
     "league_id": "italy_serie_c_d"
   }
 ]
