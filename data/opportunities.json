@@ -4946,13 +4946,28 @@
     "tm_url": null,
     "player_profile": {
       "tm_url": null,
-      "nationality": "Italia"
+      "nationality": "Italia",
+      "enrichment_source": "Enrichment:mistral",
+      "current_club": ", competizione ecc."
     },
-    "tm_enriched": false,
+    "tm_enriched": true,
     "nationality": "Italia",
     "birth_date": "23/11/1968",
     "role_name": "del compagno",
-    "role": "del compagno"
+    "role": "del compagno",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": ", competizione ecc.",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-08-31T19:35:28.225955+00:00"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:mistral",
+    "current_club": ", competizione ecc."
   },
   {
     "id": "c76c0e260d97cf071199e433dfb040cb",
@@ -11132,7 +11147,17 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEKxstDuiPWUQS9qEaxeV573te6lhS23Q_Om0scj6b0LgZTlfHSPqj5MBLxHb91SSSrjFLq_PlzloD2Wami5Htsy6K0u8qgyZoMlNIxJrQ3N7lIWa7RMciKvEVX9FCJ85fhAH-TjPmUE2POnL8lsezmYDS54JDtMAFbHhyIq9T1Ug8-nmLs7K7Mfxo6VZtbdp_z4RITgjMMUD86ZWtFI-Y1yoGPOVSv6EQZYd8ASW8nCVPNQMU6wh40-2sN_KHxJ-2N2oA_nyhtg5GcbVuS72afv3h0zXoXowI=",
     "discovered_at": "2026-07-02T09:21:19.959718",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/luca-bacchin/profil/spieler/660878",
+    "tm_verified_at": "2026-08-31T19:38:23+00:00",
+    "birth_date": "29/10/2003",
+    "age": 22,
+    "current_club": "Modena FC",
+    "role_name": "Seconda punta",
+    "foot": "sinistro",
+    "contract_expires": "30/06/2029",
+    "market_value": 200000,
+    "market_value_eur": 200000
   },
   {
     "id": "57e153ae15417b105c4834a48c841808",
@@ -11922,7 +11947,14 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG0xr8PpxJc4c-RclKfGa6IM2vvIIPV9PTl0tRHIEg8b28uC16F-k0xTb31cr9Js5TxDl8rf9zgMOwPfwnzUdfQu2YkgB9i_5BwyE4WNCXvSTcqJ3jwWJ2Kc3_o2SBfLPQ7f7bRaLd22v3ek-jW9AO-MN64uvY4cWdtMpZl8VBtbiOQLDwUbvNrlpK8qQ==",
     "discovered_at": "2026-07-12T19:11:47.858354",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/madou-diakite/profil/spieler/1149172",
+    "tm_verified_at": "2026-08-31T19:38:54+00:00",
+    "birth_date": "22/07/2004",
+    "age": 22,
+    "current_club": "svincolato",
+    "role_name": "Portiere",
+    "foot": "sinistro"
   },
   {
     "id": "c4c7bb7849e34bd16dce0a40acb0be06",
@@ -12310,7 +12342,17 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGPHv2jZNcTlg2CLsA-WXZd74JmeRTodD4D-Vno32aYGbQCE-RgFJbHY26BqoeNttFaPtUXo1m2sE7CpgF03PZjn28ilhZToJHp7ltENNsyD2XqSGon2hdmzRLV4XKNrhv-Z1NAnQ6BP7o1mJ7egP-53mhbOf7LvuQjE0gY8eoynQNW4UnqGV7DvvDovH4=",
     "discovered_at": "2026-08-01T13:36:58.404764",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/marco-pinato/profil/spieler/164020",
+    "tm_verified_at": "2026-08-31T19:39:21+00:00",
+    "birth_date": "09/01/1995",
+    "age": 31,
+    "current_club": "AS Gubbio 1910",
+    "role_name": "Centrocampista",
+    "foot": "sinistro",
+    "agent": "GR Sports",
+    "market_value": 225000,
+    "market_value_eur": 225000
   },
   {
     "id": "03986312fd7d16211a560cc4896a8737",
@@ -18313,18 +18355,6 @@
     "role_name": "Ala sinistra",
     "foot": "destro",
     "agent": "Gio’sport"
-  },
-  {
-    "id": "0af1808211997162e3aa0defd07e51d7",
-    "player_name": "Roberto Insigne",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "In uscita dall'Avellino, contatti di Empoli e Spezia",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444489",
-    "discovered_at": "2026-08-31T13:11:18.494653",
-    "league_id": "italy_serie_c_d"
   },
   {
     "id": "a6717284e8bb2cc546614a159c296a26",
