@@ -4139,7 +4139,14 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGCi69WY4TVD5HOBo7epwO3kpjFbSAEWccchooi9BcbwMCXYyaK2Pr_kJ9xuQtthhQ0Q07SyibsedlgLz-A34NKY6a0gvdLlXyPbJquVRACiOpa6J6_VTu9xqiprbR_xKMAQL8DSgrVGt6mpy9Xv4S8UT9xQC0QHLVerIlOo2Xc9u3JXcDMCdyX3pA-PFZejSfrhuM=",
     "discovered_at": "2026-07-21T03:14:26.029250",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:mistral",
+    "current_club": "CD Leganés C",
+    "player_profile": {
+      "enrichment_source": "Enrichment:mistral",
+      "current_club": "CD Leganés C"
+    },
+    "tm_enriched": true
   },
   {
     "id": "71c6d252b537129aa6e0835231bcb4c8",
@@ -4745,7 +4752,14 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEd6kXQLzUWVULzMG_7tjQ_04wMlX1mAQQB6obUfl-IZ6kwTRz1nL_zgPTMG0X_1WUMW8vidQVKCwbJqqrruQ5949mJSaa0yyFtxLtylaAgIseSoEIzxLVc4TrDiBtuiJNByUMcTn30ri0Tl_RiixiUC1mCdT2nOPZ37rCSjOOxkTyTeU3l4IbOsJlK9kxgV3kiOHI=",
     "discovered_at": "2026-07-24T19:35:00.585483",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:mistral",
+    "current_club": ", competizione ecc.",
+    "player_profile": {
+      "enrichment_source": "Enrichment:mistral",
+      "current_club": ", competizione ecc."
+    },
+    "tm_enriched": true
   },
   {
     "id": "db100c85139c7151d4b8ac22506971ce",
@@ -18151,7 +18165,16 @@
     "source_name": "www.calciomercato.com",
     "source_url": "https://www.calciomercato.com/liste/parametri-zero-non-solo-david-i-migliori-giocatori-in-scadenza-al-30-giugno/1610176",
     "discovered_at": "2026-08-31T03:53:12.781208",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/jonathan-david/profil/spieler/533738",
+    "tm_verified_at": "2026-08-31T04:51:26+00:00",
+    "birth_date": "14/01/2000",
+    "age": 26,
+    "current_club": "Juventus FC",
+    "role_name": "Punta centrale",
+    "foot": "entrambi",
+    "contract_expires": "30/06/2030",
+    "agent": "Axia Sports ..."
   },
   {
     "id": "74f8a24858d27eaab3142662c290967c",
@@ -18175,26 +18198,6 @@
     "agent": "Ambition Group",
     "market_value": 12000000,
     "market_value_eur": 12000000
-  },
-  {
-    "id": "e178d7411de4d9db8b1c633050817116",
-    "player_name": "Dusan Vlahovic",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Giocatore senza contratto nella top 11 degli svincolati",
-    "ob1_score": 66,
-    "source_name": "www.calciomercato.com",
-    "source_url": "https://www.calciomercato.com/liste/la-top-11-dei-giocatori-senza-contratto-kessie-vlahovic-e-l-incognita-modric-la-formazione-degli-svincolati/bltebfd5106ca6fe40f",
-    "discovered_at": "2026-08-31T03:53:12.781481",
-    "league_id": "italy_serie_c_d",
-    "tm_url": "https://www.transfermarkt.it/dusan-vlahovic/profil/spieler/357498",
-    "tm_verified_at": "2026-08-31T04:03:36+00:00",
-    "birth_date": "28/01/2000",
-    "age": 26,
-    "current_club": "Besiktas JK",
-    "role_name": "Punta centrale",
-    "foot": "sinistro",
-    "contract_expires": "30/06/2029"
   },
   {
     "id": "db65b8ad5fc09d679f7cdb76b7433016",
