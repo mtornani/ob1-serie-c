@@ -2567,7 +2567,12 @@
     "source_name": "www.gazzetta.it",
     "source_url": "https://www.gazzetta.it/en/football/teams/inter/news/15-07-2026/inter-under-23-announce-new-stadium-breda-sesto.shtml",
     "discovered_at": "2026-08-07T19:02:59.006477",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:mistral",
+    "player_profile": {
+      "enrichment_source": "Enrichment:mistral"
+    },
+    "tm_enriched": false
   },
   {
     "id": "a5543a6a9d0651c121488dd113d60c28",
@@ -2973,7 +2978,14 @@
     "source_name": "www.transfermarkt.it",
     "source_url": "https://www.transfermarkt.it/aurora-pro-patria-1919/kader/verein/4146/saison_id/2025/plus/1",
     "discovered_at": "2026-08-09T02:01:30.876222",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:mistral",
+    "current_club": "Aurora Pro Patria 1919",
+    "player_profile": {
+      "enrichment_source": "Enrichment:mistral",
+      "current_club": "Aurora Pro Patria 1919"
+    },
+    "tm_enriched": true
   },
   {
     "id": "ac418fe97daf97235ce0b1cdd1a96431",
@@ -3728,7 +3740,12 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHgbrL-zVcmmRJ5qRZchXVSPp71esDOYVWqoDn-m_EpM8yj6sd4jeEyJ96SwamD1P3BCoM5F0yC2QjDK3p_ABR55K_CmrWanX9r4B6WMS_Ilzkxgr9BUucukwJovk72m-O_m-9WxdimCMpF2DOAKaAdM90vFEcDXnIR-UsQNk=",
     "discovered_at": "2026-07-18T08:03:45.325246",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:mistral",
+    "player_profile": {
+      "enrichment_source": "Enrichment:mistral"
+    },
+    "tm_enriched": false
   },
   {
     "id": "7a7f8e09fd3a5afddefd13675cefe427",
@@ -4416,7 +4433,12 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/news/serie-26-27-situazione-iscrizioni-ammissione-grosseto-federale-455114",
     "discovered_at": "2026-08-05T19:40:56.261563",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:mistral",
+    "player_profile": {
+      "enrichment_source": "Enrichment:mistral"
+    },
+    "tm_enriched": false
   },
   {
     "id": "eb37817122780f9adf2e19dba80ef7fa",
@@ -17689,7 +17711,12 @@
     "source_name": "www.soccernews.com",
     "source_url": "https://www.soccernews.com/soccer-transfers/italian-serie-a-transfers",
     "discovered_at": "2026-08-11T19:06:35.298968",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:mistral",
+    "player_profile": {
+      "enrichment_source": "Enrichment:mistral"
+    },
+    "tm_enriched": false
   },
   {
     "id": "9b80d0f166e44b49a418d4508329a705",
@@ -17761,7 +17788,14 @@
     "source_name": "www.gazzetta.it",
     "source_url": "https://www.gazzetta.it/Calciomercato/16-07-2026/notizie-calciomercato-il-live-di-oggi-16-luglio.shtml",
     "discovered_at": "2026-08-12T06:17:12.471915",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:mistral",
+    "current_club": "Aston Villa",
+    "player_profile": {
+      "enrichment_source": "Enrichment:mistral",
+      "current_club": "Aston Villa"
+    },
+    "tm_enriched": true
   },
   {
     "id": "fec195a5938b100c843105037b8785e4",
@@ -18072,6 +18106,152 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457861",
     "discovered_at": "2026-08-30T20:48:02.229270",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "f317e59eb4329baa3f5e987be620a880",
+    "player_name": "Julian Brandt",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Non rinnova con il Borussia Dortmund, sarà parametro zero in estate",
+    "ob1_score": 66,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/cuadrado-fischiato-dai-tifosi-della-juventus-il-motivo-e-i-precedenti/blt71f4adddb6c4d477",
+    "discovered_at": "2026-08-31T03:53:12.780766",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "33b78e948967c324bf2457da8bf96ffe",
+    "player_name": "Gianluigi Donnarumma",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "In scadenza nel 2026, obiettivo per squadre di Serie A",
+    "ob1_score": 69,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/donnarumma-e-non-solo-i-giocatori-in-scadenza-nel-2026-che-fanno-gola-alla-serie-a/1598597",
+    "discovered_at": "2026-08-31T03:53:12.781068",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/gianluigi-donnarumma/profil/spieler/315858",
+    "tm_verified_at": "2026-08-31T04:03:09+00:00",
+    "birth_date": "25/02/1999",
+    "age": 27,
+    "current_club": "Manchester City",
+    "role_name": "Portiere",
+    "foot": "destro",
+    "contract_expires": "30/06/2030",
+    "agent": "Team Raiola"
+  },
+  {
+    "id": "4850b03f91c1c46380e61ef24f919900",
+    "player_name": "Jonathan David",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Tra i migliori giocatori in scadenza al 30 giugno",
+    "ob1_score": 66,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/parametri-zero-non-solo-david-i-migliori-giocatori-in-scadenza-al-30-giugno/1610176",
+    "discovered_at": "2026-08-31T03:53:12.781208",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "74f8a24858d27eaab3142662c290967c",
+    "player_name": "Franck Kessié",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Giocatore senza contratto nella top 11 degli svincolati",
+    "ob1_score": 66,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/la-top-11-dei-giocatori-senza-contratto-kessie-vlahovic-e-l-incognita-modric-la-formazione-degli-svincolati/bltebfd5106ca6fe40f",
+    "discovered_at": "2026-08-31T03:53:12.781348",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/franck-kessie/profil/spieler/294808",
+    "tm_verified_at": "2026-08-31T04:04:00+00:00",
+    "birth_date": "19/12/1996",
+    "age": 29,
+    "current_club": "Atalanta",
+    "role_name": "Centrocampista",
+    "foot": "destro",
+    "contract_expires": "30/06/2029",
+    "agent": "Ambition Group",
+    "market_value": 12000000,
+    "market_value_eur": 12000000
+  },
+  {
+    "id": "e178d7411de4d9db8b1c633050817116",
+    "player_name": "Dusan Vlahovic",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Giocatore senza contratto nella top 11 degli svincolati",
+    "ob1_score": 66,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/la-top-11-dei-giocatori-senza-contratto-kessie-vlahovic-e-l-incognita-modric-la-formazione-degli-svincolati/bltebfd5106ca6fe40f",
+    "discovered_at": "2026-08-31T03:53:12.781481",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/dusan-vlahovic/profil/spieler/357498",
+    "tm_verified_at": "2026-08-31T04:03:36+00:00",
+    "birth_date": "28/01/2000",
+    "age": 26,
+    "current_club": "Besiktas JK",
+    "role_name": "Punta centrale",
+    "foot": "sinistro",
+    "contract_expires": "30/06/2029"
+  },
+  {
+    "id": "db65b8ad5fc09d679f7cdb76b7433016",
+    "player_name": "Luka Modric",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Incognita futuro, nella formazione degli svincolati",
+    "ob1_score": 66,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/la-top-11-dei-giocatori-senza-contratto-kessie-vlahovic-e-l-incognita-modric-la-formazione-degli-svincolati/bltebfd5106ca6fe40f",
+    "discovered_at": "2026-08-31T03:53:12.781610",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "50cdecf069dec83fab0a8b3934074c7e",
+    "player_name": "Randal Kolo Muani",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Obiettivo Juventus, possibile scambio con Jonathan David",
+    "ob1_score": 60,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/juventus-di-nuovo-su-kolo-muani-quanto-costa-ingaggio-scadenza-contratto-e-il-possibile-scambio-con-jonathan-david/blt4480e89d1c37de61",
+    "discovered_at": "2026-08-31T03:53:12.781760",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "a72e072fe2f7cad368dd169e9642fef0",
+    "player_name": "Francesco Acerbi",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "In scadenza il 30 giugno 2026 in Serie A",
+    "ob1_score": 69,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/da-acerbi-a-vlahovic-tutti-i-giocatori-in-scadenza-di-contratto-il-30-giugno-2026-squadra-per-squadra/blt480f10469879f8b7",
+    "discovered_at": "2026-08-31T03:53:12.781899",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/francesco-acerbi/profil/spieler/131075",
+    "tm_verified_at": "2026-08-31T04:02:54+00:00",
+    "birth_date": "10/02/1988",
+    "age": 38,
+    "current_club": "svincolato",
+    "role_name": "Difensore centrale",
+    "foot": "sinistro",
+    "agent": "P&P Sport ...",
+    "market_value": 2000000,
+    "market_value_eur": 2000000
+  },
+  {
+    "id": "542d8248ab6971e5f8ebcfd87958073f",
+    "player_name": "Ibrahima Konaté",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Lascerà il Liverpool, stop alle trattative per il rinnovo",
+    "ob1_score": 66,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/ibrahima-konate-lascera-il-liverpool-quest-estate-stop-alle-trattative-per-il-rinnovo-del-contratto/blt92b54735b57afd58",
+    "discovered_at": "2026-08-31T03:53:12.782032",
     "league_id": "italy_serie_c_d"
   }
 ]

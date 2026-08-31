@@ -25,27 +25,27 @@
       "tpm": 0
     },
     "groq:openai/gpt-oss-120b:0": {
-      "cooldown_until": null,
-      "day": "2026-08-30",
+      "cooldown_until": "2026-09-01T03:48:52.196718+00:00",
+      "day": "2026-08-31",
       "fail_streak": 0,
       "last_error_at": "2026-08-30T20:47:37.832228+00:00",
       "last_ok": "2026-08-30T20:57:15.824883+00:00",
-      "minute": "2026-08-30T20:57",
-      "rpd": 65,
-      "rpm": 1,
-      "tpd": 71570,
-      "tpm": 1051
+      "minute": "2026-08-31T04:02",
+      "rpd": 0,
+      "rpm": 0,
+      "tpd": 0,
+      "tpm": 0
     },
     "mistral:mistral-small-latest:0": {
       "cooldown_until": null,
-      "day": "2026-08-30",
+      "day": "2026-08-31",
       "fail_streak": 0,
-      "last_ok": "2026-08-30T20:48:02.209637+00:00",
-      "minute": "2026-08-30T20:48",
-      "rpd": 21,
-      "rpm": 4,
-      "tpd": 23546,
-      "tpm": 2346
+      "last_ok": "2026-08-31T04:02:22.303446+00:00",
+      "minute": "2026-08-31T04:02",
+      "rpd": 39,
+      "rpm": 1,
+      "tpd": 48186,
+      "tpm": 916
     },
     "nvidia_nim:deepseek-ai/deepseek-v3.1:0": {
       "cooldown_until": "2026-08-30T17:22:47.746528+00:00",
@@ -80,6 +80,17 @@
       "tpd": 0,
       "tpm": 0
     },
+    "openrouter:minimax/minimax-m3:free:0": {
+      "cooldown_until": null,
+      "day": "2026-08-31",
+      "fail_streak": 0,
+      "last_ok": "2026-08-31T03:50:22.877899+00:00",
+      "minute": "2026-08-31T03:50",
+      "rpd": 1,
+      "rpm": 1,
+      "tpd": 3123,
+      "tpm": 3123
+    },
     "openrouter:qwen/qwen3-235b-a22b:free:0": {
       "cooldown_until": "2026-08-30T04:37:41.440803+00:00",
       "day": "2026-08-30",
@@ -92,6 +103,6 @@
       "tpm": 0
     }
   },
-  "updated_at": "2026-08-30T20:57:15.825063+00:00",
+  "updated_at": "2026-08-31T04:02:22.303671+00:00",
   "version": 1
 }
