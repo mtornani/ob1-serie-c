@@ -60,6 +60,54 @@ def _is_enrichable(opp) -> bool:
     return classify(opp).spend_allowed
 
 
+def _registra_nel_grafo(opp: dict, tm: dict) -> None:
+    """
+    Mette nel grafo delle fonti (src/piramide.py) cosa dice la discovery e
+    cosa dice Transfermarkt, PRIMA che uno dei due cancelli l'altro.
+
+    Il grafo vive dentro il record (`grafo_fonti`), non in un database a
+    parte: qui lo stato è un JSON su file, e una tabella in più sarebbe una
+    seconda verità da tenere allineata a mano.
+
+    Non decide niente — la riga sotto continua a fare quello che faceva. Ma
+    quando un conflitto c'è, adesso resta scritto insieme a chi l'ha
+    causato, e `piramide.risolvi` sa già dire chi dovrebbe vincere.
+    """
+    from src.piramide import registra
+
+    grafo = opp.get('grafo_fonti')
+    if not isinstance(grafo, dict):
+        grafo = {}
+    # La data della notizia è l'unica cosa che rende "fresca" l'osservazione
+    # della discovery: senza, un club trovato in giro non batte niente.
+    datato = (opp.get('reported_date') or '')[:10]
+    for campo, chiave_opp, chiave_tm in (
+            ('club', 'current_club', 'current_club'),
+            ('eta', 'age', None),
+            ('contract_expires', 'contract_expires', 'contract_expires'),
+            ('market_value', 'market_value', 'market_value')):
+        if opp.get(chiave_opp) is not None:
+            registra(grafo, 'p', campo, opp.get(chiave_opp), 'news',
+                     datato_al=datato, url=opp.get('source_url') or '')
+        if chiave_tm and tm.get(chiave_tm) is not None:
+            registra(grafo, 'p', campo, tm.get(chiave_tm), 'transfermarkt',
+                     url=tm.get('tm_url') or opp.get('tm_url') or '')
+    # L'età di TM non arriva come numero ma come data di nascita: è il dato
+    # più forte che abbiamo su un campo lento, e buttarlo sarebbe il difetto
+    # che questo grafo esiste per rendere visibile.
+    if tm.get('birth_date'):
+        try:
+            eta_tm = datetime.now().year - int(str(tm['birth_date'])[:4])
+            if 10 <= eta_tm <= 60:
+                registra(grafo, 'p', 'eta', eta_tm, 'transfermarkt',
+                         url=tm.get('tm_url') or '',
+                         nota=f"da data di nascita {str(tm['birth_date'])[:10]}")
+        except (ValueError, TypeError):
+            pass
+    if grafo:
+        opp['grafo_fonti'] = grafo
+
+
 def apply_tm_data(opp: dict, tm: dict) -> bool:
     """
     Merge TM data into an opportunity. Returns True if locked as enriched.
@@ -74,6 +122,16 @@ def apply_tm_data(opp: dict, tm: dict) -> bool:
         tm['market_value'] = tm['market_value_eur']
     if tm.get('market_value_text') and not tm.get('market_value_formatted'):
         tm['market_value_formatted'] = tm['market_value_text']
+
+    # Prima di sovrascrivere: registrare chi dice cosa (src/piramide.py).
+    # Questo è l'unico istante in cui i due valori coesistono — quello che la
+    # discovery aveva trovato e quello che Transfermarkt porta. Subito sotto,
+    # `opp[key] = tm[key]` ne cancella uno e nessuno si ricorda che esisteva.
+    #
+    # Oggi registra e basta: non cambia chi vince. Serve a misurare quanto le
+    # due bocche litigano davvero prima di lasciar decidere il grafo — e già
+    # così un disaccordo smette di sparire in silenzio.
+    _registra_nel_grafo(opp, tm)
 
     for key in _TM_KEYS:
         if tm.get(key) is not None:
