@@ -2798,7 +2798,12 @@
     "source_name": "www.gazzetta.it",
     "source_url": "https://www.gazzetta.it/en/football/teams/inter/news/25-07-2026/inter-appiano-gentile-and-interello-training-grounds-to-receive-major-investment.shtml",
     "discovered_at": "2026-08-03T09:53:52.916706",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:mistral",
+    "player_profile": {
+      "enrichment_source": "Enrichment:mistral"
+    },
+    "tm_enriched": false
   },
   {
     "id": "ed6765915a832e1b9c864356b946c10e",
@@ -4743,9 +4748,35 @@
     "league_id": "italy_serie_c_d",
     "enrichment_source": "Enrichment:mistral",
     "player_profile": {
-      "enrichment_source": "Enrichment:mistral"
+      "enrichment_source": "Enrichment:mistral",
+      "market_value": 75000,
+      "market_value_formatted": "75 mila €",
+      "birth_date": "2007-01-01"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "market_value": [
+          {
+            "valore": "75000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-08-31T22:51:07.461103+00:00"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "19",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-08-31T22:51:07.461126+00:00",
+            "nota": "da data di nascita 2007-01-01"
+          }
+        ]
+      }
+    },
+    "market_value": 75000,
+    "market_value_formatted": "75 mila €",
+    "birth_date": "2007-01-01",
+    "age": 19
   },
   {
     "id": "58c6fffad65e0f9a3350838a2fbec800",
@@ -11138,28 +11169,6 @@
     "goals": 3
   },
   {
-    "id": "6716d09b5cc839f76afb3be8a65df6ae",
-    "player_name": "Luca Bacchin",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Trasferimento definitivo dal Perugia (Serie C) al Modena (Serie B) a luglio 2026.",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEKxstDuiPWUQS9qEaxeV573te6lhS23Q_Om0scj6b0LgZTlfHSPqj5MBLxHb91SSSrjFLq_PlzloD2Wami5Htsy6K0u8qgyZoMlNIxJrQ3N7lIWa7RMciKvEVX9FCJ85fhAH-TjPmUE2POnL8lsezmYDS54JDtMAFbHhyIq9T1Ug8-nmLs7K7Mfxo6VZtbdp_z4RITgjMMUD86ZWtFI-Y1yoGPOVSv6EQZYd8ASW8nCVPNQMU6wh40-2sN_KHxJ-2N2oA_nyhtg5GcbVuS72afv3h0zXoXowI=",
-    "discovered_at": "2026-07-02T09:21:19.959718",
-    "league_id": "italy_serie_c_d",
-    "tm_url": "https://www.transfermarkt.it/luca-bacchin/profil/spieler/660878",
-    "tm_verified_at": "2026-08-31T19:38:23+00:00",
-    "birth_date": "29/10/2003",
-    "age": 22,
-    "current_club": "Modena FC",
-    "role_name": "Seconda punta",
-    "foot": "sinistro",
-    "contract_expires": "30/06/2029",
-    "market_value": 200000,
-    "market_value_eur": 200000
-  },
-  {
     "id": "57e153ae15417b105c4834a48c841808",
     "player_name": "Luca Barani",
     "region": "ITALY",
@@ -13441,7 +13450,18 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEZb533R7atHNqoDTCyWewvJFx8AesoXIprwv2pFlJdCyL3KHQ4x_rx4qitTHOE0HEknEzIgU0J0X9SYjb9yYCYbljMj3fb51rmvTXrqjUu5-yozIr8QOmiiQBgQu85mmSLo5A1iD-Yy1NQ_EXTtkuSojy54duTnaocT2lEjTce4JLPeurPAHIW9pVm5CzJToyXBZNnPY6kJEY==",
     "discovered_at": "2026-07-13T14:44:06.687356",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/mattia-sala/profil/spieler/935510",
+    "tm_verified_at": "2026-08-31T22:53:59+00:00",
+    "birth_date": "25/03/2005",
+    "age": 21,
+    "current_club": "SS Arezzo",
+    "role_name": "Centrocampista",
+    "foot": "entrambi",
+    "contract_expires": "30/06/2029",
+    "agent": "LIAN Sports Group",
+    "market_value": 200000,
+    "market_value_eur": 200000
   },
   {
     "id": "411363ad8aa152633670ebede530440a",
@@ -17792,7 +17812,12 @@
     "source_name": "www.pinterest.com",
     "source_url": "https://www.pinterest.com/aly5948/beautiful-portieres",
     "discovered_at": "2026-08-11T07:14:35.208502",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:mistral",
+    "player_profile": {
+      "enrichment_source": "Enrichment:mistral"
+    },
+    "tm_enriched": false
   },
   {
     "id": "134479c025e7066208aece38302c50c5",
