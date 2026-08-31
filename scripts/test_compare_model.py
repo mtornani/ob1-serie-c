@@ -43,9 +43,28 @@ CHUNK_SIZE = 8      # stesso FEED_TRIAGE_CHUNK di scraper_global.py
 SAMPLE_CHUNKS = 2   # 2 blocchi reali, non tutto il feed: un test, non un run
 
 
+def _diagnose_key(env_name: str) -> None:
+    """
+    Un 401 può voler dire "chiave sbagliata" o "chiave giusta ma
+    incollata male" (spazi, newline, o il prefisso "Bearer " copiato
+    per sbaglio insieme al valore — errore comune quando si copia da un
+    comando curl di esempio). Non stampa mai il valore: solo lunghezza
+    e forma, per distinguere i due casi senza esporre nulla.
+    """
+    raw = os.getenv(env_name) or ""
+    if not raw:
+        print(f"  [DIAG] {env_name}: non impostata")
+        return
+    stripped = raw.strip()
+    print(f"  [DIAG] {env_name}: lunghezza={len(stripped)} "
+          f"spazi_ai_bordi={raw != stripped} "
+          f"contiene_prefisso_bearer={stripped.lower().startswith('bearer ')}")
+
+
 def main() -> int:
     model = os.getenv("COMPARE_MODEL", "")
     print(f"=== Test triage — modello: {model or '(COMPARE_MODEL non impostata)'} ===")
+    _diagnose_key("COMPARE_API_KEY")
     print(f"Catena attiva: {describe_stack()}")
     if not has_any_llm():
         print("Nessuna rotta LLM disponibile — controllare COMPARE_BASE_URL/COMPARE_MODEL/COMPARE_API_KEY")
