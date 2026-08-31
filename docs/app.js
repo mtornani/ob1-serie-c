@@ -391,8 +391,17 @@ function openDrawer(o){
     ? `<div class="strip">${nums.map(s=>`<div class="cell"><span class="v">${s.v}</span><span class="l">${s.l}</span></div>`).join('')}</div>${trustNote}`
     : trustNote;
 
+  // Se il tipo è stato riscritto perché il contratto smentiva la fonte, la
+  // scheda lo dice invece di far sparire la contraddizione. Chi legge deve
+  // sapere che qualcuno lo dava per libero, e su cosa ci si basa per dire di
+  // no — è la differenza fra correggere un dato e nasconderlo.
+  const rif = o.type_reconciled_from
+    ? ` (la fonte diceva "${TYPE_LABEL[o.type_reconciled_from] || o.type_reconciled_from}"` +
+      (o.contract_expires ? `, ma risulta sotto contratto fino al ${o.contract_expires}` : '') + ')'
+    : '';
+
   const facts = [
-    ['Situazione', sit],
+    ['Situazione', sit + rif],
     ['Club', club],
     o.age!=null && ['Età', `${o.age} anni`],
     role && ['Ruolo', role],

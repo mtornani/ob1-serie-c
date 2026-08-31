@@ -277,6 +277,15 @@ def main():
             'role': opp.get('role', ''),
             'role_name': opp.get('role_name', opp.get('role', '')),
             'opportunity_type': opp.get('opportunity_type', 'mercato').lower(),
+            # Se il tipo è stato riscritto perché il contratto lo smentiva
+            # (quality_gate.reconcile_opportunity_type), qui c'è cosa diceva
+            # la fonte. Il commento nel codice della riconciliazione dice
+            # "traccia, non un fix silenzioso" — ma la traccia si fermava
+            # prima della dashboard, e in pubblico il fix era silenzioso
+            # comunque. Oggi conta: sono 23 record riclassificati da
+            # 'svincolato' a 'mercato', e chi legge la scheda deve poter
+            # sapere che qualcuno lo aveva dato per libero e perché non lo è.
+            'type_reconciled_from': opp.get('type_reconciled_from', ''),
             'reported_date': opp.get('discovered_at', datetime.now().isoformat())[:10],
             'source_name': opp.get('source_name', 'N/D'),
             'source_url': opp.get('source_url', ''),
