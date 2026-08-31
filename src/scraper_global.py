@@ -406,6 +406,13 @@ class GlobalScraper:
                         continue
 
                     url = str(item.get('source_url') or '').strip()
+                    # Subito, finché il redirect è vivo: dopo è 404 e la scheda
+                    # resta senza la notizia che l'ha generata. Vedi
+                    # _risolvi_redirect. Va prima del cap e del controllo di
+                    # freschezza, perché entrambi ragionano sull'URL: contare
+                    # per articolo vero invece che per redirect è anche più
+                    # corretto, dato che un solo redirect copre più giocatori.
+                    url = self._risolvi_redirect(url)
                     # Cap players per source article: one listing yielding dozens
                     # of names is a roster dump, not scouting signal. Filters by
                     # source density, not by league.
@@ -493,6 +500,37 @@ class GlobalScraper:
         if 'vertexaisearch.cloud.google.com' in url or 'grounding-api' in url:
             return 'Gemini Search'
         return url.lstrip('/').split('://')[-1].split('/')[0]
+
+    def _risolvi_redirect(self, url: str) -> str:
+        """
+        Un redirect di grounding vale solo ADESSO: fra qualche giorno è 404.
+
+        Misurato il 31 ago 2026 sul DB di produzione: 41 delle 54 schede
+        pubbliche avevano come fonte un vertexaisearch/grounding-api-redirect,
+        e otto provati rispondevano tutti 404. Quelle schede sono rimaste
+        senza la notizia che le aveva generate: c'è il profilo Transfermarkt
+        (identità, club, contratto) ma non più il pezzo che diceva PERCHÉ quel
+        giocatore fosse un'occasione.
+
+        Il redirect però funziona nel momento in cui il grounding lo
+        restituisce. Seguirlo qui, subito, costa una richiesta e trasforma un
+        link che scade in un articolo che resta. Su fallimento si tiene il
+        redirect com'era: il gate sa già non contarlo come fonte
+        (quality_gate.e_redirect_di_ricerca), quindi il caso peggiore è
+        esattamente il comportamento di oggi.
+        """
+        if not url or not ('vertexaisearch' in url or 'grounding-api' in url):
+            return url
+        try:
+            r = requests.head(url, timeout=10, allow_redirects=True)
+            finale = (r.url or '')
+        except Exception as e:
+            print(f"  [REDIRECT] non risolto ({type(e).__name__}), tengo il grezzo")
+            return url
+        if not finale or 'vertexaisearch' in finale or 'grounding-api' in finale:
+            return url
+        print(f"  [REDIRECT] -> {finale[:70]}")
+        return finale
 
     def _detect_type(self, text: str) -> OpportunityType:
         text = text.lower()
