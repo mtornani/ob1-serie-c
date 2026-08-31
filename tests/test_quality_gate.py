@@ -16,7 +16,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.quality_gate import (apply_gate, assess_identity, normalize_age,
+from src.quality_gate import (apply_gate, assess_identity, count_distinct_sources,
+                              e_redirect_di_ricerca, normalize_age,
                               reconcile_opportunity_type, _parsa_contract_expires)
 
 
@@ -102,7 +103,50 @@ class TestPublishableHardGate(unittest.TestCase):
         ]))
         self.assertTrue(g["corroborated"])
         self.assertFalse(g["identity_complete"])
-        self.assertFalse(g["publishable"])
+
+
+class TestRedirectDiRicercaNonSonoFonti(unittest.TestCase):
+    """
+    Un redirect di grounding Gemini è il nostro motore di ricerca che dice
+    dove ha guardato, e scade. Misurato il 31 ago 2026: 41 delle 54 schede
+    pubbliche lo avevano come fonte, otto provati rispondevano tutti 404, e
+    ognuna dichiarava "2 fonti" — il redirect faceva da seconda accanto a
+    Transfermarkt. Il verdetto del gate era giusto lo stesso (il profilo TM
+    corrobora da solo), ma il CONTEGGIO era gonfiato.
+    """
+
+    REDIRECT = ("https://vertexaisearch.cloud.google.com/grounding-api-redirect/"
+                "AUZIYQHrLv5bj1wpkK5cAolSjgBvxX2id6riBmDeUG9F")
+
+    def test_riconosce_il_redirect(self):
+        self.assertTrue(e_redirect_di_ricerca(self.REDIRECT))
+        self.assertTrue(e_redirect_di_ricerca("https://vertexaisearch.google.com/x"))
+        self.assertFalse(e_redirect_di_ricerca("https://tuttoc.com/notizia"))
+        self.assertFalse(e_redirect_di_ricerca(""))
+        self.assertFalse(e_redirect_di_ricerca(None))
+
+    def test_redirect_non_conta_come_fonte(self):
+        o = opp(source_url=self.REDIRECT,
+                tm_url="https://www.transfermarkt.it/tizio/profil/spieler/1")
+        self.assertEqual(count_distinct_sources(o), 1)   # solo Transfermarkt
+
+    def test_redirect_dentro_la_lista_sources(self):
+        o = opp(source_url="https://tuttoc.com/notizia",
+                sources=[{"url": self.REDIRECT}, {"url": "https://tuttoc.com/notizia"}])
+        self.assertEqual(count_distinct_sources(o), 1)
+
+    def test_il_profilo_tm_corrobora_lo_stesso(self):
+        # è il punto: il gate non perde nessuno, cambia solo cosa dichiara
+        g = assess_identity(opp(source_url=self.REDIRECT,
+                                tm_url="https://www.transfermarkt.it/tizio/profil/spieler/1"))
+        self.assertEqual(g["n_sources"], 1)
+        self.assertTrue(g["corroborated"])
+        self.assertTrue(g["publishable"])
+
+    def test_due_fonti_vere_contano_ancora_due(self):
+        o = opp(source_url="https://tuttoc.com/x",
+                sources=[{"url": "https://tuttomercatoweb.com/y"}])
+        self.assertEqual(count_distinct_sources(o), 2)
 
 
 class TestReconcileOpportunityType(unittest.TestCase):

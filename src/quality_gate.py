@@ -101,20 +101,54 @@ def has_tm_player_profile(opp: dict) -> bool:
     return False
 
 
+def e_redirect_di_ricerca(url: str) -> bool:
+    """
+    Un redirect di grounding Gemini (vertexaisearch.cloud.google.com/
+    grounding-api-redirect/...) non è una fonte: è il nostro motore di
+    ricerca che indica dove ha guardato, e scade.
+
+    Che scadano lo sa già questo repo in tre punti — src/tm_url.py lo scrive
+    fra i marcatori di redirect, enricher_tm.py lo dice nei commenti, e il
+    bot Telegram (notifier.py) si rifiuta di mandarne il link. Misurato il
+    31 ago 2026: 41 delle 54 schede pubbliche avevano come fonte uno di
+    questi redirect, e provandone otto, otto rispondevano 404. La dashboard
+    ci metteva sopra un bottone "Leggi la notizia", e quel bottone non
+    portava da nessuna parte.
+    """
+    u = (url or "").lower()
+    return "vertexaisearch" in u or "grounding-api-redirect" in u
+
+
 def count_distinct_sources(opp: dict) -> int:
-    """Conta domini distinti dalle prove disponibili sul record flat."""
+    """
+    Conta domini distinti dalle prove disponibili sul record flat.
+
+    I redirect di ricerca non contano: su 41 schede facevano da SECONDA
+    fonte accanto a Transfermarkt, e la scheda dichiarava "2 fonti" quando
+    la prova vera era una sola (il profilo TM, che infatti resta e regge il
+    gate da solo). Contare il nostro motore di ricerca come fonte
+    indipendente è la stessa cosa che contare un link TikTok — corretta alla
+    lettera, falsa nella sostanza.
+    """
     domains = set()
     for key in ("source_url", "tm_url", "transfermarkt_url"):
-        d = _source_domain(opp.get(key) or "")
+        url = opp.get(key) or ""
+        if e_redirect_di_ricerca(url):
+            continue
+        d = _source_domain(url)
         if d:
             domains.add(d)
     sources = opp.get("sources") or []
     if isinstance(sources, list):
         for s in sources:
             if isinstance(s, dict):
-                d = s.get("domain") or _source_domain(s.get("url") or "")
+                raw = s.get("url") or ""
+                d = s.get("domain") or _source_domain(raw)
             else:
-                d = _source_domain(str(s))
+                raw = str(s)
+                d = _source_domain(raw)
+            if e_redirect_di_ricerca(raw) or e_redirect_di_ricerca(d or ""):
+                continue
             if d:
                 domains.add(d)
     return len(domains)
