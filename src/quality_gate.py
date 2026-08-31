@@ -183,6 +183,36 @@ def assess_identity(opp: dict) -> dict:
     }
 
 
+def _parsa_contract_expires(ce: str) -> Optional[datetime]:
+    """
+    `contract_expires` arriva in due formati diversi a seconda di CHI l'ha
+    scritto, e finora la riconciliazione ne capiva uno solo.
+
+    Trovato controllando perché Donnarumma e Acerbi — davanti a tutti sulla
+    dashboard il 31 ago 2026, entrambi 'svincolato' — non venissero
+    riclassificati nonostante uno dei due avesse un contract_expires
+    palesemente futuro (30/06/2030): quel valore era scritto GG/MM/AAAA
+    (il formato italiano di Transfermarkt, verificato in
+    src/tm_verify.py:contratto_fino — "30/06/2029" è il caso del suo stesso
+    self-test), mentre questa funzione provava solo l'ISO YYYY-MM-DD che
+    scrive enricher_tm.py per la via LLM. Un formato che non è quello atteso
+    finiva nell'except e usciva silenzioso come "nessuna contraddizione" —
+    che è la lettura sbagliata: era una contraddizione scritta in un formato
+    diverso, non un'assenza di dati.
+
+    Ritorna None solo per un valore davvero illeggibile (es. "chissà"): lì il
+    comportamento resta "non tocco", perché una data che non si riesce a
+    interpretare non è una prova di contraddizione.
+    """
+    ce = ce.strip()
+    for fmt in ("%Y-%m-%d", "%d/%m/%Y"):
+        try:
+            return datetime.strptime(ce[:10], fmt)
+        except ValueError:
+            continue
+    return None
+
+
 def reconcile_opportunity_type(opp: dict) -> dict:
     """
     Un contratto futuro confermato da Transfermarkt vince su una
@@ -212,9 +242,8 @@ def reconcile_opportunity_type(opp: dict) -> dict:
     ce = opp.get("contract_expires")
     if not ce:
         return opp
-    try:
-        expires = datetime.fromisoformat(str(ce)[:10])
-    except ValueError:
+    expires = _parsa_contract_expires(str(ce))
+    if expires is None:
         return opp
     if expires <= datetime.now():
         return opp

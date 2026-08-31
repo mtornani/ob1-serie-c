@@ -16,7 +16,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.quality_gate import apply_gate, assess_identity, normalize_age, reconcile_opportunity_type
+from src.quality_gate import (apply_gate, assess_identity, normalize_age,
+                              reconcile_opportunity_type, _parsa_contract_expires)
 
 
 def opp(**kw):
@@ -146,6 +147,31 @@ class TestReconcileOpportunityType(unittest.TestCase):
         o = opp(opportunity_type="svincolato", contract_expires="chissà")
         out = reconcile_opportunity_type(o)
         self.assertEqual(out["opportunity_type"], "svincolato")
+
+    def test_contratto_formato_italiano_riconosciuto(self):
+        """
+        Caso vero, trovato il 31 ago 2026: Donnarumma in cima alla dashboard
+        pubblica come 'svincolato' con contract_expires='30/06/2030' — un
+        contratto fino al 2030 non riconciliato perché scritto in GG/MM/AAAA
+        (il formato che src/tm_verify.py scrive davvero, non l'ISO che questa
+        funzione si aspettava). La riconciliazione lo leggeva come data non
+        valida e lasciava passare la contraddizione intatta.
+        """
+        o = opp(opportunity_type="svincolato", contract_expires="30/06/2030",
+                 current_club="Manchester City")
+        out = reconcile_opportunity_type(o)
+        self.assertEqual(out["opportunity_type"], "mercato")
+        self.assertEqual(out["type_reconciled_from"], "svincolato")
+
+    def test_contratto_italiano_gia_scaduto_resta_svincolato(self):
+        o = opp(opportunity_type="svincolato", contract_expires="30/06/2020")
+        out = reconcile_opportunity_type(o)
+        self.assertEqual(out["opportunity_type"], "svincolato")
+
+    def test_parsa_contract_expires_entrambi_i_formati(self):
+        self.assertEqual(_parsa_contract_expires("2030-06-30"),
+                         _parsa_contract_expires("30/06/2030"))
+        self.assertIsNone(_parsa_contract_expires("chissà"))
 
     def test_apply_gate_usa_il_tipo_riconciliato(self):
         o = opp(opportunity_type="svincolato", contract_expires="2030-06-30",
