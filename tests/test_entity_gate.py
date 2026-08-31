@@ -119,6 +119,57 @@ class TestScope(unittest.TestCase):
         self.assertEqual(v.kind, JUNK)
 
 
+class TestRassegneDiMercato(unittest.TestCase):
+    """
+    Casi veri, trovati il 31 ago 2026 guardando chi c'era in dashboard:
+    Acerbi (38) e Donnarumma pubblicati come opportunità di Serie C, e
+    Jonathan David con loro. Venivano tutti e tre da calciomercato.com/liste/,
+    le rassegne sui grandi nomi in scadenza. Il cap sul valore non li ferma:
+    Acerbi vale 2 mln € su Transfermarkt proprio perché ha 38 anni, e per
+    Donnarumma il valore non c'era affatto.
+    """
+
+    LISTA = ("https://www.calciomercato.com/liste/da-acerbi-a-vlahovic-"
+             "tutti-i-giocatori-in-scadenza-di-contratto-il-30-giugno-2026/x")
+
+    def test_rassegna_e_fuori_scopo(self):
+        v = classify({"player_name": "Francesco Acerbi", "market_value": 2_000_000,
+                      "source_url": self.LISTA})
+        self.assertEqual(v.kind, OUT_OF_SCOPE)
+        self.assertFalse(v.spend_allowed)
+        self.assertFalse(v.is_junk)   # è un giocatore vero, non spazzatura
+        self.assertIn("rassegna", v.reason)
+
+    def test_rassegna_senza_valore_di_mercato(self):
+        # Donnarumma: market_value assente, il cap non ha nulla da leggere
+        v = classify({"player_name": "Gianluigi Donnarumma", "market_value": None,
+                      "source_url": self.LISTA})
+        self.assertEqual(v.kind, OUT_OF_SCOPE)
+
+    def test_www_e_maiuscole_non_aggirano_il_controllo(self):
+        v = classify({"player_name": "Luka Modric",
+                      "source_url": "HTTPS://CalcioMercato.com/LISTE/top-10-svincolati/"})
+        self.assertEqual(v.kind, OUT_OF_SCOPE)
+
+    def test_articolo_normale_dello_stesso_sito_passa(self):
+        # Non è il dominio a essere bandito: è lo spazio delle rassegne.
+        v = classify({"player_name": "Cosimo Patierno", "market_value": 150_000,
+                      "source_url": "https://www.calciomercato.com/serie-c/patierno-avellino/"})
+        self.assertEqual(v.kind, PLAYER)
+
+    def test_articolo_di_lega_pro_che_cita_la_serie_a_passa(self):
+        # tuttoc.com, "mezza serie A su un diamante della Lega Pro": parla di
+        # un giocatore NOSTRO che piace sopra. Vero positivo, non si tocca.
+        v = classify({"player_name": "Chec Benelli Doumbia",
+                      "source_url": "https://www.tuttoc.com/il-punto/mezza-serie-a-su-"
+                                    "un-diamante-della-lega-pro-operazione-nostalgia/427"})
+        self.assertEqual(v.kind, PLAYER)
+
+    def test_senza_source_url_non_esplode(self):
+        v = classify({"player_name": "Tizio Caio", "market_value": 150_000})
+        self.assertEqual(v.kind, PLAYER)
+
+
 class TestParticleDuplicates(unittest.TestCase):
     def test_preposition_artifact_is_linked_to_the_canonical_name(self):
         dupes = find_particle_duplicates(

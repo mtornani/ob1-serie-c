@@ -35,6 +35,26 @@ OUT_OF_SCOPE = "out_of_scope"
 # record è corretto ma non è un'opportunità per questo radar.
 DEFAULT_MAX_MARKET_VALUE = 5_000_000
 
+# Pagine-rassegna degli aggregatori di mercato: "i migliori in scadenza",
+# "tutti i parametri zero", "la top 10 dei senza contratto". Parlano del
+# mercato che conta, non di Serie C — e il cap sul valore non le ferma,
+# perché un nome grosso a fine carriera ha un valore Transfermarkt basso
+# proprio perché è a fine carriera.
+#
+# Misurato sul DB il 31 ago 2026: 17 record su 799 vengono da
+# calciomercato.com/liste/, e sono Modric, Konaté, Kolo Muani, John Stones,
+# Kessié, Jonathan David, Donnarumma, Acerbi, Brandt, Tomiyasu — più voci
+# che non sono nemmeno persone ("Cessioni Juventus", "Borussia Dortmund",
+# "Da Vlahovic"). Zero opportunità di Serie C su diciassette.
+#
+# È un segmento di PERCORSO del publisher, non una blacklist di articoli:
+# /liste/ è lo spazio dove calciomercato.com mette le rassegne, e ci finirà
+# anche quella di domani. Altri percorsi si aggiungono quando qualcuno li
+# misura, non quando sembrano plausibili.
+_PERCORSI_RASSEGNA = (
+    "calciomercato.com/liste/",
+)
+
 # Vocabolario editoriale/organizzativo. Confrontato per TOKEN, mai per
 # sottostringa. Volutamente esclusi i termini che sono anche cognomi italiani
 # comuni (Marino, Costa, Monti, Riva, Longo, Grillo...).
@@ -151,6 +171,17 @@ def classify(opp: Dict[str, Any], max_market_value: Optional[int] = None) -> Ver
     verdict = classify_name(opp.get("player_name") or opp.get("name"))
     if not verdict.spend_allowed:
         return verdict
+
+    # Da dove viene il record, prima di quanto vale: una rassegna di mercato
+    # produce nomi veri e verificabili che non sono comunque nostri, e il cap
+    # sul valore li lascia passare tutti (vedi _PERCORSI_RASSEGNA).
+    url = (opp.get("source_url") or "").lower().replace("www.", "")
+    for percorso in _PERCORSI_RASSEGNA:
+        if percorso in url:
+            return Verdict(
+                OUT_OF_SCOPE,
+                f"rassegna di mercato ({percorso}), non cronaca di Serie C",
+            )
 
     cap = DEFAULT_MAX_MARKET_VALUE if max_market_value is None else max_market_value
     profile = opp.get("player_profile") or {}
