@@ -343,6 +343,11 @@ def main():
             'ob1_score': score_result['ob1_score'],
             'classification': score_result['classification'],
             'score_breakdown': score_result['score_breakdown'],
+            # Quanto del punteggio poggia su un dato vero (src/scoring.py,
+            # _componenti_senza_dato). Passa in dashboard perché il numero da
+            # solo non distingue "70 misurato" da "70 fatto di neutri".
+            'score_senza_dato': score_result.get('score_senza_dato', []),
+            'peso_misurato': score_result.get('peso_misurato'),
 
             # Quality gate — nomi storici, mantenuti per compatibilità con
             # chi legge già data.json così com'è (nessun consumer in docs/

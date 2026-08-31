@@ -90,6 +90,10 @@ class OB1Scorer:
             'source': self._calc_source(opportunity.get('source_name', '')),
         }
 
+        senza_dato = self._componenti_senza_dato(opportunity, date_str, opp_type)
+        peso_misurato = round(
+            sum(w for k, w in self.WEIGHTS.items() if k not in senza_dato), 3)
+
         total = sum(breakdown[key] * self.WEIGHTS[key] for key in self.WEIGHTS)
         ob1_score = int(round(total))
 
@@ -105,7 +109,56 @@ class OB1Scorer:
             'ob1_score': ob1_score,
             'classification': classification,
             'score_breakdown': breakdown,
+            # Quanto di questo punteggio poggia su un dato vero, e quanto sul
+            # valore neutro che ogni componente restituisce quando non sa
+            # niente. Vedi _componenti_senza_dato.
+            'score_senza_dato': senza_dato,
+            'peso_misurato': peso_misurato,
         }
+
+    # I componenti tornano 50 ("base", "fonte sconosciuta", "nessuna data")
+    # quando l'input non c'e'. E' una scelta difendibile dentro il calcolo —
+    # un'assenza non deve penalizzare come un valore basso — ma diventa
+    # disonesta al momento di mostrarla: la scheda stampa un numero a due
+    # cifre che sembra una misura, e sotto ci sono dei "boh" pesati.
+    #
+    # Misurato sulla dashboard del 31 ago 2026, 54 pubblicati:
+    #     experience   = 50 su 50 schede   (peso 20%)
+    #     source       = 50 su 41 schede   (peso  5%)
+    #     league_fit   = 50 su 39 schede   (peso 15%)
+    # Cioe' su tre quarti delle schede il 40% del punteggio e' una costante.
+    #
+    # L'idea arriva da OuroborosCouncil (_needs_more_signal): un punteggio
+    # alto sostenuto da un solo componente e' "segnale vuoto ad alta
+    # rumorosita'", e li' serve a NON spendere una chiamata AI. Qui la spesa
+    # e' gia' fatta, quindi serve all'altra meta' del problema: non spacciare
+    # una costante per una misura. Il numero non cambia — cambia cosa
+    # dichiariamo di sapere.
+    def _componenti_senza_dato(self, opp: Dict[str, Any], date_str: str,
+                               opp_type: str) -> list:
+        """I componenti che hanno restituito il neutro perche' l'input mancava.
+        Non tocca il punteggio: lo descrive."""
+        mancanti = []
+        if not date_str:
+            mancanti.append('freshness')
+        if opp_type in ('', 'altro', 'mercato'):
+            # 'mercato' e' il ripiego generico, anche dopo la riconciliazione
+            mancanti.append('opportunity_type')
+        if not (opp.get('appearances') or opp.get('previous_clubs')
+                or (opp.get('summary') or '').strip()):
+            mancanti.append('experience')
+        if opp.get('age') in (None, '', 0):
+            mancanti.append('age')
+        if opp.get('market_value') in (None, '', 0):
+            mancanti.append('market_value')
+        if not ((opp.get('summary') or '').strip() or opp.get('previous_clubs')
+                or (opp.get('current_club') or '').strip()):
+            mancanti.append('league_fit')
+        nome_fonte = (opp.get('source_name') or '').lower()
+        if not nome_fonte or not any(k in nome_fonte or nome_fonte in k
+                                     for k in self.SOURCE_SCORES):
+            mancanti.append('source')
+        return mancanti
 
     def _calc_freshness(self, date_str: str, opp_type: str = '') -> int:
         """Quanto e' recente la notizia. Svincolati/rescissioni restano utili piu' a lungo."""

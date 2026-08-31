@@ -400,6 +400,26 @@ function openDrawer(o){
       (o.contract_expires ? `, ma risulta sotto contratto fino al ${o.contract_expires}` : '') + ')'
     : '';
 
+  // Su cosa poggia il numero. Un punteggio a due cifre sembra una misura
+  // anche quando metà del suo peso è il valore neutro che i componenti
+  // restituiscono quando non sanno niente (src/scoring.py). Misurato il
+  // 31 ago 2026: mediana 63% di peso su dati veri, otto schede sotto il 50%.
+  // Detto in italiano, senza nomi di campo: se serve un glossario per
+  // leggerlo, non serve a niente.
+  const NOME_DATO = {
+    experience: 'presenze in carriera', source: 'affidabilità della fonte',
+    opportunity_type: 'tipo di occasione', market_value: 'valore di mercato',
+    age: 'età', freshness: 'data della notizia', league_fit: 'pertinenza Serie C',
+  };
+  const mancanti = (o.score_senza_dato || []).map(k => NOME_DATO[k] || k);
+  const quota = typeof o.peso_misurato === 'number' ? Math.round(o.peso_misurato * 100) : null;
+  const scoreNota = mancanti.length && quota !== null
+    ? `<div class="verdict-note" style="margin:0 0 10px;opacity:.75">
+         Il punteggio poggia per il ${quota}% su dati verificati.
+         Non sappiamo: ${esc(mancanti.join(', '))}.
+       </div>`
+    : '';
+
   const facts = [
     ['Situazione', sit + rif],
     ['Club', club],
@@ -437,6 +457,7 @@ function openDrawer(o){
     <div class="verdict-note" style="margin:12px 0 10px">
       <strong>${esc(action)}</strong>
     </div>
+    ${scoreNota}
     ${yesHtml}
     ${noHtml}
 
