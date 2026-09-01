@@ -2568,11 +2568,28 @@
     "source_url": "https://www.gazzetta.it/en/football/teams/inter/news/15-07-2026/inter-under-23-announce-new-stadium-breda-sesto.shtml",
     "discovered_at": "2026-08-07T19:02:59.006477",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:mistral",
+    "enrichment_source": "Enrichment:groq",
     "player_profile": {
-      "enrichment_source": "Enrichment:mistral"
+      "enrichment_source": "Enrichment:groq",
+      "nationality": "Germany",
+      "current_club": "Paris Saint-Germain"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Paris Saint-Germain",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-09-01T20:55:34.887589+00:00"
+          }
+        ]
+      }
+    },
+    "nationality": "Germany",
+    "current_club": "Paris Saint-Germain",
+    "role_name": "Defender",
+    "role": "Defender"
   },
   {
     "id": "a5543a6a9d0651c121488dd113d60c28",
@@ -19005,18 +19022,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "d78b1cddc890cf52c9230aa5ec9cb0fb",
-    "player_name": "Gregorio Morachioli",
-    "region": "ITALY",
-    "opportunity_type": "prestito",
-    "description": "Arriva in prestito al Livorno dalla Juve Stabia",
-    "ob1_score": 62,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444676",
-    "discovered_at": "2026-09-01T16:19:34.857961",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "964ee93e4f6c683fb09fc3379bddaac4",
     "player_name": "Andrea Tessiore",
     "region": "ITALY",
@@ -19084,18 +19089,6 @@
     "agent": "Gio’sport"
   },
   {
-    "id": "f42c85b025e12872a314cb6aab863c98",
-    "player_name": "Roberto Inglese",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Trattativa saltata per trasferimento al Campobasso",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444668",
-    "discovered_at": "2026-09-01T16:19:34.858553",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "314aa4bde6e1c02eab516ea886345f76",
     "player_name": "Tommaso Del Lungo",
     "region": "ITALY",
@@ -19132,15 +19125,261 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "4577b72ba258acdd78287b05c0931cbf",
+    "id": "9a6862128bf961cac04ba8cd2b5161fe",
+    "player_name": "Alessandro Galeandro",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ceduto a titolo definitivo al Campobasso",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444766",
+    "discovered_at": "2026-09-01T20:49:03.903521",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "a50fa3a05e442e0eee7e4ac460f4ea33",
+    "player_name": "Samuel Casadei",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ceduto a titolo definitivo al Venezia",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444765",
+    "discovered_at": "2026-09-01T20:49:03.903917",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "755d94db96e81962b23f895f62151fad",
+    "player_name": "Lorenzo Mastropietro",
+    "region": "ITALY",
+    "opportunity_type": "rescissione",
+    "description": "Risoluzione consensuale del contratto",
+    "ob1_score": 65,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444764",
+    "discovered_at": "2026-09-01T20:49:03.904070",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "f6e9b0260f37200665969341d6183049",
+    "player_name": "Pasquale Iaccarino",
+    "region": "ITALY",
+    "opportunity_type": "rescissione",
+    "description": "Risoluzione consensuale del contratto",
+    "ob1_score": 65,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444764",
+    "discovered_at": "2026-09-01T20:49:03.904204",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/pasquale-iaccarino/profil/spieler/1049992",
+    "tm_verified_at": "2026-09-01T21:00:41+00:00",
+    "birth_date": "31/10/2004",
+    "age": 21,
+    "current_club": "svincolato",
+    "role_name": "Ala sinistra",
+    "foot": "sinistro",
+    "agent": "TMP SOCCER srl",
+    "market_value": 25000,
+    "market_value_eur": 25000
+  },
+  {
+    "id": "eb54d8350821df96723e3c8bfe15e38c",
+    "player_name": "Christian Garofalo",
+    "region": "ITALY",
+    "opportunity_type": "prestito",
+    "description": "Arriva in prestito dal Napoli",
+    "ob1_score": 62,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444762",
+    "discovered_at": "2026-09-01T20:49:03.904365",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "3b00afc7a16b97451d74d1aa21a09c03",
+    "player_name": "Orazio Pannitteri",
+    "region": "ITALY",
+    "opportunity_type": "rescissione",
+    "description": "Risoluzione consensuale del contratto",
+    "ob1_score": 65,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444761",
+    "discovered_at": "2026-09-01T20:49:03.904495",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/orazio-pannitteri/profil/spieler/526021",
+    "tm_verified_at": "2026-09-01T21:00:34+00:00",
+    "birth_date": "17/08/1999",
+    "age": 27,
+    "current_club": "svincolato",
+    "role_name": "Ala destra",
+    "foot": "sinistro",
+    "agent": "20 Sport"
+  },
+  {
+    "id": "6d2774932d1921f3a0545bee219d6d44",
+    "player_name": "Jacopo Sardo",
+    "region": "ITALY",
+    "opportunity_type": "prestito",
+    "description": "Centrocampista classe 2005 dal Milan al Pescara in prestito",
+    "ob1_score": 60,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458002",
+    "discovered_at": "2026-09-01T20:49:03.904623",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "1a251dedad02d588a898b39911e7f9d6",
+    "player_name": "Filippo Melegoni",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Trasferimento definitivo alla Juventus Next Gen fino al 30/06/2027",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458000",
+    "discovered_at": "2026-09-01T20:49:03.904749",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d91f6cfdbc6cc1623ebdae214d9dd226",
+    "player_name": "Nicolò Cudrig",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Passaggio alla Carrarese dalla Juventus Next Gen",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458000",
+    "discovered_at": "2026-09-01T20:49:03.904881",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d7b315ee1e12e0a506df919fbce74fef",
+    "player_name": "Massimo Zilli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Attaccante dal Cosenza allo Spezia, contratto fino al 30/06/2029",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457999",
+    "discovered_at": "2026-09-01T20:49:03.905004",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "a0c2181954c323810f1056b983b4a73a",
+    "player_name": "Mattia Della Rocca",
+    "region": "ITALY",
+    "opportunity_type": "prestito",
+    "description": "Attaccante classe 2006 dall'Avellino al Barletta a titolo temporaneo",
+    "ob1_score": 60,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457998",
+    "discovered_at": "2026-09-01T20:49:03.905130",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "b43c6ea721739301b26c4cf499a52f91",
+    "player_name": "Ertijon Gega",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Difensore dal Casarano alla Folgore Caratese",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457995",
+    "discovered_at": "2026-09-01T20:49:03.905268",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "416f6ae5325b568c600bbb0453a3dba8",
+    "player_name": "Manuel Belli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Arriva al Monopoli dall'Atalanta.",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457996",
+    "discovered_at": "2026-09-01T20:49:03.905395",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "c62155aaf7781d0c8ee73e37d7cc331b",
     "player_name": "Roberto Insigne",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Arrivo al Catania dall'Avellino",
+    "description": "Arriva al Catania in chiusura mercato.",
     "ob1_score": 58,
     "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457974",
-    "discovered_at": "2026-09-01T16:19:34.859022",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457993",
+    "discovered_at": "2026-09-01T20:49:03.905517",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "c2578cd84563887bffb6a7b405713c26",
+    "player_name": "Giovanni Vaglica",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Arriva al Carpi dal Giugliano.",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457992",
+    "discovered_at": "2026-09-01T20:49:03.905637",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "49468c1bd1a6e482e4671769d3710249",
+    "player_name": "Issiaka Kamate",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Cessione all'Atlético Madrid.",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457990",
+    "discovered_at": "2026-09-01T20:49:03.905757",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "7163ce146d9fa8b5995bc9b946bdeed4",
+    "player_name": "Francesco Di Tacchio",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Arriva alla Casertana dal Catania.",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457989",
+    "discovered_at": "2026-09-01T20:49:03.905880",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "8405f3e60b795c9f05f329d03adbbcb2",
+    "player_name": "Marco Frigerio",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Arriva all'Union Brescia dal Südtirol.",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457988",
+    "discovered_at": "2026-09-01T20:49:03.905999",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "42c871c3c8666cabaaf4eaa71e7c84cd",
+    "player_name": "Pelle Van Amersfoort",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Arriva al Perugia, attacco.",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457987",
+    "discovered_at": "2026-09-01T20:49:03.906120",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "fd87f92eb569a90fb004b24608788e13",
+    "player_name": "Ludovico Mauro",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Nessuna informazione disponibile",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/ludovico-mauro-1064",
+    "discovered_at": "2026-09-01T20:49:03.906253",
     "league_id": "italy_serie_c_d"
   }
 ]

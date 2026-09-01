@@ -28,25 +28,25 @@
       "cooldown_until": null,
       "day": "2026-09-01",
       "fail_streak": 0,
-      "last_error_at": "2026-09-01T16:19:28.364737+00:00",
-      "last_ok": "2026-09-01T16:28:43.435499+00:00",
-      "minute": "2026-09-01T16:28",
-      "rpd": 32,
-      "rpm": 1,
-      "tpd": 35519,
-      "tpm": 1061
+      "last_error_at": "2026-09-01T20:49:01.696995+00:00",
+      "last_ok": "2026-09-01T20:56:41.264123+00:00",
+      "minute": "2026-09-01T20:56",
+      "rpd": 42,
+      "rpm": 2,
+      "tpd": 46420,
+      "tpm": 1955
     },
     "mistral:mistral-small-latest:0": {
-      "cooldown_until": null,
+      "cooldown_until": "2026-09-01T20:49:34.820057+00:00",
       "day": "2026-09-01",
-      "fail_streak": 0,
-      "last_error_at": "2026-08-31T13:11:18.484639+00:00",
-      "last_ok": "2026-09-01T16:19:34.848891+00:00",
-      "minute": "2026-09-01T16:19",
-      "rpd": 51,
-      "rpm": 18,
-      "tpd": 59841,
-      "tpm": 20570
+      "fail_streak": 1,
+      "last_error_at": "2026-09-01T20:48:34.820057+00:00",
+      "last_ok": "2026-09-01T20:48:34.566487+00:00",
+      "minute": "2026-09-01T20:49",
+      "rpd": 53,
+      "rpm": 0,
+      "tpd": 61219,
+      "tpm": 0
     },
     "nvidia_nim:deepseek-ai/deepseek-v3.1:0": {
       "cooldown_until": "2026-08-30T17:22:47.746528+00:00",
@@ -82,16 +82,16 @@
       "tpm": 0
     },
     "openrouter:minimax/minimax-m3:free:0": {
-      "cooldown_until": "2026-08-31T13:12:09.082680+00:00",
-      "day": "2026-08-31",
-      "fail_streak": 1,
+      "cooldown_until": null,
+      "day": "2026-09-01",
+      "fail_streak": 0,
       "last_error_at": "2026-08-31T13:11:09.082680+00:00",
-      "last_ok": "2026-08-31T13:09:59.674710+00:00",
-      "minute": "2026-08-31T13:11",
-      "rpd": 3,
-      "rpm": 1,
-      "tpd": 4507,
-      "tpm": 0
+      "last_ok": "2026-09-01T20:49:03.876586+00:00",
+      "minute": "2026-09-01T20:49",
+      "rpd": 15,
+      "rpm": 2,
+      "tpd": 16258,
+      "tpm": 1305
     },
     "openrouter:nvidia/nemotron-3-super-120b-a12b:free:0": {
       "cooldown_until": "2026-08-31T13:12:09.848732+00:00",
@@ -116,6 +116,6 @@
       "tpm": 0
     }
   },
-  "updated_at": "2026-09-01T16:28:43.435720+00:00",
+  "updated_at": "2026-09-01T20:56:41.264379+00:00",
   "version": 1
 }
