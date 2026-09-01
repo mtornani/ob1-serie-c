@@ -4446,11 +4446,13 @@
     "source_url": "https://www.lacasadic.com/news/serie-26-27-situazione-iscrizioni-ammissione-grosseto-federale-455114",
     "discovered_at": "2026-08-05T19:40:56.261563",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:mistral",
+    "enrichment_source": "Enrichment:groq",
     "player_profile": {
-      "enrichment_source": "Enrichment:mistral"
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/leonardo-consiglio/profil/spieler/999404"
     },
-    "tm_enriched": false
+    "tm_enriched": false,
+    "tm_url": "https://www.transfermarkt.it/leonardo-consiglio/profil/spieler/999404"
   },
   {
     "id": "eb37817122780f9adf2e19dba80ef7fa",
@@ -12945,7 +12947,18 @@
     "source_name": "Gemini Search",
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEbTiMfEeT0Tl6rEBvpsTQazvbdVbOiBzIEYFYqf9_-53JC-_8GP762yZiFlH7wGT6U-l-SqU_uc2xa-q8sp_5d_H4-aakTAGSrecc43PfC46751myQCbJddBwjjN-sTdZO8vcl-vENqEBHvUEwpT_jDiDoV0VCMV__PONwHUL3li261v-uvjvoIL5AGn9sbb9d7KeihjiJx3hd72WdqYGu1sOnQnGC072bHCV6T7h9KQezje_fgQag_elk8Z3hKy2fcPvpPbr_8ksF7qY1",
     "discovered_at": "2026-07-06T10:46:57.349951",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/mattia-almaviva/profil/spieler/1053218",
+    "tm_verified_at": "2026-09-01T04:34:00+00:00",
+    "birth_date": "03/02/2006",
+    "age": 20,
+    "current_club": "Cosenza Calcio",
+    "role_name": "Seconda punta",
+    "foot": "destro",
+    "contract_expires": "30/06/2028",
+    "agent": "MM-Management",
+    "market_value": 300000,
+    "market_value_eur": 300000
   },
   {
     "id": "76ddf2fe9af15157e474b2101f245939",
@@ -17802,11 +17815,36 @@
     "source_url": "https://www.pinterest.com/aly5948/beautiful-portieres",
     "discovered_at": "2026-08-11T07:14:35.208502",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:mistral",
+    "enrichment_source": "Enrichment:groq",
     "player_profile": {
-      "enrichment_source": "Enrichment:mistral"
+      "enrichment_source": "Enrichment:groq",
+      "nationality": "Poland",
+      "foot": "destro",
+      "height_cm": 193,
+      "birth_date": "2005-01-01",
+      "agent": "Gol International"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "eta": [
+          {
+            "valore": "21",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-09-01T04:28:32.356081+00:00",
+            "nota": "da data di nascita 2005-01-01"
+          }
+        ]
+      }
+    },
+    "nationality": "Poland",
+    "foot": "destro",
+    "height_cm": 193,
+    "birth_date": "2005-01-01",
+    "agent": "Gol International",
+    "age": 21,
+    "role_name": "Ruolo naturale",
+    "role": "Ruolo naturale"
   },
   {
     "id": "134479c025e7066208aece38302c50c5",
@@ -18380,6 +18418,306 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444488",
     "discovered_at": "2026-08-31T13:11:18.494795",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "e9d313e75cb00ec851f3f0aec9b8fa2d",
+    "player_name": "Federico Pacciardi",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Svincolato, cerca nuova avventura dopo Siracusa",
+    "ob1_score": 66,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444546",
+    "discovered_at": "2026-09-01T04:22:01.369278",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/federico-pacciardi/profil/spieler/311323",
+    "tm_verified_at": "2026-09-01T04:32:03+00:00",
+    "birth_date": "07/02/1995",
+    "age": 31,
+    "current_club": "svincolato",
+    "role_name": "Difesa - Difensore centrale Piede:sinistro Pr",
+    "foot": "sinistro",
+    "agent": "MIC.CO FOOTBALL STAR",
+    "market_value": 175000,
+    "market_value_eur": 175000
+  },
+  {
+    "id": "af570c021ee9d6bf75d24f71e6a3be58",
+    "player_name": "Francesco Marone",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Cosenza interessato al portiere Francesco Marone",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444545",
+    "discovered_at": "2026-09-01T04:22:01.369568",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "fd877da8627634a53739775a28672d1d",
+    "player_name": "Andrea Rizzo Pinna",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Parla della vittoria dell'Union Brescia contro la Pergolettese",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444530",
+    "discovered_at": "2026-09-01T04:22:01.369684",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "a97f826e8ac27e2242a0cfc3c50c01c3",
+    "player_name": "Pietro Mazzara",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Nessuna informazione disponibile",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/pietro-mazzara-343",
+    "discovered_at": "2026-09-01T04:22:01.369796",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "7b4ec4f9db8a9f85c08d44ea5b5be06c",
+    "player_name": "Gaetano Mocciaro",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Nessuna informazione disponibile",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/gaetano-mocciaro-352",
+    "discovered_at": "2026-09-01T04:22:01.369901",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "6eb4199e1d372c5d0560e742c94a0151",
+    "player_name": "Daniele Najjar",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Nessuna informazione disponibile",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/daniele-najjar-1112",
+    "discovered_at": "2026-09-01T04:22:01.370015",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ec280b415574963b9305784961cd700b",
+    "player_name": "Carlo Nesti",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Nessuna informazione disponibile",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/carlo-nesti-161",
+    "discovered_at": "2026-09-01T04:22:01.370117",
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "| --- | --- | --- | --- | --- | --- |",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-09-01T04:28:32.356126+00:00"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:groq",
+    "current_club": "| --- | --- | --- | --- | --- | --- |",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "current_club": "| --- | --- | --- | --- | --- | --- |"
+    },
+    "tm_enriched": true
+  },
+  {
+    "id": "4e517992071c80dff84b9775727ccc6b",
+    "player_name": "Leonardo Nevischi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Nessuna informazione disponibile",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/leonardo-nevischi-1131",
+    "discovered_at": "2026-09-01T04:22:01.370217",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "8f890aba2a1bc5d0fbc525f8a7e6c00e",
+    "player_name": "Antonio Parrotto",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Nessuna informazione disponibile",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/antonio-parrotto-987",
+    "discovered_at": "2026-09-01T04:22:01.370314",
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "attualmente sconosciuta Ala sinistra Valore di Mercato: - * 30/09/2004 a Cassano",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-09-01T04:26:16.696562+00:00",
+            "url": "https://www.transfermarkt.it/antonio-parrotta/profil/spieler/816022"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "22",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-09-01T04:26:16.696586+00:00",
+            "url": "https://www.transfermarkt.it/antonio-parrotta/profil/spieler/816022",
+            "nota": "da data di nascita 2004-09-30"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:groq",
+    "market_value_formatted": "-",
+    "birth_date": "2004-09-30",
+    "tm_url": "https://www.transfermarkt.it/antonio-parrotta/profil/spieler/816022",
+    "current_club": "attualmente sconosciuta Ala sinistra Valore di Mercato: - * 30/09/2004 a Cassano",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "market_value_formatted": "-",
+      "birth_date": "2004-09-30",
+      "tm_url": "https://www.transfermarkt.it/antonio-parrotta/profil/spieler/816022",
+      "current_club": "attualmente sconosciuta Ala sinistra Valore di Mercato: - * 30/09/2004 a Cassano"
+    },
+    "age": 22,
+    "role_name": "Left winger",
+    "role": "Left winger",
+    "tm_enriched": true
+  },
+  {
+    "id": "fef3869621545da5630e09e62aacc843",
+    "player_name": "Emanuele Pastorella",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Nessuna informazione disponibile",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/emanuele-pastorella-990",
+    "discovered_at": "2026-09-01T04:22:01.370411",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "1654608b1ff655322f623488691e689e",
+    "player_name": "Michele Pavese",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Nessuna informazione disponibile",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/michele-pavese-828",
+    "discovered_at": "2026-09-01T04:22:01.370506",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "8b33c1f46640c5ecc1d2098633e7483a",
+    "player_name": "Daniele Petroselli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Giocatore disponibile sul mercato",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/daniele-petroselli-1142",
+    "discovered_at": "2026-09-01T04:22:01.370606",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "a110363c67ef870d8a9a51acb30ddcc8",
+    "player_name": "Marco Piccari",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Giocatore disponibile sul mercato",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/marco-piccari-1076",
+    "discovered_at": "2026-09-01T04:22:01.370703",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "9295a3dc13f06cb9646edbd15e7a1049",
+    "player_name": "Andrea Piras",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Giocatore disponibile sul mercato",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/andrea-piras-834",
+    "discovered_at": "2026-09-01T04:22:01.370797",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "a60bc39693226dd6a17e29efbea66f27",
+    "player_name": "Fabrizio Ponciroli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Giocatore disponibile sul mercato",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/fabrizio-ponciroli-823",
+    "discovered_at": "2026-09-01T04:22:01.370892",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "1c6efe22feb616e02b0e3043b3ceb5c5",
+    "player_name": "Niccolo Righi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Giocatore disponibile sul mercato",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/niccolo-righi-1107",
+    "discovered_at": "2026-09-01T04:22:01.370997",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d68ad88abc249545a50ac539f82763c3",
+    "player_name": "Alessandra Stefanelli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Giocatrice disponibile sul mercato",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/alessandra-stefanelli-811",
+    "discovered_at": "2026-09-01T04:22:01.371103",
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/nicola-stefanelli/profil/spieler/337320",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/nicola-stefanelli/profil/spieler/337320"
+    },
+    "tm_enriched": false
+  },
+  {
+    "id": "e63516d80a2490a30ff3ff4ef7b3923a",
+    "player_name": "Francesco Tringali",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Giocatore disponibile sul mercato",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/francesco-tringali-1141",
+    "discovered_at": "2026-09-01T04:22:01.371200",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "4cfa7f4102218c3b366602db3ee2004f",
+    "player_name": "Daniel Uccellieri",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Giocatore disponibile sul mercato",
+    "ob1_score": 58,
+    "source_name": "www.tuttomercatoweb.com",
+    "source_url": "https://www.tuttomercatoweb.com/redazione/daniel-uccellieri-373",
+    "discovered_at": "2026-09-01T04:22:01.371296",
     "league_id": "italy_serie_c_d"
   }
 ]
