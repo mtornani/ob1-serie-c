@@ -14,7 +14,7 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent))
-from src.enricher_tm import TransfermarktEnricher, BATCH_SIZE
+from src.enricher_tm import TransfermarktEnricher, BATCH_SIZE, forma_di_club
 from src.entity_gate import classify
 from src.quality_gate import AGE_MIN, AGE_MAX
 from src.metrics import METRICS_FILE, get_metrics
@@ -62,6 +62,13 @@ _TM_KEYS = ['nationality', 'second_nationality', 'foot', 'market_value',
 # Il grafo l'ha reso visibile per la prima volta: prima finiva dritto in
 # `current_club` e restava lì, un fatto falso indistinguibile da uno vero.
 _CAMPI_TESTO_LIBERO = ('current_club', 'agent', 'nationality', 'second_nationality')
+
+# "Svincolato" non è un nome di squadra, ma è una risposta vera — ed è proprio
+# la risposta che questo prodotto cerca. Non deve cadere col controllo di forma.
+_STATI_SENZA_SQUADRA = frozenset({
+    'svincolato', 'senza squadra', 'senza club', 'ritiro', 'carriera conclusa',
+    'free agent', 'without club', 'retired',
+})
 
 # Il ruolo NON si presta allo stesso controllo del club: "del compagno" non
 # comincia con punteggiatura, è una frase italiana grammaticalmente normale
@@ -220,6 +227,18 @@ def apply_tm_data(opp: dict, tm: dict) -> bool:
             print(f"  [SCARTATO] {campo}={tm[campo]!r} non è un valore, "
                   f"è un frammento di schema")
             tm[campo] = None
+
+    # `current_club` ha una forma sua, più stretta del testo libero: è un nome
+    # proprio corto. La specifica vive in src/enricher_tm.forma_di_club, misurata
+    # sui 150 nomi veri del corpus TM. Qui si ri-applica al confine di scrittura
+    # perché il valore arriva da DUE bocche — la regex sulla pagina e l'LLM sul
+    # residuo — e finora ne era sorvegliata una sola.
+    club = tm.get('current_club')
+    if isinstance(club, str) and club.strip():
+        if not (forma_di_club(club)
+                or club.strip().lower() in _STATI_SENZA_SQUADRA):
+            print(f"  [SCARTATO] current_club={club!r} non ha forma di squadra")
+            tm['current_club'] = None
 
     # Prima di sovrascrivere: registrare chi dice cosa (src/piramide.py).
     # Questo è l'unico istante in cui i due valori coesistono — quello che la

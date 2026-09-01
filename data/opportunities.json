@@ -3064,10 +3064,10 @@
     "league_id": "italy_serie_c_d",
     "tm_enriched": true,
     "enrichment_source": "Enrichment:groq",
-    "current_club": "| Costo |",
+    "current_club": null,
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
-      "current_club": "| Costo |"
+      "current_club": null
     }
   },
   {
@@ -3104,10 +3104,10 @@
     "discovered_at": "2026-07-29T08:48:40.531469",
     "league_id": "italy_serie_c_d",
     "enrichment_source": "Enrichment:groq",
-    "current_club": ", competizione ecc.",
+    "current_club": null,
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
-      "current_club": ", competizione ecc."
+      "current_club": null
     },
     "tm_enriched": true
   },
@@ -3123,10 +3123,10 @@
     "discovered_at": "2026-07-17T19:16:28.835684",
     "league_id": "italy_serie_c_d",
     "enrichment_source": "Enrichment:groq",
-    "current_club": ", competizione ecc.",
+    "current_club": null,
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
-      "current_club": ", competizione ecc."
+      "current_club": null
     },
     "tm_enriched": true
   },
@@ -3235,10 +3235,10 @@
     "discovered_at": "2026-07-29T08:48:40.531611",
     "league_id": "italy_serie_c_d",
     "enrichment_source": "Enrichment:groq",
-    "current_club": ", competizione ecc.",
+    "current_club": null,
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
-      "current_club": ", competizione ecc."
+      "current_club": null
     },
     "tm_enriched": true
   },
@@ -3254,10 +3254,10 @@
     "discovered_at": "2026-07-29T08:48:40.531744",
     "league_id": "italy_serie_c_d",
     "enrichment_source": "Enrichment:groq",
-    "current_club": ", competizione ecc.",
+    "current_club": null,
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
-      "current_club": ", competizione ecc."
+      "current_club": null
     },
     "tm_enriched": true
   },
@@ -3558,10 +3558,10 @@
     "league_id": "italy_serie_c_d",
     "tm_enriched": true,
     "enrichment_source": "Enrichment:groq",
-    "current_club": ", competizione ecc.",
+    "current_club": null,
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
-      "current_club": ", competizione ecc."
+      "current_club": null
     }
   },
   {
@@ -3622,10 +3622,10 @@
     "league_id": "italy_serie_c_d",
     "tm_enriched": true,
     "enrichment_source": "Enrichment:groq",
-    "current_club": ", competizione ecc.",
+    "current_club": null,
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
-      "current_club": ", competizione ecc."
+      "current_club": null
     }
   },
   {
@@ -4425,12 +4425,12 @@
     "nationality": "Italy",
     "enrichment_source": "Enrichment:groq",
     "birth_date": "1969-10-22",
-    "current_club": "e ruolo | In carica da | fino al | Partite | PPP |",
+    "current_club": null,
     "player_profile": {
       "nationality": "Italy",
       "enrichment_source": "Enrichment:groq",
       "birth_date": "1969-10-22",
-      "current_club": "e ruolo | In carica da | fino al | Partite | PPP |"
+      "current_club": null
     },
     "age": 57,
     "tm_enriched": true
@@ -4610,10 +4610,10 @@
     "discovered_at": "2026-07-14T08:16:49.562750",
     "league_id": "italy_serie_c_d",
     "enrichment_source": "Enrichment:groq",
-    "current_club": ", competizione ecc.",
+    "current_club": null,
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
-      "current_club": ", competizione ecc."
+      "current_club": null
     },
     "tm_enriched": true
   },
@@ -4792,10 +4792,10 @@
     "discovered_at": "2026-07-24T19:35:00.585483",
     "league_id": "italy_serie_c_d",
     "enrichment_source": "Enrichment:mistral",
-    "current_club": ", competizione ecc.",
+    "current_club": null,
     "player_profile": {
       "enrichment_source": "Enrichment:mistral",
-      "current_club": ", competizione ecc."
+      "current_club": null
     },
     "tm_enriched": true
   },
@@ -18513,22 +18513,12 @@
     "source_url": "https://www.tuttomercatoweb.com/redazione/carlo-nesti-161",
     "discovered_at": "2026-09-01T04:22:01.370117",
     "league_id": "italy_serie_c_d",
-    "grafo_fonti": {
-      "p": {
-        "club": [
-          {
-            "valore": "| --- | --- | --- | --- | --- | --- |",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-09-01T04:28:32.356126+00:00"
-          }
-        ]
-      }
-    },
+    "grafo_fonti": null,
     "enrichment_source": "Enrichment:groq",
-    "current_club": "| --- | --- | --- | --- | --- | --- |",
+    "current_club": null,
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
-      "current_club": "| --- | --- | --- | --- | --- | --- |"
+      "current_club": null
     },
     "tm_enriched": true
   },
@@ -18557,14 +18547,6 @@
     "league_id": "italy_serie_c_d",
     "grafo_fonti": {
       "p": {
-        "club": [
-          {
-            "valore": "attualmente sconosciuta Ala sinistra Valore di Mercato: - * 30/09/2004 a Cassano",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-09-01T04:26:16.696562+00:00",
-            "url": "https://www.transfermarkt.it/antonio-parrotta/profil/spieler/816022"
-          }
-        ],
         "eta": [
           {
             "valore": "22",
@@ -18580,13 +18562,13 @@
     "market_value_formatted": "-",
     "birth_date": "2004-09-30",
     "tm_url": "https://www.transfermarkt.it/antonio-parrotta/profil/spieler/816022",
-    "current_club": "attualmente sconosciuta Ala sinistra Valore di Mercato: - * 30/09/2004 a Cassano",
+    "current_club": null,
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
       "market_value_formatted": "-",
       "birth_date": "2004-09-30",
       "tm_url": "https://www.transfermarkt.it/antonio-parrotta/profil/spieler/816022",
-      "current_club": "attualmente sconosciuta Ala sinistra Valore di Mercato: - * 30/09/2004 a Cassano"
+      "current_club": null
     },
     "age": 22,
     "role_name": "Left winger",

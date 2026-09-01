@@ -123,6 +123,52 @@ def _is_daily_quota_error(msg: str) -> bool:
     )
 
 
+# --- Forma di un nome di squadra --------------------------------------------
+# Misurata sul corpus vero: le 150 squadre distinte lette dai profili TM già
+# verificati (data/tm_verifiche.json, 1 set 2026). Nel corpus la lunghezza
+# massima è 27 caratteri, il massimo di parole è 5, e nessuno dei 150 nomi
+# contiene ':' '|' '*' '/' ',' o '€'. I numeri qui sotto tengono il margine.
+#
+# Perché una specifica positiva invece di una lista di scarti: fino al 1 set
+# 2026 il controllo era una blacklist ("non è 'squadra', non è 'svincolato', è
+# lungo più di 2 caratteri"), e una blacklist accetta per definizione tutto il
+# testo che non ha ancora visto. In 24 ore, dalla stessa riga di codice, ha
+# lasciato passare due valori di forma diversa:
+#
+#   "| --- | --- | --- | --- | --- | --- |"   (separatore di tabella markdown)
+#   "attualmente sconosciuta Ala sinistra Valore di Mercato: - * 30/09/2004 a
+#    Cassano"                                 (quattro campi fusi in una riga,
+#                                              tagliata a 80 caratteri esatti)
+#
+# Il secondo non comincia per punteggiatura: nessun filtro sul primo carattere
+# lo avrebbe mai preso. Allungare la blacklist avrebbe coperto quei due casi e
+# nient'altro; questa dice invece che *forma* deve avere un nome, e tutto ciò
+# che non ce l'ha resta fuori — anche le forme che non abbiamo ancora visto.
+CLUB_MAX_CARATTERI = 40      # 27 osservato + margine
+CLUB_MAX_PAROLE = 6          # 5 osservato + margine
+_CLUB_FORMA = re.compile(r"^[0-9A-Za-zÀ-ÿ][0-9A-Za-zÀ-ÿ .'&-]*$")
+_CLUB_NON_NOMI = frozenset({
+    "giocatori", "nuovo arrivo", "nuovi arrivi", "rientro", "senza club",
+    "svincolato", "transfermarkt", "squadra", "club", "unknown", "nato il",
+    "data di nascita", "posizione", "piede", "altezza",
+})
+
+
+def forma_di_club(valore) -> bool:
+    """True se `valore` ha la forma di un nome di squadra (non se è vero)."""
+    nome = (valore or "").strip() if isinstance(valore, str) else ""
+    if not (2 < len(nome) <= CLUB_MAX_CARATTERI):
+        return False
+    if len(nome.split()) > CLUB_MAX_PAROLE:
+        return False
+    if not _CLUB_FORMA.match(nome):
+        return False
+    if not re.search(r"[A-Za-zÀ-ÿ]{2}", nome):
+        return False             # "1907", "--- ---": cifre e trattini non bastano
+    basso = nome.lower()
+    return basso not in _CLUB_NON_NOMI and "transfermarkt" not in basso
+
+
 def parse_tm_text(raw: str, url: str = "") -> Dict[str, Any]:
     """
     Regex extract from Transfermarkt page text (Tavily raw) — zero LLM.
@@ -177,45 +223,43 @@ def parse_tm_text(raw: str, url: str = "") -> Dict[str, Any]:
         if 1980 <= y <= 2012:
             out["birth_date"] = f"{y}-01-01"
 
-    _JUNK_CLUB = {
-        "giocatori", "nuovo arrivo", "nuovi arrivi", "rientro", "senza club",
-        "svincolato", "transfermarkt", "squadra", "club", "unknown", "nato il",
-        "data di nascita", "posizione", "piede", "altezza",
-    }
-
-    def _ok_club(c: str) -> bool:
-        cl = (c or "").strip().lower()
-        return bool(cl) and cl not in _JUNK_CLUB and "transfermarkt" not in cl and len(cl) > 2
-
     # Club: markdown link near top "[Atalanta U23](/atalanta-u23/startseite/verein/..."
     for m in re.finditer(
         r"\[([^\]]{2,50})\]\(/[^\s\)]*startseite/verein[^\)]*\)",
         text,
     ):
         club = m.group(1).strip()
-        if _ok_club(club):
-            out["current_club"] = club[:80]
+        if forma_di_club(club):
+            out["current_club"] = club
             break
     if not out.get("current_club"):
-        # La pagina TM ripulita dai tag mette il label e il valore su righe
-        # diverse ("Squadra attuale:\n\n\nUS Avellino 1912"), mentre il raw
-        # markdown di Tavily li tiene sulla stessa riga. Si gestiscono entrambi
-        # cercando il primo valore plausibile dopo il label.
+        # La pagina TM ripulita dai tag mette label e valore su righe diverse
+        # ("Squadra attuale:\n\n\nUS Avellino 1912"), il raw markdown di Tavily
+        # li tiene sulla stessa riga. Si gestiscono entrambi prendendo il primo
+        # contenuto non vuoto dopo il label — e UNO SOLO: se quello non ha forma
+        # di squadra, la risposta giusta è "non lo so".
+        #
+        # Prima questo ciclo scorreva 300 caratteri finché *qualcosa* passava il
+        # filtro, e quindi non poteva mai concludere "non lo so": quando il dato
+        # vero mancava camminava fino alla prima riga accettabile e restituiva
+        # quella. Da lì è arrivato "| --- | --- | --- | --- | --- | --- |".
+        #
+        # Sparita anche l'alternativa "Squadra" da sola: TM non etichetta mai
+        # così la squadra attuale, quella parola compare nelle intestazioni
+        # delle tabelle di carriera. Era lei ad agganciare la tabella.
         m = re.search(
-            r"(?:Squadra attuale|Club attuale|Current club|Squadra)\s*:?",
+            r"(?:Squadra attuale|Club attuale|Current club)\s*:?",
             text,
             re.IGNORECASE,
         )
         if m:
             for line in text[m.end():m.end() + 300].splitlines():
-                club = re.sub(r"\s{2,}", " ", line.strip())[:80]
-                if club.endswith(":"):
-                    continue  # è un altro label, non un valore
-                if re.fullmatch(r"[\d/.,\-\s€%]+", club):
-                    continue  # una data o un numero non è un nome di squadra
-                if _ok_club(club):
-                    out["current_club"] = club
-                    break
+                candidato = re.sub(r"\s{2,}", " ", line.strip())
+                if not candidato:
+                    continue          # righe vuote fra label e valore: si saltano
+                if forma_di_club(candidato):
+                    out["current_club"] = candidato
+                break                 # primo contenuto utile, poi si smette
 
     # Market value: "2,80 mln €" or "150 mila €"
     m = re.search(
@@ -915,7 +959,12 @@ class TransfermarktEnricher:
         if not raw:
             return sports_skills_data
 
-        data = parse_tm_text(raw, url)  # regex: zero costo, zero allucinazioni
+        # Regex: zero costo e zero allucinazioni — ma non zero errori. La regex
+        # non inventa niente, copia: se punta alla riga sbagliata restituisce
+        # testo vero della pagina al posto giusto, che è un falso identico a un
+        # dato buono. Ed essendo deterministica lo rifà a ogni giro. Da qui il
+        # controllo di forma su quel che esce (forma_di_club).
+        data = parse_tm_text(raw, url)
         if data.get("birth_date") or data.get("current_club"):
             print(f"  [REGEX] {player_name}: {data.get('birth_date')} / {data.get('current_club')}")
 
