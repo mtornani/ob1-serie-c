@@ -19,12 +19,13 @@ restava: un fatto falso indistinguibile da uno vero.
 
 import sys
 import unittest
+from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from scripts.run_enrichment import (_valore_di_testo_plausibile, apply_tm_data,
-                                    _CAMPI_TESTO_LIBERO)
+                                    _CAMPI_TESTO_LIBERO, _valore_di_ruolo_plausibile)
 
 
 class TestValoreDiTestoPlausibile(unittest.TestCase):
@@ -84,6 +85,66 @@ class TestApplyTmDataScartaImplausibile(unittest.TestCase):
             opp = {"player_name": "Tizio"}
             apply_tm_data(opp, {campo: ", competizione ecc."})
             self.assertIsNone(opp.get(campo), campo)
+
+    def test_ruolo_implausibile_scartato(self):
+        # Caso vero: stessa chiamata Mistral di Daniele Cagnazzo, stesso
+        # frammento di schema — questa volta nel campo ruolo. main_position
+        # non passa da _TM_KEYS: è un percorso a parte, con lo stesso rischio.
+        opp = {"player_name": "Daniele Cagnazzo"}
+        apply_tm_data(opp, {"main_position": "del compagno"})
+        self.assertIsNone(opp.get("role_name"))
+        self.assertIsNone(opp.get("role"))
+
+    def test_ruolo_plausibile_passa(self):
+        opp = {"player_name": "Tizio"}
+        apply_tm_data(opp, {"main_position": "Difensore centrale"})
+        self.assertEqual(opp["role_name"], "Difensore centrale")
+
+
+class TestRuoloVocabolario(unittest.TestCase):
+    """Il vocabolario dei ruoli visti DAVVERO nel corpus (data/opportunities.json,
+    1 set 2026) — in tre lingue. Nessuno di questi deve venire scartato."""
+
+    RUOLI_VERI = (
+        "Difensore centrale", "Portiere", "Centrocampista", "Punta centrale",
+        "Difensore", "Terzino sinistro", "Ala sinistra", "Goalkeeper",
+        "Terzino destro", "Ala destra", "Attaccante", "Mediano",
+        "Centre-Back", "Trequartista", "Attacco", "Centrocampo",
+        "Central Midfield", "Defensive Midfield", "Centrocampo centrale",
+        "Centre-Forward", "Seconda punta", "Centrocampista difensivo",
+        "Ala Mancina", "Left Winger", "Laterale", "Difesa",
+        "Second Striker", "Right-Back", "Mittelstürmer", "Linksaußen",
+        "Right Winger", "Left-Back", "Midfield", "Centrale",
+    )
+
+    def test_ogni_ruolo_visto_nel_corpus_passa(self):
+        for r in self.RUOLI_VERI:
+            self.assertTrue(_valore_di_ruolo_plausibile(r), r)
+
+    def test_non_specificato_e_un_non_lo_so_onesto(self):
+        # 6 e 1 occorrenze reali: un altro punto della pipeline lo scrive
+        # apposta per dire "non lo sappiamo". Non è un frammento di schema.
+        self.assertTrue(_valore_di_ruolo_plausibile("Non Specificato"))
+        self.assertTrue(_valore_di_ruolo_plausibile("N/D"))
+
+    def test_frammento_di_frase_scartato(self):
+        for v in ("del compagno", "vedi sopra", "come da regolamento"):
+            self.assertFalse(_valore_di_ruolo_plausibile(v), v)
+
+    def test_eta_da_data_di_nascita_fuori_fascia_non_scritta(self):
+        # Caso vero: lo stesso record aveva birth_date="23/11/1968" —
+        # un'età di 58 anni, dentro il vecchio 10-60 e fuori dalla fascia
+        # vera del prodotto (AGE_MIN..AGE_MAX). Il fix non aspetta il gate:
+        # non scrive nemmeno il fatto grezzo.
+        opp = {"player_name": "Daniele Cagnazzo"}
+        apply_tm_data(opp, {"birth_date": "1968-11-23"})
+        self.assertIsNone(opp.get("age"))
+
+    def test_eta_da_data_di_nascita_in_fascia_passa(self):
+        anno = datetime.now().year - 20
+        opp = {"player_name": "Tizio"}
+        apply_tm_data(opp, {"birth_date": f"{anno}-05-01"})
+        self.assertEqual(opp["age"], 20)
 
 
 if __name__ == "__main__":

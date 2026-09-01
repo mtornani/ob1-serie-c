@@ -16,6 +16,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 from src.enricher_tm import TransfermarktEnricher, BATCH_SIZE
 from src.entity_gate import classify
+from src.quality_gate import AGE_MIN, AGE_MAX
 from src.metrics import METRICS_FILE, get_metrics
 
 DATA_FILE = Path("data/opportunities.json")
@@ -61,6 +62,51 @@ _TM_KEYS = ['nationality', 'second_nationality', 'foot', 'market_value',
 # Il grafo l'ha reso visibile per la prima volta: prima finiva dritto in
 # `current_club` e restava lì, un fatto falso indistinguibile da uno vero.
 _CAMPI_TESTO_LIBERO = ('current_club', 'agent', 'nationality', 'second_nationality')
+
+# Il ruolo NON si presta allo stesso controllo del club: "del compagno" non
+# comincia con punteggiatura, è una frase italiana grammaticalmente normale
+# — è solo semanticamente un ruolo di calcio inesistente. Ma a differenza di
+# club/agente, il ruolo è un vocabolario CHIUSO: poche decine di parole, in
+# tre lingue viste davvero nei dati (IT/EN/DE — Transfermarkt risponde nella
+# lingua del TLD interrogato). Un controllo per appartenenza, come i nomi in
+# entity_gate.classify_name, invece che per esclusione.
+#
+# "Non Specificato" / "N/D" restano ammessi apposta: sono il modo in cui
+# ALTRI punti della pipeline dichiarano "non lo sappiamo" (6 e 1 occorrenze
+# reali nel corpus) — un "non lo so" onesto non è la stessa cosa di un
+# frammento di schema, e non va scartato allo stesso modo.
+_RUOLI_NOTI = (
+    'portiere', 'goalkeeper', 'torwart',
+    'difensore', 'difesa', 'centrale', 'terzino', 'libero', 'laterale',
+    'defender', 'back', 'sweeper',
+    'verteidiger', 'außen',
+    'centrocampista', 'centrocampo', 'mediano', 'regista', 'trequartista',
+    'midfield', 'midfielder',
+    'mittelfeld', 'stürmer', 'sechser', 'zehner',
+    'ala', 'esterno', 'winger',
+    'attaccante', 'attacco', 'punta',
+    'forward', 'striker', 'attack',
+)
+_RUOLO_IGNOTO_DICHIARATO = ('non specificato', 'n/d', 'n/a', 'unknown', '-')
+
+
+def _valore_di_ruolo_plausibile(valore) -> bool:
+    """Contiene almeno una parola di un vocabolario di ruolo vero, o è un
+    "non lo sappiamo" dichiarato — non un frammento di schema come "del
+    compagno" (caso vero, 31 ago 2026, comparso due volte nel corpus)."""
+    if not isinstance(valore, str):
+        return True
+    v = valore.strip().lower()
+    if not v:
+        return True
+    if v in _RUOLO_IGNOTO_DICHIARATO:
+        return True
+    # Sottostringa, non \b: provato un confine di parola e rotto subito su
+    # dati veri — "Mittelstürmer" e "Linksaußen" sono composti tedeschi
+    # senza spazio interno, "stürmer"/"außen" non cominciano su un confine.
+    # Il rischio opposto (un "ala" per sottostringa dentro "scala") resta
+    # teorico: nel vocabolario di ruolo non è mai comparso.
+    return any(r in v for r in _RUOLI_NOTI)
 
 
 def _valore_di_testo_plausibile(valore) -> bool:
@@ -202,14 +248,28 @@ def apply_tm_data(opp: dict, tm: dict) -> bool:
     if not opp.get('age') and tm.get('birth_date'):
         try:
             age = datetime.now().year - int(str(tm['birth_date'])[:4])
-            if 10 <= age <= 60:
+            # AGE_MIN/AGE_MAX (src/quality_gate.py), non un 10-60 arbitrario:
+            # sono la fascia che questo radar dichiara di coprire. Un'età
+            # fuori da lì non aspetta il gate per essere scartata — il gate
+            # la scarterebbe comunque, ma nel frattempo 'age' sarebbe già
+            # scritto come fatto nel record grezzo (data/opportunities.json),
+            # indistinguibile da un'età vera finché qualcuno non lo nota.
+            # Caso reale (31 ago 2026): un birth_date inventato dava 58 anni
+            # — dentro il vecchio 10-60, fuori dalla fascia vera del prodotto.
+            if AGE_MIN <= age <= AGE_MAX:
                 opp['age'] = age
                 metrics.fact('age')
         except (ValueError, TypeError):
             pass
 
-    # Role from TM main_position if missing
-    if tm.get('main_position') and not (opp.get('role_name') or opp.get('role')):
+    # Role from TM main_position if missing. Lo stesso record che ha dato
+    # ", competizione ecc." come club ha dato "del compagno" come ruolo,
+    # nella stessa chiamata — non è un dominio a parte, è lo stesso modello
+    # che risponde descrivendo lo schema quando non sa la risposta vera. Ma
+    # "del compagno" non comincia con punteggiatura: il controllo qui è per
+    # vocabolario (_valore_di_ruolo_plausibile), non per forma del testo.
+    if (tm.get('main_position') and not (opp.get('role_name') or opp.get('role'))
+            and _valore_di_ruolo_plausibile(tm['main_position'])):
         opp['role_name'] = tm['main_position']
         opp['role'] = tm['main_position']
         metrics.fact('role_name')
