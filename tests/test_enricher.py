@@ -387,8 +387,20 @@ class SportsSkillsTestCase(EnricherTestCase):
     """
 
     def _enricher_with(self, search_result=None, profile_result=None):
+        # Il patch di sports_skills_football deve partire PRIMA di costruire
+        # l'enricher: __init__ legge `sports_skills_football is None` una
+        # volta sola e la congela in self._sports_skills_dead. Costruendo
+        # prima e patchando dopo (l'ordine di prima), quel controllo vedeva
+        # il modulo VERO, non il finto — e se il pacchetto reale non e'
+        # installato (successo il 1 set 2026, container senza
+        # `pip install -r requirements.txt`: sports_skills_football e' None
+        # a livello di modulo) l'enricher nasceva gia' "morto" e ogni test
+        # di questa classe falliva per un motivo che non aveva niente a che
+        # fare col comportamento sotto test. In produzione il pacchetto e'
+        # sempre installato (requirements.txt + CI), quindi il difetto era
+        # latente: mascherato ogni volta che il pacchetto vero capitava di
+        # esserci.
         os.environ.pop("OB1_SPORTS_SKILLS", None)  # rotta accesa
-        enricher = TransfermarktEnricher()
         fake = mock.Mock()
         fake.search_player = mock.Mock(return_value=search_result or {
             "status": True, "data": {"results": []}, "message": "",
@@ -397,6 +409,7 @@ class SportsSkillsTestCase(EnricherTestCase):
         self.patched = mock.patch.object(enricher_tm, "sports_skills_football", fake)
         self.patched.start()
         self.addCleanup(self.patched.stop)
+        enricher = TransfermarktEnricher()
         return enricher
 
     def test_traccia_dingresso_incondizionata(self):
