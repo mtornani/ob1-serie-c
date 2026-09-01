@@ -48,6 +48,46 @@ _TM_KEYS = ['nationality', 'second_nationality', 'foot', 'market_value',
             'tm_url', 'agent', 'appearances', 'goals', 'assists', 'minutes_played',
             'current_club']
 
+# Campi in testo libero dove un modello debole, senza dati veri da dare,
+# può restituire un frammento dello SCHEMA invece di un valore — non una
+# fonte diversa che sbaglia, il modello che risponde descrivendo la domanda.
+#
+# Trovato dal vivo (31 ago 2026, prima run dopo il grafo delle fonti):
+# Daniele Cagnazzo, current_club = ", competizione ecc." — nessuna
+# occorrenza di quella frase nei nostri prompt (verificato: non è un
+# template che perde), quindi non è un leak, è un'invenzione del modello
+# (Mistral, via free_stack) quando non sapeva la risposta vera.
+#
+# Il grafo l'ha reso visibile per la prima volta: prima finiva dritto in
+# `current_club` e restava lì, un fatto falso indistinguibile da uno vero.
+_CAMPI_TESTO_LIBERO = ('current_club', 'agent', 'nationality', 'second_nationality')
+
+
+def _valore_di_testo_plausibile(valore) -> bool:
+    """
+    Un valore in testo libero che assomiglia a una risposta vera, non a un
+    frammento di istruzioni. Non prova che sia CORRETTO — solo che non sia
+    palesemente il modello che descrive lo schema invece di compilarlo.
+
+    Regola minima, non un parser di linguaggio: un nome di club/persona vero
+    non comincia con un segno di punteggiatura, e le frasi-schema quasi
+    sempre sì (", competizione ecc." comincia con una virgola perché è la
+    coda di un elenco). Un numero come primo carattere resta valido apposta
+    — ci sono club veri con un anno nel nome (es. "1913 Seregno").
+    """
+    if not isinstance(valore, str):
+        return True                    # non è testo: non è questo il controllo
+    v = valore.strip()
+    if not v:
+        return True                    # stringa vuota: la gestisce chi chiama
+    if v[0] in ',;:.!?)]}-–—':
+        return False
+    v_norm = v.lower().strip('.').strip()
+    if v_norm in ('ecc', 'eccetera', 'esempio', 'placeholder', 'template',
+                  'tbd', 'n/a', 'null', 'none', 'vedi sopra'):
+        return False
+    return True
+
 
 def _is_enrichable(opp) -> bool:
     """
@@ -122,6 +162,18 @@ def apply_tm_data(opp: dict, tm: dict) -> bool:
         tm['market_value'] = tm['market_value_eur']
     if tm.get('market_value_text') and not tm.get('market_value_formatted'):
         tm['market_value_formatted'] = tm['market_value_text']
+
+    # Un frammento di schema non è un dato: si scarta PRIMA che tocchi il
+    # grafo o il record, non dopo. Vedi _valore_di_testo_plausibile.
+    # Niente metrics.fact() qui: quel contatore alimenta costo_per_fatto
+    # (operazioni / fatti nuovi), e uno scarto non è un fatto nuovo — chiamarlo
+    # tale renderebbe la pipeline artificialmente più "efficiente" di quanto
+    # sia stata davvero in questo giro.
+    for campo in _CAMPI_TESTO_LIBERO:
+        if campo in tm and not _valore_di_testo_plausibile(tm.get(campo)):
+            print(f"  [SCARTATO] {campo}={tm[campo]!r} non è un valore, "
+                  f"è un frammento di schema")
+            tm[campo] = None
 
     # Prima di sovrascrivere: registrare chi dice cosa (src/piramide.py).
     # Questo è l'unico istante in cui i due valori coesistono — quello che la
