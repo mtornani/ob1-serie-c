@@ -1388,18 +1388,18 @@
       }
     },
     {
-      "id": "4fec19c5199d82ba82f012c527d739ae",
-      "player_name": "Gregorio Morachioli",
-      "age": 26,
+      "id": "5ac771fe387d528653bc03b3d79beacc",
+      "player_name": "Roberto Inglese",
+      "age": 34,
       "role": "",
-      "role_name": "Ala sinistra",
-      "opportunity_type": "prestito",
+      "role_name": "Punta centrale",
+      "opportunity_type": "svincolato",
       "type_reconciled_from": "",
-      "reported_date": "2026-08-31",
+      "reported_date": "2026-09-02",
       "source_name": "www.tuttoc.com",
-      "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444498",
+      "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444795",
       "previous_clubs": [],
-      "current_club": "SS Juve Stabia",
+      "current_club": "svincolato",
       "appearances": null,
       "goals": null,
       "assists": null,
@@ -1408,31 +1408,30 @@
       "nationality": null,
       "second_nationality": null,
       "foot": "destro",
-      "market_value": null,
+      "market_value": 200000,
       "market_value_formatted": null,
       "player_image_url": null,
-      "agent": "Gio’sport",
-      "tm_url": "https://www.transfermarkt.it/gregorio-morachioli/profil/spieler/420472",
+      "agent": null,
+      "tm_url": "https://www.transfermarkt.it/roberto-inglese/profil/spieler/159337",
       "tm_link_ok": true,
-      "tm_verified_at": "2026-08-31T13:22:52+00:00",
+      "tm_verified_at": "2026-09-02T11:07:45+00:00",
       "data_verified": true,
-      "discovered_at": "2026-08-31T13:11:18.494345",
+      "discovered_at": "2026-09-02T10:56:55.636616",
       "ob1_score": 66,
       "classification": "warm",
       "score_breakdown": {
-        "freshness": 85,
-        "opportunity_type": 70,
+        "freshness": 100,
+        "opportunity_type": 100,
         "experience": 50,
-        "age": 90,
-        "market_value": 40,
+        "age": 25,
+        "market_value": 80,
         "league_fit": 50,
         "source": 95
       },
       "score_senza_dato": [
-        "experience",
-        "market_value"
+        "experience"
       ],
-      "peso_misurato": 0.65,
+      "peso_misurato": 0.8,
       "identity_complete": true,
       "corroborated": true,
       "publishable": true,
@@ -1444,7 +1443,7 @@
       "market_corroborated": true,
       "market_publishable": true,
       "market_n_sources": 2,
-      "recommendation": "Piena maturità (26 anni), pronto per impatto immediato. Valutabile in prestito.",
+      "recommendation": "Giocatore esperto (34 anni). Disponibile a parametro zero. Valore di mercato interessante (200k€).",
       "intel": {
         "roi_class": "none",
         "roi_label": "NO CONTRIB.",
@@ -1457,24 +1456,24 @@
         "traffic_icon": "🟢",
         "is_over": true,
         "signals": [],
-        "birth_year": 2000,
-        "roi_dettaglio": "Classe 2000 — non contribuisce al minutaggio giovani",
-        "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
+        "birth_year": 1992,
+        "roi_dettaglio": "Classe 1992 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 2,
+      "signal_age_days": 0,
       "assessment": {
         "yes": [
-          "Disponibile in prestito — investimento contenuto",
-          "26 anni — nel pieno della carriera",
+          "Libero a zero — nessun costo di cartellino",
+          "Valore di mercato interessante",
           "Segnalazione fresca",
           "Fonte specializzata"
         ],
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
-          "Valore di mercato assente o molto basso"
+          "34 anni — poco margine, nessun bonus lista giovani"
         ],
         "action": "Da tenere d'occhio"
       }
@@ -1568,97 +1567,6 @@
           "Presenze non verificate — controllare Transfermarkt",
           "30 anni — poco margine, nessun bonus lista giovani",
           "Solo voce di mercato — non è libero"
-        ],
-        "action": "Da tenere d'occhio"
-      }
-    },
-    {
-      "id": "5ac771fe387d528653bc03b3d79beacc",
-      "player_name": "Roberto Inglese",
-      "age": 34,
-      "role": "",
-      "role_name": "Punta centrale",
-      "opportunity_type": "svincolato",
-      "type_reconciled_from": "",
-      "reported_date": "2026-09-02",
-      "source_name": "www.tuttoc.com",
-      "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444795",
-      "previous_clubs": [],
-      "current_club": "svincolato",
-      "appearances": null,
-      "goals": null,
-      "assists": null,
-      "minutes_played": null,
-      "summary": "",
-      "nationality": null,
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 200000,
-      "market_value_formatted": null,
-      "player_image_url": null,
-      "agent": null,
-      "tm_url": "https://www.transfermarkt.it/roberto-inglese/profil/spieler/159337",
-      "tm_link_ok": true,
-      "tm_verified_at": "2026-09-02T11:07:45+00:00",
-      "data_verified": true,
-      "discovered_at": "2026-09-02T10:56:55.636616",
-      "ob1_score": 66,
-      "classification": "warm",
-      "score_breakdown": {
-        "freshness": 100,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 25,
-        "market_value": 80,
-        "league_fit": 50,
-        "source": 95
-      },
-      "score_senza_dato": [
-        "experience"
-      ],
-      "peso_misurato": 0.8,
-      "identity_complete": true,
-      "corroborated": true,
-      "publishable": true,
-      "review_flags": "",
-      "n_sources": 2,
-      "out_of_scope": false,
-      "out_of_scope_reason": "",
-      "market_identity_complete": true,
-      "market_corroborated": true,
-      "market_publishable": true,
-      "market_n_sources": 2,
-      "recommendation": "Giocatore esperto (34 anni). Disponibile a parametro zero. Valore di mercato interessante (200k€).",
-      "intel": {
-        "roi_class": "none",
-        "roi_label": "NO CONTRIB.",
-        "roi_color": "gray",
-        "coefficiente_eta": 0,
-        "moltiplicatore": 0,
-        "proiezione_stagionale": 0,
-        "traffic_light": "green",
-        "traffic_label": "OK",
-        "traffic_icon": "🟢",
-        "is_over": true,
-        "signals": [],
-        "birth_year": 1992,
-        "roi_dettaglio": "Classe 1992 — non contribuisce al minutaggio giovani",
-        "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 0,
-      "stale_free_agent": false,
-      "signal_age_days": 0,
-      "assessment": {
-        "yes": [
-          "Libero a zero — nessun costo di cartellino",
-          "Valore di mercato interessante",
-          "Segnalazione fresca",
-          "Fonte specializzata"
-        ],
-        "no": [
-          "Presenze non verificate — controllare Transfermarkt",
-          "34 anni — poco margine, nessun bonus lista giovani"
         ],
         "action": "Da tenere d'occhio"
       }
@@ -6216,9 +6124,9 @@
     }
   ],
   "stats": {
-    "total": 67,
+    "total": 66,
     "hot": 8,
-    "warm": 33,
+    "warm": 32,
     "cold": 26,
     "today": 5,
     "svincolati": 27,
@@ -6228,16 +6136,16 @@
       "high": 0,
       "medium": 16,
       "low": 11,
-      "none": 40
+      "none": 39
     },
-    "tracking_total": 454,
+    "tracking_total": 453,
     "tracking_only": 387,
-    "publishable": 67,
-    "corroborated": 67
+    "publishable": 66,
+    "corroborated": 66
   },
-  "last_update": "2026-09-02T11:09:24.406568",
+  "last_update": "2026-09-02T16:27:49.230086",
   "version": "1.0.0",
-  "build": "aba738f",
+  "build": "0dededf",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete+corroborated"
