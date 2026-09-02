@@ -28,25 +28,25 @@
       "cooldown_until": null,
       "day": "2026-09-02",
       "fail_streak": 0,
-      "last_error_at": "2026-09-02T16:16:36.031411+00:00",
-      "last_ok": "2026-09-02T16:25:49.992807+00:00",
-      "minute": "2026-09-02T16:25",
-      "rpd": 20,
-      "rpm": 2,
-      "tpd": 23304,
-      "tpm": 1497
+      "last_error_at": "2026-09-02T20:47:44.888114+00:00",
+      "last_ok": "2026-09-02T20:57:01.654945+00:00",
+      "minute": "2026-09-02T20:57",
+      "rpd": 29,
+      "rpm": 1,
+      "tpd": 35435,
+      "tpm": 989
     },
     "mistral:mistral-small-latest:0": {
-      "cooldown_until": null,
+      "cooldown_until": "2026-09-02T20:48:00+00:00",
       "day": "2026-09-02",
-      "fail_streak": 0,
-      "last_error_at": "2026-09-01T20:48:34.820057+00:00",
-      "last_ok": "2026-09-02T16:16:37.729871+00:00",
-      "minute": "2026-09-02T16:16",
-      "rpd": 53,
-      "rpm": 17,
-      "tpd": 61035,
-      "tpm": 19279
+      "fail_streak": 1,
+      "last_error_at": "2026-09-02T20:47:50.099073+00:00",
+      "last_ok": "2026-09-02T20:47:49.870644+00:00",
+      "minute": "2026-09-02T20:47",
+      "rpd": 64,
+      "rpm": 11,
+      "tpd": 73331,
+      "tpm": 12296
     },
     "nvidia_nim:deepseek-ai/deepseek-v3.1:0": {
       "cooldown_until": "2026-08-30T17:22:47.746528+00:00",
@@ -83,15 +83,15 @@
     },
     "openrouter:minimax/minimax-m3:free:0": {
       "cooldown_until": null,
-      "day": "2026-09-01",
+      "day": "2026-09-02",
       "fail_streak": 0,
       "last_error_at": "2026-08-31T13:11:09.082680+00:00",
-      "last_ok": "2026-09-01T20:49:03.876586+00:00",
-      "minute": "2026-09-01T20:49",
-      "rpd": 15,
-      "rpm": 2,
-      "tpd": 16258,
-      "tpm": 1305
+      "last_ok": "2026-09-02T20:47:55.507481+00:00",
+      "minute": "2026-09-02T20:47",
+      "rpd": 5,
+      "rpm": 5,
+      "tpd": 3596,
+      "tpm": 3596
     },
     "openrouter:nvidia/nemotron-3-super-120b-a12b:free:0": {
       "cooldown_until": "2026-08-31T13:12:09.848732+00:00",
@@ -116,6 +116,6 @@
       "tpm": 0
     }
   },
-  "updated_at": "2026-09-02T16:25:49.993038+00:00",
+  "updated_at": "2026-09-02T20:57:01.655142+00:00",
   "version": 1
 }
