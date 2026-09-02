@@ -18938,15 +18938,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "9a93fd09ca42c1c86ee29020218bf476",
+    "id": "d91f6cfdbc6cc1623ebdae214d9dd226",
     "player_name": "Nicolò Cudrig",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Cessione alla Carrarese dalla Juventus",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444682",
-    "discovered_at": "2026-09-01T16:19:34.856904",
+    "description": "Passaggio alla Carrarese dalla Juventus Next Gen",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458000",
+    "discovered_at": "2026-09-01T20:49:03.904881",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -19158,7 +19158,15 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444764",
     "discovered_at": "2026-09-01T20:49:03.904070",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/lorenzo-mastropietro/profil/spieler/360355",
+    "tm_verified_at": "2026-09-02T03:55:41+00:00",
+    "birth_date": "15/02/1997",
+    "age": 29,
+    "current_club": "Ritiro",
+    "role_name": "Difensore centrale",
+    "out_of_scope": true,
+    "out_of_scope_reason": "ha smesso di giocare (Transfermarkt: Ritiro)"
   },
   {
     "id": "f6e9b0260f37200665969341d6183049",
@@ -19239,18 +19247,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "d91f6cfdbc6cc1623ebdae214d9dd226",
-    "player_name": "Nicolò Cudrig",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Passaggio alla Carrarese dalla Juventus Next Gen",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458000",
-    "discovered_at": "2026-09-01T20:49:03.904881",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "d7b315ee1e12e0a506df919fbce74fef",
     "player_name": "Massimo Zilli",
     "region": "ITALY",
@@ -19299,42 +19295,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "c62155aaf7781d0c8ee73e37d7cc331b",
-    "player_name": "Roberto Insigne",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Arriva al Catania in chiusura mercato.",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457993",
-    "discovered_at": "2026-09-01T20:49:03.905517",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "c2578cd84563887bffb6a7b405713c26",
-    "player_name": "Giovanni Vaglica",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Arriva al Carpi dal Giugliano.",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457992",
-    "discovered_at": "2026-09-01T20:49:03.905637",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "49468c1bd1a6e482e4671769d3710249",
-    "player_name": "Issiaka Kamate",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Cessione all'Atlético Madrid.",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457990",
-    "discovered_at": "2026-09-01T20:49:03.905757",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "7163ce146d9fa8b5995bc9b946bdeed4",
     "player_name": "Francesco Di Tacchio",
     "region": "ITALY",
@@ -19380,6 +19340,30 @@
     "source_name": "www.tuttomercatoweb.com",
     "source_url": "https://www.tuttomercatoweb.com/redazione/ludovico-mauro-1064",
     "discovered_at": "2026-09-01T20:49:03.906253",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "dfe37717c0b4e1e93a3d570a919c7ca9",
+    "player_name": "Jacopo Bacci",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Arriva dal Padova al Sorrento",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444774",
+    "discovered_at": "2026-09-02T03:44:42.523583",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "85a9b71e6815daa31af3344a5bf99580",
+    "player_name": "Federico Zuccon",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Acquisito a titolo definitivo dal Foggia",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444776",
+    "discovered_at": "2026-09-02T03:44:42.523977",
     "league_id": "italy_serie_c_d"
   }
 ]
