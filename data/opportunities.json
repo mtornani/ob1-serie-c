@@ -19816,18 +19816,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "d85dde9c72197479d57f3cc3dfcee1b6",
-    "player_name": "Ivan Varone",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Arriva al Giugliano nel rush finale di mercato",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444825",
-    "discovered_at": "2026-09-02T20:47:55.516344",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "52b09d11f247a39fdf8d61eb69161f40",
     "player_name": "Cristian Bunino",
     "region": "ITALY",
@@ -19837,18 +19825,6 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444808",
     "discovered_at": "2026-09-02T20:47:55.516529",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "d8ed44e294ee1ac15690440432328938",
-    "player_name": "Cosimo Patierno",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Trattato da Monopoli, poi trasferito al Casarano",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444820",
-    "discovered_at": "2026-09-02T20:47:55.516679",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -19897,18 +19873,6 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458021",
     "discovered_at": "2026-09-02T20:47:55.517569",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "5451d1521ced196e246afe97a822ad5c",
-    "player_name": "Filippo Melegoni",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Passa alla Juventus Next Gen, esordio a 17 anni",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458018",
-    "discovered_at": "2026-09-02T20:47:55.517712",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -20005,6 +19969,78 @@
     "source_name": "www.tuttomercatoweb.com",
     "source_url": "https://www.tuttomercatoweb.com/redazione/tommaso-bonan-882",
     "discovered_at": "2026-09-02T20:47:55.518880",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "23bfc1e84e07dcb57b14b8d5538b780c",
+    "player_name": "Manuel Marras",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Infortunio, fuori per ora",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444828",
+    "discovered_at": "2026-09-03T03:43:36.947699",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d85dde9c72197479d57f3cc3dfcee1b6",
+    "player_name": "Ivan Varone",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Colpo di mercato, si presenta al Giugliano",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444825",
+    "discovered_at": "2026-09-03T03:43:36.948193",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d8ed44e294ee1ac15690440432328938",
+    "player_name": "Cosimo Patierno",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Trattato l'acquisto del centravanti, poi finito al Casarano.",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444820",
+    "discovered_at": "2026-09-03T03:43:36.948342",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "e79d0ec07f3caada3c6ca7553b95ef77",
+    "player_name": "Mattia Marello",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Inserito in lista Champions, promettente ala sinistra dell'Inter",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458023",
+    "discovered_at": "2026-09-03T03:43:36.949225",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "dca936db15f9f041bf1611c1a6f60d7c",
+    "player_name": "Pietro Ciotti",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Terzino classe 1999 arriva dal Cosenza alla Casarano",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458022",
+    "discovered_at": "2026-09-03T03:43:36.949367",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "5451d1521ced196e246afe97a822ad5c",
+    "player_name": "Filippo Melegoni",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Nuovo calciatore della Juventus Next Gen, esordio a 17 anni",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458018",
+    "discovered_at": "2026-09-03T03:43:36.949651",
     "league_id": "italy_serie_c_d"
   }
 ]
