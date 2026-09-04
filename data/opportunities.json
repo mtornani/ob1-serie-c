@@ -20059,7 +20059,17 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444865",
     "discovered_at": "2026-09-03T16:06:38.119096",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/salvatore-burrai/profil/spieler/41920",
+    "tm_verified_at": "2026-09-04T03:55:57+00:00",
+    "birth_date": "26/05/1987",
+    "age": 39,
+    "current_club": "Ritiro",
+    "role_name": "Mediano",
+    "foot": "destro",
+    "agent": "U1U Group",
+    "out_of_scope": true,
+    "out_of_scope_reason": "ha smesso di giocare (Transfermarkt: Ritiro)"
   },
   {
     "id": "a477703faf387898befd9c3c7a2d7427",
@@ -20220,54 +20230,6 @@
     "tm_enriched": false
   },
   {
-    "id": "4542ef7b58c32893bdb8cb463aba30ca",
-    "player_name": "Alessandro Fiordaliso",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Cavese acquisisce le prestazioni sportive di Fiordaliso",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444880",
-    "discovered_at": "2026-09-03T20:45:17.902088",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "b9f1ec03b87a23f23d3c168b95f6e518",
-    "player_name": "Thomas Henry",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Arrivo in Serie C con la Reggiana",
-    "ob1_score": 60,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458044",
-    "discovered_at": "2026-09-03T20:45:17.902236",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "f472b96a91e9d4c9d8c1e142aaa2b3cd",
-    "player_name": "Salvatore Burrai",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Annuncia il ritiro dal calcio giocato",
-    "ob1_score": 64,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458043",
-    "discovered_at": "2026-09-03T20:45:17.902535",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "89a9d92172364c10e4a5fbf03dd9e507",
-    "player_name": "Danilo Quaranta",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Rinnovo contratto fino al 2028 con la Reggiana",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458039",
-    "discovered_at": "2026-09-03T20:45:17.902681",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "4d61dc46a2f922989a9621c07f543e18",
     "player_name": "Pierpaolo Verri",
     "region": "ITALY",
@@ -20289,6 +20251,78 @@
     "source_name": "www.tuttomercatoweb.com",
     "source_url": "https://www.tuttomercatoweb.com/redazione/antonio-vitiello-304",
     "discovered_at": "2026-09-03T20:45:17.904162",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "5c11ab9b479929055714a49c3851dedf",
+    "player_name": "Alessandro Fiordaliso",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Firma con la Cavese, nuovo innesto",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444848",
+    "discovered_at": "2026-09-04T03:45:10.673036",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "cc33a1c02c95dea54ec658a56d29ea3e",
+    "player_name": "Stefano Cassani",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Rinnovo contratto fino al 2028 con il Carpi",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444878",
+    "discovered_at": "2026-09-04T03:45:10.673378",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "9fcc98596c6ee1878923477c1eb5e7ab",
+    "player_name": "Samuele Vianni",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Firmerà con la Triestina dopo l'Ostiamare",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444886",
+    "discovered_at": "2026-09-04T03:45:10.673536",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "e4a5942c07cbef64aa7e55bcf281eb84",
+    "player_name": "Luca Agrelli",
+    "region": "ITALY",
+    "opportunity_type": "prestito",
+    "description": "Passa in prestito al Sassari Latte Dolce",
+    "ob1_score": 62,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444887",
+    "discovered_at": "2026-09-04T03:45:10.674013",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "b9f1ec03b87a23f23d3c168b95f6e518",
+    "player_name": "Thomas Henry",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Arrivo dell'ex Serie A Thomas Henry alla Reggiana.",
+    "ob1_score": 62,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458044",
+    "discovered_at": "2026-09-04T03:45:10.674767",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "f472b96a91e9d4c9d8c1e142aaa2b3cd",
+    "player_name": "Salvatore Burrai",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Salvatore Burrai annuncia il ritiro dal calcio giocato.",
+    "ob1_score": 64,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458043",
+    "discovered_at": "2026-09-04T03:45:10.675059",
     "league_id": "italy_serie_c_d"
   }
 ]

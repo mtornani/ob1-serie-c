@@ -25,28 +25,28 @@
       "tpm": 0
     },
     "groq:openai/gpt-oss-120b:0": {
-      "cooldown_until": null,
-      "day": "2026-09-03",
-      "fail_streak": 0,
-      "last_error_at": "2026-09-03T20:45:00.478235+00:00",
-      "last_ok": "2026-09-03T20:45:48.434648+00:00",
-      "minute": "2026-09-03T20:45",
-      "rpd": 30,
-      "rpm": 4,
-      "tpd": 39371,
-      "tpm": 3390
+      "cooldown_until": "2026-09-04T03:45:16.531409+00:00",
+      "day": "2026-09-04",
+      "fail_streak": 1,
+      "last_error_at": "2026-09-04T03:45:06.531409+00:00",
+      "last_ok": "2026-09-04T03:45:06.464850+00:00",
+      "minute": "2026-09-04T03:45",
+      "rpd": 6,
+      "rpm": 2,
+      "tpd": 12055,
+      "tpm": 2167
     },
     "mistral:mistral-small-latest:0": {
-      "cooldown_until": "2026-09-03T20:46:12.328552+00:00",
-      "day": "2026-09-03",
-      "fail_streak": 1,
-      "last_error_at": "2026-09-03T20:45:12.328552+00:00",
-      "last_ok": "2026-09-03T20:45:07.118552+00:00",
-      "minute": "2026-09-03T20:45",
-      "rpd": 48,
-      "rpm": 11,
-      "tpd": 53374,
-      "tpm": 10462
+      "cooldown_until": null,
+      "day": "2026-09-04",
+      "fail_streak": 0,
+      "last_error_at": "2026-09-04T03:44:57.578632+00:00",
+      "last_ok": "2026-09-04T03:45:10.645426+00:00",
+      "minute": "2026-09-04T03:45",
+      "rpd": 15,
+      "rpm": 4,
+      "tpd": 15029,
+      "tpm": 2868
     },
     "nvidia_nim:deepseek-ai/deepseek-v3.1:0": {
       "cooldown_until": "2026-08-30T17:22:47.746528+00:00",
@@ -83,15 +83,15 @@
     },
     "openrouter:minimax/minimax-m3:free:0": {
       "cooldown_until": null,
-      "day": "2026-09-03",
+      "day": "2026-09-04",
       "fail_streak": 0,
       "last_error_at": "2026-08-31T13:11:09.082680+00:00",
-      "last_ok": "2026-09-03T20:45:14.556763+00:00",
-      "minute": "2026-09-03T20:45",
-      "rpd": 21,
-      "rpm": 2,
-      "tpd": 15105,
-      "tpm": 1494
+      "last_ok": "2026-09-04T03:45:02.931355+00:00",
+      "minute": "2026-09-04T03:45",
+      "rpd": 1,
+      "rpm": 1,
+      "tpd": 748,
+      "tpm": 748
     },
     "openrouter:nvidia/nemotron-3-super-120b-a12b:free:0": {
       "cooldown_until": "2026-08-31T13:12:09.848732+00:00",
@@ -116,6 +116,6 @@
       "tpm": 0
     }
   },
-  "updated_at": "2026-09-03T20:45:48.434730+00:00",
+  "updated_at": "2026-09-04T03:45:10.645643+00:00",
   "version": 1
 }
