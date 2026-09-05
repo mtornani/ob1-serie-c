@@ -40,7 +40,10 @@ GARE_WINDOW_DAYS = 21
 # --- riconoscitori di riga (dal formato reale) -----------------------------
 
 RE_META = re.compile(r"COMUNICATO\s+UFFICIALE\s+N\.?\s*(\d+)\s+DEL\s+([\d/\s.]+\d)", re.I)
-RE_GARE_DEL = re.compile(r"GARE\s+DEL\s+([\d/\s]+\d)", re.I)
+# "GARE DEL 11/ 4/2026". Il giorno/mese/anno e' obbligatorio: senza, "gare del
+# 31" dentro un regolamento diventava una data di gara ("31") e appiccicava
+# quella falsa a tutte le sanzioni successive (visto sul CU 25 del 4/9/2026).
+RE_GARE_DEL = re.compile(r"GARE\s+DEL\s+(\d{1,2}\s*/\s*\d{1,2}\s*/\s*\d{2,4})", re.I)
 RE_GIRONE = re.compile(r"^GIRONE\s+([A-Z0-9]+)\s*-\s*(\d+)\s*Giornata", re.I)
 
 # "CASTENASO CALCIO - NOCETO 5 - 6 dcr" / "TERRE DI CASTELLI 1907 - SAVIGNANESE 4 - 3"
@@ -49,8 +52,18 @@ RE_RESULT = re.compile(r"^(.{2,60}?)\s+-\s+(.{2,60}?)\s+(\d{1,2})\s*-\s*(\d{1,2}
 RE_ROLE = re.compile(r"^(CALCIATORI|DIRIGENTI|ALLENATORI|MASSAGGIATORI|ASSISTENTI)\b")
 
 # Sanzioni, dalle più specifiche: l'ordine conta.
-RE_SQUAL_DATE = re.compile(r"SQUALIFICA\s+FINO\s+AL\s+([\d/\s]+\d)", re.I)
-RE_SQUAL_GARE = re.compile(r"SQUALIFICA\s+PER\s+(\w+)\s+GAR[AE]", re.I)
+# Il CU 24 del 2/9/2026 scrive "INIBIZIONE A TEMPO OPPURE SQUALIFICA A GARE:
+# FINO AL 9/ 9/2026": con il solo "SQUALIFICA FINO AL" quella riga non veniva
+# riconosciuta e un dirigente inibito spariva dal brief. Falso negativo, cioe'
+# il tipo di errore peggiore qui: il DS schiera chi non puo' stare in panchina.
+RE_SQUAL_DATE = re.compile(
+    r"(?:SQUALIFICA|INIBIZIONE)[^\n]{0,60}?FINO\s+AL\s+([\d/\s.]+\d)", re.I)
+# La quantita' e' un numero, a lettere o in cifre. Con \\w+ "SQUALIFICA PER LA
+# GARA del..." (prosa di un regolamento) produceva una squalifica di "LA"
+# giornate, e da li' in poi ogni riga maiuscola diventava un squalificato.
+RE_SQUAL_GARE = re.compile(
+    r"SQUALIFICA\s+PER\s+(UNA|DUE|TRE|QUATTRO|CINQUE|SEI|SETTE|OTTO|NOVE|"
+    r"DIECI|\d{1,2})\s+GAR[AE]", re.I)
 RE_AMMON = re.compile(r"^(I{1,4}|IV|V)\s+AMMONIZIONE\s*(\(?DIFFIDA\)?)?", re.I)
 RE_AMMENDA = re.compile(r"^AMMENDA\b", re.I)
 
@@ -116,6 +129,12 @@ def parse_cu_text(text: str) -> dict:
         c = RE_CATEGORY.search(line)
         if c and _mostly_upper(line) and not RE_RESULT.match(line):
             category = c.group(1).upper().replace("  ", " ")
+            # Un'intestazione di campionato chiude il blocco disciplinare
+            # precedente. Senza questo reset, la sanzione aperta in ECCELLENZA
+            # restava attiva dentro la prosa della sezione UNDER 18 e si
+            # portava dietro pagine di regolamento come "motivazione" (CU 24
+            # del 2/9/2026: 3.000 caratteri di testo estraneo su una sanzione).
+            role = kind = detail = None
 
         gi = RE_GIRONE.match(line)
         if gi:
@@ -296,9 +315,23 @@ class CUStore:
         return [dict(r) for r in self.conn.execute(q, args)]
 
     def clubs(self) -> list:
-        """Società viste nei CU ingeriti — per validare un nome digitato a mano."""
+        """
+        Società viste nei CU ingeriti — per validare un nome digitato a mano.
+
+        Sanzioni UNITE ai risultati, non solo le sanzioni. Una squadra che ha
+        giocato e non ha preso provvedimenti esiste eccome nei CU: leggendo
+        solo cu_sanctions il brief le rispondeva "non corrisponde a nessuna
+        società", cioè un errore di configurazione, quando la verità era
+        l'opposto — nessun diffidato, nessuno squalificato, tutti disponibili.
+        Caso reale: RIMINI CALCIO SSD ARL alla 1ª giornata di Eccellenza
+        (CU 24 del 2/9/2026), presente nei risultati e in nessun provvedimento.
+        """
         return [r[0] for r in self.conn.execute(
-            "SELECT DISTINCT club FROM cu_sanctions ORDER BY club")]
+            "SELECT club FROM ("
+            "  SELECT DISTINCT club FROM cu_sanctions"
+            "  UNION SELECT DISTINCT home FROM cu_results"
+            "  UNION SELECT DISTINCT away FROM cu_results"
+            ") WHERE club IS NOT NULL AND club != '' ORDER BY club")]
 
     def resolve_club(self, name: str) -> tuple:
         """
@@ -408,20 +441,37 @@ class CUStore:
 
 # ----------------------------------------------------------------------- cli
 
-def read_pdf(source: str) -> str:
+def read_pdf(source: str, retries: int = 3, pause: float = 4.0) -> str:
     """Testo di un CU da percorso locale o URL. I CU LND sono PDF con testo
-    nativo: niente OCR, niente dipendenze pesanti."""
+    nativo: niente OCR, niente dipendenze pesanti.
+
+    Il ritentativo serve al WAF di alcuni comitati (figccrer.it, 5/9/2026):
+    a intermittenza risponde HTTP 200 con la pagina-interstiziale al posto del
+    PDF. Senza ritentativo si perdeva circa un comunicato su due, e per una
+    ragione che non ha niente a che vedere col documento. Si riconosce dai
+    primi byte: un PDF comincia per %PDF, un muro anti-bot per <!DOC.
+    """
     import pypdf
 
-    if source.startswith(("http://", "https://")):
-        import io
-        import urllib.request
+    if not source.startswith(("http://", "https://")):
+        return "\n".join(p.extract_text() or "" for p in pypdf.PdfReader(source).pages)
+
+    import io
+    import time
+    import urllib.request
+
+    last = "nessun tentativo"
+    for attempt in range(1, retries + 1):
         req = urllib.request.Request(source, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(req, timeout=30) as r:
-            handle = io.BytesIO(r.read())
-    else:
-        handle = source
-    return "\n".join(p.extract_text() or "" for p in pypdf.PdfReader(handle).pages)
+            body = r.read()
+        if body[:4] == b"%PDF":
+            return "\n".join(p.extract_text() or ""
+                              for p in pypdf.PdfReader(io.BytesIO(body)).pages)
+        last = f"risposta non-PDF ({body[:16]!r})"
+        if attempt < retries:
+            time.sleep(pause)
+    raise OSError(f"{source}: {last} dopo {retries} tentativi")
 
 
 def main():

@@ -118,6 +118,23 @@ class SeenStore:
             "SELECT 1 FROM seen WHERE content_hash = ? LIMIT 1", (h,)).fetchone()
         return row is not None
 
+    def is_new_url(self, url: str) -> bool:
+        """
+        Questo URL non e' ancora passato? Sola lettura: NON registra nulla.
+
+        Serve dove il lavoro puo' fallire dopo il filtro. `see()` decide e
+        marca nello stesso gesto: se poi lo scaricamento del PDF va storto
+        (WAF, rete, file corrotto), quel documento risulta gia' visto e non
+        verra' piu' ritentato — un buco silenzioso nella serie storica, che e'
+        esattamente cio' che ARCH-002 non vuole. Con questa il chiamante
+        marca solo dopo che il fatto e' entrato davvero nel db.
+
+        Con OB1_WATCH=0 risponde sempre True, come `see()`.
+        """
+        if not watch_enabled():
+            return True
+        return self.is_new(content_key(url))
+
     def info(self, key: str) -> Optional[dict]:
         row = self.conn.execute("SELECT * FROM seen WHERE key = ?", (key,)).fetchone()
         return dict(row) if row else None

@@ -43,6 +43,11 @@ jobs:
           OB1_CLUB: ${{ inputs.club || vars.OB1_CLUB }}
           OB1_AVVERSARIO: ${{ vars.OB1_AVVERSARIO }}
           OB1_CU_CHANNEL: ${{ vars.OB1_CU_CHANNEL }}
+          # Fonte principale da ARCH-003 (5/9/2026): il canale Telegram del
+          # comitato e' sparito, il sito no. Lo script ha il default giusto
+          # per l'Emilia-Romagna, la variabile serve solo per altri comitati.
+          OB1_CU_SITE: ${{ vars.OB1_CU_SITE }}
+          OB1_CU_PAGES: ${{ vars.OB1_CU_PAGES }}
         run: |
           python scripts/brief_giovedi.py \
             ${{ inputs.dry_run && '--dry-run' || '' }}

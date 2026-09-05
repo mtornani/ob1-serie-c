@@ -101,4 +101,7 @@ def new_cu_links(handle: str, seen=None) -> list:
         return items
     # La chiave è l'URL: un CU è immutabile una volta pubblicato, e usare il
     # contenuto costringerebbe a scaricare il PDF prima di sapere se serve.
-    return [it for it in items if seen.see(it["url"], kind="cu_pdf")]
+    # Il filtro è in sola lettura: chi ingerisce marca dopo, a fatto avvenuto
+    # (vedi SeenStore.is_new_url). Marcare qui perderebbe per sempre un CU il
+    # cui scaricamento fallisce subito dopo.
+    return [it for it in items if seen.is_new_url(it["url"])]

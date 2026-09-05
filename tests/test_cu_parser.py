@@ -248,6 +248,19 @@ class ResolveClubTestCase(unittest.TestCase):
         self.assertIn("NOCETO", candidati)
         self.assertIn("CASTENASO CALCIO", candidati)
 
+    def test_squadra_solo_nei_risultati_e_una_squadra_nota(self):
+        """
+        Caso reale del 5/9/2026: RIMINI CALCIO SSD ARL gioca la 1ª di
+        Eccellenza e non prende un solo provvedimento. Leggendo le sole
+        sanzioni il brief rispondeva "non corrisponde a nessuna società" —
+        un errore di configurazione al posto di "nessuno squalificato".
+        """
+        club, candidati = self.store.resolve_club("CASTENASO CALCIO")
+        self.assertEqual(club, "CASTENASO CALCIO")
+        # la stessa via, per una squadra che nel CU compare solo come
+        # avversaria in un risultato
+        self.assertIn("TERRE DI CASTELLI 1907", self.store.clubs())
+
     def test_nome_vuoto(self):
         self.assertEqual(self.store.resolve_club(""), (None, []))
 
@@ -312,6 +325,76 @@ class PersistenceTestCase(unittest.TestCase):
         rebuilt = CUStore(":memory:")
         self.assertEqual(rebuilt.import_facts(self.facts), totale)
         rebuilt.close()
+
+
+class CU24RegressionTestCase(unittest.TestCase):
+    """
+    Tre difetti trovati il 5/9/2026 lanciando l'ingest sui CU veri del CRER
+    (24 del 2/9 e 25 del 4/9). Il primo giro produsse 7 sanzioni: 1 vera, 6
+    inventate, e una vera mancante. Per un brief al DS e' il caso peggiore —
+    un nome falso costa credibilita', un nome mancante costa una squalifica in
+    campo. I testi qui sotto sono ricopiati dai PDF, non semplificati.
+    """
+
+    ECCELLENZA = """CAMPIONATO ECCELLENZA
+GARE DEL 30/ 8/2026
+PROVVEDIMENTI DISCIPLINARI
+DIRIGENTI
+INIBIZIONE A TEMPO OPPURE SQUALIFICA A GARE: FINO AL 9/ 9/2026
+BALDUCCI CLAUDIO (PIETRACUTA A.S.D.)
+Per proteste nei confronti del direttore di gara.
+CALCIATORI ESPULSI
+SQUALIFICA PER UNA GARA EFFETTIVA
+YENER EMIN (CAMPAGNOLA)
+1351 1351
+CAMPIONATO UNDER 18 REGIONALE
+Il Giudice Sportivo,
+ha letto la documentazione inviata a mezzo pec in data 24 agosto 2026 dalla Soc.
+Bellaria Igea Marina con la quale quest'ultima ha formalmente manifestato la
+propria volonta' di rinunciare definitivamente a partecipare al Campionato.
+"""
+
+    def test_inibizione_a_gare_fino_al_non_si_perde(self):
+        """Falso negativo: il CU non scrive 'SQUALIFICA FINO AL' ma
+        'SQUALIFICA A GARE: FINO AL'. Con la vecchia regex il dirigente
+        inibito spariva dal brief, ed e' l'errore che manda in panchina uno
+        squalificato."""
+        s = parse_cu_text(self.ECCELLENZA)["sanctions"]
+        balducci = [x for x in s if x["person"] == "BALDUCCI CLAUDIO"]
+        self.assertEqual(len(balducci), 1)
+        self.assertEqual(balducci[0]["kind"], "SQUALIFICA_FINO_AL")
+        self.assertEqual(balducci[0]["detail"], "2026-09-09")
+        self.assertEqual(balducci[0]["role"], "DIRIGENTI")
+
+    def test_la_motivazione_non_sconfina_nella_sezione_dopo(self):
+        """L'intestazione del campionato successivo chiude il blocco: prima
+        la sanzione di Balducci si portava dietro pagine di regolamento
+        Under 18 come 'motivazione'."""
+        s = parse_cu_text(self.ECCELLENZA)["sanctions"]
+        motivo = [x for x in s if x["person"] == "BALDUCCI CLAUDIO"][0]["reason"]
+        self.assertIn("proteste", motivo)
+        self.assertNotIn("Bellaria", motivo)
+        self.assertLess(len(motivo), 200)
+
+    def test_solo_le_due_sanzioni_che_ci_sono(self):
+        s = parse_cu_text(self.ECCELLENZA)["sanctions"]
+        self.assertEqual(sorted(x["person"] for x in s),
+                         ["BALDUCCI CLAUDIO", "YENER EMIN"])
+
+    def test_squalifica_per_LA_gara_non_e_una_squalifica(self):
+        """Prosa di regolamento, non giustizia sportiva: 'SQUALIFICA PER LA
+        GARA' dava una squalifica di 'LA' giornate e da li' ogni riga
+        maiuscola diventava un tesserato (CESENA (FC), S.R.L. (U21)...)."""
+        prosa = """COPPA EMILIA ROMAGNA
+SQUALIFICA PER LA GARA successiva si applica quanto previsto dalle N.O.I.F.
+CESENA FC S.R.L. (U21)
+"""
+        self.assertEqual(parse_cu_text(prosa)["sanctions"], [])
+
+    def test_gare_del_senza_data_non_e_una_data(self):
+        """'gare del 31' dentro un regolamento diventava match_date='31'."""
+        prosa = "CAMPIONATO PROMOZIONE\nle gare del 31 si disputeranno in gara unica\n"
+        self.assertEqual(parse_cu_text(prosa)["sanctions"], [])
 
 
 if __name__ == "__main__":

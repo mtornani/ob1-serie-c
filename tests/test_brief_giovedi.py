@@ -69,18 +69,71 @@ class IngestNewEmptyChannelTestCase(unittest.TestCase):
     ingest_new() per un'altra via, deve gridarlo — non stampare "nessun
     comunicato nuovo", che ha lo stesso aspetto di un canale controllato e
     trovato pulito.
+
+    Da ARCH-003 (5/9/2026) le fonti sono due, e i test le spengono entrambe
+    esplicitamente: un test che tocca la rete non è un test.
     """
 
     def test_canale_vuoto_non_tenta_il_fetch_e_lo_dice(self):
         with mock.patch.object(bg, "new_cu_links") as fetch:
-            result = bg.ingest_new(store=mock.Mock(), seen=mock.Mock(), channel="")
+            result = bg.ingest_new(store=mock.Mock(), seen=mock.Mock(),
+                                   channel="", site="")
         fetch.assert_not_called()
         self.assertEqual(result, {"cu": 0, "new_sanctions": 0, "new_results": 0})
 
     def test_canale_valorizzato_tenta_il_fetch(self):
         with mock.patch.object(bg, "new_cu_links", return_value=[]) as fetch:
-            bg.ingest_new(store=mock.Mock(), seen=mock.Mock(), channel="lndemiliaromagna")
+            bg.ingest_new(store=mock.Mock(), seen=mock.Mock(),
+                          channel="lndemiliaromagna", site="")
         fetch.assert_called_once()
+
+
+class DueFontiTestCase(unittest.TestCase):
+    """
+    Il canale può morire (è successo: @lndemiliaromagna, 5/9/2026). Il sito
+    del comitato deve bastare da solo, e un elenco irraggiungibile non deve
+    mai somigliare a un elenco vuoto.
+    """
+
+    def test_il_sito_ingerisce_anche_col_canale_morto(self):
+        store = mock.Mock()
+        store.ingest.return_value = {"new_sanctions": 2, "new_results": 1}
+        with mock.patch.object(bg, "new_cu_links", return_value=[]), \
+             mock.patch.object(bg, "new_cu_links_site",
+                               return_value=[{"url": "https://x.test/cu9.pdf"}]), \
+             mock.patch.object(bg, "read_pdf", return_value="testo"), \
+             mock.patch.object(bg, "parse_cu_text",
+                               return_value={"meta": {"cu_number": 9}}):
+            seen = mock.Mock()
+            totals = bg.ingest_new(store, seen, channel="canalemorto",
+                                   site="https://x.test")
+        self.assertEqual(totals, {"cu": 1, "new_sanctions": 2, "new_results": 1})
+        # marcato solo dopo l'ingest riuscito
+        seen.see.assert_called_once_with("https://x.test/cu9.pdf", kind="cu_pdf")
+
+    def test_pdf_fallito_non_viene_marcato(self):
+        """Il buco silenzioso che il filtro in sola lettura esiste per evitare."""
+        with mock.patch.object(bg, "new_cu_links", return_value=[]), \
+             mock.patch.object(bg, "new_cu_links_site",
+                               return_value=[{"url": "https://x.test/cu9.pdf"}]), \
+             mock.patch.object(bg, "read_pdf", side_effect=OSError("WAF")):
+            seen = mock.Mock()
+            totals = bg.ingest_new(mock.Mock(), seen, channel="",
+                                   site="https://x.test")
+        self.assertEqual(totals["cu"], 0)
+        seen.see.assert_not_called()
+
+    def test_elenco_irraggiungibile_e_un_errore_non_un_silenzio(self):
+        with mock.patch.object(bg, "new_cu_links", return_value=[]), \
+             mock.patch.object(bg, "new_cu_links_site",
+                               side_effect=bg.ListingUnavailable("interstiziale")):
+            with mock.patch("builtins.print") as say:
+                totals = bg.ingest_new(mock.Mock(), mock.Mock(), channel="",
+                                       site="https://x.test")
+        self.assertEqual(totals["cu"], 0)
+        detto = " ".join(str(c) for c in say.call_args_list)
+        self.assertIn("[ERRORE]", detto)
+        self.assertIn("interstiziale", detto)
 
 
 if __name__ == "__main__":

@@ -126,6 +126,51 @@ GitHub repo (public)
 
 ## Changelog
 
+### 2026-09-05 — ARCH-003: la catena Eccellenza rimessa in piedi (fonte morta, parser che mentiva)
+
+- **Il canale Telegram del comitato E-R non esiste piu'.** `telegram_census.py`
+  rilanciato dal vivo: `@lndemiliaromagna` da `attivo` (839 iscritti, 7/8/2026) a
+  `inesistente`. Era l'unica via d'accesso ai CU: la Fase 3 con una fonte sola
+  non era una catena, era un filo
+- **`src/cu_site.py`** — fonte sostitutiva: l'elenco pubblico del sito del
+  comitato (`figccrer.it/comunicati?page=N`), che pubblica per obbligo federale
+  e non per scelta di chi amministra un canale. Il WAF risponde HTTP **200** con
+  un interstiziale: si riconosce, si ritenta, e se non passa si solleva
+  `ListingUnavailable` — "non ho potuto guardare" non e' "non c'era niente"
+  (lezione @lndlombardia, gia' pagata una volta). Stesso ritentativo in
+  `read_pdf`: senza, si perdeva un comunicato su due
+- `brief_giovedi.py` ora legge **due fonti** (sito + canale, se vivo) e marca
+  il CU come visto **solo dopo l'ingest riuscito**: `SeenStore.is_new_url()` e'
+  in sola lettura. Prima un download fallito marcava comunque, e quel CU non
+  veniva piu' ritentato — un buco permanente nella serie storica
+- **Dove gioca il Rimini, da atti ufficiali**: LND CU 75 del 5/8/2026 richiama
+  il CU FIGC 104/A del 28/11/2025, *revoca dell'affiliazione a Rimini Football
+  Club s.r.l.*; il calendario CRER da' **`RIMINI CALCIO SSD ARL` in Eccellenza
+  E-R girone B**. Il nome esatto conta: e' quello che va in `OB1_CLUB`
+- **Il parser mentiva, e si e' visto solo lanciandolo sui CU veri.** Primo giro:
+  7 sanzioni, **6 inventate** (`CESENA (FC)`, `S.R.L. (U21)`, motivazioni da
+  3.000 caratteri di regolamento) e **1 vera mancante** — un dirigente inibito,
+  cioe' l'errore che manda in panchina uno squalificato. Quattro correzioni:
+  quantita' obbligatoria in `SQUALIFICA PER <n> GARE`, data completa in
+  `GARE DEL`, reset del blocco all'intestazione del campionato successivo,
+  e `SQUALIFICA A GARE: FINO AL` riconosciuta. Ora l'estratto corrisponde
+  esattamente al documento: CU 24 → 2 sanzioni, 16 risultati; CU 25 → 0 e 0
+- `CUStore.clubs()` unisce sanzioni **e risultati**: a una squadra che ha giocato
+  senza prendere provvedimenti il brief rispondeva "non corrisponde a nessuna
+  societa'" (errore di configurazione) invece di "nessuno squalificato". Era
+  esattamente il caso del Rimini alla 1ª giornata
+- Primo giro pulito: 25 CU ingeriti, fra i risultati
+  `INTER SM SAMMAURESE 0-2 RIMINI CALCIO SSD ARL`. Brief provato end-to-end sul
+  Pietracuta (che una sanzione ce l'ha): messaggio completo, con la fonte citata
+- **`comunicati.lnd.it`** censito e scartato per l'Eccellenza: JSON paginato e
+  `robots.txt` permissivo, ma i department sono solo nazionali (LND, Serie D,
+  femminile). E' la fonte pulita per la **Serie D**, non per i comitati regionali
+- 389 test offline (erano 380), nuovo `tests/test_cu_site.py`. Zero rete nei test
+- **Da fare a mano su GitHub** (Settings → Secrets and variables → Actions →
+  Variables): `OB1_CLUB = RIMINI CALCIO SSD ARL`. Facoltative: `OB1_AVVERSARIO`,
+  `OB1_CU_SITE`, `OB1_CU_PAGES`. Senza `OB1_CLUB` il workflow ingerisce e non
+  manda niente
+
 ### 2026-08-03 — ARCH-002 Fasi 1-2: la metrica, poi il 304
 - **Fase 1 — `src/metrics.py`**: `costo_per_fatto = (ricerche + chiamate_llm +
   fetch) / campi_nuovi_verificati`. Contatori alimentati dove i costi nascono

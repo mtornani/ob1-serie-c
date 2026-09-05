@@ -1,6 +1,6 @@
 # ARCH-003 — Eccellenza: dal radar di mercato al supporto operativo di un club
 
-**Stato**: spec, non implementata
+**Stato**: Fasi 3 e 5 implementate e provate sui CU veri (5/9/2026); 1, 2, 4, 6 aperte
 **Data**: 2026-08-03
 **Prerequisiti**: ARCH-001 (gateway LLM free-tier), ARCH-002 Fasi 1-2 (metrica, 304)
 **Caso d'uso guida**: Rimini FC ripartito dall'Eccellenza, DS senza budget e senza
@@ -427,6 +427,98 @@ contano i profili chiusi per trasferta fatta.
 
 Il sistema non ha espresso alcun giudizio su alcun giocatore: ha detto dove c'è
 più da imparare per meno strada. **Decide l'uomo, il sistema alloca l'attenzione.**
+
+---
+
+## 5bis. Il canale e' morto, la catena no (5 settembre 2026)
+
+**Il canale Telegram su cui poggiava tutta la Fase 3 non esiste piu'.** Il
+censimento (`scripts/telegram_census.py`, rilanciato oggi) da' `inesistente`
+su `@lndemiliaromagna`: `t.me/s/` non serve piu' l'anteprima. Il 7/8/2026 era
+`attivo` con 839 iscritti. Nessun preavviso, nessuna migrazione annunciata —
+il pattern @lndlombardia (canale privato) qui non c'e': e' sparito e basta.
+
+Lezione, che vale oltre questo repo: **un canale Telegram e' proprieta' di chi
+lo apre.** Il sito del comitato e' l'organo di pubblicazione previsto dalle
+NOIF: puo' stare giu' un'ora, non puo' smettere di esistere. La Fase 3 con una
+fonte sola non era una catena, era un filo.
+
+### La fonte sostitutiva — `src/cu_site.py`
+
+L'elenco pubblico `figccrer.it/comunicati?page=N` porta, per ogni annuncio,
+i link diretti agli allegati: `/files/announcements/{anno}/{id}/cu{n}.pdf`.
+Il nome del file distingue il comunicato dai suoi allegati (calendari,
+tabelloni, moduli) senza euristiche sul testo. `robots.txt` non risponde
+(sta dietro lo stesso WAF), ma l'elenco e' la pagina che il comitato pubblica
+per essere letta, e la si legge al ritmo di un lettore.
+
+**Il WAF va gestito, non aggirato**: a intermittenza risponde HTTP **200** con
+un interstiziale ("One moment, please..."). Trattarlo come elenco vuoto
+ripeterebbe l'errore @lndlombardia gia' costato una volta a questo repo. Si
+riconosce, si ritenta con pausa, e se non passa si solleva `ListingUnavailable`
+— perche' "non ho potuto guardare" e "non c'era niente" portano il chiamante a
+fare due cose diverse. Stesso trattamento nel download del PDF (`read_pdf`):
+senza ritentativo si perdeva circa un comunicato su due.
+
+### `comunicati.lnd.it` — verificato, e non serve a questo
+
+Portale nazionale LND, SPA Laravel con JSON in pagina, paginato e filtrabile
+(`department`, `season`, `document_type`, `search`), `robots.txt` con
+`Disallow:` vuoto. **Ma i department sono solo nazionali**: LND, Interregionale
+(Serie D), Calcio Femminile, Beach Soccer, Esport, Torneo delle Regioni.
+Nessun comitato regionale. Per l'Eccellenza resta figccrer.it. Vale la pena
+registrarlo comunque: e' la fonte pulita per la Serie D.
+
+### Dove gioca il Rimini, da atti ufficiali
+
+Due documenti primari, non ricostruzioni:
+
+- **LND CU 75 del 5/8/2026** (ammissioni Serie D): richiama il **CU FIGC
+  n. 104/A del 28 novembre 2025**, *revoca dell'affiliazione alla Societa'
+  Rimini Football Club s.r.l.* Il club di Serie C non esiste piu' come
+  soggetto affiliato, e non e' nei 156 dell'organico di Serie D.
+- **Calendario CRER Eccellenza girone B 2026/2027**: **`RIMINI CALCIO SSD ARL`**
+  — 1ª giornata 30/08/26, 2ª il 6/09/26.
+
+Quindi il caso guida della spec regge, ma il nome no: il club da configurare
+e' `RIMINI CALCIO SSD ARL`, e la lega e' Eccellenza E-R **girone B**.
+
+### Cosa e' uscito dal primo giro vero
+
+25 CU ingeriti dal sito, **2 sanzioni e 16 risultati** — fra cui
+`INTER SM SAMMAURESE 0-2 RIMINI CALCIO SSD ARL`, la prima di campionato del
+club guida, estratta end-to-end da un atto ufficiale.
+
+Il primo giro pero' ne aveva prodotte **7, di cui 6 inventate**, e una vera la
+perdeva. Tre difetti del parser, tutti trovati solo lanciandolo sui CU veri:
+
+| difetto | effetto | correzione |
+|---|---|---|
+| `SQUALIFICA PER (\w+) GARE` | "SQUALIFICA PER **LA** GARA" in un regolamento apriva un blocco disciplinare inesistente: da li' ogni riga maiuscola diventava un tesserato (`CESENA (FC)`, `S.R.L. (U21)`) | la quantita' dev'essere un numero, a lettere o in cifre |
+| `GARE DEL ([\d/\s]+\d)` | "le gare del 31 si disputeranno..." dava `match_date="31"` | serve giorno/mese/anno |
+| nessun reset di blocco | la sanzione aperta in ECCELLENZA restava attiva nella prosa della sezione UNDER 18: 3.000 caratteri di regolamento appiccicati come "motivazione" | l'intestazione del campionato successivo chiude il blocco |
+
+E un **falso negativo**, il piu' grave dei quattro: il CU scrive *"INIBIZIONE A
+TEMPO OPPURE SQUALIFICA A GARE: FINO AL 9/ 9/2026"*, non "SQUALIFICA FINO AL".
+Un dirigente inibito spariva dal brief — l'errore che manda in panchina chi non
+puo' starci. Ora `RE_SQUAL_DATE` accetta entrambe le forme.
+
+Quinto difetto, a valle: `CUStore.clubs()` leggeva le sole sanzioni, quindi a
+una squadra che ha giocato senza prendere provvedimenti il brief rispondeva
+*"non corrisponde a nessuna societa'"* — un errore di configurazione al posto
+di "nessuno squalificato, tutti disponibili". Esattamente il caso del Rimini
+alla 1ª giornata. Ora unisce sanzioni e risultati.
+
+Tutti e cinque sono test di regressione, non note: `tests/test_cu_parser.py`,
+`tests/test_cu_site.py`, `tests/test_brief_giovedi.py`.
+
+### Cosa manca ancora per il Rimini
+
+Il brief non parte finche' un tesserato del Rimini non prende un provvedimento:
+alla 1ª giornata non ne ha presi. Non e' un guasto, e' il comportamento voluto
+(non si manda un messaggio vuoto ogni settimana). Il giro sul Pietracuta, che
+un'inibizione ce l'ha, produce il messaggio completo con la fonte citata.
+Resta da impostare su GitHub la variabile `OB1_CLUB` — vedi il changelog.
 
 ---
 

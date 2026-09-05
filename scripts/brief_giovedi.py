@@ -4,7 +4,7 @@ ARCH-003 — Il brief del giovedì, dal canale del comitato al telefono del DS.
 
 Una catena sola, senza pezzi manuali:
 
-    canale Telegram del comitato
+    sito del comitato (+ canale Telegram, se vivo)
       -> nuovi PDF dei Comunicati Ufficiali (SeenStore: i vecchi si saltano)
       -> parser giustizia sportiva (regex, zero LLM)
       -> data/ob1.db
@@ -22,10 +22,11 @@ Uso:
     python scripts/brief_giovedi.py --club "NOCETO" --avversario "CASTENASO CALCIO"
 
     # solo ingestione, senza brief (per riempire lo storico)
-    python scripts/brief_giovedi.py --solo-ingest
+    python scripts/brief_giovedi.py --solo-ingest --pagine 3 --limite 40
 
 Configurazione (.env o environment):
-    OB1_CU_CHANNEL     handle del canale del comitato (default: figccrer)
+    OB1_CU_CHANNEL     handle del canale del comitato (default: lndemiliaromagna)
+    OB1_CU_SITE        sito del comitato (default: figccrer.it)
     OB1_CLUB           società del DS
     OB1_AVVERSARIO     prossimo avversario (facoltativo)
     TELEGRAM_BOT_TOKEN token di BotFather
@@ -45,44 +46,79 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from src.brief import build_brief, format_telegram
 from src.cu_feed import new_cu_links
 from src.cu_parser import CUStore, parse_cu_text, read_pdf
+from src.cu_site import DEFAULT_SITE, ListingUnavailable
+from src.cu_site import new_cu_links as new_cu_links_site
 from src.watch.seen import SeenStore
 
-# Verificato vivo il 07/08/2026: 17 comunicati in anteprima, l'ultimo dello
-# stesso giorno. @figccrer risponde 200 ma non pubblica PDF — l'handle
-# plausibile non è quello giusto, e questa è esattamente la ragione per cui il
-# registro dei canali si costruisce con scripts/telegram_census.py e non a naso.
+# Verificato vivo il 07/08/2026 (17 comunicati in anteprima, 839 iscritti) e
+# trovato MORTO il 05/09/2026: il censimento lo dà `inesistente`, t.me/s/ non
+# serve più l'anteprima. Il canale resta configurato perché un comitato può
+# riaprirlo, ma non è più la fonte principale: quella è il sito del comitato
+# (src/cu_site.py), che pubblica i CU per obbligo federale e non per scelta di
+# chi amministra un canale.
 DEFAULT_CHANNEL = "lndemiliaromagna"
 
 
-def ingest_new(store: CUStore, seen: SeenStore, channel: str, limit: int = 5) -> dict:
+def ingest_new(store: CUStore, seen: SeenStore, channel: str,
+               limit: int = 5, site: str = DEFAULT_SITE,
+               site_pages: int = 1) -> dict:
     """
-    Scarica e ingerisce i CU non ancora visti. Il limite esiste perché al
-    primo giro un canale può avere venti comunicati in anteprima: scaricarli
-    tutti insieme è inutile (il brief guarda le ultime settimane) e maleducato
-    verso il sito del comitato.
+    Scarica e ingerisce i CU non ancora visti, da entrambe le fonti.
+
+    Due fonti e non una perché il 5/9/2026 il canale Telegram del comitato
+    Emilia-Romagna è sparito da un giorno all'altro, portandosi via l'unica
+    via d'accesso. Il sito del comitato è l'organo di pubblicazione previsto
+    dalle NOIF: può stare giù un'ora, non può smettere di esistere. Il canale
+    resta perché è push e porta la data gratis; il sito è la rete di sicurezza.
+
+    Il limite esiste perché al primo giro una fonte può avere venti comunicati
+    in elenco: scaricarli tutti insieme è inutile (il brief guarda le ultime
+    settimane) e maleducato verso il sito del comitato.
     """
-    if not channel:
+    totals = {"cu": 0, "new_sanctions": 0, "new_results": 0}
+    links = []
+
+    if channel:
+        links.extend(new_cu_links(channel, seen=seen))
+        if not links:
+            print(f"@{channel}: nessun comunicato nuovo")
+    else:
         # Non dovrebbe più accadere (vedi il commento su --canale in main()),
-        # ma se accade di nuovo per un'altra via va gridato, non stampato
-        # come "nessun comunicato nuovo" — quello sembra un canale pulito,
-        # questo è un canale che non è mai stato interrogato.
+        # ma se accade di nuovo per un'altra via va gridato, non passato sotto
+        # silenzio: un canale mai interrogato sembra un canale pulito.
         print("[ERRORE] canale vuoto: nessun fetch tentato, controlla "
               "OB1_CU_CHANNEL o --canale")
-        return {"cu": 0, "new_sanctions": 0, "new_results": 0}
 
-    links = new_cu_links(channel, seen=seen)
+    if site:
+        try:
+            site_links = new_cu_links_site(site, seen=seen, pages=site_pages)
+        except ListingUnavailable as exc:
+            # Idem: "non ho potuto guardare" non è "non c'era niente".
+            print(f"[ERRORE] elenco comunicati non raggiungibile: {exc}")
+        else:
+            if not site_links:
+                print(f"{site}: nessun comunicato nuovo")
+            links.extend(site_links)
+
     if not links:
-        print(f"@{channel}: nessun comunicato nuovo")
-        return {"cu": 0, "new_sanctions": 0, "new_results": 0}
+        return totals
 
-    totals = {"cu": 0, "new_sanctions": 0, "new_results": 0}
+    # Le due fonti pubblicano lo stesso PDF con lo stesso URL solo per caso:
+    # il dedup vero lo fa comunque il SeenStore alla marcatura. Qui basta non
+    # scaricare due volte nello stesso giro.
+    links = list({it["url"]: it for it in links}.values())
+
     for item in links[-limit:]:
         try:
             parsed = parse_cu_text(read_pdf(item["url"]))
         except Exception as exc:                      # PDF rotto o rete giù
+            # Nessuna marcatura: il CU resta "nuovo" e il prossimo giro
+            # riprova. È il motivo per cui il filtro a monte non marca.
             print(f"  [SALTATO] {item['url']}: {exc}")
             continue
         added = store.ingest(parsed)
+        # Marcatura a fatto avvenuto: da qui in poi il documento è nel db.
+        seen.see(item["url"], kind="cu_pdf")
         totals["cu"] += 1
         totals["new_sanctions"] += added["new_sanctions"]
         totals["new_results"] += added["new_results"]
@@ -104,6 +140,14 @@ def main() -> int:
     # run reale: canale="" -> fetch di "t.me/s/" -> 404 silenzioso -> "nessun
     # comunicato nuovo", indistinguibile da un canale controllato e pulito.
     ap.add_argument("--canale", default=os.getenv("OB1_CU_CHANNEL") or DEFAULT_CHANNEL)
+    # Stesso trattamento del canale, e per la stessa ragione: il workflow
+    # esporta sempre la chiave, anche vuota.
+    ap.add_argument("--sito", default=os.getenv("OB1_CU_SITE") or DEFAULT_SITE,
+                    help="sito del comitato che pubblica i CU")
+    ap.add_argument("--pagine", type=int, default=int(os.getenv("OB1_CU_PAGES") or 1),
+                    help="pagine dell'elenco da leggere (>1 per lo storico)")
+    ap.add_argument("--limite", type=int, default=5,
+                    help="quanti CU scaricare al massimo in un giro")
     ap.add_argument("--data", default=date.today().isoformat(),
                     help="data del brief (default: oggi)")
     ap.add_argument("--db", default="data/ob1.db")
@@ -129,7 +173,8 @@ def main() -> int:
 
     if not args.no_fetch:
         with SeenStore(args.db) as seen:
-            ingest_new(store, seen, args.canale)
+            ingest_new(store, seen, args.canale, limit=args.limite,
+                       site=args.sito, site_pages=args.pagine)
         totals = store.export_facts(args.facts)
         print(f"memoria aggiornata: {totals['sanctions']} sanzioni, "
               f"{totals['results']} risultati in {args.facts}")
