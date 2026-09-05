@@ -25,27 +25,27 @@
       "tpm": 0
     },
     "groq:openai/gpt-oss-120b:0": {
-      "cooldown_until": "2026-09-05T00:00:00+00:00",
-      "day": "2026-09-04",
+      "cooldown_until": "2026-09-06T00:00:00+00:00",
+      "day": "2026-09-05",
       "fail_streak": 1,
-      "last_error_at": "2026-09-04T16:01:49.543546+00:00",
-      "last_ok": "2026-09-04T16:01:49.392073+00:00",
-      "minute": "2026-09-04T20:36",
-      "rpd": 16,
+      "last_error_at": "2026-09-05T03:44:03.218429+00:00",
+      "last_ok": "2026-09-05T03:44:03.114985+00:00",
+      "minute": "2026-09-05T03:48",
+      "rpd": 5,
       "rpm": 0,
-      "tpd": 26950,
+      "tpd": 7716,
       "tpm": 0
     },
     "mistral:mistral-small-latest:0": {
-      "cooldown_until": "2026-09-04T20:37:00+00:00",
-      "day": "2026-09-04",
-      "fail_streak": 10,
-      "last_error_at": "2026-09-04T20:36:27.492776+00:00",
+      "cooldown_until": "2026-09-05T03:49:00+00:00",
+      "day": "2026-09-05",
+      "fail_streak": 12,
+      "last_error_at": "2026-09-05T03:48:35.685832+00:00",
       "last_ok": "2026-09-04T03:45:10.645426+00:00",
-      "minute": "2026-09-04T20:36",
-      "rpd": 25,
+      "minute": "2026-09-05T03:48",
+      "rpd": 2,
       "rpm": 1,
-      "tpd": 15029,
+      "tpd": 0,
       "tpm": 0
     },
     "nvidia_nim:deepseek-ai/deepseek-v3.1:0": {
@@ -83,15 +83,15 @@
     },
     "openrouter:minimax/minimax-m3:free:0": {
       "cooldown_until": null,
-      "day": "2026-09-04",
+      "day": "2026-09-05",
       "fail_streak": 0,
       "last_error_at": "2026-09-04T16:04:04.358702+00:00",
-      "last_ok": "2026-09-04T20:36:28.756522+00:00",
-      "minute": "2026-09-04T20:36",
-      "rpd": 47,
+      "last_ok": "2026-09-05T03:48:37.117881+00:00",
+      "minute": "2026-09-05T03:48",
+      "rpd": 17,
       "rpm": 1,
-      "tpd": 44819,
-      "tpm": 497
+      "tpd": 17201,
+      "tpm": 947
     },
     "openrouter:nvidia/nemotron-3-super-120b-a12b:free:0": {
       "cooldown_until": null,
@@ -117,6 +117,6 @@
       "tpm": 0
     }
   },
-  "updated_at": "2026-09-04T20:36:28.756770+00:00",
+  "updated_at": "2026-09-05T03:48:37.118087+00:00",
   "version": 1
 }
