@@ -18771,15 +18771,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "4ad112ad09894cdc07e0f8e0a27d862b",
+    "id": "ccf3e2235a3997790d53720c20121432",
     "player_name": "Emmanuele Matino",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Scambio in valutazione tra Emmanuele Matino e Daniele Celiento",
+    "description": "Difensore ex Salernitana, esordio shock col Casarano: espulso dopo 36'",
     "ob1_score": 60,
     "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444589",
-    "discovered_at": "2026-09-01T11:22:51.425098",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445006",
+    "discovered_at": "2026-09-05T20:07:29.669956",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -20309,7 +20309,27 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444916",
     "discovered_at": "2026-09-04T16:04:41.897648",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "eta": [
+          {
+            "valore": "34",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-09-06T03:57:17.886722+00:00",
+            "nota": "da data di nascita 1992-01-01"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:groq",
+    "birth_date": "1992-01-01",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "birth_date": "1992-01-01"
+    },
+    "age": 34,
+    "tm_enriched": true
   },
   {
     "id": "823d72571b1a150b2107541539b25e9e",
@@ -20500,15 +20520,163 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ccf3e2235a3997790d53720c20121432",
-    "player_name": "Emmanuele Matino",
+    "id": "1a00a74f53ceab228b766c23cc50f2c8",
+    "player_name": "Bernardo Silva",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Difensore ex Salernitana, esordio shock col Casarano: espulso dopo 36'",
+    "description": "Parla del 2026, possibile mossa di mercato",
+    "ob1_score": 60,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/bernardo-silva-so-cosa-faro-nel-2026-juventus-e-il-giocatore-che-ti-manca/blt945cd428b87f9d6f",
+    "discovered_at": "2026-09-06T03:50:47.110982",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "502b644b51279c0d00e2626875019994",
+    "player_name": "Jonathan David",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Possibile scambio, contratto scade 2026",
+    "ob1_score": 60,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/juventus-di-nuovo-su-kolo-muani-quanto-costa-ingaggio-scadenza-contratto-e-il-possibile-scambio-con-jonathan-david/blt4480e89d1c37de61",
+    "discovered_at": "2026-09-06T03:50:47.111194",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "c6b8253f880bd13f7b69ab86bc1e038d",
+    "player_name": "Enrico Brignola",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Colpo dagli svincolati per il Crotone",
+    "ob1_score": 64,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/calciomercato/",
+    "discovered_at": "2026-09-06T03:50:47.111327",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/enrico-brignola/profil/spieler/323147",
+    "tm_verified_at": "2026-09-05T03:56:19+00:00",
+    "birth_date": "08/07/1999",
+    "age": 27,
+    "current_club": "FC Crotone",
+    "role_name": "Ala destra",
+    "foot": "sinistro",
+    "contract_expires": "30/06/2027",
+    "agent": "Sport project"
+  },
+  {
+    "id": "99dc10f6d9aedbbd232a2934681c7bb5",
+    "player_name": "Roberto Inglese",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Pescara ingaggia esperto centravanti dalla lista svincolati",
+    "ob1_score": 66,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/calciomercato-live-tutte-le-notizie-del-31-agosto-e-del-1-settembre-2026/bltc86c1ba10c1c6a5c",
+    "discovered_at": "2026-09-06T03:50:47.111446",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "a8f77f34cd461d937094e8ba5ec7c20b",
+    "player_name": "Roberto Insigne",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Attaccante citato in operazione di mercato Serie C",
+    "ob1_score": 62,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/calciomercato-live-tutte-le-notizie-del-31-agosto-e-del-1-settembre-2026/bltc86c1ba10c1c6a5c",
+    "discovered_at": "2026-09-06T03:50:47.111561",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "49e9318a4b30c96c81ee38e84d207684",
+    "player_name": "Alessandro Micai",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Portiere svincolato firma con lo Spezia fino al 30 giugno 2027",
+    "ob1_score": 64,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/calciomercato/spezia-micai-svincolato-03-08-2026-456963",
+    "discovered_at": "2026-09-06T03:50:47.111673",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/alessandro-micai/profil/spieler/167685",
+    "tm_verified_at": "2026-09-06T03:52:27+00:00",
+    "birth_date": "24/07/1993",
+    "age": 33,
+    "current_club": "Spezia Calcio",
+    "role_name": "Portiere",
+    "foot": "destro",
+    "contract_expires": "30/06/2027",
+    "agent": "GB1",
+    "market_value": 200000,
+    "market_value_eur": 200000
+  },
+  {
+    "id": "7d2647e2dfb2b4ba44e7d2c651c73934",
+    "player_name": "Stefano Perucchini",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Portiere classe 1991 svincolato firma fino al 30 giugno 2026",
+    "ob1_score": 64,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/news-calcio/ci-serve-un-altro-portiere-acquisto-ufficiale-per-i-rossoneri-hanno-pescato-dagli-svincolati-414397",
+    "discovered_at": "2026-09-06T03:50:47.111784",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "262061a10dd2447eac2b24266da308f7",
+    "player_name": "Francesco Cassata",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Attaccante in cerca di squadra, svincolato",
+    "ob1_score": 66,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/calciomercato/",
+    "discovered_at": "2026-09-06T03:50:47.111902",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/francesco-cassata/profil/spieler/301236",
+    "tm_verified_at": "2026-09-03T20:55:23+00:00",
+    "birth_date": "16/07/1997",
+    "age": 29,
+    "current_club": "svincolato",
+    "role_name": "Centrocampista",
+    "foot": "destro",
+    "agent": "GR Sports"
+  },
+  {
+    "id": "ea1242dfeebef5fabd15961a507b5e4e",
+    "player_name": "Salvatore Bocchetti",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Difensore confermato in panchina Lumezzane",
     "ob1_score": 60,
     "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445006",
-    "discovered_at": "2026-09-05T20:07:29.669956",
+    "source_url": "https://www.tuttoc.com/altre-news/serie-2026-2027-panchine-sammarco-lumezzane-439359",
+    "discovered_at": "2026-09-06T03:50:47.112014",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ec88159a34f6aa34f38e6a888c93a692",
+    "player_name": "Stefano Cassani",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Difensore in panchina Carpi",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/altre-news/serie-2026-2027-panchine-sammarco-lumezzane-439359",
+    "discovered_at": "2026-09-06T03:50:47.112123",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "979297d928769fcfa365611ee9b5580a",
+    "player_name": "Fabio Prosperi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Portiere confermato in panchina Cavese",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/altre-news/serie-2026-2027-panchine-sammarco-lumezzane-439359",
+    "discovered_at": "2026-09-06T03:50:47.112240",
     "league_id": "italy_serie_c_d"
   }
 ]

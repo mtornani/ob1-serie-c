@@ -25,25 +25,25 @@
       "tpm": 0
     },
     "groq:openai/gpt-oss-120b:0": {
-      "cooldown_until": "2026-09-06T00:00:00+00:00",
-      "day": "2026-09-05",
-      "fail_streak": 1,
-      "last_error_at": "2026-09-05T03:44:03.218429+00:00",
-      "last_ok": "2026-09-05T03:44:03.114985+00:00",
-      "minute": "2026-09-05T20:11",
-      "rpd": 5,
-      "rpm": 0,
-      "tpd": 7716,
-      "tpm": 0
+      "cooldown_until": null,
+      "day": "2026-09-06",
+      "fail_streak": 0,
+      "last_error_at": "2026-09-06T03:49:43.453735+00:00",
+      "last_ok": "2026-09-06T03:55:22.704659+00:00",
+      "minute": "2026-09-06T03:55",
+      "rpd": 6,
+      "rpm": 1,
+      "tpd": 7564,
+      "tpm": 965
     },
     "mistral:mistral-small-latest:0": {
-      "cooldown_until": "2026-09-05T20:12:00+00:00",
-      "day": "2026-09-05",
-      "fail_streak": 19,
-      "last_error_at": "2026-09-05T20:11:34.705050+00:00",
+      "cooldown_until": "2026-09-06T03:51:00+00:00",
+      "day": "2026-09-06",
+      "fail_streak": 24,
+      "last_error_at": "2026-09-06T03:50:09.294119+00:00",
       "last_ok": "2026-09-04T03:45:10.645426+00:00",
-      "minute": "2026-09-05T20:11",
-      "rpd": 9,
+      "minute": "2026-09-06T03:50",
+      "rpd": 5,
       "rpm": 1,
       "tpd": 0,
       "tpm": 0
@@ -83,15 +83,15 @@
     },
     "openrouter:minimax/minimax-m3:free:0": {
       "cooldown_until": null,
-      "day": "2026-09-05",
+      "day": "2026-09-06",
       "fail_streak": 0,
       "last_error_at": "2026-09-05T20:07:29.610926+00:00",
-      "last_ok": "2026-09-05T20:11:35.776538+00:00",
-      "minute": "2026-09-05T20:11",
-      "rpd": 60,
+      "last_ok": "2026-09-06T03:50:12.603338+00:00",
+      "minute": "2026-09-06T03:50",
+      "rpd": 25,
       "rpm": 1,
-      "tpd": 62049,
-      "tpm": 1127
+      "tpd": 32906,
+      "tpm": 2034
     },
     "openrouter:nvidia/nemotron-3-super-120b-a12b:free:0": {
       "cooldown_until": "2026-09-06T00:00:00+00:00",
@@ -117,6 +117,6 @@
       "tpm": 0
     }
   },
-  "updated_at": "2026-09-05T20:11:35.776597+00:00",
+  "updated_at": "2026-09-06T03:55:22.704853+00:00",
   "version": 1
 }
