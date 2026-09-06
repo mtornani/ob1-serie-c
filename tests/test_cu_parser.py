@@ -397,5 +397,55 @@ CESENA FC S.R.L. (U21)
         self.assertEqual(parse_cu_text(prosa)["sanctions"], [])
 
 
+class RigheSpezzateTestCase(unittest.TestCase):
+    """
+    Il CU 24 pubblica 9 partite per girone; l'estrazione PDF ne consegnava 7.
+    Quando il nome della societa' non ci sta sulla riga, pypdf manda a capo e
+    il risultato sparisce. Una giornata pubblicata con 7 partite su 9 e' il
+    genere di errore che, davanti a una societa', non si recupera piu'.
+    Testi ricopiati dal PDF vero.
+    """
+
+    GIRONE_B = """GIRONE B \u2014 1\u00aa GIORNATA ANDATA
+F.C.YOUNG
+SANTARCANGELO - MEDICINA FOSSATONE
+S.S.D. 1 - 2
+INTER SM SAMMAURESE - RIMINI CALCIO SSD ARL 0 - 2
+SAN MARINO CALCIO - IMOLESE FOOTBALL CLUB
+SSD 0 - 6
+VIS NOVAFELTRIA CALCIO - CASTENASO CALCIO 3 - 1
+"""
+
+    def setUp(self):
+        self.res = parse_cu_text(self.GIRONE_B)["results"]
+
+    def test_nessuna_partita_persa(self):
+        self.assertEqual(len(self.res), 4)
+
+    def test_ricompone_su_due_righe(self):
+        r = next(x for x in self.res if x["home"] == "SAN MARINO CALCIO")
+        self.assertEqual(r["away"], "IMOLESE FOOTBALL CLUB SSD")
+        self.assertEqual((r["home_goals"], r["away_goals"]), (0, 6))
+
+    def test_ricompone_su_tre_righe(self):
+        r = next(x for x in self.res if x["home"].startswith("F.C.YOUNG"))
+        self.assertEqual(r["home"], "F.C.YOUNG SANTARCANGELO")
+        self.assertEqual(r["away"], "MEDICINA FOSSATONE S.S.D.")
+        self.assertEqual((r["home_goals"], r["away_goals"]), (1, 2))
+
+    def test_le_righe_gia_complete_restano_intatte(self):
+        """La guardia che serve: una riga gia' valida non e' la coda della
+        precedente, e unirle ne farebbe sparire una."""
+        r = next(x for x in self.res if x["home"] == "INTER SM SAMMAURESE")
+        self.assertEqual(r["away"], "RIMINI CALCIO SSD ARL")
+
+    def test_girone_e_giornata_dall_intestazione_con_trattino_lungo(self):
+        """"GIRONE B \u2014 1\u00aa GIORNATA ANDATA": trattino lungo e ordinale.
+        Con la sola forma "GIRONE A - 12 Giornata" restavano entrambi vuoti."""
+        for r in self.res:
+            self.assertEqual(r["girone"], "B")
+            self.assertEqual(r["giornata"], 1)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

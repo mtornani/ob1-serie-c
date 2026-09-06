@@ -44,7 +44,12 @@ RE_META = re.compile(r"COMUNICATO\s+UFFICIALE\s+N\.?\s*(\d+)\s+DEL\s+([\d/\s.]+\
 # 31" dentro un regolamento diventava una data di gara ("31") e appiccicava
 # quella falsa a tutte le sanzioni successive (visto sul CU 25 del 4/9/2026).
 RE_GARE_DEL = re.compile(r"GARE\s+DEL\s+(\d{1,2}\s*/\s*\d{1,2}\s*/\s*\d{2,4})", re.I)
-RE_GIRONE = re.compile(r"^GIRONE\s+([A-Z0-9]+)\s*-\s*(\d+)\s*Giornata", re.I)
+# Due formati veri, non uno: "GIRONE A - 12 Giornata - R" (sezione giustizia
+# sportiva, CU 146) e "GIRONE B \u2014 1\u00aa GIORNATA ANDATA" (sezione risultati,
+# CU 24). Cambia il trattino (corto/lungo), l'ordinale e la parola finale.
+# Con la sola prima forma i risultati restavano senza girone e senza giornata.
+RE_GIRONE = re.compile(
+    r"^GIRONE\s+([A-Z0-9]+)\s*[-\u2013\u2014]\s*(\d+)\s*[\u00aa\u00b0]?\s*GIORNATA", re.I)
 
 # "CASTENASO CALCIO - NOCETO 5 - 6 dcr" / "TERRE DI CASTELLI 1907 - SAVIGNANESE 4 - 3"
 RE_RESULT = re.compile(r"^(.{2,60}?)\s+-\s+(.{2,60}?)\s+(\d{1,2})\s*-\s*(\d{1,2})\s*(dcr|dts)?\s*$")
@@ -100,6 +105,62 @@ def _mostly_upper(line: str) -> bool:
     return sum(1 for c in letters if c.isupper()) / len(letters) > 0.8
 
 
+def _join_wrapped_results(lines: list) -> list:
+    """
+    Ricompone i risultati che l'estrazione PDF spezza su piu' righe.
+
+    Nel CU 24 (girone B) due partite su nove arrivano cosi':
+
+        SAN MARINO CALCIO - IMOLESE FOOTBALL CLUB
+        SSD 0 - 6
+
+        F.C.YOUNG
+        SANTARCANGELO - MEDICINA FOSSATONE
+        S.S.D. 1 - 2
+
+    Il nome della societa' non ci sta sulla riga e pypdf manda a capo. Riga per
+    riga nessuna delle due e' un risultato, quindi sparivano entrambe: una
+    giornata pubblicata con 7 partite su 9. Per un documento che finisce sotto
+    gli occhi di una societa' e' un errore che non si recupera.
+
+    La ricomposizione e' prudente di proposito: si uniscono al massimo tre
+    righe consecutive, si accetta solo se l'unione produce un risultato valido
+    (mentre le righe singole no), e mai se compare la forma "NOME (SOCIETA')"
+    dei provvedimenti disciplinari. Cosi' non si inventano partite dentro la
+    sezione della giustizia sportiva.
+    """
+    out, i, n = [], 0, len(lines)
+    while i < n:
+        line = lines[i]
+        if RE_RESULT.match(line) or not line:
+            out.append(line)
+            i += 1
+            continue
+        merged = line
+        joined = False
+        for extra in range(1, 3):                 # prova +1, poi +2 righe
+            if i + extra >= n:
+                break
+            successiva = lines[i + extra]
+            # Una riga che e' gia' un risultato completo non e' la coda di
+            # quella prima: e' la partita dopo. Senza questa guardia il
+            # joiner si mangiava la riga buona insieme a quella monca.
+            if RE_RESULT.match(successiva):
+                break
+            merged = merged + " " + successiva
+            if RE_PERSON.search(merged):          # e' una sanzione, non un risultato
+                break
+            if RE_RESULT.match(merged):
+                out.append(merged)
+                i += extra + 1
+                joined = True
+                break
+        if not joined:
+            out.append(line)
+            i += 1
+    return out
+
+
 def parse_cu_text(text: str) -> dict:
     """
     Macchina a stati riga-per-riga. Ritorna:
@@ -116,9 +177,11 @@ def parse_cu_text(text: str) -> dict:
     category = match_date = girone = giornata = None
     role = kind = detail = None
 
-    for raw in (text or "").splitlines():
-        line = re.sub(r"\s+", " ", raw).strip()
-        if not line or RE_PAGE_ARTIFACT.match(line):
+    righe = [re.sub(r"\s+", " ", raw).strip() for raw in (text or "").splitlines()]
+    righe = [l for l in righe if not RE_PAGE_ARTIFACT.match(l)]
+
+    for line in _join_wrapped_results(righe):
+        if not line:
             continue
 
         g = RE_GARE_DEL.search(line)
