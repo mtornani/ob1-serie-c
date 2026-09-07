@@ -64,7 +64,9 @@ class AmmissioneTestCase(unittest.TestCase):
 
     def test_segnalazione_vecchia_non_descrive_piu_la_realta(self):
         vecchio = (datetime.now(timezone.utc) - timedelta(days=90)).isoformat()
-        r = self.s.score(opp(discovered_at=vecchio))
+        # anche la PROVA dev'essere vecchia: un profilo aperto oggi rende
+        # fresco il record anche se la notizia e' di marzo, ed e' voluto
+        r = self.s.score(opp(discovered_at=vecchio, tm_verified_at=vecchio))
         self.assertFalse(r["valutabile"])
         # il motivo cita la soglia, non i giorni del singolo: cosi' gli scarti
         # si contano insieme invece di sparpagliarsi in bucket da uno
@@ -73,7 +75,8 @@ class AmmissioneTestCase(unittest.TestCase):
     def test_due_record_vecchi_finiscono_nello_stesso_motivo(self):
         v1 = (datetime.now(timezone.utc) - timedelta(days=87)).isoformat()
         v2 = (datetime.now(timezone.utc) - timedelta(days=190)).isoformat()
-        r = valuta_lista([opp(discovered_at=v1), opp(discovered_at=v2)], base="rimini")
+        r = valuta_lista([opp(discovered_at=v1, tm_verified_at=v1),
+                          opp(discovered_at=v2, tm_verified_at=v2)], base="rimini")
         self.assertEqual(len(r["scartati_per_motivo"]), 1)
 
     def test_record_completo_passa(self):
@@ -125,7 +128,8 @@ class ANotazioneUmanaTestCase(unittest.TestCase):
         """Il chiamante scrive "Non lo proponiamo: {motivo}." — se il motivo
         ne ha gia' uno, la frase esce con due volte i due punti."""
         for record in (opp(tm_url=None), opp(appearances=1), opp(age=None),
-                       opp(discovered_at="2026-01-01T00:00:00+00:00")):
+                       opp(discovered_at="2026-01-01T00:00:00+00:00",
+                           tm_verified_at="2026-01-01T00:00:00+00:00")):
             self.assertNotIn(":", self.s.score(record)["motivo"])
 
     def test_savignanese_e_riconosciuta_come_zona(self):
@@ -151,20 +155,34 @@ class RicontrolloTestCase(unittest.TestCase):
         self.vecchio = "2026-03-02T00:00:00+00:00"
 
     def test_una_prova_di_oggi_riabilita_una_segnalazione_di_marzo(self):
-        scaduto = opp(discovered_at=self.vecchio)
+        scaduto = opp(discovered_at=self.vecchio, tm_verified_at=self.vecchio)
         self.assertFalse(self.s.score(scaduto)["valutabile"])
-        ricontrollato = opp(discovered_at=self.vecchio, refreshed_at=OGGI)
+        ricontrollato = opp(discovered_at=self.vecchio, tm_verified_at=OGGI,
+                            club_attuale_verificato="")
         self.assertTrue(self.s.score(ricontrollato)["valutabile"])
 
+    def test_bussare_senza_risposta_non_e_una_prova(self):
+        """
+        Il bug del primo giro: 39 giocatori su 39 dati "senza squadra" a
+        settembre, perche' l'assenza di un club nel parse veniva scritta come
+        assenza di club nella realta'. Se la pagina non dice dove gioca,
+        `tm_verified_at` non si rinnova e il record resta vecchio.
+        """
+        bussato = opp(discovered_at=self.vecchio, tm_verified_at=self.vecchio,
+                      refreshed_at=OGGI, club_attuale_verificato=None)
+        r = self.s.score(bussato)
+        self.assertFalse(r["valutabile"])
+        self.assertIn("45 giorni", r["motivo"])
+
     def test_chi_ha_firmato_altrove_non_e_piu_un_opportunita(self):
-        r = self.s.score(opp(refreshed_at=OGGI, opportunity_type="svincolato",
+        r = self.s.score(opp(tm_verified_at=OGGI, opportunity_type="svincolato",
                              club_attuale_verificato="SS Maceratese 1922"))
         self.assertFalse(r["valutabile"])
         self.assertIn("Maceratese", r["motivo"])
 
     def test_per_un_prestito_avere_un_club_e_normale(self):
         """Il rifiuto vale per chi si dichiarava libero, non per chi e' in prestito."""
-        r = self.s.score(opp(refreshed_at=OGGI, opportunity_type="prestito",
+        r = self.s.score(opp(tm_verified_at=OGGI, opportunity_type="prestito",
                              club_attuale_verificato="SS Maceratese 1922",
                              current_club="Riccione"))
         self.assertTrue(r["valutabile"])

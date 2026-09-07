@@ -130,11 +130,27 @@ def aggiorna(opp: dict, dati: dict, adesso: str) -> list:
         cambiati.append(f"age: {opp.get('age')} -> {eta}")
         opp["age"] = eta
 
+    # TRE stati, non due. Il primo giro ne aveva due e il risultato era
+    # assurdo: 39 giocatori su 39 "senza squadra" a settembre. Il motivo era
+    # che l'assenza di un club nel parse veniva scritta come assenza di club
+    # nella realta' — assenza di prova trasformata in prova di assenza, che e'
+    # esattamente l'errore che questo repo esiste per non fare.
     club = (dati.get("current_club") or "").strip()
-    opp["club_attuale_verificato"] = "" if (not club or SENZA_SQUADRA.search(club)) else club
+    if not club:
+        stato = None            # non lo sappiamo: la pagina non lo diceva
+    elif SENZA_SQUADRA.search(club):
+        stato = ""              # la pagina dice esplicitamente che e' libero
+    else:
+        stato = club            # la pagina nomina la squadra
+    opp["club_attuale_verificato"] = stato
     opp["refreshed_at"] = adesso
-    # La scheda l'abbiamo aperta adesso: e' l'unica cosa che questo campo dice.
-    opp["tm_verified_at"] = adesso
+
+    # `tm_verified_at` si rinnova SOLO se la pagina ha detto qualcosa sulla
+    # disponibilita'. Rinnovarlo comunque farebbe passare per fresca una
+    # segnalazione di marzo che non abbiamo confermato, e il gate di ECC-001
+    # la accetterebbe su un presupposto falso.
+    if stato is not None:
+        opp["tm_verified_at"] = adesso
     return cambiati
 
 
@@ -142,7 +158,9 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Ri-verifica i record gia' provati")
     ap.add_argument("--dry-run", action="store_true", help="non scrive il database")
     ap.add_argument("--limite", type=int, default=0, help="quanti record al massimo")
-    ap.add_argument("--pausa", type=float, default=1.5,
+    # 1,5s erano troppi pochi: al primo giro il 53% delle richieste e'
+    # tornata 502 o in timeout. Non e' un problema di dato, e' velocita'.
+    ap.add_argument("--pausa", type=float, default=5.0,
                     help="secondi fra due richieste (educazione verso il sito)")
     args = ap.parse_args()
 
@@ -158,7 +176,8 @@ def main() -> int:
           + (f" (+{senza_url} verificati ma senza URL utilizzabile)" if senza_url else ""))
 
     adesso = datetime.now(timezone.utc).isoformat(timespec="seconds")
-    conta = {"letti": 0, "aggiornati": 0, "liberi": 0, "tesserati": 0, "falliti": 0}
+    conta = {"letti": 0, "aggiornati": 0, "liberi": 0, "tesserati": 0,
+             "disponibilita_ignota": 0, "falliti": 0}
 
     for i, opp in enumerate(da_fare, 1):
         nome = opp.get("player_name") or "?"
@@ -177,13 +196,16 @@ def main() -> int:
             continue
         cambiati = aggiorna(opp, dati, adesso)
         conta["aggiornati"] += 1
-        club = opp.get("club_attuale_verificato")
-        if club:
+        stato = opp.get("club_attuale_verificato")
+        if stato is None:
+            conta["disponibilita_ignota"] += 1
+            print("    la pagina non dice dove gioca: disponibilita' NON confermata")
+        elif stato:
             conta["tesserati"] += 1
-            print(f"    oggi gioca in: {club}")
+            print(f"    oggi gioca in: {stato}")
         else:
             conta["liberi"] += 1
-            print("    risulta SENZA SQUADRA")
+            print("    la pagina lo dà SENZA SQUADRA")
         for c in cambiati[:4]:
             print(f"    {c}")
         time.sleep(args.pausa)

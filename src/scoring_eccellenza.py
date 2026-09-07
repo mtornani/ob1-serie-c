@@ -123,31 +123,39 @@ class EccellenzaScorer:
         # Il ri-controllo puo' smentire la segnalazione: e' il suo mestiere.
         # "Svincolato" a marzo e tesserato oggi non e' un'opportunita', ed e'
         # meglio saperlo qui che dopo aver fatto la telefonata.
-        club = (opp.get("club_attuale_verificato") or "").strip()
+        # Tre stati: None = non lo sappiamo, "" = la pagina lo da' libero,
+        # altrimenti e' il nome della squadra. Solo il terzo caso smentisce
+        # una segnalazione di svincolo; il primo non prova niente e viene
+        # gestito dalla freschezza, che senza conferma resta vecchia.
+        stato = opp.get("club_attuale_verificato")
         tipo = (opp.get("opportunity_type") or "").lower()
-        if club and tipo in ("svincolato", "rescissione"):
-            return f"oggi risulta tesserato per {club}"
+        if stato and tipo in ("svincolato", "rescissione"):
+            return f"oggi risulta tesserato per {stato}"
 
         giorni = self._giorni_dall_ultima_prova(opp)
         if giorni is not None and giorni > self.giorni_freschezza:
             # Il motivo e' la SOGLIA, non i giorni del singolo record: chi
             # aggrega gli scarti (valuta_lista) deve poterli contare insieme,
             # e "87 giorni" e "190 giorni" sono lo stesso problema.
-            return (f"la segnalazione ha più di {self.giorni_freschezza} giorni "
-                    f"e può aver già firmato altrove")
+            # "non lo controlliamo da" e non "la segnalazione ha": ora l'ancora
+            # e' la data della verifica, e la frase deve dire cio' che misura.
+            return (f"non lo controlliamo da più di {self.giorni_freschezza} "
+                    f"giorni e può aver già firmato altrove")
         return None
 
     def _giorni_dall_ultima_prova(self, opp: Dict[str, Any]) -> Optional[int]:
         """
         Da quanto non guardiamo davvero questo giocatore.
 
-        `refreshed_at` per primo: se stamattina abbiamo riaperto la sua scheda
-        e risultava senza squadra, quella e' una prova di oggi — non conta che
-        la segnalazione originale sia di marzo. Senza questa precedenza il
-        ri-controllo non servirebbe a niente, perche' il gate continuerebbe a
-        scartare sulla data della notizia invece che su quella della verifica.
+        L'ancora e' `tm_verified_at`, non `refreshed_at`. Sembrano la stessa
+        cosa e non lo sono: il ri-controllo scrive `refreshed_at` **sempre**
+        (ci ha provato), ma rinnova `tm_verified_at` **solo se la pagina ha
+        detto qualcosa sulla disponibilita'**. Usare `refreshed_at` farebbe
+        passare per fresca una segnalazione di marzo su cui abbiamo solo
+        bussato senza ricevere risposta — e il gate la accetterebbe su un
+        presupposto falso.
         """
-        raw = (opp.get("refreshed_at") or opp.get("reported_date")
+        raw = (opp.get("tm_verified_at") or opp.get("reported_date")
                or opp.get("discovered_at") or "")
         try:
             d = datetime.fromisoformat(str(raw).replace("Z", "+00:00"))
