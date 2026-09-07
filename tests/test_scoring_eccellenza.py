@@ -159,6 +159,75 @@ class SegnoInvertitoTestCase(unittest.TestCase):
         self.assertGreaterEqual(senza, 70)
 
 
+class DaSeguireTestCase(unittest.TestCase):
+    """
+    La quarta uscita. Senza, un giocatore buono ma legato a un contratto
+    finiva in "fuori profilo" insieme a chi non va bene — e sono due
+    decisioni diverse: una si archivia, l'altra si mette in agenda.
+    """
+
+    def setUp(self):
+        self.s = EccellenzaScorer(base="rimini")
+
+    def test_buono_ma_in_prestito_e_da_seguire(self):
+        r = self.s.score(opp(opportunity_type="prestito", current_club="Riccione"))
+        self.assertEqual(r["fascia"], "da seguire")
+        self.assertEqual(r["rivedere_a"], "gennaio")
+        self.assertIn("gennaio", r["riassunto"])
+
+    def test_buono_ma_troppo_caro_oggi_e_da_seguire(self):
+        """Dopo mesi da fermo la stessa persona risponde in un altro modo."""
+        r = self.s.score(opp(market_value=600000, current_club="Riccione"))
+        self.assertEqual(r["fascia"], "da seguire")
+        self.assertIn("categoria superiore", r["riassunto"])
+
+    def test_la_frase_del_freno_non_ripete_oggi(self):
+        """Il chiamante scrive gia' "Oggi non e' disponibile perche' {freno}"."""
+        r = self.s.score(opp(market_value=600000, current_club="Riccione"))
+        frase = [f for f in r["spiegazione"] if f.startswith("Oggi non")][0]
+        self.assertEqual(frase.lower().count("oggi"), 1)
+
+    def test_scadenza_di_contratto_e_da_seguire(self):
+        r = self.s.score(opp(opportunity_type="scadenza", current_club="Riccione"))
+        self.assertEqual(r["fascia"], "da seguire")
+
+    def test_bloccato_ma_senza_merito_resta_fuori_profilo(self):
+        """Il freno temporaneo non promuove chi non andrebbe bene comunque:
+        lontano, categoria sbagliata ed eta' alta restano un no."""
+        r = self.s.score(opp(opportunity_type="prestito", current_club="Palermo",
+                             summary="Serie A", age=36))
+        self.assertEqual(r["fascia"], "fuori profilo")
+        self.assertIsNone(r["rivedere_a"])
+
+    def test_lo_svincolato_alla_portata_resta_da_chiamare(self):
+        """Chi e' disponibile adesso non deve finire in agenda: si chiama."""
+        r = self.s.score(opp(current_club="Riccione"))
+        self.assertEqual(r["fascia"], "da chiamare")
+        self.assertIsNone(r["rivedere_a"])
+
+    def test_il_merito_stabile_ignora_cio_che_scade(self):
+        """Contratto e prezzo cambiano, dove abita e quanti anni ha no."""
+        libero = self.s.score(opp(current_club="Riccione"))
+        legato = self.s.score(opp(current_club="Riccione", opportunity_type="prestito",
+                                  market_value=600000))
+        self.assertEqual(libero["merito_stabile"], legato["merito_stabile"])
+        self.assertGreater(libero["punteggio"], legato["punteggio"])
+
+    def test_la_finestra_e_configurabile(self):
+        s = EccellenzaScorer(base="rimini", finestra="dicembre")
+        r = s.score(opp(opportunity_type="prestito", current_club="Riccione"))
+        self.assertEqual(r["rivedere_a"], "dicembre")
+        self.assertIn("dicembre", r["riassunto"])
+
+    def test_la_lista_separa_chi_e_in_agenda(self):
+        lista = [opp(current_club="Riccione"),
+                 opp(current_club="Riccione", opportunity_type="prestito")]
+        r = valuta_lista(lista, base="rimini")
+        self.assertEqual(len(r["valutati"]), 2)
+        self.assertEqual(len(r["da_seguire"]), 1)
+        self.assertEqual(r["da_seguire"][0]["ecc_rivedere_a"], "gennaio")
+
+
 class ProssimitaTestCase(unittest.TestCase):
 
     def setUp(self):

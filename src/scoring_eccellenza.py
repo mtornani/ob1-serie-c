@@ -88,8 +88,13 @@ def _valore(opp: Dict[str, Any]) -> Optional[int]:
 class EccellenzaScorer:
     """Punteggio 0-100 per un club di Eccellenza, con rifiuto esplicito."""
 
-    def __init__(self, base: str = "rimini", giorni_freschezza: int = 45):
+    def __init__(self, base: str = "rimini", giorni_freschezza: int = 45,
+                 finestra: str = "gennaio"):
         self.base = base
+        # Quando riguardare chi oggi e' bloccato. Parametro e non costante:
+        # le finestre di tesseramento dei dilettanti cambiano per stagione e
+        # per comitato, e questo file non e' il posto dove asserirle.
+        self.finestra = finestra
         self.bacino = BACINI.get(base, {"vicino": [], "medio": []})
         # Uno svincolato di tre mesi fa non e' piu' un'informazione: o ha
         # firmato, o c'e' un motivo per cui non ha firmato. In entrambi i casi
@@ -241,6 +246,38 @@ class EccellenzaScorer:
                 f.append(f"Ha {e} anni: solo se serve uno che guidi lo spogliatoio.")
         return f
 
+    # ------------------------------------------------------------ da seguire
+    # Le componenti che a gennaio saranno le stesse di oggi. Dove abita, da
+    # che livello viene e quanti anni ha non cambiano perche' passa il tempo;
+    # l'essere sotto contratto o il chiedere troppo, si'.
+    STABILI = ("prossimita", "coerenza", "eta")
+
+    def _merito_stabile(self, b: Dict[str, int]) -> int:
+        peso = sum(PESI[k] for k in self.STABILI)
+        return int(round(sum(b[k] * PESI[k] for k in self.STABILI) / peso))
+
+    def _freno_temporaneo(self, opp: Dict[str, Any], b: Dict[str, int]):
+        """
+        Cosa lo blocca **oggi** e potrebbe non bloccarlo a gennaio, o None.
+
+        Due casi, entrambi reali:
+      - e' legato a un club (prestito, contratto in scadenza): non e' una
+        questione di merito, e' una data;
+      - e' libero ma chiede da categoria superiore. A settembre dice no; dopo
+        mesi da fermo la stessa persona risponde in un altro modo. Non e' un
+        giudizio sul giocatore, e' come funziona il mercato dei dilettanti.
+        """
+        tipo = (opp.get("opportunity_type") or "").lower()
+        if tipo == "prestito":
+            return "è sotto contratto con un altro club"
+        if tipo == "scadenza":
+            return "ha un contratto ancora in corso"
+        if b["sostenibilita"] <= 20:
+            # senza "oggi": il chiamante scrive gia' "Oggi non e'
+            # disponibile perche' {freno}" e usciva due volte
+            return "il suo valore è ancora da categoria superiore"
+        return None
+
     # ----------------------------------------------------------------- score
     def score(self, opp: Dict[str, Any]) -> Dict[str, Any]:
         motivo = self.perche_non_valutabile(opp)
@@ -258,12 +295,27 @@ class EccellenzaScorer:
             "eta": self._eta(opp),
         }
         punteggio = int(round(sum(b[k] * PESI[k] for k in PESI)))
-        fascia = ("da chiamare" if punteggio >= 75
-                  else "da valutare" if punteggio >= 55
-                  else "fuori profilo")
         frasi = self._frasi(opp, b)
+
+        # Quarta uscita: il giocatore va bene, non e' il momento. Senza questa
+        # finiva in "fuori profilo" insieme a chi non va bene — e sono due cose
+        # diverse: una si archivia, l'altra si mette in agenda.
+        freno = self._freno_temporaneo(opp, b)
+        merito = self._merito_stabile(b)
+        rivedere_a = None
+        if freno and merito >= 70:
+            fascia = "da seguire"
+            rivedere_a = self.finestra
+            frasi.append(f"Oggi non è disponibile perché {freno}: "
+                         f"se ne può riparlare a {self.finestra}.")
+        else:
+            fascia = ("da chiamare" if punteggio >= 75
+                      else "da valutare" if punteggio >= 55
+                      else "fuori profilo")
+
         return {"valutabile": True, "motivo": None, "punteggio": punteggio,
                 "fascia": fascia, "breakdown": b,
+                "merito_stabile": merito, "rivedere_a": rivedere_a,
                 "spiegazione": frasi,
                 # Una riga sola, da leggere ad alta voce al telefono.
                 "riassunto": f"{fascia.capitalize()} ({punteggio}/100). " + " ".join(frasi)}
@@ -277,9 +329,11 @@ def valuta_lista(opportunita: list, base: str = "rimini") -> Dict[str, Any]:
         r = s.score(o)
         if r["valutabile"]:
             valutati.append({**o, "ecc_score": r["punteggio"],
-                             "ecc_fascia": r["fascia"], "ecc_breakdown": r["breakdown"]})
+                             "ecc_fascia": r["fascia"], "ecc_breakdown": r["breakdown"],
+                             "ecc_rivedere_a": r["rivedere_a"]})
         else:
             scartati[r["motivo"]] = scartati.get(r["motivo"], 0) + 1
     valutati.sort(key=lambda x: x["ecc_score"], reverse=True)
+    da_seguire = [v for v in valutati if v["ecc_fascia"] == "da seguire"]
     return {"valutati": valutati, "scartati_per_motivo": scartati,
-            "totale_esaminati": len(opportunita)}
+            "da_seguire": da_seguire, "totale_esaminati": len(opportunita)}

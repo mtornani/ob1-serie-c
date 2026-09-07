@@ -165,7 +165,20 @@ GitHub repo (public)
   e finiva a 15/100 di prossimita' — a mezz'ora da Rimini. Le voci dei bacini
   ora sono radici (`savignan`), perche' le societa' si chiamano come il paese
   ma declinato
-- 414 test offline (erano 394), nuovo `tests/test_scoring_eccellenza.py`. Il test
+- **Quarta uscita: "da seguire"**. Prima un giocatore buono ma legato a un
+  contratto finiva in "fuori profilo" insieme a chi non va bene, e sono due
+  decisioni diverse: una si archivia, l'altra si mette in agenda. Ora
+  `_freno_temporaneo()` distingue cio' che blocca **oggi** e potrebbe non
+  bloccare a gennaio — prestito, contratto in corso, richieste da categoria
+  superiore (dopo mesi da fermo la stessa persona risponde in un altro modo) —
+  e `_merito_stabile()` misura solo cio' che il tempo non cambia (dove abita,
+  da che livello viene, quanti anni ha). Freno + merito >= 70 ⇒ `fascia:
+  "da seguire"` con `rivedere_a`. Chi e' bloccato **e** non andrebbe bene
+  comunque resta "fuori profilo": il freno non promuove nessuno
+- La finestra e' un parametro (`finestra="gennaio"`), non una costante: le
+  finestre di tesseramento dei dilettanti cambiano per stagione e per comitato,
+  e quel file non e' il posto dove asserirle
+- 423 test offline (erano 394), nuovo `tests/test_scoring_eccellenza.py`. Il test
   che conta di piu' e' `test_valore_alto_penalizza`: se si rompe, qualcuno ha
   riportato ECC-001 alla logica della categoria sbagliata
 
