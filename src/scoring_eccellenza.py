@@ -120,7 +120,15 @@ class EccellenzaScorer:
         if not eta:
             return "non sappiamo quanti anni ha"
 
-        giorni = self._giorni_da_scoperta(opp)
+        # Il ri-controllo puo' smentire la segnalazione: e' il suo mestiere.
+        # "Svincolato" a marzo e tesserato oggi non e' un'opportunita', ed e'
+        # meglio saperlo qui che dopo aver fatto la telefonata.
+        club = (opp.get("club_attuale_verificato") or "").strip()
+        tipo = (opp.get("opportunity_type") or "").lower()
+        if club and tipo in ("svincolato", "rescissione"):
+            return f"oggi risulta tesserato per {club}"
+
+        giorni = self._giorni_dall_ultima_prova(opp)
         if giorni is not None and giorni > self.giorni_freschezza:
             # Il motivo e' la SOGLIA, non i giorni del singolo record: chi
             # aggrega gli scarti (valuta_lista) deve poterli contare insieme,
@@ -129,8 +137,18 @@ class EccellenzaScorer:
                     f"e può aver già firmato altrove")
         return None
 
-    def _giorni_da_scoperta(self, opp: Dict[str, Any]) -> Optional[int]:
-        raw = opp.get("reported_date") or opp.get("discovered_at") or ""
+    def _giorni_dall_ultima_prova(self, opp: Dict[str, Any]) -> Optional[int]:
+        """
+        Da quanto non guardiamo davvero questo giocatore.
+
+        `refreshed_at` per primo: se stamattina abbiamo riaperto la sua scheda
+        e risultava senza squadra, quella e' una prova di oggi — non conta che
+        la segnalazione originale sia di marzo. Senza questa precedenza il
+        ri-controllo non servirebbe a niente, perche' il gate continuerebbe a
+        scartare sulla data della notizia invece che su quella della verifica.
+        """
+        raw = (opp.get("refreshed_at") or opp.get("reported_date")
+               or opp.get("discovered_at") or "")
         try:
             d = datetime.fromisoformat(str(raw).replace("Z", "+00:00"))
         except ValueError:
@@ -215,7 +233,9 @@ class EccellenzaScorer:
         elif tipo == "scadenza":
             f.append("Va in scadenza: se ne può parlare, ma non subito.")
         elif tipo == "prestito":
-            f.append("Servirebbe l'accordo del club che lo tiene sotto contratto.")
+            club = (opp.get("club_attuale_verificato") or "").strip()
+            f.append(f"Servirebbe l'accordo del {club}." if club
+                     else "Servirebbe l'accordo del club che lo tiene sotto contratto.")
         else:
             f.append("La situazione contrattuale non è chiara.")
 
@@ -269,7 +289,8 @@ class EccellenzaScorer:
         """
         tipo = (opp.get("opportunity_type") or "").lower()
         if tipo == "prestito":
-            return "è sotto contratto con un altro club"
+            club = (opp.get("club_attuale_verificato") or "").strip()
+            return f"è sotto contratto con il {club}" if club else "è sotto contratto con un altro club"
         if tipo == "scadenza":
             return "ha un contratto ancora in corso"
         if b["sostenibilita"] <= 20:

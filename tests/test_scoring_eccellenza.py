@@ -139,6 +139,39 @@ class ANotazioneUmanaTestCase(unittest.TestCase):
         self.assertIn("accordo del club", " ".join(r["spiegazione"]))
 
 
+class RicontrolloTestCase(unittest.TestCase):
+    """
+    Il ri-controllo (scripts/refresh_verificati.py) deve poter cambiare il
+    verdetto, altrimenti non serve a niente: il gate continuerebbe a scartare
+    sulla data della notizia invece che su quella della verifica.
+    """
+
+    def setUp(self):
+        self.s = EccellenzaScorer(base="rimini")
+        self.vecchio = "2026-03-02T00:00:00+00:00"
+
+    def test_una_prova_di_oggi_riabilita_una_segnalazione_di_marzo(self):
+        scaduto = opp(discovered_at=self.vecchio)
+        self.assertFalse(self.s.score(scaduto)["valutabile"])
+        ricontrollato = opp(discovered_at=self.vecchio, refreshed_at=OGGI)
+        self.assertTrue(self.s.score(ricontrollato)["valutabile"])
+
+    def test_chi_ha_firmato_altrove_non_e_piu_un_opportunita(self):
+        r = self.s.score(opp(refreshed_at=OGGI, opportunity_type="svincolato",
+                             club_attuale_verificato="SS Maceratese 1922"))
+        self.assertFalse(r["valutabile"])
+        self.assertIn("Maceratese", r["motivo"])
+
+    def test_per_un_prestito_avere_un_club_e_normale(self):
+        """Il rifiuto vale per chi si dichiarava libero, non per chi e' in prestito."""
+        r = self.s.score(opp(refreshed_at=OGGI, opportunity_type="prestito",
+                             club_attuale_verificato="SS Maceratese 1922",
+                             current_club="Riccione"))
+        self.assertTrue(r["valutabile"])
+        self.assertEqual(r["fascia"], "da seguire")
+        self.assertIn("Maceratese", r["riassunto"])
+
+
 class SegnoInvertitoTestCase(unittest.TestCase):
     """
     La differenza vera con SCORE-002: in Serie C il valore alto e' un pregio,
