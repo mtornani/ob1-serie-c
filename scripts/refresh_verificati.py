@@ -52,8 +52,17 @@ DB = Path("data/opportunities.json")
 # Come Transfermarkt scrive "non ha una squadra". Se il club attuale e' una di
 # queste, il giocatore e' libero — ed e' il caso che ci interessa.
 SENZA_SQUADRA = re.compile(
-    r"senza\s+contratto|svincolat|vereinslos|without\s+club|ritirat|carriera\s+conclusa",
-    re.IGNORECASE)
+    r"senza\s+contratto|svincolat|vereinslos|without\s+club", re.IGNORECASE)
+
+# Non e' una squadra e non e' disponibilita': TM ci scrive "Ritiro" quando uno
+# ha smesso. Trattarlo come un club produce "oggi risulta tesserato per Ritiro",
+# che e' comico e sbagliato — ma la conclusione operativa e' la stessa: non e'
+# ingaggiabile. Merita una frase sua.
+RITIRATO = re.compile(r"^\s*(ritiro|ritirat\w*|carriera\s+conclusa|"
+                      r"retired|karriereende)\s*$", re.IGNORECASE)
+
+# "Sconosciuto" e' TM che dichiara di non saperlo: e' ignoto, non un club.
+IGNOTO = re.compile(r"^\s*(sconosciut\w*|unknown|unbekannt|-+)\s*$", re.IGNORECASE)
 
 # Spazi e tabulazioni si — gli a-capo NO. `parse_tm_text` cerca la
 # squadra attuale prendendo la prima riga non vuota dopo l'etichetta
@@ -142,8 +151,10 @@ def aggiorna(opp: dict, dati: dict, adesso: str) -> list:
     # nella realta' — assenza di prova trasformata in prova di assenza, che e'
     # esattamente l'errore che questo repo esiste per non fare.
     club = (dati.get("current_club") or "").strip()
-    if not club:
+    if not club or IGNOTO.match(club):
         stato = None            # non lo sappiamo: la pagina non lo diceva
+    elif RITIRATO.match(club):
+        stato = "RITIRATO"      # ha smesso: non e' un club, non e' disponibile
     elif SENZA_SQUADRA.search(club):
         stato = ""              # la pagina dice esplicitamente che e' libero
     else:

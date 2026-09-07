@@ -129,6 +129,8 @@ class EccellenzaScorer:
         # gestito dalla freschezza, che senza conferma resta vecchia.
         stato = opp.get("club_attuale_verificato")
         tipo = (opp.get("opportunity_type") or "").lower()
+        if stato == "RITIRATO":
+            return "ha smesso di giocare"
         if stato and tipo in ("svincolato", "rescissione"):
             return f"oggi risulta tesserato per {stato}"
 

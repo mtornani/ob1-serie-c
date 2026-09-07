@@ -126,6 +126,40 @@ GitHub repo (public)
 
 ## Changelog
 
+### 2026-09-08 — Il ri-controllo: 89 schede riaperte, il database di marzo era scaduto
+
+- **`scripts/refresh_verificati.py`** — rilegge il profilo TM dei record che hanno
+  gia' una prova, invece di scoprirne altri. Regex, zero LLM, nessuna chiave.
+  Esito: **89 letti, 89 aggiornati, zero falliti**. E il quadro: **58 hanno gia'
+  firmato altrove**, 5 hanno smesso, 26 la pagina non lo dice, **0 liberi**
+- Il database di marzo non era povero, era **scaduto**. Bellodi -> AZ Picerno,
+  Pelamatti -> Cavese, Donati -> Pescara, Vitali -> Pietralunghese. Il radar
+  scopriva e non tornava mai indietro
+- **Due bug miei, tutti e due della stessa famiglia.** Primo giro: 39 giocatori
+  su 39 "senza squadra" a settembre, perche' `aggiorna()` scriveva la stessa
+  stringa vuota per "la pagina non nomina un club" e per "la pagina dice che e'
+  svincolato" — assenza di prova come prova di assenza. Ora sono **tre stati**
+  (None / "" / nome squadra) piu' `RITIRATO`, e `tm_verified_at` si rinnova solo
+  se la pagina ha detto qualcosa: bussare senza risposta non e' una verifica
+- Secondo giro: "disponibilita' non confermata" su tutti, perche' normalizzavo
+  con `\s+` e schiacciavo anche gli a-capo. `parse_tm_text` cerca la squadra
+  come **prima riga non vuota** dopo l'etichetta, quindi la pagina diventava una
+  riga sola. `enricher_tm.fetch_page()` lo faceva gia' bene con `[ \t\r\f\v]+`:
+  l'errore e' stato scriverne una seconda leggermente diversa accanto a quella giusta
+- Nota che vale oltre il bug: lo **stesso** difetto, con la logica a due stati,
+  produceva una bugia plausibile ("39 senza squadra"); con i tre stati ha
+  prodotto un'assurdita' rumorosa ("nessuno confermato"). Non trattare il vuoto
+  come una risposta e' cio' che ha reso il secondo errore visibile in trenta secondi
+- **ECC-001 ancora la freschezza su `tm_verified_at`**, non su `refreshed_at`:
+  il ri-controllo scrive sempre il secondo (ci ha provato), il primo solo quando
+  ha imparato qualcosa. Nuovo rifiuto: *"oggi risulta tesserato per X"* e
+  *"ha smesso di giocare"*
+- **Esito per il Rimini: nessun nome.** Dopo il ri-controllo passano il gate dati
+  in 5, e tutti e cinque hanno **prossimita' 15** — Cavese, Maceratese, Atletico
+  Lodigiani, Rapid Bucarest. Il migliore e' 56/100 "da valutare". Nessuno
+  raggiunge "da chiamare", nessuno e' "da seguire", nessuno e' libero
+- 427 test offline, con il caso "39 su 39" come regressione
+
 ### 2026-09-07 — ECC-001: lo scoring per l'Eccellenza, e una spunta che mentiva
 
 - **`src/scoring_eccellenza.py` (ECC-001)** — non e' SCORE-002 con altri pesi:
