@@ -152,7 +152,20 @@ GitHub repo (public)
   grounding Gemini, che scadono — provato, 404), 48 con zero presenze, 26 senza
   profilo TM verificato, 2 troppo vecchi. Non e' pessimismo: e' la ragione per
   cui oggi non si manda un nome a un club
-- 407 test offline (erano 394), nuovo `tests/test_scoring_eccellenza.py`. Il test
+- **A prova di nonna** (requisito, non rifinitura): l'uscita non e' un numero ma
+  una frase che dice la **conseguenza**. `spiegazione` e' l'elenco delle frasi,
+  `riassunto` la riga da leggere ad alta voce al telefono — *"Da chiamare
+  (98/100). Abita in zona e puo' venire ad allenarsi senza stravolgere la
+  settimana. E' svincolato, non c'e' da trattare con nessun club..."*. Anche i
+  rifiuti: *"la fonte e' un link che scade, fra un mese non si apre piu'"*, non
+  "redirect non tracciabile". Un test vieta il gergo (`redirect`, `url`, `gate`,
+  `parser`...) dentro i motivi, e un altro vieta i due punti — il chiamante ci
+  mette gia' i suoi e uscivano frasi con due volte la stessa punteggiatura
+- Bug trovato provando l'output vero: **"Savignanese" non agganciava "savignano"**
+  e finiva a 15/100 di prossimita' — a mezz'ora da Rimini. Le voci dei bacini
+  ora sono radici (`savignan`), perche' le societa' si chiamano come il paese
+  ma declinato
+- 414 test offline (erano 394), nuovo `tests/test_scoring_eccellenza.py`. Il test
   che conta di piu' e' `test_valore_alto_penalizza`: se si rompe, qualcuno ha
   riportato ECC-001 alla logica della categoria sbagliata
 

@@ -41,11 +41,14 @@ from src.quality_gate import e_redirect_di_ricerca, is_tm_verified
 # Non sono province amministrative: sono "distanze da pendolare serale".
 # Il primo anello e' quello da cui uno viene ad allenarsi tre sere a settimana
 # senza pensarci; il secondo e' quello che si fa se il progetto convince.
+# Le voci sono RADICI, non nomi di comune: le societa' si chiamano come il
+# paese ma declinato ("Savignanese" da Savignano), e cercare il nome esatto
+# le manca tutte. "savignan" prende entrambi.
 BACINI = {
     "rimini": {
         "vicino": ["rimini", "santarcangelo", "riccione", "cattolica", "bellaria",
                    "igea marina", "novafeltria", "verucchio", "coriano", "morciano",
-                   "san marino", "sammaurese", "san mauro", "savignano", "gatteo",
+                   "san marino", "sammaurese", "san mauro", "savignan", "gatteo",
                    "cesenatico", "misano", "pietracuta"],
         "medio": ["cesena", "forl", "ravenna", "faenza", "lugo", "russi", "imola",
                   "pesaro", "fano", "urbino", "gabicce", "cervia", "bagnacavallo"],
@@ -98,23 +101,27 @@ class EccellenzaScorer:
         """Il motivo per cui questo record non merita un numero, o None."""
         if not is_tm_verified(opp):
             if e_redirect_di_ricerca(opp.get("source_url") or ""):
-                return "fonte non tracciabile (redirect di ricerca, scade)"
-            return "nessun profilo Transfermarkt aperto e verificato"
+                return ("la fonte è un link che scade, fra un mese non si apre "
+                        "più e non possiamo mostrarla a nessuno")
+            return "nessuno ha aperto la sua scheda per controllare i dati"
 
         pres = opp.get("appearances")
         if not pres or int(pres) < 5:
-            return f"presenze insufficienti per un giudizio ({pres or 0})"
+            # La soglia nel testo, non il numero del singolo: cosi' gli scarti
+            # si contano insieme (stessa ragione del blocco freschezza sotto).
+            return "ha giocato meno di 5 partite, troppo poco per dirne qualcosa"
 
         eta = opp.get("age")
         if not eta:
-            return "eta' sconosciuta"
+            return "non sappiamo quanti anni ha"
 
         giorni = self._giorni_da_scoperta(opp)
         if giorni is not None and giorni > self.giorni_freschezza:
             # Il motivo e' la SOGLIA, non i giorni del singolo record: chi
             # aggrega gli scarti (valuta_lista) deve poterli contare insieme,
             # e "87 giorni" e "190 giorni" sono lo stesso problema.
-            return f"segnalazione piu' vecchia di {self.giorni_freschezza} giorni"
+            return (f"la segnalazione ha più di {self.giorni_freschezza} giorni "
+                    f"e può aver già firmato altrove")
         return None
 
     def _giorni_da_scoperta(self, opp: Dict[str, Any]) -> Optional[int]:
@@ -179,11 +186,68 @@ class EccellenzaScorer:
             return 60
         return 35
 
+    # ------------------------------------------------------------ spiegazione
+    # Un numero non dice a nessuno perche' quel nome e' in cima. Chi legge non
+    # e' un analista: e' un direttore sportivo con dieci minuti, o un allenatore
+    # in macchina. Ogni componente qui diventa una frase che dice la
+    # CONSEGUENZA, non la misura — "abita in zona" invece di "prossimita 100".
+    def _frasi(self, opp: Dict[str, Any], b: Dict[str, int]) -> list:
+        f = []
+
+        if b["prossimita"] >= 100:
+            f.append("Abita in zona e può venire ad allenarsi senza stravolgere la settimana.")
+        elif b["prossimita"] >= 65:
+            f.append("Sta a circa un'ora di macchina, fattibile ma va chiesto a lui.")
+        else:
+            f.append("Non risulta un legame con la zona: prima di tutto il resto, "
+                     "va capito se verrebbe.")
+
+        tipo = (opp.get("opportunity_type") or "").lower()
+        if tipo == "svincolato":
+            f.append("È svincolato, non c'è da trattare con nessun club.")
+        elif tipo == "rescissione":
+            f.append("Ha risolto il contratto, quindi è libero.")
+        elif tipo == "scadenza":
+            f.append("Va in scadenza: se ne può parlare, ma non subito.")
+        elif tipo == "prestito":
+            f.append("Servirebbe l'accordo del club che lo tiene sotto contratto.")
+        else:
+            f.append("La situazione contrattuale non è chiara.")
+
+        if b["sostenibilita"] >= 80:
+            f.append("Economicamente alla portata.")
+        elif b["sostenibilita"] >= 45:
+            f.append("Costa più della media della categoria, da capire cosa chiede.")
+        else:
+            f.append("Ha un valore da categoria superiore: difficile che accetti.")
+
+        if b["coerenza"] >= 100:
+            f.append("Viene da un livello da cui si scende normalmente.")
+        elif b["coerenza"] >= 55:
+            f.append("Viene dai professionisti: la prima domanda da fargli è perché scenderebbe.")
+        elif b["coerenza"] <= 20:
+            f.append("Ha un passato di categoria molto alta, quasi certamente non è per noi.")
+
+        eta = opp.get("age")
+        if eta:
+            e = int(eta)
+            if e <= 20:
+                f.append(f"Ha {e} anni: utile anche per le quote giovani.")
+            elif e <= 28:
+                f.append(f"Ha {e} anni, età da titolare.")
+            elif e <= 32:
+                f.append(f"Ha {e} anni: può reggere, ma è una scelta di esperienza.")
+            else:
+                f.append(f"Ha {e} anni: solo se serve uno che guidi lo spogliatoio.")
+        return f
+
     # ----------------------------------------------------------------- score
     def score(self, opp: Dict[str, Any]) -> Dict[str, Any]:
         motivo = self.perche_non_valutabile(opp)
         if motivo:
             return {"valutabile": False, "motivo": motivo,
+                    "spiegazione": [f"Non lo proponiamo: {motivo}."],
+                    "riassunto": f"Non lo proponiamo: {motivo}.",
                     "punteggio": None, "fascia": None, "breakdown": {}}
 
         b = {
@@ -197,8 +261,12 @@ class EccellenzaScorer:
         fascia = ("da chiamare" if punteggio >= 75
                   else "da valutare" if punteggio >= 55
                   else "fuori profilo")
+        frasi = self._frasi(opp, b)
         return {"valutabile": True, "motivo": None, "punteggio": punteggio,
-                "fascia": fascia, "breakdown": b}
+                "fascia": fascia, "breakdown": b,
+                "spiegazione": frasi,
+                # Una riga sola, da leggere ad alta voce al telefono.
+                "riassunto": f"{fascia.capitalize()} ({punteggio}/100). " + " ".join(frasi)}
 
 
 def valuta_lista(opportunita: list, base: str = "rimini") -> Dict[str, Any]:

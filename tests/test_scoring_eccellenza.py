@@ -42,7 +42,7 @@ class AmmissioneTestCase(unittest.TestCase):
         r = self.s.score(opp(tm_url=None))
         self.assertFalse(r["valutabile"])
         self.assertIsNone(r["punteggio"])
-        self.assertIn("Transfermarkt", r["motivo"])
+        self.assertIn("scheda", r["motivo"])
 
     def test_profilo_mai_aperto_non_basta(self):
         """L'URL c'e' ma nessuno l'ha aperto: tm_verified_at manca."""
@@ -54,13 +54,13 @@ class AmmissioneTestCase(unittest.TestCase):
                              source_url="https://vertexaisearch.cloud.google.com/"
                                         "grounding-api-redirect/AbC"))
         self.assertFalse(r["valutabile"])
-        self.assertIn("redirect", r["motivo"])
+        self.assertIn("scade", r["motivo"])
 
     def test_una_presenza_non_e_una_carriera(self):
         """Il caso Gagliano: 1 presenza in carriera non regge un giudizio."""
         r = self.s.score(opp(appearances=1))
         self.assertFalse(r["valutabile"])
-        self.assertIn("presenze", r["motivo"])
+        self.assertIn("5 partite", r["motivo"])
 
     def test_segnalazione_vecchia_non_descrive_piu_la_realta(self):
         vecchio = (datetime.now(timezone.utc) - timedelta(days=90)).isoformat()
@@ -78,6 +78,65 @@ class AmmissioneTestCase(unittest.TestCase):
 
     def test_record_completo_passa(self):
         self.assertTrue(self.s.score(opp())["valutabile"])
+
+
+class ANotazioneUmanaTestCase(unittest.TestCase):
+    """
+    Requisito esplicito: chi legge non e' un analista. Ogni uscita deve essere
+    una frase che dice la CONSEGUENZA, non la misura. "prossimita 100" non e'
+    un risultato utilizzabile; "abita in zona" lo e'.
+    """
+
+    def setUp(self):
+        self.s = EccellenzaScorer(base="rimini")
+
+    def test_ogni_rifiuto_e_una_frase_comprensibile(self):
+        for record in (opp(tm_url=None), opp(appearances=1), opp(age=None)):
+            r = self.s.score(record)
+            self.assertTrue(r["riassunto"].startswith("Non lo proponiamo:"))
+            self.assertTrue(r["riassunto"].endswith("."))
+
+    def test_niente_gergo_nei_motivi(self):
+        """Le parole che una persona fuori dal mestiere non deve incontrare."""
+        gergo = ("redirect", "transfermarkt", "url", "tm_", "score", "breakdown",
+                 "gate", "parser", "record")
+        for record in (opp(tm_url=None), opp(appearances=1), opp(age=None),
+                       opp(tm_url=None, tm_verified_at=None,
+                           source_url="https://vertexaisearch.cloud.google.com/x")):
+            motivo = self.s.score(record)["motivo"].lower()
+            for parola in gergo:
+                self.assertNotIn(parola, motivo, f"gergo '{parola}' in: {motivo}")
+
+    def test_il_promosso_ha_una_riga_da_leggere_al_telefono(self):
+        r = self.s.score(opp(current_club="Riccione"))
+        self.assertTrue(r["valutabile"])
+        self.assertIn("Abita in zona", r["riassunto"])
+        self.assertIn("svincolato", r["riassunto"])
+        # una frase per ognuna delle cinque componenti
+        self.assertGreaterEqual(len(r["spiegazione"]), 4)
+
+    def test_la_frase_cambia_col_dato_non_e_un_testo_fisso(self):
+        vicino = self.s.score(opp(current_club="Riccione"))["spiegazione"][0]
+        lontano = self.s.score(opp(current_club="Palermo", summary=""))["spiegazione"][0]
+        self.assertNotEqual(vicino, lontano)
+        self.assertIn("Non risulta un legame", lontano)
+
+    def test_nessun_motivo_contiene_i_due_punti(self):
+        """Il chiamante scrive "Non lo proponiamo: {motivo}." — se il motivo
+        ne ha gia' uno, la frase esce con due volte i due punti."""
+        for record in (opp(tm_url=None), opp(appearances=1), opp(age=None),
+                       opp(discovered_at="2026-01-01T00:00:00+00:00")):
+            self.assertNotIn(":", self.s.score(record)["motivo"])
+
+    def test_savignanese_e_riconosciuta_come_zona(self):
+        """Le societa' si chiamano come il paese ma declinato: cercare
+        "savignano" mancava "Savignanese", che e' a mezz'ora da Rimini."""
+        r = self.s.score(opp(current_club="Savignanese", summary=""))
+        self.assertEqual(r["breakdown"]["prossimita"], 100)
+
+    def test_il_prestito_avvisa_che_serve_il_club(self):
+        r = self.s.score(opp(opportunity_type="prestito"))
+        self.assertIn("accordo del club", " ".join(r["spiegazione"]))
 
 
 class SegnoInvertitoTestCase(unittest.TestCase):
