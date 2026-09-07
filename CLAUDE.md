@@ -126,6 +126,36 @@ GitHub repo (public)
 
 ## Changelog
 
+### 2026-09-07 — ECC-001: lo scoring per l'Eccellenza, e una spunta che mentiva
+
+- **`src/scoring_eccellenza.py` (ECC-001)** — non e' SCORE-002 con altri pesi:
+  due fattori hanno il **segno invertito**. Il valore di mercato alto, che in
+  Serie C certifica esperienza, qui dice che il giocatore e' fuori portata e
+  non scendera' mai; la distanza, in Serie C irrilevante, e' il primo filtro
+  perche' un dilettante si allena tre sere e torna a casa. Pesi: prossimita'
+  30%, disponibilita' 25%, sostenibilita' 20%, coerenza di livello 15%, eta' 10%
+- **Il rifiuto e' esplicito, non un punteggio basso.** `perche_non_valutabile()`
+  respinge chi non ha un profilo TM aperto, chi ha meno di 5 presenze, chi ha
+  eta' ignota, chi e' stato segnalato piu' di 45 giorni fa — e dice quale dei
+  quattro. Un club di Eccellenza non ha un ufficio dati che ricontrolla: un
+  numero su un record non tracciabile diventa una telefonata sbagliata
+- **`quality_gate.is_tm_verified()`** — regola unica per "il record poggia su un
+  profilo Transfermarkt tracciabile e aperto": URL di profilo (non lega, non
+  redirect di ricerca) **e** `tm_verified_at`. Prima esisteva solo scritta a mano
+  dentro `generate_dashboard.py`; altrove si usava `tm_enriched`, che e' il lock
+  di retry dell'enrichment, non una prova. Misurato: 403 record con
+  `tm_enriched`, **375 senza URL TM**. La dashboard pubblica era gia' corretta
+  (fix del 26/8); a mentire era `verify_enrichment.py`, che stampava `TM✓` sul
+  lock — ora stampa `TM✓` solo sul verificato e `dati` sull'arricchito-non-tracciabile
+- **Esito sul database reale**: dei 336 svincolati che passano il gate entita',
+  **0 superano ECC-001**. Motivi contati: 260 fonte non tracciabile (redirect di
+  grounding Gemini, che scadono — provato, 404), 48 con zero presenze, 26 senza
+  profilo TM verificato, 2 troppo vecchi. Non e' pessimismo: e' la ragione per
+  cui oggi non si manda un nome a un club
+- 407 test offline (erano 394), nuovo `tests/test_scoring_eccellenza.py`. Il test
+  che conta di piu' e' `test_valore_alto_penalizza`: se si rompe, qualcuno ha
+  riportato ECC-001 alla logica della categoria sbagliata
+
 ### 2026-09-05 — ARCH-003: la catena Eccellenza rimessa in piedi (fonte morta, parser che mentiva)
 
 - **Il canale Telegram del comitato E-R non esiste piu'.** `telegram_census.py`

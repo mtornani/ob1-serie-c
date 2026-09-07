@@ -101,6 +101,36 @@ def has_tm_player_profile(opp: dict) -> bool:
     return False
 
 
+def is_tm_verified(opp: dict) -> bool:
+    """
+    Il record poggia su un profilo Transfermarkt **tracciabile e aperto**?
+
+    Regola unica per tutto il repo. Prima esisteva in un punto solo — dentro
+    `generate_dashboard.py`, scritta a mano nel dizionario di export — e altrove
+    ognuno usava quello che aveva sottomano. `scripts/verify_enrichment.py`
+    stampava `TM✓` sulla base di `tm_enriched`, che e' un'altra cosa: e' il
+    lock di retry dell'enrichment ("sono arrivati dati, non ripassarci"), non
+    una prova. Misurato il 7/9/2026: 403 record con `tm_enriched`, di cui
+    **375 senza URL Transfermarkt**. Il lock non mentiva — mentiva la spunta
+    che qualcuno gli aveva messo accanto.
+
+    Due condizioni, ed entrambe servono:
+      - un URL che sia un profilo giocatore (non una pagina lega, non un
+        redirect di ricerca che fra un mese risponde 404);
+      - `tm_verified_at`, che scrive solo chi quel profilo lo ha davvero
+        aperto e confrontato.
+
+    Con `tm_enriched` non c'entra niente, di proposito: dati arrivati e dati
+    verificabili sono domande diverse, e confonderle e' esattamente il modo
+    in cui una scheda finisce davanti a un direttore sportivo con una fonte
+    che non si apre.
+    """
+    if not has_tm_player_profile(opp):
+        return False
+    profile = opp.get("player_profile") or {}
+    return bool(opp.get("tm_verified_at") or profile.get("tm_verified_at"))
+
+
 def e_redirect_di_ricerca(url: str) -> bool:
     """
     Un redirect di grounding Gemini (vertexaisearch.cloud.google.com/

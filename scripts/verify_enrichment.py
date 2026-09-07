@@ -19,6 +19,7 @@ sys.path.insert(0, _root)
 
 from src.enricher_tm import TransfermarktEnricher  # noqa: E402
 from src.scoring import OB1Scorer  # noqa: E402
+from src.quality_gate import is_tm_verified  # noqa: E402
 
 # Real, recognisable Serie B/C free agents seen in discovery
 REAL = ["Mattia Aramu", "Marco Capuano", "Marco Olivieri", "Enrico Brignola", "Shady Oukhadda"]
@@ -103,7 +104,10 @@ print("FINAL RANKING (post-enrichment)")
 print("=" * 70)
 print(f"{'#':>2}  {'score':>5}  {'tier':<5} {'kind':<5} {'enriched':<9} {'age':>4} {'apps':>5} {'value':>10}  name")
 for i, o in enumerate(rows, 1):
-    enr = 'TM✓' if o.get('tm_enriched') else '—'
+    # `tm_enriched` dice che sono arrivati dei dati, non che siano
+    # tracciabili: la spunta la merita solo chi ha un profilo TM aperto.
+    # 'dati' = arricchito ma senza link, cioe' non ricontrollabile.
+    enr = 'TM✓' if is_tm_verified(o) else ('dati' if o.get('tm_enriched') else '—')
     age = o.get('age', '')
     apps = o.get('appearances', '')
     val = o.get('market_value_formatted') or (o.get('market_value') or '')
