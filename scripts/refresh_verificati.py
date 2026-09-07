@@ -55,7 +55,13 @@ SENZA_SQUADRA = re.compile(
     r"senza\s+contratto|svincolat|vereinslos|without\s+club|ritirat|carriera\s+conclusa",
     re.IGNORECASE)
 
-_WS = re.compile(r"\s+")
+# Spazi e tabulazioni si — gli a-capo NO. `parse_tm_text` cerca la
+# squadra attuale prendendo la prima riga non vuota dopo l'etichetta
+# "Squadra attuale:", quindi se si schiacciano anche i newline la pagina
+# diventa una riga sola e il club non si trova mai. E' la stessa
+# normalizzazione di enricher_tm.fetch_page(): scriverne una diversa qui
+# ha prodotto 39 "disponibilita' non confermata" su 39.
+_SPAZI = re.compile(r"[ \t\r\f\v]+")
 
 
 def url_profilo(opp: dict) -> str:
@@ -89,7 +95,7 @@ def scarica(url: str, timeout: int = 25, tentativi: int = 3,
         else:
             if res.status_code == 200:
                 corpo = re.sub(r"(?is)<(script|style)[^>]*>.*?</\1>", " ", res.text)
-                return _WS.sub(" ", html.unescape(re.sub(r"(?s)<[^>]+>", " ", corpo)))
+                return _SPAZI.sub(" ", html.unescape(re.sub(r"(?s)<[^>]+>", " ", corpo)))
             # 404 e 410 sono risposte sul profilo, non incidenti: non si ritenta
             if res.status_code in (404, 410):
                 print(f"    [HTTP {res.status_code}] profilo non piu' esistente")
