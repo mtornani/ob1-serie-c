@@ -126,6 +126,39 @@ GitHub repo (public)
 
 ## Changelog
 
+### 2026-09-08 — Il fact check: l'identita' si verifica sulla data di nascita, non sul nome
+
+- **`scripts/incrocia_svincoli_tm.py`** — incrocia i 18 svincolati maggiorenni dei
+  CU con Transfermarkt. La corrispondenza e' sulla **data di nascita esatta**
+  presa dal Comunicato: il nome da solo non identifica nessuno. Tre esiti
+  dichiarati, mai un silenzio: `confermato` / `scartato` (omonimo con altra
+  data) / `assente` (nessun profilo)
+- Esito reale: **4 confermati, 1 scartato, 13 assenti**. Lo scartato e' la prova
+  che il criterio serve: cercando "Berto Nicola" (30/11/1997) TM restituisce un
+  profilo nato il **4/7/1991** — un'altra persona. Col confronto sul nome
+  sarebbe finito in una scheda da mandare a un club
+- **13 assenti non e' un buco**: sotto la Serie D Transfermarkt semplicemente non
+  copre. La scheda lo dice — "a questo livello e' la norma, non toglie nulla al
+  Comunicato, che resta la fonte" — invece di lasciare un campo vuoto che il
+  lettore interpreta come sospetto
+- **Correzione a cio' che avevo promesso**: l'incrocio conferma l'*identita'*,
+  non aggiunge i minuti. `appearances` e `market_value` tornano vuoti su tutti e
+  quattro i confermati, perche' TM a questo livello non porta dati partita. Il
+  "non sappiamo quanto ha giocato" resta scritto sulla scheda: era la premessa
+  di IMPATTO e lo e' ancora
+- Caso da non nascondere: un confermato puo' risultare su TM ancora tesserato
+  (Ferretti -> ASD Sanpaimola, Oneto -> Vianese). Non e' una contraddizione da
+  cancellare: TM sui dilettanti e' tenuto da volontari e va indietro di
+  settimane, il CU e' l'atto che dichiara lo svincolo. La scheda scrive tutti e
+  due e dice **quale prevale**
+- **`pytest.ini`** — `testpaths = tests`. `pytest` raccoglieva anche
+  `scripts/test_compare_model.py`, che non e' un test e all'import fa
+  `OB1_WATCH=0`: da li' il seen-store rispondeva "tutto nuovo" e cinque test del
+  poller fallivano per contagio. La CI usa `unittest discover -s tests` e non
+  l'aveva mai visto
+- 456 test offline, nuovo `tests/test_incrocio_tm.py` (7), fra cui il caso
+  dell'omonimo come regressione
+
 ### 2026-09-08 — Il ri-controllo: 89 schede riaperte, il database di marzo era scaduto
 
 - **`scripts/refresh_verificati.py`** — rilegge il profilo TM dei record che hanno
