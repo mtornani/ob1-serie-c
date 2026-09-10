@@ -21147,7 +21147,17 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445210",
     "discovered_at": "2026-09-09T11:02:37.448973",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/edoardo-vergani/profil/spieler/421780",
+    "tm_verified_at": "2026-09-10T11:07:59+00:00",
+    "birth_date": "06/02/2001",
+    "age": 25,
+    "current_club": "AC Perugia Calcio",
+    "role_name": "Punta centrale",
+    "foot": "destro",
+    "contract_expires": "30/06/2027",
+    "market_value": 250000,
+    "market_value_eur": 250000
   },
   {
     "id": "732487c6657ce1b503ee26a8f550d0fe",
@@ -21231,30 +21241,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "5257afd1787ef63ac04229fa14e39a47",
-    "player_name": "Pelle van Amersfoort",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Attaccante olandese, tesserato al Perugia, pronto a segnare.",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445246",
-    "discovered_at": "2026-09-10T03:55:51.426123",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "ffac1c2f1f5b75b17061bfb86a0ed8b1",
-    "player_name": "Guillaume Renault",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "presentato ufficialmente come nuovo giocatore del Perugia",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445244",
-    "discovered_at": "2026-09-10T03:55:51.426288",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "db8b5eb797a0d2d41f8d54d3b051cf40",
     "player_name": "Andrea Marino",
     "region": "ITALY",
@@ -21264,18 +21250,6 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445251",
     "discovered_at": "2026-09-10T03:55:51.426439",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "def4c117b7972b7e08b7e84a8a73e9c4",
-    "player_name": "Leo Abreu",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Abreu punta al titolo di capocannoniere con il Picerno",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458194",
-    "discovered_at": "2026-09-10T03:55:51.426588",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -21312,6 +21286,150 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/09/08/sorpresa-chivu-al-bernabeu-bisseck-titolare-la-scelta-dellinter-contro-il-real-madrid/",
     "discovered_at": "2026-09-10T03:55:51.427039",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ea4cea66aeb3410cdd9ac3376e587dec",
+    "player_name": "Aleš Matějů",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Rifiuta proposta greca, possibile accordo con Spezia",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445270",
+    "discovered_at": "2026-09-10T10:57:53.224901",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "66cacc911479b9420cfccba49ec3a747",
+    "player_name": "Paolo Rozzio",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Prolungato contratto fino al 30/06/2028",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445275",
+    "discovered_at": "2026-09-10T10:57:53.225243",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "8fd2ceacbc51a0b8220f94672cbf8dd2",
+    "player_name": "Federico Papini",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Prolungato contratto con Campobasso fino al 2028",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445274",
+    "discovered_at": "2026-09-10T10:57:53.225405",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "10e49144c4253cfd762a381c5f7cbf37",
+    "player_name": "Samuele Francesco Spalluto",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Squalificato 3 partite, ricorso presentato alla CSA",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445260",
+    "discovered_at": "2026-09-10T10:57:53.225562",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "8c5c3078cb78a5f06e4f07cd238b1835",
+    "player_name": "Marco Balzano",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Squalificato 3 partite, ricorso presentato alla CSA",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445260",
+    "discovered_at": "2026-09-10T10:57:53.225716",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "2116f468f7871c7d179545fa168a634b",
+    "player_name": "Nicolò Cavuoti",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Esordio brillante, punta a una grande stagione",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445268",
+    "discovered_at": "2026-09-10T10:57:53.225896",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "e672a1608820555809a26193482bd134",
+    "player_name": "Ciccio Caputo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ciccio Caputo commenta il derby tra Altamura e Bari",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458209",
+    "discovered_at": "2026-09-10T10:57:53.226050",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "66a9d49be8bcba3082c1c5ec4a01cceb",
+    "player_name": "Paolo Indiani",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Paolo Indiani guida il Grosseto nella Coppa Italia Serie C",
+    "ob1_score": 60,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458205",
+    "discovered_at": "2026-09-10T10:57:53.226202",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "21f41bdf0738301de874e057d1692e3d",
+    "player_name": "Thomas Cossalter",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Thomas Cossalter, capitano della Dolomiti Bellunesi, racconta",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458204",
+    "discovered_at": "2026-09-10T10:57:53.226356",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "0e8d189843d70305037727a2c04127fc",
+    "player_name": "Massimo Zilli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Presentato l'attaccante Massimo Zilli, classe 2002",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458201",
+    "discovered_at": "2026-09-10T10:57:53.226504",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "def4c117b7972b7e08b7e84a8a73e9c4",
+    "player_name": "Leo Abreu",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Leo Abreu sogna il titolo di capocannoniere e la Serie A",
+    "ob1_score": 62,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458194",
+    "discovered_at": "2026-09-10T10:57:53.226651",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "00431c4a5ec83e0862010472dff18e0f",
+    "player_name": "Lautaro Martinez",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "citato nell'articolo live Inter-Real Madrid",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
+    "discovered_at": "2026-09-10T10:57:53.226979",
     "league_id": "italy_serie_c_d"
   }
 ]

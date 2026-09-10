@@ -1,6 +1,98 @@
 {
   "opportunities": [
     {
+      "id": "f0cf5ff7c35797e7b86a2f1d297ea066",
+      "player_name": "Edoardo Vergani",
+      "age": 25,
+      "role": "",
+      "role_name": "Punta centrale",
+      "opportunity_type": "mercato",
+      "type_reconciled_from": "svincolato",
+      "reported_date": "2026-09-09",
+      "source_name": "www.tuttoc.com",
+      "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445210",
+      "previous_clubs": [],
+      "current_club": "AC Perugia Calcio",
+      "appearances": null,
+      "goals": null,
+      "assists": null,
+      "minutes_played": null,
+      "summary": "",
+      "nationality": null,
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 250000,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "tm_url": "https://www.transfermarkt.it/edoardo-vergani/profil/spieler/421780",
+      "tm_link_ok": true,
+      "tm_verified_at": "2026-09-10T11:07:59+00:00",
+      "data_verified": true,
+      "discovered_at": "2026-09-09T11:02:37.448973",
+      "ob1_score": 77,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 95,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 90,
+        "market_value": 90,
+        "league_fit": 80,
+        "source": 95
+      },
+      "score_senza_dato": [
+        "opportunity_type",
+        "experience"
+      ],
+      "peso_misurato": 0.68,
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "out_of_scope": false,
+      "out_of_scope_reason": "",
+      "market_identity_complete": true,
+      "market_corroborated": true,
+      "market_publishable": true,
+      "market_n_sources": 2,
+      "recommendation": "Età ideale (25 anni), nel pieno della maturazione. Valore di mercato interessante (250k€).",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 2001,
+        "roi_dettaglio": "Classe 2001 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "30/06/2027",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "signal_age_days": 1,
+      "assessment": {
+        "yes": [
+          "25 anni — nel pieno della carriera",
+          "Valore di mercato interessante",
+          "Profilo in fascia Lega Pro",
+          "Segnalazione fresca"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "Solo voce di mercato — non è libero"
+        ],
+        "action": "Da chiamare ora"
+      }
+    },
+    {
       "id": "87a3423c28ddd9a169c8be9301e374ad",
       "player_name": "Mattia Motolese",
       "age": 22,
@@ -7134,8 +7226,8 @@
     }
   ],
   "stats": {
-    "total": 77,
-    "hot": 7,
+    "total": 78,
+    "hot": 8,
     "warm": 41,
     "cold": 29,
     "today": 0,
@@ -7146,16 +7238,16 @@
       "high": 0,
       "medium": 17,
       "low": 11,
-      "none": 49
+      "none": 50
     },
-    "tracking_total": 470,
+    "tracking_total": 471,
     "tracking_only": 393,
-    "publishable": 77,
-    "corroborated": 77
+    "publishable": 78,
+    "corroborated": 78
   },
-  "last_update": "2026-09-10T04:06:53.041700",
+  "last_update": "2026-09-10T11:10:01.139508",
   "version": "1.0.0",
-  "build": "e22f368",
+  "build": "6c810d8",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete+corroborated"
