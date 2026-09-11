@@ -21442,43 +21442,15 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445308",
     "discovered_at": "2026-09-10T20:40:01.493940",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "4fcc2494766ce2f11476a29df326ae21",
-    "player_name": "Andrea Marino",
-    "region": "ITALY",
-    "opportunity_type": "rescissione",
-    "description": "risolve contratto con Picerno, va in Ternana",
-    "ob1_score": 65,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445300",
-    "discovered_at": "2026-09-10T20:40:01.494105",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "54906737da5c1015fc8740b8c9c737b1",
-    "player_name": "Francesco Proietto",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "rinnova per due stagioni con la Pianese",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445293",
-    "discovered_at": "2026-09-10T20:40:01.494264",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "81e63c86ff965f5fdf8492f9159570f6",
-    "player_name": "Riccardo Cargnelutti",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Difensore firma per Sorrento",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445295",
-    "discovered_at": "2026-09-10T20:40:01.494421",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/mattia-mastrovito/profil/spieler/1285223",
+    "tm_verified_at": "2026-09-11T04:03:38+00:00",
+    "birth_date": "16/12/2005",
+    "age": 20,
+    "current_club": "US Salernitana",
+    "role_name": "Centrocampista",
+    "contract_expires": "30/06/2029",
+    "agent": "G.E.V. ..."
   },
   {
     "id": "738ceeb838b2d98b886226d0ab4bd202",
@@ -21517,15 +21489,51 @@
     "league_id": "italy_serie_c_d"
   },
   {
+    "id": "368614bdb3de879e5bcc71318e867b3a",
+    "player_name": "Alessandro Brancato",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Firma con il Grosseto, nuovo attaccante",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445296",
+    "discovered_at": "2026-09-11T03:52:09.151208",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "4fcc2494766ce2f11476a29df326ae21",
+    "player_name": "Andrea Marino",
+    "region": "ITALY",
+    "opportunity_type": "rescissione",
+    "description": "Risolto contratto con Picerno, si trasferisce alla Ternana",
+    "ob1_score": 65,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445300",
+    "discovered_at": "2026-09-11T03:52:09.151611",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "81e63c86ff965f5fdf8492f9159570f6",
+    "player_name": "Riccardo Cargnelutti",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Arriva al Sorrento, proveniente da Catania",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445295",
+    "discovered_at": "2026-09-11T03:52:09.151732",
+    "league_id": "italy_serie_c_d"
+  },
+  {
     "id": "d9a9bbc79c33fe18c4ccf6ce54ce0f05",
     "player_name": "Franco Lepore",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Attaccante passa alla Pro Sesto in Serie D",
+    "description": "Franco Lepore si trasferisce alla Pro Sesto in Serie D",
     "ob1_score": 60,
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445292",
-    "discovered_at": "2026-09-10T20:40:01.495067",
+    "discovered_at": "2026-09-11T03:52:09.151925",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -21533,11 +21541,11 @@
     "player_name": "Edoardo Soleri",
     "region": "ITALY",
     "opportunity_type": "svincolato",
-    "description": "Arriva al Ravenna da svincolato dopo l'esperienza allo Spezia",
+    "description": "Edoardo Soleri, svincolato, arriva al Ravenna",
     "ob1_score": 64,
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458228",
-    "discovered_at": "2026-09-10T20:40:01.495375",
+    "discovered_at": "2026-09-11T03:52:09.152019",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -21545,23 +21553,11 @@
     "player_name": "Federico Papini",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Rinnovo contratto fino al 2028 con Campobasso",
+    "description": "rinnovo contratto fino al 2028",
     "ob1_score": 58,
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458214",
-    "discovered_at": "2026-09-10T20:40:01.495706",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "17900dfd8dc227a5d7d6fa76db886403",
-    "player_name": "Nico Paz",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Citato nell'articolo sul risultato del match Genoa-Como",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/04/como-show-genoa-schiantato-1-4-al-ferraris/",
-    "discovered_at": "2026-09-10T20:40:01.495862",
+    "discovered_at": "2026-09-11T03:52:09.152110",
     "league_id": "italy_serie_c_d"
   }
 ]
