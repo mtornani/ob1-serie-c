@@ -21672,30 +21672,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "0d933d1dd12fb72939cfaba9259715c0",
-    "player_name": "La Gumina",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Ha segnato nella vittoria 4-2 contro il Potenza",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458270",
-    "discovered_at": "2026-09-12T10:24:34.033233",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "861dcb82e43a81eb69c71bff82ffee2c",
-    "player_name": "Michele Cerofolini",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Rinnovo contratto con il Bari fino al 2030",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458269",
-    "discovered_at": "2026-09-12T10:24:34.033590",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "c63bcf6374b7ee6652dbc51f90dec0c6",
     "player_name": "Cosimo Chiricò",
     "region": "ITALY",
@@ -21708,15 +21684,130 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "6727b3a7379832b1ed0b834822e8ab5b",
-    "player_name": "Antonino La Gumina",
+    "id": "ceb6afad87222cbfa900132cc928016a",
+    "player_name": "Da Vlahovic",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Risultati in diretta Pubblicità calciomercato.com Matteo Palmisano01 gen 2026, 12:08 Ultimi aggiornamenti: 01 gen 2026, 12:08 # Da Vlahovic e Maignan, da Bernardo Silva a Ruben Neves: la top 10 dei giocatori in scadenza nel 2026 Milan Juventus Bayern Monaco Calciomercato Serie A Bundesliga M. Maignan D. Vlahovic Da febbraio i giocatori in scadenza il 30 giugno 2026 saranno liberi di firmare con altre squadre: ecco la top 10 delle occasioni di mercato a parametro zero. Pubblicità Pubblicità La sessione di calciomercato invernale è caratterizzata dalle occasioni. Le squadre si muoveranno provando a prendere i calciatori che, nei rispettivi club, giocano poco. **Oppure che a giugno andranno in scadenza di contratto.** Per loro si può provare ad anticipare il colpo, magari pagando un piccolo indennizzo alle società di appartenenza, oppure bloccandoli a parametro zero per la prossima estate. Se non rinnoveranno, dalla fine del mercato invernale saranno liberi di firmare con qualsiasi altra squadra e, in questo 2026, sono diversi i possibili colpi. **Da Upamecano a Vlahovic e Maignan, ecco la top 10 dei calciatori in scadenza il 30 giugno 2026.** ## Di tendenza * 1Quanto guadagna la Juventus dall'affare Motta-Lazio 23k * 2Di Francesco e l'abbraccio con Camarda: \"Come un figlio, ora va a casa\" 22k * 3Juventus, salta l'arrivo di En-Nesyri e rispunta Zirkzee 19k * 4Juve-En-Nesyri, perché non ha detto ancora sì 19k * 5Il Mattino - Tensione Napoli, Conte mette fuori rosa Ambrosino e Marianucci * 6Fabregas: \"La classifica? Il nostro è solo un percorso\" * 7Inter, contratto e maxi-plusvalenza: perché Thuram può partire in estate * 8Inter, conferme sull'affare Luis Henrique-Besiktas: i dettagli 15k",
+    "ob1_score": 69,
+    "source_name": "calciomercato.com",
+    "source_url": "https://calciomercato.com/liste/da-vlahovic-e-maignan-da-bernardo-silva-a-ruben-neves-la-top-10-dei-giocatori-in-scadenza-nel-2026/blt1fbcaffd661a9efc",
+    "discovered_at": "2026-09-12T15:19:34.574299",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "9174cac55c3bf218efbbda929f404db6",
+    "player_name": "Luiz Henrique",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "ex Napoli e attualmente svincolato. 18:59 Serie C, il portiere Avella al Renate … a disposizione di mister Giacomo Gattuso per la stagione 2026",
+    "ob1_score": 66,
+    "source_name": "www.corrieredellosport.it",
+    "source_url": "https://www.corrieredellosport.it/news/calcio/calcio-mercato/2026/08/29-150869025/calciomercato_diretta_roma_tra_gittens_e_fofana_fiorentina_su_zirkzee_juve_a_oltranza_per_kessie_live",
+    "discovered_at": "2026-09-12T15:19:34.574647",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "2ac0a751e2facaeb1a586b636aa9cb65",
+    "player_name": "Alessandro Sassaro",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Difensore centrale, svincolato dal Patria il 23/01/2026",
+    "ob1_score": 66,
+    "source_name": "www.transfermarkt.it",
+    "source_url": "https://www.transfermarkt.it/aurora-pro-patria/kader/verein/4146/saison_id/2025/plus/1",
+    "discovered_at": "2026-09-12T15:19:34.574802",
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/alessandro-sassaro/profil/spieler/1075876",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/alessandro-sassaro/profil/spieler/1075876"
+    },
+    "tm_enriched": false
+  },
+  {
+    "id": "e6a241c76eb4f0b86a4d05a7532b3a99",
+    "player_name": "Giovanni Vaglica",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Terzino sinistro, svincolato nella stagione 2025/26",
+    "ob1_score": 66,
+    "source_name": "www.transfermarkt.it",
+    "source_url": "https://www.transfermarkt.it/aurora-pro-patria-1919/rekordabgaenge/verein/4146/saison_id/2025/page/2",
+    "discovered_at": "2026-09-12T15:19:34.574975",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "3aef04d341f99d14c654068ccc2f43f4",
+    "player_name": "Marash Kumbulla",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Ha realizzato una tripletta contro il Potenza",
+    "description": "Transfer from Roma to Rayo Vallecano",
+    "ob1_score": 60,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/tutte-le-notizie-di-calciomercato-della-settimana-27-luglio-2-agosto-2026/blt7304197ee5d08d78",
+    "discovered_at": "2026-09-12T15:19:34.575543",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "0d4e5bc522fa169f7ef7b781f024b293",
+    "player_name": "Andrea Ceresoli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Moved from Atalanta to Nürnberg",
+    "ob1_score": 60,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/tutte-le-notizie-di-calciomercato-della-settimana-27-luglio-2-agosto-2026/blt7304197ee5d08d78",
+    "discovered_at": "2026-09-12T15:19:34.575679",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "7c0cb6524f9d2456e2fdab1dfe5d305d",
+    "player_name": "Oleksandr Dovbyk",
+    "region": "ITALY",
+    "opportunity_type": "prestito",
+    "description": "Potential loan to Roma",
+    "ob1_score": 62,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/calciomercato-live/blt79f201007b376244",
+    "discovered_at": "2026-09-12T15:19:34.575816",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ca137e80bb0cc80e2a739d5546a92dba",
+    "player_name": "Yan Diomandé",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Set to join Real Madrid",
+    "ob1_score": 60,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/calciomercato-live/blt79f201007b376244",
+    "discovered_at": "2026-09-12T15:19:34.575982",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "160cda7076bcce604d1e01b9749f8dec",
+    "player_name": "Youth Bonuses",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "### Transcript\n[0:01] Tra i temi che accompagneranno la prossima stagione di Serie C'è sicuramente quello del minutaggio dei giovani, un meccanismo che continua a\n[0:08] rappresentare una voce importante nei bilanci delle società. Anche per il campionato 2026-27 la Lega Pro ha\n[0:16] confermato il sistema di contribuzione destinato ai club che valorizzeranno gli under. Per accedere ai contributi\n[0:23] economici le società dovranno garantire almeno 271 minuti complessivi per gara a calciatori nati tra il 2004 e il 2009.\n[0:32] La configurazione minima per ottenere il contributo prevede due giocatori, classe 2004 e un classe 2005, impiegati per\n[0:40] tutti i 90 minuti per un totale di 270 minuti ai quali dovrà aggiungersi almeno un altro giovane, anche soltanto per un",
+    "ob1_score": 60,
+    "source_name": "www.youtube.com",
+    "source_url": "https://www.youtube.com/watch?v=u1Yea9_1K48",
+    "discovered_at": "2026-09-12T15:19:34.576144",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "6ddbb4146d0d47ead643790832baccb8",
+    "player_name": "Yahoo Sports",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Today, the Lega Nazionale Dilettanti announced the composition of the Serie D 2026/27 groups: 162 teams, split across nine groups, will compete in Italy's top amateur division from September to May. After their developmental 2025/26 campaign that ended in the playoffs against ChievoVerona, Milan Futuro will compete in Group B with teams from Lombardy, Veneto and Emilia-Romagna. The opening matchday is scheduled for Sunday 6 September, with the squad's first official fixture taking place seven days earlier in the first round of the Serie D Coppa Italia. The format remains the same as last season, with groups consisting of 18 teams. The fixture list will be announced soon, with a total of 34 matchdays set to take place. As in the previous campaign, fixtures will be split between 2026 (first [...] MILAN FUTURO'S 2026/27 SERIE D OPPONENTS\n\nMILAN FUTURO'S 2026/27 SERIE D OPPONENTS\n\nAC Milan\n\n·\n\n1 min read\n\n About Our Ads\n\nAdvertisement\n\nAdvertisement\n\nAdvertisement [...] campaign, fixtures will be split between 2026 (first half of the season) and 2027 (second half of the season). The season will once again feature nine teams earning automatic promotion to Serie C, with the winners of each group securing promotion, while four teams from each group will be relegated to Eccellenza.",
     "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458263",
-    "discovered_at": "2026-09-12T10:24:34.033953",
+    "source_name": "sports.yahoo.com",
+    "source_url": "https://sports.yahoo.com/articles/milan-futuros-2026-27-serie-111800759.html",
+    "discovered_at": "2026-09-12T15:19:34.576309",
     "league_id": "italy_serie_c_d"
   }
 ]
