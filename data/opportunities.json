@@ -18968,15 +18968,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "4f3abf49ce2afac0ff9cad4efa6cc37e",
+    "id": "e6a241c76eb4f0b86a4d05a7532b3a99",
     "player_name": "Giovanni Vaglica",
     "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Vicino al trasferimento al Carpi dal Giugliano",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444678",
-    "discovered_at": "2026-09-01T16:19:34.857606",
+    "opportunity_type": "svincolato",
+    "description": "Terzino sinistro, svincolato nella stagione 2025/26",
+    "ob1_score": 66,
+    "source_name": "www.transfermarkt.it",
+    "source_url": "https://www.transfermarkt.it/aurora-pro-patria-1919/rekordabgaenge/verein/4146/saison_id/2025/page/2",
+    "discovered_at": "2026-09-12T15:19:34.574975",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -21684,18 +21684,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ceb6afad87222cbfa900132cc928016a",
-    "player_name": "Da Vlahovic",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Risultati in diretta Pubblicità calciomercato.com Matteo Palmisano01 gen 2026, 12:08 Ultimi aggiornamenti: 01 gen 2026, 12:08 # Da Vlahovic e Maignan, da Bernardo Silva a Ruben Neves: la top 10 dei giocatori in scadenza nel 2026 Milan Juventus Bayern Monaco Calciomercato Serie A Bundesliga M. Maignan D. Vlahovic Da febbraio i giocatori in scadenza il 30 giugno 2026 saranno liberi di firmare con altre squadre: ecco la top 10 delle occasioni di mercato a parametro zero. Pubblicità Pubblicità La sessione di calciomercato invernale è caratterizzata dalle occasioni. Le squadre si muoveranno provando a prendere i calciatori che, nei rispettivi club, giocano poco. **Oppure che a giugno andranno in scadenza di contratto.** Per loro si può provare ad anticipare il colpo, magari pagando un piccolo indennizzo alle società di appartenenza, oppure bloccandoli a parametro zero per la prossima estate. Se non rinnoveranno, dalla fine del mercato invernale saranno liberi di firmare con qualsiasi altra squadra e, in questo 2026, sono diversi i possibili colpi. **Da Upamecano a Vlahovic e Maignan, ecco la top 10 dei calciatori in scadenza il 30 giugno 2026.** ## Di tendenza * 1Quanto guadagna la Juventus dall'affare Motta-Lazio 23k * 2Di Francesco e l'abbraccio con Camarda: \"Come un figlio, ora va a casa\" 22k * 3Juventus, salta l'arrivo di En-Nesyri e rispunta Zirkzee 19k * 4Juve-En-Nesyri, perché non ha detto ancora sì 19k * 5Il Mattino - Tensione Napoli, Conte mette fuori rosa Ambrosino e Marianucci * 6Fabregas: \"La classifica? Il nostro è solo un percorso\" * 7Inter, contratto e maxi-plusvalenza: perché Thuram può partire in estate * 8Inter, conferme sull'affare Luis Henrique-Besiktas: i dettagli 15k",
-    "ob1_score": 69,
-    "source_name": "calciomercato.com",
-    "source_url": "https://calciomercato.com/liste/da-vlahovic-e-maignan-da-bernardo-silva-a-ruben-neves-la-top-10-dei-giocatori-in-scadenza-nel-2026/blt1fbcaffd661a9efc",
-    "discovered_at": "2026-09-12T15:19:34.574299",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "9174cac55c3bf218efbbda929f404db6",
     "player_name": "Luiz Henrique",
     "region": "ITALY",
@@ -21724,19 +21712,16 @@
       "enrichment_source": "Enrichment:groq",
       "tm_url": "https://www.transfermarkt.it/alessandro-sassaro/profil/spieler/1075876"
     },
-    "tm_enriched": false
-  },
-  {
-    "id": "e6a241c76eb4f0b86a4d05a7532b3a99",
-    "player_name": "Giovanni Vaglica",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Terzino sinistro, svincolato nella stagione 2025/26",
-    "ob1_score": 66,
-    "source_name": "www.transfermarkt.it",
-    "source_url": "https://www.transfermarkt.it/aurora-pro-patria-1919/rekordabgaenge/verein/4146/saison_id/2025/page/2",
-    "discovered_at": "2026-09-12T15:19:34.574975",
-    "league_id": "italy_serie_c_d"
+    "tm_enriched": false,
+    "tm_verified_at": "2026-09-12T15:23:49+00:00",
+    "birth_date": "18/07/2004",
+    "age": 22,
+    "current_club": "Castellanzese 1921",
+    "role_name": "Difensore centrale",
+    "foot": "destro",
+    "contract_expires": "30/06/2027",
+    "market_value": 75000,
+    "market_value_eur": 75000
   },
   {
     "id": "3aef04d341f99d14c654068ccc2f43f4",
@@ -21799,15 +21784,63 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "6ddbb4146d0d47ead643790832baccb8",
-    "player_name": "Yahoo Sports",
+    "id": "885ca1d2cde1d8f360931681616a1a7b",
+    "player_name": "Luigi Caccavo",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Today, the Lega Nazionale Dilettanti announced the composition of the Serie D 2026/27 groups: 162 teams, split across nine groups, will compete in Italy's top amateur division from September to May. After their developmental 2025/26 campaign that ended in the playoffs against ChievoVerona, Milan Futuro will compete in Group B with teams from Lombardy, Veneto and Emilia-Romagna. The opening matchday is scheduled for Sunday 6 September, with the squad's first official fixture taking place seven days earlier in the first round of the Serie D Coppa Italia. The format remains the same as last season, with groups consisting of 18 teams. The fixture list will be announced soon, with a total of 34 matchdays set to take place. As in the previous campaign, fixtures will be split between 2026 (first [...] MILAN FUTURO'S 2026/27 SERIE D OPPONENTS\n\nMILAN FUTURO'S 2026/27 SERIE D OPPONENTS\n\nAC Milan\n\n·\n\n1 min read\n\n About Our Ads\n\nAdvertisement\n\nAdvertisement\n\nAdvertisement [...] campaign, fixtures will be split between 2026 (first half of the season) and 2027 (second half of the season). The season will once again feature nine teams earning automatic promotion to Serie C, with the winners of each group securing promotion, while four teams from each group will be relegated to Eccellenza.",
-    "ob1_score": 58,
-    "source_name": "sports.yahoo.com",
-    "source_url": "https://sports.yahoo.com/articles/milan-futuros-2026-27-serie-111800759.html",
-    "discovered_at": "2026-09-12T15:19:34.576309",
+    "description": "Centrocampista emergente classe 2004",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/il-punto/settimana-trampolino-lancio-caccavo-l-ultimo-tanti-440278",
+    "discovered_at": "2026-09-12T20:24:51.202291",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "a2f7b698fceace8a34b22b39126c4032",
+    "player_name": "Tijjani Noslin",
+    "region": "ITALY",
+    "opportunity_type": "prestito",
+    "description": "Possibile uscita in prestito con diritto di riscatto",
+    "ob1_score": 62,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/calciomercato-invernale-2026-tutte-le-ultime-notizie-le-trattative-e-i-trasferimenti-in-serie-a-e-negli-altri-campionati/blt1dd2b37d1c10281e",
+    "discovered_at": "2026-09-12T20:24:51.202465",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "a7bc4c4b5732a823a49bc6a4f4edfd6a",
+    "player_name": "JJ Gabriel",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Giovane talento in evidenza nella lista NXGN 2026",
+    "ob1_score": 60,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/nxgn-2026-i-50-migliori-giovani-talenti-del-calcio-mondiale/blt2f8486395140dacd",
+    "discovered_at": "2026-09-12T20:24:51.202622",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "8e6f3ee970299f771068db2f20ee88b3",
+    "player_name": "Emanuele Concetti",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Portiere classe 1978, ex Nocerina",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/ho-sposato-1-calciatore/emanuele-concetti-isabella-varriale-47751",
+    "discovered_at": "2026-09-12T20:24:51.202776",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "75a0c39009b8d3c5f08555c07448ad44",
+    "player_name": "Vincenzo Plescia",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Attaccante classe 1998, in forza al Gubbio",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/ho-sposato-1-calciatore/vincenzo-plescia-sofia-priolo-200712",
+    "discovered_at": "2026-09-12T20:24:51.202927",
     "league_id": "italy_serie_c_d"
   }
 ]
