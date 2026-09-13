@@ -21824,18 +21824,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "0e8d20e6a7f21c2faaa2f61a06e65dc8",
-    "player_name": "Michele Cerofolini",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "rinnovo contratto per quattro anni",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445407",
-    "discovered_at": "2026-09-13T04:04:06.129325",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "8da6168b4880756621391d46ecb11fbe",
     "player_name": "Matteo Bassi",
     "region": "ITALY",
@@ -21848,30 +21836,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "bf15b459fa27b9bba02a40684b8ca0e0",
-    "player_name": "Lautaro Martínez",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "citato nel match Inter-Real Madrid, 2-1",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
-    "discovered_at": "2026-09-13T04:04:06.129693",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "230613dfaefd7218844b5b0334fc6034",
-    "player_name": "Cristian Chivu",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "citato nella formazione Inter vs Real Madrid",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
-    "discovered_at": "2026-09-13T04:04:06.129858",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "ae42ba3144b9c159c0f606cffb518b7d",
     "player_name": "Kylian Mbappé",
     "region": "ITALY",
@@ -21881,6 +21845,42 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
     "discovered_at": "2026-09-13T04:04:06.130019",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "00431c4a5ec83e0862010472dff18e0f",
+    "player_name": "Lautaro Martinez",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Citato nell'articolo sulla sfida Real Madrid-Inter",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
+    "discovered_at": "2026-09-13T11:24:39.303000",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "c632989cd8e00592907fd396c8ac64d6",
+    "player_name": "Kylian Mbappe",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Citato nell'articolo sulla sfida Real Madrid-Inter",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
+    "discovered_at": "2026-09-13T11:24:39.303335",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "230613dfaefd7218844b5b0334fc6034",
+    "player_name": "Cristian Chivu",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Citato nell'articolo sulla sfida Real Madrid-Inter",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
+    "discovered_at": "2026-09-13T11:24:39.303502",
     "league_id": "italy_serie_c_d"
   }
 ]
