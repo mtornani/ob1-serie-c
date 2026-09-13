@@ -21433,26 +21433,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "4bb33ab2a93cd0c968f64fdaab202252",
-    "player_name": "Mattia Mastrovito",
-    "region": "ITALY",
-    "opportunity_type": "rescissione",
-    "description": "saluta Salernitana, torna al Martina",
-    "ob1_score": 65,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445308",
-    "discovered_at": "2026-09-10T20:40:01.493940",
-    "league_id": "italy_serie_c_d",
-    "tm_url": "https://www.transfermarkt.it/mattia-mastrovito/profil/spieler/1285223",
-    "tm_verified_at": "2026-09-11T04:03:38+00:00",
-    "birth_date": "16/12/2005",
-    "age": 20,
-    "current_club": "US Salernitana",
-    "role_name": "Centrocampista",
-    "contract_expires": "30/06/2029",
-    "agent": "G.E.V. ..."
-  },
-  {
     "id": "738ceeb838b2d98b886226d0ab4bd202",
     "player_name": "Luca Sonzogni",
     "region": "ITALY",
@@ -21784,18 +21764,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "885ca1d2cde1d8f360931681616a1a7b",
-    "player_name": "Luigi Caccavo",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Centrocampista emergente classe 2004",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/il-punto/settimana-trampolino-lancio-caccavo-l-ultimo-tanti-440278",
-    "discovered_at": "2026-09-12T20:24:51.202291",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "a2f7b698fceace8a34b22b39126c4032",
     "player_name": "Tijjani Noslin",
     "region": "ITALY",
@@ -21841,6 +21809,78 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/ho-sposato-1-calciatore/vincenzo-plescia-sofia-priolo-200712",
     "discovered_at": "2026-09-12T20:24:51.202927",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ec2e5e3b5a67935593d79fe7407cd672",
+    "player_name": "Nicolas Haas",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "svincolato nella sessione di mercato Serie C",
+    "ob1_score": 68,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445371",
+    "discovered_at": "2026-09-13T04:04:06.128957",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "0e8d20e6a7f21c2faaa2f61a06e65dc8",
+    "player_name": "Michele Cerofolini",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "rinnovo contratto per quattro anni",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445407",
+    "discovered_at": "2026-09-13T04:04:06.129325",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "8da6168b4880756621391d46ecb11fbe",
+    "player_name": "Matteo Bassi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "arrivato in squadra, firma recente",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445402",
+    "discovered_at": "2026-09-13T04:04:06.129518",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "bf15b459fa27b9bba02a40684b8ca0e0",
+    "player_name": "Lautaro Martínez",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "citato nel match Inter-Real Madrid, 2-1",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
+    "discovered_at": "2026-09-13T04:04:06.129693",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "230613dfaefd7218844b5b0334fc6034",
+    "player_name": "Cristian Chivu",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "citato nella formazione Inter vs Real Madrid",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
+    "discovered_at": "2026-09-13T04:04:06.129858",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ae42ba3144b9c159c0f606cffb518b7d",
+    "player_name": "Kylian Mbappé",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "citato nel match Inter-Real Madrid, 2-1",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
+    "discovered_at": "2026-09-13T04:04:06.130019",
     "league_id": "italy_serie_c_d"
   }
 ]
