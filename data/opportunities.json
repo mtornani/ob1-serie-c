@@ -20833,15 +20833,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "4d23184ac9022953e5e9744477d8ce1c",
+    "id": "230613dfaefd7218844b5b0334fc6034",
     "player_name": "Cristian Chivu",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Allenatore Inter, ex difensore della nazionale",
+    "description": "Citato nell'articolo sulla sfida Real Madrid-Inter",
     "ob1_score": 58,
     "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/07/inter-chivu-dobbiamo-scrivere-la-storia-mou-mai-copiato-nessuno/",
-    "discovered_at": "2026-09-07T21:22:35.629559",
+    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
+    "discovered_at": "2026-09-13T11:24:39.303502",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -20857,15 +20857,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "8d6d625b6ff90f6c45b418212b9eeca4",
+    "id": "00431c4a5ec83e0862010472dff18e0f",
     "player_name": "Lautaro Martinez",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Attaccante dell'Inter citato nell'articolo.",
+    "description": "Citato nell'articolo sulla sfida Real Madrid-Inter",
     "ob1_score": 58,
     "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/05/serie-a-fiorentina-altro-crollo-inter-e-roma-vittorie-di-cuore/",
-    "discovered_at": "2026-09-07T21:22:35.629850",
+    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
+    "discovered_at": "2026-09-13T11:24:39.303000",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -21836,30 +21836,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ae42ba3144b9c159c0f606cffb518b7d",
-    "player_name": "Kylian Mbappé",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "citato nel match Inter-Real Madrid, 2-1",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
-    "discovered_at": "2026-09-13T04:04:06.130019",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "00431c4a5ec83e0862010472dff18e0f",
-    "player_name": "Lautaro Martinez",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Citato nell'articolo sulla sfida Real Madrid-Inter",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
-    "discovered_at": "2026-09-13T11:24:39.303000",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "c632989cd8e00592907fd396c8ac64d6",
     "player_name": "Kylian Mbappe",
     "region": "ITALY",
@@ -21872,15 +21848,87 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "230613dfaefd7218844b5b0334fc6034",
-    "player_name": "Cristian Chivu",
+    "id": "10d66214c8bdcc1b751afd2ce96a12d4",
+    "player_name": "Giovanni Lopez",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Citato nell'articolo sulla sfida Real Madrid-Inter",
+    "description": "Giovanni Lopez ha segnato il punto per il Guidonia Montecelio.",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445481",
+    "discovered_at": "2026-09-13T15:56:32.931895",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d7f48f8be4d186aaed5acd3b6133a9b6",
+    "player_name": "Emanuele Cicerelli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Emanuele Cicerelli cerca di rilanciare il Catania dopo la sconfitta.",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445482",
+    "discovered_at": "2026-09-13T15:56:32.932169",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "62ca35c4f52c03d2bd9fd99f535712b4",
+    "player_name": "Andrea Spurio",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Andrea Spurio para il rigore, è l’uomo copertina del Campobasso.",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445484",
+    "discovered_at": "2026-09-13T15:56:32.932349",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "08ac664ae8f7539ff0feb9fc79c08c17",
+    "player_name": "Antonio Potenza",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Rinnovo imminente del contratto",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458297",
+    "discovered_at": "2026-09-13T15:56:32.932486",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d432e67ae605145387f120bae395759c",
+    "player_name": "Justin Oboavwoduo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Prima convocazione in Serie A",
+    "ob1_score": 62,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458295",
+    "discovered_at": "2026-09-13T15:56:32.932614",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "5bc6584b154f263fa3fbf56930f919b6",
+    "player_name": "Diego Moreira",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Menzionato nell'articolo su partita Lazio-Milan",
     "ob1_score": 58,
     "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
-    "discovered_at": "2026-09-13T11:24:39.303502",
+    "source_url": "https://www.sportitalia.it/2026/09/12/serie-a-pari-tra-lazio-e-milan-il-cagliari-batte-latalanta/",
+    "discovered_at": "2026-09-13T15:56:32.932738",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "64e78cc3abb41ca331951e395b48002c",
+    "player_name": "Franco Mastantuono",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Citato come attaccante della Fiorentina",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/09/11/serie-a-la-fiorentina-sbanca-il-penzo-mastantuono-show/",
+    "discovered_at": "2026-09-13T15:56:32.932860",
     "league_id": "italy_serie_c_d"
   }
 ]
