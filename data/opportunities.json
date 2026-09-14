@@ -21884,15 +21884,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "d432e67ae605145387f120bae395759c",
+    "id": "768a59a60f4005a45ec09ded7e8fb8ef",
     "player_name": "Justin Oboavwoduo",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Prima convocazione in Serie A",
+    "description": "Debutto in Serie A con la Juventus, classe 2006",
     "ob1_score": 62,
     "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458295",
-    "discovered_at": "2026-09-13T15:56:32.932614",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458300",
+    "discovered_at": "2026-09-13T20:35:22.257553",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -21917,18 +21917,6 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/09/11/serie-a-la-fiorentina-sbanca-il-penzo-mastantuono-show/",
     "discovered_at": "2026-09-13T15:56:32.932860",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "934a6734a06aa9c7fefcb36b45439495",
-    "player_name": "Vinicio Espinal",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "tecnico della Casertana commenta la vittoria per 3-2",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445466",
-    "discovered_at": "2026-09-13T20:35:22.256555",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -21980,18 +21968,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "768a59a60f4005a45ec09ded7e8fb8ef",
-    "player_name": "Justin Oboavwoduo",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Debutto in Serie A con la Juventus, classe 2006",
-    "ob1_score": 62,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458300",
-    "discovered_at": "2026-09-13T20:35:22.257553",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "8e91986e214974061cd6c8f66bc25e0c",
     "player_name": "Alfonso Greco",
     "region": "ITALY",
@@ -22040,15 +22016,58 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "bf15b459fa27b9bba02a40684b8ca0e0",
-    "player_name": "Lautaro Martínez",
+    "id": "5677ada3bd906c486d34dcd8fb377eb0",
+    "player_name": "Alessandro Birindelli",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "citato nell'articolo sul match Real Madrid-Inter",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
-    "discovered_at": "2026-09-13T20:35:22.258657",
+    "description": "Tecnico del Novara commenta la sconfitta contro la Pergolettese",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445540",
+    "discovered_at": "2026-09-14T04:13:38.050340",
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/alessandro-birindelli/profil/spieler/5753",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/alessandro-birindelli/profil/spieler/5753"
+    },
+    "tm_enriched": false
+  },
+  {
+    "id": "c0dd43c0e23b2c45f82db4c6dbad1e9a",
+    "player_name": "Antonio Giosa",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Allenatore della Pergolettese analizza la vittoria contro il Novara",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445541",
+    "discovered_at": "2026-09-14T04:13:38.050776",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "87a4f8f0dc04f28b0c768ee2f59ee324",
+    "player_name": "Edoardo Gorini",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Tecnico del Treviso commenta la vittoria contro la Pro Vercelli",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445517",
+    "discovered_at": "2026-09-14T04:13:38.050960",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d7d84d0c6593815f8b457a66e0bda9af",
+    "player_name": "Giuseppe Loiacono",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Difensore del Potenza commenta il gol annullato contro la Salernitana",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445516",
+    "discovered_at": "2026-09-14T04:13:38.051135",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -22056,23 +22075,11 @@
     "player_name": "Kylian Mbappé",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "citato nell'articolo sul match Real Madrid-Inter",
+    "description": "citato in articolo su partita Inter‑Real Madrid",
     "ob1_score": 58,
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/09/08/live-real-madrid-inter-champions-league-lautaro-martinez-formazioni-chivu-mbappe/",
-    "discovered_at": "2026-09-13T20:35:22.258843",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "4d23184ac9022953e5e9744477d8ce1c",
-    "player_name": "Cristian Chivu",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "citato nell'articolo su Chivu e l'Inter",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/07/inter-chivu-dobbiamo-scrivere-la-storia-mou-mai-copiato-nessuno/",
-    "discovered_at": "2026-09-13T20:35:22.259141",
+    "discovered_at": "2026-09-14T04:13:38.052186",
     "league_id": "italy_serie_c_d"
   }
 ]
