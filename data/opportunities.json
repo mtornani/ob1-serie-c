@@ -21466,7 +21466,27 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445288",
     "discovered_at": "2026-09-10T20:40:01.494914",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "eta": [
+          {
+            "valore": "17",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-09-15T11:37:43.148540+00:00",
+            "nota": "da data di nascita 2009-01-01"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:openrouter",
+    "birth_date": "2009-01-01",
+    "player_profile": {
+      "enrichment_source": "Enrichment:openrouter",
+      "birth_date": "2009-01-01"
+    },
+    "age": 17,
+    "tm_enriched": true
   },
   {
     "id": "9409e261be6502b794ec56d0bd525fef",
@@ -22152,30 +22172,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "781a7335ccae5a2a23cb2e79cc5324d2",
-    "player_name": "Simone Mazzocchi",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Rete decisiva per lo Spezia",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445591",
-    "discovered_at": "2026-09-15T04:10:24.204171",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "c10fecdb0005da40f788f325039f5903",
-    "player_name": "Flavio Ciuferri",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Parla della vittoria del Treviso contro Pro Vercelli",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445562",
-    "discovered_at": "2026-09-15T04:10:24.204782",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "16968c7e313618511a2b4c4dd9d021e3",
     "player_name": "Francesco Millesi",
     "region": "ITALY",
@@ -22185,6 +22181,66 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445576",
     "discovered_at": "2026-09-15T04:10:24.205123",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ea942790f846ed0d5c11282a00b2e476",
+    "player_name": "Di Gregorio",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "D'altronde, che il numero uno fosse un ruolo che i dirigenti bianconeri avevano deciso di rinforzare nell'estate del 2026 si era capito già nei mesi scorsi, quando si è provato a sondare la disponibilità di Mike Maignan di trasferirsi alla Continassa a parametro zero. Il recente rinnovo del francese col Milan, però, impone ora di percorrere altre strade. E, nell'attesa di capire se nelle casse juventine entreranno i 60 milioni garantiti dalla partecipazione alla prossima Champions League, si scandaglia il mercato alla ricerca di occasioni. Se il budget di Comolli in estate fosse risicato, ecco che la pista principale porterebbe a Liverpool, da quel 33enne brasiliano con un passato nella Roma... di Spalletti. Alisson, infatti, era il portiere di coppa dell'ultima avventura in giallorosso [...] NOTTINGHAM, ENGLAND - FEBRUARY 22: Alisson Becker of Liverpool celebrates after Alexis Mac Allister of Liverpool (not pictured) scores his team's first goal during the Premier League match between Nottingham Forest and Liverpool at City Ground on February 22, 2026 in Nottingham, England. (Photo by Dan Mullan/Getty Images)\n\n## Il brasiliano, in scadenza nel 2027 con il Liverpool, garantirebbe affidabilità e, soprattutto, esperienza. E ha già lavorato con Spalletti a Roma\n\nFabio Russo  \n\nFabio Russo\n\nGiornalista\n\nScegli Gazzetta come fonte preferita su Google [...] Scegli Gazzetta come fonte preferita su Google\n\nTu chiamale se vuoi, occasioni. Alle prese con quella che potrebbe essere una vera rivoluzione tra i pali nella prossima estate (con Di Gregorio sotto esame dopo i recenti errori, Perin che vorrebbe tornare a giocare titolare e Pinsoglio che pensa al ritiro), la Juve guarda soprattutto alla Premier League. E, oltre a Vicario, mette gli occhi pure su Alisson Becker, portiere del Liverpool con il contratto in scadenza nel 2027.\n\n.\n\nVIDEO: Buffon: \"La Juve ha avuto sfiga, Spalletti le ha dato un’identità\"\n\n## juve, si apre la pista alisson\n\n—",
+    "ob1_score": 66,
+    "source_name": "www.gazzetta.it",
+    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Juventus/24-02-2026/juve-vicario-e-alisson-per-il-dopo-di-gregorio.shtml",
+    "discovered_at": "2026-09-15T11:28:29.426426",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "45b2684d6fd09e1f3ca7a9169ec8a5e6",
+    "player_name": "Da Vlahovic",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Da febbraio i giocatori in scadenza il 30 giugno 2026 saranno liberi di firmare con altre squadre: ecco la top 10 delle occasioni di mercato",
+    "ob1_score": 60,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/da-vlahovic-e-maignan-da-bernardo-silva-a-ruben-neves-la-top-10-dei-giocatori-in-scadenza-nel-2026/blt1fbcaffd661a9efc",
+    "discovered_at": "2026-09-15T11:28:29.426798",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "19560aba3b5874a67ab3c235f170d93c",
+    "player_name": "Charlotte Independence",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "| 21 | |  |  |  --- | | Thabo Nare | Thabo Nare | | Difensore centrale | | 23 | Stati Uniti Zimbabwe | 20/04/2026 \n| 22 | |  |  |  --- | | Kevin Riascos | Kevin Riascos | | Difensore centrale | | 31 | Colombia | 30/11/2026 \n| 14 | |  |  |  --- | | Reudd Manin | Reudd Manin | | Difensore centrale | | 25 | Martinica Francia | 30/11/2026 \n| 2 | |  |  |  --- | | Fabrice Ngah | Fabrice Ngah | | Terzino sinistro | | 28 | Camerun | 30/11/2026 \n| 3 | |  |  |  --- | | Joey Skinner | Joey Skinner | | Terzino sinistro | | 23 | Stati Uniti | 30/11/2026 \n| 16 | |  |  |  --- | | Miles Lyons | Miles Lyons | | Terzino destro | | 23 | Stati Uniti Giamaica | 30/11/2026 \n| 17 | |  |  |  --- | | Clay Dimick | Clay Dimick | | Terzino destro | | 31 | Stati Uniti | 30/11/2026 [...] | # | Giocatori | Età | Naz | Contratto | Valore di mercato |\n ---  ---  --- |\n| 1 | |  |  |  --- | | Giorgos Tasouris | Giorgos Tasouris | | Portiere | | 30 | Cipro Stati Uniti | 30/11/2026 \n| 28 | |  |  |  --- | | Matt Levy | Matt Levy | | Portiere | | 26 | Stati Uniti | 30/11/2026 \n svincolato  |  |  |  --- | | Andreas Kokoska | Andreas Kokoska | | Portiere | | 27 | Repubblica Ceca | 30/11/2026 \n| 12 | |  |  |  --- | | Joshua Burton | Joshua Burton | | Portiere | | 25 | Stati Uniti | 31/05/2026 \n| 4 | |  |  |  --- | | Séga Coulibaly | Séga Coulibaly | | Difensore centrale | | 30 | Francia Mali | 30/11/2026 \n| 5 | |  |  |  --- | | Javen Romero | Javen Romero | | Difensore centrale | | 20 | Messico Stati Uniti | 30/11/2026 [...] |  |  |\n --- |\n| Giorgos Tasouris | Giorgos Tasouris |\n| Portiere |\n\nGiorgos Tasouris\nCipro\nStati Uniti\n\n|  |  |\n --- |\n| Matt Levy | Matt Levy |\n| Portiere |\n\nMatt Levy\nStati Uniti\nsvincolato\n\n|  |  |\n --- |\n| Andreas Kokoska | Andreas Kokoska |\n| Portiere |\n\nAndreas Kokoska\nRepubblica Ceca\n\n|  |  |\n --- |\n| Joshua Burton | Joshua Burton |\n| Portiere |\n\nJoshua Burton\nStati Uniti\n\n|  |  |\n --- |\n| Séga Coulibaly | Séga Coulibaly |\n| Difensore centrale |\n\nSéga Coulibaly\nFrancia\nMali\n\n|  |  |\n --- |\n| Javen Romero | Javen Romero |\n| Difensore centrale |\n\nJaven Romero\nMessico\nStati Uniti\n\n|  |  |\n --- |\n| Thabo Nare | Thabo Nare |\n| Difensore centrale |\n\nThabo Nare\nStati Uniti\nZimbabwe\n\n|  |  |\n --- |\n| Kevin Riascos | Kevin Riascos |\n| Difensore centrale |\n\nKevin Riascos\nColombia",
+    "ob1_score": 66,
+    "source_name": "transfermarkt.it",
+    "source_url": "https://transfermarkt.it/charlotte-independence/kader/verein/46717",
+    "discovered_at": "2026-09-15T11:28:29.427016",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "27d2e622876ea31356bff5577be29834",
+    "player_name": "Young Right",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Player Rankings ; Tino Livramento. Newcastle United • 23 years old. €38.9M ; Michael Kayode. Brentford FC • 22 years old. €34.6M ; Wesley. Associazione Sportiva",
+    "ob1_score": 58,
+    "source_name": "footballanalytics.ai",
+    "source_url": "https://footballanalytics.ai/data/young-players/all/rb/2026-27",
+    "discovered_at": "2026-09-15T11:28:29.427181",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "6ddbb4146d0d47ead643790832baccb8",
+    "player_name": "Yahoo Sports",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Today, the Lega Nazionale Dilettanti announced the composition of the Serie D 2026/27 groups: 162 teams, split across nine groups, will compete in Italy's top amateur division from September to May. After their developmental 2025/26 campaign that ended in the playoffs against ChievoVerona, Milan Futuro will compete in Group B with teams from Lombardy, Veneto and Emilia-Romagna. The opening matchday is scheduled for Sunday 6 September, with the squad's first official fixture taking place seven days earlier in the first round of the Serie D Coppa Italia. The format remains the same as last season, with groups consisting of 18 teams. The fixture list will be announced soon, with a total of 34 matchdays set to take place. As in the previous campaign, fixtures will be split between 2026 (first [...] MILAN FUTURO'S 2026/27 SERIE D OPPONENTS\n\nMILAN FUTURO'S 2026/27 SERIE D OPPONENTS\n\nAC Milan\n\n·\n\n1 min read\n\n About Our Ads\n\nAdvertisement\n\nAdvertisement\n\nAdvertisement [...] campaign, fixtures will be split between 2026 (first half of the season) and 2027 (second half of the season). The season will once again feature nine teams earning automatic promotion to Serie C, with the winners of each group securing promotion, while four teams from each group will be relegated to Eccellenza.",
+    "ob1_score": 58,
+    "source_name": "sports.yahoo.com",
+    "source_url": "https://sports.yahoo.com/articles/milan-futuros-2026-27-serie-111800759.html",
+    "discovered_at": "2026-09-15T11:28:29.427566",
     "league_id": "italy_serie_c_d"
   }
 ]
