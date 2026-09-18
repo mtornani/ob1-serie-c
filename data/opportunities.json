@@ -22433,7 +22433,17 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445749",
     "discovered_at": "2026-09-17T16:35:05.227200",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/matteo-anzolin/profil/spieler/395127",
+    "tm_verified_at": "2026-09-18T04:10:41+00:00",
+    "birth_date": "11/11/2000",
+    "age": 25,
+    "current_club": "svincolato",
+    "role_name": "Terzino sinistro",
+    "foot": "sinistro",
+    "agent": "P&P Sport ...",
+    "market_value": 200000,
+    "market_value_eur": 200000
   },
   {
     "id": "aa7535c2e9ab2be2c873752af0396184",
@@ -22520,18 +22530,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "0507fb5f1ab5a18bb45080e9d1eb96f9",
-    "player_name": "Lautaro Martinez",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Lautaro in rientro verso la formazione di Inter",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/17/roma-inter-chivu-ha-scelto-zielinski-al-posto-di-calhanoglu-lautaro-verso-il-rientro/",
-    "discovered_at": "2026-09-17T21:08:52.521791",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "e68fbf9ba7a66d6bd0816c9b938add2a",
     "player_name": "Mamadou Diouf",
     "region": "ITALY",
@@ -22577,6 +22575,66 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/09/13/serie-a-domenica-di-fuoco-la-juve-cade-con-il-sassuolo-tutti-i-risultati/",
     "discovered_at": "2026-09-17T21:08:52.522459",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "91e618f9d66238929827b0672c607c61",
+    "player_name": "Augusto Owusu",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Juventus classe 2005 esordisce in Europa League dopo essere stato fuori rosa",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458409",
+    "discovered_at": "2026-09-18T03:59:48.054651",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "562e3d5868dcca3612ea4ac22e9f07fd",
+    "player_name": "Matteo Anzolin",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Bari valuta il tesseramento del terzino classe 2000 Matteo Anzolin",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458413",
+    "discovered_at": "2026-09-18T03:59:48.055086",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ae2150b7b45cae22fcd7c7620be2043a",
+    "player_name": "Cristian Chivu",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Chivu analizza le mosse per il match Roma-Inter",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/09/16/roma-inter-chivu-studia-le-mosse-ballottaggi-e-rischi-allolimpico/",
+    "discovered_at": "2026-09-18T03:59:48.055328",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ee87c4f0a837171d111c796b8ce00b1e",
+    "player_name": "N'Golo Kanté",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Vanoli paragona Gonçalves a un piccolo Kanté",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/09/16/fiorentina-vanoli-oulai-un-piccolo-kante-goncalves-lo-sto-centellinando/",
+    "discovered_at": "2026-09-18T03:59:48.055582",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "00c40a9c7dd490d761905b37a3207640",
+    "player_name": "Francesco Pio Esposito",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Attaccante dell'Inter citato nell'articolo",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/09/14/serie-a-como-roma-e-inter-non-sbagliano/",
+    "discovered_at": "2026-09-18T03:59:48.055812",
     "league_id": "italy_serie_c_d"
   }
 ]
