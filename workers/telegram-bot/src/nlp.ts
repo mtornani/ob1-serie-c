@@ -7,7 +7,7 @@
  */
 
 export interface ParsedIntent {
-  intent: 'search' | 'list_hot' | 'list_warm' | 'list_all' | 'stats' | 'help' | 'dna_top' | 'dna_club' | 'create_watch' | 'unknown';
+  intent: 'search' | 'list_hot' | 'list_warm' | 'list_all' | 'stats' | 'help' | 'create_watch' | 'unknown';
   filters: {
     role?: string;
     roles?: string[];      // For watch profiles: multiple roles
@@ -78,9 +78,7 @@ const INTENT_PATTERNS = {
   // Situazioni di necessità ("devo ricostruire", "fallito", "serve rinforzare")
   need_players: /\b(devo|dobbiamo|bisogna|serve|servono)\b.*\b(ricostruire|rinforzare|comprare|prendere|trovare|cercare|squadra|rosa)\b/i,
 
-  // DNA-001: DNA matching patterns
-  dna_top: /\b(talenti|prodigy|giovani.?promesse|migliori.?talenti|top.?talenti|squadre?.?b|under\s?23|next\s?gen|futuro|primavera)\b/i,
-  dna_club: /\b(match\w*|fit|adatti?\s*(a|per)?|compatibil\w*|profilo|dna)\b/i,
+  young_talent: /\b(talenti|prodigy|giovani.?promesse|migliori.?talenti|top.?talenti|squadre?.?b|under\s?23|next\s?gen|futuro|primavera)\b/i,
 
   // SCORE-002: Watch profile creation via natural language
   create_watch: /\b(avvisami|notificami|alertami|segnalami|fammi sapere|tienimi aggiornato|monitora|segui|watch)\b.*\b(quando|se|trovi|esce|arriva|disponibile)\b/i,
@@ -342,40 +340,11 @@ export function parseNaturalQuery(text: string): ParsedIntent {
     interpretationParts.unshift('crea alert');
   }
 
-  // 11. DNA-001: Check for DNA matching intents
-  if (intent === 'unknown' && INTENT_PATTERNS.dna_top.test(lower)) {
-    intent = 'dna_top';
+  if (intent === 'unknown' && INTENT_PATTERNS.young_talent.test(lower)) {
+    intent = 'list_hot';
+    filters.ageMax = 23;
     confidence = Math.max(confidence, 0.85);
-    interpretationParts.unshift('talenti squadre B');
-  } else if (intent === 'unknown' && INTENT_PATTERNS.dna_club.test(lower)) {
-    // Try to extract club name for DNA match, skipping common verbs
-    // Handles: "adatti a rifondare il rimini fc", "per il pescara", "match pescara"
-    const clubPatterns = [
-      /(?:rifondare|ricostruire|rinforzare|aiutare|sistemare)\s+(?:il\s+)?(\w+)(?:\s+fc)?/i,
-      /(?:per|a)\s+(?:il\s+)?(\w+)(?:\s+fc)?/i,
-      /(?:adatti?\s*(?:a|per)?)\s+(?:il\s+)?(\w+)(?:\s+fc)?/i,
-      /(?:match|dna|profilo)\s+(?:per\s+)?(?:il\s+)?(\w+)/i,
-    ];
-
-    let clubName: string | null = null;
-    for (const pattern of clubPatterns) {
-      const match = lower.match(pattern);
-      if (match && match[1]) {
-        // Skip common verbs that might get matched
-        const skipWords = ['rifondare', 'ricostruire', 'rinforzare', 'aiutare', 'sistemare', 'dei', 'giocatori', 'adatti'];
-        if (!skipWords.includes(match[1].toLowerCase())) {
-          clubName = match[1];
-          break;
-        }
-      }
-    }
-
-    if (clubName) {
-      filters.query = clubName;
-      intent = 'dna_club';
-      confidence = Math.max(confidence, 0.8);
-      interpretationParts.push(`DNA match per ${clubName}`);
-    }
+    interpretationParts.unshift('talenti under 23');
   }
 
   // 12. FALLBACK: If we still don't know what to do but the message

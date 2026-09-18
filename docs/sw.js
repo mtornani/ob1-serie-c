@@ -2,7 +2,7 @@
  * OB1 Lega Pro — Service Worker (PWA)
  * Network-first for app shell; data.json always network-only.
  */
-const CACHE_NAME = 'ob1-legapro-v14';
+const CACHE_NAME = 'ob1-legapro-v15';
 const STATIC_ASSETS = [
   './',
   './index.html',

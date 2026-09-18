@@ -300,7 +300,7 @@ export async function setMyCommands(env: Env): Promise<boolean> {
     { command: 'start', description: '🚀 Inizia e seleziona lega' },
     { command: 'league', description: '🌍 Cambia focus globale' },
     { command: 'summary', description: '📊 Riepilogo opportunità top' },
-    { command: 'hot', description: '🔥 Segnali High-Relevance (DNA 80+)' },
+    { command: 'hot', description: '🔥 Da chiamare (score 70+)' },
     { command: 'search', description: '🔍 Analisi tecnica giocatore' },
     { command: 'help', description: '❓ Guida completa' },
   ];

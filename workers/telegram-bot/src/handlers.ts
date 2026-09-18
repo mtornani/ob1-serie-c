@@ -16,8 +16,7 @@ import {
 import { handleWatchCommand, handleWatchCallback } from './watch';
 import { handleSmartSearch, handleSearchCallback } from './smart-search';
 import { handleVoiceMessage } from './conversational';
-import { fetchDNAData, getMatchesForClub, getTopMatches, formatDNAMatchList, formatDNAStats } from './dna';
-import { generateScoutResponse, generateDNAResponse } from './response-generator';
+import { generateScoutResponse } from './response-generator';
 import { parseNaturalQuery, ParsedIntent } from './nlp';
 import { classifyWithLLM, convertToParseIntent } from './llm-classifier';
 import { shouldTriggerWizard, startScoutWizard, handleWizardCallback } from './scout-wizard';
@@ -144,15 +143,14 @@ async function handleCommand(chatId: number, text: string, env: Env): Promise<vo
       await handleStats(chatId, env);
       break;
 
-    // DNA-001: DNA Matching commands
     case '/dna':
     case '/match':
-      await handleDNAMatch(chatId, args.join(' '), env);
+      await sendMessage(env, chatId, 'Comando rimosso. Usa /scout per una ricerca guidata, /hot per le priorità, /talenti per gli under 23.');
       break;
 
     case '/talenti':
     case '/talents':
-      await handleDNATopMatches(chatId, env);
+      await handleTalents(chatId, env);
       break;
 
     // SCORE-002: Watch Criteria commands
@@ -211,7 +209,7 @@ async function handleLeagueSelection(chatId: number, env: Env): Promise<void> {
 }
 
 async function handleSummary(chatId: number, env: Env): Promise<void> {
-  await sendMessage(env, chatId, "📊 <b>Generazione Riepilogo Globale...</b>\n\n<i>Sto analizzando le opportunità top con il motore DNA 2.0</i>", 'HTML');
+  await sendMessage(env, chatId, "📊 <b>Generazione Riepilogo Globale...</b>\n\n<i>Sto analizzando le opportunità top</i>", 'HTML');
   // Fallback a Smart Search per il summary globale
   await handleSmartSearch(chatId, "Fammi un riepilogo delle migliori opportunità mondiali divise per lega", env);
 }
@@ -393,8 +391,7 @@ async function handleNaturalQuery(chatId: number, text: string, env: Env): Promi
     return;
   }
 
-  // DNA-001: Check FIRST if this is a "field search" query
-  // e.g., "mi serve un terzino che spinga", "centrocampista box-to-box"
+  // Field search first: "mi serve un terzino che spinga"
   if (parseTalentQuery(text) !== null) {
     await handleTalentSearch(chatId, text, env);
     return;
@@ -473,15 +470,6 @@ async function handleNaturalQuery(chatId: number, text: string, env: Env): Promi
       await handleFilteredQuery(chatId, data.opportunities, parsed, null, parsed.filters, limit, env);
       break;
 
-    // DNA-001: Natural language DNA queries
-    case 'dna_top':
-      await handleDNATopMatches(chatId, env);
-      break;
-
-    case 'dna_club':
-      await handleDNAMatch(chatId, parsed.filters.query || '', env);
-      break;
-
     // SCORE-002: Create watch profile via natural language
     case 'create_watch':
       await handleNaturalWatchCreate(chatId, parsed, env);
@@ -539,7 +527,7 @@ Ho capito che cerchi: <i>${parsed.interpretation || 'giocatori con specifiche na
 Nel frattempo, posso mostrarti:
 • /hot - migliori opportunità
 • /all - lista completa
-• /dna pescara - match per un club specifico`;
+• /scout - ricerca guidata`;
     }
 
     await sendMessage(env, chatId, noResultMsg);
@@ -583,17 +571,16 @@ Puoi chiedermi cose come:
 • "difensori in prestito"
 • "cerca Rossi"
 
-🧬 <b>DNA Matching:</b>
+⚽ <b>Talenti:</b>
 • "talenti dalle squadre B"
-• "top talenti"
-• "match per Pescara"
+• "top talenti under 23"
 
 📊 <b>Info:</b>
 • "quante opportunità ci sono?"
 • "come funziona?"
 
 Oppure usa i comandi:
-/hot /warm /all /search /stats /talenti /dna /help
+/hot /warm /all /search /stats /talenti /help
 
 🎯 <b>Nuovo!</b> Scrivi /scout per un aiuto guidato stile Akinator!`;
 }
@@ -711,83 +698,29 @@ async function handleDetailsCallback(env: Env, callbackId: string, chatId: numbe
   await sendMessage(env, chatId, message);
 }
 
-// ============================================================================
-// DNA-001: DNA MATCHING HANDLERS
-// ============================================================================
-
-async function handleDNAMatch(chatId: number, clubQuery: string, env: Env): Promise<void> {
-  const opportunities = await fetchDNAData(env);
-
-  if (!opportunities) {
+async function handleTalents(chatId: number, env: Env): Promise<void> {
+  const data = await fetchData(env);
+  if (!data?.opportunities) {
     await sendMessage(env, chatId, formatError());
     return;
   }
 
-  // If no club specified, show examples
-  if (!clubQuery || clubQuery.trim().length === 0) {
-    await sendMessage(env, chatId, `🧬 <b>DNA Matching</b>
+  const young = data.opportunities
+    .filter(o => o.age != null && o.age <= 23)
+    .sort((a, b) => (b.ob1_score || 0) - (a.ob1_score || 0));
 
-Uso: /dna &lt;club&gt;
-
-Esempio: <code>/dna pescara</code>
-
-Ti mostrerò i giocatori più adatti per il club richiesto basandomi sulle opportunità di mercato attuali.`);
-    return;
-  }
-
-  // Get matches for this club using complete DNA algorithm
-  const matches = await getMatchesForClub(env, opportunities, clubQuery, 5);
-
-  const message = formatDNAMatchList(
-    matches,
-    `🧬 <b>DNA Matches</b>`,
-    clubQuery
-  );
-
-  // NLP-003: Inject AI DNA analysis if available
-  if (env.AI) {
-    const aiComment = await generateDNAResponse(env.AI, clubQuery, matches);
-
-    if (aiComment) {
-      const fullMessage = `🗣️ <b>OB1 Scout:</b>\n<i>"${aiComment}"</i>\n\n${message}`;
-      await sendMessage(env, chatId, fullMessage);
-      return;
-    }
-  }
-
-  await sendMessage(env, chatId, message);
-}
-
-async function handleDNATopMatches(chatId: number, env: Env): Promise<void> {
-  const opportunities = await fetchDNAData(env);
-
-  if (!opportunities) {
-    await sendMessage(env, chatId, formatError());
-    return;
-  }
-
-  // Get top matches (young players with high DNA score)
-  const topMatches = await getTopMatches(env, opportunities, 75, 8);
-
-  if (topMatches.length === 0) {
+  if (young.length === 0) {
     await sendMessage(env, chatId, `🏆 <b>Top Talenti</b>
 
-Nessun talento Under 23 con score > 75% al momento.`);
+Nessun under 23 in lista al momento.`);
     return;
   }
 
-  const message = formatDNAMatchList(
-    topMatches,
-    `🏆 <b>TOP TALENTI - Best Prospects</b>
-
-Giovani talenti (Under 23) più interessanti monitorati da OB1 Radar:`
+  await sendMessage(
+    env,
+    chatId,
+    formatOpportunityList(young, '🏆 <b>Under 23 — priorità</b>', 8)
   );
-
-  await sendMessage(env, chatId, message);
-
-  // Also show stats
-  const statsMessage = formatDNAStats(opportunities);
-  await sendMessage(env, chatId, statsMessage);
 }
 
 // ============================================================================
@@ -1004,7 +937,7 @@ ${detailsText}
 }
 
 // ============================================================================
-// DNA-001: TALENT SEARCH ("Field Language" Queries)
+// TALENT SEARCH ("Field Language" Queries)
 // ============================================================================
 
 async function handleTalentSearch(chatId: number, text: string, env: Env): Promise<void> {
@@ -1020,14 +953,14 @@ async function handleTalentSearch(chatId: number, text: string, env: Env): Promi
 
   console.log(`Parsed talent query:`, query);
 
-  const opportunities = await fetchDNAData(env);
+  const data = await fetchData(env);
 
-  if (!opportunities) {
+  if (!data?.opportunities) {
     await sendMessage(env, chatId, formatError());
     return;
   }
 
-  const results = searchTalents(opportunities, query, 5);
+  const results = searchTalents(data.opportunities, query, 5);
   const message = formatTalentSearchResults(results, query);
 
   // NLP-003: Inject AI Scout Persona commentary

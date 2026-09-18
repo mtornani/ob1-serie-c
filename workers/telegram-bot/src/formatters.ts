@@ -117,10 +117,9 @@ Scrivimi come parleresti:
 🎤 <b>MESSAGGI VOCALI</b>
 Registra un vocale e ti rispondo!
 
-🧬 <b>SCOUTING AVANZATO</b>
-/talenti - Juve NG, Milan Futuro, Atalanta U23
-/dna &lt;club&gt; - Match DNA per un club specifico
-/scout - Wizard guidato stile Akinator
+⚽ <b>SCOUTING</b>
+/talenti - Under 23 in lista
+/scout - Wizard guidato
 /search &lt;nome&gt; - Cerca per nome
 
 🔔 <b>ALERT PERSONALIZZATI</b>

@@ -1,3 +1,12 @@
+# STALE — non usare come source of truth
+
+Questo file descrive un’architettura vecchia (scraper.py, ingest.py, DNA 2.0, File Search RAG).
+Per lavorare sul repo: `AGENTS.md` + `PROJECT_STATUS.md` + `CLAUDE.md`.
+
+DNA matching è stato rimosso (2026-09-18).
+
+---
+
 # OB1 Serie C Dev — Documentazione Completa per Gemini
 
 ## Panoramica Progetto

@@ -2,34 +2,46 @@
 
 ## Stack
 - Python 3.12
-- Gemini API (google-genai) per RAG e File Search
-- Tavily per web scraping avanzato
-- python-telegram-bot per il bot Telegram
+- Gemini API (`google-genai`) per discovery/enrichment
+- Tavily per search (fallback Serper)
+- Cloudflare Worker TypeScript per il bot Telegram (unico bot attivo)
 - YAML per configurazione
 
 ## Struttura
-- `src/` - Codice sorgente principale (agent, scraper, scoring, DNA, ecc.)
-- `bot/` - Bot Telegram
-- `config/` - File di configurazione YAML
-- `data/` - Dati locali (CSV, JSON)
-- `scripts/` - Script di utilita e automazione
-- `workers/` - Worker per task asincroni
-- `docs/` - Documentazione
+- `src/` — Core: scraper_global, enricher_tm, scoring SCORE-003, quality_gate, notifier
+- `scripts/` — Pipeline: ouroboros_run, run_enrichment, generate_dashboard, sanity_check
+- `config/` — YAML (leagues, sources, clubs, prompts)
+- `data/` — `opportunities.json` (DB principale)
+- `docs/` — Dashboard pubblica (GitHub Pages)
+- `reports/` — Report scouting privati (NON pubblici)
+- `workers/telegram-bot/` — Bot Telegram live
+- `bot/` — Legacy Python, non è il bot in produzione
 
 ## Convenzioni
-- Script Python eseguibili in `src/` con `if __name__ == "__main__"`
-- Configurazione tramite `.env` e file YAML in `config/`
-- Encoding: usa sempre `PYTHONIOENCODING=utf-8` quando esegui script Python
-- Git: branch `main`, commit in italiano o inglese con prefisso semantico
+- Configurazione tramite `.env` e YAML in `config/`
+- Encoding: sempre `PYTHONIOENCODING=utf-8` sugli script Python
+- API keys mai hardcoded; `.env` è gitignored
+- Git: branch `main`, commit in inglese con prefisso semantico
+- Report in `reports/` non vanno in `docs/`
+- `src/satarch/` è progetto separato: non toccare senza richiesta
 
 ## Comandi utili
 ```bash
-# Test scraper
-PYTHONIOENCODING=utf-8 python src/scraper.py
+# Discovery
+PYTHONIOENCODING=utf-8 python scripts/ouroboros_run.py
 
-# Ingest dati
-PYTHONIOENCODING=utf-8 python src/ingest.py
+# Enrichment Transfermarkt
+PYTHONIOENCODING=utf-8 python scripts/run_enrichment.py
 
-# Avvia bot
-PYTHONIOENCODING=utf-8 python bot/main.py
+# Dashboard + quality gate
+PYTHONIOENCODING=utf-8 python scripts/generate_dashboard.py
+
+# Sanity post-pipeline
+PYTHONIOENCODING=utf-8 python scripts/sanity_check.py
+
+# Unit test gate + score
+PYTHONIOENCODING=utf-8 python -m unittest tests.test_quality_gate tests.test_scoring -v
 ```
+
+Pipeline CI: `.github/workflows/ingest.yml` (cron 6h).
+Jina (`JINA_API_KEY`): già nel workflow — Reader/Search per profili Transfermarkt. Non è discovery di notizie.

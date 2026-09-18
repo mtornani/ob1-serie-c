@@ -188,14 +188,7 @@ function decorate(o){
   if (s >= 70) tier = 'hot';
   else if (s >= 57) tier = 'warm';
 
-  let barPct = 0;
-  if (isFree) {
-    barPct = Math.max(5, Math.min(100, 100 - (o.days_without_contract||0) * 2));
-  } else if (days !== null) {
-    barPct = Math.max(4, Math.min(100, 100 - ((days/730)*100)));
-  }
-
-  return { ...o, _days: days, _urgency: urgency, _tier: tier, _isFree: isFree, _barPct: barPct };
+  return { ...o, _days: days, _urgency: urgency, _tier: tier, _isFree: isFree };
 }
 
 /* ============ FILTER + SORT ============ */

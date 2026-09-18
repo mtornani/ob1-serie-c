@@ -21,9 +21,6 @@
 import { Env, Opportunity } from './types';
 import { sendMessageWithKeyboard, editMessageText, answerCallbackQuery } from './telegram';
 import { fetchData, filterOpportunities } from './data';
-import { calculateDNAMatch, generateRecommendation, fetchClubData } from './dna';
-import { buildClubDNAFromWizard } from './dna-adapter';
-import type { ClubDNA } from './dna';
 
 // ============================================================================
 // TYPES
@@ -352,7 +349,7 @@ function buildProgressSummary(codes: string[]): string {
 
 /**
  * Show wizard results — final step
- * Uses DNA scoring engine for personalized matching
+ * Filtri dal wizard, ordinati per ob1_score.
  */
 async function showWizardResults(
   chatId: number,
@@ -371,13 +368,6 @@ async function showWizardResults(
     return;
   }
 
-  // Fetch real club profiles for DNA adapter
-  const realClubs = await fetchClubData(env);
-
-  // Build virtual ClubDNA from wizard answers
-  const wizardDNA = buildClubDNAFromWizard(codes, realClubs);
-
-  // Pre-filter: basic filters (role, age, budget type) for speed
   const filters: any = {};
   if (answers.role && answers.role !== 'qualsiasi') {
     filters.role = answers.role;
@@ -395,7 +385,6 @@ async function showWizardResults(
 
   let candidates = filterOpportunities(data.opportunities, filters);
 
-  // Apply rivalries filter if club is specified
   if (answers.club && answers.club !== 'qualsiasi') {
     const incompatibleClubs = RIVALRIES[answers.club] || [];
     candidates = candidates.filter(opp => {
@@ -409,26 +398,14 @@ async function showWizardResults(
     });
   }
 
-  // DNA score each candidate against the wizard's virtual ClubDNA
-  const scoredResults = candidates.map(opp => {
-    const match = calculateDNAMatch(opp, wizardDNA);
-    return {
-      opp,
-      dnaScore: match.score,
-      breakdown: match.breakdown,
-      matchedNeed: match.matchedNeed,
-    };
-  });
-
-  // Sort by DNA score (not ob1_score) and take top 5
-  const results = scoredResults
-    .filter(r => r.dnaScore > 0)
-    .sort((a, b) => b.dnaScore - a.dnaScore)
+  const results = [...candidates]
+    .sort((a, b) => (b.ob1_score || 0) - (a.ob1_score || 0))
     .slice(0, 5);
 
-  // Build summary text
   const progressSummary = buildProgressSummary(codes);
-  const clubLabel = wizardDNA.name !== 'Ricerca Wizard' ? ` per <b>${escapeHtml(wizardDNA.name)}</b>` : '';
+  const clubLabel = answers.club && answers.club !== 'qualsiasi'
+    ? ` per <b>${escapeHtml(answers.club.replace(/_/g, ' '))}</b>`
+    : '';
 
   let message = `🎯 <b>Risultati Scout Wizard</b>${clubLabel}
 
@@ -439,16 +416,15 @@ ${progressSummary}`;
 
 Prova a rilassare i filtri o usa /hot per le migliori opportunità.`;
   } else {
-    message += `🧬 <b>Top ${results.length} DNA Match:</b>\n\n`;
+    message += `📋 <b>Top ${results.length} per priorità:</b>\n\n`;
 
-    results.forEach((r, i) => {
-      const emoji = r.dnaScore >= 80 ? '🔥' : r.dnaScore >= 60 ? '⚡' : '📊';
-      message += `${i + 1}. ${emoji} <b>${escapeHtml(r.opp.player_name)}</b>`;
-      if (r.opp.age) message += ` (${r.opp.age})`;
-      message += ` — DNA <b>${r.dnaScore}%</b>\n`;
-      message += `   ${r.opp.role_name || r.opp.role} • ${r.opp.opportunity_type}`;
-      if (r.opp.current_club) message += `\n   📍 ${escapeHtml(r.opp.current_club)}`;
-      message += `\n   📊 Pos:${r.breakdown.position} Età:${r.breakdown.age} Stile:${r.breakdown.style} Disp:${r.breakdown.availability} Bud:${r.breakdown.budget}`;
+    results.forEach((opp, i) => {
+      const emoji = (opp.ob1_score || 0) >= 70 ? '🔥' : (opp.ob1_score || 0) >= 57 ? '⚡' : '📊';
+      message += `${i + 1}. ${emoji} <b>${escapeHtml(opp.player_name)}</b>`;
+      if (opp.age) message += ` (${opp.age})`;
+      message += ` — <b>${opp.ob1_score}</b>/100\n`;
+      message += `   ${opp.role_name || opp.role} • ${opp.opportunity_type}`;
+      if (opp.current_club) message += `\n   📍 ${escapeHtml(opp.current_club)}`;
       message += '\n\n';
     });
 

@@ -48,7 +48,7 @@ cron 6h → ouroboros_run (Gemini budget 4 + Tavily source-first)
 |-----------|------|------|
 | Discovery | `src/scraper_global.py` | Circuit breaker daily quota; Tavily trusted_sources |
 | Enrich | `src/enricher_tm.py` + `scripts/run_enrichment.py` | Batch 5; stop on free_tier dead |
-| Score | `src/scoring.py` | SCORE-002 |
+| Score | `src/scoring.py` | SCORE-003 |
 | Gate | `src/quality_gate.py` | identity_complete → publishable |
 | Export | `scripts/generate_dashboard.py` | Solo publishable in `docs/data.json` |
 | Sanity | `scripts/sanity_check.py` | + check età pubblica |
@@ -80,4 +80,12 @@ Fix: budget discovery, circuit breaker daily quota, Tavily fallback source-first
 
 - `src/satarch/` (progetto separato, rimosso da remote core)  
 - Rewrite SQLite v2 “per allinearci a global”  
-- Feature one-off club (Campobasso/Ravenna scripts)  
+- Feature one-off club (Campobasso/Ravenna scripts)
+
+## 2026-09-18
+
+- DNA matching rimosso (bot `/dna`, `dna.ts`, `dna_manifestos.yaml`, `dna_matches.json`).
+- Wizard/watch restano su filtri + `ob1_score`.
+- Groq default model: `openai/gpt-oss-120b` (llama-3.3-70b 404).
+- `ingest.yml` passa `GROQ_API_KEY` / `OPENROUTER_API_KEY`.
+- Test: `tests/test_quality_gate.py`, `tests/test_scoring.py`.  

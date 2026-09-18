@@ -1,6 +1,5 @@
 import { Ai } from '@cloudflare/ai';
 import { Opportunity } from './types';
-import { PlayerMatch } from './dna';
 
 /**
  * SCOUT PERSONA SYSTEM PROMPT
@@ -35,7 +34,7 @@ export async function generateScoutResponse(
   ai: Ai,
   userQuery: string,
   opportunities: Opportunity[],
-  context: string = 'market' // 'market' | 'dna' | 'talent'
+  context: string = 'market' // 'market' | 'talent'
 ): Promise<string | null> {
   try {
     // 1. Prepare data summary for the LLM (minimize tokens)
@@ -85,46 +84,5 @@ Conferma se i giocatori trovati rispecchiano le caratteristiche richieste (es. "
   } catch (error) {
     console.error('AI Generation Error:', error);
     return null; // Fallback to standard static messages on error
-  }
-}
-
-/**
- * Generates a response for DNA Matches (specifically for clubs)
- */
-export async function generateDNAResponse(
-  ai: Ai,
-  clubName: string,
-  matches: PlayerMatch[]
-): Promise<string | null> {
-  try {
-    const topMatches = matches.slice(0, 3).map(m => ({
-      name: m.player.player_name,
-      role: m.player.role_name || m.player.role,
-      age: m.player.age,
-      club: m.player.current_club,
-      match_score: m.score,
-      recommendation: m.recommendation
-    }));
-
-    const userPrompt = `Analisi DNA per il club: ${clubName}
-Matches trovati: ${matches.length}. Top 3: ${JSON.stringify(topMatches)}
-
-Scrivi un commento tecnico (max 30-40 parole) per il DS del ${clubName}.
-Evidenzia perché questi profili sono adatti al loro progetto basandoti sullo score e sulla raccomandazione.`;
-
-    const response = await ai.run('@cf/meta/llama-3.1-8b-instruct', {
-      messages: [
-        { role: 'system', content: SCOUT_SYSTEM_PROMPT },
-        { role: 'user', content: userPrompt }
-      ],
-      max_tokens: 150,
-      temperature: 0.3,
-    });
-
-    return (response as any).response?.trim() || null;
-
-  } catch (error) {
-    console.error('AI DNA Generation Error:', error);
-    return null;
   }
 }

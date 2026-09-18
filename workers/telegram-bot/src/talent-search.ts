@@ -1,10 +1,15 @@
 /**
- * DNA-001: Talent Search - Natural Language Field Search
- * REFACTORED: Now uses only data.json via Opportunity interface.
+ * Talent Search - Natural Language Field Search
+ * Uses only data.json via Opportunity interface.
  */
 
-import { PlayerMatch } from './dna';
 import { Opportunity } from './types';
+
+interface TalentMatch {
+  player: Opportunity;
+  score: number;
+  recommendation: string;
+}
 
 // Mapping ruoli - linguaggio naturale → posizioni
 const ROLE_MAPPINGS: Record<string, string[]> = {
@@ -106,7 +111,7 @@ export function searchTalents(
   opportunities: Opportunity[],
   query: TalentSearchQuery,
   limit: number = 5
-): PlayerMatch[] {
+): TalentMatch[] {
   const matches: Array<{ opportunity: Opportunity; score: number }> = [];
 
   for (const opp of opportunities) {
@@ -151,10 +156,7 @@ export function searchTalents(
     .slice(0, limit)
     .map(m => ({
       player: m.opportunity,
-      club_id: 'talent-search',
-      club_name: 'Ricerca Talenti',
       score: m.score,
-      breakdown: { position: 50, age: 50, style: 50, availability: 50, budget: 50, level: 50 },
       recommendation: `Match basato su caratteristiche: ${query.description}`
     }));
 }
@@ -163,7 +165,7 @@ export function searchTalents(
  * Formatta i risultati per Telegram
  */
 export function formatTalentSearchResults(
-  matches: PlayerMatch[],
+  matches: TalentMatch[],
   query: TalentSearchQuery
 ): string {
   if (matches.length === 0) {

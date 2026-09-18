@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-OB1 Serie C - SCORE-001: Advanced Scoring Algorithm
+OB1 Serie C - SCORE-003: Advanced Scoring Algorithm
 Prioritizza le opportunita di mercato con scoring intelligente
 """
 

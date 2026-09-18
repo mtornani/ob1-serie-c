@@ -87,7 +87,7 @@ responses:
     
     Assicurati di aver eseguito la pipeline di ingest:
     ```
-    cd src && python ingest.py
+    python scripts/ouroboros_run.py
     ```
 
 # Personalizzazione per club (opzionale)

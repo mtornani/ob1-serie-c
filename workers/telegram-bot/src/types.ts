@@ -87,7 +87,6 @@ export interface Opportunity {
    ob1_breakdown?: ScoreBreakdown;
    score_breakdown?: ScoreBreakdown;
    recommendation?: string;
-   dna_matches?: Record<string, { score: number, verdict: string }>;
 }
 
 export interface DashboardData {

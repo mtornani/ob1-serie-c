@@ -51,3 +51,18 @@ data/search_cache/
 
 # Stato "cosa ho gia' visto" (ARCH-002): binario, trasportato via artifact CI
 data/ob1.db
+
+# Windows accidental NUL redirect
+nul
+
+# Local ML weights (satarch / YOLO)
+*.pt
+
+# Agent scratch
+.work/
+
+# Pipeline runtime
+scripts/.sanity_state.json
+
+# Large local satellite tiles
+data/satarch/tiles/

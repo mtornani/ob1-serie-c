@@ -9,12 +9,14 @@ professionali per osservatori professionisti.
 
 ### Pipeline dati
 ```
-Scraping (Tavily/Scrapling) → Enrichment (TM + Gemini) → Scoring (SCORE-002) → Report HTML
+Discovery (Tavily/Gemini) → Enrichment (TM + Gemini) → Scoring (SCORE-003) → Dashboard
 ```
 
+Cron 6h: `ouroboros_run` → `run_enrichment` → `generate_dashboard` → `sanity_check` → notify
+
 ### Directory principali
-- `src/` — Core: scraper, enricher, scorer, notifier, DNA engine
-- `scripts/` — Pipeline scripts (enrichment, report generation, backtest)
+- `src/` — Core: scraper_global, enricher_tm, scoring, quality_gate, notifier
+- `scripts/` — Pipeline (ouroboros, enrichment, dashboard, reports, sanity)
 - `reports/scouting/` — Report HTML individuali (PRIVATI, non in docs/)
 - `docs/` — Dashboard pubblica (GitHub Pages serve da qui)
 - `data/` — opportunities.json (database principale), backtest
@@ -22,30 +24,37 @@ Scraping (Tavily/Scrapling) → Enrichment (TM + Gemini) → Scoring (SCORE-002)
 - `workers/` — Cloudflare Workers (Telegram bot — l'unico bot attivo)
 
 ### File chiave
-- `data/opportunities.json` — Database opportunità (100 entries)
+- `data/opportunities.json` — Database opportunità (raw; publishable via quality gate)
 - `docs/data.json` — Dashboard data (generato da generate_dashboard.py)
-- `src/scoring.py` — OB1Scorer con pesi SCORE-002
-- `scripts/generate_scouting_reports.py` — Genera report HTML individuali
-- `scripts/enrich_scrapling.py` — Enrichment via Scrapling + Gemini
+- `src/scoring.py` — OB1Scorer con pesi SCORE-003
+- `src/quality_gate.py` — identity_complete → publishable
+- `scripts/ouroboros_run.py` — Discovery + gate
+- `scripts/run_enrichment.py` — Enrichment Transfermarkt
 - `scripts/generate_dashboard.py` — Scoring + export dashboard
+- `scripts/generate_scouting_reports.py` — Report HTML individuali
+
+### Non toccare senza richiesta
+- `src/satarch/` (progetto separato, rimosso dal core remoto)
+- Script one-off club (Campobasso/Ravenna)
+- Rewrite SQLite v2
 
 ---
 
-## Scoring SCORE-002
-8 fattori pesati (0-100):
+## Scoring SCORE-003
+7 fattori pesati (0-100). Completeness droppata post quality gate; 5% ridistribuito su type + age.
+
 - Attualità notizia (15%) — freshness della segnalazione
-- Tipo opportunità (10%) — svincolato > prestito > mercato
+- Tipo opportunità (12%) — svincolato > prestito > mercato
 - Esperienza verificata (20%) — presenze in carriera
-- Profilo anagrafico (15%) — età target U23
+- Profilo anagrafico (18%) — età target U23
 - Valore di mercato (15%) — fascia Serie C
 - Pertinenza Serie C (15%) — league fit
 - Affidabilità fonte (5%) — qualità della source
-- Completezza dati (5%) — dati disponibili
 
 Classificazione: HOT ≥ 70, WARM ≥ 57, COLD < 57
 
 ## Convenzioni tecniche
-- Python 3.12: `C:\Users\Mirko\AppData\Local\Programs\Python\Python312\python.exe`
+- Python: `C:\Users\Mirko\AppData\Local\Python\pythoncore-3.14-64\python.exe` (py -3.14). Cartella Python312 esiste ma **manca python.exe**.
 - Sempre prefissare: `PYTHONIOENCODING=utf-8`
 - API keys in `.env` (gitignored), MAI hardcoded
 - `.env` ha un bug noto: `python-dotenv` sovrascrive env vars reali con placeholder.
@@ -69,11 +78,16 @@ Classificazione: HOT ≥ 70, WARM ≥ 57, COLD < 57
 | `GEMINI_API_KEY` | Google AI Studio |
 | `TAVILY_API_KEY` | Tavily search API |
 | `SERPER_API_KEY` | Serper.dev API |
+| `GROQ_API_KEY` | Fallback LLM se Gemini quota morta (opzionale) |
+| `OPENROUTER_API_KEY` | Fallback LLM dopo Groq (opzionale) |
+| `JINA_API_KEY` | Reader+Search TM se Gemini morto (opzionale) |
 | `TELEGRAM_BOT_TOKEN` | Token del bot @Ob1LegaPro_bot |
 | `TELEGRAM_CHAT_ID` | Chat ID broadcast principale (es. 1465485090) |
 | `TELEGRAM_OFFICE_CHAT_ID` | Chat ID admin alert (privato) |
 
-### Cloudflare Pages (deploy-cf-pages.yml)
+### Cloudflare Pages
+Workflow `deploy-cf-pages.yml` è documentato sotto ma **non è nel repo**. Deploy pubblico attuale: `.github/workflows/pages.yml` (GitHub Pages).
+
 | Secret | Come ottenerlo |
 |--------|----------------|
 | `CLOUDFLARE_API_TOKEN` | CF Dashboard → My Profile → API Tokens → Create Token → "Edit Cloudflare Pages" template |
