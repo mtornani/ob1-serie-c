@@ -18340,15 +18340,15 @@
     "market_value_eur": 2000000
   },
   {
-    "id": "542d8248ab6971e5f8ebcfd87958073f",
-    "player_name": "Ibrahima Konaté",
+    "id": "025c55d24af2e0734eb673ae3b5124f1",
+    "player_name": "Ibrahima Konate",
     "region": "ITALY",
     "opportunity_type": "svincolato",
-    "description": "Lascerà il Liverpool, stop alle trattative per il rinnovo",
+    "description": "Libero dal Liverpool, possibile trasferimento a parametro zero",
     "ob1_score": 66,
     "source_name": "www.calciomercato.com",
-    "source_url": "https://www.calciomercato.com/liste/ibrahima-konate-lascera-il-liverpool-quest-estate-stop-alle-trattative-per-il-rinnovo-del-contratto/blt92b54735b57afd58",
-    "discovered_at": "2026-08-31T03:53:12.782032",
+    "source_url": "https://www.calciomercato.com/liste/konate-lascia-il-liverpool-a-parametro-zero-dove-puo-andare-le-voci-su-inter-e-juventus/bltf6746363d335746f",
+    "discovered_at": "2026-09-19T15:43:31.154997",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -20866,7 +20866,27 @@
     "source_name": "www.tuttomercatoweb.com",
     "source_url": "https://www.tuttomercatoweb.com/redazione/alessio-del-lungo-981",
     "discovered_at": "2026-09-07T21:22:35.630994",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "market_value": [
+          {
+            "valore": "1500000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-09-19T20:27:29.732154+00:00"
+          }
+        ]
+      }
+    },
+    "market_value": 1500000,
+    "enrichment_source": "Enrichment:groq",
+    "market_value_formatted": "1,50 mln €",
+    "player_profile": {
+      "market_value": 1500000,
+      "enrichment_source": "Enrichment:groq",
+      "market_value_formatted": "1,50 mln €"
+    },
+    "tm_enriched": true
   },
   {
     "id": "598c986e69fce849654b2476188a8e80",
@@ -22902,18 +22922,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "025c55d24af2e0734eb673ae3b5124f1",
-    "player_name": "Ibrahima Konate",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Libero dal Liverpool, possibile trasferimento a parametro zero",
-    "ob1_score": 66,
-    "source_name": "www.calciomercato.com",
-    "source_url": "https://www.calciomercato.com/liste/konate-lascia-il-liverpool-a-parametro-zero-dove-puo-andare-le-voci-su-inter-e-juventus/bltf6746363d335746f",
-    "discovered_at": "2026-09-19T15:43:31.154997",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "b5777ccefcbb31d7d8672b6d713c7580",
     "player_name": "Alessandro Acerbi",
     "region": "ITALY",
@@ -22923,18 +22931,6 @@
     "source_name": "www.calciomercato.com",
     "source_url": "https://www.calciomercato.com/liste/da-acerbi-a-vlahovic-tutti-i-giocatori-in-scadenza-di-contratto-il-30-giugno-2026-squadra-per-squadra/blt480f10469879f8b7",
     "discovered_at": "2026-09-19T15:43:31.155164",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "ac6ef54b66164584c72876f7deef4666",
-    "player_name": "Dusan Vlahovic",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Scadenza contratto 30/06/2026, libero a parametro zero",
-    "ob1_score": 66,
-    "source_name": "www.calciomercato.com",
-    "source_url": "https://www.calciomercato.com/liste/da-acerbi-a-vlahovic-tutti-i-giocatori-in-scadenza-di-contratto-il-30-giugno-2026-squadra-per-squadra/blt480f10469879f8b7",
-    "discovered_at": "2026-09-19T15:43:31.155323",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -22950,15 +22946,63 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "6ddbb4146d0d47ead643790832baccb8",
-    "player_name": "Yahoo Sports",
+    "id": "45b2684d6fd09e1f3ca7a9169ec8a5e6",
+    "player_name": "Da Vlahovic",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Pubblicità\n\nPubblicità\n\nLa sessione di calciomercato invernale è caratterizzata dalle occasioni. Le squadre si muoveranno provando a prendere i calciatori che, nei rispettivi club, giocano poco. Oppure che a giugno andranno in scadenza di contratto.\n\nPer loro si può provare ad anticipare il colpo, magari pagando un piccolo indennizzo alle società di appartenenza, oppure bloccandoli a parametro zero per la prossima estate. Se non rinnoveranno, dalla fine del mercato invernale saranno liberi di firmare con qualsiasi altra squadra e, in questo 2026, sono diversi i possibili colpi.\n\nDa Upamecano a Vlahovic e Maignan, ecco la top 10 dei calciatori in scadenza il 30 giugno 2026.\n\n ## DAYOT UPAMECANO (BAYERN MONACO) [...] Dopo tre anni, anche l'avventura di Franck Kessie in Arabia Saudita è destinata a finire. L'ex Milan, arrivato all'Al-Ahli nell'estate del 2023 firmando un triennale da 18 milioni a stagione, è in scadenza e non ci sono, al momento, gli spiragli di un rinnovo.\n\n  In estate si era parlato di un possibile ritorno in Italia - alla Fiorentina dell'ex Stefano Pioli - ed è stato accostato anche a Juventus e Roma.\n\n  Non ci sono stati discorsi approfonditi, anche perché per tornare in Serie A dovrebbe ridursi l'ingaggio, ma l'ivoriano rappresenta certamente una potenziale occasione d'oro nel mercato dei parametri zero. Soprattutto in Serie A, dove ha già dimostrato, con il Milan, di poter fare la differenza.\n Pubblicità [...] Diverse le squadre che lo hanno messo nel mirino. In Italia è stato accostato a Inter e Juventus - per giugno - ma attenzione a Real Madrid, Manchester United e Newcastle. L'Al-Hilal, infatti, potrebbe accontentarsi di 15 milioni per lasciarlo partire subito.\n\n  Manchester United e Newcastle hanno preso informazioni e una cifra così bassa è sicuramente allettante per un centrocampista di livello internazionale come Neves.\n ## SERGE GNABRY (BAYERN MONACO)\n\n  Un calciatore come Gnabry a parametro zero può far gola a diversi club. In autunno ci ha pensato anche la Juventus, ma, alla fine, l'esterno tedesco dovrebbe firmare il rinnovo con il Bayern Monaco. L'intesa tra il classe 1995 e i bavaresi è vicina sulla base di un biennale con opzione fino al 2029.\n Pubblicità",
+    "ob1_score": 69,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/da-vlahovic-e-maignan-da-bernardo-silva-a-ruben-neves-la-top-10-dei-giocatori-in-scadenza-nel-2026/blt1fbcaffd661a9efc",
+    "discovered_at": "2026-09-19T20:20:58.646535",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ea942790f846ed0d5c11282a00b2e476",
+    "player_name": "Di Gregorio",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "D'altronde, che il numero uno fosse un ruolo che i dirigenti bianconeri avevano deciso di rinforzare nell'estate del 2026 si era capito già nei mesi scorsi, quando si è provato a sondare la disponibilità di Mike Maignan di trasferirsi alla Continassa a parametro zero. Il recente rinnovo del francese col Milan, però, impone ora di percorrere altre strade. E, nell'attesa di capire se nelle casse juventine entreranno i 60 milioni garantiti dalla partecipazione alla prossima Champions League, si scandaglia il mercato alla ricerca di occasioni. Se il budget di Comolli in estate fosse risicato, ecco che la pista principale porterebbe a Liverpool, da quel 33enne brasiliano con un passato nella Roma... di Spalletti. Alisson, infatti, era il portiere di coppa dell'ultima avventura in giallorosso",
+    "ob1_score": 66,
+    "source_name": "www.gazzetta.it",
+    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Juventus/24-02-2026/juve-vicario-e-alisson-per-il-dopo-di-gregorio.shtml",
+    "discovered_at": "2026-09-19T20:20:58.646932",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "5758da09752375edcb25ec99e553b155",
+    "player_name": "Lucas Beltrán",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Today, the Lega Nazionale Dilettanti announced the composition of the Serie D 2026/27 groups: 162 teams, split across nine groups, will compete in Italy's top amateur division from September to May. After their developmental 2025/26 campaign that ended in the playoffs against ChievoVerona, Milan Futuro will compete in Group B with teams from Lombardy, Veneto and Emilia-Romagna. The opening matchday is scheduled for Sunday 6 September, with the squad's first official fixture taking place seven days earlier in the first round of the Serie D Coppa Italia. The format remains the same as last season, with groups consisting of 18 teams. The fixture list will be announced soon, with a total of 34 matchdays set to take place. As in the previous campaign, fixtures will be split between 2026 (first [...] campaign, fixtures will be split between 2026 (first half of the season) and 2027 (second half of the season). The season will once again feature nine teams earning automatic promotion to Serie C, with the winners of each group securing promotion, while four teams from each group will be relegated to Eccellenza. [...] MILAN FUTURO'S OPPONENTS\n\nAdvertisement\n\nAdvertisement\n\nAdvertisement\n\n Brusaporto\n Club Milano\n Leon\n Palazzolo\n Pavonese\n Real Calepina\n\n Villa Valle\n Virtus Ciseranobergamo\n Caldiero Terme\n Virtus Verona\n Nibbiano e Valtidone\n\nMatch Kits, clothing, accessories, gift ideas and much more: visit AC Milan online Store!",
+    "description": "Sold by Fiorentina in 2026",
     "ob1_score": 58,
-    "source_name": "sports.yahoo.com",
-    "source_url": "https://sports.yahoo.com/articles/milan-futuros-2026-27-serie-111800759.html",
-    "discovered_at": "2026-09-19T15:43:31.155881",
+    "source_name": "www.violanation.com",
+    "source_url": "https://www.violanation.com/fiorentina-latest-news-updates/22412/fiorentina-selling-young-academy-players-transfer-primavera-paratici",
+    "discovered_at": "2026-09-19T20:20:58.647391",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "25a0e606d77fbc9248e5b8b1cd589faa",
+    "player_name": "Amir Richardson",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Sold by Fiorentina in 2026",
+    "ob1_score": 58,
+    "source_name": "www.violanation.com",
+    "source_url": "https://www.violanation.com/fiorentina-latest-news-updates/22412/fiorentina-selling-young-academy-players-transfer-primavera-paratici",
+    "discovered_at": "2026-09-19T20:20:58.647563",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "9b21f9eba09b509e9ab53c1998784760",
+    "player_name": "Alessandro Bianco",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Sold by Fiorentina in 2026",
+    "ob1_score": 58,
+    "source_name": "www.violanation.com",
+    "source_url": "https://www.violanation.com/fiorentina-latest-news-updates/22412/fiorentina-selling-young-academy-players-transfer-primavera-paratici",
+    "discovered_at": "2026-09-19T20:20:58.647727",
     "league_id": "italy_serie_c_d"
   }
 ]
