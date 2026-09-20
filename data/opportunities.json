@@ -23064,5 +23064,36 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445928",
     "discovered_at": "2026-09-20T15:44:20.697507",
     "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "13d57dad5d50615f4cfaea2fd64f3dd1",
+    "player_name": "Ernesto Torregrossa",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ritorno ufficiale al Lumezzane, emozionato per la decisione",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445930",
+    "discovered_at": "2026-09-20T20:33:07.034536",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d92b97ec415f10174885f26f5812fc97",
+    "player_name": "Alessandro Caporale",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Difensore della Casertana commenta la partita contro Audace Cerignola",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445934",
+    "discovered_at": "2026-09-20T20:33:07.034891",
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/alessandro-caporale/profil/spieler/397115",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/alessandro-caporale/profil/spieler/397115"
+    },
+    "tm_enriched": false
   }
 ]
