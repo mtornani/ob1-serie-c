@@ -23169,22 +23169,27 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "0f4edae6a058ef0e087b512619bf231e",
+    "id": "78e351e9414967cd94fc6eef2578d530",
     "player_name": "Alfred Gomis",
     "region": "ITALY",
     "opportunity_type": "svincolato",
-    "description": "Portiere svincolato, possibile firma con Vis Pesaro",
-    "ob1_score": 64,
+    "description": "Vis Pesaro ingaggia il portiere svincolato Alfred Gomis per rinforzare la porta.",
+    "ob1_score": 66,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446068",
+    "discovered_at": "2026-09-22T21:04:25.162890",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "1a3d67fa796eaad40c7ff416b05907b0",
+    "player_name": "Nicolò Bertola",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Nicolò Bertola, difensore Udinese, parla della sua esperienza in Serie C.",
+    "ob1_score": 60,
     "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458550",
-    "discovered_at": "2026-09-22T16:37:58.386837",
-    "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:openrouter",
-    "tm_url": "https://www.transfermarkt.it/alfred-gomis/profil/spieler/163568",
-    "player_profile": {
-      "enrichment_source": "Enrichment:openrouter",
-      "tm_url": "https://www.transfermarkt.it/alfred-gomis/profil/spieler/163568"
-    },
-    "tm_enriched": false
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458556",
+    "discovered_at": "2026-09-22T21:04:25.163247",
+    "league_id": "italy_serie_c_d"
   }
 ]
