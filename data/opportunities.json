@@ -23143,5 +23143,48 @@
     "source_url": "https://www.gazzetta.it/Calciomercato/22-07-2026/notizie-calciomercato-il-live-di-oggi-22-luglio.shtml",
     "discovered_at": "2026-09-22T04:09:00.704072",
     "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "082bfe88d47f4cf6cf21ee5a15000492",
+    "player_name": "Cristiano Lucarelli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Commenta il risultato di Livorno, sottolinea valore avversario",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446038",
+    "discovered_at": "2026-09-22T16:37:58.386254",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "481d4a9578347bcff9417bb4d8c9d93c",
+    "player_name": "Giancarlo Riolfo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Scelto per inseguire la salvezza in Serie C",
+    "ob1_score": 62,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446053",
+    "discovered_at": "2026-09-22T16:37:58.386666",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "0f4edae6a058ef0e087b512619bf231e",
+    "player_name": "Alfred Gomis",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Portiere svincolato, possibile firma con Vis Pesaro",
+    "ob1_score": 64,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458550",
+    "discovered_at": "2026-09-22T16:37:58.386837",
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:openrouter",
+    "tm_url": "https://www.transfermarkt.it/alfred-gomis/profil/spieler/163568",
+    "player_profile": {
+      "enrichment_source": "Enrichment:openrouter",
+      "tm_url": "https://www.transfermarkt.it/alfred-gomis/profil/spieler/163568"
+    },
+    "tm_enriched": false
   }
 ]
