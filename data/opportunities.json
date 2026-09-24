@@ -20901,15 +20901,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "0e173bd60599fae3ac1a4f7e95407f75",
-    "player_name": "Lorenzo di Benedetto",
+    "id": "0559db0a96468392c142449fa5376b4c",
+    "player_name": "Lorenzo Di Benedetto",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Trasferimento mercato",
+    "description": "Possibile operazione di mercato",
     "ob1_score": 58,
     "source_name": "www.tuttomercatoweb.com",
     "source_url": "https://www.tuttomercatoweb.com/redazione/lorenzo-di-benedetto-877",
-    "discovered_at": "2026-09-07T21:22:35.631253",
+    "discovered_at": "2026-09-24T16:51:52.810852",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -23470,15 +23470,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "b2316ba6887aeb25c692ccd4c09055a2",
-    "player_name": "Mohamed Alí Zoma",
+    "id": "069cebbabfd5c92c5551e70be8cd135e",
+    "player_name": "Mohamed Alì Zoma",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Promessa della squadra giovanile dell'AlbinoLeffe",
+    "description": "Attaccante in sviluppo nella cantera dell'AlbinoLeffe",
     "ob1_score": 60,
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446126",
-    "discovered_at": "2026-09-24T11:25:24.702951",
+    "discovered_at": "2026-09-24T16:51:52.809096",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -23602,30 +23602,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "c652224acccc8ed907f949e9c548944c",
-    "player_name": "Issa Doumbia",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Centrocampista emergente della cantera dell'AlbinoLeffe",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446126",
-    "discovered_at": "2026-09-24T16:51:52.809006",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "069cebbabfd5c92c5551e70be8cd135e",
-    "player_name": "Mohamed Alì Zoma",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Attaccante in sviluppo nella cantera dell'AlbinoLeffe",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446126",
-    "discovered_at": "2026-09-24T16:51:52.809096",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "941181b2fbb60a78baa9b481819677ac",
     "player_name": "Federico Casarini",
     "region": "ITALY",
@@ -23648,27 +23624,15 @@
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458595",
     "discovered_at": "2026-09-24T16:51:52.809346",
     "league_id": "italy_serie_c_d",
-    "nationality": "Italy",
+    "nationality": "Italia",
     "enrichment_source": "Enrichment:groq",
     "agent": "Gersh",
     "player_profile": {
-      "nationality": "Italy",
+      "nationality": "Italia",
       "enrichment_source": "Enrichment:groq",
       "agent": "Gersh"
     },
     "tm_enriched": false
-  },
-  {
-    "id": "d3227462b0e89ad159e0d042b1fc29b0",
-    "player_name": "Alfred Gomis",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Arrivo in forza della Vis Pesaro fino al 2031",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458590",
-    "discovered_at": "2026-09-24T16:51:52.809426",
-    "league_id": "italy_serie_c_d"
   },
   {
     "id": "563e92caf9e48b5e33c0c0cdcbf5916b",
@@ -23680,18 +23644,6 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/09/24/udinese-ufficiale-david-alaba/",
     "discovered_at": "2026-09-24T16:51:52.809517",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "328208adda3ecdafee30bb9cba10f3d9",
-    "player_name": "Kylian Mbappé",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Messaggio sul Pallone d'Oro, non legato a trasferimento",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/22/mbappe-messaggio-chiarissimo-sul-pallone-doro-se-non-lo-vinco-sarei-deluso/",
-    "discovered_at": "2026-09-24T16:51:52.809683",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -23707,27 +23659,135 @@
     "league_id": "italy_serie_c_d"
   },
   {
+    "id": "a5708095a6dd9a2a9874ef88453f067b",
+    "player_name": "Edoardo Cavaliere",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "In prossimità del rinnovo contrattuale con la Reggiana.",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446161",
+    "discovered_at": "2026-09-24T21:21:13.640081",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "1dfa0fea02dd6f81118ba6067c0d7d5e",
+    "player_name": "Simone Banchieri",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ritorna in campo con la Renate, pronto a contribuire.",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446156",
+    "discovered_at": "2026-09-24T21:21:13.640423",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "55512a0c3054c8c8e43c2b7766fda7a9",
+    "player_name": "Daniele Casiraghi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Scelta estiva per il Ravenna, trasferimento dalla Serie D.",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446160",
+    "discovered_at": "2026-09-24T21:21:13.640527",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "3206d166acb5db5b3a8ae73710d0d418",
+    "player_name": "Mateus Da Silva",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "In forma smagliante, 4 assist in 6 partite per il Barletta",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446153",
+    "discovered_at": "2026-09-24T21:21:13.640621",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "74288f945c1b203046eeb5270d39e098",
+    "player_name": "Thomas Cossalter",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Centrocampista del Dolomiti Bellunesi, analizza la sconfitta contro Lumezzane",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446152",
+    "discovered_at": "2026-09-24T21:21:13.640713",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "b8327a93ae63c4f2366d4b3decaff756",
+    "player_name": "Giancarlo Riolfo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ritrova il Vado in una veste diversa, ricorda la prima stagione",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446151",
+    "discovered_at": "2026-09-24T21:21:13.640802",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "c1d1dd8944db01a403d47ddce6ef87b5",
+    "player_name": "Joao Paulo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ex calciatore ricorda il Bari in Serie C, esprime tristezza",
+    "ob1_score": 62,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446150",
+    "discovered_at": "2026-09-24T21:21:13.640891",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "4a80f37f6cd91c5a15762066a84f4d7f",
+    "player_name": "Gianluca Clemente",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Segna il primo gol con la maglia del Cosenza, commenta la partita",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446132",
+    "discovered_at": "2026-09-24T21:21:13.640978",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d3227462b0e89ad159e0d042b1fc29b0",
+    "player_name": "Alfred Gomis",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Arriva in porta alla Vis Pesaro con contratto fino al 2031",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458590",
+    "discovered_at": "2026-09-24T21:21:13.641174",
+    "league_id": "italy_serie_c_d"
+  },
+  {
     "id": "9345580a1f9a5bb0971b70de862b3704",
     "player_name": "Sandro Mazzola",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Tributo postumo al leggendario ex centrocampista",
+    "description": "Ultimo saluto a una leggenda del calcio italiano",
     "ob1_score": 58,
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/09/21/sandro-mazzola-lultimo-saluto-a-una-leggenda-milano-si-stringe-attorno-alla-sua-bandiera/",
-    "discovered_at": "2026-09-24T16:51:52.809842",
+    "discovered_at": "2026-09-24T21:21:13.641446",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "0559db0a96468392c142449fa5376b4c",
-    "player_name": "Lorenzo Di Benedetto",
+    "id": "c1e661eec9ba94b5588922dc816336e1",
+    "player_name": "Gerry Cardinale",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Possibile operazione di mercato",
+    "description": "Citato per le sue prestazioni nei 90 minuti migliori",
     "ob1_score": 58,
-    "source_name": "www.tuttomercatoweb.com",
-    "source_url": "https://www.tuttomercatoweb.com/redazione/lorenzo-di-benedetto-877",
-    "discovered_at": "2026-09-24T16:51:52.810852",
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/09/21/milan-gerry-cardinale-i-migliori-90-minuti-della-stagione/",
+    "discovered_at": "2026-09-24T21:21:13.641559",
     "league_id": "italy_serie_c_d"
   }
 ]
