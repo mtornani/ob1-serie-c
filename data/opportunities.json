@@ -18680,16 +18680,25 @@
     "market_value_eur": 150000
   },
   {
-    "id": "e93a3c1b6d2e6e894d34bb2cf11ccb77",
+    "id": "98a66421c7a2b24613b5d8ea955a1ba4",
     "player_name": "Andrea Torriani",
     "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Trasferimento all'Al-Ittifaq negli Emirati Arabi Uniti",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444600",
-    "discovered_at": "2026-09-01T11:22:51.424453",
-    "league_id": "italy_serie_c_d"
+    "opportunity_type": "svincolato",
+    "description": "Giocatore senza contratto in Serie C",
+    "ob1_score": 68,
+    "source_name": "www.transfermarkt.it",
+    "source_url": "https://www.transfermarkt.it/serie-c-girone-c/vertragslosespieler/wettbewerb/IT3C",
+    "discovered_at": "2026-09-26T04:20:22.252224",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/andrea-torriani/profil/spieler/964471",
+    "tm_verified_at": "2026-09-01T11:27:01+00:00",
+    "birth_date": "26/09/2006",
+    "age": 20,
+    "current_club": "Atalanta U23",
+    "role_name": "Portiere",
+    "foot": "destro",
+    "market_value": 50000,
+    "market_value_eur": 50000
   },
   {
     "id": "ab3875f7a26f98a3fbb2bfa52724db7d",
@@ -23624,11 +23633,11 @@
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458595",
     "discovered_at": "2026-09-24T16:51:52.809346",
     "league_id": "italy_serie_c_d",
-    "nationality": "Italy",
+    "nationality": "Italia",
     "enrichment_source": "Enrichment:groq",
     "agent": "Gersh",
     "player_profile": {
-      "nationality": "Italy",
+      "nationality": "Italia",
       "enrichment_source": "Enrichment:groq",
       "agent": "Gersh"
     },
@@ -23907,39 +23916,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ea942790f846ed0d5c11282a00b2e476",
-    "player_name": "Di Gregorio",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "D'altronde, che il numero uno fosse un ruolo che i dirigenti bianconeri avevano deciso di rinforzare nell'estate del 2026 si era capito già nei mesi scorsi, quando si è provato a sondare la disponibilità di Mike Maignan di trasferirsi alla Continassa a parametro zero. Il recente rinnovo del francese col Milan, però, impone ora di percorrere altre strade. E, nell'attesa di capire se nelle casse juventine entreranno i 60 milioni garantiti dalla partecipazione alla prossima Champions League, si scandaglia il mercato alla ricerca di occasioni. Se il budget di Comolli in estate fosse risicato, ecco che la pista principale porterebbe a Liverpool, da quel 33enne brasiliano con un passato nella Roma... di Spalletti. Alisson, infatti, era il portiere di coppa dell'ultima avventura in giallorosso [...] NOTTINGHAM, ENGLAND - FEBRUARY 22: Alisson Becker of Liverpool celebrates after Alexis Mac Allister of Liverpool (not pictured) scores his team's first goal during the Premier League match between Nottingham Forest and Liverpool at City Ground on February 22, 2026 in Nottingham, England. (Photo by Dan Mullan/Getty Images)\n\n## Il brasiliano, in scadenza nel 2027 con il Liverpool, garantirebbe affidabilità e, soprattutto, esperienza. E ha già lavorato con Spalletti a Roma\n\nFabio Russo  \n\nFabio Russo\n\nGiornalista\n\nScegli Gazzetta come fonte preferita su Google",
-    "ob1_score": 66,
-    "source_name": "www.gazzetta.it",
-    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Juventus/24-02-2026/juve-vicario-e-alisson-per-il-dopo-di-gregorio.shtml",
-    "discovered_at": "2026-09-26T04:20:22.252042",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "98a66421c7a2b24613b5d8ea955a1ba4",
-    "player_name": "Andrea Torriani",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Giocatore senza contratto in Serie C",
-    "ob1_score": 68,
-    "source_name": "www.transfermarkt.it",
-    "source_url": "https://www.transfermarkt.it/serie-c-girone-c/vertragslosespieler/wettbewerb/IT3C",
-    "discovered_at": "2026-09-26T04:20:22.252224",
-    "league_id": "italy_serie_c_d",
-    "tm_url": "https://www.transfermarkt.it/andrea-torriani/profil/spieler/964471",
-    "tm_verified_at": "2026-09-01T11:27:01+00:00",
-    "birth_date": "26/09/2006",
-    "age": 20,
-    "current_club": "Atalanta U23",
-    "role_name": "Portiere",
-    "foot": "destro",
-    "market_value": 50000,
-    "market_value_eur": 50000
-  },
-  {
     "id": "ac06c38853a02a10e27f94ace054e531",
     "player_name": "Federico Vázquez",
     "region": "ITALY",
@@ -23952,15 +23928,27 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "885ca1d2cde1d8f360931681616a1a7b",
-    "player_name": "Luigi Caccavo",
+    "id": "175d8234bbf95c2e921a724cacdfc3af",
+    "player_name": "De Luca",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Centravanti classe 2004, talento emergente in Serie C",
-    "ob1_score": 62,
+    "description": "Menzionato nell'articolo di preview di Picerno-Cerignola",
+    "ob1_score": 60,
     "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/il-punto/settimana-trampolino-lancio-caccavo-l-ultimo-tanti-440278",
-    "discovered_at": "2026-09-26T04:20:22.252595",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446233",
+    "discovered_at": "2026-09-26T11:04:24.692336",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "889edc1e7754ff94b6898a0fa9e45a38",
+    "player_name": "Facundo Lescano",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Menzionato nell'articolo di preview di Crotone-Salernitana",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446238",
+    "discovered_at": "2026-09-26T11:04:24.692661",
     "league_id": "italy_serie_c_d"
   }
 ]
