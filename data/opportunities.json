@@ -23633,11 +23633,11 @@
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458595",
     "discovered_at": "2026-09-24T16:51:52.809346",
     "league_id": "italy_serie_c_d",
-    "nationality": "Italia",
+    "nationality": "Italy",
     "enrichment_source": "Enrichment:groq",
     "agent": "Gersh",
     "player_profile": {
-      "nationality": "Italia",
+      "nationality": "Italy",
       "enrichment_source": "Enrichment:groq",
       "agent": "Gersh"
     },
@@ -23949,6 +23949,78 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446238",
     "discovered_at": "2026-09-26T11:04:24.692661",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "53fd3d281a2b1a4cf2f88596d8f25ba4",
+    "player_name": "Alessandro Scacchetti",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Convocato per la sfida contro l'Arzignano",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446251",
+    "discovered_at": "2026-09-26T16:07:12.020081",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "03c00656b73a01fa9ada93bf48005861",
+    "player_name": "Alex Perta",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Convocato per la sfida contro l'Arzignano",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446251",
+    "discovered_at": "2026-09-26T16:07:12.020382",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "5a992ff2c9acfc3752f239f6a5824cb6",
+    "player_name": "Tito Gasperini",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Convocato per la sfida contro l'Arzignano",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446251",
+    "discovered_at": "2026-09-26T16:07:12.020557",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "822d3d7aa4b0933cc624a32eb9dfa245",
+    "player_name": "Antonino Musso",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Segna il vantaggio per il Crotone al 10' con colpo di testa",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458652",
+    "discovered_at": "2026-09-26T16:07:12.020707",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "781e409ff4cad721d3d8b8425557343b",
+    "player_name": "Flavio Di Dio",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Segna il primo gol per la Folgore Caratese",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458650",
+    "discovered_at": "2026-09-26T16:07:12.020859",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "08ad7e265923ab81bc3bf07a7e35ca98",
+    "player_name": "Simone Cecere",
+    "region": "ITALY",
+    "opportunity_type": "rescissione",
+    "description": "Risoluzione consensuale del contratto con l'Az Picerno",
+    "ob1_score": 63,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458646",
+    "discovered_at": "2026-09-26T16:07:12.021020",
     "league_id": "italy_serie_c_d"
   }
 ]
