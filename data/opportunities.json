@@ -23633,15 +23633,17 @@
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458595",
     "discovered_at": "2026-09-24T16:51:52.809346",
     "league_id": "italy_serie_c_d",
-    "nationality": "Italy",
-    "enrichment_source": "Enrichment:groq",
+    "nationality": "Italia",
+    "enrichment_source": "Enrichment:openrouter",
     "agent": "Gersh",
     "player_profile": {
-      "nationality": "Italy",
-      "enrichment_source": "Enrichment:groq",
-      "agent": "Gersh"
+      "nationality": "Italia",
+      "enrichment_source": "Enrichment:openrouter",
+      "agent": "Gersh",
+      "appearances": 8
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "appearances": 8
   },
   {
     "id": "563e92caf9e48b5e33c0c0cdcbf5916b",
