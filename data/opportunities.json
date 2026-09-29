@@ -24271,30 +24271,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "5562ec0a45a45cc969862f83041c3130",
-    "player_name": "Andrea Vallocchia",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Centrocampista del Catania, ritorno al successo contro la Casertana",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446458",
-    "discovered_at": "2026-09-29T12:29:46.766366",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "7f5cc93b35a09e5a18cd40933286d1b6",
-    "player_name": "Amoah Foah-Sam",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Firma contratto con il Perugia fino a giugno con opzione",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446461",
-    "discovered_at": "2026-09-29T12:29:46.766560",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "c05cb407cbe8f2cf64e8e320b2453e35",
     "player_name": "Riccardo Ladinetti",
     "region": "ITALY",
@@ -24307,18 +24283,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ff573adb5b17a1e5bc1a50d66fcbdf1c",
-    "player_name": "Michael Fabbro",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "segna il tris nella vittoria 3-0 contro il Lecco",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446444",
-    "discovered_at": "2026-09-29T12:29:46.766892",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "a56f9343dbabae4192a8935c4326da7a",
     "player_name": "Luciano Zauri",
     "region": "ITALY",
@@ -24328,7 +24292,16 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446446",
     "discovered_at": "2026-09-29T12:29:46.767054",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/luciano-zauri/profil/spieler/6832",
+    "tm_verified_at": "2026-09-29T22:18:16+00:00",
+    "birth_date": "20/01/1978",
+    "age": 48,
+    "current_club": "Ritiro",
+    "role_name": "Terzino destro",
+    "foot": "destro",
+    "out_of_scope": true,
+    "out_of_scope_reason": "ha smesso di giocare (Transfermarkt: Ritiro)"
   },
   {
     "id": "4f97e2ec997148001e2a7946012094ad",
@@ -24379,15 +24352,39 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "7242b2280f8f1a979e9860aee71afb3f",
-    "player_name": "Hakan Calhanoglu",
+    "id": "e4025bb23857a9a9669ac3f9f8e40857",
+    "player_name": "Nicolò Trapani",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Inter rischia di perdere Hakan Calhanoglu",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/23/inter-guai-a-perdere-calhanoglu-chivu-sa-che-il-turco-e-ancora-decisivo/",
-    "discovered_at": "2026-09-29T12:29:46.768050",
+    "description": "Difensore dell'Alcione parla della sua esperienza dopo le giovanili della Fiorentina.",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446490",
+    "discovered_at": "2026-09-29T22:06:48.801847",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "00cae22883fb637adb259178bc6aab7b",
+    "player_name": "Rodolfo Giorgetti",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ex centrocampista commenta l'importanza di partire bene per il Bari.",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446484",
+    "discovered_at": "2026-09-29T22:06:48.802180",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "4038d182acb8522adbb4f5297a2688ad",
+    "player_name": "Emilio Volpicelli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Bomber della Scafatese ha segnato tre reti nelle prime sette giornate di campionato.",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446465",
+    "discovered_at": "2026-09-29T22:06:48.802325",
     "league_id": "italy_serie_c_d"
   }
 ]
