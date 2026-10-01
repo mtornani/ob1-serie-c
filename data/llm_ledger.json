@@ -25,25 +25,25 @@
       "tpm": 0
     },
     "groq:openai/gpt-oss-120b:0": {
-      "cooldown_until": "2026-10-01T12:47:34.272209+00:00",
+      "cooldown_until": "2026-10-01T22:31:45.179007+00:00",
       "day": "2026-10-01",
-      "fail_streak": 1,
-      "last_error_at": "2026-10-01T12:47:30.272209+00:00",
-      "last_ok": "2026-10-01T12:47:30.186000+00:00",
-      "minute": "2026-10-01T12:47",
-      "rpd": 12,
-      "rpm": 3,
-      "tpd": 25923,
-      "tpm": 7182
+      "fail_streak": 2,
+      "last_error_at": "2026-10-01T22:30:45.179007+00:00",
+      "last_ok": "2026-10-01T22:29:55.475881+00:00",
+      "minute": "2026-10-01T22:31",
+      "rpd": 21,
+      "rpm": 0,
+      "tpd": 37495,
+      "tpm": 0
     },
     "mistral:mistral-small-latest:0": {
-      "cooldown_until": "2026-10-01T12:48:00+00:00",
+      "cooldown_until": "2026-10-01T22:32:00+00:00",
       "day": "2026-10-01",
-      "fail_streak": 348,
-      "last_error_at": "2026-10-01T12:47:30.466266+00:00",
+      "fail_streak": 351,
+      "last_error_at": "2026-10-01T22:31:01.720880+00:00",
       "last_ok": "2026-09-04T03:45:10.645426+00:00",
-      "minute": "2026-10-01T12:47",
-      "rpd": 3,
+      "minute": "2026-10-01T22:31",
+      "rpd": 6,
       "rpm": 1,
       "tpd": 0,
       "tpm": 0
@@ -82,28 +82,28 @@
       "tpm": 0
     },
     "openrouter:minimax/minimax-m3:free:0": {
-      "cooldown_until": "2026-10-01T13:46:11.237338+00:00",
+      "cooldown_until": "2026-10-01T23:29:37.253285+00:00",
       "day": "2026-10-01",
-      "fail_streak": 92,
-      "last_error_at": "2026-10-01T12:46:11.236630+00:00",
+      "fail_streak": 93,
+      "last_error_at": "2026-10-01T22:29:37.252401+00:00",
       "last_ok": "2026-09-07T12:01:04.182220+00:00",
-      "minute": "2026-10-01T12:46",
-      "rpd": 2,
-      "rpm": 1,
+      "minute": "2026-10-01T22:31",
+      "rpd": 3,
+      "rpm": 0,
       "tpd": 0,
       "tpm": 0
     },
     "openrouter:nvidia/nemotron-3-super-120b-a12b:free:0": {
-      "cooldown_until": "2026-10-01T13:47:22.652123+00:00",
+      "cooldown_until": null,
       "day": "2026-10-01",
-      "fail_streak": 5,
+      "fail_streak": 0,
       "last_error_at": "2026-10-01T12:47:22.651416+00:00",
-      "last_ok": "2026-09-30T12:14:23.208277+00:00",
-      "minute": "2026-10-01T12:47",
-      "rpd": 2,
-      "rpm": 1,
-      "tpd": 0,
-      "tpm": 0
+      "last_ok": "2026-10-01T22:31:32.923043+00:00",
+      "minute": "2026-10-01T22:31",
+      "rpd": 17,
+      "rpm": 5,
+      "tpd": 24300,
+      "tpm": 6580
     },
     "openrouter:qwen/qwen3-235b-a22b:free:0": {
       "cooldown_until": "2026-08-30T04:37:41.440803+00:00",
@@ -117,6 +117,6 @@
       "tpm": 0
     }
   },
-  "updated_at": "2026-10-01T12:47:30.466319+00:00",
+  "updated_at": "2026-10-01T22:31:32.923291+00:00",
   "version": 1
 }
