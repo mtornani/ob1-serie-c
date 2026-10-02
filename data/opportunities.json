@@ -24760,30 +24760,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "cf044909b140ebfd3693c3cc5ac8d19b",
-    "player_name": "Roberto Insigne",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "arrivato a Catania, porta esperienza alla squadra",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446566",
-    "discovered_at": "2026-10-01T22:31:32.932412",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "ce8ffeee031ab16407ae0a32ba313719",
-    "player_name": "Matteo Viti",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "difensore classe 2005, arriva a Vado da svincolato",
-    "ob1_score": 66,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446570",
-    "discovered_at": "2026-10-01T22:31:32.932580",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "80c500256012b975c5266d84ab147e2a",
     "player_name": "Andrea Dini",
     "region": "ITALY",
@@ -24808,15 +24784,51 @@
     "league_id": "italy_serie_c_d"
   },
   {
+    "id": "4de4473a7ef53d2832fee9a7ba0cb1e1",
+    "player_name": "Mamadou Kanouté",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Attaccante dell'AZ Picerno commenta la partita.",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446574",
+    "discovered_at": "2026-10-02T04:52:31.416194",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "cf044909b140ebfd3693c3cc5ac8d19b",
+    "player_name": "Roberto Insigne",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Arrivato a Catania per mettere esperienza e qualità alla squadra",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446566",
+    "discovered_at": "2026-10-02T04:52:31.416787",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ce8ffeee031ab16407ae0a32ba313719",
+    "player_name": "Matteo Viti",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Arrivo definitivo difensore centrale classe 2005 da Imperia",
+    "ob1_score": 66,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446570",
+    "discovered_at": "2026-10-02T04:52:31.416962",
+    "league_id": "italy_serie_c_d"
+  },
+  {
     "id": "f2306b22f285aa230a46101e1a287b3a",
     "player_name": "Ismail Achik",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Lesione muscolare medio grado, fuori per la prossima partita",
+    "description": "Ismail Achik fuori per lesione muscolare",
     "ob1_score": 58,
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458793",
-    "discovered_at": "2026-10-01T22:31:32.933113",
+    "discovered_at": "2026-10-02T04:52:31.417497",
     "league_id": "italy_serie_c_d"
   }
 ]
