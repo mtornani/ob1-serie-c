@@ -8028,15 +8028,15 @@
     "contract_expires": "30/06/2027"
   },
   {
-    "id": "776a586a90b0fea5740ee7afed1bebba",
+    "id": "704d6e8ca5135bbd3243819ddf4b0008",
     "player_name": "Francesco Camarda",
     "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Giovane talento del Milan U23.",
-    "ob1_score": 57,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFhmuwf7_0RQOHdA5Y97VMYiHVDN-JG-rPW0heshh43808j8peZVQUYyAZNGA0iDEDvluqT1TctsZNroLQj_n9lCXYou9LoXpK2zs7rppb4aCfgBILmUza5JOO_heTs0gdwAhxHg1yCCBdQcInyfqxHc7Wuhx6kUA4GyM4HjnsqGlFrh3oZalekbGifDHgaHVy9By-2iV2XWr162jJoNTQsx0spb2p2UtqaM1hksCLhvN_goSh7frM==",
-    "discovered_at": "2026-07-15T08:24:00.715390",
+    "opportunity_type": "prestito",
+    "description": "Giovane attaccante del Milan in prestito al Lecce",
+    "ob1_score": 60,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/10/05/camarda-u21-gruppo-molto-unito-oggi-il-dentro-e-fuori-con-la-polonia/",
+    "discovered_at": "2026-10-08T13:07:26.501127",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -22588,15 +22588,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ba23b4bce93ae36cbfade6c51ad01467",
+    "id": "9175fa67afcdd9c1fe4bf617fa32b0b5",
     "player_name": "Sebastiano Esposito",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Esposito segna per il Sassuolo",
+    "description": "Sebastiano Esposito torna a curare gli allenamenti con Union Brescia",
     "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/13/serie-a-domenica-di-fuoco-la-juve-cade-con-il-sassuolo-tutti-i-risultati/",
-    "discovered_at": "2026-09-17T21:08:52.522459",
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458964",
+    "discovered_at": "2026-10-08T13:07:26.500220",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -24484,15 +24484,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "b3dc75336173a5ff0713947131528802",
+    "id": "c4e686832c403fd3652b5d2f53a92559",
     "player_name": "Manuel Iori",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Allenatore, gestisce la panchina del Novara in Serie C",
-    "ob1_score": 62,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446515",
-    "discovered_at": "2026-10-01T05:02:38.833227",
+    "description": "Manuel Iori, ex centrocampista, protagonista di una sfida speciale",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458961",
+    "discovered_at": "2026-10-08T13:07:26.500455",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -25138,54 +25138,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "9175fa67afcdd9c1fe4bf617fa32b0b5",
-    "player_name": "Sebastiano Esposito",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Sebastiano Esposito torna a curare gli allenamenti con Union Brescia",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458964",
-    "discovered_at": "2026-10-08T13:07:26.500220",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "a99556ba99b2fd9dc05e39e68f797378",
-    "player_name": "Pio Esposito",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Pio Esposito partecipa agli allenamenti provvisori dell'Union Brescia",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458964",
-    "discovered_at": "2026-10-08T13:07:26.500346",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "c4e686832c403fd3652b5d2f53a92559",
-    "player_name": "Manuel Iori",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Manuel Iori, ex centrocampista, protagonista di una sfida speciale",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458961",
-    "discovered_at": "2026-10-08T13:07:26.500455",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "11ff310cbc7c2247259a78a64ce523f4",
-    "player_name": "Lionel Messi",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Addio al calcio, libero dal contratto",
-    "ob1_score": 64,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/07/argentina-lultimo-ballo-di-messi-e-da-brividi-scaloni-nulla-sara-come-prima/",
-    "discovered_at": "2026-10-08T13:07:26.500588",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "f6034447c663ea694eac148e28a53eca",
     "player_name": "Milan Krstović",
     "region": "ITALY",
@@ -25195,30 +25147,6 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/10/07/sarri-carica-latalanta-abbiamo-una-rosa-da-europa-poi-scherza-su-krstovic/",
     "discovered_at": "2026-10-08T13:07:26.500711",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "1d4d6435de29353f6b68fceb121f2ace",
-    "player_name": "Nico Paz",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Talento del Como, possibile trasferimento",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/07/argentina-ora-si-guarda-al-futuro-dopo-laddio-di-messi-spazio-alle-nuove-stelle/",
-    "discovered_at": "2026-10-08T13:07:26.500813",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "4f08f7e6efa21d6ae556070f3ce2bee4",
-    "player_name": "Gonçalo Ramos",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Citato come possibile centravanti per il Milan",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/05/goncalo-ramos-e-hojlund-le-nazionali-come-slancio-per-milan-e-napoli/",
-    "discovered_at": "2026-10-08T13:07:26.500919",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -25234,39 +25162,75 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "704d6e8ca5135bbd3243819ddf4b0008",
-    "player_name": "Francesco Camarda",
+    "id": "c715ce62ecc9389a2ee7d8077c0a9f8a",
+    "player_name": "Salvatore Santoro",
     "region": "ITALY",
-    "opportunity_type": "prestito",
-    "description": "Giovane attaccante del Milan in prestito al Lecce",
+    "opportunity_type": "talento",
+    "description": "Centrocampista Salvatore Santoro parla del rapporto con il mister",
     "ob1_score": 60,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/05/camarda-u21-gruppo-molto-unito-oggi-il-dentro-e-fuori-con-la-polonia/",
-    "discovered_at": "2026-10-08T13:07:26.501127",
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446964",
+    "discovered_at": "2026-10-08T23:07:05.458084",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "0da87310a8cb87764e5a8f66ad2aa57b",
-    "player_name": "Luka Modric",
+    "id": "5e5441de1186c5c3cf18277fa52abc3d",
+    "player_name": "Nicholas Pennington",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Menzionato tra i campioni che non vogliono ritirarsi",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/05/modric-ronaldo-e-tanti-altri-quelli-che-non-sanno-dire-basta/",
-    "discovered_at": "2026-10-08T13:07:26.501228",
+    "description": "Nicholas Pennington operato al ginocchio, meniscectomia",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446963",
+    "discovered_at": "2026-10-08T23:07:05.458476",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "0b6ebdc90fd0f3c472aeb267fa6fa601",
-    "player_name": "Cristiano Ronaldo",
+    "id": "cb960029f0a3b71c19b8cb37a91a192d",
+    "player_name": "Ronaldo Pompeu da Silva",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Menzionato tra i grandi che non sanno dire basta",
+    "description": "Centrocampista brasiliano firma con il Mestre, proveniente dal CD Castellón.",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446957",
+    "discovered_at": "2026-10-08T23:07:05.458624",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d198aaac428d0423f08fc780e71f092a",
+    "player_name": "Fabio Tito",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Difensore classe 1993, svincolato dall'Arezzo, arriva al Barletta.",
+    "ob1_score": 64,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458974",
+    "discovered_at": "2026-10-08T23:07:05.458773",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "10650d7de6f6308cfae8f01950c3030b",
+    "player_name": "Federico Tonni",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Prematura scomparsa, cordoglio del club",
     "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/05/modric-ronaldo-e-tanti-altri-quelli-che-non-sanno-dire-basta/",
-    "discovered_at": "2026-10-08T13:07:26.501347",
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458973",
+    "discovered_at": "2026-10-08T23:07:05.458907",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "59b17cfdf2f780f4b80bb102ed34906c",
+    "player_name": "Lorenzo Di Stefano",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Brilla in Torres, incanta il pubblico siciliano",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458963",
+    "discovered_at": "2026-10-08T23:07:05.459035",
     "league_id": "italy_serie_c_d"
   }
 ]
