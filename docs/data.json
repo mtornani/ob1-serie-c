@@ -6292,6 +6292,100 @@
       }
     },
     {
+      "id": "55f71464824167beea31b52c8a6daafd",
+      "player_name": "Fabio Tito",
+      "age": 33,
+      "role": "",
+      "role_name": "Terzino sinistro",
+      "opportunity_type": "mercato",
+      "type_reconciled_from": "svincolato",
+      "reported_date": "2026-10-09",
+      "source_name": "www.tuttoc.com",
+      "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446998",
+      "previous_clubs": [],
+      "current_club": "Barletta 1922",
+      "appearances": null,
+      "goals": null,
+      "assists": null,
+      "minutes_played": null,
+      "summary": "",
+      "nationality": null,
+      "second_nationality": null,
+      "foot": "sinistro",
+      "market_value": null,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": "Sport project",
+      "tm_url": "https://www.transfermarkt.it/fabio-tito/profil/spieler/331432",
+      "tm_link_ok": true,
+      "tm_verified_at": "2026-10-09T13:03:36+00:00",
+      "data_verified": true,
+      "discovered_at": "2026-10-09T12:53:03.920969",
+      "ob1_score": 54,
+      "classification": "cold",
+      "score_breakdown": {
+        "freshness": 100,
+        "opportunity_type": 50,
+        "experience": 50,
+        "age": 25,
+        "market_value": 40,
+        "league_fit": 50,
+        "source": 95
+      },
+      "score_senza_dato": [
+        "opportunity_type",
+        "experience",
+        "market_value"
+      ],
+      "peso_misurato": 0.53,
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "out_of_scope": false,
+      "out_of_scope_reason": "",
+      "market_identity_complete": true,
+      "market_corroborated": true,
+      "market_publishable": true,
+      "market_n_sources": 2,
+      "recommendation": "Giocatore esperto (33 anni).",
+      "intel": {
+        "roi_class": "none",
+        "roi_label": "NO CONTRIB.",
+        "roi_color": "gray",
+        "coefficiente_eta": 0,
+        "moltiplicatore": 0,
+        "proiezione_stagionale": 0,
+        "traffic_light": "green",
+        "traffic_label": "OK",
+        "traffic_icon": "🟢",
+        "is_over": true,
+        "signals": [],
+        "birth_year": 1993,
+        "roi_dettaglio": "Classe 1993 — non contribuisce al minutaggio giovani",
+        "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
+      },
+      "contract_expires": "30/06/2027",
+      "days_without_contract": 0,
+      "stale_free_agent": false,
+      "signal_age_days": 0,
+      "assessment": {
+        "yes": [
+          "Segnalazione fresca",
+          "Fonte specializzata",
+          "Confermato da più fonti / profilo TM"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt",
+          "33 anni — poco margine, nessun bonus lista giovani",
+          "Solo voce di mercato — non è libero",
+          "Valore di mercato assente o molto basso"
+        ],
+        "action": "Bassa priorità"
+      }
+    },
+    {
       "id": "8d1ded8b079b11731a814842af8018e4",
       "player_name": "Mouhamadou Thiam",
       "age": 19,
@@ -7967,11 +8061,11 @@
     }
   ],
   "stats": {
-    "total": 86,
+    "total": 87,
     "hot": 7,
     "warm": 47,
-    "cold": 32,
-    "today": 0,
+    "cold": 33,
+    "today": 1,
     "svincolati": 41,
     "stale_free_agents": 0,
     "intel_roi": {
@@ -7979,16 +8073,16 @@
       "high": 0,
       "medium": 18,
       "low": 14,
-      "none": 54
+      "none": 55
     },
-    "tracking_total": 483,
+    "tracking_total": 484,
     "tracking_only": 397,
-    "publishable": 86,
-    "corroborated": 86
+    "publishable": 87,
+    "corroborated": 87
   },
-  "last_update": "2026-10-09T05:35:25.939598",
+  "last_update": "2026-10-09T13:05:08.135607",
   "version": "1.0.0",
-  "build": "2cc3dae",
+  "build": "416fed3",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete+corroborated"
