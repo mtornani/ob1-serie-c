@@ -25174,18 +25174,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "5e5441de1186c5c3cf18277fa52abc3d",
-    "player_name": "Nicholas Pennington",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Nicholas Pennington operato al ginocchio, meniscectomia",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446963",
-    "discovered_at": "2026-10-08T23:07:05.458476",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "cb960029f0a3b71c19b8cb37a91a192d",
     "player_name": "Ronaldo Pompeu da Silva",
     "region": "ITALY",
@@ -25222,15 +25210,63 @@
     "league_id": "italy_serie_c_d"
   },
   {
+    "id": "5e5441de1186c5c3cf18277fa52abc3d",
+    "player_name": "Nicholas Pennington",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Operato al ginocchio, fuori per infortunio",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446963",
+    "discovered_at": "2026-10-09T05:24:15.756110",
+    "league_id": "italy_serie_c_d"
+  },
+  {
     "id": "59b17cfdf2f780f4b80bb102ed34906c",
     "player_name": "Lorenzo Di Stefano",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Brilla in Torres, incanta il pubblico siciliano",
+    "description": "Talento siciliano che incanta la Torres, firma indelebile in campionato",
     "ob1_score": 58,
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458963",
-    "discovered_at": "2026-10-08T23:07:05.459035",
+    "discovered_at": "2026-10-09T05:24:15.757203",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "0da87310a8cb87764e5a8f66ad2aa57b",
+    "player_name": "Luka Modric",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "citato nell'articolo",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/10/05/modric-ronaldo-e-tanti-altri-quelli-che-non-sanno-dire-basta/",
+    "discovered_at": "2026-10-09T05:24:15.757393",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "0b6ebdc90fd0f3c472aeb267fa6fa601",
+    "player_name": "Cristiano Ronaldo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "citato nell'articolo",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/10/05/modric-ronaldo-e-tanti-altri-quelli-che-non-sanno-dire-basta/",
+    "discovered_at": "2026-10-09T05:24:15.757564",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "98330f97ec04d86e7f64e393a2e70dcb",
+    "player_name": "Pio Esposito",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Attaccante italiano convocato per la partita Francia-Italia",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/10/02/francia-italia-le-ufficiali-del-match/",
+    "discovered_at": "2026-10-09T05:24:15.758061",
     "league_id": "italy_serie_c_d"
   }
 ]
