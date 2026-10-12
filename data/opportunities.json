@@ -25440,7 +25440,14 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447147",
     "discovered_at": "2026-10-11T12:24:51.119070",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:openrouter",
+    "tm_url": "https://www.transfermarkt.it/felice-piccolo/profil/spieler/28029",
+    "player_profile": {
+      "enrichment_source": "Enrichment:openrouter",
+      "tm_url": "https://www.transfermarkt.it/felice-piccolo/profil/spieler/28029"
+    },
+    "tm_enriched": false
   },
   {
     "id": "dbc17085f3ae8e2d2fe45bda172bf136",
@@ -25479,30 +25486,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "70aa4e9b0eb3ac2b697c74c27413d109",
-    "player_name": "Cristiano Ronaldo",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Ritorna a segnare, raggiunge 980 gol",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/09/cristiano-ronaldo-torna-e-segna-sono-980/",
-    "discovered_at": "2026-10-11T21:41:25.117106",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "d6840bf926165f86c9e6ac3d90f8c68f",
-    "player_name": "Alberto Gilardino",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Citato come possibile minaccia per l'Inter",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/10/perche-linter-deve-temere-gilardino-como-roma-vale-la-fiducia-spalletti-amorim-e-allegri-chi-si-ferma-rischia-e-gattuso/",
-    "discovered_at": "2026-10-11T21:41:25.117409",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "35e0affc8128672ac50b92904d01aca4",
     "player_name": "Gennaro Gattuso",
     "region": "ITALY",
@@ -25515,51 +25498,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "b415600207cde99a015acb190f86c210",
-    "player_name": "Lautaro Martinez",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Capitano dell'Inter, citato nella sfida",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/09/lautaro-a-caccia-di-muraro-il-dato-da-eguagliare-in-inter-parma/",
-    "discovered_at": "2026-10-11T21:41:25.117726",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "8f01d5f2312df1383a793ba7053db74b",
-    "player_name": "Cristian Chivu",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Ex difensore, menzionato nell'articolo",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/09/orsato-gasperini-chivu-fabregas-cosa-sta-succedendo-davvero-alla-serie-a/",
-    "discovered_at": "2026-10-11T21:41:25.117833",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "46177fb1fb066e1cdfb77a229d224dce",
-    "player_name": "Daniele De Rossi",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Citato nella sosta della Fiorentina",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/10/fiorentina-la-sosta-ha-fatto-male-de-rossi-vince-la-prima/",
-    "discovered_at": "2026-10-11T21:41:25.117920",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "5e87e67a63a36ee8d235e1304bf648fd",
-    "player_name": "Lionel Messi",
+    "id": "ea942790f846ed0d5c11282a00b2e476",
+    "player_name": "Di Gregorio",
     "region": "ITALY",
     "opportunity_type": "svincolato",
-    "description": "Addio al calcio, spazio a nuove stelle",
-    "ob1_score": 64,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/07/argentina-ora-si-guarda-al-futuro-dopo-laddio-di-messi-spazio-alle-nuove-stelle/",
-    "discovered_at": "2026-10-11T21:41:25.118004",
+    "description": "D'altronde, che il numero uno fosse un ruolo che i dirigenti bianconeri avevano deciso di rinforzare nell'estate del 2026 si era capito già nei mesi scorsi, quando si è provato a sondare la disponibilità di Mike Maignan di trasferirsi alla Continassa a parametro zero. Il recente rinnovo del francese col Milan, però, impone ora di percorrere altre strade. E, nell'attesa di capire se nelle casse juventine entreranno i 60 milioni garantiti dalla partecipazione alla prossima Champions League, si scandaglia il mercato alla ricerca di occasioni. Se il budget di Comolli in estate fosse risicato, ecco che la pista principale porterebbe a Liverpool, da quel 33enne brasiliano con un passato nella Roma... di Spalletti. Alisson, infatti, era il portiere di coppa dell'ultima avventura in giallorosso [...] NOTTINGHAM, ENGLAND - FEBRUARY 22: Alisson Becker of Liverpool celebrates after Alexis Mac Allister of Liverpool (not pictured) scores his team's first goal during the Premier League match between Nottingham Forest and Liverpool at City Ground on February 22, 2026 in Nottingham, England. (Photo by Dan Mullan/Getty Images)\n\n## Il brasiliano, in scadenza nel 2027 con il Liverpool, garantirebbe affidabilità e, soprattutto, esperienza. E ha già lavorato con Spalletti a Roma\n\nFabio Russo  \n\nFabio Russo\n\nGiornalista\n\nScegli Gazzetta come fonte preferita su Google [...] Scegli Gazzetta come fonte preferita su Google\n\nTu chiamale se vuoi, occasioni. Alle prese con quella che potrebbe essere una vera rivoluzione tra i pali nella prossima estate (con Di Gregorio sotto esame dopo i recenti errori, Perin che vorrebbe tornare a giocare titolare e Pinsoglio che pensa al ritiro), la Juve guarda soprattutto alla Premier League. E, oltre a Vicario, mette gli occhi pure su Alisson Becker, portiere del Liverpool con il contratto in scadenza nel 2027.\n\n.\n\nVIDEO: Buffon: \"La Juve ha avuto sfiga, Spalletti le ha dato un’identità\"\n\n## juve, si apre la pista alisson\n\n—",
+    "ob1_score": 66,
+    "source_name": "www.gazzetta.it",
+    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Juventus/24-02-2026/juve-vicario-e-alisson-per-il-dopo-di-gregorio.shtml",
+    "discovered_at": "2026-10-12T05:16:12.983632",
     "league_id": "italy_serie_c_d"
   }
 ]
