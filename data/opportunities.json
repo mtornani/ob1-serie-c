@@ -8591,15 +8591,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "8a25ea03c9e0f38222f3820ef0f186e2",
+    "id": "d60a62a9d518c88f382706def01928d7",
     "player_name": "Gabriele Morelli",
     "region": "ITALY",
-    "opportunity_type": "prestito",
-    "description": "Fine prestito al Trapani il 30 giugno 2026.",
-    "ob1_score": 59,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGPKqwRi12tNji0uiwftpGrFcgX0EgcPANlXS05k0ygZ4JXpSzEm8WnNGGyxhWTSvofQzJXgrYl21Ju5pb_PteK7Bg_t_IA3Wao8w8fsChJinOKcJGM7pHxMzVPXiLERPdISGjM3_bEhvjm47yiro6kQVzip_8r-2xk5labHR2rkZscbd19gq0p310jVhU5F2m5Rig97b_pnbxBMQBeN0S_zAtR",
-    "discovered_at": "2026-07-10T09:45:00.319437",
+    "opportunity_type": "talento",
+    "description": "Difensore della Pianese, commenta l'assist e i risultati recenti.",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447358",
+    "discovered_at": "2026-10-15T16:38:15.674764",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -25981,18 +25981,6 @@
     "market_value_eur": 50000
   },
   {
-    "id": "d60a62a9d518c88f382706def01928d7",
-    "player_name": "Gabriele Morelli",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Difensore della Pianese, commenta l'assist e i risultati recenti.",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447358",
-    "discovered_at": "2026-10-15T16:38:15.674764",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "036d390e796b99b0b98cfb8f938105f7",
     "player_name": "Kaelas Pounga",
     "region": "ITALY",
@@ -26014,6 +26002,54 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447350",
     "discovered_at": "2026-10-15T16:38:15.675377",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "4384b398cf3d914ea5a7f14fbcf88980",
+    "player_name": "Edoardo Soleri",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Scelto Ravenna dopo estate complicata",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447349",
+    "discovered_at": "2026-10-15T21:07:58.487912",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "efe54b58ad2a203cc082600e3d33a4ab",
+    "player_name": "Samuele Regazzetti",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Diagnosi di tumore al testicolo, in cura",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459176",
+    "discovered_at": "2026-10-15T21:07:58.489038",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "22010061599a65fab645feedee991c56",
+    "player_name": "Vincenzo Garofalo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Picerno valuta l'ingresso del centrocampista classe 1999",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459178",
+    "discovered_at": "2026-10-15T21:07:58.489353",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "5474ac7ea41fe5e1a0202fd14b2a9c77",
+    "player_name": "Nicolò Tresoldi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Protagonista in una notte da supereroe allo Stadio San Siro",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/10/14/tresoldi-da-sogno-a-san-siro-una-notte-da-supereroe/",
+    "discovered_at": "2026-10-15T21:07:58.489649",
     "league_id": "italy_serie_c_d"
   }
 ]
