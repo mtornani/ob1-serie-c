@@ -25243,15 +25243,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "5a166e29f260ea50dac2ed15bdeb2220",
+    "id": "90d136dae84a73f0bc4594d9b7d9f297",
     "player_name": "Cesc Fabregas",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Allenatore del Como, ex giocatore",
+    "description": "Menzionato da Mourinho in chiacchiere su possibile trasferimento",
     "ob1_score": 58,
     "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/09/como-roma-sfida-tra-filosofie-diverse-ma-non-troppo/",
-    "discovered_at": "2026-10-10T12:12:50.385316",
+    "source_url": "https://www.sportitalia.it/2026/10/14/feyenoord-como-3-2-beffa-per-fabregas-i-lariani-cadono-a-rotterdam/",
+    "discovered_at": "2026-10-15T03:59:45.172248",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -25837,18 +25837,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ff3c426fe31226cd3d6d225f37affefa",
-    "player_name": "Massimo Zilli",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Attaccante dello Spezia, pronto per il match contro il Ravenna",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447331",
-    "discovered_at": "2026-10-15T03:59:45.170776",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "eb7cbbc9c7948277e7faea40b16cb67d",
     "player_name": "Michele Voltan",
     "region": "ITALY",
@@ -25858,19 +25846,14 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447328",
     "discovered_at": "2026-10-15T03:59:45.171153",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "4f273075896ff7d428a6ebde5b8b87d2",
-    "player_name": "Fabio Cariolato",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Capitano Fabio Cariolato commenta il campionato equilibrato",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447320",
-    "discovered_at": "2026-10-15T03:59:45.171364",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/michele-voltan/profil/spieler/601507",
+    "tm_verified_at": "2026-10-15T11:19:39+00:00",
+    "birth_date": "20/09/2001",
+    "age": 25,
+    "current_club": "svincolato",
+    "role_name": "Portiere",
+    "foot": "destro"
   },
   {
     "id": "e8a33c18c5531b37622e820535a4998b",
@@ -25928,54 +25911,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ac50f297fd3214c407e467abdbcd6ef8",
-    "player_name": "Mouhamadou Sarr",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Folgore Caratese lo firma fino al 2027 con opzione",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459118",
-    "discovered_at": "2026-10-15T03:59:45.171901",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "e312a38e55fba4eabd39e7bfcaa5d984",
-    "player_name": "Matteo Gerbaudo",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Probabile fine contratto con Ostiamare",
-    "ob1_score": 64,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459138",
-    "discovered_at": "2026-10-15T03:59:45.172074",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "90d136dae84a73f0bc4594d9b7d9f297",
-    "player_name": "Cesc Fabregas",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Menzionato da Mourinho in chiacchiere su possibile trasferimento",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/14/feyenoord-como-3-2-beffa-per-fabregas-i-lariani-cadono-a-rotterdam/",
-    "discovered_at": "2026-10-15T03:59:45.172248",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "3e8961c1705c9085becee91235e1a601",
-    "player_name": "Nicolò Tresoldi",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Evidenziato per la tripletta contro l'Inter",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/14/nicolo-tresoldi-la-tripletta-contro-linter-consacra-il-talento-il-milan-sogna/",
-    "discovered_at": "2026-10-15T03:59:45.172454",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "b9930bf4afbdf07d27a1447b8884a1ba",
     "player_name": "Lamine Yamal",
     "region": "ITALY",
@@ -25985,54 +25920,6 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/10/14/lultima-folle-magia-di-lamine-yamal-la-fake-rabona-che-incanta-tutti/",
     "discovered_at": "2026-10-15T03:59:45.172631",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "fabafffea40b27a9fe7c3e02ba8bc81b",
-    "player_name": "Cristian Chivu",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Allenatore ex difensore, commento sulla Champions",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/14/inter-champions-da-incubo-chivu-dobbiamo-essere-umili/",
-    "discovered_at": "2026-10-15T03:59:45.172803",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "7dd668c901718207affb450dfb99ad8f",
-    "player_name": "Randal Kolo Muani",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Evita il KO, resta in rosa Juventus",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/11/juventus-kolo-muani-evita-il-ko-maldini-fa-sorridere-pisacane/",
-    "discovered_at": "2026-10-15T03:59:45.172977",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "70aa4e9b0eb3ac2b697c74c27413d109",
-    "player_name": "Cristiano Ronaldo",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Ritorna in campo segnando il suo 980° gol",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/09/cristiano-ronaldo-torna-e-segna-sono-980/",
-    "discovered_at": "2026-10-15T03:59:45.173351",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "b415600207cde99a015acb190f86c210",
-    "player_name": "Lautaro Martinez",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Lautaro vuole eguagliare il record di Muraro",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/10/09/lautaro-a-caccia-di-muraro-il-dato-da-eguagliare-in-inter-parma/",
-    "discovered_at": "2026-10-15T03:59:45.173530",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -26057,6 +25944,88 @@
     "source_name": "www.tuttomercatoweb.com",
     "source_url": "https://www.tuttomercatoweb.com/redazione/pierpaolo-matrone-898",
     "discovered_at": "2026-10-15T03:59:45.176417",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "69f58e1edb22e13a7707161179623581",
+    "player_name": "Francesco Marone",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Portiere classe 1999 vicino al trasferimento alla Palmese",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447348",
+    "discovered_at": "2026-10-15T11:07:54.366795",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "b7b18a8df02de553a5387916d551d3c0",
+    "player_name": "Giuseppe Raffaele",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Presente nella panchina di Altamura per la stagione 2026/27",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447333",
+    "discovered_at": "2026-10-15T11:07:54.367173",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d1738717c79f340d7a3e7e41630778c8",
+    "player_name": "Donato Distratto",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Giovane classe 2007 in arrivo alla Reggina, pronto per la D",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447343",
+    "discovered_at": "2026-10-15T11:07:54.367364",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "e56748db7dd0771b67f36f81407c994c",
+    "player_name": "Ayman Sanat",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Risoluzione contratto, scende in Serie D",
+    "ob1_score": 66,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447341",
+    "discovered_at": "2026-10-15T11:07:54.367566",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/mohamed-ayman-sanat/profil/spieler/641204",
+    "tm_verified_at": "2026-10-15T11:18:29+00:00",
+    "birth_date": "28/05/2002",
+    "age": 24,
+    "current_club": "K-Sport Montecchio Gallo",
+    "role_name": "Ala destra",
+    "foot": "sinistro",
+    "contract_expires": "30/06/2027",
+    "market_value": 50000,
+    "market_value_eur": 50000
+  },
+  {
+    "id": "f0d173c10aadc700695c486aa3aa2221",
+    "player_name": "Antonio Buscè",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Lotteria per la panchina in Pescara",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447338",
+    "discovered_at": "2026-10-15T11:07:54.367747",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "3e8961c1705c9085becee91235e1a601",
+    "player_name": "Nicolò Tresoldi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "tripletta contro l’Inter, talento in evidenza",
+    "ob1_score": 58,
+    "source_name": "www.sportitalia.it",
+    "source_url": "https://www.sportitalia.it/2026/10/14/nicolo-tresoldi-la-tripletta-contro-linter-consacra-il-talento-il-milan-sogna/",
+    "discovered_at": "2026-10-15T11:07:54.368108",
     "league_id": "italy_serie_c_d"
   }
 ]
