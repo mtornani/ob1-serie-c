@@ -9499,15 +9499,15 @@
     "tm_enriched": true
   },
   {
-    "id": "24bef0713d6eb1ed7891a3e513780cb8",
+    "id": "f03acc465c472943026a1dcf4b0b727c",
     "player_name": "Guido Gomez",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "acquistato a titolo definitivo dal Bari",
-    "ob1_score": 58,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH55nD6uKVmGkVL1yWmawBn9mjT8vpk9G_KGNKxpKMAJ3a4B_3Q9zWhUHyOSyvBBluYBg6HqwoiVL819jiinVdSGqHfUsHunEKqCnhJpE97_0XOGbx2grkfbh8jRwFz3wlt9wVCqt2drbaued_8yFZbpj-uybrKcmmZFYNwflkfBc9oQX5aKKKSeMxdF13mtO2sNLg==",
-    "discovered_at": "2026-07-27T03:34:14.860621",
+    "description": "Segna il primo gol della stagione per il Bari contro la Casertana",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448005",
+    "discovered_at": "2026-10-26T12:32:33.166738",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -11906,15 +11906,15 @@
     "tm_enriched": true
   },
   {
-    "id": "e9e742775a179d20b6319f6f7544c0e4",
-    "player_name": "Lukas Grgić",
+    "id": "2318c9d8eb593d01752018093b728901",
+    "player_name": "Lukas Grgic",
     "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Centrocampista svincolato, trattativa avanzata con Bari (Serie C)",
-    "ob1_score": 64,
-    "source_name": "Gemini Search",
-    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFLfW33ZPg4nZxn5qLmWyQOB0Su-prXnsHQ0pDBEw9qsBhnFcuYv9YK1rJkv-l4WnZEgXwkEGeYiwyyq_iijeX3j6n_P8PbEw5b0fWqgkQZGjxWKF4e7zAD2XVk9-zOscCw-oFHY-YCE0L5JNaLsU2qHLKw-_7W9dqK7dMrNPkwIm61_zAq7YU2sUWj0ZMRJns0i4N9kC5zTaB5szYhk4vzR5gvo3KGHkPKIJ6odZw=",
-    "discovered_at": "2026-07-17T18:24:07.765651",
+    "opportunity_type": "talento",
+    "description": "Contusione al nervo sciatico, out in Coppa e a rischio con la Scafatese",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447972",
+    "discovered_at": "2026-10-26T12:32:33.167285",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -20021,15 +20021,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "08b7d6d4889d33e8ed9c8dbc009b63b8",
+    "id": "f59512cba247757e44150af80345ae60",
     "player_name": "Danilo Quaranta",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Difensore, rinnova contratto fino al 30/06/2028",
+    "description": "Esprime delusione e rabbia dopo la sconfitta contro il Grosseto",
     "ob1_score": 60,
     "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444856",
-    "discovered_at": "2026-09-03T16:06:38.119699",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448009",
+    "discovered_at": "2026-10-26T12:32:33.166133",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -27140,42 +27140,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "f59512cba247757e44150af80345ae60",
-    "player_name": "Danilo Quaranta",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Esprime delusione e rabbia dopo la sconfitta contro il Grosseto",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448009",
-    "discovered_at": "2026-10-26T12:32:33.166133",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "d2a1b26ef776cc39adcf4048a97293d8",
-    "player_name": "Francesco Cassata",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Arriva alla Folgore Caratese dal Milan, prima esperienza al Lecco",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448006",
-    "discovered_at": "2026-10-26T12:32:33.166526",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "f03acc465c472943026a1dcf4b0b727c",
-    "player_name": "Guido Gomez",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Segna il primo gol della stagione per il Bari contro la Casertana",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448005",
-    "discovered_at": "2026-10-26T12:32:33.166738",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "7fcad3215cb638b2b9044c39d8f39c98",
     "player_name": "Andrea Zaccagno",
     "region": "ITALY",
@@ -27188,15 +27152,27 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "2318c9d8eb593d01752018093b728901",
-    "player_name": "Lukas Grgic",
+    "id": "ea942790f846ed0d5c11282a00b2e476",
+    "player_name": "Di Gregorio",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "D'altronde, che il numero uno fosse un ruolo che i dirigenti bianconeri avevano deciso di rinforzare nell'estate del 2026 si era capito già nei mesi scorsi, quando si è provato a sondare la disponibilità di Mike Maignan di trasferirsi alla Continassa a parametro zero. Il recente rinnovo del francese col Milan, però, impone ora di percorrere altre strade. E, nell'attesa di capire se nelle casse juventine entreranno i 60 milioni garantiti dalla partecipazione alla prossima Champions League, si scandaglia il mercato alla ricerca di occasioni. Se il budget di Comolli in estate fosse risicato, ecco che la pista principale porterebbe a Liverpool, da quel 33enne brasiliano con un passato nella Roma... di Spalletti. Alisson, infatti, era il portiere di coppa dell'ultima avventura in giallorosso",
+    "ob1_score": 66,
+    "source_name": "www.gazzetta.it",
+    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Juventus/24-02-2026/juve-vicario-e-alisson-per-il-dopo-di-gregorio.shtml",
+    "discovered_at": "2026-10-26T22:30:16.321828",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "5eb6fd584aaf5d2b41d4edd0bde72233",
+    "player_name": "Nico Paz",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Contusione al nervo sciatico, out in Coppa e a rischio con la Scafatese",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447972",
-    "discovered_at": "2026-10-26T12:32:33.167285",
+    "description": "Jun 29, 2026 — Il mercato per la Serie C aprirà il 1° luglio come di consueto. Il mercato estivo chiuderà invece il 1° settembre alle ore 20. Fino a quel ...Read more",
+    "ob1_score": 62,
+    "source_name": "www.gazzetta.it",
+    "source_url": "https://www.gazzetta.it/Calciomercato/29-06-2026/notizie-calciomercato-il-live-di-oggi-29-giugno.shtml",
+    "discovered_at": "2026-10-26T22:30:16.322265",
     "league_id": "italy_serie_c_d"
   }
 ]
