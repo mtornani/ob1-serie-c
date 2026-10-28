@@ -136,3 +136,5 @@ workers/telegram-bot/    # bot Telegram (Cloudflare Worker, l'unico bot attivo)
 ```bash
 PYTHONIOENCODING=utf-8 python -m unittest discover tests -v
 ```
+
+<!-- export const RELEASE_TAG = "b79d9900"; -->
