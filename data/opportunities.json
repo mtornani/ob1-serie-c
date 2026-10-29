@@ -27212,30 +27212,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "c1b26fff21119c5772f28561223ecfc8",
-    "player_name": "Aurora Pro Patria",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "| # | Giocatori | Età | Naz | Stagione | Acquirente | Costo |\n ---  ---  --- \n| 26 | |  |  |  --- | | Alessandro Sassaro | Alessandro Sassaro | | Difensore centrale | | 20 | 25/26 | |  |  |  --- | | svincolato | svincolato | |  | \n| 27 | |  |  |  --- | | Dennis Curatolo | Dennis Curatolo | | Punta centrale | | 21 | 25/26 | |  |  |  --- | | svincolato | svincolato | |  | \n| 28 | |  |  |  --- | | Manuel Lombardoni | Manuel Lombardoni | | Difensore centrale | | 26 | 25/26 | |  |  |  --- | | svincolato | svincolato | |  | \n| 29 | |  |  |  --- | | Giovanni Vaglica | Giovanni Vaglica | | Terzino sinistro | | 22 | 25/26 | |  |  |  --- | | svincolato | svincolato | |  | [...] | 30 | |  |  |  --- | | Leandro Pratelli | Leandro Pratelli | | Portiere | | 22 | 25/26 | |  |  |  --- | | svincolato | svincolato | |  | \n| 31 | |  |  |  --- | | Christophe Renault | Christophe Renault | | Esterno di destra | | 23 | 25/26 | |  |  |  --- | | svincolato | svincolato | |  |",
-    "ob1_score": 66,
-    "source_name": "www.transfermarkt.it",
-    "source_url": "https://www.transfermarkt.it/aurora-pro-patria-1919/rekordabgaenge/verein/4146/saison_id/2025/page/2",
-    "discovered_at": "2026-10-28T22:23:34.538399",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "885ca1d2cde1d8f360931681616a1a7b",
-    "player_name": "Luigi Caccavo",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Promettente centravanti Under 23",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/il-punto/settimana-trampolino-lancio-caccavo-l-ultimo-tanti-440278",
-    "discovered_at": "2026-10-28T22:23:34.538603",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "ec5b1d8003c0f0604fee9de7c7858c1b",
     "player_name": "Konstantinos Koulierakis",
     "region": "ITALY",
@@ -27246,27 +27222,6 @@
     "source_url": "https://www.gazzetta.it/Calciomercato/01-08-2026/notizie-calciomercato-il-live-di-oggi-1-agosto.shtml",
     "discovered_at": "2026-10-28T22:23:34.539142",
     "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "b6e149affb5ee98a0971b2de16615c98",
-    "player_name": "Matteo Cotali",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Svincolato, libero dal contratto",
-    "ob1_score": 66,
-    "source_name": "www.transfermarkt.it",
-    "source_url": "https://www.transfermarkt.it/as-ostiamare-lido-calcio/kader/verein/9793/saison_id/2026",
-    "discovered_at": "2026-10-28T22:23:34.539313",
-    "league_id": "italy_serie_c_d",
-    "tm_url": "https://www.transfermarkt.it/matteo-cotali/profil/spieler/382567",
-    "tm_verified_at": "2026-10-13T22:40:01+00:00",
-    "birth_date": "22/04/1997",
-    "age": 29,
-    "current_club": "AS Ostiamare Lido Calcio",
-    "role_name": "Terzino sinistro",
-    "foot": "sinistro",
-    "contract_expires": "30/06/2028",
-    "agent": "FK Sport Management ..."
   },
   {
     "id": "7894a919ca119f84f048b02c02438181",
@@ -27301,7 +27256,17 @@
     "source_name": "www.transfermarkt.it",
     "source_url": "https://www.transfermarkt.it/as-ostiamare-lido-calcio/kader/verein/9793/saison_id/2026",
     "discovered_at": "2026-10-28T22:23:34.539655",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/antonio-castaldo/profil/spieler/942805",
+    "tm_verified_at": "2026-10-29T05:11:46+00:00",
+    "birth_date": "14/02/2006",
+    "age": 20,
+    "current_club": "AS Ostiamare Lido Calcio",
+    "role_name": "Terzino sinistro",
+    "foot": "sinistro",
+    "contract_expires": "30/06/2028",
+    "market_value": 25000,
+    "market_value_eur": 25000
   },
   {
     "id": "ededbe36856f3648fcc96746adae3eeb",
@@ -27313,6 +27278,18 @@
     "source_name": "www.gazzetta.it",
     "source_url": "https://www.gazzetta.it/Calciomercato/20-05-2025/nico-paz-al-real-madrd-che-paga-la-recompra-al-como-la-trattativa.shtml",
     "discovered_at": "2026-10-28T22:23:34.539864",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "e47e81e6d47dc4f7796d366967047972",
+    "player_name": "Iacopo Cernigoi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ritorna in campo dopo infortunio al crociato",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448150",
+    "discovered_at": "2026-10-29T05:01:34.780583",
     "league_id": "italy_serie_c_d"
   }
 ]
