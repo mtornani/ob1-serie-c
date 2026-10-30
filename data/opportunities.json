@@ -27341,42 +27341,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "df97008f7b036d773f870ccbfe13f23e",
-    "player_name": "Gianmarco Ingrosso",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Presidente della Ruvese, ex difensore del Bari",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448211",
-    "discovered_at": "2026-10-30T05:01:14.890664",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "80414f982d9484107dfc61fff0af1db2",
-    "player_name": "Davide Di Molfetta",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Dichiarazioni dopo la partita di Coppa Italia",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448200",
-    "discovered_at": "2026-10-30T05:01:14.891271",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "81ad8a582c985533eaaa2978dc509af2",
-    "player_name": "Nicola Pintus",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Commenti sulla difesa e l'attacco della Pianese",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448196",
-    "discovered_at": "2026-10-30T05:01:14.891371",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "84e24f5ce25fa76ab0531590aeb1a5a1",
     "player_name": "Alfredo Bifulco",
     "region": "ITALY",
@@ -27389,15 +27353,63 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "5b64e14195b8bf6716926666cd289560",
-    "player_name": "Dario Del Fabro",
+    "id": "e400ce8d1ea59efc9245702c8ff3ab0b",
+    "player_name": "Lorenzo Ferro",
+    "region": "ITALY",
+    "opportunity_type": "rescissione",
+    "description": "Risoluzione consensuale del contratto con il Potenza",
+    "ob1_score": 65,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448232",
+    "discovered_at": "2026-10-30T12:25:49.767344",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ac095eba831a9854b92e30732db25807",
+    "player_name": "Francesco Cassata",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Rinnovo contratto fino al 30/06/2028",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459623",
-    "discovered_at": "2026-10-30T05:01:14.891760",
+    "description": "Voglia di tornare in Serie A dopo un passo indietro",
+    "ob1_score": 64,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448221",
+    "discovered_at": "2026-10-30T12:25:49.767758",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "a5752c92a01229b6c5b943456d302675",
+    "player_name": "Filippo Palazzino",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Commento sul valore della squadra e la sua performance",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448220",
+    "discovered_at": "2026-10-30T12:25:49.767875",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "091acdf1b878b59bf68c81c585ab1a64",
+    "player_name": "Vito Di Bari",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Scelta per il riscatto della Salernitana",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448216",
+    "discovered_at": "2026-10-30T12:25:49.767980",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "df97008f7b036d773f870ccbfe13f23e",
+    "player_name": "Gianmarco Ingrosso",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ex difensore, ora presidente della Ruvese",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448211",
+    "discovered_at": "2026-10-30T12:25:49.768085",
     "league_id": "italy_serie_c_d"
   }
 ]
