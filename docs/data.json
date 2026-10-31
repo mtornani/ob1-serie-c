@@ -75,9 +75,9 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 101,
+      "days_without_contract": 102,
       "stale_free_agent": false,
-      "signal_age_days": 101,
+      "signal_age_days": 102,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -86,102 +86,12 @@
           "Profilo in fascia Lega Pro"
         ],
         "no": [
-          "Segnalazione vecchia di 101 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 102 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
-          "101 giorni senza club — perché non è stato preso?",
+          "102 giorni senza club — perché non è stato preso?",
           "Fonte debole o generica"
         ],
-        "action": "Da riverificare — segnalazione di 101 giorni fa"
-      }
-    },
-    {
-      "id": "7303ce892bf4978ba5559a360b92d568",
-      "player_name": "Mattia Ievoli",
-      "age": 21,
-      "role": "",
-      "role_name": "Centrocampo - Centrocampista Piede:destro Squ",
-      "opportunity_type": "svincolato",
-      "type_reconciled_from": "",
-      "reported_date": "2026-10-23",
-      "source_name": "www.tuttoc.com",
-      "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447805",
-      "previous_clubs": [],
-      "current_club": "svincolato",
-      "appearances": null,
-      "goals": null,
-      "assists": null,
-      "minutes_played": null,
-      "summary": "",
-      "nationality": null,
-      "second_nationality": null,
-      "foot": "destro",
-      "market_value": 150000,
-      "market_value_formatted": null,
-      "player_image_url": null,
-      "agent": null,
-      "tm_url": "https://www.transfermarkt.it/mattia-ievoli/profil/spieler/932741",
-      "tm_link_ok": true,
-      "tm_verified_at": "2026-10-23T11:27:03+00:00",
-      "data_verified": true,
-      "discovered_at": "2026-10-23T11:16:22.874537",
-      "ob1_score": 75,
-      "classification": "hot",
-      "score_breakdown": {
-        "freshness": 70,
-        "opportunity_type": 100,
-        "experience": 50,
-        "age": 100,
-        "market_value": 80,
-        "league_fit": 50,
-        "source": 95
-      },
-      "score_senza_dato": [
-        "experience"
-      ],
-      "peso_misurato": 0.8,
-      "identity_complete": true,
-      "corroborated": true,
-      "publishable": true,
-      "review_flags": "",
-      "n_sources": 2,
-      "out_of_scope": false,
-      "out_of_scope_reason": "",
-      "market_identity_complete": true,
-      "market_corroborated": true,
-      "market_publishable": true,
-      "market_n_sources": 2,
-      "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Disponibile a parametro zero.",
-      "intel": {
-        "roi_class": "medium",
-        "roi_label": "CONTRIBUTO MEDIO",
-        "roi_color": "#3b82f6",
-        "coefficiente_eta": 1.2,
-        "moltiplicatore": 1.56,
-        "proiezione_stagionale": 2730,
-        "traffic_light": "green",
-        "traffic_label": "UNDER",
-        "traffic_icon": "🟢",
-        "is_over": false,
-        "signals": [],
-        "birth_year": 2005,
-        "roi_dettaglio": "Classe 2005: ogni minuto giocato vale ×1.56 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.730 minuti ponderati",
-        "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
-      },
-      "contract_expires": "",
-      "days_without_contract": 7,
-      "stale_free_agent": false,
-      "signal_age_days": 7,
-      "assessment": {
-        "yes": [
-          "Libero a zero — nessun costo di cartellino",
-          "Giovane (21 anni) — non occupa posto Over in lista",
-          "Valore di mercato interessante",
-          "Segnalazione fresca"
-        ],
-        "no": [
-          "Presenze non verificate — controllare Transfermarkt"
-        ],
-        "action": "Da chiamare ora"
+        "action": "Da riverificare — segnalazione di 102 giorni fa"
       }
     },
     {
@@ -269,7 +179,7 @@
       "contract_expires": "30/06/2030",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 243,
+      "signal_age_days": 244,
       "assessment": {
         "yes": [
           "Giovane (20 anni) — non occupa posto Over in lista",
@@ -278,11 +188,101 @@
           "Profilo in fascia Lega Pro"
         ],
         "no": [
-          "Segnalazione vecchia di 243 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 244 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 243 giorni fa"
+        "action": "Da riverificare — segnalazione di 244 giorni fa"
+      }
+    },
+    {
+      "id": "7303ce892bf4978ba5559a360b92d568",
+      "player_name": "Mattia Ievoli",
+      "age": 21,
+      "role": "",
+      "role_name": "Centrocampo - Centrocampista Piede:destro Squ",
+      "opportunity_type": "svincolato",
+      "type_reconciled_from": "",
+      "reported_date": "2026-10-23",
+      "source_name": "www.tuttoc.com",
+      "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447805",
+      "previous_clubs": [],
+      "current_club": "svincolato",
+      "appearances": null,
+      "goals": null,
+      "assists": null,
+      "minutes_played": null,
+      "summary": "",
+      "nationality": null,
+      "second_nationality": null,
+      "foot": "destro",
+      "market_value": 150000,
+      "market_value_formatted": null,
+      "player_image_url": null,
+      "agent": null,
+      "tm_url": "https://www.transfermarkt.it/mattia-ievoli/profil/spieler/932741",
+      "tm_link_ok": true,
+      "tm_verified_at": "2026-10-23T11:27:03+00:00",
+      "data_verified": true,
+      "discovered_at": "2026-10-23T11:16:22.874537",
+      "ob1_score": 73,
+      "classification": "hot",
+      "score_breakdown": {
+        "freshness": 60,
+        "opportunity_type": 100,
+        "experience": 50,
+        "age": 100,
+        "market_value": 80,
+        "league_fit": 50,
+        "source": 95
+      },
+      "score_senza_dato": [
+        "experience"
+      ],
+      "peso_misurato": 0.8,
+      "identity_complete": true,
+      "corroborated": true,
+      "publishable": true,
+      "review_flags": "",
+      "n_sources": 2,
+      "out_of_scope": false,
+      "out_of_scope_reason": "",
+      "market_identity_complete": true,
+      "market_corroborated": true,
+      "market_publishable": true,
+      "market_n_sources": 2,
+      "recommendation": "Profilo giovane (21 anni), potenziale di crescita. Disponibile a parametro zero.",
+      "intel": {
+        "roi_class": "medium",
+        "roi_label": "CONTRIBUTO MEDIO",
+        "roi_color": "#3b82f6",
+        "coefficiente_eta": 1.2,
+        "moltiplicatore": 1.56,
+        "proiezione_stagionale": 2730,
+        "traffic_light": "green",
+        "traffic_label": "UNDER",
+        "traffic_icon": "🟢",
+        "is_over": false,
+        "signals": [],
+        "birth_year": 2005,
+        "roi_dettaglio": "Classe 2005: ogni minuto giocato vale ×1.56 per i contributi FIGC — bonus tesseramento definitivo incluso — stima su una stagione: 2.730 minuti ponderati",
+        "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
+      },
+      "contract_expires": "",
+      "days_without_contract": 8,
+      "stale_free_agent": false,
+      "signal_age_days": 8,
+      "assessment": {
+        "yes": [
+          "Libero a zero — nessun costo di cartellino",
+          "Giovane (21 anni) — non occupa posto Over in lista",
+          "Valore di mercato interessante",
+          "Fonte specializzata"
+        ],
+        "no": [
+          "Presenze non verificate — controllare Transfermarkt"
+        ],
+        "action": "Da chiamare ora"
       }
     },
     {
@@ -359,9 +359,9 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 59,
+      "days_without_contract": 60,
       "stale_free_agent": false,
-      "signal_age_days": 59,
+      "signal_age_days": 60,
       "assessment": {
         "yes": [
           "Ha rescisso — in uscita, trattativa possibile",
@@ -370,7 +370,7 @@
           "Fonte specializzata"
         ],
         "no": [
-          "Segnalazione di 59 giorni fa: situazione probabilmente cambiata",
+          "Segnalazione di 60 giorni fa: situazione probabilmente cambiata",
           "Presenze non verificate — controllare Transfermarkt"
         ],
         "action": "Da tenere d'occhio — conferma che sia ancora disponibile"
@@ -450,9 +450,9 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 59,
+      "days_without_contract": 60,
       "stale_free_agent": false,
-      "signal_age_days": 59,
+      "signal_age_days": 60,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -461,7 +461,7 @@
           "Fonte specializzata"
         ],
         "no": [
-          "Segnalazione di 59 giorni fa: situazione probabilmente cambiata",
+          "Segnalazione di 60 giorni fa: situazione probabilmente cambiata",
           "Presenze non verificate — controllare Transfermarkt"
         ],
         "action": "Da tenere d'occhio — conferma che sia ancora disponibile"
@@ -541,9 +541,9 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 43,
+      "days_without_contract": 44,
       "stale_free_agent": false,
-      "signal_age_days": 43,
+      "signal_age_days": 44,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -631,9 +631,9 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 58,
+      "days_without_contract": 59,
       "stale_free_agent": false,
-      "signal_age_days": 58,
+      "signal_age_days": 59,
       "assessment": {
         "yes": [
           "Ha rescisso — in uscita, trattativa possibile",
@@ -642,7 +642,7 @@
           "Fonte specializzata"
         ],
         "no": [
-          "Segnalazione di 58 giorni fa: situazione probabilmente cambiata",
+          "Segnalazione di 59 giorni fa: situazione probabilmente cambiata",
           "Presenze non verificate — controllare Transfermarkt"
         ],
         "action": "Da tenere d'occhio — conferma che sia ancora disponibile"
@@ -722,9 +722,9 @@
         "lista_dettaglio": "Over classe 2000 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 57,
+      "days_without_contract": 58,
       "stale_free_agent": false,
-      "signal_age_days": 57,
+      "signal_age_days": 58,
       "assessment": {
         "yes": [
           "Ha rescisso — in uscita, trattativa possibile",
@@ -733,7 +733,7 @@
           "Fonte specializzata"
         ],
         "no": [
-          "Segnalazione di 57 giorni fa: situazione probabilmente cambiata",
+          "Segnalazione di 58 giorni fa: situazione probabilmente cambiata",
           "Presenze non verificate — controllare Transfermarkt"
         ],
         "action": "Da tenere d'occhio — conferma che sia ancora disponibile"
@@ -816,7 +816,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 2,
+      "signal_age_days": 3,
       "assessment": {
         "yes": [
           "Giovane (21 anni) — non occupa posto Over in lista",
@@ -905,9 +905,9 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 46,
+      "days_without_contract": 47,
       "stale_free_agent": false,
-      "signal_age_days": 46,
+      "signal_age_days": 47,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -995,7 +995,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 242,
+      "signal_age_days": 243,
       "assessment": {
         "yes": [
           "Disponibile in prestito — investimento contenuto",
@@ -1004,10 +1004,10 @@
           "Valore di mercato interessante (150 mila €)"
         ],
         "no": [
-          "Segnalazione vecchia di 242 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 243 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 242 giorni fa"
+        "action": "Da riverificare — segnalazione di 243 giorni fa"
       }
     },
     {
@@ -1084,9 +1084,9 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 56,
+      "days_without_contract": 57,
       "stale_free_agent": false,
-      "signal_age_days": 56,
+      "signal_age_days": 57,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -1183,7 +1183,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 241,
+      "signal_age_days": 242,
       "assessment": {
         "yes": [
           "Giovane (18 anni) — non occupa posto Over in lista",
@@ -1192,11 +1192,11 @@
           "Fonte specializzata"
         ],
         "no": [
-          "Segnalazione vecchia di 241 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 242 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 241 giorni fa"
+        "action": "Da riverificare — segnalazione di 242 giorni fa"
       }
     },
     {
@@ -1276,7 +1276,7 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 140,
+      "signal_age_days": 141,
       "assessment": {
         "yes": [
           "25 anni — nel pieno della carriera",
@@ -1285,12 +1285,12 @@
           "Profilo in fascia Lega Pro"
         ],
         "no": [
-          "Segnalazione vecchia di 140 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 141 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare",
           "Fonte debole o generica"
         ],
-        "action": "Da riverificare — segnalazione di 140 giorni fa"
+        "action": "Da riverificare — segnalazione di 141 giorni fa"
       }
     },
     {
@@ -1368,9 +1368,9 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 150,
+      "days_without_contract": 151,
       "stale_free_agent": false,
-      "signal_age_days": 150,
+      "signal_age_days": 151,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -1378,12 +1378,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 150 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 151 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
-          "150 giorni senza club — perché non è stato preso?",
+          "151 giorni senza club — perché non è stato preso?",
           "Fonte debole o generica"
         ],
-        "action": "Da riverificare — segnalazione di 150 giorni fa"
+        "action": "Da riverificare — segnalazione di 151 giorni fa"
       }
     },
     {
@@ -1461,9 +1461,9 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 91,
+      "days_without_contract": 92,
       "stale_free_agent": false,
-      "signal_age_days": 91,
+      "signal_age_days": 92,
       "assessment": {
         "yes": [
           "Ha rescisso — in uscita, trattativa possibile",
@@ -1471,12 +1471,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 91 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 92 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
-          "91 giorni senza club — perché non è stato preso?",
+          "92 giorni senza club — perché non è stato preso?",
           "Fonte debole o generica"
         ],
-        "action": "Da riverificare — segnalazione di 91 giorni fa"
+        "action": "Da riverificare — segnalazione di 92 giorni fa"
       }
     },
     {
@@ -1553,9 +1553,9 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 58,
+      "days_without_contract": 59,
       "stale_free_agent": false,
-      "signal_age_days": 58,
+      "signal_age_days": 59,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -1645,7 +1645,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 51,
+      "signal_age_days": 52,
       "assessment": {
         "yes": [
           "25 anni — nel pieno della carriera",
@@ -1736,9 +1736,9 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 49,
+      "days_without_contract": 50,
       "stale_free_agent": false,
-      "signal_age_days": 49,
+      "signal_age_days": 50,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -1828,9 +1828,9 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2003 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 134,
+      "days_without_contract": 135,
       "stale_free_agent": false,
-      "signal_age_days": 134,
+      "signal_age_days": 135,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -1838,12 +1838,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 134 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 135 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
-          "134 giorni senza club — perché non è stato preso?",
+          "135 giorni senza club — perché non è stato preso?",
           "Fonte debole o generica"
         ],
-        "action": "Da riverificare — segnalazione di 134 giorni fa"
+        "action": "Da riverificare — segnalazione di 135 giorni fa"
       }
     },
     {
@@ -1922,7 +1922,7 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 241,
+      "signal_age_days": 242,
       "assessment": {
         "yes": [
           "Giovane (22 anni) — non occupa posto Over in lista",
@@ -1931,11 +1931,11 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 241 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 242 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 241 giorni fa"
+        "action": "Da riverificare — segnalazione di 242 giorni fa"
       }
     },
     {
@@ -2014,7 +2014,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 243,
+      "signal_age_days": 244,
       "assessment": {
         "yes": [
           "Giovane (19 anni) — non occupa posto Over in lista",
@@ -2023,12 +2023,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 243 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 244 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 243 giorni fa"
+        "action": "Da riverificare — segnalazione di 244 giorni fa"
       }
     },
     {
@@ -2106,9 +2106,9 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 90,
+      "days_without_contract": 91,
       "stale_free_agent": false,
-      "signal_age_days": 90,
+      "signal_age_days": 91,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -2117,12 +2117,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
+          "Segnalazione vecchia di 91 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "31 anni — poco margine, nessun bonus lista giovani",
-          "90 giorni senza club — perché non è stato preso?",
-          "Fonte debole o generica"
+          "91 giorni senza club — perché non è stato preso?"
         ],
-        "action": "Da tenere d'occhio"
+        "action": "Da riverificare — segnalazione di 91 giorni fa"
       }
     },
     {
@@ -2199,9 +2199,9 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2005 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 59,
+      "days_without_contract": 60,
       "stale_free_agent": false,
-      "signal_age_days": 59,
+      "signal_age_days": 60,
       "assessment": {
         "yes": [
           "Ha rescisso — in uscita, trattativa possibile",
@@ -2291,9 +2291,9 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2007 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 148,
+      "days_without_contract": 149,
       "stale_free_agent": false,
-      "signal_age_days": 148,
+      "signal_age_days": 149,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -2301,12 +2301,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 148 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 149 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
-          "148 giorni senza club — perché non è stato preso?",
+          "149 giorni senza club — perché non è stato preso?",
           "Valore di mercato assente o molto basso"
         ],
-        "action": "Da riverificare — segnalazione di 148 giorni fa"
+        "action": "Da riverificare — segnalazione di 149 giorni fa"
       }
     },
     {
@@ -2385,9 +2385,9 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2004 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 110,
+      "days_without_contract": 111,
       "stale_free_agent": false,
-      "signal_age_days": 110,
+      "signal_age_days": 111,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -2395,12 +2395,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 110 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 111 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
-          "110 giorni senza club — perché non è stato preso?",
+          "111 giorni senza club — perché non è stato preso?",
           "Valore di mercato assente o molto basso"
         ],
-        "action": "Da riverificare — segnalazione di 110 giorni fa"
+        "action": "Da riverificare — segnalazione di 111 giorni fa"
       }
     },
     {
@@ -2479,9 +2479,9 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2006 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 101,
+      "days_without_contract": 102,
       "stale_free_agent": false,
-      "signal_age_days": 101,
+      "signal_age_days": 102,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -2489,12 +2489,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 101 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 102 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
-          "101 giorni senza club — perché non è stato preso?",
+          "102 giorni senza club — perché non è stato preso?",
           "Valore di mercato assente o molto basso"
         ],
-        "action": "Da riverificare — segnalazione di 101 giorni fa"
+        "action": "Da riverificare — segnalazione di 102 giorni fa"
       }
     },
     {
@@ -2575,7 +2575,7 @@
       "contract_expires": "30/06/2029",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 109,
+      "signal_age_days": 110,
       "assessment": {
         "yes": [
           "Giovane (21 anni) — non occupa posto Over in lista",
@@ -2584,12 +2584,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 109 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 110 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 109 giorni fa"
+        "action": "Da riverificare — segnalazione di 110 giorni fa"
       }
     },
     {
@@ -2667,9 +2667,9 @@
         "lista_dettaglio": "Over classe 2001 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 15,
+      "days_without_contract": 16,
       "stale_free_agent": false,
-      "signal_age_days": 15,
+      "signal_age_days": 16,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -2761,7 +2761,7 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 2,
+      "signal_age_days": 3,
       "assessment": {
         "yes": [
           "Giovane (20 anni) — non occupa posto Over in lista",
@@ -2850,9 +2850,9 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 59,
+      "days_without_contract": 60,
       "stale_free_agent": false,
-      "signal_age_days": 59,
+      "signal_age_days": 60,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -2941,9 +2941,9 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 28,
+      "days_without_contract": 29,
       "stale_free_agent": false,
-      "signal_age_days": 28,
+      "signal_age_days": 29,
       "assessment": {
         "yes": [
           "Ha rescisso — in uscita, trattativa possibile",
@@ -3034,7 +3034,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 5,
+      "signal_age_days": 6,
       "assessment": {
         "yes": [
           "Giovane (20 anni) — non occupa posto Over in lista",
@@ -3126,9 +3126,9 @@
         "lista_dettaglio": "Non occupa slot Over — classe 2002 (cutoff: 2002)"
       },
       "contract_expires": "",
-      "days_without_contract": 134,
+      "days_without_contract": 135,
       "stale_free_agent": false,
-      "signal_age_days": 134,
+      "signal_age_days": 135,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -3136,12 +3136,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 134 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 135 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
-          "134 giorni senza club — perché non è stato preso?",
+          "135 giorni senza club — perché non è stato preso?",
           "Valore di mercato assente o molto basso"
         ],
-        "action": "Da riverificare — segnalazione di 134 giorni fa"
+        "action": "Da riverificare — segnalazione di 135 giorni fa"
       }
     },
     {
@@ -3219,9 +3219,9 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 57,
+      "days_without_contract": 58,
       "stale_free_agent": false,
-      "signal_age_days": 57,
+      "signal_age_days": 58,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -3309,9 +3309,9 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 55,
+      "days_without_contract": 56,
       "stale_free_agent": false,
-      "signal_age_days": 55,
+      "signal_age_days": 56,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -3402,7 +3402,7 @@
       "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 242,
+      "signal_age_days": 243,
       "assessment": {
         "yes": [
           "Disponibile in prestito — investimento contenuto",
@@ -3411,11 +3411,11 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 242 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 243 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Notizia datata — disponibilità da ricontrollare",
           "Valore di mercato assente o molto basso"
         ],
-        "action": "Da riverificare — segnalazione di 242 giorni fa"
+        "action": "Da riverificare — segnalazione di 243 giorni fa"
       }
     },
     {
@@ -3493,9 +3493,9 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "30/06/2026",
-      "days_without_contract": 101,
+      "days_without_contract": 102,
       "stale_free_agent": false,
-      "signal_age_days": 101,
+      "signal_age_days": 102,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -3504,12 +3504,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 101 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 102 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "34 anni — poco margine, nessun bonus lista giovani",
-          "101 giorni senza club — perché non è stato preso?"
+          "102 giorni senza club — perché non è stato preso?"
         ],
-        "action": "Da riverificare — segnalazione di 101 giorni fa"
+        "action": "Da riverificare — segnalazione di 102 giorni fa"
       }
     },
     {
@@ -3588,7 +3588,7 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 242,
+      "signal_age_days": 243,
       "assessment": {
         "yes": [
           "26 anni — nel pieno della carriera",
@@ -3597,11 +3597,11 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 242 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 243 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 242 giorni fa"
+        "action": "Da riverificare — segnalazione di 243 giorni fa"
       }
     },
     {
@@ -3682,7 +3682,7 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 98,
+      "signal_age_days": 99,
       "assessment": {
         "yes": [
           "24 anni — nel pieno della carriera",
@@ -3690,12 +3690,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 98 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 99 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 98 giorni fa"
+        "action": "Da riverificare — segnalazione di 99 giorni fa"
       }
     },
     {
@@ -3773,9 +3773,9 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 59,
+      "days_without_contract": 60,
       "stale_free_agent": false,
-      "signal_age_days": 59,
+      "signal_age_days": 60,
       "assessment": {
         "yes": [
           "Ha rescisso — in uscita, trattativa possibile",
@@ -3864,9 +3864,9 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 58,
+      "days_without_contract": 59,
       "stale_free_agent": false,
-      "signal_age_days": 58,
+      "signal_age_days": 59,
       "assessment": {
         "yes": [
           "Ha rescisso — in uscita, trattativa possibile",
@@ -3956,21 +3956,21 @@
         "lista_dettaglio": "Over classe 1998 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 136,
+      "days_without_contract": 137,
       "stale_free_agent": false,
-      "signal_age_days": 136,
+      "signal_age_days": 137,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 136 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 137 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
-          "136 giorni senza club — perché non è stato preso?",
+          "137 giorni senza club — perché non è stato preso?",
           "Valore di mercato assente o molto basso"
         ],
-        "action": "Da riverificare — segnalazione di 136 giorni fa"
+        "action": "Da riverificare — segnalazione di 137 giorni fa"
       }
     },
     {
@@ -4049,21 +4049,21 @@
         "lista_dettaglio": "Over classe 1999 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 110,
+      "days_without_contract": 111,
       "stale_free_agent": false,
-      "signal_age_days": 110,
+      "signal_age_days": 111,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 110 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 111 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
-          "110 giorni senza club — perché non è stato preso?",
+          "111 giorni senza club — perché non è stato preso?",
           "Valore di mercato assente o molto basso"
         ],
-        "action": "Da riverificare — segnalazione di 110 giorni fa"
+        "action": "Da riverificare — segnalazione di 111 giorni fa"
       }
     },
     {
@@ -4141,9 +4141,9 @@
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 90,
+      "days_without_contract": 91,
       "stale_free_agent": false,
-      "signal_age_days": 90,
+      "signal_age_days": 91,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -4151,12 +4151,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
+          "Segnalazione vecchia di 91 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "32 anni — poco margine, nessun bonus lista giovani",
-          "90 giorni senza club — perché non è stato preso?",
-          "Fonte debole o generica"
+          "91 giorni senza club — perché non è stato preso?"
         ],
-        "action": "Da tenere d'occhio"
+        "action": "Da riverificare — segnalazione di 91 giorni fa"
       }
     },
     {
@@ -4234,9 +4234,9 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 95,
+      "days_without_contract": 96,
       "stale_free_agent": false,
-      "signal_age_days": 95,
+      "signal_age_days": 96,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -4244,12 +4244,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 95 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 96 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "31 anni — poco margine, nessun bonus lista giovani",
-          "95 giorni senza club — perché non è stato preso?"
+          "96 giorni senza club — perché non è stato preso?"
         ],
-        "action": "Da riverificare — segnalazione di 95 giorni fa"
+        "action": "Da riverificare — segnalazione di 96 giorni fa"
       }
     },
     {
@@ -4330,7 +4330,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 103,
+      "signal_age_days": 104,
       "assessment": {
         "yes": [
           "Valore di mercato interessante",
@@ -4338,12 +4338,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 103 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 104 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 103 giorni fa"
+        "action": "Da riverificare — segnalazione di 104 giorni fa"
       }
     },
     {
@@ -4424,7 +4424,7 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 58,
+      "signal_age_days": 59,
       "assessment": {
         "yes": [
           "Giovane (21 anni) — non occupa posto Over in lista",
@@ -4516,9 +4516,9 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 54,
+      "days_without_contract": 55,
       "stale_free_agent": false,
-      "signal_age_days": 54,
+      "signal_age_days": 55,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -4607,9 +4607,9 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false,
-      "signal_age_days": 20,
+      "signal_age_days": 21,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -4698,9 +4698,9 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false,
-      "signal_age_days": 17,
+      "signal_age_days": 18,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -4788,9 +4788,9 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 58,
+      "days_without_contract": 59,
       "stale_free_agent": false,
-      "signal_age_days": 58,
+      "signal_age_days": 59,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -4883,7 +4883,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 36,
+      "signal_age_days": 37,
       "assessment": {
         "yes": [
           "26 anni — nel pieno della carriera",
@@ -4976,9 +4976,9 @@
         "lista_dettaglio": "Over classe 1997 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 17,
+      "days_without_contract": 18,
       "stale_free_agent": false,
-      "signal_age_days": 17,
+      "signal_age_days": 18,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -5069,7 +5069,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 15,
+      "signal_age_days": 16,
       "assessment": {
         "yes": [
           "24 anni — nel pieno della carriera",
@@ -5161,19 +5161,19 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 149,
+      "signal_age_days": 150,
       "assessment": {
         "yes": [
           "Giovane (19 anni) — non occupa posto Over in lista",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 149 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 150 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 149 giorni fa"
+        "action": "Da riverificare — segnalazione di 150 giorni fa"
       }
     },
     {
@@ -5255,7 +5255,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 110,
+      "signal_age_days": 111,
       "assessment": {
         "yes": [
           "Giovane (18 anni) — non occupa posto Over in lista",
@@ -5263,12 +5263,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 110 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 111 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 110 giorni fa"
+        "action": "Da riverificare — segnalazione di 111 giorni fa"
       }
     },
     {
@@ -5347,7 +5347,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 242,
+      "signal_age_days": 243,
       "assessment": {
         "yes": [
           "Disponibile in prestito — investimento contenuto",
@@ -5356,11 +5356,11 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 242 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 243 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Notizia datata — disponibilità da ricontrollare",
           "Valore di mercato assente o molto basso"
         ],
-        "action": "Da riverificare — segnalazione di 242 giorni fa"
+        "action": "Da riverificare — segnalazione di 243 giorni fa"
       }
     },
     {
@@ -5440,7 +5440,7 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 43,
+      "signal_age_days": 44,
       "assessment": {
         "yes": [
           "23 anni — nel pieno della carriera",
@@ -5535,7 +5535,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 97,
+      "signal_age_days": 98,
       "assessment": {
         "yes": [
           "Giovane (20 anni) — non occupa posto Over in lista",
@@ -5543,12 +5543,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 97 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 98 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 97 giorni fa"
+        "action": "Da riverificare — segnalazione di 98 giorni fa"
       }
     },
     {
@@ -5628,7 +5628,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 48,
+      "signal_age_days": 49,
       "assessment": {
         "yes": [
           "Giovane (22 anni) — non occupa posto Over in lista",
@@ -5717,9 +5717,9 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 20,
+      "days_without_contract": 21,
       "stale_free_agent": false,
-      "signal_age_days": 20,
+      "signal_age_days": 21,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -5808,9 +5808,9 @@
         "lista_dettaglio": "Over classe 1993 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 56,
+      "days_without_contract": 57,
       "stale_free_agent": false,
-      "signal_age_days": 56,
+      "signal_age_days": 57,
       "assessment": {
         "yes": [
           "Ha rescisso — in uscita, trattativa possibile",
@@ -5902,19 +5902,19 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 97,
+      "signal_age_days": 98,
       "assessment": {
         "yes": [
           "Giovane (22 anni) — non occupa posto Over in lista",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 97 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 98 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 97 giorni fa"
+        "action": "Da riverificare — segnalazione di 98 giorni fa"
       }
     },
     {
@@ -5993,7 +5993,7 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 243,
+      "signal_age_days": 244,
       "assessment": {
         "yes": [
           "23 anni — nel pieno della carriera",
@@ -6001,12 +6001,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 243 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 244 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 243 giorni fa"
+        "action": "Da riverificare — segnalazione di 244 giorni fa"
       }
     },
     {
@@ -6084,9 +6084,9 @@
         "lista_dettaglio": "Over classe 1995 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "30/06/2026",
-      "days_without_contract": 59,
+      "days_without_contract": 60,
       "stale_free_agent": false,
-      "signal_age_days": 59,
+      "signal_age_days": 60,
       "assessment": {
         "yes": [
           "Ha rescisso — in uscita, trattativa possibile",
@@ -6179,7 +6179,7 @@
       "contract_expires": "31/05/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 52,
+      "signal_age_days": 53,
       "assessment": {
         "yes": [
           "Giovane (19 anni) — non occupa posto Over in lista",
@@ -6270,9 +6270,9 @@
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 23,
+      "days_without_contract": 24,
       "stale_free_agent": false,
-      "signal_age_days": 23,
+      "signal_age_days": 24,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -6362,21 +6362,21 @@
         "lista_dettaglio": "Over classe 1988 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 104,
+      "days_without_contract": 105,
       "stale_free_agent": false,
-      "signal_age_days": 104,
+      "signal_age_days": 105,
       "assessment": {
         "yes": [
           "Ha rescisso — in uscita, trattativa possibile",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 104 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 105 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "38 anni — poco margine, nessun bonus lista giovani",
-          "104 giorni senza club — perché non è stato preso?"
+          "105 giorni senza club — perché non è stato preso?"
         ],
-        "action": "Da riverificare — segnalazione di 104 giorni fa"
+        "action": "Da riverificare — segnalazione di 105 giorni fa"
       }
     },
     {
@@ -6455,18 +6455,18 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 241,
+      "signal_age_days": 242,
       "assessment": {
         "yes": [
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 241 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 242 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 241 giorni fa"
+        "action": "Da riverificare — segnalazione di 242 giorni fa"
       }
     },
     {
@@ -6544,21 +6544,21 @@
         "lista_dettaglio": "Over classe 1991 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 90,
+      "days_without_contract": 91,
       "stale_free_agent": false,
-      "signal_age_days": 90,
+      "signal_age_days": 91,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
+          "Segnalazione vecchia di 91 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "35 anni — poco margine, nessun bonus lista giovani",
-          "90 giorni senza club — perché non è stato preso?",
-          "Fonte debole o generica"
+          "91 giorni senza club — perché non è stato preso?"
         ],
-        "action": "Bassa priorità"
+        "action": "Da riverificare — segnalazione di 91 giorni fa"
       }
     },
     {
@@ -6639,19 +6639,19 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 111,
+      "signal_age_days": 112,
       "assessment": {
         "yes": [
           "Giovane (20 anni) — non occupa posto Over in lista",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 111 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 112 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Notizia datata — disponibilità da ricontrollare",
           "Valore di mercato assente o molto basso"
         ],
-        "action": "Da riverificare — segnalazione di 111 giorni fa"
+        "action": "Da riverificare — segnalazione di 112 giorni fa"
       }
     },
     {
@@ -6732,19 +6732,19 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 114,
+      "signal_age_days": 115,
       "assessment": {
         "yes": [
           "Giovane (21 anni) — non occupa posto Over in lista",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 114 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 115 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Notizia datata — disponibilità da ricontrollare",
           "Valore di mercato assente o molto basso"
         ],
-        "action": "Da riverificare — segnalazione di 114 giorni fa"
+        "action": "Da riverificare — segnalazione di 115 giorni fa"
       }
     },
     {
@@ -6825,7 +6825,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 90,
+      "signal_age_days": 91,
       "assessment": {
         "yes": [
           "Valore di mercato interessante",
@@ -6833,12 +6833,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
+          "Segnalazione vecchia di 91 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "32 anni — poco margine, nessun bonus lista giovani",
-          "Solo voce di mercato — non è libero",
-          "Notizia datata — disponibilità da ricontrollare"
+          "Solo voce di mercato — non è libero"
         ],
-        "action": "Bassa priorità"
+        "action": "Da riverificare — segnalazione di 91 giorni fa"
       }
     },
     {
@@ -6919,19 +6919,19 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 107,
+      "signal_age_days": 108,
       "assessment": {
         "yes": [
           "Giovane (19 anni) — non occupa posto Over in lista",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 107 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 108 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Notizia datata — disponibilità da ricontrollare",
           "Valore di mercato assente o molto basso"
         ],
-        "action": "Da riverificare — segnalazione di 107 giorni fa"
+        "action": "Da riverificare — segnalazione di 108 giorni fa"
       }
     },
     {
@@ -7012,18 +7012,18 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 101,
+      "signal_age_days": 102,
       "assessment": {
         "yes": [
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 101 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 102 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 101 giorni fa"
+        "action": "Da riverificare — segnalazione di 102 giorni fa"
       }
     },
     {
@@ -7104,7 +7104,7 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 93,
+      "signal_age_days": 94,
       "assessment": {
         "yes": [
           "Valore di mercato interessante",
@@ -7112,12 +7112,12 @@
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 93 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 94 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "31 anni — poco margine, nessun bonus lista giovani",
           "Solo voce di mercato — non è libero"
         ],
-        "action": "Da riverificare — segnalazione di 93 giorni fa"
+        "action": "Da riverificare — segnalazione di 94 giorni fa"
       }
     },
     {
@@ -7196,21 +7196,21 @@
         "lista_dettaglio": "Over classe 1994 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 90,
+      "days_without_contract": 91,
       "stale_free_agent": false,
-      "signal_age_days": 90,
+      "signal_age_days": 91,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
+          "Segnalazione vecchia di 91 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "32 anni — poco margine, nessun bonus lista giovani",
-          "90 giorni senza club — perché non è stato preso?",
-          "Valore di mercato assente o molto basso"
+          "91 giorni senza club — perché non è stato preso?"
         ],
-        "action": "Bassa priorità"
+        "action": "Da riverificare — segnalazione di 91 giorni fa"
       }
     },
     {
@@ -7291,7 +7291,7 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 17,
+      "signal_age_days": 18,
       "assessment": {
         "yes": [
           "Fonte specializzata",
@@ -7383,19 +7383,19 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 122,
+      "signal_age_days": 123,
       "assessment": {
         "yes": [
           "Giovane (19 anni) — non occupa posto Over in lista",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 122 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 123 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 122 giorni fa"
+        "action": "Da riverificare — segnalazione di 123 giorni fa"
       }
     },
     {
@@ -7476,19 +7476,19 @@
       "contract_expires": "30/06/2026",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 105,
+      "signal_age_days": 106,
       "assessment": {
         "yes": [
           "25 anni — nel pieno della carriera",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 105 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 106 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Notizia datata — disponibilità da ricontrollare",
           "Valore di mercato assente o molto basso"
         ],
-        "action": "Da riverificare — segnalazione di 105 giorni fa"
+        "action": "Da riverificare — segnalazione di 106 giorni fa"
       }
     },
     {
@@ -7568,18 +7568,18 @@
       "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 149,
+      "signal_age_days": 150,
       "assessment": {
         "yes": [
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 149 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 150 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Notizia datata — disponibilità da ricontrollare",
           "Fonte debole o generica"
         ],
-        "action": "Da riverificare — segnalazione di 149 giorni fa"
+        "action": "Da riverificare — segnalazione di 150 giorni fa"
       }
     },
     {
@@ -7661,19 +7661,19 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 101,
+      "signal_age_days": 102,
       "assessment": {
         "yes": [
           "25 anni — nel pieno della carriera",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 101 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 102 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 101 giorni fa"
+        "action": "Da riverificare — segnalazione di 102 giorni fa"
       }
     },
     {
@@ -7755,19 +7755,19 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 91,
+      "signal_age_days": 92,
       "assessment": {
         "yes": [
           "24 anni — nel pieno della carriera",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 91 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 92 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 91 giorni fa"
+        "action": "Da riverificare — segnalazione di 92 giorni fa"
       }
     },
     {
@@ -7849,19 +7849,19 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 101,
+      "signal_age_days": 102,
       "assessment": {
         "yes": [
           "24 anni — nel pieno della carriera",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 101 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 102 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 101 giorni fa"
+        "action": "Da riverificare — segnalazione di 102 giorni fa"
       }
     },
     {
@@ -7939,9 +7939,9 @@
         "lista_dettaglio": "Over classe 1992 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 86,
+      "days_without_contract": 87,
       "stale_free_agent": false,
-      "signal_age_days": 86,
+      "signal_age_days": 87,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -7951,7 +7951,7 @@
         "no": [
           "Presenze non verificate — controllare Transfermarkt",
           "34 anni — poco margine, nessun bonus lista giovani",
-          "86 giorni senza club — perché non è stato preso?",
+          "87 giorni senza club — perché non è stato preso?",
           "Valore di mercato assente o molto basso"
         ],
         "action": "Bassa priorità"
@@ -8033,21 +8033,21 @@
         "lista_dettaglio": "Over classe 1989 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 104,
+      "days_without_contract": 105,
       "stale_free_agent": false,
-      "signal_age_days": 104,
+      "signal_age_days": 105,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 104 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 105 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "37 anni — poco margine, nessun bonus lista giovani",
-          "104 giorni senza club — perché non è stato preso?"
+          "105 giorni senza club — perché non è stato preso?"
         ],
-        "action": "Da riverificare — segnalazione di 104 giorni fa"
+        "action": "Da riverificare — segnalazione di 105 giorni fa"
       }
     },
     {
@@ -8128,19 +8128,19 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 95,
+      "signal_age_days": 96,
       "assessment": {
         "yes": [
           "Valore di mercato interessante",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 95 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 96 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "30 anni — poco margine, nessun bonus lista giovani",
           "Solo voce di mercato — non è libero"
         ],
-        "action": "Da riverificare — segnalazione di 95 giorni fa"
+        "action": "Da riverificare — segnalazione di 96 giorni fa"
       }
     },
     {
@@ -8218,9 +8218,9 @@
         "lista_dettaglio": "Over classe 1985 — 23 slot disponibili (0/23)"
       },
       "contract_expires": "",
-      "days_without_contract": 51,
+      "days_without_contract": 52,
       "stale_free_agent": false,
-      "signal_age_days": 51,
+      "signal_age_days": 52,
       "assessment": {
         "yes": [
           "Libero a zero — nessun costo di cartellino",
@@ -8313,18 +8313,18 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 91,
+      "signal_age_days": 92,
       "assessment": {
         "yes": [
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 91 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 92 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 91 giorni fa"
+        "action": "Da riverificare — segnalazione di 92 giorni fa"
       }
     },
     {
@@ -8406,18 +8406,18 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 150,
+      "signal_age_days": 151,
       "assessment": {
         "yes": [
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 150 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 151 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "Solo voce di mercato — non è libero",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 150 giorni fa"
+        "action": "Da riverificare — segnalazione di 151 giorni fa"
       }
     },
     {
@@ -8499,19 +8499,19 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 98,
+      "signal_age_days": 99,
       "assessment": {
         "yes": [
           "Profilo in fascia Lega Pro",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 98 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 99 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "32 anni — poco margine, nessun bonus lista giovani",
           "Solo voce di mercato — non è libero"
         ],
-        "action": "Da riverificare — segnalazione di 98 giorni fa"
+        "action": "Da riverificare — segnalazione di 99 giorni fa"
       }
     },
     {
@@ -8592,19 +8592,19 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 150,
+      "signal_age_days": 151,
       "assessment": {
         "yes": [
           "Profilo in fascia Lega Pro",
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 150 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 151 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "30 anni — poco margine, nessun bonus lista giovani",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 150 giorni fa"
+        "action": "Da riverificare — segnalazione di 151 giorni fa"
       }
     },
     {
@@ -8686,7 +8686,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 52,
+      "signal_age_days": 53,
       "assessment": {
         "yes": [
           "Profilo in fascia Lega Pro",
@@ -8779,7 +8779,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 58,
+      "signal_age_days": 59,
       "assessment": {
         "yes": [
           "Profilo in fascia Lega Pro",
@@ -8873,7 +8873,7 @@
       "contract_expires": "30/06/2028",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 57,
+      "signal_age_days": 58,
       "assessment": {
         "yes": [
           "Fonte specializzata",
@@ -8966,7 +8966,7 @@
       "contract_expires": "30/06/2027",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 21,
+      "signal_age_days": 22,
       "assessment": {
         "yes": [
           "Fonte specializzata",
@@ -9058,18 +9058,18 @@
       "contract_expires": "",
       "days_without_contract": 0,
       "stale_free_agent": false,
-      "signal_age_days": 136,
+      "signal_age_days": 137,
       "assessment": {
         "yes": [
           "Confermato da più fonti / profilo TM"
         ],
         "no": [
-          "Segnalazione vecchia di 136 giorni: prima di chiamare, verifica che sia ancora disponibile",
+          "Segnalazione vecchia di 137 giorni: prima di chiamare, verifica che sia ancora disponibile",
           "Presenze non verificate — controllare Transfermarkt",
           "33 anni — poco margine, nessun bonus lista giovani",
           "Notizia datata — disponibilità da ricontrollare"
         ],
-        "action": "Da riverificare — segnalazione di 136 giorni fa"
+        "action": "Da riverificare — segnalazione di 137 giorni fa"
       }
     }
   ],
@@ -9093,9 +9093,9 @@
     "publishable": 98,
     "corroborated": 98
   },
-  "last_update": "2026-10-30T22:15:11.842723",
+  "last_update": "2026-10-31T05:02:32.936281",
   "version": "1.0.0",
-  "build": "0cbd22e",
+  "build": "d22897f",
   "scoring_version": "SCORE-003",
   "intel_version": "INTEL-001",
   "quality_gate": "identity_complete+corroborated"
