@@ -27553,18 +27553,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "e2b5c859ca7104d104b703e75bb59eaa",
-    "player_name": "Orlando Viteritti",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Vice capitano del Guidonia citato nell'articolo",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448451",
-    "discovered_at": "2026-11-03T00:45:16.559585",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "55355f0aa230db680822326995538c66",
     "player_name": "Francesco Evola",
     "region": "ITALY",
@@ -27683,5 +27671,84 @@
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459751",
     "discovered_at": "2026-11-03T00:45:16.560705",
     "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ca47fc060f7cbb6562847e8842956e98",
+    "player_name": "Francesco Gobbi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Attaccante dell'Ospitaletto citato in intervista",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448477",
+    "discovered_at": "2026-11-03T13:52:40.187240",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "1c863327471c7d263b8e264ce3cacf20",
+    "player_name": "Jesús de Miguel",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Attaccante del Tenerife deceduto",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448473",
+    "discovered_at": "2026-11-03T13:52:40.187673",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "f71e884ac558e47855274f55006a3984",
+    "player_name": "Guido Angelozzi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Allenatore o giocatore dello Spezia",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459768",
+    "discovered_at": "2026-11-03T13:52:40.187940",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "b1da447d7ba96a394edfbc5b592e80fb",
+    "player_name": "Giovanni Daffara",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Giovanni Daffara, ex Juventus Next Gen, osservato dal Parma.",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459764",
+    "discovered_at": "2026-11-03T13:52:40.188186",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "f3634e617465750f645b2f75b719f55f",
+    "player_name": "Javison Idele",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Javison Idele, giovane talento dell'Atalanta U23, debutto in Serie A.",
+    "ob1_score": 62,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459763",
+    "discovered_at": "2026-11-03T13:52:40.188426",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "1c2cfb85a3fb4f30d174826e502dda81",
+    "player_name": "Achraf Lazaar",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Achraf Lazaar, ex Novara, si allena con il Chiasso in vista di nuova avventura.",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459760",
+    "discovered_at": "2026-11-03T13:52:40.188634",
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/achraf-lazaar/profil/spieler/139173",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/achraf-lazaar/profil/spieler/139173"
+    },
+    "tm_enriched": false
   }
 ]
