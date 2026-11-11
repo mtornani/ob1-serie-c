@@ -28105,30 +28105,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "0008d92cbd599f505e86ee9aec5b94a3",
-    "player_name": "Luca Zamparo",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Nuovo rinforzo offensivo della Giana Erminio",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459997",
-    "discovered_at": "2026-11-10T22:59:51.730018",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "4ad88e51c0245f951d4017dc815538d3",
-    "player_name": "Alexis Ferrante",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Rete decisiva nella vittoria del Barletta",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448871",
-    "discovered_at": "2026-11-11T05:27:12.853693",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "00cb5dd50118d940c4c0c4c415654084",
     "player_name": "Luca Zamparo",
     "region": "ITALY",
@@ -28141,15 +28117,63 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "48177aab2faa93cfe8ba17d98e4f854d",
-    "player_name": "Lorenzo Peli",
+    "id": "5ae41d5c651c789ba1c99ed3bf6570b7",
+    "player_name": "Emanuele Zanaboni",
     "region": "ITALY",
-    "opportunity_type": "rescissione",
-    "description": "Risoluzione consensuale del contratto con l'US Pianese",
-    "ob1_score": 65,
+    "opportunity_type": "talento",
+    "description": "Lesione legamento crociato, fuori per mesi",
+    "ob1_score": 60,
     "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448888",
-    "discovered_at": "2026-11-11T05:27:12.854318",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448922",
+    "discovered_at": "2026-11-11T13:50:10.810129",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "366197d2f6c3414b156acc4598840270",
+    "player_name": "Andrea Mandelli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Commenta la vittoria contro il Trento",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448904",
+    "discovered_at": "2026-11-11T13:50:10.810544",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "0ac4434d1ce2b47b8db068730c625b2e",
+    "player_name": "Karlo Lulic",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Infortunio superato, torna in gruppo del Casarano",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448907",
+    "discovered_at": "2026-11-11T13:50:10.810708",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "3576172fd4537f943d2d52f5095804d9",
+    "player_name": "Luca Matteassi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Presunto acquisto del Gubbio, prossimo incontro decisivo",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448916",
+    "discovered_at": "2026-11-11T13:50:10.810852",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "45e005a9700a72f3821800c540c3241a",
+    "player_name": "Alexis Ferrante",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Alexis Ferrante scores decisive goal for Barletta in derby",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460008",
+    "discovered_at": "2026-11-11T13:50:10.811001",
     "league_id": "italy_serie_c_d"
   }
 ]
