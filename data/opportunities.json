@@ -28105,18 +28105,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "48177aab2faa93cfe8ba17d98e4f854d",
-    "player_name": "Lorenzo Peli",
-    "region": "ITALY",
-    "opportunity_type": "rescissione",
-    "description": "Risoluzione consensuale del contratto con l'US Pianese",
-    "ob1_score": 65,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448888",
-    "discovered_at": "2026-11-10T22:59:51.729814",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "0008d92cbd599f505e86ee9aec5b94a3",
     "player_name": "Luca Zamparo",
     "region": "ITALY",
@@ -28126,6 +28114,42 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459997",
     "discovered_at": "2026-11-10T22:59:51.730018",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "4ad88e51c0245f951d4017dc815538d3",
+    "player_name": "Alexis Ferrante",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Rete decisiva nella vittoria del Barletta",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448871",
+    "discovered_at": "2026-11-11T05:27:12.853693",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "00cb5dd50118d940c4c0c4c415654084",
+    "player_name": "Luca Zamparo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ufficializzato da Giana Erminio, pronto a scendere in campo",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448879",
+    "discovered_at": "2026-11-11T05:27:12.854120",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "48177aab2faa93cfe8ba17d98e4f854d",
+    "player_name": "Lorenzo Peli",
+    "region": "ITALY",
+    "opportunity_type": "rescissione",
+    "description": "Risoluzione consensuale del contratto con l'US Pianese",
+    "ob1_score": 65,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448888",
+    "discovered_at": "2026-11-11T05:27:12.854318",
     "league_id": "italy_serie_c_d"
   }
 ]
