@@ -18606,13 +18606,55 @@
     "source_url": "https://www.tuttomercatoweb.com/redazione/alessandra-stefanelli-811",
     "discovered_at": "2026-09-01T04:22:01.371103",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:regex",
     "tm_url": "https://www.transfermarkt.it/nicola-stefanelli/profil/spieler/337320",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/nicola-stefanelli/profil/spieler/337320"
+      "enrichment_source": "Enrichment:regex",
+      "tm_url": "https://www.transfermarkt.it/nicola-stefanelli/profil/spieler/337320",
+      "market_value": 75000,
+      "market_value_formatted": "75 mila €",
+      "height_cm": 188,
+      "birth_date": "1997-03-14",
+      "current_club": "US Sestri Levante"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "US Sestri Levante",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:23:17.187919+00:00",
+            "url": "https://www.transfermarkt.it/nicola-stefanelli/profil/spieler/337320"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "75000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:23:17.187922+00:00",
+            "url": "https://www.transfermarkt.it/nicola-stefanelli/profil/spieler/337320"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "29",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:23:17.187925+00:00",
+            "url": "https://www.transfermarkt.it/nicola-stefanelli/profil/spieler/337320",
+            "nota": "da data di nascita 1997-03-14"
+          }
+        ]
+      }
+    },
+    "market_value": 75000,
+    "market_value_formatted": "75 mila €",
+    "height_cm": 188,
+    "birth_date": "1997-03-14",
+    "current_club": "US Sestri Levante",
+    "age": 29,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale"
   },
   {
     "id": "e63516d80a2490a30ff3ff4ef7b3923a",
@@ -19106,7 +19148,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444766",
     "discovered_at": "2026-09-01T20:49:03.903521",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Campobasso FC",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:38:22.353558+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-galeandro/profil/spieler/526992"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "250000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:38:22.353561+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-galeandro/profil/spieler/526992"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "26",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:38:22.353565+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-galeandro/profil/spieler/526992",
+            "nota": "da data di nascita 2000-02-29"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 250000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "250 mila €",
+    "height_cm": 180,
+    "birth_date": "2000-02-29",
+    "tm_url": "https://www.transfermarkt.it/alessandro-galeandro/profil/spieler/526992",
+    "current_club": "Campobasso FC",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 250000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "250 mila €",
+      "height_cm": 180,
+      "birth_date": "2000-02-29",
+      "tm_url": "https://www.transfermarkt.it/alessandro-galeandro/profil/spieler/526992",
+      "current_club": "Campobasso FC"
+    },
+    "age": 26,
+    "role_name": "Seconda punta",
+    "role": "Seconda punta",
+    "tm_enriched": true
   },
   {
     "id": "a50fa3a05e442e0eee7e4ac460f4ea33",
@@ -20166,13 +20259,41 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444885",
     "discovered_at": "2026-09-03T20:45:17.901937",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:regex",
     "tm_url": "https://www.transfermarkt.it/alen-gafuri/profil/spieler/1334725",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/alen-gafuri/profil/spieler/1334725"
+      "enrichment_source": "Enrichment:regex",
+      "tm_url": "https://www.transfermarkt.it/alen-gafuri/profil/spieler/1334725",
+      "birth_date": "2008-05-22",
+      "current_club": "Spezia Primavera"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Spezia Primavera",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:23:17.187898+00:00",
+            "url": "https://www.transfermarkt.it/alen-gafuri/profil/spieler/1334725"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "18",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:23:17.187903+00:00",
+            "url": "https://www.transfermarkt.it/alen-gafuri/profil/spieler/1334725",
+            "nota": "da data di nascita 2008-05-22"
+          }
+        ]
+      }
+    },
+    "birth_date": "2008-05-22",
+    "current_club": "Spezia Primavera",
+    "age": 18,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale"
   },
   {
     "id": "4d61dc46a2f922989a9621c07f543e18",
@@ -20390,7 +20511,58 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/09/01/live-calciomercato-tutte-le-notizie-di-martedi-01-settembre-gudmundsson-futuro-da-definire-juventus-sarr-woltemade-ma-non-solo/",
     "discovered_at": "2026-09-04T16:04:41.898258",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "SS Lazio",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:16:47.237635+00:00",
+            "url": "https://www.transfermarkt.it/albert-gudmundsson/profil/spieler/305947"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "12000000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:16:47.237639+00:00",
+            "url": "https://www.transfermarkt.it/albert-gudmundsson/profil/spieler/305947"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "29",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:16:47.237643+00:00",
+            "url": "https://www.transfermarkt.it/albert-gudmundsson/profil/spieler/305947",
+            "nota": "da data di nascita 1997-06-15"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 12000000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "12,00 mln €",
+    "height_cm": 177,
+    "birth_date": "1997-06-15",
+    "tm_url": "https://www.transfermarkt.it/albert-gudmundsson/profil/spieler/305947",
+    "current_club": "SS Lazio",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 12000000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "12,00 mln €",
+      "height_cm": 177,
+      "birth_date": "1997-06-15",
+      "tm_url": "https://www.transfermarkt.it/albert-gudmundsson/profil/spieler/305947",
+      "current_club": "SS Lazio"
+    },
+    "age": 29,
+    "role_name": "Seconda punta",
+    "role": "Seconda punta",
+    "tm_enriched": true
   },
   {
     "id": "4e16a8880765f67c956fe30f4af3cdcf",
@@ -21129,7 +21301,58 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458216",
     "discovered_at": "2026-09-10T16:06:29.970013",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Spezia Calcio",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:23:17.187855+00:00",
+            "url": "https://www.transfermarkt.it/aldo-florenzi/profil/spieler/619326"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "800000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:23:17.187867+00:00",
+            "url": "https://www.transfermarkt.it/aldo-florenzi/profil/spieler/619326"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "24",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:23:17.187874+00:00",
+            "url": "https://www.transfermarkt.it/aldo-florenzi/profil/spieler/619326",
+            "nota": "da data di nascita 2002-04-02"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 800000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "800 mila €",
+    "height_cm": 168,
+    "birth_date": "2002-04-02",
+    "tm_url": "https://www.transfermarkt.it/aldo-florenzi/profil/spieler/619326",
+    "current_club": "Spezia Calcio",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 800000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "800 mila €",
+      "height_cm": 168,
+      "birth_date": "2002-04-02",
+      "tm_url": "https://www.transfermarkt.it/aldo-florenzi/profil/spieler/619326",
+      "current_club": "Spezia Calcio"
+    },
+    "age": 24,
+    "role_name": "Centrocampista",
+    "role": "Centrocampista",
+    "tm_enriched": true
   },
   {
     "id": "591248ad06923027de4b4c9fd44b8d2c",
@@ -21424,7 +21647,44 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445305",
     "discovered_at": "2026-09-11T10:55:02.205518",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Juventus Under 18",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:30:47.378523+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-brancato/profil/spieler/1433135"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "17",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:30:47.378530+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-brancato/profil/spieler/1433135",
+            "nota": "da data di nascita 2009-08-21"
+          }
+        ]
+      }
+    },
+    "foot": "sinistro",
+    "enrichment_source": "Enrichment:sports-skills",
+    "birth_date": "2009-08-21",
+    "tm_url": "https://www.transfermarkt.it/alessandro-brancato/profil/spieler/1433135",
+    "current_club": "Juventus Under 18",
+    "player_profile": {
+      "foot": "sinistro",
+      "enrichment_source": "Enrichment:sports-skills",
+      "birth_date": "2009-08-21",
+      "tm_url": "https://www.transfermarkt.it/alessandro-brancato/profil/spieler/1433135",
+      "current_club": "Juventus Under 18"
+    },
+    "age": 17,
+    "role_name": "Mediano",
+    "role": "Mediano",
+    "tm_enriched": true
   },
   {
     "id": "4bda498120fcb1d7970b695705b0a4ca",
@@ -21967,7 +22227,34 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445519",
     "discovered_at": "2026-09-13T20:35:22.256912",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:16:47.237595+00:00",
+            "url": "https://www.transfermarkt.it/aimo-diana/profil/spieler/6749"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "enrichment_source": "Enrichment:sports-skills",
+    "height_cm": 180,
+    "tm_url": "https://www.transfermarkt.it/aimo-diana/profil/spieler/6749",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "foot": "destro",
+      "enrichment_source": "Enrichment:sports-skills",
+      "height_cm": 180,
+      "tm_url": "https://www.transfermarkt.it/aimo-diana/profil/spieler/6749",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Esterno di destra",
+    "role": "Esterno di destra",
+    "tm_enriched": true
   },
   {
     "id": "e3b64ae1f9b0d451bd6bc0493915ac5c",
@@ -22064,13 +22351,33 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445540",
     "discovered_at": "2026-09-14T04:13:38.050340",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:sports-skills",
     "tm_url": "https://www.transfermarkt.it/alessandro-birindelli/profil/spieler/5753",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/alessandro-birindelli/profil/spieler/5753"
+      "enrichment_source": "Enrichment:sports-skills",
+      "tm_url": "https://www.transfermarkt.it/alessandro-birindelli/profil/spieler/5753",
+      "foot": "destro",
+      "height_cm": 176,
+      "current_club": "Ritiro"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:30:47.378441+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-birindelli/profil/spieler/5753"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "height_cm": 176,
+    "current_club": "Ritiro",
+    "role_name": "Terzino destro",
+    "role": "Terzino destro"
   },
   {
     "id": "c0dd43c0e23b2c45f82db4c6dbad1e9a",
@@ -22989,7 +23296,58 @@
     "source_name": "www.violanation.com",
     "source_url": "https://www.violanation.com/fiorentina-latest-news-updates/22412/fiorentina-selling-young-academy-players-transfer-primavera-paratici",
     "discovered_at": "2026-09-19T20:20:58.647727",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ravenna FC 1913",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:30:47.378416+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-bianconi/profil/spieler/395123"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "150000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:30:47.378419+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-bianconi/profil/spieler/395123"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "27",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:30:47.378423+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-bianconi/profil/spieler/395123",
+            "nota": "da data di nascita 1999-01-20"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 150000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "150 mila €",
+    "height_cm": 195,
+    "birth_date": "1999-01-20",
+    "tm_url": "https://www.transfermarkt.it/alessandro-bianconi/profil/spieler/395123",
+    "current_club": "Ravenna FC 1913",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 150000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "150 mila €",
+      "height_cm": 195,
+      "birth_date": "1999-01-20",
+      "tm_url": "https://www.transfermarkt.it/alessandro-bianconi/profil/spieler/395123",
+      "current_club": "Ravenna FC 1913"
+    },
+    "age": 27,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "5f54db11457cc3e5c47005035cb9178d",
@@ -23098,13 +23456,57 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445934",
     "discovered_at": "2026-09-20T20:33:07.034891",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:sports-skills",
     "tm_url": "https://www.transfermarkt.it/alessandro-caporale/profil/spieler/397115",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/alessandro-caporale/profil/spieler/397115"
+      "enrichment_source": "Enrichment:sports-skills",
+      "tm_url": "https://www.transfermarkt.it/alessandro-caporale/profil/spieler/397115",
+      "foot": "sinistro",
+      "market_value": 300000,
+      "market_value_formatted": "300 mila €",
+      "height_cm": 190,
+      "birth_date": "1995-10-28",
+      "current_club": "Casertana FC"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Casertana FC",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:30:47.378550+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-caporale/profil/spieler/397115"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "300000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:30:47.378554+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-caporale/profil/spieler/397115"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "31",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:30:47.378558+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-caporale/profil/spieler/397115",
+            "nota": "da data di nascita 1995-10-28"
+          }
+        ]
+      }
+    },
+    "foot": "sinistro",
+    "market_value": 300000,
+    "market_value_formatted": "300 mila €",
+    "height_cm": 190,
+    "birth_date": "1995-10-28",
+    "current_club": "Casertana FC",
+    "age": 31,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale"
   },
   {
     "id": "2003af60fb5255d9db9f1dfcefc64c5a",
@@ -23152,7 +23554,30 @@
     "source_name": "www.gazzetta.it",
     "source_url": "https://www.gazzetta.it/Calciomercato/22-07-2026/notizie-calciomercato-il-live-di-oggi-22-luglio.shtml",
     "discovered_at": "2026-09-22T04:09:00.704072",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:16:47.237619+00:00",
+            "url": "https://www.transfermarkt.it/jamal-hilal/profil/spieler/788560"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:unknown",
+    "tm_url": "https://www.transfermarkt.it/jamal-hilal/profil/spieler/788560",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "enrichment_source": "Enrichment:unknown",
+      "tm_url": "https://www.transfermarkt.it/jamal-hilal/profil/spieler/788560",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Portiere",
+    "role": "Portiere",
+    "tm_enriched": true
   },
   {
     "id": "082bfe88d47f4cf6cf21ee5a15000492",
@@ -23260,7 +23685,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446065",
     "discovered_at": "2026-09-23T04:04:11.073256",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Union Brescia",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:38:22.353587+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-lamesta/profil/spieler/412978"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "275000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:38:22.353590+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-lamesta/profil/spieler/412978"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "30",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:38:22.353593+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-lamesta/profil/spieler/412978",
+            "nota": "da data di nascita 1996-12-29"
+          }
+        ]
+      }
+    },
+    "foot": "sinistro",
+    "market_value": 275000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "275 mila €",
+    "height_cm": 178,
+    "birth_date": "1996-12-29",
+    "tm_url": "https://www.transfermarkt.it/alessandro-lamesta/profil/spieler/412978",
+    "current_club": "Union Brescia",
+    "player_profile": {
+      "foot": "sinistro",
+      "market_value": 275000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "275 mila €",
+      "height_cm": 178,
+      "birth_date": "1996-12-29",
+      "tm_url": "https://www.transfermarkt.it/alessandro-lamesta/profil/spieler/412978",
+      "current_club": "Union Brescia"
+    },
+    "age": 30,
+    "role_name": "Centrocampista",
+    "role": "Centrocampista",
+    "tm_enriched": true
   },
   {
     "id": "0a69bec5aafe20a3f9c4e32acd537f0d",
@@ -24072,7 +24548,45 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/10/10/perche-linter-deve-temere-gilardino-como-roma-vale-la-fiducia-spalletti-amorim-e-allegri-chi-si-ferma-rischia-e-gattuso/",
     "discovered_at": "2026-10-14T11:30:31.692945",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:16:47.237663+00:00",
+            "url": "https://www.transfermarkt.it/alberto-gilardino/profil/spieler/5878"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "44",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:16:47.237667+00:00",
+            "url": "https://www.transfermarkt.it/alberto-gilardino/profil/spieler/5878",
+            "nota": "da data di nascita 1982-07-05"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "enrichment_source": "Enrichment:sports-skills",
+    "height_cm": 184,
+    "birth_date": "1982-07-05",
+    "tm_url": "https://www.transfermarkt.it/alberto-gilardino/profil/spieler/5878",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "foot": "destro",
+      "enrichment_source": "Enrichment:sports-skills",
+      "height_cm": 184,
+      "birth_date": "1982-07-05",
+      "tm_url": "https://www.transfermarkt.it/alberto-gilardino/profil/spieler/5878",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Punta centrale",
+    "role": "Punta centrale",
+    "tm_enriched": true
   },
   {
     "id": "d29492e66b93625dd58334a613cedfa6",
@@ -24732,7 +25246,42 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446559",
     "discovered_at": "2026-10-01T22:31:32.931884",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Perugia Primavera",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:38:22.353430+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-cesarini/profil/spieler/1430311"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "18",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:38:22.353489+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-cesarini/profil/spieler/1430311",
+            "nota": "da data di nascita 2008-01-24"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:sports-skills",
+    "birth_date": "2008-01-24",
+    "tm_url": "https://www.transfermarkt.it/alessandro-cesarini/profil/spieler/1430311",
+    "current_club": "Perugia Primavera",
+    "player_profile": {
+      "enrichment_source": "Enrichment:sports-skills",
+      "birth_date": "2008-01-24",
+      "tm_url": "https://www.transfermarkt.it/alessandro-cesarini/profil/spieler/1430311",
+      "current_club": "Perugia Primavera"
+    },
+    "age": 18,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "2a0918c9cd57e6039a0eb33eb145c1c6",
@@ -25014,7 +25563,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446906",
     "discovered_at": "2026-10-07T22:55:34.495634",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "US Pergolettese 1932",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:30:47.378362+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-berretta/profil/spieler/898356"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "400000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:30:47.378374+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-berretta/profil/spieler/898356"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "20",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:30:47.378382+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-berretta/profil/spieler/898356",
+            "nota": "da data di nascita 2006-07-01"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 400000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "400 mila €",
+    "height_cm": 186,
+    "birth_date": "2006-07-01",
+    "tm_url": "https://www.transfermarkt.it/alessandro-berretta/profil/spieler/898356",
+    "current_club": "US Pergolettese 1932",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 400000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "400 mila €",
+      "height_cm": 186,
+      "birth_date": "2006-07-01",
+      "tm_url": "https://www.transfermarkt.it/alessandro-berretta/profil/spieler/898356",
+      "current_club": "US Pergolettese 1932"
+    },
+    "age": 20,
+    "role_name": "Centrocampista",
+    "role": "Centrocampista",
+    "tm_enriched": true
   },
   {
     "id": "37505c1770da3c3f5103fe67a7eec606",
@@ -25098,7 +25698,58 @@
     "source_name": "www.gazzetta.it",
     "source_url": "https://www.gazzetta.it/Calciomercato/14-04-2026/palestra-bastoni-cambiaso-l-italia-perde-ancora-i-suoi-migliori.shtml",
     "discovered_at": "2026-10-19T12:41:27.446353",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Inter",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:23:17.187940+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-bastoni/profil/spieler/315853"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "65000000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:23:17.187943+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-bastoni/profil/spieler/315853"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "27",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:23:17.187945+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-bastoni/profil/spieler/315853",
+            "nota": "da data di nascita 1999-04-13"
+          }
+        ]
+      }
+    },
+    "foot": "sinistro",
+    "market_value": 65000000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "€65.00M",
+    "height_cm": 190,
+    "birth_date": "1999-04-13",
+    "tm_url": "https://www.transfermarkt.it/alessandro-bastoni/profil/spieler/315853",
+    "current_club": "Inter",
+    "player_profile": {
+      "foot": "sinistro",
+      "market_value": 65000000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "€65.00M",
+      "height_cm": 190,
+      "birth_date": "1999-04-13",
+      "tm_url": "https://www.transfermarkt.it/alessandro-bastoni/profil/spieler/315853",
+      "current_club": "Inter"
+    },
+    "age": 27,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "4f72cfb99d3ace9303ea5aff2c86ce3b",
@@ -25470,7 +26121,16 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447141",
     "discovered_at": "2026-10-11T12:24:51.119241",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:unknown",
+    "tm_url": "https://www.transfermarkt.it/carlos-alberto-torres/profil/spieler/229662",
+    "player_profile": {
+      "enrichment_source": "Enrichment:unknown",
+      "tm_url": "https://www.transfermarkt.it/carlos-alberto-torres/profil/spieler/229662"
+    },
+    "role_name": "Terzino destro",
+    "role": "Terzino destro",
+    "tm_enriched": false
   },
   {
     "id": "2abb8c7d9df34d517422dcc24702f26d",
@@ -25530,7 +26190,34 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447215",
     "discovered_at": "2026-10-13T00:22:25.376490",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:38:22.353537+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-del-grosso/profil/spieler/88317"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "enrichment_source": "Enrichment:unknown",
+    "height_cm": 183,
+    "tm_url": "https://www.transfermarkt.it/alessandro-del-grosso/profil/spieler/88317",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "foot": "destro",
+      "enrichment_source": "Enrichment:unknown",
+      "height_cm": 183,
+      "tm_url": "https://www.transfermarkt.it/alessandro-del-grosso/profil/spieler/88317",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Terzino destro",
+    "role": "Terzino destro",
+    "tm_enriched": true
   },
   {
     "id": "8121c36800426c26a6a2e6d3fb0445c4",
@@ -26025,7 +26712,42 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459176",
     "discovered_at": "2026-10-16T03:52:48.778560",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:38:22.353608+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-lucarelli/profil/spieler/725561"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "25",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:38:22.353611+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-lucarelli/profil/spieler/725561",
+            "nota": "da data di nascita 2001-01-01"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:sports-skills",
+    "birth_date": "2001-01-01",
+    "tm_url": "https://www.transfermarkt.it/alessandro-lucarelli/profil/spieler/725561",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "enrichment_source": "Enrichment:sports-skills",
+      "birth_date": "2001-01-01",
+      "tm_url": "https://www.transfermarkt.it/alessandro-lucarelli/profil/spieler/725561",
+      "current_club": "Ritiro"
+    },
+    "age": 25,
+    "role_name": "Attacco",
+    "role": "Attacco",
+    "tm_enriched": true
   },
   {
     "id": "6fc63d51634e7a56712c528b93722231",
@@ -27695,13 +28417,45 @@
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459760",
     "discovered_at": "2026-11-03T13:52:40.188634",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:sports-skills",
     "tm_url": "https://www.transfermarkt.it/achraf-lazaar/profil/spieler/139173",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/achraf-lazaar/profil/spieler/139173"
+      "enrichment_source": "Enrichment:sports-skills",
+      "tm_url": "https://www.transfermarkt.it/achraf-lazaar/profil/spieler/139173",
+      "foot": "sinistro",
+      "height_cm": 184,
+      "birth_date": "1992-01-22",
+      "current_club": "Al-Ittifaq FC"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Al-Ittifaq FC",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:16:47.237519+00:00",
+            "url": "https://www.transfermarkt.it/achraf-lazaar/profil/spieler/139173"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "34",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-14T22:16:47.237540+00:00",
+            "url": "https://www.transfermarkt.it/achraf-lazaar/profil/spieler/139173",
+            "nota": "da data di nascita 1992-01-22"
+          }
+        ]
+      }
+    },
+    "foot": "sinistro",
+    "height_cm": 184,
+    "birth_date": "1992-01-22",
+    "current_club": "Al-Ittifaq FC",
+    "age": 34,
+    "role_name": "Esterno di sinistra",
+    "role": "Esterno di sinistra"
   },
   {
     "id": "bc601d894656be4a5bfb64f087f78b03",
@@ -28378,6 +29132,42 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449077",
     "discovered_at": "2026-11-14T13:14:06.203810",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ea942790f846ed0d5c11282a00b2e476",
+    "player_name": "Di Gregorio",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "D'altronde, che il numero uno fosse un ruolo che i dirigenti bianconeri avevano deciso di rinforzare nell'estate del 2026 si era capito già nei mesi scorsi, quando si è provato a sondare la disponibilità di Mike Maignan di trasferirsi alla Continassa a parametro zero. Il recente rinnovo del francese col Milan, però, impone ora di percorrere altre strade. E, nell'attesa di capire se nelle casse juventine entreranno i 60 milioni garantiti dalla partecipazione alla prossima Champions League, si scandaglia il mercato alla ricerca di occasioni. Se il budget di Comolli in estate fosse risicato, ecco che la pista principale porterebbe a Liverpool, da quel 33enne brasiliano con un passato nella Roma... di Spalletti. Alisson, infatti, era il portiere di coppa dell'ultima avventura in giallorosso",
+    "ob1_score": 66,
+    "source_name": "www.gazzetta.it",
+    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Juventus/24-02-2026/juve-vicario-e-alisson-per-il-dopo-di-gregorio.shtml",
+    "discovered_at": "2026-11-14T22:10:16.190895",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "c174dc5733b6e7b7e6d98c1a7665eb2a",
+    "player_name": "Aurora Pro Patria",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ora è ufficiale: Inter Under 23, Aurora Pro Patria e Ravenna sono state ammesse al campionato di serie C della prossima stagione. Il Consiglio Federale ha infatti reintegrato l'organico della Lega Pro decidendo di riammettere la società Aurora Pro Patria, in luogo dell'intervenuta dichiarazione giudiziale della Lucchese 1905 e della conseguente non ammissione al campionato, e le società Inter Under 23 e Ravenna Football Club, secondo l'ordine stabilito con il criterio dell'alternanza per i ripescaggi.\n\nLeggi anche\n\nLa Gazzetta dello Sport\n\nLa Gazzetta dello Sport\n\n© RIPRODUZIONE RISERVATA [...] Rugby\n Sport Invernali\n Sport Usa\n Sport Vari\n Vela e Nautica\n Volley\n\n Notizie\n Pronostici\n Comparazione Quote\n Siti Scommesse\n\n Gazzetta AI Predictor\n Bonus Benvenuto\n Guide Scommesse\n Gioco Responsabile\n\n Casinò Online\n Guide Casinò\n\n Notizie\n Discipline\n La Guida\n Risultati e calendario\n\n Medagliere\n Medagliere Storico\n Azzurri\n Storia\n\n Video\n Programma ufficiale\n\n Calcio Italiano\n  Altri Campionati\n\nserie C\n\n# Ora è ufficiale: nasce l'Inter Under 23, ammessa in Serie C\n\n## Il Consiglio Federale ha reintegrato l'organico della Lega Pro dopo l'esclusione della Lucchese. Ammesse anche Aurora Pro Patria e Ravenna\n\nScegli Gazzetta come fonte preferita su Google [...] Notizie\n Speciali\n Rubriche\n Pagelle\n Interviste\n Grandi Letture\n Personaggi\n Archivio notizie\n\n Homepage Il Ciclista\n Percorsi\n Salute e allenamento\n Bici e attrezzatura\n Manutenzione\n Gare amatoriali\n MTB\n Abbigliamento\n Chi siamo\n Viaggi\n\n Fantacampionato\n Crazy Calcio Show\n Altri Mondi\n Mondo Gazzetta\n Shop Gazzetta\n Newsletter\n\n Altri Mondi\n Notizie\n Bandosubito\n Cronaca\n Gossip\n Stile\n Tutti In Campo\n Poker Sportivo\n\n Bandosubito\n Ricerca bandi online\n Notizie\n\n Spettacolo, TV, Gossip\n Notizie\n Oroscopo\n\n Mondo Gazzetta\n Festival Dello Sport\n Sportweek\n Gazzetta Sports Days\n RCS Academy\n Sports Awards\n Vacanze Gazzetta\n Fondazione Cannavò\n Network",
+    "ob1_score": 62,
+    "source_name": "www.gazzetta.it",
+    "source_url": "https://www.gazzetta.it/Calcio/altri-campionati/24-07-2025/inter-under-23-aurora-pro-patria-e-ravenna-ammesse-in-serie-c.shtml",
+    "discovered_at": "2026-11-14T22:10:16.191227",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "0f221d77613259ff044d24f831c1a80d",
+    "player_name": "Atalanta Under",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Title: Serie C, le date della Serie C: quando giocano Inter Under 23, Juventus Next Gen e Atalanta Under 23 | Calciomercato\nQuesta pagina contiene link di affiliazione. Iscrivendoti attraverso i link forniti, potremmo guadagnare una commissione. Stefano Vecchi Inter 2025 faccia 16.9Getty Images. Ultimi aggiornamenti: 25 lug 2025, 16:48. # Serie C, le date della Serie C: quando giocano Inter Under 23, Juventus Next Gen e Atalanta Under 23. Si parte il 24 agosto, una settimana dopo l'avvio della Coppa Italia di Serie C. Si chiude il 26 aprile, previsti tre turni infrasettimanali. Nel giorno in cui sono stati resi noti i gironi del campionato di Serie C Sky Wi-fi 2025/2026, che vedrà ai nastri di partenza **Juventus Next Gen, Atalanta Under 23 e la neo-nata Inter Under 23**, è bene fare un **pro memoria delle date della nuova stagione.** Un calendario fittissimo tra stagione regolare, playoff e playout. SERIE C, LE AVVERSARIE DI INTER U23, JUVE NEXT GEN E ATALANTA UNDER 23. **Il campionato di Serie C prenderà ufficialmente nel fine settimana di sabato 23 e domenica 24 agosto,** con la conclusione della prima parte della stagione fissata per il 26 aprile del 2026. La Lega Pro ha stabilito **tre turni infrasettimanali, che saranno disputati rispettivamente mercoledì 24 settembre, mercoledì 11 febbraio e mercoledì 4 marzo. I calendari saranno svelati invece nella giornata di lunedì 28 agosto.**. Quando sottoscrivi un abbonamento attraverso questi link, noi riceveremo una commissione*. In questo programma, si inserisce anche il tabellone della Coppa Italia di Serie C che, come di consueto, esordirà nelle settimane antecedenti all'avvio del campionato. Il primo turno eliminatorio sarà disputato domenica 17 agosto, il secondo si giocherà mercoledì 29 ottobre, mentre mercoledì 26 novembre e mercoledì 10 dicembre sarà tempo di ottavi e quarti di finale. Si va nell'anno nuovo per le fasi conclusive della competizione: le due semifinali saranno tra il 14 e il 28 gennaio 2026, mentre le due finali saranno il 18 marzo e il 1° aprile. ### Infortunio per Raimondo, Alvini: \"C'è preoccupazione\". ### Capello sulla Juve: \"Un anno di Spalletti, un mercato condiviso e ha perso il suo DNA\". ### Inter: il calo di Barella è nei numeri, ma l'allarme più serio sono le frasi post-derby. ### Pagelle Milan-Inter: Moreira da paura, Barella da incubo.",
+    "ob1_score": 62,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/notizie/serie-c-le-date-della-serie-c-quando-giocano-inter-under-23-juventus-next-gen-e-atalanta-under-23/bltcd2641c8b5799963",
+    "discovered_at": "2026-11-14T22:10:16.191409",
     "league_id": "italy_serie_c_d"
   }
 ]
