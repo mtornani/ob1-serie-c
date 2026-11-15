@@ -28920,66 +28920,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ea942790f846ed0d5c11282a00b2e476",
-    "player_name": "Di Gregorio",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "D'altronde, che il numero uno fosse un ruolo che i dirigenti bianconeri avevano deciso di rinforzare nell'estate del 2026 si era capito già nei mesi scorsi, quando si è provato a sondare la disponibilità di Mike Maignan di trasferirsi alla Continassa a parametro zero. Il recente rinnovo del francese col Milan, però, impone ora di percorrere altre strade. E, nell'attesa di capire se nelle casse juventine entreranno i 60 milioni garantiti dalla partecipazione alla prossima Champions League, si scandaglia il mercato alla ricerca di occasioni. Se il budget di Comolli in estate fosse risicato, ecco che la pista principale porterebbe a Liverpool, da quel 33enne brasiliano con un passato nella Roma... di Spalletti. Alisson, infatti, era il portiere di coppa dell'ultima avventura in giallorosso",
-    "ob1_score": 66,
-    "source_name": "www.gazzetta.it",
-    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Juventus/24-02-2026/juve-vicario-e-alisson-per-il-dopo-di-gregorio.shtml",
-    "discovered_at": "2026-11-15T05:40:36.324060",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "f730c2b529c14ad18b72b7de655a3e20",
-    "player_name": "Mirko Antonucci",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Trequartista under 23 con buone prospettive di mercato",
-    "ob1_score": 60,
-    "source_name": "www.transfermarkt.it",
-    "source_url": "https://www.transfermarkt.it/serie-c-girone-a/marktwerte/wettbewerb/IT3A",
-    "discovered_at": "2026-11-15T05:40:36.324843",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "5762ac34c69a739056584b17ae1fc62c",
-    "player_name": "Matteo Barbini",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Difensore centrale under 23 con valore di mercato emergente",
-    "ob1_score": 60,
-    "source_name": "www.transfermarkt.it",
-    "source_url": "https://www.transfermarkt.it/serie-c-girone-a/marktwerte/wettbewerb/IT3A",
-    "discovered_at": "2026-11-15T05:40:36.324978",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "e359dcda9d8aee373c37fcfb0c9d3070",
-    "player_name": "Mattia Rizzo",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Terzino destro under 23 con potenziale di crescita",
-    "ob1_score": 60,
-    "source_name": "www.transfermarkt.it",
-    "source_url": "https://www.transfermarkt.it/serie-c-girone-a/marktwerte/wettbewerb/IT3A",
-    "discovered_at": "2026-11-15T05:40:36.325115",
-    "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "0783ed55b290b7bba1a2a780606b364a",
-    "player_name": "Andrea Rizzo Pinna",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Trequartista under 23 con prospettive di mercato",
-    "ob1_score": 60,
-    "source_name": "www.transfermarkt.it",
-    "source_url": "https://www.transfermarkt.it/serie-c-girone-a/marktwerte/wettbewerb/IT3A",
-    "discovered_at": "2026-11-15T05:40:36.325283",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "8d3aa72b7a28e10fd49582130f54ea49",
     "player_name": "Luca Mazzocchi",
     "region": "ITALY",
@@ -28989,6 +28929,37 @@
     "source_name": "www.corrieredellosport.it",
     "source_url": "https://www.corrieredellosport.it/calcio/serie-c",
     "discovered_at": "2026-11-15T05:40:36.325427",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "22d45fe8943568b8a5c9a6f637cb0556",
+    "player_name": "Alessio Nepi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Segnato il gol del nuovo vantaggio ospite contro il Savoia",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449184",
+    "discovered_at": "2026-11-15T13:41:48.204648",
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/alessio-nepi/profil/spieler/612489",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/alessio-nepi/profil/spieler/612489"
+    },
+    "tm_enriched": false
+  },
+  {
+    "id": "450ab65fced9bdafc51731a02ba681e7",
+    "player_name": "Bruno Benelli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Menzionato come figura centrale per Ravenna-Forlì",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449179",
+    "discovered_at": "2026-11-15T13:41:48.205059",
     "league_id": "italy_serie_c_d"
   }
 ]
