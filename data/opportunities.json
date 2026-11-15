@@ -20249,53 +20249,6 @@
     "market_value_eur": 150000
   },
   {
-    "id": "5dcd707affa17154cc4c9b44bf3da265",
-    "player_name": "Alen Gafuri",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Giovane difensore firmato dallo Spezia, proveniente dalla D",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444885",
-    "discovered_at": "2026-09-03T20:45:17.901937",
-    "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:regex",
-    "tm_url": "https://www.transfermarkt.it/alen-gafuri/profil/spieler/1334725",
-    "player_profile": {
-      "enrichment_source": "Enrichment:regex",
-      "tm_url": "https://www.transfermarkt.it/alen-gafuri/profil/spieler/1334725",
-      "birth_date": "2008-05-22",
-      "current_club": "Spezia Primavera"
-    },
-    "tm_enriched": true,
-    "grafo_fonti": {
-      "p": {
-        "club": [
-          {
-            "valore": "Spezia Primavera",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-14T22:23:17.187898+00:00",
-            "url": "https://www.transfermarkt.it/alen-gafuri/profil/spieler/1334725"
-          }
-        ],
-        "eta": [
-          {
-            "valore": "18",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-14T22:23:17.187903+00:00",
-            "url": "https://www.transfermarkt.it/alen-gafuri/profil/spieler/1334725",
-            "nota": "da data di nascita 2008-05-22"
-          }
-        ]
-      }
-    },
-    "birth_date": "2008-05-22",
-    "current_club": "Spezia Primavera",
-    "age": 18,
-    "role_name": "Difensore centrale",
-    "role": "Difensore centrale"
-  },
-  {
     "id": "4d61dc46a2f922989a9621c07f543e18",
     "player_name": "Pierpaolo Verri",
     "region": "ITALY",
@@ -20500,69 +20453,6 @@
     "source_url": "https://www.sportitalia.it/2026/09/02/il-caso-tomori-e-quel-puzzle-che-non-torna/",
     "discovered_at": "2026-09-04T16:04:41.898183",
     "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "05237a334ee3ca80bba449ba54576323",
-    "player_name": "Albert Gudmundsson",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Albert Gudmundsson è stato ufficialmente acquistato dalla Lazio.",
-    "ob1_score": 58,
-    "source_name": "www.sportitalia.it",
-    "source_url": "https://www.sportitalia.it/2026/09/01/live-calciomercato-tutte-le-notizie-di-martedi-01-settembre-gudmundsson-futuro-da-definire-juventus-sarr-woltemade-ma-non-solo/",
-    "discovered_at": "2026-09-04T16:04:41.898258",
-    "league_id": "italy_serie_c_d",
-    "grafo_fonti": {
-      "p": {
-        "club": [
-          {
-            "valore": "SS Lazio",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-14T22:16:47.237635+00:00",
-            "url": "https://www.transfermarkt.it/albert-gudmundsson/profil/spieler/305947"
-          }
-        ],
-        "market_value": [
-          {
-            "valore": "12000000",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-14T22:16:47.237639+00:00",
-            "url": "https://www.transfermarkt.it/albert-gudmundsson/profil/spieler/305947"
-          }
-        ],
-        "eta": [
-          {
-            "valore": "29",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-14T22:16:47.237643+00:00",
-            "url": "https://www.transfermarkt.it/albert-gudmundsson/profil/spieler/305947",
-            "nota": "da data di nascita 1997-06-15"
-          }
-        ]
-      }
-    },
-    "foot": "destro",
-    "market_value": 12000000,
-    "enrichment_source": "Enrichment:sports-skills",
-    "market_value_formatted": "12,00 mln €",
-    "height_cm": 177,
-    "birth_date": "1997-06-15",
-    "tm_url": "https://www.transfermarkt.it/albert-gudmundsson/profil/spieler/305947",
-    "current_club": "SS Lazio",
-    "player_profile": {
-      "foot": "destro",
-      "market_value": 12000000,
-      "enrichment_source": "Enrichment:sports-skills",
-      "market_value_formatted": "12,00 mln €",
-      "height_cm": 177,
-      "birth_date": "1997-06-15",
-      "tm_url": "https://www.transfermarkt.it/albert-gudmundsson/profil/spieler/305947",
-      "current_club": "SS Lazio"
-    },
-    "age": 29,
-    "role_name": "Seconda punta",
-    "role": "Seconda punta",
-    "tm_enriched": true
   },
   {
     "id": "4e16a8880765f67c956fe30f4af3cdcf",
@@ -21290,69 +21180,6 @@
     "agent": "Bertolucci Sports",
     "market_value": 18000000,
     "market_value_eur": 18000000
-  },
-  {
-    "id": "71539db545dd371292e83194db88268f",
-    "player_name": "Aldo Florenzi",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Intervento chirurgico al menisco e legamento crociato",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458216",
-    "discovered_at": "2026-09-10T16:06:29.970013",
-    "league_id": "italy_serie_c_d",
-    "grafo_fonti": {
-      "p": {
-        "club": [
-          {
-            "valore": "Spezia Calcio",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-14T22:23:17.187855+00:00",
-            "url": "https://www.transfermarkt.it/aldo-florenzi/profil/spieler/619326"
-          }
-        ],
-        "market_value": [
-          {
-            "valore": "800000",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-14T22:23:17.187867+00:00",
-            "url": "https://www.transfermarkt.it/aldo-florenzi/profil/spieler/619326"
-          }
-        ],
-        "eta": [
-          {
-            "valore": "24",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-14T22:23:17.187874+00:00",
-            "url": "https://www.transfermarkt.it/aldo-florenzi/profil/spieler/619326",
-            "nota": "da data di nascita 2002-04-02"
-          }
-        ]
-      }
-    },
-    "foot": "destro",
-    "market_value": 800000,
-    "enrichment_source": "Enrichment:sports-skills",
-    "market_value_formatted": "800 mila €",
-    "height_cm": 168,
-    "birth_date": "2002-04-02",
-    "tm_url": "https://www.transfermarkt.it/aldo-florenzi/profil/spieler/619326",
-    "current_club": "Spezia Calcio",
-    "player_profile": {
-      "foot": "destro",
-      "market_value": 800000,
-      "enrichment_source": "Enrichment:sports-skills",
-      "market_value_formatted": "800 mila €",
-      "height_cm": 168,
-      "birth_date": "2002-04-02",
-      "tm_url": "https://www.transfermarkt.it/aldo-florenzi/profil/spieler/619326",
-      "current_club": "Spezia Calcio"
-    },
-    "age": 24,
-    "role_name": "Centrocampista",
-    "role": "Centrocampista",
-    "tm_enriched": true
   },
   {
     "id": "591248ad06923027de4b4c9fd44b8d2c",
@@ -23674,69 +23501,6 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446076",
     "discovered_at": "2026-09-23T04:04:11.072910",
     "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "7c16f8e93c5a6a86fee2493de38058bb",
-    "player_name": "Alessandro Lamesta",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Lesione di basso grado alla coscia sinistra",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446065",
-    "discovered_at": "2026-09-23T04:04:11.073256",
-    "league_id": "italy_serie_c_d",
-    "grafo_fonti": {
-      "p": {
-        "club": [
-          {
-            "valore": "Union Brescia",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-14T22:38:22.353587+00:00",
-            "url": "https://www.transfermarkt.it/alessandro-lamesta/profil/spieler/412978"
-          }
-        ],
-        "market_value": [
-          {
-            "valore": "275000",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-14T22:38:22.353590+00:00",
-            "url": "https://www.transfermarkt.it/alessandro-lamesta/profil/spieler/412978"
-          }
-        ],
-        "eta": [
-          {
-            "valore": "30",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-14T22:38:22.353593+00:00",
-            "url": "https://www.transfermarkt.it/alessandro-lamesta/profil/spieler/412978",
-            "nota": "da data di nascita 1996-12-29"
-          }
-        ]
-      }
-    },
-    "foot": "sinistro",
-    "market_value": 275000,
-    "enrichment_source": "Enrichment:sports-skills",
-    "market_value_formatted": "275 mila €",
-    "height_cm": 178,
-    "birth_date": "1996-12-29",
-    "tm_url": "https://www.transfermarkt.it/alessandro-lamesta/profil/spieler/412978",
-    "current_club": "Union Brescia",
-    "player_profile": {
-      "foot": "sinistro",
-      "market_value": 275000,
-      "enrichment_source": "Enrichment:sports-skills",
-      "market_value_formatted": "275 mila €",
-      "height_cm": 178,
-      "birth_date": "1996-12-29",
-      "tm_url": "https://www.transfermarkt.it/alessandro-lamesta/profil/spieler/412978",
-      "current_club": "Union Brescia"
-    },
-    "age": 30,
-    "role_name": "Centrocampista",
-    "role": "Centrocampista",
-    "tm_enriched": true
   },
   {
     "id": "0a69bec5aafe20a3f9c4e32acd537f0d",
@@ -26973,7 +26737,14 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447486",
     "discovered_at": "2026-10-17T15:18:00.488826",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/alessandro-malomo/profil/spieler/104332",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/alessandro-malomo/profil/spieler/104332"
+    },
+    "tm_enriched": false
   },
   {
     "id": "af7af38279d960768de2386f521fb34a",
@@ -28068,7 +27839,14 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459625",
     "discovered_at": "2026-10-30T05:01:14.891665",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/alfredo-bifulco/profil/spieler/286276",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/alfredo-bifulco/profil/spieler/286276"
+    },
+    "tm_enriched": false
   },
   {
     "id": "a5752c92a01229b6c5b943456d302675",
@@ -28092,7 +27870,14 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448252",
     "discovered_at": "2026-10-30T22:03:54.617817",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/alessio-vita/profil/spieler/163606",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/alessio-vita/profil/spieler/163606"
+    },
+    "tm_enriched": false
   },
   {
     "id": "a48b675cdc6c240fbc165703b7e27e3c",
@@ -29143,31 +28928,67 @@
     "ob1_score": 66,
     "source_name": "www.gazzetta.it",
     "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Juventus/24-02-2026/juve-vicario-e-alisson-per-il-dopo-di-gregorio.shtml",
-    "discovered_at": "2026-11-14T22:10:16.190895",
+    "discovered_at": "2026-11-15T05:40:36.324060",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "c174dc5733b6e7b7e6d98c1a7665eb2a",
-    "player_name": "Aurora Pro Patria",
+    "id": "f730c2b529c14ad18b72b7de655a3e20",
+    "player_name": "Mirko Antonucci",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Ora è ufficiale: Inter Under 23, Aurora Pro Patria e Ravenna sono state ammesse al campionato di serie C della prossima stagione. Il Consiglio Federale ha infatti reintegrato l'organico della Lega Pro decidendo di riammettere la società Aurora Pro Patria, in luogo dell'intervenuta dichiarazione giudiziale della Lucchese 1905 e della conseguente non ammissione al campionato, e le società Inter Under 23 e Ravenna Football Club, secondo l'ordine stabilito con il criterio dell'alternanza per i ripescaggi.\n\nLeggi anche\n\nLa Gazzetta dello Sport\n\nLa Gazzetta dello Sport\n\n© RIPRODUZIONE RISERVATA [...] Rugby\n Sport Invernali\n Sport Usa\n Sport Vari\n Vela e Nautica\n Volley\n\n Notizie\n Pronostici\n Comparazione Quote\n Siti Scommesse\n\n Gazzetta AI Predictor\n Bonus Benvenuto\n Guide Scommesse\n Gioco Responsabile\n\n Casinò Online\n Guide Casinò\n\n Notizie\n Discipline\n La Guida\n Risultati e calendario\n\n Medagliere\n Medagliere Storico\n Azzurri\n Storia\n\n Video\n Programma ufficiale\n\n Calcio Italiano\n  Altri Campionati\n\nserie C\n\n# Ora è ufficiale: nasce l'Inter Under 23, ammessa in Serie C\n\n## Il Consiglio Federale ha reintegrato l'organico della Lega Pro dopo l'esclusione della Lucchese. Ammesse anche Aurora Pro Patria e Ravenna\n\nScegli Gazzetta come fonte preferita su Google [...] Notizie\n Speciali\n Rubriche\n Pagelle\n Interviste\n Grandi Letture\n Personaggi\n Archivio notizie\n\n Homepage Il Ciclista\n Percorsi\n Salute e allenamento\n Bici e attrezzatura\n Manutenzione\n Gare amatoriali\n MTB\n Abbigliamento\n Chi siamo\n Viaggi\n\n Fantacampionato\n Crazy Calcio Show\n Altri Mondi\n Mondo Gazzetta\n Shop Gazzetta\n Newsletter\n\n Altri Mondi\n Notizie\n Bandosubito\n Cronaca\n Gossip\n Stile\n Tutti In Campo\n Poker Sportivo\n\n Bandosubito\n Ricerca bandi online\n Notizie\n\n Spettacolo, TV, Gossip\n Notizie\n Oroscopo\n\n Mondo Gazzetta\n Festival Dello Sport\n Sportweek\n Gazzetta Sports Days\n RCS Academy\n Sports Awards\n Vacanze Gazzetta\n Fondazione Cannavò\n Network",
-    "ob1_score": 62,
-    "source_name": "www.gazzetta.it",
-    "source_url": "https://www.gazzetta.it/Calcio/altri-campionati/24-07-2025/inter-under-23-aurora-pro-patria-e-ravenna-ammesse-in-serie-c.shtml",
-    "discovered_at": "2026-11-14T22:10:16.191227",
+    "description": "Trequartista under 23 con buone prospettive di mercato",
+    "ob1_score": 60,
+    "source_name": "www.transfermarkt.it",
+    "source_url": "https://www.transfermarkt.it/serie-c-girone-a/marktwerte/wettbewerb/IT3A",
+    "discovered_at": "2026-11-15T05:40:36.324843",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "0f221d77613259ff044d24f831c1a80d",
-    "player_name": "Atalanta Under",
+    "id": "5762ac34c69a739056584b17ae1fc62c",
+    "player_name": "Matteo Barbini",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Title: Serie C, le date della Serie C: quando giocano Inter Under 23, Juventus Next Gen e Atalanta Under 23 | Calciomercato\nQuesta pagina contiene link di affiliazione. Iscrivendoti attraverso i link forniti, potremmo guadagnare una commissione. Stefano Vecchi Inter 2025 faccia 16.9Getty Images. Ultimi aggiornamenti: 25 lug 2025, 16:48. # Serie C, le date della Serie C: quando giocano Inter Under 23, Juventus Next Gen e Atalanta Under 23. Si parte il 24 agosto, una settimana dopo l'avvio della Coppa Italia di Serie C. Si chiude il 26 aprile, previsti tre turni infrasettimanali. Nel giorno in cui sono stati resi noti i gironi del campionato di Serie C Sky Wi-fi 2025/2026, che vedrà ai nastri di partenza **Juventus Next Gen, Atalanta Under 23 e la neo-nata Inter Under 23**, è bene fare un **pro memoria delle date della nuova stagione.** Un calendario fittissimo tra stagione regolare, playoff e playout. SERIE C, LE AVVERSARIE DI INTER U23, JUVE NEXT GEN E ATALANTA UNDER 23. **Il campionato di Serie C prenderà ufficialmente nel fine settimana di sabato 23 e domenica 24 agosto,** con la conclusione della prima parte della stagione fissata per il 26 aprile del 2026. La Lega Pro ha stabilito **tre turni infrasettimanali, che saranno disputati rispettivamente mercoledì 24 settembre, mercoledì 11 febbraio e mercoledì 4 marzo. I calendari saranno svelati invece nella giornata di lunedì 28 agosto.**. Quando sottoscrivi un abbonamento attraverso questi link, noi riceveremo una commissione*. In questo programma, si inserisce anche il tabellone della Coppa Italia di Serie C che, come di consueto, esordirà nelle settimane antecedenti all'avvio del campionato. Il primo turno eliminatorio sarà disputato domenica 17 agosto, il secondo si giocherà mercoledì 29 ottobre, mentre mercoledì 26 novembre e mercoledì 10 dicembre sarà tempo di ottavi e quarti di finale. Si va nell'anno nuovo per le fasi conclusive della competizione: le due semifinali saranno tra il 14 e il 28 gennaio 2026, mentre le due finali saranno il 18 marzo e il 1° aprile. ### Infortunio per Raimondo, Alvini: \"C'è preoccupazione\". ### Capello sulla Juve: \"Un anno di Spalletti, un mercato condiviso e ha perso il suo DNA\". ### Inter: il calo di Barella è nei numeri, ma l'allarme più serio sono le frasi post-derby. ### Pagelle Milan-Inter: Moreira da paura, Barella da incubo.",
-    "ob1_score": 62,
-    "source_name": "www.calciomercato.com",
-    "source_url": "https://www.calciomercato.com/notizie/serie-c-le-date-della-serie-c-quando-giocano-inter-under-23-juventus-next-gen-e-atalanta-under-23/bltcd2641c8b5799963",
-    "discovered_at": "2026-11-14T22:10:16.191409",
+    "description": "Difensore centrale under 23 con valore di mercato emergente",
+    "ob1_score": 60,
+    "source_name": "www.transfermarkt.it",
+    "source_url": "https://www.transfermarkt.it/serie-c-girone-a/marktwerte/wettbewerb/IT3A",
+    "discovered_at": "2026-11-15T05:40:36.324978",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "e359dcda9d8aee373c37fcfb0c9d3070",
+    "player_name": "Mattia Rizzo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Terzino destro under 23 con potenziale di crescita",
+    "ob1_score": 60,
+    "source_name": "www.transfermarkt.it",
+    "source_url": "https://www.transfermarkt.it/serie-c-girone-a/marktwerte/wettbewerb/IT3A",
+    "discovered_at": "2026-11-15T05:40:36.325115",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "0783ed55b290b7bba1a2a780606b364a",
+    "player_name": "Andrea Rizzo Pinna",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Trequartista under 23 con prospettive di mercato",
+    "ob1_score": 60,
+    "source_name": "www.transfermarkt.it",
+    "source_url": "https://www.transfermarkt.it/serie-c-girone-a/marktwerte/wettbewerb/IT3A",
+    "discovered_at": "2026-11-15T05:40:36.325283",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "8d3aa72b7a28e10fd49582130f54ea49",
+    "player_name": "Luca Mazzocchi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Giocatore chiave con doppietta, in evidenza per mercato",
+    "ob1_score": 58,
+    "source_name": "www.corrieredellosport.it",
+    "source_url": "https://www.corrieredellosport.it/calcio/serie-c",
+    "discovered_at": "2026-11-15T05:40:36.325427",
     "league_id": "italy_serie_c_d"
   }
 ]
