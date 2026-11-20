@@ -8900,15 +8900,15 @@
     "tm_enriched": true
   },
   {
-    "id": "2b4501ef2ea3eff32bbf0d071a36f013",
+    "id": "91d8c8e67e9edd9426849979d4f2fdda",
     "player_name": "Giancarlo Malcore",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Possibile addio, richieste dalla Serie D",
+    "description": "Probabile separazione nella prossima finestra di mercato",
     "ob1_score": 60,
     "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449379",
-    "discovered_at": "2026-11-18T15:22:30.889260",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449443",
+    "discovered_at": "2026-11-20T00:25:52.418459",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -17501,7 +17501,47 @@
     "source_name": "www.gazzetta.it",
     "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Milan/08-06-2026/alessandro-nesta-intervista.shtml",
     "discovered_at": "2026-08-08T01:54:03.431463",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:11:23.644943+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-nesta/profil/spieler/4171"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "50",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:11:23.644947+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-nesta/profil/spieler/4171",
+            "nota": "da data di nascita 1976-03-19"
+          }
+        ]
+      }
+    },
+    "nationality": "Italy",
+    "foot": "destro",
+    "enrichment_source": "Enrichment:sports-skills",
+    "height_cm": 187,
+    "birth_date": "1976-03-19",
+    "tm_url": "https://www.transfermarkt.it/alessandro-nesta/profil/spieler/4171",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "nationality": "Italy",
+      "foot": "destro",
+      "enrichment_source": "Enrichment:sports-skills",
+      "height_cm": 187,
+      "birth_date": "1976-03-19",
+      "tm_url": "https://www.transfermarkt.it/alessandro-nesta/profil/spieler/4171",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "865a454c20543280a89c4b3c06b9a335",
@@ -18745,7 +18785,43 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444597",
     "discovered_at": "2026-09-01T11:22:51.424595",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:11:23.644913+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-minelli/profil/spieler/557968"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "56",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:11:23.644919+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-minelli/profil/spieler/557968",
+            "nota": "da data di nascita 1970-11-28"
+          }
+        ]
+      }
+    },
+    "nationality": "Svizzera, Italia",
+    "enrichment_source": "Enrichment:groq",
+    "birth_date": "1970-11-28",
+    "tm_url": "https://www.transfermarkt.it/alessandro-minelli/profil/spieler/557968",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "nationality": "Svizzera, Italia",
+      "enrichment_source": "Enrichment:groq",
+      "birth_date": "1970-11-28",
+      "tm_url": "https://www.transfermarkt.it/alessandro-minelli/profil/spieler/557968",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Difesa",
+    "role": "Difesa",
+    "tm_enriched": true
   },
   {
     "id": "278a0c627d24e2e5a9c024bd08f0d5fd",
@@ -19519,7 +19595,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444792",
     "discovered_at": "2026-09-02T10:56:55.636741",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Alcione Milano",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:27:53.410177+00:00",
+            "url": "https://www.transfermarkt.it/alex-rolfini/profil/spieler/395714"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "150000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:27:53.410181+00:00",
+            "url": "https://www.transfermarkt.it/alex-rolfini/profil/spieler/395714"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "30",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:27:53.410185+00:00",
+            "url": "https://www.transfermarkt.it/alex-rolfini/profil/spieler/395714",
+            "nota": "da data di nascita 1996-09-01"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 150000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "150 mila €",
+    "height_cm": 182,
+    "birth_date": "1996-09-01",
+    "tm_url": "https://www.transfermarkt.it/alex-rolfini/profil/spieler/395714",
+    "current_club": "Alcione Milano",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 150000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "150 mila €",
+      "height_cm": 182,
+      "birth_date": "1996-09-01",
+      "tm_url": "https://www.transfermarkt.it/alex-rolfini/profil/spieler/395714",
+      "current_club": "Alcione Milano"
+    },
+    "age": 30,
+    "role_name": "Punta centrale",
+    "role": "Punta centrale",
+    "tm_enriched": true
   },
   {
     "id": "8fe006d4ddc77d1f8cff64682ba02db0",
@@ -19762,9 +19889,38 @@
     "tm_url": "https://www.transfermarkt.it/alessandro-rizza/profil/spieler/736317",
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/alessandro-rizza/profil/spieler/736317"
+      "tm_url": "https://www.transfermarkt.it/alessandro-rizza/profil/spieler/736317",
+      "nationality": "Italia",
+      "birth_date": "1974-03-07",
+      "current_club": "Ritiro"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:17:01.940848+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-rizza/profil/spieler/736317"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "52",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:17:01.940863+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-rizza/profil/spieler/736317",
+            "nota": "da data di nascita 1974-03-07"
+          }
+        ]
+      }
+    },
+    "nationality": "Italia",
+    "birth_date": "1974-03-07",
+    "current_club": "Ritiro",
+    "role_name": "Difesa",
+    "role": "Difesa"
   },
   {
     "id": "82a4523f1fbb3f105891f38070e95e92",
@@ -21366,7 +21522,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445270",
     "discovered_at": "2026-09-10T10:57:53.224901",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Spezia Calcio",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:27:53.410206+00:00",
+            "url": "https://www.transfermarkt.it/ales-mateju/profil/spieler/242078"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "500000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:27:53.410209+00:00",
+            "url": "https://www.transfermarkt.it/ales-mateju/profil/spieler/242078"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "30",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:27:53.410212+00:00",
+            "url": "https://www.transfermarkt.it/ales-mateju/profil/spieler/242078",
+            "nota": "da data di nascita 1996-06-03"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 500000,
+    "enrichment_source": "Enrichment:regex",
+    "market_value_formatted": "500 mila €",
+    "height_cm": 185,
+    "birth_date": "1996-06-03",
+    "tm_url": "https://www.transfermarkt.it/ales-mateju/profil/spieler/242078",
+    "current_club": "Spezia Calcio",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 500000,
+      "enrichment_source": "Enrichment:regex",
+      "market_value_formatted": "500 mila €",
+      "height_cm": 185,
+      "birth_date": "1996-06-03",
+      "tm_url": "https://www.transfermarkt.it/ales-mateju/profil/spieler/242078",
+      "current_club": "Spezia Calcio"
+    },
+    "age": 30,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "80ba0a3190baae7e5787e9fdc47a1c1e",
@@ -22129,7 +22336,45 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458313",
     "discovered_at": "2026-09-13T20:35:22.257706",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:27:53.410228+00:00",
+            "url": "https://www.transfermarkt.it/alfonso-greco/profil/spieler/223466"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "57",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:27:53.410232+00:00",
+            "url": "https://www.transfermarkt.it/alfonso-greco/profil/spieler/223466",
+            "nota": "da data di nascita 1969-05-19"
+          }
+        ]
+      }
+    },
+    "nationality": "Italia",
+    "enrichment_source": "Enrichment:groq",
+    "height_cm": 177,
+    "birth_date": "1969-05-19",
+    "tm_url": "https://www.transfermarkt.it/alfonso-greco/profil/spieler/223466",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "nationality": "Italia",
+      "enrichment_source": "Enrichment:groq",
+      "height_cm": 177,
+      "birth_date": "1969-05-19",
+      "tm_url": "https://www.transfermarkt.it/alfonso-greco/profil/spieler/223466",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Centrocampista",
+    "role": "Centrocampista",
+    "tm_enriched": true
   },
   {
     "id": "59b17cfdf2f780f4b80bb102ed34906c",
@@ -22991,7 +23236,45 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445825",
     "discovered_at": "2026-09-18T20:41:16.843140",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:21:27.759877+00:00",
+            "url": "https://www.transfermarkt.it/massimiliano-favo/profil/spieler/287420"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "60",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:21:27.759893+00:00",
+            "url": "https://www.transfermarkt.it/massimiliano-favo/profil/spieler/287420",
+            "nota": "da data di nascita 1966-12-10"
+          }
+        ]
+      }
+    },
+    "nationality": "Italia",
+    "enrichment_source": "Enrichment:groq",
+    "height_cm": 177,
+    "birth_date": "1966-12-10",
+    "tm_url": "https://www.transfermarkt.it/massimiliano-favo/profil/spieler/287420",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "nationality": "Italia",
+      "enrichment_source": "Enrichment:groq",
+      "height_cm": 177,
+      "birth_date": "1966-12-10",
+      "tm_url": "https://www.transfermarkt.it/massimiliano-favo/profil/spieler/287420",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Mediano",
+    "role": "Mediano",
+    "tm_enriched": true
   },
   {
     "id": "f89fff423ec691403634e8aff0431e3c",
@@ -23699,13 +23982,57 @@
     "source_url": "https://www.sportitalia.it/2026/09/20/serie-a-gilmour-prima-jimenez-poi-al-franchi-finisce-in-parita/",
     "discovered_at": "2026-09-24T04:01:47.454857",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:regex",
     "tm_url": "https://www.transfermarkt.it/alex-jimenez/profil/spieler/741257",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/alex-jimenez/profil/spieler/741257"
+      "enrichment_source": "Enrichment:regex",
+      "tm_url": "https://www.transfermarkt.it/alex-jimenez/profil/spieler/741257",
+      "foot": "destro",
+      "market_value": 22000000,
+      "market_value_formatted": "22,00 mln €",
+      "height_cm": 177,
+      "birth_date": "2005-05-08",
+      "current_club": "ACF Fiorentina"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "ACF Fiorentina",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:21:27.759975+00:00",
+            "url": "https://www.transfermarkt.it/alex-jimenez/profil/spieler/741257"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "22000000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:21:27.759977+00:00",
+            "url": "https://www.transfermarkt.it/alex-jimenez/profil/spieler/741257"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "21",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:21:27.759980+00:00",
+            "url": "https://www.transfermarkt.it/alex-jimenez/profil/spieler/741257",
+            "nota": "da data di nascita 2005-05-08"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 22000000,
+    "market_value_formatted": "22,00 mln €",
+    "height_cm": 177,
+    "birth_date": "2005-05-08",
+    "current_club": "ACF Fiorentina",
+    "age": 21,
+    "role_name": "Terzino destro",
+    "role": "Terzino destro"
   },
   {
     "id": "b19245712169a4a0226531e1895b615d",
@@ -24204,7 +24531,56 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446251",
     "discovered_at": "2026-09-26T16:07:12.020081",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "AC Carpi",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:17:01.940896+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-scacchetti/profil/spieler/892482"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "75000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:17:01.940900+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-scacchetti/profil/spieler/892482"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "21",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:17:01.940903+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-scacchetti/profil/spieler/892482",
+            "nota": "da data di nascita 2005-02-22"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 75000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "75 mila €",
+    "birth_date": "2005-02-22",
+    "tm_url": "https://www.transfermarkt.it/alessandro-scacchetti/profil/spieler/892482",
+    "current_club": "AC Carpi",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 75000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "75 mila €",
+      "birth_date": "2005-02-22",
+      "tm_url": "https://www.transfermarkt.it/alessandro-scacchetti/profil/spieler/892482",
+      "current_club": "AC Carpi"
+    },
+    "age": 21,
+    "role_name": "Portiere",
+    "role": "Portiere",
+    "tm_enriched": true
   },
   {
     "id": "03c00656b73a01fa9ada93bf48005861",
@@ -24216,7 +24592,42 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446251",
     "discovered_at": "2026-09-26T16:07:12.020382",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "AC Carpi",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:27:53.410059+00:00",
+            "url": "https://www.transfermarkt.it/alex-perta/profil/spieler/1231390"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "18",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:27:53.410120+00:00",
+            "url": "https://www.transfermarkt.it/alex-perta/profil/spieler/1231390",
+            "nota": "da data di nascita 2008-06-04"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:regex",
+    "birth_date": "2008-06-04",
+    "tm_url": "https://www.transfermarkt.it/alex-perta/profil/spieler/1231390",
+    "current_club": "AC Carpi",
+    "player_profile": {
+      "enrichment_source": "Enrichment:regex",
+      "birth_date": "2008-06-04",
+      "tm_url": "https://www.transfermarkt.it/alex-perta/profil/spieler/1231390",
+      "current_club": "AC Carpi"
+    },
+    "age": 18,
+    "role_name": "Portiere",
+    "role": "Portiere",
+    "tm_enriched": true
   },
   {
     "id": "5a992ff2c9acfc3752f239f6a5824cb6",
@@ -24494,7 +24905,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446425",
     "discovered_at": "2026-09-28T23:04:13.224180",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "AC Perugia Calcio",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:17:01.940948+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-tozzuolo/profil/spieler/569579"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "200000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:17:01.940950+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-tozzuolo/profil/spieler/569579"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "24",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:17:01.940953+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-tozzuolo/profil/spieler/569579",
+            "nota": "da data di nascita 2002-10-31"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 200000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "200 mila €",
+    "height_cm": 185,
+    "birth_date": "2002-10-31",
+    "tm_url": "https://www.transfermarkt.it/alessandro-tozzuolo/profil/spieler/569579",
+    "current_club": "AC Perugia Calcio",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 200000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "200 mila €",
+      "height_cm": 185,
+      "birth_date": "2002-10-31",
+      "tm_url": "https://www.transfermarkt.it/alessandro-tozzuolo/profil/spieler/569579",
+      "current_club": "AC Perugia Calcio"
+    },
+    "age": 24,
+    "role_name": "Terzino destro",
+    "role": "Terzino destro",
+    "tm_enriched": true
   },
   {
     "id": "2f588f2f1a26b6fe5a6c9be9a126d313",
@@ -25855,13 +26317,42 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447147",
     "discovered_at": "2026-10-11T12:24:51.119070",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:openrouter",
+    "enrichment_source": "Enrichment:regex",
     "tm_url": "https://www.transfermarkt.it/felice-piccolo/profil/spieler/28029",
     "player_profile": {
-      "enrichment_source": "Enrichment:openrouter",
-      "tm_url": "https://www.transfermarkt.it/felice-piccolo/profil/spieler/28029"
+      "enrichment_source": "Enrichment:regex",
+      "tm_url": "https://www.transfermarkt.it/felice-piccolo/profil/spieler/28029",
+      "height_cm": 188,
+      "birth_date": "1983-08-27",
+      "current_club": "Ritiro"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:11:23.644965+00:00",
+            "url": "https://www.transfermarkt.it/felice-piccolo/profil/spieler/28029"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "43",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:11:23.644969+00:00",
+            "url": "https://www.transfermarkt.it/felice-piccolo/profil/spieler/28029",
+            "nota": "da data di nascita 1983-08-27"
+          }
+        ]
+      }
+    },
+    "height_cm": 188,
+    "birth_date": "1983-08-27",
+    "current_club": "Ritiro",
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale"
   },
   {
     "id": "dbc17085f3ae8e2d2fe45bda172bf136",
@@ -26738,13 +27229,57 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447486",
     "discovered_at": "2026-10-17T15:18:00.488826",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:regex",
     "tm_url": "https://www.transfermarkt.it/alessandro-malomo/profil/spieler/104332",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/alessandro-malomo/profil/spieler/104332"
+      "enrichment_source": "Enrichment:regex",
+      "tm_url": "https://www.transfermarkt.it/alessandro-malomo/profil/spieler/104332",
+      "foot": "destro",
+      "market_value": 100000,
+      "market_value_formatted": "100 mila €",
+      "height_cm": 190,
+      "birth_date": "1991-04-12",
+      "current_club": "Guidonia Montecelio 1937 FC"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Guidonia Montecelio 1937 FC",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:17:01.940924+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-malomo/profil/spieler/104332"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "100000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:17:01.940927+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-malomo/profil/spieler/104332"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "35",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:17:01.940930+00:00",
+            "url": "https://www.transfermarkt.it/alessandro-malomo/profil/spieler/104332",
+            "nota": "da data di nascita 1991-04-12"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 100000,
+    "market_value_formatted": "100 mila €",
+    "height_cm": 190,
+    "birth_date": "1991-04-12",
+    "current_club": "Guidonia Montecelio 1937 FC",
+    "age": 35,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale"
   },
   {
     "id": "af7af38279d960768de2386f521fb34a",
@@ -27871,13 +28406,57 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448252",
     "discovered_at": "2026-10-30T22:03:54.617817",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:sports-skills",
     "tm_url": "https://www.transfermarkt.it/alessio-vita/profil/spieler/163606",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/alessio-vita/profil/spieler/163606"
+      "enrichment_source": "Enrichment:sports-skills",
+      "tm_url": "https://www.transfermarkt.it/alessio-vita/profil/spieler/163606",
+      "foot": "destro",
+      "market_value": 275000,
+      "market_value_formatted": "275 mila €",
+      "height_cm": 178,
+      "birth_date": "1993-03-16",
+      "current_club": "Treviso FBC 1993"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Treviso FBC 1993",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:21:27.759954+00:00",
+            "url": "https://www.transfermarkt.it/alessio-vita/profil/spieler/163606"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "275000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:21:27.759957+00:00",
+            "url": "https://www.transfermarkt.it/alessio-vita/profil/spieler/163606"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "33",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:21:27.759960+00:00",
+            "url": "https://www.transfermarkt.it/alessio-vita/profil/spieler/163606",
+            "nota": "da data di nascita 1993-03-16"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 275000,
+    "market_value_formatted": "275 mila €",
+    "height_cm": 178,
+    "birth_date": "1993-03-16",
+    "current_club": "Treviso FBC 1993",
+    "age": 33,
+    "role_name": "Centrocampista",
+    "role": "Centrocampista"
   },
   {
     "id": "a48b675cdc6c240fbc165703b7e27e3c",
@@ -28942,13 +29521,57 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449184",
     "discovered_at": "2026-11-15T13:41:48.204648",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:sports-skills",
     "tm_url": "https://www.transfermarkt.it/alessio-nepi/profil/spieler/612489",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/alessio-nepi/profil/spieler/612489"
+      "enrichment_source": "Enrichment:sports-skills",
+      "tm_url": "https://www.transfermarkt.it/alessio-nepi/profil/spieler/612489",
+      "foot": "destro",
+      "market_value": 200000,
+      "market_value_formatted": "200 mila €",
+      "height_cm": 190,
+      "birth_date": "2000-01-25",
+      "current_club": "Savoia 1908"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Savoia 1908",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:21:27.759927+00:00",
+            "url": "https://www.transfermarkt.it/alessio-nepi/profil/spieler/612489"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "200000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:21:27.759930+00:00",
+            "url": "https://www.transfermarkt.it/alessio-nepi/profil/spieler/612489"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "26",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:21:27.759934+00:00",
+            "url": "https://www.transfermarkt.it/alessio-nepi/profil/spieler/612489",
+            "nota": "da data di nascita 2000-01-25"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 200000,
+    "market_value_formatted": "200 mila €",
+    "height_cm": 190,
+    "birth_date": "2000-01-25",
+    "current_club": "Savoia 1908",
+    "age": 26,
+    "role_name": "Punta centrale",
+    "role": "Punta centrale"
   },
   {
     "id": "450ab65fced9bdafc51731a02ba681e7",
@@ -29219,7 +29842,58 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460225",
     "discovered_at": "2026-11-18T15:22:30.890594",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Juventus Next Gen",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:27:53.410249+00:00",
+            "url": "https://www.transfermarkt.it/alfonso-montero/profil/spieler/1062320"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "300000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:27:53.410251+00:00",
+            "url": "https://www.transfermarkt.it/alfonso-montero/profil/spieler/1062320"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "19",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:27:53.410254+00:00",
+            "url": "https://www.transfermarkt.it/alfonso-montero/profil/spieler/1062320",
+            "nota": "da data di nascita 2007-02-23"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 300000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "300 mila €",
+    "height_cm": 185,
+    "birth_date": "2007-02-23",
+    "tm_url": "https://www.transfermarkt.it/alfonso-montero/profil/spieler/1062320",
+    "current_club": "Juventus Next Gen",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 300000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "300 mila €",
+      "height_cm": 185,
+      "birth_date": "2007-02-23",
+      "tm_url": "https://www.transfermarkt.it/alfonso-montero/profil/spieler/1062320",
+      "current_club": "Juventus Next Gen"
+    },
+    "age": 19,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "38c96d45759b424332b28a2c9db4abc1",
@@ -29255,7 +29929,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449406",
     "discovered_at": "2026-11-19T00:03:14.447960",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ravenna FC 1913",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:11:23.644833+00:00",
+            "url": "https://www.transfermarkt.it/adriano-esposito/profil/spieler/462267"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "300000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:11:23.644848+00:00",
+            "url": "https://www.transfermarkt.it/adriano-esposito/profil/spieler/462267"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "27",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T15:11:23.644858+00:00",
+            "url": "https://www.transfermarkt.it/adriano-esposito/profil/spieler/462267",
+            "nota": "da data di nascita 1999-07-28"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 300000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "300 mila €",
+    "height_cm": 185,
+    "birth_date": "1999-07-28",
+    "tm_url": "https://www.transfermarkt.it/adriano-esposito/profil/spieler/462267",
+    "current_club": "Ravenna FC 1913",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 300000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "300 mila €",
+      "height_cm": 185,
+      "birth_date": "1999-07-28",
+      "tm_url": "https://www.transfermarkt.it/adriano-esposito/profil/spieler/462267",
+      "current_club": "Ravenna FC 1913"
+    },
+    "age": 27,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "f0df5060bfb65075cc4fc14a65aaf353",
@@ -29318,27 +30043,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "79f25cd03e99e5770de8614ad9aa13b9",
-    "player_name": "Rok Vadjunec",
-    "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Portiere lascia il Sudtirol a gennaio",
-    "ob1_score": 66,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449458",
-    "discovered_at": "2026-11-20T00:25:52.418132",
-    "league_id": "italy_serie_c_d",
-    "tm_url": "https://www.transfermarkt.it/rok-vadjunec/profil/spieler/1069495",
-    "tm_verified_at": "2026-11-20T00:37:08+00:00",
-    "birth_date": "20/09/2006",
-    "age": 20,
-    "current_club": "FC Südtirol",
-    "role_name": "Portiere",
-    "foot": "sinistro",
-    "contract_expires": "30/06/2030",
-    "agent": "QUAN SPORTS ..."
-  },
-  {
     "id": "41607fcc466424f173dffbb81d6961cc",
     "player_name": "Amadou Konate",
     "region": "ITALY",
@@ -29358,15 +30062,99 @@
     "foot": "destro"
   },
   {
-    "id": "91d8c8e67e9edd9426849979d4f2fdda",
-    "player_name": "Giancarlo Malcore",
+    "id": "99f4cc7d0d48f747a5bb174f141e5dbc",
+    "player_name": "Giacomo Parigi",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Probabile separazione nella prossima finestra di mercato",
+    "description": "Arriva al Pescara, felice della scelta",
     "ob1_score": 60,
     "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449443",
-    "discovered_at": "2026-11-20T00:25:52.418459",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449485",
+    "discovered_at": "2026-11-20T15:05:52.469327",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "191cffe0cb3a4827cb80cdc33a6f2bab",
+    "player_name": "Luca Calapai",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Terzino ex Catania, svincolato, cerca nuova squadra",
+    "ob1_score": 66,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449491",
+    "discovered_at": "2026-11-20T15:05:52.469586",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "955c1c14fdb26c035c325072c2cddb72",
+    "player_name": "Omar Khailoti",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Raggiunge 100 partite, derby contro Pro Vercelli",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449469",
+    "discovered_at": "2026-11-20T15:05:52.469730",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "5de9194de3b15a08d8600ead0ceca16f",
+    "player_name": "Giorgio Bailo",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Giorgio Bailo segna il primo gol tra i professionisti",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449470",
+    "discovered_at": "2026-11-20T15:05:52.469842",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "fc84ce5b55fb0ab6c92f4610c2f52588",
+    "player_name": "Luca Ciofani",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Commento sulla perdita di qualità in Serie C",
+    "ob1_score": 62,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449478",
+    "discovered_at": "2026-11-20T15:05:52.469948",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "c40591977e085f016b60dd103175157d",
+    "player_name": "Ivan Tisci",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Motivazione per la partita a Milano contro Catania e Bari",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460293",
+    "discovered_at": "2026-11-20T15:05:52.470052",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "34b041a569d6973096503fe09965ac03",
+    "player_name": "Alessio Stellone",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Obiettivo di vittoria per Casertana contro Salernitana",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460290",
+    "discovered_at": "2026-11-20T15:05:52.470206",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "3114938352f33f8d96e0351ebb0430e1",
+    "player_name": "Luca Briamasco",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Sfida per la vetta del Girone A contro il capolista",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460291",
+    "discovered_at": "2026-11-20T15:05:52.470313",
     "league_id": "italy_serie_c_d"
   }
 ]
