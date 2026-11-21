@@ -21513,69 +21513,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ea4cea66aeb3410cdd9ac3376e587dec",
-    "player_name": "Aleš Matějů",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Rifiuta proposta greca, possibile accordo con Spezia",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445270",
-    "discovered_at": "2026-09-10T10:57:53.224901",
-    "league_id": "italy_serie_c_d",
-    "grafo_fonti": {
-      "p": {
-        "club": [
-          {
-            "valore": "Spezia Calcio",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-20T15:27:53.410206+00:00",
-            "url": "https://www.transfermarkt.it/ales-mateju/profil/spieler/242078"
-          }
-        ],
-        "market_value": [
-          {
-            "valore": "500000",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-20T15:27:53.410209+00:00",
-            "url": "https://www.transfermarkt.it/ales-mateju/profil/spieler/242078"
-          }
-        ],
-        "eta": [
-          {
-            "valore": "30",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-20T15:27:53.410212+00:00",
-            "url": "https://www.transfermarkt.it/ales-mateju/profil/spieler/242078",
-            "nota": "da data di nascita 1996-06-03"
-          }
-        ]
-      }
-    },
-    "foot": "destro",
-    "market_value": 500000,
-    "enrichment_source": "Enrichment:regex",
-    "market_value_formatted": "500 mila €",
-    "height_cm": 185,
-    "birth_date": "1996-06-03",
-    "tm_url": "https://www.transfermarkt.it/ales-mateju/profil/spieler/242078",
-    "current_club": "Spezia Calcio",
-    "player_profile": {
-      "foot": "destro",
-      "market_value": 500000,
-      "enrichment_source": "Enrichment:regex",
-      "market_value_formatted": "500 mila €",
-      "height_cm": 185,
-      "birth_date": "1996-06-03",
-      "tm_url": "https://www.transfermarkt.it/ales-mateju/profil/spieler/242078",
-      "current_club": "Spezia Calcio"
-    },
-    "age": 30,
-    "role_name": "Difensore centrale",
-    "role": "Difensore centrale",
-    "tm_enriched": true
-  },
-  {
     "id": "80ba0a3190baae7e5787e9fdc47a1c1e",
     "player_name": "Paolo Rozzio",
     "region": "ITALY",
@@ -23903,25 +23840,16 @@
     "agent": "G.E.V. ..."
   },
   {
-    "id": "3baeeb7144701a3a6249d33893270150",
+    "id": "c40591977e085f016b60dd103175157d",
     "player_name": "Ivan Tisci",
     "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "Contratto in scadenza a giugno, futuro incerto",
-    "ob1_score": 66,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446100",
-    "discovered_at": "2026-09-24T04:01:47.453271",
-    "league_id": "italy_serie_c_d",
-    "tm_url": "https://www.transfermarkt.it/ivan-tisci/profil/spieler/22129",
-    "tm_verified_at": "2026-09-24T04:12:17+00:00",
-    "birth_date": "22/03/1974",
-    "age": 52,
-    "current_club": "Ritiro",
-    "role_name": "Centrocampista",
-    "foot": "destro",
-    "out_of_scope": true,
-    "out_of_scope_reason": "ha smesso di giocare (Transfermarkt: Ritiro)"
+    "opportunity_type": "talento",
+    "description": "Motivazione per la partita a Milano contro Catania e Bari",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460293",
+    "discovered_at": "2026-11-20T15:05:52.470052",
+    "league_id": "italy_serie_c_d"
   },
   {
     "id": "f40de4f5fa5f69390629ec21e0a1c310",
@@ -27471,7 +27399,12 @@
     "source_name": "www.gazzetta.it",
     "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Inter/18-03-2026/mercato-inter-kone-palestra-e-muharemovic-nel-mirino-le-trattative.shtml",
     "discovered_at": "2026-10-19T12:41:27.446745",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq"
+    },
+    "tm_enriched": false
   },
   {
     "id": "693defd3588302ee406043ffe7fc0a26",
@@ -30083,7 +30016,16 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449491",
     "discovered_at": "2026-11-20T15:05:52.469586",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/luca-calapai/profil/spieler/168189",
+    "tm_verified_at": "2026-11-21T00:02:56+00:00",
+    "birth_date": "20/05/1993",
+    "age": 33,
+    "current_club": "Altamura S.S.",
+    "role_name": "Terzino destro",
+    "foot": "destro",
+    "contract_expires": "30/06/2027",
+    "agent": "VOB Sport"
   },
   {
     "id": "955c1c14fdb26c035c325072c2cddb72",
@@ -30122,18 +30064,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "c40591977e085f016b60dd103175157d",
-    "player_name": "Ivan Tisci",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Motivazione per la partita a Milano contro Catania e Bari",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460293",
-    "discovered_at": "2026-11-20T15:05:52.470052",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "34b041a569d6973096503fe09965ac03",
     "player_name": "Alessio Stellone",
     "region": "ITALY",
@@ -30143,7 +30073,38 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460290",
     "discovered_at": "2026-11-20T15:05:52.470206",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "market_value": [
+          {
+            "valore": "300000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T23:53:43.644552+00:00"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "28",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-20T23:53:43.644567+00:00",
+            "nota": "da data di nascita 1998-01-01"
+          }
+        ]
+      }
+    },
+    "market_value": 300000,
+    "enrichment_source": "Enrichment:groq",
+    "market_value_formatted": "300 mila €",
+    "birth_date": "1998-01-01",
+    "player_profile": {
+      "market_value": 300000,
+      "enrichment_source": "Enrichment:groq",
+      "market_value_formatted": "300 mila €",
+      "birth_date": "1998-01-01"
+    },
+    "age": 28,
+    "tm_enriched": true
   },
   {
     "id": "3114938352f33f8d96e0351ebb0430e1",
@@ -30155,6 +30116,121 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460291",
     "discovered_at": "2026-11-20T15:05:52.470313",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "ea942790f846ed0d5c11282a00b2e476",
+    "player_name": "Di Gregorio",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "D'altronde, che il numero uno fosse un ruolo che i dirigenti bianconeri avevano deciso di rinforzare nell'estate del 2026 si era capito già nei mesi scorsi, quando si è provato a sondare la disponibilità di Mike Maignan di trasferirsi alla Continassa a parametro zero. Il recente rinnovo del francese col Milan, però, impone ora di percorrere altre strade. E, nell'attesa di capire se nelle casse juventine entreranno i 60 milioni garantiti dalla partecipazione alla prossima Champions League, si scandaglia il mercato alla ricerca di occasioni. Se il budget di Comolli in estate fosse risicato, ecco che la pista principale porterebbe a Liverpool, da quel 33enne brasiliano con un passato nella Roma... di Spalletti. Alisson, infatti, era il portiere di coppa dell'ultima avventura in giallorosso",
+    "ob1_score": 66,
+    "source_name": "www.gazzetta.it",
+    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Juventus/24-02-2026/juve-vicario-e-alisson-per-il-dopo-di-gregorio.shtml",
+    "discovered_at": "2026-11-20T23:52:02.769641",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "2459cb0c00b1c6961ef7897e9b95afad",
+    "player_name": "Ledian Memushaj",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "esonerato il 13/10, libero per mercato",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/calciomercato/serie-2026-2027-panchine-picerno-promozione-interim-deo-447731",
+    "discovered_at": "2026-11-20T23:52:02.770068",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "b742ae7e49feb4d8b1b692953fca322f",
+    "player_name": "Daniele Di Donato",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "confermato in panchina, disponibile per trasferimento",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/calciomercato/serie-2026-2027-panchine-picerno-promozione-interim-deo-447731",
+    "discovered_at": "2026-11-20T23:52:02.770227",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "e6a73d4322d70cbd943d85c1e17806c6",
+    "player_name": "Giuseppe Raffaele",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "subentrato a Memushaj, libero per mercato",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/calciomercato/serie-2026-2027-panchine-picerno-promozione-interim-deo-447731",
+    "discovered_at": "2026-11-20T23:52:02.770381",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "b4fed11a8208e7016ad144758dcfe081",
+    "player_name": "Alessandro Tumminello",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Citato tra le cessioni ufficiali di Serie C",
+    "ob1_score": 60,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/news/calciomercato-serie-c-il-tabellone-di-tutti-gli-acquisti-e-le-cessioni-ufficiali-408439",
+    "discovered_at": "2026-11-20T23:52:02.770547",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "6500bf7460454c4916d8deab490c39a3",
+    "player_name": "Gianluigi Donnarumma",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Citato tra le cessioni ufficiali di Serie C",
+    "ob1_score": 60,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/news/calciomercato-serie-c-il-tabellone-di-tutti-gli-acquisti-e-le-cessioni-ufficiali-408439",
+    "discovered_at": "2026-11-20T23:52:02.770700",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "f2d5916287498550e955f017fcdb8284",
+    "player_name": "Alessio Di Gregorio",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "A un passo dalla cessione, possibile mercato",
+    "ob1_score": 60,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/notizie/in-serie-a-e-valzer-di-portieri-di-gregorio-a-un-passo-dalla-cessione-per-i-bookie-a-rischio-anche-meret-e-de-gea/blt4d6aeb448f819367",
+    "discovered_at": "2026-11-20T23:52:02.770846",
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/alessio-garofalo/profil/spieler/692689",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/alessio-garofalo/profil/spieler/692689"
+    },
+    "tm_enriched": false
+  },
+  {
+    "id": "c1b26fff21119c5772f28561223ecfc8",
+    "player_name": "Aurora Pro Patria",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "| \\# | Giocatori | Età | Naz | Stagione | Acquirente | Costo |\n---------\n| 26 |  | 20 |  | 25/26 |  | \\- |\n| 27 |  | 21 |  | 25/26 |  | \\- |\n| 28 |  | 26 |  | 25/26 |  | \\- |\n| 29 |  | 22 |  | 25/26 |  | \\- |\n| 30 |  | 22 |  | 25/26 |  | \\- |\n| 31 |  | 23 |  | 25/26 |  | \\- |\n\n|  |  |\n---|\n|  | Alessandro Sassaro |\n| Difensore centrale |  |\n\n|  |  |\n---|\n|  | svincolato |\n\n|  |  |\n---|\n|  | Dennis Curatolo |\n| Punta centrale |  |\n\n|  |  |\n---|\n|  | svincolato |\n\n|  |  |\n---|\n|  | Manuel Lombardoni |\n| Difensore centrale |  |\n\n|  |  |\n---|\n|  | svincolato |\n\n|  |  |\n---|\n|  | Giovanni Vaglica |\n| Terzino sinistro |  |\n\n|  |  |\n---|\n|  | svincolato |\n\n|  |  |\n---|\n|  | Leandro Pratelli |\n| Portiere |  |\n\n|  |  |\n---|\n|  | svincolato | [...] |  |  |\n---|\n|  | svincolato |\n\n|  |  |\n---|\n|  | Christophe Renault |\n| Esterno di destra |  |\n\n|  |  |\n---|\n|  | svincolato |\n\n593476159347605845312593475958453115845310\n\n## Bilancio trasferimenti 25/26\n\n| Entrate/Spese | Acquisti/Cessioni | Costo |\n---\n| Entrate | 30 | 0 |\n| Spese | 34 | 0 |\n| Bilancio complessivo | +-0 |  |\n\n## Bilancio stagione 25/26\n\n| Competizione | Risultato |\n---|\n| Coppa Serie C | 1° Turno |\n| Serie C-A | 19\\. posto |",
+    "ob1_score": 68,
+    "source_name": "www.transfermarkt.it",
+    "source_url": "https://www.transfermarkt.it/aurora-pro-patria-1919/rekordabgaenge/verein/4146/saison_id/2025/page/2",
+    "discovered_at": "2026-11-20T23:52:02.771009",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "45586b9f30dcaabfa61026705b3c5e9e",
+    "player_name": "Raimondo Catalano",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Presente nella panchina di Audace Cerignola (Serie C 2026/27)",
+    "ob1_score": 62,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/altre-news/serie-2026-2027-secondo-esonero-gironec-446804",
+    "discovered_at": "2026-11-20T23:52:02.771302",
     "league_id": "italy_serie_c_d"
   }
 ]
