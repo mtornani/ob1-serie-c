@@ -21928,69 +21928,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "a8eeb169dbfbb6abd7ac590a44f82ecc",
-    "player_name": "Andrea Barberis",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Centrocampista del Cittadella, parla dell'obiettivo stagionale.",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445314",
-    "discovered_at": "2026-09-11T16:10:25.504193",
-    "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:sports-skills",
-    "tm_url": "https://www.transfermarkt.it/andrea-barberis/profil/spieler/146680",
-    "player_profile": {
-      "enrichment_source": "Enrichment:sports-skills",
-      "tm_url": "https://www.transfermarkt.it/andrea-barberis/profil/spieler/146680",
-      "foot": "destro",
-      "market_value": 100000,
-      "market_value_formatted": "100 mila €",
-      "height_cm": 185,
-      "birth_date": "1993-12-11",
-      "current_club": "AS Cittadella"
-    },
-    "tm_enriched": true,
-    "grafo_fonti": {
-      "p": {
-        "club": [
-          {
-            "valore": "AS Cittadella",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-22T06:08:21.457846+00:00",
-            "url": "https://www.transfermarkt.it/andrea-barberis/profil/spieler/146680"
-          }
-        ],
-        "market_value": [
-          {
-            "valore": "100000",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-22T06:08:21.457849+00:00",
-            "url": "https://www.transfermarkt.it/andrea-barberis/profil/spieler/146680"
-          }
-        ],
-        "eta": [
-          {
-            "valore": "33",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-22T06:08:21.457852+00:00",
-            "url": "https://www.transfermarkt.it/andrea-barberis/profil/spieler/146680",
-            "nota": "da data di nascita 1993-12-11"
-          }
-        ]
-      }
-    },
-    "foot": "destro",
-    "market_value": 100000,
-    "market_value_formatted": "100 mila €",
-    "height_cm": 185,
-    "birth_date": "1993-12-11",
-    "current_club": "AS Cittadella",
-    "age": 33,
-    "role_name": "Centrocampista",
-    "role": "Centrocampista"
-  },
-  {
     "id": "50fa918f05f51c863a7890e4b640804a",
     "player_name": "Gabriele Pagliai",
     "region": "ITALY",
@@ -28270,7 +28207,14 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447723",
     "discovered_at": "2026-10-21T21:25:51.594590",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/andrea-petagna/profil/spieler/199258",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/andrea-petagna/profil/spieler/199258"
+    },
+    "tm_enriched": false
   },
   {
     "id": "fc71886f5825542d845aefdfa34119f1",
@@ -29278,7 +29222,14 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459753",
     "discovered_at": "2026-11-03T00:45:16.560505",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/stefano-lanini/profil/spieler/355443",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/stefano-lanini/profil/spieler/355443"
+    },
+    "tm_enriched": false
   },
   {
     "id": "35bc6248bb8966f18fe1782fcf15cecb",
@@ -29837,7 +29788,14 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448904",
     "discovered_at": "2026-11-11T13:50:10.810544",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/andrea-mandelli/profil/spieler/314468",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/andrea-mandelli/profil/spieler/314468"
+    },
+    "tm_enriched": false
   },
   {
     "id": "0ac4434d1ce2b47b8db068730c625b2e",
@@ -30926,18 +30884,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "5773bee1b207c241fa2d45e3060930d0",
-    "player_name": "Ivan Tisci",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Citato nella cronaca della sconfitta del Potenza",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449591",
-    "discovered_at": "2026-11-22T05:52:47.387837",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "361217047e46a967985c756a70e01dc0",
     "player_name": "Ezio Scida",
     "region": "ITALY",
@@ -30947,6 +30893,30 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449588",
     "discovered_at": "2026-11-22T05:52:47.388176",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "830aaabd24f24344b1e374e5f3521d07",
+    "player_name": "Cosimo Patierno",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "segna il gol del pareggio nell'1-1 contro Casarano",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449652",
+    "discovered_at": "2026-11-22T14:19:29.604286",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "95922a287ec2d7cb657d66ea9a3892ac",
+    "player_name": "Fabiano Pacia",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "segna il primo gol tra i professionisti nel derby contro Casarano",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449650",
+    "discovered_at": "2026-11-22T14:19:29.604710",
     "league_id": "italy_serie_c_d"
   }
 ]
