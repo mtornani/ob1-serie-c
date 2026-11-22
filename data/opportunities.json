@@ -1930,13 +1930,57 @@
     "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFJ3In7sjVxuHY8r5D9PzLaYDC3esGIXFpdQn-j7_uWPiWZzEcj6flP1UdGDWJbuelkXr16d2Bp_StVhP4NaO8j0YgNZyKgik7fw35zFadVq_mGWbI9P6w6NBwNL2NSbJ-7iqAY1pYMtW88fDoVHjQuJNnqyO6XNhSwI7vu4M6fCFjNxx0n1SGU2Yw4CUZgSHc",
     "discovered_at": "2026-07-11T08:04:30.375577",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:unknown",
+    "enrichment_source": "Enrichment:regex",
     "tm_url": "https://www.transfermarkt.it/lorenzo-andrenacci/profil/spieler/234880",
     "player_profile": {
-      "enrichment_source": "Enrichment:unknown",
-      "tm_url": "https://www.transfermarkt.it/lorenzo-andrenacci/profil/spieler/234880"
+      "enrichment_source": "Enrichment:regex",
+      "tm_url": "https://www.transfermarkt.it/lorenzo-andrenacci/profil/spieler/234880",
+      "foot": "destro",
+      "market_value": 150000,
+      "market_value_formatted": "150 mila €",
+      "height_cm": 188,
+      "birth_date": "1995-01-02",
+      "current_club": "FC Lumezzane"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "FC Lumezzane",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457825+00:00",
+            "url": "https://www.transfermarkt.it/lorenzo-andrenacci/profil/spieler/234880"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "150000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457827+00:00",
+            "url": "https://www.transfermarkt.it/lorenzo-andrenacci/profil/spieler/234880"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "31",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457830+00:00",
+            "url": "https://www.transfermarkt.it/lorenzo-andrenacci/profil/spieler/234880",
+            "nota": "da data di nascita 1995-01-02"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 150000,
+    "market_value_formatted": "150 mila €",
+    "height_cm": 188,
+    "birth_date": "1995-01-02",
+    "current_club": "FC Lumezzane",
+    "age": 31,
+    "role_name": "Portiere",
+    "role": "Portiere"
   },
   {
     "id": "bd05a0259a89b77ec8595f99abf4aa11",
@@ -18060,7 +18104,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444414",
     "discovered_at": "2026-08-30T11:42:12.424347",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Gamba Osaka",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:02:48.316354+00:00",
+            "url": "https://www.transfermarkt.it/ali-camara/profil/spieler/786705"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "1400000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:02:48.316357+00:00",
+            "url": "https://www.transfermarkt.it/ali-camara/profil/spieler/786705"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "24",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:02:48.316361+00:00",
+            "url": "https://www.transfermarkt.it/ali-camara/profil/spieler/786705",
+            "nota": "da data di nascita 2002-01-23"
+          }
+        ]
+      }
+    },
+    "foot": "sinistro",
+    "market_value": 1400000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "€1.40M",
+    "height_cm": 175,
+    "birth_date": "2002-01-23",
+    "tm_url": "https://www.transfermarkt.it/ali-camara/profil/spieler/786705",
+    "current_club": "Gamba Osaka",
+    "player_profile": {
+      "foot": "sinistro",
+      "market_value": 1400000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "€1.40M",
+      "height_cm": 175,
+      "birth_date": "2002-01-23",
+      "tm_url": "https://www.transfermarkt.it/ali-camara/profil/spieler/786705",
+      "current_club": "Gamba Osaka"
+    },
+    "age": 24,
+    "role_name": "Terzino sinistro",
+    "role": "Terzino sinistro",
+    "tm_enriched": true
   },
   {
     "id": "de25ad8825897fe17f2eaac6c4fc9c99",
@@ -20726,7 +20821,46 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444977",
     "discovered_at": "2026-09-05T14:53:46.056318",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Rondò Dinamo",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:16:21.896721+00:00",
+            "url": "https://www.transfermarkt.it/andrea-invernizzi/profil/spieler/388459"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "30",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:16:21.896727+00:00",
+            "url": "https://www.transfermarkt.it/andrea-invernizzi/profil/spieler/388459",
+            "nota": "da data di nascita 1996-05-24"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "enrichment_source": "Enrichment:regex",
+    "height_cm": 184,
+    "birth_date": "1996-05-24",
+    "tm_url": "https://www.transfermarkt.it/andrea-invernizzi/profil/spieler/388459",
+    "current_club": "Rondò Dinamo",
+    "player_profile": {
+      "foot": "destro",
+      "enrichment_source": "Enrichment:regex",
+      "height_cm": 184,
+      "birth_date": "1996-05-24",
+      "tm_url": "https://www.transfermarkt.it/andrea-invernizzi/profil/spieler/388459",
+      "current_club": "Rondò Dinamo"
+    },
+    "age": 30,
+    "role_name": "Centrocampista",
+    "role": "Centrocampista",
+    "tm_enriched": true
   },
   {
     "id": "7d2647e2dfb2b4ba44e7d2c651c73934",
@@ -21804,13 +21938,57 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445314",
     "discovered_at": "2026-09-11T16:10:25.504193",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:sports-skills",
     "tm_url": "https://www.transfermarkt.it/andrea-barberis/profil/spieler/146680",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/andrea-barberis/profil/spieler/146680"
+      "enrichment_source": "Enrichment:sports-skills",
+      "tm_url": "https://www.transfermarkt.it/andrea-barberis/profil/spieler/146680",
+      "foot": "destro",
+      "market_value": 100000,
+      "market_value_formatted": "100 mila €",
+      "height_cm": 185,
+      "birth_date": "1993-12-11",
+      "current_club": "AS Cittadella"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "AS Cittadella",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457846+00:00",
+            "url": "https://www.transfermarkt.it/andrea-barberis/profil/spieler/146680"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "100000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457849+00:00",
+            "url": "https://www.transfermarkt.it/andrea-barberis/profil/spieler/146680"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "33",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457852+00:00",
+            "url": "https://www.transfermarkt.it/andrea-barberis/profil/spieler/146680",
+            "nota": "da data di nascita 1993-12-11"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 100000,
+    "market_value_formatted": "100 mila €",
+    "height_cm": 185,
+    "birth_date": "1993-12-11",
+    "current_club": "AS Cittadella",
+    "age": 33,
+    "role_name": "Centrocampista",
+    "role": "Centrocampista"
   },
   {
     "id": "50fa918f05f51c863a7890e4b640804a",
@@ -22261,7 +22439,45 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445490",
     "discovered_at": "2026-09-13T20:35:22.257390",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Retired",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:16:21.896537+00:00",
+            "url": "https://www.transfermarkt.it/andrea-capone/profil/spieler/20729"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "45",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:16:21.896555+00:00",
+            "url": "https://www.transfermarkt.it/andrea-capone/profil/spieler/20729",
+            "nota": "da data di nascita 1981-01-08"
+          }
+        ]
+      }
+    },
+    "foot": "sinistro",
+    "enrichment_source": "Enrichment:sports-skills",
+    "height_cm": 180,
+    "birth_date": "1981-01-08",
+    "tm_url": "https://www.transfermarkt.it/andrea-capone/profil/spieler/20729",
+    "current_club": "Retired",
+    "player_profile": {
+      "foot": "sinistro",
+      "enrichment_source": "Enrichment:sports-skills",
+      "height_cm": 180,
+      "birth_date": "1981-01-08",
+      "tm_url": "https://www.transfermarkt.it/andrea-capone/profil/spieler/20729",
+      "current_club": "Retired"
+    },
+    "role_name": "Trequartista",
+    "role": "Trequartista",
+    "tm_enriched": true
   },
   {
     "id": "8e91986e214974061cd6c8f66bc25e0c",
@@ -22503,7 +22719,44 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445574",
     "discovered_at": "2026-09-14T21:39:51.243515",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:02:48.316406+00:00",
+            "url": "https://www.transfermarkt.it/muamer-mehic/profil/spieler/376785"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "33",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:02:48.316409+00:00",
+            "url": "https://www.transfermarkt.it/muamer-mehic/profil/spieler/376785",
+            "nota": "da data di nascita 1993-06-17"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "enrichment_source": "Enrichment:sports-skills",
+    "birth_date": "1993-06-17",
+    "tm_url": "https://www.transfermarkt.it/muamer-mehic/profil/spieler/376785",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "foot": "destro",
+      "enrichment_source": "Enrichment:sports-skills",
+      "birth_date": "1993-06-17",
+      "tm_url": "https://www.transfermarkt.it/muamer-mehic/profil/spieler/376785",
+      "current_club": "Ritiro"
+    },
+    "age": 33,
+    "role_name": "Terzino destro",
+    "role": "Terzino destro",
+    "tm_enriched": true
   },
   {
     "id": "16968c7e313618511a2b4c4dd9d021e3",
@@ -23331,7 +23584,58 @@
     "source_name": "www.violanation.com",
     "source_url": "https://www.violanation.com/fiorentina-latest-news-updates/22412/fiorentina-selling-young-academy-players-transfer-primavera-paratici",
     "discovered_at": "2026-09-19T20:20:58.647563",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Le Havre AC",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457725+00:00",
+            "url": "https://www.transfermarkt.it/amir-richardson/profil/spieler/893675"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "4000000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457739+00:00",
+            "url": "https://www.transfermarkt.it/amir-richardson/profil/spieler/893675"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "24",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457747+00:00",
+            "url": "https://www.transfermarkt.it/amir-richardson/profil/spieler/893675",
+            "nota": "da data di nascita 2002-01-24"
+          }
+        ]
+      }
+    },
+    "foot": "sinistro",
+    "market_value": 4000000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "4,00 mln €",
+    "height_cm": 197,
+    "birth_date": "2002-01-24",
+    "tm_url": "https://www.transfermarkt.it/amir-richardson/profil/spieler/893675",
+    "current_club": "Le Havre AC",
+    "player_profile": {
+      "foot": "sinistro",
+      "market_value": 4000000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "4,00 mln €",
+      "height_cm": 197,
+      "birth_date": "2002-01-24",
+      "tm_url": "https://www.transfermarkt.it/amir-richardson/profil/spieler/893675",
+      "current_club": "Le Havre AC"
+    },
+    "age": 24,
+    "role_name": "Centrocampista",
+    "role": "Centrocampista",
+    "tm_enriched": true
   },
   {
     "id": "9b21f9eba09b509e9ab53c1998784760",
@@ -24008,7 +24312,56 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446121",
     "discovered_at": "2026-09-24T11:25:24.703308",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "AC Perugia Calcio",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457781+00:00",
+            "url": "https://www.transfermarkt.it/amoah-sam/profil/spieler/612756"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "200000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457784+00:00",
+            "url": "https://www.transfermarkt.it/amoah-sam/profil/spieler/612756"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "24",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457787+00:00",
+            "url": "https://www.transfermarkt.it/amoah-sam/profil/spieler/612756",
+            "nota": "da data di nascita 2002-09-29"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 200000,
+    "enrichment_source": "Enrichment:regex",
+    "market_value_formatted": "200 mila €",
+    "birth_date": "2002-09-29",
+    "tm_url": "https://www.transfermarkt.it/amoah-sam/profil/spieler/612756",
+    "current_club": "AC Perugia Calcio",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 200000,
+      "enrichment_source": "Enrichment:regex",
+      "market_value_formatted": "200 mila €",
+      "birth_date": "2002-09-29",
+      "tm_url": "https://www.transfermarkt.it/amoah-sam/profil/spieler/612756",
+      "current_club": "AC Perugia Calcio"
+    },
+    "age": 24,
+    "role_name": "Terzino destro",
+    "role": "Terzino destro",
+    "tm_enriched": true
   },
   {
     "id": "bbc1b24e0eff870658cd77aa7e5a0b25",
@@ -24044,7 +24397,56 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458584",
     "discovered_at": "2026-09-24T11:25:24.703968",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "UC AlbinoLeffe",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:16:21.896586+00:00",
+            "url": "https://www.transfermarkt.it/andrea-de-paoli/profil/spieler/391698"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "125000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:16:21.896590+00:00",
+            "url": "https://www.transfermarkt.it/andrea-de-paoli/profil/spieler/391698"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "27",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:16:21.896594+00:00",
+            "url": "https://www.transfermarkt.it/andrea-de-paoli/profil/spieler/391698",
+            "nota": "da data di nascita 1999-08-06"
+          }
+        ]
+      }
+    },
+    "market_value": 125000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "125 mila €",
+    "height_cm": 185,
+    "birth_date": "1999-08-06",
+    "tm_url": "https://www.transfermarkt.it/andrea-de-paoli/profil/spieler/391698",
+    "current_club": "UC AlbinoLeffe",
+    "player_profile": {
+      "market_value": 125000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "125 mila €",
+      "height_cm": 185,
+      "birth_date": "1999-08-06",
+      "tm_url": "https://www.transfermarkt.it/andrea-de-paoli/profil/spieler/391698",
+      "current_club": "UC AlbinoLeffe"
+    },
+    "age": 27,
+    "role_name": "Punta centrale",
+    "role": "Punta centrale",
+    "tm_enriched": true
   },
   {
     "id": "c831351c6a6cb2fd2b91987755cfeea5",
@@ -24627,7 +25029,58 @@
     "source_name": "www.gazzetta.it",
     "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Inter/06-07-2026/calciomercato-inter-sempre-piu-vicino-anan-khalaili-dell-union-saint-gilloise.shtml",
     "discovered_at": "2026-09-27T11:45:55.049921",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Crystal Palace",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457805+00:00",
+            "url": "https://www.transfermarkt.it/anan-khalaili/profil/spieler/945021"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "23000000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457807+00:00",
+            "url": "https://www.transfermarkt.it/anan-khalaili/profil/spieler/945021"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "22",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:08:21.457810+00:00",
+            "url": "https://www.transfermarkt.it/anan-khalaili/profil/spieler/945021",
+            "nota": "da data di nascita 2004-09-03"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 23000000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "23,00 mln €",
+    "height_cm": 183,
+    "birth_date": "2004-09-03",
+    "tm_url": "https://www.transfermarkt.it/anan-khalaili/profil/spieler/945021",
+    "current_club": "Crystal Palace",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 23000000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "23,00 mln €",
+      "height_cm": 183,
+      "birth_date": "2004-09-03",
+      "tm_url": "https://www.transfermarkt.it/anan-khalaili/profil/spieler/945021",
+      "current_club": "Crystal Palace"
+    },
+    "age": 22,
+    "role_name": "Terzino destro",
+    "role": "Terzino destro",
+    "tm_enriched": true
   },
   {
     "id": "a5e5bbc2257136b4c09c61ea9c649993",
@@ -25471,7 +25924,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446565",
     "discovered_at": "2026-10-01T22:31:32.932771",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Catania FC",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:16:21.896613+00:00",
+            "url": "https://www.transfermarkt.it/andrea-dini/profil/spieler/355444"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "450000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:16:21.896616+00:00",
+            "url": "https://www.transfermarkt.it/andrea-dini/profil/spieler/355444"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "30",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:16:21.896619+00:00",
+            "url": "https://www.transfermarkt.it/andrea-dini/profil/spieler/355444",
+            "nota": "da data di nascita 1996-02-20"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 450000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "450 mila €",
+    "height_cm": 184,
+    "birth_date": "1996-02-20",
+    "tm_url": "https://www.transfermarkt.it/andrea-dini/profil/spieler/355444",
+    "current_club": "Catania FC",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 450000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "450 mila €",
+      "height_cm": 184,
+      "birth_date": "1996-02-20",
+      "tm_url": "https://www.transfermarkt.it/andrea-dini/profil/spieler/355444",
+      "current_club": "Catania FC"
+    },
+    "age": 30,
+    "role_name": "Portiere",
+    "role": "Portiere",
+    "tm_enriched": true
   },
   {
     "id": "5d2f75e6d02bcd841bab8ee431ced66b",
@@ -27303,7 +27807,45 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459279",
     "discovered_at": "2026-10-19T04:00:06.377605",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T05:56:19.770446+00:00",
+            "url": "https://www.transfermarkt.it/alfredo-aglietti/profil/spieler/166879"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "56",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T05:56:19.770452+00:00",
+            "url": "https://www.transfermarkt.it/alfredo-aglietti/profil/spieler/166879",
+            "nota": "da data di nascita 1970-09-16"
+          }
+        ]
+      }
+    },
+    "nationality": "Italia",
+    "enrichment_source": "Enrichment:groq",
+    "height_cm": 190,
+    "birth_date": "1970-09-16",
+    "tm_url": "https://www.transfermarkt.it/alfredo-aglietti/profil/spieler/166879",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "nationality": "Italia",
+      "enrichment_source": "Enrichment:groq",
+      "height_cm": 190,
+      "birth_date": "1970-09-16",
+      "tm_url": "https://www.transfermarkt.it/alfredo-aglietti/profil/spieler/166879",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Punta centrale",
+    "role": "Punta centrale",
+    "tm_enriched": true
   },
   {
     "id": "b1720c6ec6758167a066eb65130f66d3",
@@ -27824,7 +28366,46 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447774",
     "discovered_at": "2026-10-22T21:20:44.873256",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "svincolato",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:16:21.896636+00:00",
+            "url": "https://www.transfermarkt.it/andrea-fraternale/profil/spieler/1388252"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "18",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:16:21.896640+00:00",
+            "url": "https://www.transfermarkt.it/andrea-fraternale/profil/spieler/1388252",
+            "nota": "da data di nascita 2008-10-19"
+          }
+        ]
+      }
+    },
+    "nationality": "Italia",
+    "enrichment_source": "Enrichment:groq",
+    "height_cm": 175,
+    "birth_date": "2008-10-19",
+    "tm_url": "https://www.transfermarkt.it/andrea-fraternale/profil/spieler/1388252",
+    "current_club": "svincolato",
+    "player_profile": {
+      "nationality": "Italia",
+      "enrichment_source": "Enrichment:groq",
+      "height_cm": 175,
+      "birth_date": "2008-10-19",
+      "tm_url": "https://www.transfermarkt.it/andrea-fraternale/profil/spieler/1388252",
+      "current_club": "svincolato"
+    },
+    "age": 18,
+    "role_name": "Terzino destro",
+    "role": "Terzino destro",
+    "tm_enriched": true
   },
   {
     "id": "9a771b26dc40a83c88e8a67ed72174a5",
@@ -28308,13 +28889,57 @@
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459625",
     "discovered_at": "2026-10-30T05:01:14.891665",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:sports-skills",
     "tm_url": "https://www.transfermarkt.it/alfredo-bifulco/profil/spieler/286276",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/alfredo-bifulco/profil/spieler/286276"
+      "enrichment_source": "Enrichment:sports-skills",
+      "tm_url": "https://www.transfermarkt.it/alfredo-bifulco/profil/spieler/286276",
+      "foot": "destro",
+      "market_value": 500000,
+      "market_value_formatted": "500 mila €",
+      "height_cm": 173,
+      "birth_date": "1997-01-19",
+      "current_club": "Campobasso FC"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Campobasso FC",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:02:48.316297+00:00",
+            "url": "https://www.transfermarkt.it/alfredo-bifulco/profil/spieler/286276"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "500000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:02:48.316310+00:00",
+            "url": "https://www.transfermarkt.it/alfredo-bifulco/profil/spieler/286276"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "29",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:02:48.316317+00:00",
+            "url": "https://www.transfermarkt.it/alfredo-bifulco/profil/spieler/286276",
+            "nota": "da data di nascita 1997-01-19"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 500000,
+    "market_value_formatted": "500 mila €",
+    "height_cm": 173,
+    "birth_date": "1997-01-19",
+    "current_club": "Campobasso FC",
+    "age": 29,
+    "role_name": "Ala sinistra",
+    "role": "Ala sinistra"
   },
   {
     "id": "a5752c92a01229b6c5b943456d302675",
@@ -29045,7 +29670,42 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459867",
     "discovered_at": "2026-11-07T05:20:17.807917",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Balkan Bar",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:02:48.316387+00:00",
+            "url": "https://www.transfermarkt.it/amar-osmanovic/profil/spieler/515657"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "27",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T06:02:48.316391+00:00",
+            "url": "https://www.transfermarkt.it/amar-osmanovic/profil/spieler/515657",
+            "nota": "da data di nascita 1999-02-26"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:regex",
+    "birth_date": "1999-02-26",
+    "tm_url": "https://www.transfermarkt.it/amar-osmanovic/profil/spieler/515657",
+    "current_club": "Balkan Bar",
+    "player_profile": {
+      "enrichment_source": "Enrichment:regex",
+      "birth_date": "1999-02-26",
+      "tm_url": "https://www.transfermarkt.it/amar-osmanovic/profil/spieler/515657",
+      "current_club": "Balkan Bar"
+    },
+    "age": 27,
+    "role_name": "Difesa",
+    "role": "Difesa",
+    "tm_enriched": true
   },
   {
     "id": "abd0bb267e598fa260f822876b272eec",
@@ -30141,13 +30801,45 @@
     "source_url": "https://www.calciomercato.com/notizie/in-serie-a-e-valzer-di-portieri-di-gregorio-a-un-passo-dalla-cessione-per-i-bookie-a-rischio-anche-meret-e-de-gea/blt4d6aeb448f819367",
     "discovered_at": "2026-11-20T23:52:02.770846",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:regex",
     "tm_url": "https://www.transfermarkt.it/alessio-garofalo/profil/spieler/692689",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/alessio-garofalo/profil/spieler/692689"
+      "enrichment_source": "Enrichment:regex",
+      "tm_url": "https://www.transfermarkt.it/alessio-garofalo/profil/spieler/692689",
+      "foot": "destro",
+      "height_cm": 176,
+      "birth_date": "2000-06-26",
+      "current_club": "ASD Atletico San Gregorio"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "ASD Atletico San Gregorio",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T05:56:19.770360+00:00",
+            "url": "https://www.transfermarkt.it/alessio-garofalo/profil/spieler/692689"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "26",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-22T05:56:19.770382+00:00",
+            "url": "https://www.transfermarkt.it/alessio-garofalo/profil/spieler/692689",
+            "nota": "da data di nascita 2000-06-26"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "height_cm": 176,
+    "birth_date": "2000-06-26",
+    "current_club": "ASD Atletico San Gregorio",
+    "age": 26,
+    "role_name": "Terzino destro",
+    "role": "Terzino destro"
   },
   {
     "id": "45586b9f30dcaabfa61026705b3c5e9e",
@@ -30231,6 +30923,30 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449581",
     "discovered_at": "2026-11-21T18:53:41.300499",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "5773bee1b207c241fa2d45e3060930d0",
+    "player_name": "Ivan Tisci",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Citato nella cronaca della sconfitta del Potenza",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449591",
+    "discovered_at": "2026-11-22T05:52:47.387837",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "361217047e46a967985c756a70e01dc0",
+    "player_name": "Ezio Scida",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Segnato nella vittoria del Cosenza contro il Crotone",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449588",
+    "discovered_at": "2026-11-22T05:52:47.388176",
     "league_id": "italy_serie_c_d"
   }
 ]
