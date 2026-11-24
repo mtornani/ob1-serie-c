@@ -18290,7 +18290,58 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457857",
     "discovered_at": "2026-08-30T16:23:12.138386",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "SS Juve Stabia",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:29:42.306664+00:00",
+            "url": "https://www.transfermarkt.it/antonio-di-nardo/profil/spieler/347656"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "1700000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:29:42.306675+00:00",
+            "url": "https://www.transfermarkt.it/antonio-di-nardo/profil/spieler/347656"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "28",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:29:42.306682+00:00",
+            "url": "https://www.transfermarkt.it/antonio-di-nardo/profil/spieler/347656",
+            "nota": "da data di nascita 1998-09-30"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 1700000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "1,70 mln €",
+    "height_cm": 187,
+    "birth_date": "1998-09-30",
+    "tm_url": "https://www.transfermarkt.it/antonio-di-nardo/profil/spieler/347656",
+    "current_club": "SS Juve Stabia",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 1700000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "1,70 mln €",
+      "height_cm": 187,
+      "birth_date": "1998-09-30",
+      "tm_url": "https://www.transfermarkt.it/antonio-di-nardo/profil/spieler/347656",
+      "current_club": "SS Juve Stabia"
+    },
+    "age": 28,
+    "role_name": "Punta centrale",
+    "role": "Punta centrale",
+    "tm_enriched": true
   },
   {
     "id": "29c79aa03ff554b7626c4c807ba2837f",
@@ -20306,9 +20357,27 @@
     "tm_url": "https://www.transfermarkt.it/antonio-gioia/profil/spieler/787119",
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/antonio-gioia/profil/spieler/787119"
+      "tm_url": "https://www.transfermarkt.it/antonio-gioia/profil/spieler/787119",
+      "nationality": "Germany",
+      "current_club": "SC Herford II"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "SC Herford II",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:16:34.483740+00:00",
+            "url": "https://www.transfermarkt.it/antonio-gioia/profil/spieler/787119"
+          }
+        ]
+      }
+    },
+    "nationality": "Germany",
+    "current_club": "SC Herford II",
+    "role_name": "Centrocampista",
+    "role": "Centrocampista"
   },
   {
     "id": "5d1b4a22ae3df5b6bf8c9cd4ef7fd3a4",
@@ -23413,7 +23482,42 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/09/14/amorim-il-problema-non-e-copiare-fabregas-e-continuare-a-copiare-il-milan-dello-scorso-anno/",
     "discovered_at": "2026-09-17T21:08:52.522298",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Sconosciuto",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:16:34.483641+00:00",
+            "url": "https://www.transfermarkt.it/alexandre-amorim/profil/spieler/1016810"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "30",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:16:34.483661+00:00",
+            "url": "https://www.transfermarkt.it/alexandre-amorim/profil/spieler/1016810",
+            "nota": "da data di nascita 1996-03-15"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:regex",
+    "birth_date": "1996-03-15",
+    "tm_url": "https://www.transfermarkt.it/alexandre-amorim/profil/spieler/1016810",
+    "current_club": "Sconosciuto",
+    "player_profile": {
+      "enrichment_source": "Enrichment:regex",
+      "birth_date": "1996-03-15",
+      "tm_url": "https://www.transfermarkt.it/alexandre-amorim/profil/spieler/1016810",
+      "current_club": "Sconosciuto"
+    },
+    "age": 30,
+    "role_name": "Centrocampo",
+    "role": "Centrocampo",
+    "tm_enriched": true
   },
   {
     "id": "9175fa67afcdd9c1fe4bf617fa32b0b5",
@@ -23478,9 +23582,46 @@
     "tm_url": "https://www.transfermarkt.it/antonio-conte/profil/spieler/5759",
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/antonio-conte/profil/spieler/5759"
+      "tm_url": "https://www.transfermarkt.it/antonio-conte/profil/spieler/5759",
+      "nationality": "Italy",
+      "foot": "destro",
+      "height_cm": 176,
+      "birth_date": "1969-07-31",
+      "appearances": 20,
+      "goals": 2,
+      "current_club": "Ritiro"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:24:06.028559+00:00",
+            "url": "https://www.transfermarkt.it/antonio-conte/profil/spieler/5759"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "57",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:24:06.028563+00:00",
+            "url": "https://www.transfermarkt.it/antonio-conte/profil/spieler/5759",
+            "nota": "da data di nascita 1969-07-31"
+          }
+        ]
+      }
+    },
+    "nationality": "Italy",
+    "foot": "destro",
+    "height_cm": 176,
+    "birth_date": "1969-07-31",
+    "appearances": 20,
+    "goals": 2,
+    "current_club": "Ritiro",
+    "role_name": "Centrocampista",
+    "role": "Centrocampista"
   },
   {
     "id": "51fa8f93b2370824917ad67b877be64f",
@@ -24915,7 +25056,38 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446154",
     "discovered_at": "2026-09-25T04:14:19.123456",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "market_value": [
+          {
+            "valore": "200000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:29:42.306737+00:00"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "22",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:29:42.306741+00:00",
+            "nota": "da data di nascita 2004-01-01"
+          }
+        ]
+      }
+    },
+    "market_value": 200000,
+    "enrichment_source": "Enrichment:groq",
+    "market_value_formatted": "200 mila €",
+    "birth_date": "2004-01-01",
+    "player_profile": {
+      "market_value": 200000,
+      "enrichment_source": "Enrichment:groq",
+      "market_value_formatted": "200 mila €",
+      "birth_date": "2004-01-01"
+    },
+    "age": 22,
+    "tm_enriched": true
   },
   {
     "id": "c10e51b73f98d1f15fd8b26a699f682d",
@@ -24975,7 +25147,46 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447707",
     "discovered_at": "2026-10-21T21:25:51.594223",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:24:06.028489+00:00",
+            "url": "https://www.transfermarkt.it/antonio-balzano/profil/spieler/160825"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "40",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:24:06.028493+00:00",
+            "url": "https://www.transfermarkt.it/antonio-balzano/profil/spieler/160825",
+            "nota": "da data di nascita 1986-06-13"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "enrichment_source": "Enrichment:sports-skills",
+    "height_cm": 176,
+    "birth_date": "1986-06-13",
+    "tm_url": "https://www.transfermarkt.it/antonio-balzano/profil/spieler/160825",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "foot": "destro",
+      "enrichment_source": "Enrichment:sports-skills",
+      "height_cm": 176,
+      "birth_date": "1986-06-13",
+      "tm_url": "https://www.transfermarkt.it/antonio-balzano/profil/spieler/160825",
+      "current_club": "Ritiro"
+    },
+    "age": 40,
+    "role_name": "Terzino destro",
+    "role": "Terzino destro",
+    "tm_enriched": true
   },
   {
     "id": "7e454718c4f81bc182ef1f97e67b1b74",
@@ -25239,7 +25450,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446437",
     "discovered_at": "2026-09-29T05:02:39.437340",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "FC Crotone",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:24:06.028436+00:00",
+            "url": "https://www.transfermarkt.it/antonino-musso/profil/spieler/395357"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "300000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:24:06.028447+00:00",
+            "url": "https://www.transfermarkt.it/antonino-musso/profil/spieler/395357"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "27",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:24:06.028456+00:00",
+            "url": "https://www.transfermarkt.it/antonino-musso/profil/spieler/395357",
+            "nota": "da data di nascita 1999-09-14"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 300000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "300 mila €",
+    "height_cm": 183,
+    "birth_date": "1999-09-14",
+    "tm_url": "https://www.transfermarkt.it/antonino-musso/profil/spieler/395357",
+    "current_club": "FC Crotone",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 300000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "300 mila €",
+      "height_cm": 183,
+      "birth_date": "1999-09-14",
+      "tm_url": "https://www.transfermarkt.it/antonino-musso/profil/spieler/395357",
+      "current_club": "FC Crotone"
+    },
+    "age": 27,
+    "role_name": "Punta centrale",
+    "role": "Punta centrale",
+    "tm_enriched": true
   },
   {
     "id": "781e409ff4cad721d3d8b8425557343b",
@@ -25887,13 +26149,46 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447619",
     "discovered_at": "2026-10-20T04:11:36.772853",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:sports-skills",
     "tm_url": "https://www.transfermarkt.it/antonio-busce/profil/spieler/17174",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/antonio-busce/profil/spieler/17174"
+      "enrichment_source": "Enrichment:sports-skills",
+      "tm_url": "https://www.transfermarkt.it/antonio-busce/profil/spieler/17174",
+      "nationality": "Italia",
+      "foot": "destro",
+      "height_cm": 180,
+      "birth_date": "1975-12-12",
+      "current_club": "Ritiro"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:24:06.028511+00:00",
+            "url": "https://www.transfermarkt.it/antonio-busce/profil/spieler/17174"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "51",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:24:06.028515+00:00",
+            "url": "https://www.transfermarkt.it/antonio-busce/profil/spieler/17174",
+            "nota": "da data di nascita 1975-12-12"
+          }
+        ]
+      }
+    },
+    "nationality": "Italia",
+    "foot": "destro",
+    "height_cm": 180,
+    "birth_date": "1975-12-12",
+    "current_club": "Ritiro",
+    "role_name": "Esterno di destra",
+    "role": "Esterno di destra"
   },
   {
     "id": "f6df524a8231db9f4cd29c8760613c53",
@@ -26098,13 +26393,41 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446534",
     "discovered_at": "2026-10-01T12:47:30.493032",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:regex",
     "tm_url": "https://www.transfermarkt.it/angelo-antonio-puzzangara/profil/spieler/1059116",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/angelo-antonio-puzzangara/profil/spieler/1059116"
+      "enrichment_source": "Enrichment:regex",
+      "tm_url": "https://www.transfermarkt.it/angelo-antonio-puzzangara/profil/spieler/1059116",
+      "birth_date": "2005-05-24",
+      "current_club": "US Grosseto 1912"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "US Grosseto 1912",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:16:34.483691+00:00",
+            "url": "https://www.transfermarkt.it/angelo-antonio-puzzangara/profil/spieler/1059116"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "21",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:16:34.483695+00:00",
+            "url": "https://www.transfermarkt.it/angelo-antonio-puzzangara/profil/spieler/1059116",
+            "nota": "da data di nascita 2005-05-24"
+          }
+        ]
+      }
+    },
+    "birth_date": "2005-05-24",
+    "current_club": "US Grosseto 1912",
+    "age": 21,
+    "role_name": "Ala sinistra",
+    "role": "Ala sinistra"
   },
   {
     "id": "d5609f513e306897cedc546abae53dba",
@@ -27411,13 +27734,55 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447302",
     "discovered_at": "2026-10-14T11:30:31.691137",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:regex",
     "tm_url": "https://www.transfermarkt.it/antonello-serra/profil/spieler/981323",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/antonello-serra/profil/spieler/981323"
+      "enrichment_source": "Enrichment:regex",
+      "tm_url": "https://www.transfermarkt.it/antonello-serra/profil/spieler/981323",
+      "foot": "destro",
+      "market_value": 100000,
+      "market_value_formatted": "100 mila €",
+      "birth_date": "2003-07-03",
+      "current_club": "Ancona Calcio"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ancona Calcio",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:16:34.483715+00:00",
+            "url": "https://www.transfermarkt.it/antonello-serra/profil/spieler/981323"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "100000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:16:34.483718+00:00",
+            "url": "https://www.transfermarkt.it/antonello-serra/profil/spieler/981323"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "23",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:16:34.483721+00:00",
+            "url": "https://www.transfermarkt.it/antonello-serra/profil/spieler/981323",
+            "nota": "da data di nascita 2003-07-03"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 100000,
+    "market_value_formatted": "100 mila €",
+    "birth_date": "2003-07-03",
+    "current_club": "Ancona Calcio",
+    "age": 23,
+    "role_name": "Centrocampista",
+    "role": "Centrocampista"
   },
   {
     "id": "6cf881016a9adc63a4655865c4905470",
@@ -27429,7 +27794,40 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447289",
     "discovered_at": "2026-10-14T11:30:31.691319",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Campobasso FC",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:16:34.483756+00:00",
+            "url": "https://www.transfermarkt.it/antonello-serra/profil/spieler/981323"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "100000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:16:34.483759+00:00",
+            "url": "https://www.transfermarkt.it/antonello-serra/profil/spieler/981323"
+          }
+        ]
+      }
+    },
+    "market_value": 100000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "€100.0K",
+    "tm_url": "https://www.transfermarkt.it/antonello-serra/profil/spieler/981323",
+    "current_club": "Campobasso FC",
+    "player_profile": {
+      "market_value": 100000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "€100.0K",
+      "tm_url": "https://www.transfermarkt.it/antonello-serra/profil/spieler/981323",
+      "current_club": "Campobasso FC"
+    },
+    "tm_enriched": true
   },
   {
     "id": "f2499ae0db02fd18349d243a8be9c2cf",
@@ -27611,7 +28009,58 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=459153",
     "discovered_at": "2026-10-15T03:59:45.171726",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Latina Calcio 1932",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:24:06.028537+00:00",
+            "url": "https://www.transfermarkt.it/antonio-cioffi/profil/spieler/566936"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "175000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:24:06.028539+00:00",
+            "url": "https://www.transfermarkt.it/antonio-cioffi/profil/spieler/566936"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "24",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:24:06.028542+00:00",
+            "url": "https://www.transfermarkt.it/antonio-cioffi/profil/spieler/566936",
+            "nota": "da data di nascita 2002-12-19"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 175000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "175 mila €",
+    "height_cm": 180,
+    "birth_date": "2002-12-19",
+    "tm_url": "https://www.transfermarkt.it/antonio-cioffi/profil/spieler/566936",
+    "current_club": "Latina Calcio 1932",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 175000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "175 mila €",
+      "height_cm": 180,
+      "birth_date": "2002-12-19",
+      "tm_url": "https://www.transfermarkt.it/antonio-cioffi/profil/spieler/566936",
+      "current_club": "Latina Calcio 1932"
+    },
+    "age": 24,
+    "role_name": "Ala sinistra",
+    "role": "Ala sinistra",
+    "tm_enriched": true
   },
   {
     "id": "b9930bf4afbdf07d27a1447b8884a1ba",
@@ -29209,7 +29658,51 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448193",
     "discovered_at": "2026-10-29T22:35:20.704802",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:29:42.306713+00:00",
+            "url": "https://www.transfermarkt.it/antonio-di-natale/profil/spieler/6031"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "49",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:29:42.306718+00:00",
+            "url": "https://www.transfermarkt.it/antonio-di-natale/profil/spieler/6031",
+            "nota": "da data di nascita 1977-10-13"
+          }
+        ]
+      }
+    },
+    "nationality": "Italia",
+    "foot": "destro",
+    "enrichment_source": "Enrichment:sports-skills",
+    "height_cm": 170,
+    "birth_date": "1977-10-13",
+    "tm_url": "https://www.transfermarkt.it/antonio-di-natale/profil/spieler/6031",
+    "appearances": 42,
+    "goals": 11,
+    "current_club": "Ritiro",
+    "player_profile": {
+      "nationality": "Italia",
+      "foot": "destro",
+      "enrichment_source": "Enrichment:sports-skills",
+      "height_cm": 170,
+      "birth_date": "1977-10-13",
+      "tm_url": "https://www.transfermarkt.it/antonio-di-natale/profil/spieler/6031",
+      "appearances": 42,
+      "goals": 11,
+      "current_club": "Ritiro"
+    },
+    "role_name": "Punta centrale",
+    "role": "Punta centrale",
+    "tm_enriched": true
   },
   {
     "id": "76839ee05c905548144164f4a6b52aae",
@@ -29976,7 +30469,45 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448589",
     "discovered_at": "2026-11-05T23:27:33.709863",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:29:42.306754+00:00",
+            "url": "https://www.transfermarkt.it/antonio-floro-flores/profil/spieler/16893"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "43",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:29:42.306758+00:00",
+            "url": "https://www.transfermarkt.it/antonio-floro-flores/profil/spieler/16893",
+            "nota": "da data di nascita 1983-06-18"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "enrichment_source": "Enrichment:sports-skills",
+    "height_cm": 183,
+    "birth_date": "1983-06-18",
+    "tm_url": "https://www.transfermarkt.it/antonio-floro-flores/profil/spieler/16893",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "foot": "destro",
+      "enrichment_source": "Enrichment:sports-skills",
+      "height_cm": 183,
+      "birth_date": "1983-06-18",
+      "tm_url": "https://www.transfermarkt.it/antonio-floro-flores/profil/spieler/16893",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Punta centrale",
+    "role": "Punta centrale",
+    "tm_enriched": true
   },
   {
     "id": "fbf2b2aa470a569a34c4caf15b51d23c",
@@ -31543,18 +32074,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "6c6b74ddc29df224d038464b1f1c8b53",
-    "player_name": "Vincenzo Ragone",
-    "region": "ITALY",
-    "opportunity_type": "rescissione",
-    "description": "Risoluzione consensuale del contratto con il Barletta",
-    "ob1_score": 65,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449769",
-    "discovered_at": "2026-11-24T09:08:32.780632",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "25e30b86fea4394687941d708913e35d",
     "player_name": "Thibaut Courtois",
     "region": "ITALY",
@@ -31567,27 +32086,159 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "2eece02d97bd3338a859a882969629b6",
-    "player_name": "Manolo Portanova",
+    "id": "01813b81df92c39e571b4f6fdbb55d84",
+    "player_name": "Silvan Sidler",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Fascia rossa al braccio, polemica sociale",
+    "description": "Terzino sinistro del Lecco elogiato per le recenti prestazioni",
     "ob1_score": 60,
     "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449744",
-    "discovered_at": "2026-11-24T09:08:32.781309",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449775",
+    "discovered_at": "2026-11-24T22:07:33.704369",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "4234180b1fdf175743e9a793f11b6359",
-    "player_name": "Daniele Celiento",
+    "id": "77b7306e7df9cae9d7c2b7925bf49957",
+    "player_name": "Vincenzo Fiorillo",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Lesione, fuori per infortunio alla Salernitana",
+    "description": "Portiere del Pescara commenta la partita contro il Pineto",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449772",
+    "discovered_at": "2026-11-24T22:07:33.704652",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "2448b90dbcb682b061f0c6ebf48de3ad",
+    "player_name": "Samuel Pugliese",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Capocannoniere del girone C, ora al Picerno",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449799",
+    "discovered_at": "2026-11-24T22:07:33.704828",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "cbd4a6b3c60f5cf08971ba47fb049a58",
+    "player_name": "Jacopo Manconi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Condivide il primato marcatori del girone C di Serie C",
+    "ob1_score": 62,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449799",
+    "discovered_at": "2026-11-24T22:07:33.704949",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "14a17e54d10f55244e5d6cac63a2c2b8",
+    "player_name": "Andrea Signorini",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Diventa direttore sportivo del Gubbio, lascia il ruolo di giocatore",
+    "ob1_score": 64,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460444",
+    "discovered_at": "2026-11-24T22:07:33.705092",
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:11:18.936748+00:00",
+            "url": "https://www.transfermarkt.it/andrea-signorini/profil/spieler/927044"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "125000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:11:18.936762+00:00",
+            "url": "https://www.transfermarkt.it/andrea-signorini/profil/spieler/927044"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "52",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-24T22:11:18.936771+00:00",
+            "url": "https://www.transfermarkt.it/andrea-signorini/profil/spieler/927044",
+            "nota": "da data di nascita 1974-06-16"
+          }
+        ]
+      }
+    },
+    "nationality": "Italia",
+    "market_value": 125000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "€125.0K",
+    "birth_date": "1974-06-16",
+    "tm_url": "https://www.transfermarkt.it/andrea-signorini/profil/spieler/927044",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "nationality": "Italia",
+      "market_value": 125000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "€125.0K",
+      "birth_date": "1974-06-16",
+      "tm_url": "https://www.transfermarkt.it/andrea-signorini/profil/spieler/927044",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Centrocampo",
+    "role": "Centrocampo",
+    "tm_enriched": true
+  },
+  {
+    "id": "578ed21b313ba12c815e3a59e87ce7a1",
+    "player_name": "Giancarlo Bianchini",
+    "region": "ITALY",
+    "opportunity_type": "rescissione",
+    "description": "Risoluzione contrattuale con Pro Patria, si trasferisce all'Altamura",
+    "ob1_score": 63,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460448",
+    "discovered_at": "2026-11-24T22:07:33.705203",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "9f8281fc515d2cb22866f6db22356f69",
+    "player_name": "Fabio Morselli",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Ricordi e gol con l'Alcione Milano",
     "ob1_score": 58,
     "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460427",
-    "discovered_at": "2026-11-24T09:08:32.781898",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460445",
+    "discovered_at": "2026-11-24T22:07:33.705308",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "419af684352b5e81eda55ef1e29ec0f9",
+    "player_name": "Marco Carnesecchi",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Infortunio, apre scenari per l'Under 23 Atalanta",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460442",
+    "discovered_at": "2026-11-24T22:07:33.705415",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "0e5e430da446309a0f4ebc89740d69ae",
+    "player_name": "Ivano Pastore",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Diventa nuovo direttore sportivo del Foggia",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460441",
+    "discovered_at": "2026-11-24T22:07:33.705515",
     "league_id": "italy_serie_c_d"
   }
 ]
