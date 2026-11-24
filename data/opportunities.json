@@ -18228,13 +18228,57 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444430",
     "discovered_at": "2026-08-30T16:23:12.137983",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:regex",
     "tm_url": "https://www.transfermarkt.it/andrea-santarcangelo/profil/spieler/818422",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/andrea-santarcangelo/profil/spieler/818422"
+      "enrichment_source": "Enrichment:regex",
+      "tm_url": "https://www.transfermarkt.it/andrea-santarcangelo/profil/spieler/818422",
+      "foot": "destro",
+      "market_value": 125000,
+      "market_value_formatted": "125 mila €",
+      "height_cm": 185,
+      "birth_date": "2003-01-14",
+      "current_club": "Folgore Caratese"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Folgore Caratese",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582790+00:00",
+            "url": "https://www.transfermarkt.it/andrea-santarcangelo/profil/spieler/818422"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "125000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582793+00:00",
+            "url": "https://www.transfermarkt.it/andrea-santarcangelo/profil/spieler/818422"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "23",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582796+00:00",
+            "url": "https://www.transfermarkt.it/andrea-santarcangelo/profil/spieler/818422",
+            "nota": "da data di nascita 2003-01-14"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 125000,
+    "market_value_formatted": "125 mila €",
+    "height_cm": 185,
+    "birth_date": "2003-01-14",
+    "current_club": "Folgore Caratese",
+    "age": 23,
+    "role_name": "Punta centrale",
+    "role": "Punta centrale"
   },
   {
     "id": "f299138f2e8d6a688f8bb1c0ffa350d6",
@@ -18535,7 +18579,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444530",
     "discovered_at": "2026-09-01T04:22:01.369684",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Union Brescia",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582768+00:00",
+            "url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "500000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582771+00:00",
+            "url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "26",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582774+00:00",
+            "url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465",
+            "nota": "da data di nascita 2000-01-13"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 500000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "500 mila €",
+    "height_cm": 172,
+    "birth_date": "2000-01-13",
+    "tm_url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465",
+    "current_club": "Union Brescia",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 500000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "500 mila €",
+      "height_cm": 172,
+      "birth_date": "2000-01-13",
+      "tm_url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465",
+      "current_club": "Union Brescia"
+    },
+    "age": 26,
+    "role_name": "Trequartista",
+    "role": "Trequartista",
+    "tm_enriched": true
   },
   {
     "id": "a97f826e8ac27e2242a0cfc3c50c01c3",
@@ -18704,7 +18799,42 @@
     "source_name": "www.tuttomercatoweb.com",
     "source_url": "https://www.tuttomercatoweb.com/redazione/andrea-piras-834",
     "discovered_at": "2026-09-01T04:22:01.370797",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ossese",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582750+00:00",
+            "url": "https://www.transfermarkt.it/andrea-piras/profil/spieler/1578670"
+          }
+        ],
+        "contract_expires": [
+          {
+            "valore": "2027-06-30",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582752+00:00",
+            "url": "https://www.transfermarkt.it/andrea-piras/profil/spieler/1578670"
+          }
+        ]
+      }
+    },
+    "nationality": "Italia",
+    "enrichment_source": "Enrichment:groq",
+    "contract_expires": "2027-06-30",
+    "tm_url": "https://www.transfermarkt.it/andrea-piras/profil/spieler/1578670",
+    "current_club": "Ossese",
+    "player_profile": {
+      "nationality": "Italia",
+      "enrichment_source": "Enrichment:groq",
+      "contract_expires": "2027-06-30",
+      "tm_url": "https://www.transfermarkt.it/andrea-piras/profil/spieler/1578670",
+      "current_club": "Ossese"
+    },
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "a60bc39693226dd6a17e29efbea66f27",
@@ -18825,7 +18955,40 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444571",
     "discovered_at": "2026-09-01T11:22:51.424023",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Casarano Calcio",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:59:26.070221+00:00",
+            "url": "https://www.transfermarkt.it/andrea-santarcangelo/profil/spieler/818422"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "125000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:59:26.070235+00:00",
+            "url": "https://www.transfermarkt.it/andrea-santarcangelo/profil/spieler/818422"
+          }
+        ]
+      }
+    },
+    "market_value": 125000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "€125.0K",
+    "tm_url": "https://www.transfermarkt.it/andrea-santarcangelo/profil/spieler/818422",
+    "current_club": "Casarano Calcio",
+    "player_profile": {
+      "market_value": 125000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "€125.0K",
+      "tm_url": "https://www.transfermarkt.it/andrea-santarcangelo/profil/spieler/818422",
+      "current_club": "Casarano Calcio"
+    },
+    "tm_enriched": true
   },
   {
     "id": "661dc19dc2af07ecdf382a5188d99c60",
@@ -19216,7 +19379,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444671",
     "discovered_at": "2026-09-01T16:19:34.858075",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Folgore Caratese",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:59:26.070261+00:00",
+            "url": "https://www.transfermarkt.it/andrea-tessiore/profil/spieler/393605"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "200000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:59:26.070264+00:00",
+            "url": "https://www.transfermarkt.it/andrea-tessiore/profil/spieler/393605"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "27",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:59:26.070272+00:00",
+            "url": "https://www.transfermarkt.it/andrea-tessiore/profil/spieler/393605",
+            "nota": "da data di nascita 1999-10-01"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 200000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "200 mila €",
+    "height_cm": 177,
+    "birth_date": "1999-10-01",
+    "tm_url": "https://www.transfermarkt.it/andrea-tessiore/profil/spieler/393605",
+    "current_club": "Folgore Caratese",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 200000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "200 mila €",
+      "height_cm": 177,
+      "birth_date": "1999-10-01",
+      "tm_url": "https://www.transfermarkt.it/andrea-tessiore/profil/spieler/393605",
+      "current_club": "Folgore Caratese"
+    },
+    "age": 27,
+    "role_name": "Centrocampista",
+    "role": "Centrocampista",
+    "tm_enriched": true
   },
   {
     "id": "3ab12e06614a33439c60809c6ca4eceb",
@@ -19307,7 +19521,58 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=457976",
     "discovered_at": "2026-09-01T16:19:34.858902",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "LR Vicenza",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582725+00:00",
+            "url": "https://www.transfermarkt.it/andrea-papetti/profil/spieler/503619"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "750000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582728+00:00",
+            "url": "https://www.transfermarkt.it/andrea-papetti/profil/spieler/503619"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "24",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582731+00:00",
+            "url": "https://www.transfermarkt.it/andrea-papetti/profil/spieler/503619",
+            "nota": "da data di nascita 2002-07-03"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 750000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "750 mila €",
+    "height_cm": 186,
+    "birth_date": "2002-07-03",
+    "tm_url": "https://www.transfermarkt.it/andrea-papetti/profil/spieler/503619",
+    "current_club": "LR Vicenza",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 750000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "750 mila €",
+      "height_cm": 186,
+      "birth_date": "2002-07-03",
+      "tm_url": "https://www.transfermarkt.it/andrea-papetti/profil/spieler/503619",
+      "current_club": "LR Vicenza"
+    },
+    "age": 24,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "9a6862128bf961cac04ba8cd2b5161fe",
@@ -19831,13 +20096,41 @@
     "source_url": "https://www.tuttomercatoweb.com/redazione/andrea-losapio-205",
     "discovered_at": "2026-09-02T10:56:55.637643",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:regex",
     "tm_url": "https://www.transfermarkt.it/andrea-bosio/profil/spieler/664075",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/andrea-bosio/profil/spieler/664075"
+      "enrichment_source": "Enrichment:regex",
+      "tm_url": "https://www.transfermarkt.it/andrea-bosio/profil/spieler/664075",
+      "birth_date": "2000-08-12",
+      "current_club": "ASD Albese Calcio"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "ASD Albese Calcio",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:46:30.281574+00:00",
+            "url": "https://www.transfermarkt.it/andrea-bosio/profil/spieler/664075"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "26",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:46:30.281594+00:00",
+            "url": "https://www.transfermarkt.it/andrea-bosio/profil/spieler/664075",
+            "nota": "da data di nascita 2000-08-12"
+          }
+        ]
+      }
+    },
+    "birth_date": "2000-08-12",
+    "current_club": "ASD Albese Calcio",
+    "age": 26,
+    "role_name": "Mediano",
+    "role": "Mediano"
   },
   {
     "id": "1532c28428cd1120f0cc6609db3113e4",
@@ -21120,7 +21413,38 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445101",
     "discovered_at": "2026-09-07T12:01:04.190750",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:46:30.281678+00:00",
+            "url": "https://www.transfermarkt.it/andrea-mandorlini/profil/spieler/214676"
+          }
+        ]
+      }
+    },
+    "nationality": "Italy",
+    "foot": "destro",
+    "enrichment_source": "Enrichment:groq",
+    "height_cm": 182,
+    "birth_date": "1960-07-17",
+    "tm_url": "https://www.transfermarkt.it/andrea-mandorlini/profil/spieler/214676",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "nationality": "Italy",
+      "foot": "destro",
+      "enrichment_source": "Enrichment:groq",
+      "height_cm": 182,
+      "birth_date": "1960-07-17",
+      "tm_url": "https://www.transfermarkt.it/andrea-mandorlini/profil/spieler/214676",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Libero",
+    "role": "Libero",
+    "tm_enriched": true
   },
   {
     "id": "476a9bd9f3ed4ad1de8f34ab40a86bcf",
@@ -21608,7 +21932,53 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445300",
     "discovered_at": "2026-09-11T03:52:09.151611",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:46:30.281696+00:00",
+            "url": "https://www.transfermarkt.it/andrea-marino/profil/spieler/754941"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "150000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:46:30.281699+00:00",
+            "url": "https://www.transfermarkt.it/andrea-marino/profil/spieler/754941"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "44",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:46:30.281702+00:00",
+            "url": "https://www.transfermarkt.it/andrea-marino/profil/spieler/754941",
+            "nota": "da data di nascita 1982-01-29"
+          }
+        ]
+      }
+    },
+    "market_value": 150000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "€150.0K",
+    "birth_date": "1982-01-29",
+    "tm_url": "https://www.transfermarkt.it/andrea-marino/profil/spieler/754941",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "market_value": 150000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "€150.0K",
+      "birth_date": "1982-01-29",
+      "tm_url": "https://www.transfermarkt.it/andrea-marino/profil/spieler/754941",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Portiere",
+    "role": "Portiere",
+    "tm_enriched": true
   },
   {
     "id": "49be1e2cbc530f9a23a247c2e859de60",
@@ -25298,7 +25668,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446416",
     "discovered_at": "2026-09-28T23:04:13.224577",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Calcio Lecco",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:46:30.281628+00:00",
+            "url": "https://www.transfermarkt.it/andrea-mallamo/profil/spieler/616634"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "250000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:46:30.281632+00:00",
+            "url": "https://www.transfermarkt.it/andrea-mallamo/profil/spieler/616634"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "24",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:46:30.281635+00:00",
+            "url": "https://www.transfermarkt.it/andrea-mallamo/profil/spieler/616634",
+            "nota": "da data di nascita 2002-10-22"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 250000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "250 mila €",
+    "height_cm": 174,
+    "birth_date": "2002-10-22",
+    "tm_url": "https://www.transfermarkt.it/andrea-mallamo/profil/spieler/616634",
+    "current_club": "Calcio Lecco",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 250000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "250 mila €",
+      "height_cm": 174,
+      "birth_date": "2002-10-22",
+      "tm_url": "https://www.transfermarkt.it/andrea-mallamo/profil/spieler/616634",
+      "current_club": "Calcio Lecco"
+    },
+    "age": 24,
+    "role_name": "Mediano",
+    "role": "Mediano",
+    "tm_enriched": true
   },
   {
     "id": "1e744c20c6816e6e806001f113883650",
@@ -28208,13 +28629,57 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447723",
     "discovered_at": "2026-10-21T21:25:51.594590",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:regex",
     "tm_url": "https://www.transfermarkt.it/andrea-petagna/profil/spieler/199258",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/andrea-petagna/profil/spieler/199258"
+      "enrichment_source": "Enrichment:regex",
+      "tm_url": "https://www.transfermarkt.it/andrea-petagna/profil/spieler/199258",
+      "foot": "sinistro",
+      "market_value": 700000,
+      "market_value_formatted": "700 mila €",
+      "height_cm": 190,
+      "birth_date": "1995-06-30",
+      "current_club": "Pisa Sporting Club"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Pisa Sporting Club",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:59:26.070296+00:00",
+            "url": "https://www.transfermarkt.it/andrea-petagna/profil/spieler/199258"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "700000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:59:26.070299+00:00",
+            "url": "https://www.transfermarkt.it/andrea-petagna/profil/spieler/199258"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "31",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:59:26.070302+00:00",
+            "url": "https://www.transfermarkt.it/andrea-petagna/profil/spieler/199258",
+            "nota": "da data di nascita 1995-06-30"
+          }
+        ]
+      }
+    },
+    "foot": "sinistro",
+    "market_value": 700000,
+    "market_value_formatted": "700 mila €",
+    "height_cm": 190,
+    "birth_date": "1995-06-30",
+    "current_club": "Pisa Sporting Club",
+    "age": 31,
+    "role_name": "Punta centrale",
+    "role": "Punta centrale"
   },
   {
     "id": "fc71886f5825542d845aefdfa34119f1",
@@ -28631,7 +29096,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448004",
     "discovered_at": "2026-10-26T12:32:33.166924",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Torres",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:59:26.070321+00:00",
+            "url": "https://www.transfermarkt.it/andrea-zaccagno/profil/spieler/291314"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "200000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:59:26.070323+00:00",
+            "url": "https://www.transfermarkt.it/andrea-zaccagno/profil/spieler/291314"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "29",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:59:26.070326+00:00",
+            "url": "https://www.transfermarkt.it/andrea-zaccagno/profil/spieler/291314",
+            "nota": "da data di nascita 1997-05-27"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 200000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "200 mila €",
+    "height_cm": 183,
+    "birth_date": "1997-05-27",
+    "tm_url": "https://www.transfermarkt.it/andrea-zaccagno/profil/spieler/291314",
+    "current_club": "Torres",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 200000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "200 mila €",
+      "height_cm": 183,
+      "birth_date": "1997-05-27",
+      "tm_url": "https://www.transfermarkt.it/andrea-zaccagno/profil/spieler/291314",
+      "current_club": "Torres"
+    },
+    "age": 29,
+    "role_name": "Portiere",
+    "role": "Portiere",
+    "tm_enriched": true
   },
   {
     "id": "4ac5fde0838176c9cde23c85e60b2314",
@@ -28820,7 +29336,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448185",
     "discovered_at": "2026-10-29T22:35:20.706220",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ascoli Calcio",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582667+00:00",
+            "url": "https://www.transfermarkt.it/andrea-oliveri/profil/spieler/663939"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "750000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582682+00:00",
+            "url": "https://www.transfermarkt.it/andrea-oliveri/profil/spieler/663939"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "23",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:52:56.582690+00:00",
+            "url": "https://www.transfermarkt.it/andrea-oliveri/profil/spieler/663939",
+            "nota": "da data di nascita 2003-01-14"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 750000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "750 mila €",
+    "height_cm": 181,
+    "birth_date": "2003-01-14",
+    "tm_url": "https://www.transfermarkt.it/andrea-oliveri/profil/spieler/663939",
+    "current_club": "Ascoli Calcio",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 750000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "750 mila €",
+      "height_cm": 181,
+      "birth_date": "2003-01-14",
+      "tm_url": "https://www.transfermarkt.it/andrea-oliveri/profil/spieler/663939",
+      "current_club": "Ascoli Calcio"
+    },
+    "age": 23,
+    "role_name": "Esterno di destra",
+    "role": "Esterno di destra",
+    "tm_enriched": true
   },
   {
     "id": "84e24f5ce25fa76ab0531590aeb1a5a1",
@@ -29227,9 +29794,37 @@
     "tm_url": "https://www.transfermarkt.it/stefano-lanini/profil/spieler/355443",
     "player_profile": {
       "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/stefano-lanini/profil/spieler/355443"
+      "tm_url": "https://www.transfermarkt.it/stefano-lanini/profil/spieler/355443",
+      "nationality": "Italia",
+      "foot": "destro",
+      "height_cm": 186,
+      "birth_date": "1994-09-04",
+      "appearances": 1,
+      "goals": 0
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "eta": [
+          {
+            "valore": "32",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:39:57.845176+00:00",
+            "url": "https://www.transfermarkt.it/stefano-lanini/profil/spieler/355443",
+            "nota": "da data di nascita 1994-09-04"
+          }
+        ]
+      }
+    },
+    "nationality": "Italia",
+    "foot": "destro",
+    "height_cm": 186,
+    "birth_date": "1994-09-04",
+    "appearances": 1,
+    "goals": 0,
+    "age": 32,
+    "role_name": "Terzino destro",
+    "role": "Terzino destro"
   },
   {
     "id": "35bc6248bb8966f18fe1782fcf15cecb",
@@ -29789,13 +30384,57 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=448904",
     "discovered_at": "2026-11-11T13:50:10.810544",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:regex",
     "tm_url": "https://www.transfermarkt.it/andrea-mandelli/profil/spieler/314468",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/andrea-mandelli/profil/spieler/314468"
+      "enrichment_source": "Enrichment:regex",
+      "tm_url": "https://www.transfermarkt.it/andrea-mandelli/profil/spieler/314468",
+      "foot": "sinistro",
+      "market_value": 250000,
+      "market_value_formatted": "250 mila €",
+      "height_cm": 185,
+      "birth_date": "1997-07-12",
+      "current_club": "UC AlbinoLeffe"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "UC AlbinoLeffe",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:46:30.281655+00:00",
+            "url": "https://www.transfermarkt.it/andrea-mandelli/profil/spieler/314468"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "250000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:46:30.281658+00:00",
+            "url": "https://www.transfermarkt.it/andrea-mandelli/profil/spieler/314468"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "29",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:46:30.281661+00:00",
+            "url": "https://www.transfermarkt.it/andrea-mandelli/profil/spieler/314468",
+            "nota": "da data di nascita 1997-07-12"
+          }
+        ]
+      }
+    },
+    "foot": "sinistro",
+    "market_value": 250000,
+    "market_value_formatted": "250 mila €",
+    "height_cm": 185,
+    "birth_date": "1997-07-12",
+    "current_club": "UC AlbinoLeffe",
+    "age": 29,
+    "role_name": "Mediano",
+    "role": "Mediano"
   },
   {
     "id": "0ac4434d1ce2b47b8db068730c625b2e",
@@ -30857,7 +31496,46 @@
     "source_name": "www.transfermarkt.it",
     "source_url": "https://www.transfermarkt.it/serie-d-girone-c/transfers/wettbewerb/IT4C/saison_id/2025",
     "discovered_at": "2026-11-21T06:22:55.704165",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "AC Vigasio",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:59:26.070341+00:00",
+            "url": "https://www.transfermarkt.it/andrew-afful-amoh/profil/spieler/612781"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "28",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-23T23:59:26.070344+00:00",
+            "url": "https://www.transfermarkt.it/andrew-afful-amoh/profil/spieler/612781",
+            "nota": "da data di nascita 1998-04-30"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "enrichment_source": "Enrichment:sports-skills",
+    "height_cm": 187,
+    "birth_date": "1998-04-30",
+    "tm_url": "https://www.transfermarkt.it/andrew-afful-amoh/profil/spieler/612781",
+    "current_club": "AC Vigasio",
+    "player_profile": {
+      "foot": "destro",
+      "enrichment_source": "Enrichment:sports-skills",
+      "height_cm": 187,
+      "birth_date": "1998-04-30",
+      "tm_url": "https://www.transfermarkt.it/andrew-afful-amoh/profil/spieler/612781",
+      "current_club": "AC Vigasio"
+    },
+    "age": 28,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "1cbc79b18ec4eeb5aa28234913bf4d5d",
@@ -30920,27 +31598,51 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ea942790f846ed0d5c11282a00b2e476",
-    "player_name": "Di Gregorio",
+    "id": "2eece02d97bd3338a859a882969629b6",
+    "player_name": "Manolo Portanova",
     "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "D'altronde, che il numero uno fosse un ruolo che i dirigenti bianconeri avevano deciso di rinforzare nell'estate del 2026 si era capito già nei mesi scorsi, quando si è provato a sondare la disponibilità di Mike Maignan di trasferirsi alla Continassa a parametro zero. Il recente rinnovo del francese col Milan, però, impone ora di percorrere altre strade. E, nell'attesa di capire se nelle casse juventine entreranno i 60 milioni garantiti dalla partecipazione alla prossima Champions League, si scandaglia il mercato alla ricerca di occasioni. Se il budget di Comolli in estate fosse risicato, ecco che la pista principale porterebbe a Liverpool, da quel 33enne brasiliano con un passato nella Roma... di Spalletti. Alisson, infatti, era il portiere di coppa dell'ultima avventura in giallorosso",
-    "ob1_score": 66,
-    "source_name": "www.gazzetta.it",
-    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Juventus/24-02-2026/juve-vicario-e-alisson-per-il-dopo-di-gregorio.shtml",
-    "discovered_at": "2026-11-23T06:42:32.133832",
+    "opportunity_type": "talento",
+    "description": "Fascia rossa al braccio per campagna sociale",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449744",
+    "discovered_at": "2026-11-23T23:37:24.983713",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "84c63ea07ea63521ccd35dce76a42472",
-    "player_name": "La Gazzetta",
+    "id": "e156dbce8852462cecf3a115c6712ff7",
+    "player_name": "Luca Strizzolo",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "e un lungo di giro per l'Italia. Quest'anno ha giocato al Sant'Angelo in Eccellenza. [...] Rugby\n Sport Invernali\n Sport Usa\n Sport Vari\n Vela e Nautica\n Volley\n\n Notizie\n Pronostici\n Comparazione Quote\n Siti Scommesse\n\n Gazzetta AI Predictor\n Bonus Benvenuto\n Guide Scommesse\n\n Casinò Online\n Guide Casinò\n\n Notizie\n Discipline\n La Guida\n Risultati e calendario\n\n Medagliere\n Medagliere Storico\n Azzurri\n Storia\n\n Video\n Programma ufficiale\n\nTALENTI SFUMATI\n\n# Primavera, chi erano i bomber? Da Rozzi a Dell'Agnello: quelli che non hanno sfondato\n\n## Gol a raffica nelle giovanili, ma il grande salto non è mai arrivato: infortuni, scelte sbagliate, poca fiducia. Dieci baby talenti rimasti nell'oblio\n\nFrancesco Pietrella @frapietrella [...] Aiman Napoli in nerazzurro\n\n## Victor da Silva (1995)\n\n—\n\nIl ‘miracolo Chievo’ non è stato solo salvezze e conti a posto, ma anche un campionato primavera vinto in modo inaspettato nel 2014. Un protagonista: Victor da Silva, 25 anni, punta brasiliana forgiata dal futsal e dai sogni di papà Jorge: “Figlio mio, devi giocare a calcio”. Detto, fatto. Nel 2013 debutta in A, l’anno dopo vince il titolo giovanile, poi gira per anni senza mai fermarsi. Pescara, Brescia, Teramo, Lupa Roma, Perugia, Istria 1961, Fermana e Fano. L’anno scorso ha giocato nella Virtus Verona, sempre in Serie C.\n\nDa Silva in maglia gialloblù\n\n## Ayub Daud (1990)\n\n—",
+    "description": "Firma con Lumezzane in Serie D",
     "ob1_score": 60,
-    "source_name": "www.gazzetta.it",
-    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/14-08-2020/giovani-primavera-talenti-che-fine-hanno-fatto-3801164335062.shtml",
-    "discovered_at": "2026-11-23T06:42:32.134568",
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449753",
+    "discovered_at": "2026-11-23T23:37:24.983996",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "d6a70147860cda07e944af9d9784686a",
+    "player_name": "Diego Zuppel",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Segna il gol del Novara nel derby contro il Vercelli",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449752",
+    "discovered_at": "2026-11-23T23:37:24.984174",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "af8c3fb9ada0aaf25d62206204229ab2",
+    "player_name": "Marco Amelia",
+    "region": "ITALY",
+    "opportunity_type": "rescissione",
+    "description": "Rescinde il contratto con Hamrun Spartans, torna in Italia",
+    "ob1_score": 65,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449748",
+    "discovered_at": "2026-11-23T23:37:24.984279",
     "league_id": "italy_serie_c_d"
   }
 ]
