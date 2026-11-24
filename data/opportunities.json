@@ -18570,69 +18570,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "fd877da8627634a53739775a28672d1d",
-    "player_name": "Andrea Rizzo Pinna",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Parla della vittoria dell'Union Brescia contro la Pergolettese",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=444530",
-    "discovered_at": "2026-09-01T04:22:01.369684",
-    "league_id": "italy_serie_c_d",
-    "grafo_fonti": {
-      "p": {
-        "club": [
-          {
-            "valore": "Union Brescia",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-23T23:52:56.582768+00:00",
-            "url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465"
-          }
-        ],
-        "market_value": [
-          {
-            "valore": "500000",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-23T23:52:56.582771+00:00",
-            "url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465"
-          }
-        ],
-        "eta": [
-          {
-            "valore": "26",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-23T23:52:56.582774+00:00",
-            "url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465",
-            "nota": "da data di nascita 2000-01-13"
-          }
-        ]
-      }
-    },
-    "foot": "destro",
-    "market_value": 500000,
-    "enrichment_source": "Enrichment:sports-skills",
-    "market_value_formatted": "500 mila €",
-    "height_cm": 172,
-    "birth_date": "2000-01-13",
-    "tm_url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465",
-    "current_club": "Union Brescia",
-    "player_profile": {
-      "foot": "destro",
-      "market_value": 500000,
-      "enrichment_source": "Enrichment:sports-skills",
-      "market_value_formatted": "500 mila €",
-      "height_cm": 172,
-      "birth_date": "2000-01-13",
-      "tm_url": "https://www.transfermarkt.it/andrea-rizzo-pinna/profil/spieler/411465",
-      "current_club": "Union Brescia"
-    },
-    "age": 26,
-    "role_name": "Trequartista",
-    "role": "Trequartista",
-    "tm_enriched": true
-  },
-  {
     "id": "a97f826e8ac27e2242a0cfc3c50c01c3",
     "player_name": "Pietro Mazzara",
     "region": "ITALY",
@@ -22921,7 +22858,14 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445541",
     "discovered_at": "2026-09-14T04:13:38.050776",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/antonio-giosa/profil/spieler/22112",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/antonio-giosa/profil/spieler/22112"
+    },
+    "tm_enriched": false
   },
   {
     "id": "87a4f8f0dc04f28b0c768ee2f59ee324",
@@ -23529,7 +23473,14 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/09/16/juve-una-cosa-stupisce-antonio-conte-e-il-prossimo-bancomat/",
     "discovered_at": "2026-09-18T10:53:59.057604",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/antonio-conte/profil/spieler/5759",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/antonio-conte/profil/spieler/5759"
+    },
+    "tm_enriched": false
   },
   {
     "id": "51fa8f93b2370824917ad67b877be64f",
@@ -25935,7 +25886,14 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447619",
     "discovered_at": "2026-10-20T04:11:36.772853",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/antonio-busce/profil/spieler/17174",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/antonio-busce/profil/spieler/17174"
+    },
+    "tm_enriched": false
   },
   {
     "id": "f6df524a8231db9f4cd29c8760613c53",
@@ -26139,7 +26097,14 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446534",
     "discovered_at": "2026-10-01T12:47:30.493032",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/angelo-antonio-puzzangara/profil/spieler/1059116",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/angelo-antonio-puzzangara/profil/spieler/1059116"
+    },
+    "tm_enriched": false
   },
   {
     "id": "d5609f513e306897cedc546abae53dba",
@@ -27445,7 +27410,14 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447302",
     "discovered_at": "2026-10-14T11:30:31.691137",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/antonello-serra/profil/spieler/981323",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/antonello-serra/profil/spieler/981323"
+    },
+    "tm_enriched": false
   },
   {
     "id": "6cf881016a9adc63a4655865c4905470",
@@ -28617,69 +28589,6 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447723",
     "discovered_at": "2026-10-21T21:25:51.594409",
     "league_id": "italy_serie_c_d"
-  },
-  {
-    "id": "a39eb1ecbafc36b84b1674c40c5066b5",
-    "player_name": "Andrea Vergani",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Anche lui mira al ritorno in squadra per la prossima partita",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447723",
-    "discovered_at": "2026-10-21T21:25:51.594590",
-    "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:regex",
-    "tm_url": "https://www.transfermarkt.it/andrea-petagna/profil/spieler/199258",
-    "player_profile": {
-      "enrichment_source": "Enrichment:regex",
-      "tm_url": "https://www.transfermarkt.it/andrea-petagna/profil/spieler/199258",
-      "foot": "sinistro",
-      "market_value": 700000,
-      "market_value_formatted": "700 mila €",
-      "height_cm": 190,
-      "birth_date": "1995-06-30",
-      "current_club": "Pisa Sporting Club"
-    },
-    "tm_enriched": true,
-    "grafo_fonti": {
-      "p": {
-        "club": [
-          {
-            "valore": "Pisa Sporting Club",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-23T23:59:26.070296+00:00",
-            "url": "https://www.transfermarkt.it/andrea-petagna/profil/spieler/199258"
-          }
-        ],
-        "market_value": [
-          {
-            "valore": "700000",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-23T23:59:26.070299+00:00",
-            "url": "https://www.transfermarkt.it/andrea-petagna/profil/spieler/199258"
-          }
-        ],
-        "eta": [
-          {
-            "valore": "31",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-23T23:59:26.070302+00:00",
-            "url": "https://www.transfermarkt.it/andrea-petagna/profil/spieler/199258",
-            "nota": "da data di nascita 1995-06-30"
-          }
-        ]
-      }
-    },
-    "foot": "sinistro",
-    "market_value": 700000,
-    "market_value_formatted": "700 mila €",
-    "height_cm": 190,
-    "birth_date": "1995-06-30",
-    "current_club": "Pisa Sporting Club",
-    "age": 31,
-    "role_name": "Punta centrale",
-    "role": "Punta centrale"
   },
   {
     "id": "fc71886f5825542d845aefdfa34119f1",
@@ -31598,18 +31507,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "2eece02d97bd3338a859a882969629b6",
-    "player_name": "Manolo Portanova",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Fascia rossa al braccio per campagna sociale",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449744",
-    "discovered_at": "2026-11-23T23:37:24.983713",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "e156dbce8852462cecf3a115c6712ff7",
     "player_name": "Luca Strizzolo",
     "region": "ITALY",
@@ -31643,6 +31540,54 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449748",
     "discovered_at": "2026-11-23T23:37:24.984279",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "6c6b74ddc29df224d038464b1f1c8b53",
+    "player_name": "Vincenzo Ragone",
+    "region": "ITALY",
+    "opportunity_type": "rescissione",
+    "description": "Risoluzione consensuale del contratto con il Barletta",
+    "ob1_score": 65,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449769",
+    "discovered_at": "2026-11-24T09:08:32.780632",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "25e30b86fea4394687941d708913e35d",
+    "player_name": "Thibaut Courtois",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Menzionato in trattativa per l'acquisto della società Reggiana",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449765",
+    "discovered_at": "2026-11-24T09:08:32.781073",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "2eece02d97bd3338a859a882969629b6",
+    "player_name": "Manolo Portanova",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Fascia rossa al braccio, polemica sociale",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449744",
+    "discovered_at": "2026-11-24T09:08:32.781309",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "4234180b1fdf175743e9a793f11b6359",
+    "player_name": "Daniele Celiento",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Lesione, fuori per infortunio alla Salernitana",
+    "ob1_score": 58,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460427",
+    "discovered_at": "2026-11-24T09:08:32.781898",
     "league_id": "italy_serie_c_d"
   }
 ]
