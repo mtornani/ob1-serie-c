@@ -29096,15 +29096,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "0b453118e7247653a5d45d0d645716c4",
+    "id": "0e0f12a951ac305aba3494c34856f50d",
     "player_name": "Michele Emmausso",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Attaccante sicuro per la Scafatese, conferma la permanenza.",
+    "description": "Michele Emmausso, da pensiero di smettere a protagonista in Serie C",
     "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=447743",
-    "discovered_at": "2026-10-22T03:59:19.351447",
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460483",
+    "discovered_at": "2026-11-26T07:35:50.881402",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -32250,18 +32250,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "4a969e14ada006cd12cdcf9cbe7e09f7",
-    "player_name": "Eugenio Corini",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "ex giocatore, punta alla storia del Brescia",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449857",
-    "discovered_at": "2026-11-26T07:35:50.881076",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "e1147cd9f2625942d6845406c612d59e",
     "player_name": "Francesco Zizzari",
     "region": "ITALY",
@@ -32274,15 +32262,58 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "0e0f12a951ac305aba3494c34856f50d",
-    "player_name": "Michele Emmausso",
+    "id": "5b4ffab4c8383d1dfdd42b647abf9608",
+    "player_name": "Hakan Calhanoglu",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Target Juventus, possibile parametro zero dal Inter",
+    "ob1_score": 66,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/la-juventus-vuole-calhanoglu-a-parametro-zero-due-condizioni-per-il-rinnovo-con-l-inter/bltad461de61b9bc37b",
+    "discovered_at": "2026-11-26T21:11:43.084442",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "7df47669b00849cc7891ba7ff8ada3ce",
+    "player_name": "Ibrahima Konate",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Possibile uscita estiva 2026 dal Liverpool",
+    "ob1_score": 66,
+    "source_name": "www.calciomercato.com",
+    "source_url": "https://www.calciomercato.com/liste/ibrahima-konate-lascera-il-liverpool-quest-estate-stop-alle-trattative-per-il-rinnovo-del-contratto/blt92b54735b57afd58",
+    "discovered_at": "2026-11-26T21:11:43.084648",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "45d2e49fb9de5965f461697c2cf3a234",
+    "player_name": "Andrea D'Aniello",
+    "region": "ITALY",
+    "opportunity_type": "svincolato",
+    "description": "Portiere libero, senza contratto, disponibile",
+    "ob1_score": 66,
+    "source_name": "www.transfermarkt.it",
+    "source_url": "https://www.transfermarkt.it/serie-c-girone-c/vertragslosespieler/wettbewerb/IT3C",
+    "discovered_at": "2026-11-26T21:11:43.085051",
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/andrea-daniello/profil/spieler/640544",
+    "tm_verified_at": "2026-11-17T15:55:43+00:00",
+    "birth_date": "08/05/2003",
+    "age": 23,
+    "current_club": "svincolato",
+    "role_name": "Porta Piede:destro Squadra attuale",
+    "foot": "destro"
+  },
+  {
+    "id": "885ca1d2cde1d8f360931681616a1a7b",
+    "player_name": "Luigi Caccavo",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Michele Emmausso, da pensiero di smettere a protagonista in Serie C",
-    "ob1_score": 60,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460483",
-    "discovered_at": "2026-11-26T07:35:50.881402",
+    "description": "Talento emergente in Serie C",
+    "ob1_score": 62,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/il-punto/settimana-trampolino-lancio-caccavo-l-ultimo-tanti-440278",
+    "discovered_at": "2026-11-26T21:11:43.086011",
     "league_id": "italy_serie_c_d"
   }
 ]
