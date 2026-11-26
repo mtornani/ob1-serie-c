@@ -28741,9 +28741,9 @@
     "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Inter/18-03-2026/mercato-inter-kone-palestra-e-muharemovic-nel-mirino-le-trattative.shtml",
     "discovered_at": "2026-10-19T12:41:27.446745",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:unknown",
+    "enrichment_source": "Enrichment:groq",
     "player_profile": {
-      "enrichment_source": "Enrichment:unknown"
+      "enrichment_source": "Enrichment:groq"
     },
     "tm_enriched": false
   },
@@ -32238,15 +32238,51 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ea942790f846ed0d5c11282a00b2e476",
-    "player_name": "Di Gregorio",
+    "id": "391fb0e713754714a6168cfed64c80af",
+    "player_name": "Valerio Di Cesare",
     "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "D'altronde, che il numero uno fosse un ruolo che i dirigenti bianconeri avevano deciso di rinforzare nell'estate del 2026 si era capito già nei mesi scorsi, quando si è provato a sondare la disponibilità di Mike Maignan di trasferirsi alla Continassa a parametro zero. Il recente rinnovo del francese col Milan, però, impone ora di percorrere altre strade. E, nell'attesa di capire se nelle casse juventine entreranno i 60 milioni garantiti dalla partecipazione alla prossima Champions League, si scandaglia il mercato alla ricerca di occasioni. Se il budget di Comolli in estate fosse risicato, ecco che la pista principale porterebbe a Liverpool, da quel 33enne brasiliano con un passato nella Roma... di Spalletti. Alisson, infatti, era il portiere di coppa dell'ultima avventura in giallorosso [...] ## Il brasiliano, in scadenza nel 2027 con il Liverpool, garantirebbe affidabilità e, soprattutto, esperienza. E ha già lavorato con Spalletti a Roma\n\nTu chiamale se vuoi, occasioni. Alle prese con quella che potrebbe essere una vera rivoluzione tra i pali nella prossima estate (con Di Gregorio sotto esame dopo i recenti errori, Perin che vorrebbe tornare a giocare titolare e Pinsoglio che pensa al ritiro), la Juve guarda soprattutto alla Premier League. E, oltre a Vicario, mette gli occhi pure su Alisson Becker, portiere del Liverpool con il contratto in scadenza nel 2027.\n\n## juve, si apre la pista alisson\n\n—",
-    "ob1_score": 66,
-    "source_name": "www.gazzetta.it",
-    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Juventus/24-02-2026/juve-vicario-e-alisson-per-il-dopo-di-gregorio.shtml",
-    "discovered_at": "2026-11-25T21:25:54.155351",
+    "opportunity_type": "talento",
+    "description": "ex difensore, torna al Bari come direttore sportivo",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449863",
+    "discovered_at": "2026-11-26T07:35:50.880560",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "4a969e14ada006cd12cdcf9cbe7e09f7",
+    "player_name": "Eugenio Corini",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "ex giocatore, punta alla storia del Brescia",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449857",
+    "discovered_at": "2026-11-26T07:35:50.881076",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "e1147cd9f2625942d6845406c612d59e",
+    "player_name": "Francesco Zizzari",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "ex attaccante, commenta la sfida Spezia‑Ravenna",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449856",
+    "discovered_at": "2026-11-26T07:35:50.881244",
+    "league_id": "italy_serie_c_d"
+  },
+  {
+    "id": "0e0f12a951ac305aba3494c34856f50d",
+    "player_name": "Michele Emmausso",
+    "region": "ITALY",
+    "opportunity_type": "talento",
+    "description": "Michele Emmausso, da pensiero di smettere a protagonista in Serie C",
+    "ob1_score": 60,
+    "source_name": "www.lacasadic.com",
+    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460483",
+    "discovered_at": "2026-11-26T07:35:50.881402",
     "league_id": "italy_serie_c_d"
   }
 ]
