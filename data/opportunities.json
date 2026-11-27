@@ -18064,7 +18064,25 @@
     "source_name": "www.gazzetta.it",
     "source_url": "https://www.gazzetta.it/Calciomercato/23-07-2026/notizie-calciomercato-live-oggi-23-luglio.shtml",
     "discovered_at": "2026-09-27T04:39:16.086185",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Without Club",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:11:05.869252+00:00"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:sports-skills",
+    "current_club": "Without Club",
+    "player_profile": {
+      "enrichment_source": "Enrichment:sports-skills",
+      "current_club": "Without Club"
+    },
+    "tm_enriched": true
   },
   {
     "id": "fec195a5938b100c843105037b8785e4",
@@ -20820,7 +20838,30 @@
     "source_name": "www.tuttomercatoweb.com",
     "source_url": "https://www.tuttomercatoweb.com/redazione/antonio-vitiello-304",
     "discovered_at": "2026-09-03T20:45:17.904162",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:11:05.869181+00:00",
+            "url": "https://www.transfermarkt.it/antonio-vitiello/profil/spieler/471285"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:unknown",
+    "tm_url": "https://www.transfermarkt.it/antonio-vitiello/profil/spieler/471285",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "enrichment_source": "Enrichment:unknown",
+      "tm_url": "https://www.transfermarkt.it/antonio-vitiello/profil/spieler/471285",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Centrocampo",
+    "role": "Centrocampo",
+    "tm_enriched": true
   },
   {
     "id": "cc33a1c02c95dea54ec658a56d29ea3e",
@@ -21510,7 +21551,58 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458151",
     "discovered_at": "2026-09-07T21:22:35.629421",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Deportivo Alavés",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:05:16.060277+00:00",
+            "url": "https://www.transfermarkt.it/toni-martinez/profil/spieler/302371"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "7500000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:05:16.060281+00:00",
+            "url": "https://www.transfermarkt.it/toni-martinez/profil/spieler/302371"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "29",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:05:16.060284+00:00",
+            "url": "https://www.transfermarkt.it/toni-martinez/profil/spieler/302371",
+            "nota": "da data di nascita 1997-06-30"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 7500000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "7,50 mln €",
+    "height_cm": 187,
+    "birth_date": "1997-06-30",
+    "tm_url": "https://www.transfermarkt.it/toni-martinez/profil/spieler/302371",
+    "current_club": "Deportivo Alavés",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 7500000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "7,50 mln €",
+      "height_cm": 187,
+      "birth_date": "1997-06-30",
+      "tm_url": "https://www.transfermarkt.it/toni-martinez/profil/spieler/302371",
+      "current_club": "Deportivo Alavés"
+    },
+    "age": 29,
+    "role_name": "Punta centrale",
+    "role": "Punta centrale",
+    "tm_enriched": true
   },
   {
     "id": "230613dfaefd7218844b5b0334fc6034",
@@ -21641,15 +21733,15 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "1376665e44604f1872d66575aef17403",
+    "id": "40fd6df907f839a3f820b2c89beaa502",
     "player_name": "Gaetano Auteri",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "presunto nuovo rinforzo per Foggia",
+    "description": "Esonerato dal Foggia per risultati non in linea con le aspettative",
     "ob1_score": 60,
     "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/altre-news/serie-2026-2027-panchine-facciolo-interim-scafatese-444852",
-    "discovered_at": "2026-09-08T10:57:29.546663",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449915",
+    "discovered_at": "2026-11-27T07:33:30.966314",
     "league_id": "italy_serie_c_d"
   },
   {
@@ -22301,7 +22393,58 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458409",
     "discovered_at": "2026-09-18T03:59:48.054651",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Juventus Next Gen",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:15:25.291419+00:00",
+            "url": "https://www.transfermarkt.it/augusto-owusu/profil/spieler/925845"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "1500000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:15:25.291432+00:00",
+            "url": "https://www.transfermarkt.it/augusto-owusu/profil/spieler/925845"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "21",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:15:25.291440+00:00",
+            "url": "https://www.transfermarkt.it/augusto-owusu/profil/spieler/925845",
+            "nota": "da data di nascita 2005-01-28"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 1500000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "1,50 mln €",
+    "height_cm": 189,
+    "birth_date": "2005-01-28",
+    "tm_url": "https://www.transfermarkt.it/augusto-owusu/profil/spieler/925845",
+    "current_club": "Juventus Next Gen",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 1500000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "1,50 mln €",
+      "height_cm": 189,
+      "birth_date": "2005-01-28",
+      "tm_url": "https://www.transfermarkt.it/augusto-owusu/profil/spieler/925845",
+      "current_club": "Juventus Next Gen"
+    },
+    "age": 21,
+    "role_name": "Centrocampista",
+    "role": "Centrocampista",
+    "tm_enriched": true
   },
   {
     "id": "50fa918f05f51c863a7890e4b640804a",
@@ -22641,7 +22784,56 @@
     "source_name": "www.lacasadic.com",
     "source_url": "https://www.lacasadic.com/?action=read&idnotizia=458297",
     "discovered_at": "2026-09-13T15:56:32.932486",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Sorrento 1945",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:05:16.060402+00:00",
+            "url": "https://www.transfermarkt.it/antonio-potenza/profil/spieler/1053676"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "175000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:05:16.060405+00:00",
+            "url": "https://www.transfermarkt.it/antonio-potenza/profil/spieler/1053676"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "21",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:05:16.060409+00:00",
+            "url": "https://www.transfermarkt.it/antonio-potenza/profil/spieler/1053676",
+            "nota": "da data di nascita 2005-12-24"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 175000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "175 mila €",
+    "birth_date": "2005-12-24",
+    "tm_url": "https://www.transfermarkt.it/antonio-potenza/profil/spieler/1053676",
+    "current_club": "Sorrento 1945",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 175000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "175 mila €",
+      "birth_date": "2005-12-24",
+      "tm_url": "https://www.transfermarkt.it/antonio-potenza/profil/spieler/1053676",
+      "current_club": "Sorrento 1945"
+    },
+    "age": 21,
+    "role_name": "Centrocampista",
+    "role": "Centrocampista",
+    "tm_enriched": true
   },
   {
     "id": "768a59a60f4005a45ec09ded7e8fb8ef",
@@ -22928,13 +23120,44 @@
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=445541",
     "discovered_at": "2026-09-14T04:13:38.050776",
     "league_id": "italy_serie_c_d",
-    "enrichment_source": "Enrichment:groq",
+    "enrichment_source": "Enrichment:sports-skills",
     "tm_url": "https://www.transfermarkt.it/antonio-giosa/profil/spieler/22112",
     "player_profile": {
-      "enrichment_source": "Enrichment:groq",
-      "tm_url": "https://www.transfermarkt.it/antonio-giosa/profil/spieler/22112"
+      "enrichment_source": "Enrichment:sports-skills",
+      "tm_url": "https://www.transfermarkt.it/antonio-giosa/profil/spieler/22112",
+      "foot": "sinistro",
+      "height_cm": 185,
+      "birth_date": "1983-08-21",
+      "current_club": "Ritiro"
     },
-    "tm_enriched": false
+    "tm_enriched": true,
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:05:16.060221+00:00",
+            "url": "https://www.transfermarkt.it/antonio-giosa/profil/spieler/22112"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "43",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:05:16.060239+00:00",
+            "url": "https://www.transfermarkt.it/antonio-giosa/profil/spieler/22112",
+            "nota": "da data di nascita 1983-08-21"
+          }
+        ]
+      }
+    },
+    "foot": "sinistro",
+    "height_cm": 185,
+    "birth_date": "1983-08-21",
+    "current_club": "Ritiro",
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale"
   },
   {
     "id": "87a4f8f0dc04f28b0c768ee2f59ee324",
@@ -24387,7 +24610,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446080",
     "discovered_at": "2026-09-23T04:04:11.072409",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Calcio Lecco",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:05:16.060362+00:00",
+            "url": "https://www.transfermarkt.it/antonio-metlika/profil/spieler/469018"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "450000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:05:16.060371+00:00",
+            "url": "https://www.transfermarkt.it/antonio-metlika/profil/spieler/469018"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "25",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:05:16.060377+00:00",
+            "url": "https://www.transfermarkt.it/antonio-metlika/profil/spieler/469018",
+            "nota": "da data di nascita 2001-11-24"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 450000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "450 mila €",
+    "height_cm": 178,
+    "birth_date": "2001-11-24",
+    "tm_url": "https://www.transfermarkt.it/antonio-metlika/profil/spieler/469018",
+    "current_club": "Calcio Lecco",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 450000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "450 mila €",
+      "height_cm": 178,
+      "birth_date": "2001-11-24",
+      "tm_url": "https://www.transfermarkt.it/antonio-metlika/profil/spieler/469018",
+      "current_club": "Calcio Lecco"
+    },
+    "age": 25,
+    "role_name": "Mediano",
+    "role": "Mediano",
+    "tm_enriched": true
   },
   {
     "id": "9b72857e6cecc2bf25929ebd0af99427",
@@ -26558,7 +26832,58 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446562",
     "discovered_at": "2026-10-01T22:31:32.932239",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Cosenza Calcio",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:15:25.291472+00:00",
+            "url": "https://www.transfermarkt.it/baldovino-cimino/profil/spieler/816006"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "275000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:15:25.291475+00:00",
+            "url": "https://www.transfermarkt.it/baldovino-cimino/profil/spieler/816006"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "22",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:15:25.291479+00:00",
+            "url": "https://www.transfermarkt.it/baldovino-cimino/profil/spieler/816006",
+            "nota": "da data di nascita 2004-02-20"
+          }
+        ]
+      }
+    },
+    "foot": "destro",
+    "market_value": 275000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "275 mila €",
+    "height_cm": 184,
+    "birth_date": "2004-02-20",
+    "tm_url": "https://www.transfermarkt.it/baldovino-cimino/profil/spieler/816006",
+    "current_club": "Cosenza Calcio",
+    "player_profile": {
+      "foot": "destro",
+      "market_value": 275000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "275 mila €",
+      "height_cm": 184,
+      "birth_date": "2004-02-20",
+      "tm_url": "https://www.transfermarkt.it/baldovino-cimino/profil/spieler/816006",
+      "current_club": "Cosenza Calcio"
+    },
+    "age": 22,
+    "role_name": "Terzino destro",
+    "role": "Terzino destro",
+    "tm_enriched": true
   },
   {
     "id": "80c500256012b975c5266d84ab147e2a",
@@ -31932,7 +32257,54 @@
     "source_name": "www.transfermarkt.it",
     "source_url": "https://www.transfermarkt.it/serie-d-girone-c/transfers/wettbewerb/IT4C/saison_id/2025",
     "discovered_at": "2026-11-21T06:22:55.703941",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Celle Varazze",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:11:05.869221+00:00",
+            "url": "https://www.transfermarkt.it/assane-mboup/profil/spieler/387102"
+          }
+        ],
+        "market_value": [
+          {
+            "valore": "25000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:11:05.869225+00:00",
+            "url": "https://www.transfermarkt.it/assane-mboup/profil/spieler/387102"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "36",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T21:11:05.869233+00:00",
+            "url": "https://www.transfermarkt.it/assane-mboup/profil/spieler/387102",
+            "nota": "da data di nascita 1990-12-25"
+          }
+        ]
+      }
+    },
+    "market_value": 25000,
+    "enrichment_source": "Enrichment:sports-skills",
+    "market_value_formatted": "25 mila €",
+    "birth_date": "1990-12-25",
+    "tm_url": "https://www.transfermarkt.it/assane-mboup/profil/spieler/387102",
+    "current_club": "Celle Varazze",
+    "player_profile": {
+      "market_value": 25000,
+      "enrichment_source": "Enrichment:sports-skills",
+      "market_value_formatted": "25 mila €",
+      "birth_date": "1990-12-25",
+      "tm_url": "https://www.transfermarkt.it/assane-mboup/profil/spieler/387102",
+      "current_club": "Celle Varazze"
+    },
+    "age": 36,
+    "role_name": "Difensore centrale",
+    "role": "Difensore centrale",
+    "tm_enriched": true
   },
   {
     "id": "3918deb5f6db46772181db29beba2048",
@@ -32274,18 +32646,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "40fd6df907f839a3f820b2c89beaa502",
-    "player_name": "Gaetano Auteri",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "Esonerato dal Foggia per risultati non in linea con le aspettative",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449915",
-    "discovered_at": "2026-11-27T07:33:30.966314",
-    "league_id": "italy_serie_c_d"
-  },
-  {
     "id": "642e1630eff954588745fa582b322e95",
     "player_name": "Alex Casella",
     "region": "ITALY",
@@ -32295,7 +32655,41 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449915",
     "discovered_at": "2026-11-27T07:33:30.966519",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "club": [
+          {
+            "valore": "Ritiro",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T20:58:49.420738+00:00",
+            "url": "https://www.transfermarkt.it/alex-casella/profil/spieler/1216256"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "45",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-27T20:58:49.420760+00:00",
+            "url": "https://www.transfermarkt.it/alex-casella/profil/spieler/1216256",
+            "nota": "da data di nascita 1981-05-16"
+          }
+        ]
+      }
+    },
+    "enrichment_source": "Enrichment:regex",
+    "birth_date": "1981-05-16",
+    "tm_url": "https://www.transfermarkt.it/alex-casella/profil/spieler/1216256",
+    "current_club": "Ritiro",
+    "player_profile": {
+      "enrichment_source": "Enrichment:regex",
+      "birth_date": "1981-05-16",
+      "tm_url": "https://www.transfermarkt.it/alex-casella/profil/spieler/1216256",
+      "current_club": "Ritiro"
+    },
+    "role_name": "Difesa",
+    "role": "Difesa",
+    "tm_enriched": true
   },
   {
     "id": "88d02762c4213fcc475fbb70ff18f584",
@@ -32334,27 +32728,27 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "e4b6d6b3fd62c0b2ad8d7b17782c1dca",
-    "player_name": "Luca Calapai",
+    "id": "ea942790f846ed0d5c11282a00b2e476",
+    "player_name": "Di Gregorio",
     "region": "ITALY",
     "opportunity_type": "svincolato",
-    "description": "Arrivato all'Altamura da svincolato",
-    "ob1_score": 64,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460501",
-    "discovered_at": "2026-11-27T07:33:30.967395",
+    "description": "D'altronde, che il numero uno fosse un ruolo che i dirigenti bianconeri avevano deciso di rinforzare nell'estate del 2026 si era capito già nei mesi scorsi, quando si è provato a sondare la disponibilità di Mike Maignan di trasferirsi alla Continassa a parametro zero. Il recente rinnovo del francese col Milan, però, impone ora di percorrere altre strade. E, nell'attesa di capire se nelle casse juventine entreranno i 60 milioni garantiti dalla partecipazione alla prossima Champions League, si scandaglia il mercato alla ricerca di occasioni. Se il budget di Comolli in estate fosse risicato, ecco che la pista principale porterebbe a Liverpool, da quel 33enne brasiliano con un passato nella Roma... di Spalletti. Alisson, infatti, era il portiere di coppa dell'ultima avventura in giallorosso [...] ## Il brasiliano, in scadenza nel 2027 con il Liverpool, garantirebbe affidabilità e, soprattutto, esperienza. E ha già lavorato con Spalletti a Roma\n\nTu chiamale se vuoi, occasioni. Alle prese con quella che potrebbe essere una vera rivoluzione tra i pali nella prossima estate (con Di Gregorio sotto esame dopo i recenti errori, Perin che vorrebbe tornare a giocare titolare e Pinsoglio che pensa al ritiro), la Juve guarda soprattutto alla Premier League. E, oltre a Vicario, mette gli occhi pure su Alisson Becker, portiere del Liverpool con il contratto in scadenza nel 2027.\n\n## juve, si apre la pista alisson\n\n— [...] Se invece il budget fosse più ampio e i dirigenti bianconeri volessero fare una scelta di più ampio raggio, con un portiere in grado di avere più anni di carriera davanti, ecco che la via principale porterebbe a Londra, dove da ormai tre anni Gugliemo Vicario difende i pali del Tottenham. Negli ultimi giorni ci sono sono stati nuovi contatti con l'entourage del giocatore, anche per contrastare la forte concorrenza dell'Inter e guadagnare la pole position. L'ex numero uno dell'Empoli, 30 anni da compiere, vorrebbe far rientro in Serie A (anche perché gli Spurs, esclusa la vittoria della scorsa Europa League. in queste stagioni hanno faticato parecchio) e il suo contratto in scadenza nel 2028 mette la società inglese nelle condizioni di non poter avere pretese eccessive. La valutazione che",
+    "ob1_score": 70,
+    "source_name": "www.gazzetta.it",
+    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Juventus/24-02-2026/juve-vicario-e-alisson-per-il-dopo-di-gregorio.shtml",
+    "discovered_at": "2026-11-27T20:55:14.871901",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "a6215d81a3d283d246d8f18860f872ab",
-    "player_name": "Donato Distratto",
+    "id": "2d3051804125cd10aef4716acf3c8912",
+    "player_name": "Atalanta Under",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "Possibile saluto al Barletta",
-    "ob1_score": 58,
-    "source_name": "www.lacasadic.com",
-    "source_url": "https://www.lacasadic.com/?action=read&idnotizia=460499",
-    "discovered_at": "2026-11-27T07:33:30.967588",
+    "description": "## le altre del girone a\n\n—\n\nVolano le neopromosse. Prestazione sontuosa del Legnago di Massimo Donati, che travolge l’Arzignano (4-0): la sblocca Svidercoschi, poi arrotondano il punteggio Martic (punizione sul primo palo) e Rocco, nel finale va a segno anche Jerry Mbakogu al primo gol con la nuova maglia. E' un ritorno in C col sorriso anche per la Giana, che passa a Busto Arsizio sul campo della Pro Patria (2-1): vantaggio ospite a metà primo tempo con la punizione di Fumagalli deviata dalla barriera, nella ripresa il pari in girata di Stanzani ma poi è l'attaccante senegalese Fall - appena entrato dalla panchina - a firmare il colpo esterno.\n\n## girone b\n\n— [...] presenti. Sorride in pieno recupero il Potenza, che supera il Brindisi: a firmare il 2-1 è Gagliano, entrato dalla panchina, con una bella girata in area dopo che Bizzotto aveva pareggiato il primo vantaggio di Volpe (ribattuta dopo un rigore sbagliato da Caturano, che ne aveva già falliti 3 nella passata stagione). Sorride anche l’altra lucana, il Picerno, che torna con i 3 punti da Francavilla grazie alla zampata del subentrato Abou Diop a metà ripresa (ribattuta in porta sul palo colpito da Esposito). Colpo della Juve Stabia (3-1) a Teramo, campo del Monterosi: apre Candellone dal dischetto, pari dell’ex stabiese Silipo ma poi la squadra di Guido Pagliuca riprende il largo nella ripresa con Leone e Baldi, bravi a infilare Mastrantonio (portiere campione d’Europa con l’Italia U19). [...] © RIPRODUZIONE RISERVATA",
+    "ob1_score": 60,
+    "source_name": "www.gazzetta.it",
+    "source_url": "https://www.gazzetta.it/Calcio/04-09-2023/serie-c-cade-l-atalanta-under-23.shtml",
+    "discovered_at": "2026-11-27T20:55:14.872396",
     "league_id": "italy_serie_c_d"
   }
 ]
