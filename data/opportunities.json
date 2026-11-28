@@ -26823,69 +26823,6 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "aa48cdc6f5da67e4be007f43df3c25e7",
-    "player_name": "Baldovino Cimino",
-    "region": "ITALY",
-    "opportunity_type": "talento",
-    "description": "reintegrato, torna ad allenarsi con il gruppo",
-    "ob1_score": 60,
-    "source_name": "www.tuttoc.com",
-    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=446562",
-    "discovered_at": "2026-10-01T22:31:32.932239",
-    "league_id": "italy_serie_c_d",
-    "grafo_fonti": {
-      "p": {
-        "club": [
-          {
-            "valore": "Cosenza Calcio",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-27T21:15:25.291472+00:00",
-            "url": "https://www.transfermarkt.it/baldovino-cimino/profil/spieler/816006"
-          }
-        ],
-        "market_value": [
-          {
-            "valore": "275000",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-27T21:15:25.291475+00:00",
-            "url": "https://www.transfermarkt.it/baldovino-cimino/profil/spieler/816006"
-          }
-        ],
-        "eta": [
-          {
-            "valore": "22",
-            "fonte": "transfermarkt",
-            "osservato_il": "2026-11-27T21:15:25.291479+00:00",
-            "url": "https://www.transfermarkt.it/baldovino-cimino/profil/spieler/816006",
-            "nota": "da data di nascita 2004-02-20"
-          }
-        ]
-      }
-    },
-    "foot": "destro",
-    "market_value": 275000,
-    "enrichment_source": "Enrichment:sports-skills",
-    "market_value_formatted": "275 mila €",
-    "height_cm": 184,
-    "birth_date": "2004-02-20",
-    "tm_url": "https://www.transfermarkt.it/baldovino-cimino/profil/spieler/816006",
-    "current_club": "Cosenza Calcio",
-    "player_profile": {
-      "foot": "destro",
-      "market_value": 275000,
-      "enrichment_source": "Enrichment:sports-skills",
-      "market_value_formatted": "275 mila €",
-      "height_cm": 184,
-      "birth_date": "2004-02-20",
-      "tm_url": "https://www.transfermarkt.it/baldovino-cimino/profil/spieler/816006",
-      "current_club": "Cosenza Calcio"
-    },
-    "age": 22,
-    "role_name": "Terzino destro",
-    "role": "Terzino destro",
-    "tm_enriched": true
-  },
-  {
     "id": "80c500256012b975c5266d84ab147e2a",
     "player_name": "Andrea Dini",
     "region": "ITALY",
@@ -27335,7 +27272,14 @@
     "source_name": "www.sportitalia.it",
     "source_url": "https://www.sportitalia.it/2026/10/03/caso-ronaldo-le-parole-di-jorge-jesus-e-bruno-fernandes/",
     "discovered_at": "2026-10-08T05:20:43.608763",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/bruno-fernandes/profil/spieler/240306",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/bruno-fernandes/profil/spieler/240306"
+    },
+    "tm_enriched": false
   },
   {
     "id": "d45d7cc4d5636b5e8bfa35df7ba2eee5",
@@ -29979,7 +29923,16 @@
     "source_name": "www.gazzetta.it",
     "source_url": "https://www.gazzetta.it/Calciomercato/20-05-2025/nico-paz-al-real-madrd-che-paga-la-recompra-al-como-la-trattativa.shtml",
     "discovered_at": "2026-10-28T22:23:34.539864",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "tm_url": "https://www.transfermarkt.it/trent-alexander-arnold/profil/spieler/314353",
+    "tm_verified_at": "2026-11-28T07:12:38+00:00",
+    "birth_date": "07/10/1998",
+    "age": 28,
+    "current_club": "Real Madrid",
+    "role_name": "Terzino destro",
+    "foot": "destro",
+    "contract_expires": "30/06/2031",
+    "agent": "Gersh"
   },
   {
     "id": "fe683e7e033082db91851c881c9c161a",
@@ -31120,7 +31073,14 @@
     "source_name": "www.gazzetta.it",
     "source_url": "https://www.gazzetta.it/Calcio/Calciomercato/Juventus/12-11-2025/juve-yildiz-rinnovo-bloccato-trattativa-mercato.shtml",
     "discovered_at": "2026-11-10T14:36:46.418777",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "enrichment_source": "Enrichment:groq",
+    "tm_url": "https://www.transfermarkt.it/carlo-pinsoglio/profil/spieler/75411",
+    "player_profile": {
+      "enrichment_source": "Enrichment:groq",
+      "tm_url": "https://www.transfermarkt.it/carlo-pinsoglio/profil/spieler/75411"
+    },
+    "tm_enriched": false
   },
   {
     "id": "ba716e36769c57f7651d0eacf5da39a7",
@@ -31558,7 +31518,38 @@
     "source_name": "www.tuttoc.com",
     "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449179",
     "discovered_at": "2026-11-15T13:41:48.205059",
-    "league_id": "italy_serie_c_d"
+    "league_id": "italy_serie_c_d",
+    "grafo_fonti": {
+      "p": {
+        "market_value": [
+          {
+            "valore": "300000",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-28T07:08:05.561779+00:00"
+          }
+        ],
+        "eta": [
+          {
+            "valore": "29",
+            "fonte": "transfermarkt",
+            "osservato_il": "2026-11-28T07:08:05.561800+00:00",
+            "nota": "da data di nascita 1997-01-01"
+          }
+        ]
+      }
+    },
+    "market_value": 300000,
+    "enrichment_source": "Enrichment:groq",
+    "market_value_formatted": "300 mila €",
+    "birth_date": "1997-01-01",
+    "player_profile": {
+      "market_value": 300000,
+      "enrichment_source": "Enrichment:groq",
+      "market_value_formatted": "300 mila €",
+      "birth_date": "1997-01-01"
+    },
+    "age": 29,
+    "tm_enriched": true
   },
   {
     "id": "88d82df1e1853a18b4e637486706ddd7",
@@ -32728,27 +32719,27 @@
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "ea942790f846ed0d5c11282a00b2e476",
-    "player_name": "Di Gregorio",
+    "id": "8dc24388b8e6cee93c879f788ee0f268",
+    "player_name": "Alessio Castellini",
     "region": "ITALY",
-    "opportunity_type": "svincolato",
-    "description": "D'altronde, che il numero uno fosse un ruolo che i dirigenti bianconeri avevano deciso di rinforzare nell'estate del 2026 si era capito già nei mesi scorsi, quando si è provato a sondare la disponibilità di Mike Maignan di trasferirsi alla Continassa a parametro zero. Il recente rinnovo del francese col Milan, però, impone ora di percorrere altre strade. E, nell'attesa di capire se nelle casse juventine entreranno i 60 milioni garantiti dalla partecipazione alla prossima Champions League, si scandaglia il mercato alla ricerca di occasioni. Se il budget di Comolli in estate fosse risicato, ecco che la pista principale porterebbe a Liverpool, da quel 33enne brasiliano con un passato nella Roma... di Spalletti. Alisson, infatti, era il portiere di coppa dell'ultima avventura in giallorosso [...] ## Il brasiliano, in scadenza nel 2027 con il Liverpool, garantirebbe affidabilità e, soprattutto, esperienza. E ha già lavorato con Spalletti a Roma\n\nTu chiamale se vuoi, occasioni. Alle prese con quella che potrebbe essere una vera rivoluzione tra i pali nella prossima estate (con Di Gregorio sotto esame dopo i recenti errori, Perin che vorrebbe tornare a giocare titolare e Pinsoglio che pensa al ritiro), la Juve guarda soprattutto alla Premier League. E, oltre a Vicario, mette gli occhi pure su Alisson Becker, portiere del Liverpool con il contratto in scadenza nel 2027.\n\n## juve, si apre la pista alisson\n\n— [...] Se invece il budget fosse più ampio e i dirigenti bianconeri volessero fare una scelta di più ampio raggio, con un portiere in grado di avere più anni di carriera davanti, ecco che la via principale porterebbe a Londra, dove da ormai tre anni Gugliemo Vicario difende i pali del Tottenham. Negli ultimi giorni ci sono sono stati nuovi contatti con l'entourage del giocatore, anche per contrastare la forte concorrenza dell'Inter e guadagnare la pole position. L'ex numero uno dell'Empoli, 30 anni da compiere, vorrebbe far rientro in Serie A (anche perché gli Spurs, esclusa la vittoria della scorsa Europa League. in queste stagioni hanno faticato parecchio) e il suo contratto in scadenza nel 2028 mette la società inglese nelle condizioni di non poter avere pretese eccessive. La valutazione che",
-    "ob1_score": 70,
-    "source_name": "www.gazzetta.it",
-    "source_url": "https://www.gazzetta.it/Calcio/Serie-A/Juventus/24-02-2026/juve-vicario-e-alisson-per-il-dopo-di-gregorio.shtml",
-    "discovered_at": "2026-11-27T20:55:14.871901",
+    "opportunity_type": "talento",
+    "description": "ceduto definitivamente al Mantova",
+    "ob1_score": 60,
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449970",
+    "discovered_at": "2026-11-28T07:01:12.973416",
     "league_id": "italy_serie_c_d"
   },
   {
-    "id": "2d3051804125cd10aef4716acf3c8912",
-    "player_name": "Atalanta Under",
+    "id": "6d531130e4dc7fccc47c2aad66c6f90b",
+    "player_name": "Sabah Kerjota",
     "region": "ITALY",
     "opportunity_type": "talento",
-    "description": "## le altre del girone a\n\n—\n\nVolano le neopromosse. Prestazione sontuosa del Legnago di Massimo Donati, che travolge l’Arzignano (4-0): la sblocca Svidercoschi, poi arrotondano il punteggio Martic (punizione sul primo palo) e Rocco, nel finale va a segno anche Jerry Mbakogu al primo gol con la nuova maglia. E' un ritorno in C col sorriso anche per la Giana, che passa a Busto Arsizio sul campo della Pro Patria (2-1): vantaggio ospite a metà primo tempo con la punizione di Fumagalli deviata dalla barriera, nella ripresa il pari in girata di Stanzani ma poi è l'attaccante senegalese Fall - appena entrato dalla panchina - a firmare il colpo esterno.\n\n## girone b\n\n— [...] presenti. Sorride in pieno recupero il Potenza, che supera il Brindisi: a firmare il 2-1 è Gagliano, entrato dalla panchina, con una bella girata in area dopo che Bizzotto aveva pareggiato il primo vantaggio di Volpe (ribattuta dopo un rigore sbagliato da Caturano, che ne aveva già falliti 3 nella passata stagione). Sorride anche l’altra lucana, il Picerno, che torna con i 3 punti da Francavilla grazie alla zampata del subentrato Abou Diop a metà ripresa (ribattuta in porta sul palo colpito da Esposito). Colpo della Juve Stabia (3-1) a Teramo, campo del Monterosi: apre Candellone dal dischetto, pari dell’ex stabiese Silipo ma poi la squadra di Guido Pagliuca riprende il largo nella ripresa con Leone e Baldi, bravi a infilare Mastrantonio (portiere campione d’Europa con l’Italia U19). [...] © RIPRODUZIONE RISERVATA",
+    "description": "ex Sambenedettese protagonista in Conference League",
     "ob1_score": 60,
-    "source_name": "www.gazzetta.it",
-    "source_url": "https://www.gazzetta.it/Calcio/04-09-2023/serie-c-cade-l-atalanta-under-23.shtml",
-    "discovered_at": "2026-11-27T20:55:14.872396",
+    "source_name": "www.tuttoc.com",
+    "source_url": "https://www.tuttoc.com/?action=read&idnotizia=449966",
+    "discovered_at": "2026-11-28T07:01:12.973878",
     "league_id": "italy_serie_c_d"
   }
 ]
